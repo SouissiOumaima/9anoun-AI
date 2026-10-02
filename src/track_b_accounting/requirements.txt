@@ -1,0 +1,4 @@
+# Dépendances du module comptable (Track B)
+# Installation : python -m pip install -r src/track_b_accounting/requirements.txt
+pytest==9.1.1
+pymupdf==1.28.2
