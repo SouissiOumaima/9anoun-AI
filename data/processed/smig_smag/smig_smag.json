@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "description": "Référentiel SMIG / SMAG / prime de transport, reconstruit manuellement depuis les PDF sources (data/raw/pdf/) car le JSON OCR correspondant contenait des montants incohérents.",
+    "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+    "verified_by": "Oumaima Souissi (DS5)",
+    "verification_method": "Lecture directe de l'image de chaque page du PDF (pymupdf, 200 dpi) — aucune source externe utilisée",
+    "decision_log": "docs/DECISIONS.md (D1, D2)",
+    "currency": "TND",
+    "note_unites": "Les montants 'par jour' ou 'par heure' sont exprimés en dinars (TND), avec 3 décimales (millimes)."
+  },
+
+  "smig_non_agricole": {
+    "label_ar": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية",
+    "label_fr": "SMIG — secteurs non agricoles relevant du Code du travail",
+    "decree": {
+      "number": 769,
+      "year": 2022,
+      "date": "2022-10-19",
+      "effective_date": "2022-10-01"
+    },
+    "conditions": "Travailleurs des deux sexes âgés de 18 ans et plus, au minimum, pour une journée de travail effectif.",
+    "bareme": [
+      {
+        "mode_remuneration": "mensuel",
+        "regime_hebdomadaire_heures": 48,
+        "montant": 459.264
+      },
+      {
+        "mode_remuneration": "mensuel",
+        "regime_hebdomadaire_heures": 40,
+        "montant": 390.692
+      },
+      {
+        "mode_remuneration": "horaire",
+        "regime_hebdomadaire_heures": 48,
+        "montant": 2.208
+      },
+      {
+        "mode_remuneration": "horaire",
+        "regime_hebdomadaire_heures": 40,
+        "montant": 2.254
+      }
+    ]
+  },
+
+  "smag_agricole": {
+    "label_ar": "الأجر الأدنى الفلاحي المضمون",
+    "label_fr": "SMAG — secteur agricole",
+    "decree": {
+      "number": 768,
+      "year": 2022,
+      "date": "2022-10-19",
+      "effective_date": "2022-10-01"
+    },
+    "conditions": "Travailleurs des deux sexes âgés de 18 ans et plus, au minimum, par journée de travail effectif.",
+    "bareme": [
+      {
+        "mode_remuneration": "journalier",
+        "montant": 17.664
+      }
+    ],
+    "prime_competence_anciennete_uniforme": {
+      "label_ar": "منحة تقنية — لذوي الاختصاص والكفاءة بأقدمية موحدة",
+      "description": "Prime technique additionnelle au SMAG, par jour de travail effectif, pour les ouvriers agricoles spécialisés ou qualifiés.",
+      "bareme": [
+        {
+          "categorie": "عمال مختصين (ouvriers spécialisés)",
+          "montant_par_jour": 0.942
+        },
+        {
+          "categorie": "عمال ذوي الكفاءة (ouvriers qualifiés)",
+          "montant_par_jour": 1.772
+        }
+      ]
+    }
+  },
+
+  "prime_transport": {
+    "label_ar": "منحة النقل للأجراء الخالصين بالأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية والخاضعة لمجلة الشغل",
+    "label_fr": "Prime de transport pour les salariés rémunérés au SMIG (secteurs non agricoles)",
+    "decree": {
+      "number": 2906,
+      "year": 2014,
+      "date": "2014-08-11",
+      "note": "Décret abrogé et remplacé par le décret gouvernemental n°35 de 2015"
+    },
+    "decree_actuel": {
+      "number": 35,
+      "year": 2015,
+      "date": "2015-02-06",
+      "effective_date": "2015-05-01"
+    },
+    "montant_mensuel": 36.112
+  }
+}
