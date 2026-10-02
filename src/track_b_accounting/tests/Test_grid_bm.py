@@ -1,11 +1,14 @@
 """Contrôles automatiques de la grille METALLURGIE_BATIMENT (anti-erreur de saisie).
-Lancer : pytest tests/test_grid_bm.py   (adapter GRID_PATH au dépôt)
+Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_grid_bm.py
 """
 import json, statistics as S
 from pathlib import Path
 import pytest
 
-GRID_PATH = Path(__file__).resolve().parents[1] / "salary_grids" / "metallurgie_batiment.json"
+# Racine du dépôt = parents[3] depuis ce fichier :
+# src/track_b_accounting/tests/test_grid_bm.py -> tests -> track_b_accounting -> src -> <racine>
+REPO_ROOT = Path(__file__).resolve().parents[3]
+GRID_PATH = REPO_ROOT / "data" / "processed" / "salary_grids" / "metallurgie_batiment.json"
 GRID = json.loads(GRID_PATH.read_text(encoding="utf-8"))
 TABLES = {t["table_id"]: t for t in GRID["grilles"]}
 

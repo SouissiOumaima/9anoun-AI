@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import datetime
 
 RAW_DIR = Path(__file__).resolve().parents[3] / "data" / "raw" / "txt"
-OUT_DIR = Path(__file__).resolve().parents[3] / "data" / "processed"
+OUT_DIR = Path(__file__).resolve().parents[3] / "data" / "processed" / "ocr_audit" / "ocr_audit"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # --- Heuristiques de detection de corruption OCR sur les chiffres ---
