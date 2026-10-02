@@ -1,0 +1,2220 @@
+{
+  "_meta": {
+    "outil": "src/track_b_accounting/tools/inventory_pdf_text_layer.py",
+    "source_dir": "data/raw/pdf/",
+    "seuil_texte_caracteres": 50,
+    "mots_cles": [
+      "جدول",
+      "الأجور",
+      "منحة"
+    ],
+    "pymupdf_version": "1.28.2",
+    "decision_log": "docs/DECISIONS.md (D5)"
+  },
+  "pdfs": [
+    {
+      "file": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "nb_pages": 21,
+      "nb_pages_texte": 20,
+      "nb_pages_scan": 1,
+      "pages_scan": [
+        21
+      ],
+      "pages_scan_hors_couverture": [
+        21
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 98,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 65,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3574,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2083,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 1359,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 855,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 4582,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 21,
+          "n_pua": 3006,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 6189,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 45,
+          "n_pua": 4100,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 5459,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 58,
+          "n_pua": 3530,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 5346,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 78,
+          "n_pua": 3545,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 5503,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3679,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 5134,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 155,
+          "n_pua": 3262,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 4474,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 42,
+          "n_pua": 2996,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 5345,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3658,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 4991,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 125,
+          "n_pua": 3140,
+          "n_montants": 1,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 4618,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 63,
+          "n_pua": 3058,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 4529,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 113,
+          "n_pua": 2760,
+          "n_montants": 2,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 3939,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 80,
+          "n_pua": 2511,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 5721,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 32,
+          "n_pua": 3776,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 5545,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3644,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 5489,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3578,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 5597,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3696,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 5175,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3399,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+      "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+      "nb_pages": 5,
+      "nb_pages_texte": 5,
+      "nb_pages_scan": 0,
+      "pages_scan": [],
+      "pages_scan_hors_couverture": [],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [
+        2,
+        3,
+        5
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 463,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 295,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 4589,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2746,
+          "n_montants": 4,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 2981,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1799,
+          "n_montants": 3,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 1991,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1202,
+          "n_montants": 1,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4859,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2946,
+          "n_montants": 4,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+      "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+      "nb_pages": 35,
+      "nb_pages_texte": 29,
+      "nb_pages_scan": 6,
+      "pages_scan": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "pages_scan_hors_couverture": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [
+        16,
+        17
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 52,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 36,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3483,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 1,
+          "n_pua": 1981,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 2760,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1541,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 1617,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1015,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4310,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2796,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 5324,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 31,
+          "n_pua": 3529,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 5472,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 73,
+          "n_pua": 3505,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 4618,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 142,
+          "n_pua": 2973,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 4528,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 73,
+          "n_pua": 2966,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 5092,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 118,
+          "n_pua": 3263,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 4127,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 63,
+          "n_pua": 2648,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 4728,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 170,
+          "n_pua": 3106,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 4802,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 27,
+          "n_pua": 3195,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 5924,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 57,
+          "n_pua": 3898,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 5017,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 100,
+          "n_pua": 3189,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 4707,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 135,
+          "n_pua": 2795,
+          "n_montants": 15,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 3584,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 69,
+          "n_pua": 2282,
+          "n_montants": 4,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 4201,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2801,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 4032,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2683,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 3701,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2501,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 3749,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2523,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 22,
+          "n_chars": 4116,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2739,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 23,
+          "n_chars": 3812,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2543,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 24,
+          "n_chars": 4206,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2735,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 25,
+          "n_chars": 4949,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3224,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 26,
+          "n_chars": 4635,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3058,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 27,
+          "n_chars": 4745,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 4,
+          "n_pua": 3177,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 28,
+          "n_chars": 2169,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1460,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 29,
+          "n_chars": 1433,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 7,
+          "n_pua": 915,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 30,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 31,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 32,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 33,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 34,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 35,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+      "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+      "nb_pages": 25,
+      "nb_pages_texte": 22,
+      "nb_pages_scan": 3,
+      "pages_scan": [
+        23,
+        24,
+        25
+      ],
+      "pages_scan_hors_couverture": [
+        23,
+        24,
+        25
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [
+        15
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 63,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 45,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3590,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 1,
+          "n_pua": 2067,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 2851,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1618,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 1611,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1036,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4701,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 3051,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 5573,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 31,
+          "n_pua": 3620,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 4760,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 254,
+          "n_pua": 2901,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 3347,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 42,
+          "n_pua": 2029,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 5003,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 73,
+          "n_pua": 3281,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 4359,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 105,
+          "n_pua": 2775,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 5038,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 170,
+          "n_pua": 3313,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 4525,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 47,
+          "n_pua": 2921,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 5951,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 22,
+          "n_pua": 3943,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 5876,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 104,
+          "n_pua": 3772,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 4852,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 186,
+          "n_pua": 2938,
+          "n_montants": 7,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 4944,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 81,
+          "n_pua": 3204,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 2401,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 1484,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 2308,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1317,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 4727,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3095,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 5654,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3721,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 5149,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3435,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 22,
+          "n_chars": 2675,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1790,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 23,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 24,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 25,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "nb_pages": 21,
+      "nb_pages_texte": 18,
+      "nb_pages_scan": 3,
+      "pages_scan": [
+        1,
+        20,
+        21
+      ],
+      "pages_scan_hors_couverture": [
+        20,
+        21
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [
+        11
+      ],
+      "pages_montants": [],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 46,
+          "statut": "scan",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 34,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3594,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2054,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 2864,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1705,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 1016,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 639,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4777,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 31,
+          "n_pua": 3161,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 5211,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 78,
+          "n_pua": 3396,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 4872,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 3201,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 4055,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 82,
+          "n_pua": 2622,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 4506,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 21,
+          "n_pua": 2917,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 2903,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 21,
+          "n_pua": 1797,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 4161,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 186,
+          "n_pua": 2509,
+          "n_montants": 0,
+          "mots_cles": [
+            "منحة"
+          ]
+        },
+        {
+          "page": 12,
+          "n_chars": 4357,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2899,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 5494,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 31,
+          "n_pua": 3687,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 3953,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 63,
+          "n_pua": 2570,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 4256,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 68,
+          "n_pua": 2715,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 4199,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 47,
+          "n_pua": 2691,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 4180,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 47,
+          "n_pua": 2684,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 2502,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 1633,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 3735,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2439,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "nb_pages": 27,
+      "nb_pages_texte": 23,
+      "nb_pages_scan": 4,
+      "pages_scan": [
+        1,
+        25,
+        26,
+        27
+      ],
+      "pages_scan_hors_couverture": [
+        25,
+        26,
+        27
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 44,
+          "statut": "scan",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 41,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3751,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2752,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 1276,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 920,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 983,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 848,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 3629,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 31,
+          "n_pua": 3388,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 3989,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3812,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 3572,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 194,
+          "n_pua": 3082,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 3394,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 3176,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 3833,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 83,
+          "n_pua": 3529,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 3552,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 104,
+          "n_pua": 3187,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 3815,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 185,
+          "n_pua": 3202,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 3812,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 52,
+          "n_pua": 3486,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 3356,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 78,
+          "n_pua": 2991,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 4005,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 69,
+          "n_pua": 3706,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 2630,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 69,
+          "n_pua": 2141,
+          "n_montants": 8,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 2308,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 117,
+          "n_pua": 1610,
+          "n_montants": 19,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 2324,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 198,
+          "n_pua": 1381,
+          "n_montants": 30,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 2382,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 67,
+          "n_pua": 1651,
+          "n_montants": 42,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 2384,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 22,
+          "n_pua": 2156,
+          "n_montants": 1,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 2640,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 44,
+          "n_pua": 2404,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 1507,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1380,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 22,
+          "n_chars": 3524,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3331,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 23,
+          "n_chars": 1924,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 53,
+          "n_pua": 1693,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 24,
+          "n_chars": 2523,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2395,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 25,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 26,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 27,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "source_file": "data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "nb_pages": 29,
+      "nb_pages_texte": 20,
+      "nb_pages_scan": 9,
+      "pages_scan": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "pages_scan_hors_couverture": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [
+        14
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 85,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 61,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 1451,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 4,
+          "n_pua": 827,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 1097,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 678,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 5182,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 18,
+          "n_pua": 3476,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 5578,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3709,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 4284,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2845,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 3918,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 36,
+          "n_pua": 2556,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 3612,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 73,
+          "n_pua": 2305,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 4645,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 18,
+          "n_pua": 3046,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 4669,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3102,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 3862,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 18,
+          "n_pua": 2545,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 5439,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3699,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 4257,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2868,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 2967,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1797,
+          "n_montants": 12,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 3761,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 28,
+          "n_pua": 2402,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 3897,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2507,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 763,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 476,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 2656,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 18,
+          "n_pua": 1720,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 2640,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1647,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 1436,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 905,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 22,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 23,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 24,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 25,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 26,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 27,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 28,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 29,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "الاطارية.pdf",
+      "source_file": "data/raw/pdf/الاطارية.pdf",
+      "nb_pages": 13,
+      "nb_pages_texte": 13,
+      "nb_pages_scan": 0,
+      "pages_scan": [],
+      "pages_scan_hors_couverture": [],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 983,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 809,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 944,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 835,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 4390,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 4223,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 4532,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 82,
+          "n_pua": 4136,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4154,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 130,
+          "n_pua": 3651,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 4193,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 89,
+          "n_pua": 3763,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 4283,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 84,
+          "n_pua": 3803,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 4480,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 143,
+          "n_pua": 3858,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 3946,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3724,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 4390,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 26,
+          "n_pua": 4058,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 4193,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 21,
+          "n_pua": 3826,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 4407,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 63,
+          "n_pua": 4023,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 1565,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 44,
+          "n_pua": 1322,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    },
+    {
+      "file": "البنوك.pdf",
+      "source_file": "data/raw/pdf/البنوك.pdf",
+      "nb_pages": 23,
+      "nb_pages_texte": 21,
+      "nb_pages_scan": 2,
+      "pages_scan": [
+        22,
+        23
+      ],
+      "pages_scan_hors_couverture": [
+        22,
+        23
+      ],
+      "encodage_couche_texte": "pua",
+      "pages_mots_cles": [],
+      "pages_montants": [],
+      "pages": [
+        {
+          "page": 1,
+          "n_chars": 53,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 36,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 2,
+          "n_chars": 3695,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2148,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 3,
+          "n_chars": 1540,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 907,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 4,
+          "n_chars": 2537,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1463,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 5,
+          "n_chars": 4451,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2674,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 6,
+          "n_chars": 4759,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2849,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 7,
+          "n_chars": 4513,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2694,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 8,
+          "n_chars": 3803,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2287,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 9,
+          "n_chars": 1060,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 626,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 10,
+          "n_chars": 3866,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2372,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 11,
+          "n_chars": 2568,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 21,
+          "n_pua": 1468,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 12,
+          "n_chars": 4767,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2874,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 13,
+          "n_chars": 3827,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2222,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 14,
+          "n_chars": 4151,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2440,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 15,
+          "n_chars": 3993,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2336,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 16,
+          "n_chars": 3691,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2172,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 17,
+          "n_chars": 5087,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 3017,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 18,
+          "n_chars": 4511,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2662,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 19,
+          "n_chars": 3521,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 2064,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 20,
+          "n_chars": 1993,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 0,
+          "n_pua": 1105,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 21,
+          "n_chars": 1928,
+          "statut": "texte",
+          "encodage": "pua",
+          "n_arabe": 22,
+          "n_pua": 1137,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 22,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        },
+        {
+          "page": 23,
+          "n_chars": 0,
+          "statut": "scan",
+          "encodage": "sans_arabe",
+          "n_arabe": 0,
+          "n_pua": 0,
+          "n_montants": 0,
+          "mots_cles": []
+        }
+      ]
+    }
+  ]
+}

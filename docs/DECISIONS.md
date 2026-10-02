@@ -94,3 +94,73 @@ Constat qui corrige D1 : les pages 30-35 sont des images sans couche texte (scan
 **Contenu**: 3 dates d'effet (01/12/2021, 01/01/2023, 01/01/2024) × 2 populations (admin/techniciens : 19 catégories, TND/mois ; exécution : 7 catégories, TND/heure) × 11 degrés d'ancienneté, régime 42 h. Primes : transport, présence, logement, panier (قفة), déplacement chantier, travail en hauteur.
 
 **Statut** : ⏳ à confirmer par DS5 sur le PDF (échantillon recommandé : 2 lignes par page, + cellules 1B et 18).
+
+---
+
+### D5 — Inventaire couche texte des PDF (data/raw/pdf/)
+
+**Fichiers créés** : `data/processed/ocr_audit/pdf_text_layer.json` et `.md`,
+générés par `src/track_b_accounting/tools/inventory_pdf_text_layer.py`
+(tests : `tests/test_inventory.py`, PDF générés en mémoire). Les PDF sont
+ouverts en lecture seule.
+
+**Décision** : mesurer automatiquement, page par page, la présence d'une
+couche texte (`page.get_text()` > 50 caractères = « texte », sinon « scan »),
+son encodage et la densité de montants, avant de choisir le prochain
+secteur à transcrire.
+
+**Alternatives envisagées** :
+- Repérer les grilles par mots-clés arabes (« جدول », « الأجور », « منحة »)
+  → inopérant : voir constat ci-dessous (0 page trouvée hors 1 page isolée).
+- S'appuyer sur `data/raw/txt/*.json` (OCR) → rejeté (D1 : chiffres corrompus).
+- Inspecter chaque PDF à la main → plus lent, non reproductible.
+
+**Raison** : prioriser les secteurs selon le coût réel de saisie, et
+documenter une limite de l'extraction de texte qui corrige D1.
+
+**Constat qui précise D1** : sur les 9 PDF, toutes les couches texte encodent
+l'arabe en zone Unicode à usage privé (encodage « pua », police propriétaire) :
+les mots arabes ne sont **ni lisibles ni cherchables** via `get_text()`.
+Les **chiffres**, eux, sont extraits correctement (contrôle : les 4 montants
+SMIG de D2 — 459.264, 390.692, 2.208, 2.254 — sont retrouvés à l'identique
+p.2 du PDF SMIG). L'extraction « fiable à 100 % » de D1 ne vaut donc que pour
+les chiffres des pages texte.
+
+**Résultat résumé** :
+- Accord métallurgie : p.30-35 « scan », p.16 « texte » — cohérent avec D4.
+- Dans les 7 conventions sectorielles, les grilles salariales sont sur des
+  pages **scannées** (annexes en fin de document) ; aucune grille en texte
+  natif. Les pages texte riches en montants contiennent des primes et
+  indemnités (chiffres exploitables).
+- Contrôle visuel de la 1re page scannée de chaque convention (gardiennage
+  p.21, BTP p.23, assurance p.20, enseignement privé p.25, associations
+  handicap p.21, banques p.22) : ce sont bien des tableaux de salaires.
+  Tableaux droits : gardiennage, BTP. Tableaux pivotés à 90° : assurance,
+  enseignement privé, associations handicap, banques.
+- `الاطارية.pdf` (convention-cadre) et le PDF SMIG : aucune page scannée.
+
+**Classement par coût de saisie** (pages scannées hors couverture, puis
+orientation) :
+
+| Rang | Secteur | Pages grilles | Orientation |
+|---|---|---|---|
+| 1 | Gardiennage / transport de fonds | 21 (1 p.) | droite |
+| 2 | Assurance | 20-21 (2 p.) | pivotée |
+| 3 | Banques | 22-23 (2 p.) | pivotée |
+| 4 | Bâtiment et travaux publics | 23-25 (3 p.) | droite (p.23) |
+| 5 | Enseignement privé | 25-27 (3 p.) | pivotée |
+| 6 | Métallurgie bâtiment | 30-35 (6 p.) | déjà transcrite (D4) |
+| 7 | Associations handicap | 21-29 (9 p.) | pivotée |
+
+Le nombre de tableaux par page, les dates d'effet et l'orientation des pages
+suivantes restent à confirmer à l'ouverture de chaque secteur.
+
+**Point relevé pour D4 (non corrigé ici, mesure seulement)** : la page 16
+de l'accord métallurgie contient 15 montants de primes, dont une 3e série
+(92.800, 100.533, 7.856, 26.293, 1.663) absente de `metallurgie_batiment.json`,
+qui ne contient que les dates d'effet 2021-12-01 et 2023-01-01 pour ces primes.
+À vérifier sur le PDF lors de la clôture de D4.
+
+**Statut** : ✅ mesure automatique reproductible (`python
+src/track_b_accounting/tools/inventory_pdf_text_layer.py`) ; observations
+visuelles (orientation, contenu des scans) ⏳ à confirmer par DS5.
