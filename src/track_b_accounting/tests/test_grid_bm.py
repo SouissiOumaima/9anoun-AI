@@ -46,6 +46,20 @@ def test_ratio_inter_annees_stable(grp, prefix):
         assert all(abs(x / med - 1) < 0.005 for x in r.values())
 
 
+@pytest.mark.parametrize("prefix,tol", [("BM_T_", 0.0005), ("BM_E_", 0.0015)])
+def test_increment_constant_par_table(prefix, tol):
+    """Entre deux dates d'effet, l'augmentation d'une catégorie est la même pour ses 11 degrés.
+    T (TND/mois) : exacte au millime. E (TND/heure) : ±0,001 d'arrondi toléré.
+    Aurait détecté 593.875 (cat. 4, deg. 8) et 1007.131 (cat. 15, deg. 10) dans BM_T_2021-12-01.
+    """
+    dates = ["2021-12-01", "2023-01-01", "2024-01-01"]
+    for d0, d1 in zip(dates, dates[1:]):
+        a, b = TABLES[prefix + d0]["valeurs"], TABLES[prefix + d1]["valeurs"]
+        for c in a:
+            inc = [b[c][k] - a[c][k] for k in range(11)]
+            assert max(inc) - min(inc) <= tol, (prefix + d0, d1, c, [round(x, 3) for x in inc])
+
+
 def test_primes_croissantes():
     for p in GRID["primes"]:
         ms = p.get("montants")

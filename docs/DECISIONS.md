@@ -89,11 +89,61 @@ salariales des conventions collectives sectorielles (étape 3 du plan DS5).
 
 Constat qui corrige D1 : les pages 30-35 sont des images sans couche texte (scan), pas du texte natif. pymupdf.get_text() y retourne 0 caractère → l'extraction « 100 % fiable » de D1 ne s'applique pas à ces pages. Seule la p.16 a une couche texte (utilisée comme contrôle croisé des primes).
 
-**Méthode** : lecture visuelle des tableaux, saisie en code, contrôles automatiques (tests/test_grid_bm.py, 16 tests) : croissance par ancienneté, croissance par catégorie, ratio inter-années stable (~+6,6 %), cohérence des primes.
+**Méthode** : lecture visuelle des tableaux, saisie en code, contrôles automatiques (tests/test_grid_bm.py, 18 tests depuis l'ajout du contrôle d'incrément) : croissance par ancienneté, croissance par catégorie, ratio inter-années stable (~+6,6 %), cohérence des primes.
 
 **Contenu**: 3 dates d'effet (01/12/2021, 01/01/2023, 01/01/2024) × 2 populations (admin/techniciens : 19 catégories, TND/mois ; exécution : 7 catégories, TND/heure) × 11 degrés d'ancienneté, régime 42 h. Primes : transport, présence, logement, panier (قفة), déplacement chantier, travail en hauteur.
 
-**Statut** : ⏳ à confirmer par DS5 sur le PDF (échantillon recommandé : 2 lignes par page, + cellules 1B et 18).
+**Vérification sur le PDF (2026-10-03)** : comparaison des valeurs du JSON
+aux images des pages rastérisées à 200 dpi (images hors dépôt, non versionnées).
+Degrés contrôlés : 1, 6 et 11 (dans le PDF, le degré 1 est la colonne la plus à droite).
+
+| Page | table_id | Catégories fixes | Catégories tirées au hasard |
+|---|---|---|---|
+| 30 | BM_T_2021-12-01 | 1B, 18 | 5, 6 |
+| 31 | BM_E_2021-12-01 | 1, 7 | 4, 6 |
+| 32 | BM_T_2023-01-01 | 1B, 18 | 12, 13 |
+| 33 | BM_E_2023-01-01 | 1, 7 | 2, 5 |
+| 34 | BM_T_2024-01-01 | 1B, 18 | 9, 11 |
+| 35 | BM_E_2024-01-01 | 1, 7 | 4, 5 |
+
+- Catégories fixes : vérifiées exhaustivement sur le PDF par DS5 lors d'une
+  session antérieure.
+- Catégories tirées au hasard : 2 lignes par page, `random.Random(20261002)`,
+  parmi les catégories hors fixes ; 36 cellules relues une à une sur les images
+  (2026-10-03).
+- Total : 72 cellules (24 lignes × 3 degrés). **Écarts dans l'échantillon : 0.**
+- Contrôle complémentaire (toutes cellules) : d'une date d'effet à l'autre,
+  l'augmentation est un montant **constant par ligne** (ex. cat. 4 :
+  +38,703 DT de 2021 à 2023). Les lignes qui ne respectent pas cette règle ont
+  été relues sur le PDF (zoom) :
+
+  | table_id | Cellule | JSON (avant) | PDF (corrigé) |
+  |---|---|---|---|
+  | BM_T_2021-12-01 | cat. 4, degré 8 | 593.875 | **593.873** |
+  | BM_T_2021-12-01 | cat. 15, degré 10 | 1007.131 | **1007.111** |
+
+  Pour les tables exécution (TND/heure), on constate des écarts de ±0,001 entre lignes.
+  Ils sont attribués à l'arrondi au millime, mais ces cellules n'ont pas été relues
+  une à une.
+  Ces 2 cellules étaient hors échantillon, et les 16 tests de `test_grid_bm.py`
+  ne les détectaient pas (tolérance du ratio inter-années trop large).
+- Primes p.16 : 3 dates d'effet (2021-12-01, 2023-01-01, 2024-01-01) présentes pour
+  transport, présence, logement et complément logement ; montants identiques aux
+  chiffres de la couche texte de la p.16 (lisibles malgré l'encodage PUA, cf. D5).
+- Prime panier (قفة, art. 51 (جديد) أ) : montant unique 0,560 DT/jour (renvoi art. 89
+  du Code du travail), sans date d'effet dans l'article → `effective_date: null`
+  conservé ; ce n'est pas une donnée manquante.
+- Fichier de tests renommé `Test_grid_bm.py` → `test_grid_bm.py`.
+
+Non-régression : `test_increment_constant_par_table` (tests/test_grid_bm.py)
+vérifie que, pour chaque catégorie, l'incrément entre deux dates d'effet est
+identique sur les 11 degrés (tolérance : 0,0005 DT pour les tables T, soit exact
+au millime ; 0,0015 DT pour les tables E, arrondi de ±0,001). Il échoue sur les
+2 valeurs erronées ci-dessus.
+
+**Statut** : ✅ vérifié sur échantillon + contrôle inter-années (2026-10-03),
+2 cellules corrigées (page 30) ; contrôles automatiques :
+`src/track_b_accounting/tests/test_grid_bm.py` (18 tests) ; validation finale DS5.
 
 ---
 
@@ -155,11 +205,11 @@ orientation) :
 Le nombre de tableaux par page, les dates d'effet et l'orientation des pages
 suivantes restent à confirmer à l'ouverture de chaque secteur.
 
-**Point relevé pour D4 (non corrigé ici, mesure seulement)** : la page 16
-de l'accord métallurgie contient 15 montants de primes, dont une 3e série
-(92.800, 100.533, 7.856, 26.293, 1.663) absente de `metallurgie_batiment.json`,
-qui ne contient que les dates d'effet 2021-12-01 et 2023-01-01 pour ces primes.
-À vérifier sur le PDF lors de la clôture de D4.
+**Contrôle croisé avec D4** : les 15 montants de primes lus dans la couche
+texte de la page 16 de l'accord métallurgie (3 dates d'effet, dont la série
+2024 : 92.800, 100.533, 7.856, 26.293, 1.663) sont tous présents dans
+`metallurgie_batiment.json`. Aucun écart (rectifié le 2026-10-02 : une
+première lecture tronquée du JSON avait conclu à tort à une série manquante).
 
 **Statut** : ✅ mesure automatique reproductible (`python
 src/track_b_accounting/tools/inventory_pdf_text_layer.py`) ; observations
