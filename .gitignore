@@ -24,3 +24,7 @@ Thumbs.db
 
 # --- Sorties temporaires ---
 *.log
+
+# --- Couverture ---
+.coverage
+htmlcov/

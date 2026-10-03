@@ -214,3 +214,100 @@ première lecture tronquée du JSON avait conclu à tort à une série manquante
 **Statut** : ✅ mesure automatique reproductible (`python
 src/track_b_accounting/tools/inventory_pdf_text_layer.py`) ; observations
 visuelles (orientation, contenu des scans) ⏳ à confirmer par DS5.
+
+---
+
+### D6 — Règles de calcul Track B (`src/track_b_accounting/calc/`)
+
+**Décision** : les montants de paie ne sont produits que par des fonctions
+pures et déterministes : `salaire_base`, `table_applicable`,
+`degre_from_anciennete`, `prime` et `smig`. Chacune renvoie un `Result`
+(montant `Decimal`, unité, détail, **≥ 1 `Citation`**) ou lève un `Refus`
+bilingue FR/AR (`SOURCE_MANQUANTE`, `HORS_SCOPE`, `PARAM_INVALIDE`). Seul
+`loaders.py` lit des fichiers, et uniquement les JSON vérifiés de
+`data/processed/` (D3, D4). `data/raw/` est cité dans les `Citation`, mais
+n'est jamais lu.
+
+**Règles** :
+- **Arrondi** : `Decimal` partout. Les JSON sont lus avec
+  `parse_float=Decimal`, donc aucun float ne passe par un calcul. Les montants
+  renvoyés sont arrondis au millime (`0.001`, `ROUND_HALF_UP`). Un `Result`
+  dont le montant n'est pas un `Decimal`, ou qui n'a pas de citation, est
+  refusé dès sa construction.
+- **Choix de table par date** : on prend la table de la population dont
+  `effective_date` est la plus récente ≤ date. Une date antérieure à toutes
+  les tables donne un Refus `SOURCE_MANQUANTE`. Au-delà de la dernière table
+  (2024-01-01), celle-ci reste appliquée : le corpus ne contient pas de grille
+  plus récente. Les primes datées suivent la même règle. Le SMIG n'est
+  disponible qu'à partir du 2022-10-01 (décret n°769/2022, seul barème
+  vérifié). La date est toujours un paramètre : jamais l'horloge système.
+- **Bornes de degré** : les intervalles sont lus dans les libellés de la
+  liste `degres` (« 0-2 ans », …, « 18-20 », « 20+ »). Le PDF affiche « 2/0 »,
+  « 4/2 », etc., sans préciser à quel degré appartiennent les bornes
+  intérieures. Une ancienneté exactement égale à 2, 4, …, 18 ou 20 ans donne
+  donc un Refus `PARAM_INVALIDE`, plutôt qu'un choix arbitraire. 0 an
+  correspond au degré 1 ; au-delà de 20 ans, c'est le degré 11.
+- **Population** : `admin_tech` (tables T, TND/mois) ou `execution`
+  (tables E, TND/heure). Une table est rattachée à une population quand ses
+  catégories sont exactement celles de `categories[population]`.
+- **Pas de conversion inventée** : on ne fait aucune conversion
+  horaire → mensuel, ni nombre d'heures par mois, prorata, net, CNSS ou IRPP.
+  Un salaire demandé dans une autre unité que celle de la table
+  (`unite_souhaitee`) donne un Refus `HORS_SCOPE`. Un régime SMIG absent du
+  barème (ex. 42 h) donne un Refus `SOURCE_MANQUANTE`, sans interpolation.
+- **Primes** : les paramètres exigés dépendent du contenu JSON de la prime.
+  - `groupe` pour la prime de transport : `execution_et_maitrise` ou `cadres`.
+  - `variante` pour le complément logement.
+  - `transport_assure` (obligatoire) pour la prime de panier : 0,560 ou
+    0,160 DT/jour.
+  - `condition_remplie` (obligatoire) pour les primes soumises à condition.
+    Si elle vaut `False`, on lève un Refus `HORS_SCOPE`, car la source ne
+    prévoit aucun montant dans ce cas.
+  - Tout paramètre non prévu donne un Refus `PARAM_INVALIDE`.
+  - La prime de panier n'a pas de date d'effet dans sa source
+    (`effective_date: null`, D4) : elle est servie à toute date.
+- **Citations** : grilles et primes → PDF de l'accord, page `source_pdf_page`
+  et article du JSON, réf. D4. SMIG → PDF SMIG, page
+  `smig_non_agricole.source_pdf_page` lue dans le JSON (= 2, cf. D2), décret
+  n°769, réf. D2. Si ce champ est absent ou invalide, on lève un Refus
+  `SOURCE_MANQUANTE` : aucune page n'est déduite.
+
+**Ajout de métadonnée dans `smig_smag.json` (2026-10-03)** : ce fichier,
+vérifié manuellement en D2 et D3, reçoit un champ `source_pdf_page` (même nom
+que dans `metallurgie_batiment.json`) dans chacune de ses trois sections :
+`smig_non_agricole` → 2, `smag_agricole` → 3, `prime_transport` → 4. Ces pages
+ont été relevées dans la couche texte du PDF SMIG, ouvert en lecture seule (les
+chiffres y sont lisibles, cf. D5). Les montants vérifiés y apparaissent :
+p.2 → 459.264, 390.692, 2.208, 2.254 (décret 769) ; p.3 → 17.664, 0.942, 1.772
+(décret 768) ; p.4 → 36,112 (décrets 2906 et 35). Le résultat est cohérent avec
+D2 (SMIG en p.2) et D3 (« pages 2 à 4 »). Il s'agit d'un **ajout de
+métadonnée de traçabilité** : **aucun montant, aucune date et aucun autre champ
+vérifié n'a été modifié**. Ce champ permet d'éviter une seconde source de vérité
+(numéro de page codé en dur dans le module SMIG, aujourd'hui `calc/smig_calc.py`).
+
+**Observation non traitée — montants 2019, page 5 du PDF SMIG** : la couche
+texte de la p.5 contient des montants (47.424, 39.519, 61.984, 51.652) dans un
+texte daté de 2019. Ils sont absents de `smig_smag.json` (vérifié en D2/D3).
+Leur nature et leur pertinence n'ont pas été examinées. Ils ne sont ni ajoutés
+au JSON ni utilisés par aucune fonction. À vérifier lors d'une prochaine session,
+avant toute décision de les intégrer ou de les écarter définitivement.
+
+**Alternatives envisagées** :
+- Attribuer chaque borne au degré supérieur (pratique courante) : rejeté,
+  car aucune source du corpus ne le dit.
+- Convertir le taux horaire en mensuel (× 182 h, etc.) : rejeté, car la base
+  horaire n'est écrite dans aucune source vérifiée.
+- Calculer en float, puis arrondir : rejeté, à cause du risque d'écart d'un
+  millime sur les montants.
+
+**Raison** : appliquer la règle « Citation ou Silence ». Un montant sans
+source vérifiée n'est jamais produit ; l'appelant reçoit un refus motivé.
+
+**Tests** : `src/track_b_accounting/tests/test_calc_*.py`. Les valeurs
+attendues sont relues dans le JSON par les tests, et des cellules vérifiées
+en D4 et D2 sont codées en dur. Des tests dédiés vérifient les invariants :
+aucun float dans les `Result`, au moins une `Citation` par résultat, modules
+purs. Couverture de `calc/` : 100 %
+(`python -m pytest --cov=src/track_b_accounting/calc src/track_b_accounting/tests`).
+
+**Statut** : ✅ implémenté et testé (2026-10-03) ; en attente de revue DS5.

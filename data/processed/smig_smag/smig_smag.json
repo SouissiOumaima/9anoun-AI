@@ -12,6 +12,7 @@
   "smig_non_agricole": {
     "label_ar": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية",
     "label_fr": "SMIG — secteurs non agricoles relevant du Code du travail",
+    "source_pdf_page": 2,
     "decree": {
       "number": 769,
       "year": 2022,
@@ -46,6 +47,7 @@
   "smag_agricole": {
     "label_ar": "الأجر الأدنى الفلاحي المضمون",
     "label_fr": "SMAG — secteur agricole",
+    "source_pdf_page": 3,
     "decree": {
       "number": 768,
       "year": 2022,
@@ -78,6 +80,7 @@
   "prime_transport": {
     "label_ar": "منحة النقل للأجراء الخالصين بالأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية والخاضعة لمجلة الشغل",
     "label_fr": "Prime de transport pour les salariés rémunérés au SMIG (secteurs non agricoles)",
+    "source_pdf_page": 4,
     "decree": {
       "number": 2906,
       "year": 2014,
