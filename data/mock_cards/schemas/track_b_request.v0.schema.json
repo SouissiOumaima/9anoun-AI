@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_b_request.v0.schema.json",
+  "title": "Requête Track B (calculs de paie) — v0",
+  "description": "v0 — proposition Track B, à valider avec l'équipe. Requête envoyée au module comptable (src/track_b_accounting/contract/handler.py). Les règles métier (bornes de degré, dates, catégories, primes) sont vérifiées par calc/ et renvoyées comme refus, pas par ce schéma. Voir docs/DECISIONS.md (D6, D7).",
+  "type": "object",
+  "required": ["contract_version", "request_id", "operation", "params", "lang"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "track_b.v0"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "operation": {
+      "enum": ["salaire_base", "prime", "smig", "cotisation_cnss"],
+      "description": "cotisation_cnss : opération valide au contrat mais hors périmètre Track B v0 → toujours un refus HORS_SCOPE (aucune source vérifiée). Une valeur absente de cette liste est une requête non conforme (PARAM_INVALIDE)."
+    },
+    "params": {"type": "object"},
+    "lang": {"enum": ["fr", "ar"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"operation": {"const": "salaire_base"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_salaire_base"}}}
+    },
+    {
+      "if": {"properties": {"operation": {"const": "prime"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_prime"}}}
+    },
+    {
+      "if": {"properties": {"operation": {"const": "smig"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_smig"}}}
+    }
+  ],
+  "$defs": {
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "params_salaire_base": {
+      "type": "object",
+      "required": ["secteur", "population", "categorie", "anciennete_annees", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "secteur": {"type": "string"},
+        "population": {"type": "string"},
+        "categorie": {"type": ["string", "integer"]},
+        "anciennete_annees": {"type": "number"},
+        "date": {"$ref": "#/$defs/date"},
+        "unite_souhaitee": {"type": "string"}
+      }
+    },
+    "params_prime": {
+      "type": "object",
+      "required": ["secteur", "code", "date"],
+      "additionalProperties": {"type": ["string", "boolean"]},
+      "properties": {
+        "secteur": {"type": "string"},
+        "code": {"type": "string"},
+        "date": {"$ref": "#/$defs/date"},
+        "groupe": {"type": "string"},
+        "variante": {"type": "string"},
+        "transport_assure": {"type": "boolean"},
+        "condition_remplie": {"type": "boolean"}
+      }
+    },
+    "params_smig": {
+      "type": "object",
+      "required": ["mode", "regime_heures", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {"type": "string"},
+        "regime_heures": {"type": "integer"},
+        "date": {"$ref": "#/$defs/date"}
+      }
+    }
+  }
+}

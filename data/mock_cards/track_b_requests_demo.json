@@ -1,0 +1,79 @@
+[
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-01-salaire-admin-2022",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4",
+               "anciennete_annees": 15, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-02-salaire-execution-2024",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "execution", "categorie": "7",
+               "anciennete_annees": 21, "date": "2024-03-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-03-prime-transport-cadres",
+    "operation": "prime",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "code": "prime_transport", "date": "2024-06-01",
+               "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-04-prime-panier-reduite",
+    "operation": "prime",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "code": "prime_panier_qefa", "date": "2024-06-01",
+               "transport_assure": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-05-smig-mensuel-48h",
+    "operation": "smig",
+    "params": {"mode": "mensuel", "regime_heures": 48, "date": "2024-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-06-smig-horaire-40h",
+    "operation": "smig",
+    "params": {"mode": "horaire", "regime_heures": 40, "date": "2023-05-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-07-refus-cnss",
+    "operation": "cotisation_cnss",
+    "params": {"salaire_brut": "1000.000", "date": "2024-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-08-refus-date-anterieure",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4",
+               "anciennete_annees": 15, "date": "2021-11-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-09-refus-categorie-inconnue",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "19",
+               "anciennete_annees": 5, "date": "2024-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-10-refus-secteur-non-couvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "BATIMENT_TRAVAUX_PUBLICS", "population": "admin_tech", "categorie": "4",
+               "anciennete_annees": 5, "date": "2024-01-01"},
+    "lang": "ar"
+  }
+]

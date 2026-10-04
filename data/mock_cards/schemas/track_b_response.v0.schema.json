@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_b_response.v0.schema.json",
+  "title": "Réponse Track B (calculs de paie) — v0",
+  "description": "v0 — proposition Track B, à valider avec l'équipe. Règle « Citation ou Silence » : status 'ok' ⇒ au moins une citation et un montant ; 'refus' ⇒ motif FR/AR, aucun montant ; 'erreur' ⇒ incident technique, aucun montant. Montant = chaîne décimale à 3 chiffres après le point (millimes), jamais un nombre JSON. Voir docs/DECISIONS.md (D7).",
+  "type": "object",
+  "required": ["contract_version", "request_id", "status", "result", "citations", "refus", "computed_by"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "track_b.v0"},
+    "request_id": {"type": ["string", "null"]},
+    "status": {"enum": ["ok", "refus", "erreur"]},
+    "result": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["montant", "unite", "detail"],
+          "additionalProperties": false,
+          "properties": {
+            "montant": {"type": "string", "pattern": "^-?[0-9]+\\.[0-9]{3}$"},
+            "unite": {"type": "string", "pattern": "^TND/"},
+            "detail": {
+              "type": "object",
+              "additionalProperties": {"type": ["string", "integer", "boolean", "null"]}
+            }
+          }
+        }
+      ]
+    },
+    "citations": {"type": "array", "items": {"$ref": "#/$defs/citation"}},
+    "refus": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["code", "message_fr", "message_ar"],
+          "additionalProperties": false,
+          "properties": {
+            "code": {"enum": ["SOURCE_MANQUANTE", "HORS_SCOPE", "PARAM_INVALIDE"]},
+            "message_fr": {"type": "string", "minLength": 1},
+            "message_ar": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "erreur": {
+      "description": "Présent seulement si status = 'erreur' : type d'incident, sans détail interne.",
+      "type": "object",
+      "required": ["type", "message_fr", "message_ar"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"type": "string"},
+        "message_fr": {"type": "string", "minLength": 1},
+        "message_ar": {"type": "string", "minLength": 1}
+      }
+    },
+    "computed_by": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "ok"}}},
+      "then": {
+        "properties": {
+          "result": {"type": "object"},
+          "citations": {"minItems": 1},
+          "refus": {"type": "null"}
+        },
+        "not": {"required": ["erreur"]}
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "refus"}}},
+      "then": {
+        "properties": {
+          "result": {"type": "null"},
+          "citations": {"maxItems": 0},
+          "refus": {"type": "object"}
+        },
+        "not": {"required": ["erreur"]}
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "erreur"}}},
+      "then": {
+        "required": ["erreur"],
+        "properties": {
+          "result": {"type": "null"},
+          "citations": {"maxItems": 0},
+          "refus": {"type": "null"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "citation": {
+      "type": "object",
+      "required": ["source_file", "page", "article", "data_file", "decision_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": {"type": "string", "minLength": 1},
+        "page": {"type": ["integer", "null"], "minimum": 1},
+        "article": {"type": ["string", "null"]},
+        "data_file": {"type": "string", "pattern": "^data/processed/"},
+        "decision_ref": {"type": "string", "pattern": "^D[0-9]+$"}
+      }
+    }
+  }
+}

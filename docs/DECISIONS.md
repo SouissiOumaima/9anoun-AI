@@ -311,3 +311,85 @@ purs. Couverture de `calc/` : 100 %
 (`python -m pytest --cov=src/track_b_accounting/calc src/track_b_accounting/tests`).
 
 **Statut** : ✅ implémenté et testé (2026-10-03) ; en attente de revue DS5.
+
+---
+
+### D7 — Contrat JSON Track B v0 (`src/track_b_accounting/contract/`)
+
+**Décision** : Track B expose une interface JSON unique,
+`handle(request: dict) -> dict`. Elle est décrite par deux schémas JSON
+Schema draft 2020-12 :
+`data/mock_cards/schemas/track_b_request.v0.schema.json` et
+`track_b_response.v0.schema.json`. Le contrat est marqué **« v0 — proposition
+Track B, à valider avec l'équipe »**. Au 2026-10-04, `src/shared/` et
+`data/mock_cards/` étaient vides : aucun contrat d'équipe n'existait à
+respecter.
+
+- **Requête** : `contract_version` (`track_b.v0`), `request_id`,
+  `operation` (`salaire_base`, `prime`, `smig` ou `cotisation_cnss`), `params` et `lang`
+  (`fr` ou `ar`). Les `params` de chaque opération sont typés par le schéma
+  (noms et types). Les règles métier (bornes de degré, dates, catégories,
+  conditions de prime) restent dans `calc/` (D6) et sont renvoyées comme refus.
+- **Réponse** : `contract_version`, `request_id`, `status` (`ok`, `refus` ou
+  `erreur`), `result` {`montant`, `unite`, `detail`} ou `null`,
+  `citations[]`, `refus` {`code`, `message_fr`, `message_ar`} ou `null`,
+  `computed_by`. En plus de la proposition initiale, un champ optionnel
+  `erreur` {`type`, `message_fr`, `message_ar`} n'apparaît que si
+  `status = "erreur"`. Il donne le type d'incident, mais jamais le message
+  interne de l'exception.
+
+**Choix** :
+- **Montant en chaîne décimale** (`"593.873"`, motif `^-?[0-9]+\.[0-9]{3}$`) :
+  un nombre JSON est lu comme un float par la plupart des clients, ce qui
+  peut fausser le millime (D6). Les valeurs `Decimal` de `detail` sont aussi
+  converties en chaînes. Le schéma interdit tout nombre non entier dans
+  `detail`.
+- **Codes de refus** : ce sont ceux de D6 (`SOURCE_MANQUANTE`, `HORS_SCOPE`,
+  `PARAM_INVALIDE`), toujours avec un message FR et un message AR. Le
+  handler applique les contrôles dans cet ordre, et distingue explicitement
+  deux types de refus :
+  1. **Refus de contrat** (le schéma est invalide : c'est un bug de
+     l'appelant). Une requête qui ne valide pas le schéma de requête donne
+     `PARAM_INVALIDE`, avec un message « Requête non conforme au contrat… »
+     et `computed_by = "track_b_accounting.contract"`. Cela couvre aussi une
+     opération inconnue du contrat (ex. `calcul_irpp`) et un champ manquant.
+     Ce contrôle passe en premier, y compris pour `cotisation_cnss`.
+  2. **Refus métier hors périmètre** (le schéma est valide, l'appelant n'a
+     pas fait d'erreur). `cotisation_cnss` est une valeur valide de
+     `operation`, mais Track B la refuse toujours avec `HORS_SCOPE`, car
+     aucune source vérifiée ne couvre la CNSS. `computed_by` vaut
+     `"track_b_accounting.contract"`, car `calc/` n'est pas appelé. La liste
+     de ces opérations est `OPERATIONS_HORS_PERIMETRE` dans `handler.py`.
+  3. **Refus métier de `calc/`** (le schéma est valide, mais les paramètres
+     sont refusés par les règles D6 : date, degré, catégorie, secteur…).
+     `computed_by` vaut `"track_b_accounting.calc.<op>"`.
+
+  Le statut `erreur` est réservé aux exceptions inattendues : la réponse ne
+  contient alors aucun montant.
+- **Invariant de citation, imposé par le schéma** : `ok` ⇒ `result` non nul,
+  `citations` avec au moins un élément (`minItems: 1`) et `refus` nul.
+  `refus` et `erreur` ⇒ `result` nul et `citations` vide. Chaque citation a
+  un `data_file` sous `data/processed/` et un `decision_ref` de la forme `Dn`.
+- **Garde-fou** : le handler valide aussi sa propre réponse. Si elle n'est
+  pas conforme, il la remplace par une réponse `erreur`. Il ne fait aucun
+  calcul et ne lit que les schémas : les données passent par `calc/` et ses
+  loaders.
+
+**Alternatives envisagées** :
+- Montant en nombre JSON : rejeté (risque de float, cf. D6).
+- Un seul message, dans la langue de `lang` : rejeté. Les deux langues sont
+  toujours renvoyées, et Track A choisit selon `lang`. Le coût est faible et
+  évite un aller-retour.
+- Attendre le contrat de l'orchestrateur ou de Track A : rejeté pour ne pas
+  bloquer Track B. Cette version v0 est jetable si l'équipe adopte un autre
+  format.
+
+**Démo** : `python -m src.track_b_accounting.demo`, depuis la racine. Elle joue
+10 échanges entre `MockOrchestrator`, le handler et `MockTrackA`
+(`tests/mocks.py`) : 6 `ok` cités et 4 `refus` (CNSS, date antérieure au
+2021-12-01, catégorie inconnue, secteur non couvert). `MockTrackA` recopie
+le montant et les sources sans rien calculer.
+CLI : `python -m src.track_b_accounting.contract.cli <fichier.json>`, ou
+l'entrée standard. La sortie est en UTF-8, avec `ensure_ascii=False`.
+
+**Statut** : ⏳ proposition v0, à valider avec l'équipe (orchestrateur, Track A).
