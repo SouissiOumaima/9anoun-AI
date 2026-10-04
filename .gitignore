@@ -28,3 +28,19 @@ Thumbs.db
 # --- Couverture ---
 .coverage
 htmlcov/
+
+# --- Packaging / build (tous rôles) ---
+*.egg-info/
+build/
+dist/
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- Secrets (variantes) : garder seulement un modèle .env.example ---
+.env.*
+!.env.example
+
+# --- Éditeurs (complément) ---
+*.swp
+*~
