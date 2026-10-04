@@ -14,6 +14,7 @@
   ],
   "extraction_method": "Pages 30-35 = images sans couche texte -> lecture visuelle des tableaux (rastérisation 130-300 dpi) puis saisie manuelle. Page 16 = couche texte confirmée.",
   "statut_verification": "VÉRIFIÉ sur échantillon PDF (2026-10-03, 72 cellules, 0 écart) + contrôle inter-années des 6 tables (2 erreurs de saisie corrigées dans BM_T_2021-12-01, p.30 : cat. 4 degré 8 593.875 -> 593.873 ; cat. 15 degré 10 1007.131 -> 1007.111) — détail dans docs/DECISIONS.md (D4) ; contrôles automatiques : tests/test_grid_bm.py",
+  "decision_ref": "D4",
   "currency": "TND",
   "note_degres": "Colonne 'valeurs[cat][0]' = degré 1 (ancienneté 0-2 ans) ... [10] = degré 11 (20 ans et +). Le PDF affiche les degrés de droite (1) à gauche (11).",
   "remarque_pdf": "Le PDF précise que les salaires intègrent la prime complémentaire provisoire (Arrêté n°437/1981 modifié par n°501/1982).",

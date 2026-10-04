@@ -95,3 +95,30 @@ def test_valider_smig_rejette(mutation):
     with pytest.raises(Refus) as e:
         loaders.valider_smig(d, "x.json")
     assert e.value.code == Refus.SOURCE_MANQUANTE
+
+
+# --- référence de vérification (smig_non_agricole.decision_ref) --------------------------------------
+
+def test_decision_ref_lue_dans_le_json(ok):
+    r = ok(smig("mensuel", 48, "2023-01-01"))
+    assert r.citations[0].decision_ref == SMIG["smig_non_agricole"]["decision_ref"] == "D2"
+    assert SMIG["_meta"]["decision_log"] == "docs/DECISIONS.md (D1, D2)"     # champ libre conservé
+
+
+def test_decision_ref_pas_en_dur(monkeypatch, ok):
+    d = copy.deepcopy(SMIG)
+    d["smig_non_agricole"]["decision_ref"] = "D99"
+    monkeypatch.setattr(smig_calc, "charger_smig", lambda: d)
+    assert ok(smig("mensuel", 48, "2023-01-01")).citations[0].decision_ref == "D99"
+
+
+@pytest.mark.parametrize("valeur", ["absent", None, "", "2", "D1, D2", True])
+def test_decision_ref_absente_refusee(valeur, monkeypatch):
+    d = copy.deepcopy(SMIG)
+    if valeur == "absent":
+        d["smig_non_agricole"].pop("decision_ref")
+    else:
+        d["smig_non_agricole"]["decision_ref"] = valeur
+    monkeypatch.setattr(smig_calc, "charger_smig", lambda: d)
+    e = refus(Refus.SOURCE_MANQUANTE, "mensuel", 48, "2023-01-01")
+    assert "decision_ref" in e.message_fr

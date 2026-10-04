@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from decimal import Decimal
 
-from .loaders import GRILLES, charger_grille
+from .loaders import GRILLES, charger_grille, decision_ref
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
 _BORNES = re.compile(r"^\s*(\d+)\s*-\s*(\d+)")
@@ -102,6 +102,7 @@ def salaire_base(secteur: str, population: str, categorie, anciennete_annees, da
                     f"يعطي الجدول المبلغ بوحدة {table['unite']}؛ التحويل إلى {unite_souhaitee} "
                     "غير منصوص عليه في أي مصدر مُتحقَّق منه.")
     degre = degre_from_anciennete(anciennete_annees, secteur)
+    ref = decision_ref(grille, secteur)
     montant = arrondi_millime(table["valeurs"][cat][degre - 1])
     return Result(
         montant=montant,
@@ -123,6 +124,6 @@ def salaire_base(secteur: str, population: str, categorie, anciennete_annees, da
             page=table["source_pdf_page"],
             article=None,
             data_file=GRILLES[secteur],
-            decision_ref="D4",
+            decision_ref=ref,
         )],
     )

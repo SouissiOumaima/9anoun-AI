@@ -1,6 +1,7 @@
 """Primes METALLURGIE_BATIMENT (p.16, art. 50/51 nouveaux).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_primes.py
 """
+import copy
 from decimal import Decimal
 
 import pytest
@@ -129,3 +130,32 @@ def test_date_invalide():
 def test_toutes_les_primes_couvertes():
     assert set(PRIMES) == {"prime_transport", "prime_presence", "prime_logement", "prime_panier_qefa",
                            "prime_deplacement_chantier", "prime_travail_en_hauteur"}
+
+
+# --- référence de vérification (_meta.decision_ref) -------------------------------------------------
+
+BM = lire_json("data/processed/salary_grids/metallurgie_batiment.json")
+
+
+def test_decision_ref_lue_dans_le_json(ok):
+    r = ok(prime(S, "prime_presence", "2024-01-01"))
+    assert r.citations[0].decision_ref == BM["_meta"]["decision_ref"] == "D4"
+
+
+def test_decision_ref_pas_en_dur(monkeypatch, ok):
+    grille = copy.deepcopy(BM)
+    grille["_meta"]["decision_ref"] = "D99"
+    monkeypatch.setattr("track_b_accounting.calc.primes.charger_grille", lambda s: grille)
+    assert ok(prime(S, "prime_presence", "2024-01-01")).citations[0].decision_ref == "D99"
+
+
+@pytest.mark.parametrize("valeur", ["absent", None, "D"])
+def test_decision_ref_absente_refusee(valeur, monkeypatch):
+    grille = copy.deepcopy(BM)
+    if valeur == "absent":
+        grille["_meta"].pop("decision_ref")
+    else:
+        grille["_meta"]["decision_ref"] = valeur
+    monkeypatch.setattr("track_b_accounting.calc.primes.charger_grille", lambda s: grille)
+    e = refus(Refus.SOURCE_MANQUANTE, S, "prime_presence", "2024-01-01")
+    assert "decision_ref" in e.message_fr

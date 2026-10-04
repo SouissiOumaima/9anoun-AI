@@ -267,10 +267,18 @@ n'est jamais lu.
   - La prime de panier n'a pas de date d'effet dans sa source
     (`effective_date: null`, D4) : elle est servie à toute date.
 - **Citations** : grilles et primes → PDF de l'accord, page `source_pdf_page`
-  et article du JSON, réf. D4. SMIG → PDF SMIG, page
+  et article du JSON. La référence de vérification est lue dans
+  `_meta.decision_ref` du fichier secteur (`"D4"` pour la métallurgie,
+  champ ajouté le 2026-10-04 comme métadonnée de traçabilité, sans changer
+  aucune valeur vérifiée). Si elle est absente ou mal formée, on lève un
+  Refus `SOURCE_MANQUANTE`. SMIG → PDF SMIG, page
   `smig_non_agricole.source_pdf_page` lue dans le JSON (= 2, cf. D2), décret
-  n°769, réf. D2. Si ce champ est absent ou invalide, on lève un Refus
-  `SOURCE_MANQUANTE` : aucune page n'est déduite.
+  n°769. La référence est lue dans `smig_non_agricole.decision_ref`
+  (= `"D2"`). Ce champ a été ajouté le 2026-10-04 dans la section et non dans
+  `_meta` : D2 documente le barème SMIG, mais pas le SMAG ni la prime de
+  transport (D3). `_meta.decision_log` est conservé tel quel. Si la page ou la
+  référence est absente ou invalide, on lève un Refus `SOURCE_MANQUANTE` :
+  rien n'est déduit.
 
 **Ajout de métadonnée dans `smig_smag.json` (2026-10-03)** : ce fichier,
 vérifié manuellement en D2 et D3, reçoit un champ `source_pdf_page` (même nom

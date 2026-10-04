@@ -8,7 +8,7 @@ Les paramètres exigés dépendent de ce que contient l'entrée JSON de la prime
 """
 from __future__ import annotations
 
-from .loaders import GRILLES, charger_grille
+from .loaders import GRILLES, charger_grille, decision_ref
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
 _CLES_NON_MONTANT = {"effective_date", "au_titre_de"}
@@ -106,6 +106,7 @@ def prime(secteur: str, code: str, date, **params) -> Result:
             if transport:
                 valeur = p["montant_reduit_si_transport_assure"]
 
+    ref = decision_ref(grille, secteur)
     return Result(
         montant=arrondi_millime(valeur),
         unite=p["unite"],
@@ -115,6 +116,6 @@ def prime(secteur: str, code: str, date, **params) -> Result:
             page=p["source_pdf_page"],
             article=p["source_article"],
             data_file=GRILLES[secteur],
-            decision_ref="D4",
+            decision_ref=ref,
         )],
     )

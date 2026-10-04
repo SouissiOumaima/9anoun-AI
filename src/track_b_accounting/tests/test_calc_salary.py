@@ -234,3 +234,29 @@ def test_arrondi_refuse_float():
 def test_parse_date():
     assert parse_date("2023-01-01") == dt.date(2023, 1, 1)
     assert parse_date(dt.date(2023, 1, 1)) == dt.date(2023, 1, 1)
+
+
+# --- référence de vérification (_meta.decision_ref) -------------------------------------------------
+
+def test_decision_ref_lue_dans_le_json(ok):
+    r = ok(salaire_base(S, "admin_tech", "4", 15, "2022-06-01"))
+    assert r.citations[0].decision_ref == BM["_meta"]["decision_ref"] == "D4"
+
+
+def test_decision_ref_pas_en_dur(monkeypatch, ok):
+    grille = copy.deepcopy(BM)
+    grille["_meta"]["decision_ref"] = "D99"
+    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
+    assert ok(salaire_base(S, "admin_tech", "4", 15, "2022-06-01")).citations[0].decision_ref == "D99"
+
+
+@pytest.mark.parametrize("valeur", ["absent", None, "", "4", "D4 bis", 4])
+def test_decision_ref_absente_refusee(valeur, monkeypatch):
+    grille = copy.deepcopy(BM)
+    if valeur == "absent":
+        grille["_meta"].pop("decision_ref")
+    else:
+        grille["_meta"]["decision_ref"] = valeur
+    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, S, "admin_tech", "4", 15, "2022-06-01")
+    assert "decision_ref" in e.message_fr

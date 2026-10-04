@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import datetime as dt
 
-from .loaders import SMIG_FILE, charger_smig
+from .loaders import SMIG_FILE, charger_smig, decision_ref_smig
 from .models import Citation, Refus, Result, arrondi_millime, parse_date
 
 UNITES = {"mensuel": "TND/mois", "horaire": "TND/heure"}
@@ -21,6 +21,7 @@ def smig(mode: str, regime_heures: int, date) -> Result:
                     f"Page source du barème SMIG absente de {SMIG_FILE} (smig_non_agricole.source_pdf_page) : "
                     "montant non citable.",
                     f"صفحة مصدر جدول الأجر الأدنى غير موجودة في {SMIG_FILE}: لا يمكن الاستشهاد بالمبلغ.")
+    ref = decision_ref_smig(bloc)
 
     modes = sorted({l["mode_remuneration"] for l in bloc["bareme"]})
     if mode not in modes:
@@ -64,6 +65,6 @@ def smig(mode: str, regime_heures: int, date) -> Result:
             page=page,
             article=f"décret gouvernemental n°{decret['number']} du {decret['date']}",
             data_file=SMIG_FILE,
-            decision_ref="D2",
+            decision_ref=ref,
         )],
     )
