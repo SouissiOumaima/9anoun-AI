@@ -1,0 +1,18 @@
+# Dépendances du dépôt 9anoun AI — une section par rôle (DS1-DS5).
+# Chaque rôle n'édite QUE sa section (limite les conflits de merge). Versions figées (==).
+# Installation (depuis la racine) : python -m pip install -r requirements.txt
+
+# --- DS1 : Orchestration & Context ---
+# (à compléter par DS1)
+
+# --- DS2 : Legal Knowledge & Retrieval ---
+# (à compléter par DS2)
+
+# --- DS3 : Document Intelligence ---
+# (à compléter par DS3)
+
+# --- DS4 : Lawyer Track (Track A) ---
+# (à compléter par DS4)
+
+# --- DS5 : Track B Accounting ---
+-r src/track_b_accounting/requirements.txt
