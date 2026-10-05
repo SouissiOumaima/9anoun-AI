@@ -246,7 +246,11 @@ n'est jamais lu.
   « 4/2 », etc., sans préciser à quel degré appartiennent les bornes
   intérieures. Une ancienneté exactement égale à 2, 4, …, 18 ou 20 ans donne
   donc un Refus `PARAM_INVALIDE`, plutôt qu'un choix arbitraire. 0 an
-  correspond au degré 1 ; au-delà de 20 ans, c'est le degré 11.
+  correspond au degré 1 ; entre 20 et 22 ans (bornes exclues), c'est le
+  degré 11. À partir de 22 ans, l'article 13 (p.9) prévoit une progression
+  au-delà du dernier degré, non implémentée : Refus `SOURCE_MANQUANTE` (voir
+  D8, qui corrige la formulation initiale « au-delà de 20 ans, c'est le
+  degré 11 »).
 - **Population** : `admin_tech` (tables T, TND/mois) ou `execution`
   (tables E, TND/heure). Une table est rattachée à une population quand ses
   catégories sont exactement celles de `categories[population]`.
@@ -401,3 +405,81 @@ CLI : `python -m src.track_b_accounting.contract.cli <fichier.json>`, ou
 l'entrée standard. La sortie est en UTF-8, avec `ensure_ascii=False`.
 
 **Statut** : ⏳ proposition v0, à valider avec l'équipe (orchestrateur, Track A).
+
+---
+
+### D8 — Ancienneté au-delà du dernier degré : refus explicite à partir de 22 ans (métallurgie, art. 13)
+
+**Constat** : l'article 13 (جديد), §ب « التقدم », de la convention métallurgie
+(`data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf`, **page 9**,
+couche texte PUA, page rastérisée à 200 dpi et lue visuellement le 2026-10-05,
+texte net) dit :
+
+> وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى
+> آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به
+> والقيمة المالية للدرجة التي تسبقها.
+
+Autrement dit, une fois au degré 11 (atteint à 20 ans), le travailleur continue
+de percevoir, tous les deux ans et jusqu'à la fin de sa carrière, l'écart entre
+le degré 11 et le degré 10. Le même article permet de raccourcir ou d'allonger
+de six mois la durée de séjour dans un degré (note annuelle ≥ 17/20, ou sanction
+du deuxième degré).
+
+D6 disait « au-delà de 20 ans, c'est le degré 11 ». Le module renvoyait donc,
+**sans alerte**, la valeur du degré 11 pour toute ancienneté supérieure à
+20 ans (relevé au 2024-06-01) :
+
+| Ancienneté | admin_tech, cat. 4 | execution, cat. 7 |
+|---|---|---|
+| 21 ans | 680.334 TND/mois ✅ | 4.620 TND/heure ✅ |
+| 22, 25, 30, 45 ans | 680.334 ❌ (identique) | 4.620 ❌ (identique) |
+
+Pour la catégorie 4 en 2024, l'écart degré 11 − degré 10 vaut
+680.334 − 678.186 = 2.148 TND par tranche de deux ans. Un test
+(`test_calc_salary.py`, ancienneté 25 ans attendue au degré 11) figeait ce
+comportement.
+
+**Décision (correctif minimal)** :
+- **Données** : ajout d'un bloc `au_dela_dernier_degre` dans
+  `metallurgie_batiment.json` : `anciennete_max_couverte_annees: 22`,
+  `source_pdf_page: 9`, `source_article: "13 (جديد) ب"`, le texte arabe
+  cité ci-dessus, une traduction et un `statut` explicite (« RÈGLE NON
+  IMPLÉMENTÉE »). Il s'agit d'un **ajout de métadonnée** : **aucun montant,
+  aucune date et aucun autre champ vérifié n'a été modifié**.
+- **Code** : `degre_from_anciennete` (`calc/salary.py`) lève un Refus
+  `SOURCE_MANQUANTE` pour toute ancienneté **≥ 22 ans**. Les messages FR et AR
+  citent l'article 13 et la page 9, lus dans le JSON. `valider_grille`
+  (`calc/loaders.py`) **exige ce bloc pour toute grille** : chaque futur
+  secteur (BTP compris) devra déclarer ce que dit sa source au-delà du dernier
+  degré, sans quoi la grille est refusée.
+- **Bornes** : 21 et 21,99 ans → degré 11 (inchangé) ; 22, 23 et 30 ans →
+  refus. Le test « 25 ans » passe à 21 ans (même cellule, même montant
+  1359.212, même page 34).
+- Les 10 requêtes de démo donnent des réponses identiques à l'octet près
+  (la seule au-delà de 20 ans, demo-02, est à 21 ans).
+
+**Alternatives envisagées** :
+- `PARAM_INVALIDE` : rejeté, car le paramètre est valide. C'est la règle qui
+  n'est pas transcrite dans les données vérifiées, ce qui correspond à l'usage
+  de `SOURCE_MANQUANTE` (D6).
+- Implémenter l'article 13 tout de suite (`montant = d11 + n × (d11 − d10)`,
+  `n = ⌊(a − 20) / 2⌋`) : reporté, voir les points ouverts.
+- Plafond codé en dur dans `salary.py` : rejeté, car il dépend de chaque
+  convention (le BTP prévoit une autre règle, après 3 ans au degré 11). Il est
+  lu dans les données, avec sa source.
+
+**Points ouverts avant d'implémenter l'article 13 (travail futur)** :
+1. **Cumul** : « يواصل التمتع كل سنتين بالفارق » se lit comme un écart
+   supplémentaire tous les deux ans. C'est la lecture la plus probable, mais
+   elle n'est pas écrite explicitement.
+2. **Bornes** : à 22, 24, 26 ans exactement, il y a la même ambiguïté qu'aux
+   bornes 2…20 (D6). Il faudra décider à quel moment l'écart s'ajoute.
+3. **±6 mois** : la durée de séjour peut être réduite (note ≥ 17/20) ou
+   allongée (sanction). Le module suppose une progression normale, mais
+   au-delà du degré 11 l'effet se cumule sur toute la carrière.
+4. **Nature du montant** : l'écart est peut-être un complément versé à part,
+   et non le salaire de base lui-même. Cela changerait le `detail` et les
+   citations (p.9 et pages 30-35).
+
+**Statut** : ✅ correctif minimal appliqué ; implémentation de l'article 13
+en attente des 4 points ci-dessus.

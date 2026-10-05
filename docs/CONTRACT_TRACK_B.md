@@ -40,6 +40,9 @@ limite pas à déposer un fichier dans `data/processed/salary_grids/` :
      exactement celles de la population ;
    - les intervalles de degré sont lus dans des libellés de la forme `"0-2 ans"`
      et `"20+"` ;
+   - chaque grille doit déclarer, dans un bloc `au_dela_dernier_degre`, ce
+     que dit sa source au-delà du dernier degré (ancienneté maximale couverte,
+     page et article) ; sans ce bloc, la grille est refusée (D8) ;
    - les paramètres de prime dépendent de clés JSON précises (`montants`,
      `complement_si_prime_superieure`, `montant_reduit_si_transport_assure`,
      `condition`).
@@ -426,6 +429,13 @@ Draft202012Validator(schema).validate(ma_requete)
     récente : le module ne sait pas si une grille plus récente existe ailleurs.
   - SMIG : seul le décret n°769/2022 (effet 2022-10-01) est vérifié. Le module
     ne connaît pas de SMIG postérieur.
+- **L'ancienneté est bornée à moins de 22 ans (métallurgie).** Au-delà du
+  dernier degré (degré 11, atteint à 20 ans), l'article 13 de la convention
+  (page 9) ajoute tous les deux ans l'écart entre les deux derniers degrés.
+  Cette règle n'est pas encore implémentée : toute ancienneté ≥ 22 ans donne
+  un refus `SOURCE_MANQUANTE` qui cite l'article 13 et la page 9, et jamais
+  la valeur du degré 11. Les points à trancher avant de l'implémenter sont
+  listés en D8.
 - **Le SMAG et la prime de transport SMIG** figurent dans
   `data/processed/smig_smag/smig_smag.json`, mais aucune opération ne les
   expose encore.

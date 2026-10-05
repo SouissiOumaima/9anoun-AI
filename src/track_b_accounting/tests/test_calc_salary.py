@@ -27,7 +27,7 @@ def refus(code, f, *a, **k):
 # --- degré d'ancienneté -------------------------------------------------------------------------
 
 @pytest.mark.parametrize("annees,degre", [
-    (0, 1), (1.9, 1), (Decimal("2.01"), 2), (7, 4), (19.9, 10), (Decimal("20.5"), 11), (35, 11),
+    (0, 1), (1.9, 1), (Decimal("2.01"), 2), (7, 4), (19.9, 10), (Decimal("20.5"), 11), (21.99, 11),
 ])
 def test_degre(annees, degre):
     assert degre_from_anciennete(annees) == degre
@@ -42,6 +42,39 @@ def test_degre_borne_ambigue_refusee(borne):
 @pytest.mark.parametrize("val", [-1, -0.1, Decimal("-0.001"), float("nan"), float("inf"), "5", None, True])
 def test_degre_invalide(val):
     refus(Refus.PARAM_INVALIDE, degre_from_anciennete, val)
+
+
+# --- au-delà du dernier degré : art. 13, p.9, règle non implémentée (D8) ----------------------------
+
+@pytest.mark.parametrize("pop,cat", [("admin_tech", "4"), ("execution", "7")])
+@pytest.mark.parametrize("annees", [21, 21.99, Decimal("21.999")])
+def test_dernier_degre_avant_22_ans(pop, cat, annees, ok):
+    r = ok(salaire_base(S, pop, cat, annees, "2024-06-01"))
+    table = table_applicable(S, pop, "2024-06-01")
+    assert r.detail["degre"] == 11 and r.montant == table["valeurs"][cat][10]
+
+
+@pytest.mark.parametrize("pop,cat", [("admin_tech", "4"), ("execution", "7")])
+@pytest.mark.parametrize("annees", [22, Decimal("22.000"), 23, 30])
+def test_a_partir_de_22_ans_refus_source_manquante(pop, cat, annees):
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, S, pop, cat, annees, "2024-06-01")
+    assert "article 13 (جديد) ب" in e.message_fr and "page 9" in e.message_fr
+    assert "الفصل 13 (جديد) ب" in e.message_ar and "الصفحة 9" in e.message_ar
+    assert "22" in e.message_fr and "22" in e.message_ar
+
+
+def test_plafond_lu_dans_le_json(monkeypatch):
+    grille = copy.deepcopy(BM)
+    grille["au_dela_dernier_degre"]["anciennete_max_couverte_annees"] = 30
+    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
+    assert degre_from_anciennete(25) == 11
+    refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, 30)
+
+
+def test_bloc_au_dela_dernier_degre_dans_le_json():
+    b = BM["au_dela_dernier_degre"]
+    assert b["anciennete_max_couverte_annees"] == 22 and b["source_pdf_page"] == 9
+    assert b["statut"].startswith("RÈGLE NON IMPLÉMENTÉE")
 
 
 def test_degre_libelle_illisible(monkeypatch):
@@ -94,7 +127,7 @@ def test_valeurs_codees_en_dur_verifiees_d4(ok):
     cas = [
         (("admin_tech", "1B", 1, "2022-06-01"), "512.027", "TND/mois", 30),   # cat. fixe, degré 1
         (("admin_tech", "18", 11, "2023-06-01"), "1231.060", "TND/mois", 32),  # cat. fixe, degré 6
-        (("admin_tech", "18", 25, "2024-03-01"), "1359.212", "TND/mois", 34),  # cat. fixe, degré 11
+        (("admin_tech", "18", 21, "2024-03-01"), "1359.212", "TND/mois", 34),  # cat. fixe, degré 11
         (("admin_tech", "4", 15, "2022-01-15"), "593.873", "TND/mois", 30),    # correction D4
         (("admin_tech", "15", 19, "2022-01-15"), "1007.111", "TND/mois", 30),  # correction D4
         (("execution", "7", 21, "2024-01-01"), "4.620", "TND/heure", 35),     # cat. fixe, degré 11
@@ -176,6 +209,11 @@ def test_loader_nombres_en_decimal():
 @pytest.mark.parametrize("mutation", [
     lambda g: g["_meta"].pop("source_file"),
     lambda g: g.__setitem__("degres", []),
+    lambda g: g.pop("au_dela_dernier_degre"),
+    lambda g: g["au_dela_dernier_degre"].__setitem__("anciennete_max_couverte_annees", "22"),
+    lambda g: g["au_dela_dernier_degre"].__setitem__("anciennete_max_couverte_annees", True),
+    lambda g: g["au_dela_dernier_degre"].pop("source_pdf_page"),
+    lambda g: g["au_dela_dernier_degre"].__setitem__("source_article", ""),
     lambda g: g["categories"].__setitem__("execution", []),
     lambda g: g.__setitem__("grilles", []),
     lambda g: g["grilles"][0].pop("source_pdf_page"),

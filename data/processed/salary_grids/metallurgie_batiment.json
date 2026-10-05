@@ -70,6 +70,14 @@
    "anciennete_label": "20+"
   }
  ],
+ "au_dela_dernier_degre": {
+  "anciennete_max_couverte_annees": 22,
+  "source_pdf_page": 9,
+  "source_article": "13 (جديد) ب",
+  "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
+  "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
+  "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8)."
+ },
  "categories": {
   "admin_tech": [
    "1A",

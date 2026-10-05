@@ -43,9 +43,24 @@ def degre_from_anciennete(annees, secteur: str = "METALLURGIE_BATIMENT") -> int:
     Les libellés du PDF (« 2/0 », « 4/2 », …, « 20+ ») font apparaître chaque borne intérieure
     (2, 4, …, 20) dans deux degrés sans dire lequel s'applique : ces valeurs exactes → Refus
     PARAM_INVALIDE (D6), plutôt que de choisir. 0 n'appartient qu'au degré 1.
+    Au-delà du dernier degré, la règle de la convention (ex. art. 13, p.9) n'est pas implémentée :
+    ancienneté ≥ au_dela_dernier_degre.anciennete_max_couverte_annees → Refus SOURCE_MANQUANTE (D8).
     """
     a = _annees(annees)
-    intervalles = _intervalles(charger_grille(secteur))
+    grille = charger_grille(secteur)
+    au_dela = grille["au_dela_dernier_degre"]
+    plafond = au_dela["anciennete_max_couverte_annees"]
+    if a >= plafond:
+        art, page = au_dela["source_article"], au_dela["source_pdf_page"]
+        raise Refus(Refus.SOURCE_MANQUANTE,
+                    f"Ancienneté de {a} ans : à partir de {plafond} ans, l'article {art} de la convention "
+                    f"(page {page}) prévoit d'ajouter tous les deux ans l'écart entre les deux derniers degrés. "
+                    f"Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé "
+                    f"(ancienneté couverte : moins de {plafond} ans).",
+                    f"أقدمية {a} سنة: ابتداءً من {plafond} سنة، ينص الفصل {art} من الاتفاقية (الصفحة {page}) "
+                    f"على إضافة الفارق بين آخر درجتين كل سنتين. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ "
+                    f"(الأقدمية المغطاة: أقل من {plafond} سنة).")
+    intervalles = _intervalles(grille)
     contenants = [deg for deg, bas, haut in intervalles if bas <= a and (haut is None or a <= haut)]
     if len(contenants) == 1:
         return contenants[0]
