@@ -128,3 +128,34 @@ def test_no_legal_conclusion_is_invented() -> None:
     result = analyze_case(case)
 
     assert result["legal_conclusion"] is None
+def test_analyze_case_includes_evidence_mapping() -> None:
+    """
+    Vérifie que le Case-Analysis Agent utilise
+    correctement l'outil Evidence Mapping.
+    """
+
+    # Créer un dossier fictif.
+    case = create_fake_case()
+
+    # Exécuter le Case Analysis.
+    result = analyze_case(case)
+
+    # Récupérer les relations événements-preuves.
+    mappings = result["evidence_mapping"]
+
+    # Notre dossier contient deux relations explicites.
+    assert len(mappings) == 2
+
+    # Vérifier les relations trouvées.
+    actual_relations = {
+        (item["event_id"], item["evidence_id"], item["relation"])
+        for item in mappings
+    }
+
+    assert actual_relations == {
+        ("EV1", "E1", "source"),
+        ("EV2", "E2", "source"),
+    }
+
+    # Aucune conclusion juridique inventée.
+    assert result["legal_conclusion"] is None

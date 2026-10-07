@@ -19,7 +19,7 @@ considérée comme un fait établi.
 """
 
 from src.track_a_legal.tools.timeline import build_timeline
-
+from src.track_a_legal.tools.evidence_mapping import map_event_evidence
 
 def analyze_case(case: dict) -> dict:
     """
@@ -87,6 +87,19 @@ def analyze_case(case: dict) -> dict:
     # ----------------------------------------------------------
 
     evidence = case["evidence"]
+    # ----------------------------------------------------------
+# 6. Construction des relations événements-preuves
+# ----------------------------------------------------------
+#
+# Nous utilisons uniquement les références explicites
+# présentes dans source_ids.
+#
+# Aucune preuve n'est automatiquement considérée comme
+# confirmant ou contredisant une affirmation.
+    evidence_mapping = map_event_evidence(
+        case["events"],
+        evidence,
+    )
 
     # ----------------------------------------------------------
     # 6. Construction du résultat
@@ -94,30 +107,19 @@ def analyze_case(case: dict) -> dict:
 
     analysis = {
         "case_id": case_id,
-
         "case_summary": {
             "number_of_parties": len(parties),
             "number_of_events": len(timeline),
             "number_of_claims": len(claims),
             "number_of_evidence": len(evidence),
         },
-
         "parties": parties,
-
         "timeline": timeline,
-
         "claims_analysis": claims,
-
         "evidence": evidence,
-
-        # Ces éléments seront développés
-        # dans les prochaines parties du projet.
-        "evidence_mapping": [],
+        "evidence_mapping": evidence_mapping,
         "contradictions": [],
         "missing_evidence": [],
-
-        # Aucune conclusion juridique n'est produite
-        # tant que l'analyse juridique n'est pas terminée.
         "legal_conclusion": None,
     }
 
