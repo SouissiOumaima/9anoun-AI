@@ -53,6 +53,13 @@ def valider_grille(data: dict, chemin: str) -> dict:
         _exiger(data["_meta"]["source_file"] and data["_meta"]["secteur_code"])
         degres = data["degres"]
         _exiger(degres and all("degre" in d and "anciennete_label" in d for d in degres))
+        # Ce que dit la source au-delà du dernier degré (D8) : sans ce bloc, la grille est refusée.
+        au_dela = data["au_dela_dernier_degre"]
+        plafond = au_dela["anciennete_max_couverte_annees"]
+        _exiger(isinstance(plafond, int) and not isinstance(plafond, bool) and plafond > 0,
+                "au_dela_dernier_degre : anciennete_max_couverte_annees entier > 0 attendu")
+        _exiger(isinstance(au_dela["source_pdf_page"], int) and au_dela["source_article"],
+                "au_dela_dernier_degre : source_pdf_page et source_article attendus")
         cats = data["categories"]
         _exiger(cats and all(isinstance(v, list) and v for v in cats.values()))
         _exiger(data["grilles"])

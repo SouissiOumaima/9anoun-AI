@@ -179,6 +179,14 @@ def test_refus_metier_attribue_a_calc():
     assert rep["refus"]["code"] == "PARAM_INVALIDE" and rep["computed_by"] == "track_b_accounting.calc.salaire_base"
 
 
+def test_anciennete_22_ans_refus_source_manquante_sans_montant():
+    """Au-delà du dernier degré (art. 13, p.9, D8) : refus explicite, jamais la valeur du degré 11."""
+    rep = valide(handle(_alterer(lambda r: r["params"].__setitem__("anciennete_annees", 25))))
+    assert rep["status"] == "refus" and rep["refus"]["code"] == "SOURCE_MANQUANTE"
+    assert rep["result"] is None and rep["citations"] == []
+    assert "الفصل 13" in rep["refus"]["message_ar"] and "page 9" in rep["refus"]["message_fr"]
+
+
 def test_parametre_prime_inconnu_refuse_par_calc():
     req = copy.deepcopy(DEMO[2])
     req["params"]["bonus"] = "x"
