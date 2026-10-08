@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "secteur_code": "BATIMENT_TRAVAUX_PUBLICS",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة",
+  "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+  "pages_sources": [
+   8,
+   15,
+   16,
+   23,
+   24,
+   25
+  ],
+  "tables_transcrites": false,
+  "statut_verification": "STRUCTURE SEULEMENT (2026-10-07) : populations, catégories, sous-catégories (p.23), libellés de degré (en-tête du tableau 2, p.23) et refus déclarés. Aucune table ni prime transcrite (étape b). Pas de decision_ref tant que l'entrée D9 n'est pas écrite : aucun montant ne peut être cité.",
+  "currency": "TND",
+  "note_degres": "admin_tech : en-tête « مدة البقاء بالدرجة » (p.23), tranches cumulées 0-2 … 21-24, 24+ (degré 11 atteint à 24 ans). ouvriers_occasionnels : aucun degré d'ancienneté (une valeur par catégorie)."
+ },
+ "degres": {
+  "admin_tech": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24+"
+   }
+  ],
+  "ouvriers_occasionnels": []
+ },
+ "au_dela_dernier_degre": {
+  "admin_tech": {
+   "anciennete_max_couverte_annees": 27,
+   "source_pdf_page": 8,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "يتقاضى كل عامل وعون مرتب في الدرجة 11 من شبكة الأجور المتعلقة بالأعوان الإداريين والفنيين الخالصين بالشهر وذلك مهما كان صنفه، وبعد قضاء 3 سنوات في هذه الدرجة أجرا أساسيا وفق الجدول التالي",
+   "regle_fr": "Après 3 ans au degré 11 (atteint à 24 ans, p.23), l'agent administratif ou technicien payé au mois perçoit le salaire d'une autre case de la grille, selon une table de correspondance par catégorie (art. 13, p.8 ; catégorie 19 : « 950 dinars »).",
+   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 27 ans (24 + 3) est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D9).",
+   "message_fr": "Ancienneté de {a} ans : à partir de 27 ans (degré 11 atteint à 24 ans, puis 3 ans dans ce degré), l'article 13 (جديد) ب de la convention BTP (page 8) fixe le salaire selon une table de correspondance entre catégories et degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 27 ans).",
+   "message_ar": "أقدمية {a} سنة: ابتداءً من 27 سنة (بلوغ الدرجة 11 عند 24 سنة ثم قضاء 3 سنوات فيها)، يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) الأجر وفق جدول مقابلة بين الأصناف والدرجات. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 27 سنة)."
+  }
+ },
+ "categories": {
+  "admin_tech": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19"
+  ],
+  "ouvriers_occasionnels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6_I",
+   "6_II",
+   "7_1",
+   "7_2",
+   "7_3"
+  ]
+ },
+ "sous_categories": {
+  "ouvriers_occasionnels": {
+   "source_pdf_page": 23,
+   "par_categorie": {
+    "6": {
+     "I": {
+      "cle": "6_I",
+      "libelle_ar": "عامل ذو كفاءة عالية I",
+      "libelle_fr": "Ouvrier hautement qualifié I"
+     },
+     "II": {
+      "cle": "6_II",
+      "libelle_ar": "عامل ذو كفاءة عالية II",
+      "libelle_fr": "Ouvrier hautement qualifié II"
+     }
+    },
+    "7": {
+     "1": {
+      "cle": "7_1",
+      "libelle_ar": "رئيس فريق درجة أولى",
+      "libelle_fr": "Chef d'équipe, 1er degré"
+     },
+     "2": {
+      "cle": "7_2",
+      "libelle_ar": "رئيس فريق درجة ثانية",
+      "libelle_fr": "Chef d'équipe, 2e degré"
+     },
+     "3": {
+      "cle": "7_3",
+      "libelle_ar": "رئيس فريق درجة ثالثة",
+      "libelle_fr": "Chef d'équipe, 3e degré"
+     }
+    }
+   }
+  }
+ },
+ "populations_non_couvertes": {
+  "ouvriers_permanents": {
+   "source_pdf_page": 16,
+   "source_article": "56",
+   "message_fr": "Ouvriers permanents (العملة القارين) : leur grille (annexe 4, citée à l'article 56, page 16) est absente du document fourni. Pour ce secteur, seuls les ouvriers occasionnels et les agents administratifs et techniciens sont couverts ; aucun montant n'est renvoyé.",
+   "message_ar": "العملة القارون: جدول أجورهم (الملحق عدد 4 المشار إليه في الفصل 56، الصفحة 16) غير موجود في الوثيقة المتوفرة. لا يغطي هذا القطاع إلا العملة العرضيين والأعوان الإداريين والفنيين؛ لا يُرجَع أي مبلغ."
+  }
+ },
+ "primes_non_couvertes": {
+  "prime_panier_qefa": {
+   "source_pdf_page": 15,
+   "source_article": "51 (جديد) أ",
+   "texte_source_ar": "حدد مبلغ هذه المنحة بـ 800 مليم بداية من أول جانفي 2011، وتسند لكل العمال القارين والوقتيين والعرضيين الذين قضوا سبع سنوات متتالية أو أكثر في العمل بما في ذلك الاستراحة التي تساوي أو تقل مدتها عن ساعة واحدة.",
+   "message_fr": "Prime de panier (qefa) BTP : la condition d'octroi est ambiguë dans la source (article 51 (جديد) أ, page 15). Le texte imprimé dit « sept ans consécutifs » (سبع سنوات), mais la phrase ajoute « y compris la pause d'une heure au plus », ce qui renvoie plutôt à des heures de travail. La prime n'est pas exposée tant que ce point n'est pas tranché ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة القفة (البناء والأشغال العامة): شرط الإسناد غامض في المصدر (الفصل 51 (جديد) أ، الصفحة 15). ينص النص المطبوع على «سبع سنوات متتالية»، لكن الجملة تضيف «بما في ذلك الاستراحة التي تساوي أو تقل مدتها عن ساعة واحدة»، مما يوحي بساعات عمل. لا تُعرض هذه المنحة إلى حين حسم هذه المسألة؛ لا يُرجَع أي مبلغ."
+  }
+ },
+ "grilles": [],
+ "primes": []
+}

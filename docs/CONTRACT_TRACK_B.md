@@ -38,11 +38,18 @@ limite pas à déposer un fichier dans `data/processed/salary_grids/` :
    fichier métallurgie :
    - les tables sont rattachées à une population quand leurs catégories sont
      exactement celles de la population ;
-   - les intervalles de degré sont lus dans des libellés de la forme `"0-2 ans"`
-     et `"20+"` ;
-   - chaque grille doit déclarer, dans un bloc `au_dela_dernier_degre`, ce
-     que dit sa source au-delà du dernier degré (ancienneté maximale couverte,
-     page et article) ; sans ce bloc, la grille est refusée (D8) ;
+   - les degrés sont déclarés **par population** (`degres.<population>`, liste
+     vide pour une population sans degré) ; leurs intervalles sont lus dans
+     des libellés de la forme `"0-2 ans"`, `"12-15"` et `"20+"` ;
+   - une catégorie peut avoir des sous-catégories (`sous_categories`), une
+     population ou une prime peut être déclarée non couverte
+     (`populations_non_couvertes`, `primes_non_couvertes`) avec son texte
+     de refus FR/AR dans le JSON ;
+   - chaque population à degrés doit déclarer, dans
+     `au_dela_dernier_degre.<population>`, ce que dit sa source au-delà du
+     dernier degré (ancienneté maximale couverte, page, article et textes de
+     refus FR/AR où seul `{a}` est remplacé) ; sans ce bloc, la grille est
+     refusée (D8, D9) ;
    - les paramètres de prime dépendent de clés JSON précises (`montants`,
      `complement_si_prime_superieure`, `montant_reduit_si_transport_assure`,
      `condition`).
@@ -89,10 +96,11 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur, ex. `METALLURGIE_BATIMENT`. |
-| `population` | chaîne | `admin_tech` (grille mensuelle) ou `execution` (grille horaire) pour la métallurgie. |
-| `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. |
-| `anciennete_annees` | nombre | Ancienneté en années. Une valeur exactement égale à une borne (2, 4, …, 20) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). |
+| `secteur` | chaîne | Code du secteur, ex. `METALLURGIE_BATIMENT` ou `BATIMENT_TRAVAUX_PUBLICS`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `population` | chaîne | Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). |
+| `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. |
+| `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
+| `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). Au-delà du plafond de la grille (métallurgie : 22 ans ; BTP `admin_tech` : 27 ans), refus `SOURCE_MANQUANTE` (D8, D9). |
 | `date` | `AAAA-MM-JJ` | Date de calcul : la table appliquée est la plus récente dont la date d'effet est ≤ cette date. |
 | `unite_souhaitee` | chaîne, optionnel | Si elle diffère de l'unité de la grille, la requête est refusée (`HORS_SCOPE`) : aucune conversion horaire ↔ mensuel n'est écrite dans les sources. |
 
@@ -429,6 +437,26 @@ Draft202012Validator(schema).validate(ma_requete)
     récente : le module ne sait pas si une grille plus récente existe ailleurs.
   - SMIG : seul le décret n°769/2022 (effet 2022-10-01) est vérifié. Le module
     ne connaît pas de SMIG postérieur.
+- **Secteur `BATIMENT_TRAVAUX_PUBLICS` : enregistré, mais aucun montant.**
+  Seule sa structure est en place (populations, catégories, sous-catégories,
+  degrés, refus déclarés). Ses 6 tables et ses primes ne sont pas encore
+  transcrites : toute demande dont les paramètres sont valides donne le même
+  refus qu'un secteur inconnu (`SOURCE_MANQUANTE`, « Aucune grille vérifiée
+  pour le secteur… »), et le secteur n'apparaît pas dans la liste des
+  secteurs disponibles. Une fois transcrit, il ne couvrira **que deux
+  populations** :
+  - `admin_tech` (agents administratifs et techniciens, TND/mois, 11 degrés,
+    ancienneté < 27 ans) ;
+  - `ouvriers_occasionnels` (العملة العرضيين, TND/heure, sans degré
+    d'ancienneté).
+
+  **Les ouvriers permanents (`ouvriers_permanents`) ne sont pas couverts** :
+  leur grille (annexe 4, citée à l'article 56, page 16) est absente du
+  document fourni. Ils reçoivent un refus `SOURCE_MANQUANTE` explicite.
+  L'orchestrateur ne doit donc pas router vers ce secteur une question sur un
+  ouvrier permanent du BTP. **La prime de panier (qefa) du BTP n'est pas
+  exposée** : sa condition d'octroi est ambiguë dans la source (art. 51 (جديد)
+  أ, p.15 : « sept ans » imprimé, contexte horaire) ; refus `SOURCE_MANQUANTE`.
 - **L'ancienneté est bornée à moins de 22 ans (métallurgie).** Au-delà du
   dernier degré (degré 11, atteint à 20 ans), l'article 13 de la convention
   (page 9) ajoute tous les deux ans l'écart entre les deux derniers degrés.
