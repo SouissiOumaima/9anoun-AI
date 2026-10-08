@@ -57,7 +57,7 @@ def prime(secteur: str, code: str, date, **params) -> Result:
     exiger_tables_transcrites(grille, secteur)
     p = next((x for x in grille.get("primes", []) if x["code"] == code), None)
     if p is None:
-        codes = ", ".join(x["code"] for x in grille.get("primes", []))
+        codes = ", ".join(x["code"] for x in grille.get("primes", [])) or "aucune prime transcrite"
         raise Refus(Refus.SOURCE_MANQUANTE, f"Prime {code!r} absente des données vérifiées ({secteur} : {codes}).",
                     f"المنحة {code!r} غير موجودة في البيانات المُتحقَّق منها ({secteur}).")
 

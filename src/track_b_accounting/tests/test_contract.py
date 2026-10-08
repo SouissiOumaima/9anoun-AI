@@ -112,22 +112,32 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_6_ok_4_refus():
+def test_bilan_demo_8_ok_5_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 6 and list(statuts.values()).count("refus") == 4
-    codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO[6:]}
+    assert list(statuts.values()).count("ok") == 8 and list(statuts.values()).count("refus") == 5
+    codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
         "demo-08-refus-date-anterieure": "SOURCE_MANQUANTE",
         "demo-09-refus-categorie-inconnue": "PARAM_INVALIDE",
         "demo-10-refus-secteur-non-couvert": "SOURCE_MANQUANTE",
+        "demo-13-refus-btp-anciennete-27-ans": "SOURCE_MANQUANTE",
     }
+
+
+def test_demo_10_secteur_fictif():
+    """Depuis D9, BATIMENT_TRAVAUX_PUBLICS est couvert : demo-10 garde un refus « secteur inconnu » avec un code fictif."""
+    rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
+    assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
+                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS).")
 
 
 def test_montants_demo_identiques_a_calc():
     """Le handler ne calcule rien : il recopie le Result de calc/ (ici des cellules vérifiées D4/D2)."""
     attendus = ["593.873", "4.620", "100.533", "0.160", "459.264", "2.254"]
     assert [handle(r)["result"]["montant"] for r in DEMO[:6]] == attendus
+    # BTP (D9) : tableau 6 p.25, cat. 4 degré 7 ; tableau 3 p.24, chef d'équipe 2e degré.
+    assert [handle(r)["result"]["montant"] for r in DEMO[10:12]] == ["699.751", "4.276"]
 
 
 @pytest.mark.parametrize("req", DEMO, ids=lambda r: r["request_id"])
@@ -216,7 +226,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == 10 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 13 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -255,9 +265,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_10_echanges():
+def test_demo_affiche_13_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 10 and "Bilan : 6 ok, 4 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 13 and "Bilan : 8 ok, 5 refus, 0 erreur(s)." in texte

@@ -1,5 +1,5 @@
-"""BATIMENT_TRAVAUX_PUBLICS (structure seule, étape a) et refactoring « degrés par population » (D9).
-Aucun montant BTP n'est transcrit : les tables de bout en bout utilisent des valeurs FICTIVES.
+"""BATIMENT_TRAVAUX_PUBLICS : refus, sous-catégories, degrés par population et plafond 27 ans (D9).
+Les montants BTP eux-mêmes (657 cellules, règle entre années, calcul de bout en bout) : test_grid_btp.py.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_btp.py
 """
 import copy
@@ -32,41 +32,31 @@ def refus(code, f, *a, **k):
     return e.value
 
 
-def _grille_fictive():
-    """BTP avec une table FICTIVE par population (montants inventés, uniquement pour tester le chemin de calcul)."""
-    g = copy.deepcopy(G)
-    g["_meta"]["tables_transcrites"] = True
-    g["_meta"]["decision_ref"] = "D99"
-    g["grilles"] = [
-        {"table_id": "FICTIF_O", "effective_date": "2024-01-01", "source_pdf_page": 25, "unite": "TND/heure",
-         "valeurs": {c: Decimal("1.000") + i for i, c in enumerate(g["categories"][OCC])}},
-        {"table_id": "FICTIF_T", "effective_date": "2024-01-01", "source_pdf_page": 25, "unite": "TND/mois",
-         "valeurs": {c: [Decimal(100 * int(c) + d) for d in range(11)] for c in g["categories"]["admin_tech"]}},
-    ]
-    return loaders.valider_grille(g, "fictif.json")
+# --- fichier BTP : tables transcrites (D9), aucune prime servie --------------------------------------
 
-
-@pytest.fixture
-def fictive(monkeypatch):
-    g = _grille_fictive()
-    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: g)
-    return g
-
-
-# --- fichier BTP : structure seule, aucun montant ---------------------------------------------------
-
-def test_btp_enregistre_sans_montant():
+def test_btp_enregistre_avec_tables():
     assert loaders.GRILLES[BTP] == BTP_FILE
     g = loaders.charger_grille(BTP)
-    assert g["grilles"] == [] and g["primes"] == [] and g["_meta"]["tables_transcrites"] is False
-    assert "decision_ref" not in g["_meta"]                      # aucun montant citable avant D9
+    assert g["_meta"]["tables_transcrites"] is True and g["_meta"]["decision_ref"] == "D9"
+    assert len(g["grilles"]) == 6 and g["primes"] == []
     assert set(g["categories"]) == {"admin_tech", OCC}
     assert g["degres"][OCC] == [] and len(g["degres"]["admin_tech"]) == 11
     assert set(g["au_dela_dernier_degre"]) == {"admin_tech"}
 
 
-def test_btp_absent_des_secteurs_disponibles():
-    assert loaders.secteurs_disponibles() == [BM_S]
+def test_secteurs_disponibles():
+    assert loaders.secteurs_disponibles() == [BM_S, BTP]
+
+
+def test_secteur_non_transcrit_absent_des_disponibles(monkeypatch):
+    """Un secteur enregistré sans tables reste refusé comme un secteur inconnu (D9)."""
+    g = copy.deepcopy(G)
+    g["_meta"]["tables_transcrites"] = False
+    g["grilles"] = []
+    g = loaders.valider_grille(g, "x.json")
+    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: g)
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, OCC, 6, None, "2024-01-01", sous_categorie="II")
+    assert e.message_fr.startswith(f"Aucune grille vérifiée pour le secteur {BTP!r}")
 
 
 def test_sous_categories_btp_libelles_du_pdf():
@@ -136,10 +126,9 @@ def test_cle_technique_ou_categorie_absente_refusee(cat):
     assert e.message_fr.startswith("Catégorie inconnue") and "(attendu : 1, 2, 3, 4, 5, 6, 7)" in e.message_fr
 
 
-def test_sous_categorie_valide_puis_tables_non_transcrites():
-    """Entrées valides : le refus vient seulement de l'absence de tables (même message qu'un secteur inconnu)."""
-    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, OCC, 6, None, "2024-01-01", sous_categorie="II")
-    assert e.message_fr == f"Aucune grille vérifiée pour le secteur {BTP!r} (disponibles : {BM_S})."
+def test_secteur_inconnu_liste_les_deux_secteurs():
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, "SECTEUR_FICTIF_NON_SUPPORTE", "admin_tech", "4", 5, "2024-01-01")
+    assert e.message_fr.endswith(f"(disponibles : {BM_S}, {BTP}).")
 
 
 # --- ancienneté : obligatoire avec degrés, interdite sans --------------------------------------------
@@ -224,25 +213,10 @@ def test_qefa_metallurgie_inchangee(ok):
     assert ok(prime(BM_S, "prime_panier_qefa", "2024-06-01", transport_assure=True)).montant == Decimal("0.160")
 
 
-def test_autre_prime_btp_tables_non_transcrites():
+def test_autre_prime_btp_non_transcrite():
+    """Aucune prime BTP n'est transcrite : refus explicite, sans liste vide dans le message."""
     e = refus(Refus.SOURCE_MANQUANTE, prime, BTP, "prime_transport", "2024-01-01")
-    assert e.message_fr == f"Aucune grille vérifiée pour le secteur {BTP!r} (disponibles : {BM_S})."
-
-
-# --- chemin de calcul avec une table FICTIVE (sans degré, sous-catégories) ---------------------------
-
-def test_occasionnels_sans_degre_table_fictive(fictive, ok):
-    r = ok(salaire_base(BTP, OCC, 6, date="2024-06-01", sous_categorie="II"))
-    assert r.montant == fictive["grilles"][0]["valeurs"]["6_II"] and r.unite == "TND/heure"
-    assert r.detail["categorie"] == "6" and r.detail["sous_categorie"] == "II"
-    assert r.detail["libelle_ar"] == "عامل ذو كفاءة عالية II"
-    assert "degre" not in r.detail and "anciennete_annees" not in r.detail
-    assert r.citations[0].decision_ref == "D99"
-
-
-def test_admin_tech_btp_table_fictive(fictive, ok):
-    r = ok(salaire_base(BTP, "admin_tech", 4, 13, "2024-06-01"))
-    assert r.montant == fictive["grilles"][1]["valeurs"]["4"][6] and r.detail["degre"] == 7
+    assert e.message_fr == f"Prime 'prime_transport' absente des données vérifiées ({BTP} : aucune prime transcrite)."
 
 
 def test_valider_grille_rejette_structures_btp_incoherentes():
@@ -255,18 +229,14 @@ def test_valider_grille_rejette_structures_btp_incoherentes():
         lambda g: g["populations_non_couvertes"]["ouvriers_permanents"].pop("message_ar"),
         lambda g: g["populations_non_couvertes"].__setitem__("admin_tech", {}),
         lambda g: g["primes_non_couvertes"]["prime_panier_qefa"].__setitem__("source_pdf_page", None),
-        lambda g: g["grilles"].append({"table_id": "x"}),             # table alors que tables_transcrites = false
+        lambda g: g["_meta"].__setitem__("tables_transcrites", False),  # tables présentes mais déclarées absentes
+        lambda g: g["grilles"][0]["valeurs"].__setitem__("1", [Decimal("2.567")]),   # occasionnels : montant unique
+        lambda g: g["grilles"][1]["valeurs"]["4"].pop(),                # admin_tech : 10 degrés au lieu de 11
     ]
     for m in mutations:
         g = copy.deepcopy(G)
         m(g)
         refus(Refus.SOURCE_MANQUANTE, loaders.valider_grille, g, "x.json")
-
-
-def test_valider_grille_rejette_table_fictive_mal_formee():
-    g = _grille_fictive()
-    g["grilles"][0]["valeurs"]["1"] = [Decimal("1.000")]             # population sans degré : montant unique
-    refus(Refus.SOURCE_MANQUANTE, loaders.valider_grille, g, "x.json")
 
 
 # --- contrat : sous_categorie et anciennete_annees optionnelle ----------------------------------------
@@ -298,7 +268,7 @@ def test_contrat_secteur_vide_param_invalide():
     assert rep["refus"]["code"] == "PARAM_INVALIDE" and rep["computed_by"] == "track_b_accounting.calc.salaire_base"
 
 
-def test_contrat_occasionnels_table_fictive(fictive):
+def test_contrat_occasionnels_sous_categorie():
     rep = handle(_req(categorie=7, sous_categorie="3"))
-    assert rep["status"] == "ok" and rep["result"]["unite"] == "TND/heure"
+    assert rep["status"] == "ok" and rep["result"]["montant"] == "4.946" and rep["result"]["unite"] == "TND/heure"
     assert rep["result"]["detail"]["libelle_fr"] == "Chef d'équipe, 3e degré"
