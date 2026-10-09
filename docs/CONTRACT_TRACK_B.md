@@ -101,7 +101,7 @@ Aucun autre champ n'est accepté à la racine.
 | `population` | chaîne | Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
-| `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). Au-delà du plafond de la grille (métallurgie : 22 ans ; BTP `admin_tech` : 27 ans), refus `SOURCE_MANQUANTE` (D8, D9). |
+| `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). **Plus de plafond fixe** : au-delà du dernier degré, l'article 13 de chaque convention s'applique (D10, voir §7). Métallurgie : paliers exacts 22, 24, 26… ans refusés (`PARAM_INVALIDE`). BTP `admin_tech` : 27 ans pile refusé (`PARAM_INVALIDE`) ; au-delà de la fenêtre de la case cible (29 ou 30 ans selon la catégorie) et pour la catégorie 19, refus `SOURCE_MANQUANTE`. |
 | `date` | `AAAA-MM-JJ` | Date de calcul : la table appliquée est la plus récente dont la date d'effet est ≤ cette date. |
 | `unite_souhaitee` | chaîne, optionnel | Si elle diffère de l'unité de la grille, la requête est refusée (`HORS_SCOPE`) : aucune conversion horaire ↔ mensuel n'est écrite dans les sources. |
 
@@ -141,7 +141,9 @@ est toujours un refus `HORS_SCOPE`.
 | `result` | objet ou `null` | Présent seulement si `ok` : `{montant, unite, detail}`. |
 | `result.montant` | chaîne | Montant décimal à exactement 3 chiffres après le point (millimes), ex. `"593.873"`. C'est une chaîne et **jamais un nombre JSON**, pour éviter les erreurs d'arrondi des floats. |
 | `result.unite` | chaîne | Unité, ex. `TND/mois`, `TND/heure`, `TND/jour`. Le module ne fait aucune conversion. |
-| `result.detail` | objet | Contexte du calcul : table appliquée, degré, date d'effet, etc. Les valeurs sont des chaînes, des entiers, des booléens ou `null`, jamais des nombres décimaux. |
+| `result.detail` | objet | Contexte du calcul : table appliquée, degré, date d'effet, etc. Les valeurs sont des chaînes, des entiers, des booléens ou `null`, jamais des nombres décimaux, ou **des listes de chaînes** (nouveau, D10 : `hypotheses`, `hypotheses_ar`). |
+| `result.detail.regle_art13` | chaîne, si présente | Règle de l'article 13 appliquée au-delà du dernier degré (D10) : `ecart_cumule_biennal` (métallurgie ; avec `n_paliers`, `ecart`, `montant_dernier_degre`) ou `table_correspondance` (BTP ; avec `case_cible`, `degre_cible`, `categorie_cible`, `ecart`, `montant_dernier_degre`, `fenetre_debut_annees`, `fenetre_fin_annees`). `ecart` et `montant_dernier_degre` sont des chaînes décimales. |
+| `result.detail.hypotheses` / `hypotheses_ar` | liste de chaînes, si présente | Hypothèses d'interprétation de la source sur lesquelles repose le montant, en français et en arabe. **DS1 (orchestration) et DS4 doivent les afficher à l'utilisateur avec le montant**, dans sa langue : le montant n'est exact que si ces hypothèses le sont. |
 | `citations` | liste | Au moins un élément si `ok` ; vide si `refus` ou `erreur`. |
 | `citations[].source_file` | chaîne | PDF source du corpus (`data/raw/pdf/...`). |
 | `citations[].page` | entier ou `null` | Page du PDF où la valeur a été lue. |
@@ -182,10 +184,10 @@ pas conforme, il la remplace par une réponse `erreur`.
 | `HORS_SCOPE` | `demo-07-refus-cnss` | Opération `cotisation_cnss` (voir §5.2). |
 | `SOURCE_MANQUANTE` | `demo-08-refus-date-anterieure` | Date 2021-11-30, avant la première grille (2021-12-01). |
 | `SOURCE_MANQUANTE` | `demo-10-refus-secteur-non-couvert` | Secteur fictif `SECTEUR_FICTIF_NON_SUPPORTE` (avant D9, cette requête visait `BATIMENT_TRAVAUX_PUBLICS`, désormais couvert). |
-| `SOURCE_MANQUANTE` | `demo-13-refus-btp-anciennete-27-ans` | BTP `admin_tech`, ancienneté de 28 ans : article 13 non implémenté au-delà de 27 ans (D9). |
+| `SOURCE_MANQUANTE` | `demo-13-refus-btp-anciennete-27-ans` | BTP `admin_tech`, catégorie 19, ancienneté de 28 ans : l'article 13 fixe « 950 dinars », montant périmé (inférieur au degré 11), non appliqué (D10). |
 | `PARAM_INVALIDE` | `demo-09-refus-categorie-inconnue` | Catégorie `19`, absente de la grille. La requête est conforme au schéma ; c'est donc un `PARAM_INVALIDE` émis par le calcul, pas un refus de contrat. |
 
-Aucune des 13 requêtes de démo n'est non conforme au schéma. L'exemple de
+Aucune des 14 requêtes de démo n'est non conforme au schéma. L'exemple de
 refus de contrat du §5.4 a donc été produit à part, avec une opération
 inconnue.
 
@@ -383,7 +385,7 @@ l'entrée standard. Il écrit la réponse JSON en UTF-8 sur la sortie standard
 (arabe en clair, `ensure_ascii=False`).
 
 ```
-# Les 13 requêtes de démo → liste de 13 réponses
+# Les 14 requêtes de démo → liste de 14 réponses
 python -m src.track_b_accounting.contract.cli data/mock_cards/track_b_requests_demo.json
 
 # Une requête dans un fichier à vous
@@ -403,12 +405,13 @@ la réponse imprimée a le statut `erreur`.
 ```
 python -m src.track_b_accounting.demo
 ```
-La démo affiche les 13 échanges : requête, réponse, puis la phrase produite
+La démo affiche les 14 échanges : requête, réponse, puis la phrase produite
 par une doublure de Track A (`MockTrackA`, dans
 `src/track_b_accounting/tests/mocks.py`). Le bilan attendu est :
-`Bilan : 8 ok, 5 refus, 0 erreur(s).` Les échanges 11 à 13 portent sur le BTP
-(administratif, ouvrier occasionnel avec `sous_categorie`, refus au-delà de
-27 ans d'ancienneté).
+`Bilan : 9 ok, 5 refus, 0 erreur(s).` Les échanges 11 à 13 portent sur le BTP
+(administratif, ouvrier occasionnel avec `sous_categorie`, refus de la
+catégorie 19 au-delà de 27 ans). L'échange 14 applique l'article 13 de la
+métallurgie (25 ans : deux citations et des hypothèses dans `detail`).
 
 `MockTrackA` ne fait que mettre en forme : il recopie le montant et les
 sources de la réponse, sans rien calculer. C'est une doublure de test, pas
@@ -449,7 +452,7 @@ Draft202012Validator(schema).validate(ma_requete)
 - **Secteur `BATIMENT_TRAVAUX_PUBLICS` : couvert pour deux populations
   seulement (D9).**
   - Couvert : `admin_tech` (agents administratifs et techniciens, TND/mois,
-    11 degrés, ancienneté < 27 ans) et `ouvriers_occasionnels` (العملة
+    11 degrés, puis article 13 au-delà, voir ci-dessous) et `ouvriers_occasionnels` (العملة
     العرضيين, TND/heure, sans degré d'ancienneté ; `anciennete_annees` est
     **refusé** pour cette population, `PARAM_INVALIDE`, et `sous_categorie`
     est obligatoire pour les catégories 6 et 7).
@@ -462,18 +465,31 @@ Draft202012Validator(schema).validate(ma_requete)
     est ambiguë dans la source (art. 51 (جديد) أ, p.15 : « sept ans »
     imprimé, contexte horaire) ; refus `SOURCE_MANQUANTE`. Aucune autre prime
     BTP n'est transcrite.
-  - **Non couvert : l'article 13 au-delà de 27 ans d'ancienneté**
-    (`admin_tech`). Après 3 ans au degré 11 (atteint à 24 ans), l'article 13
-    (جديد) ب (page 8) renvoie à une table de correspondance qui n'est pas
-    implémentée : toute ancienneté ≥ 27 ans donne un refus `SOURCE_MANQUANTE`
-    qui cite l'article et la page, jamais la valeur du degré 11.
-- **L'ancienneté est bornée à moins de 22 ans (métallurgie).** Au-delà du
-  dernier degré (degré 11, atteint à 20 ans), l'article 13 de la convention
-  (page 9) ajoute tous les deux ans l'écart entre les deux derniers degrés.
-  Cette règle n'est pas encore implémentée : toute ancienneté ≥ 22 ans donne
-  un refus `SOURCE_MANQUANTE` qui cite l'article 13 et la page 9, et jamais
-  la valeur du degré 11. Les points à trancher avant de l'implémenter sont
-  listés en D8.
+  - **Article 13 au-delà de 27 ans (`admin_tech`), couvert en partie (D10).**
+    Après 3 ans au degré 11 (atteint à 24 ans), l'article 13 (جديد) ب
+    (page 8) renvoie à une case de la grille (table de correspondance,
+    « degré/catégorie »). Le module sert cette case **seulement pendant la
+    durée de la tranche de son degré** : de 27 à 29 ans exclus (degrés
+    cibles 1 à 6) ou de 27 à 30 ans exclus (degrés cibles 7 à 11). 27 ans
+    pile → `PARAM_INVALIDE` ; fin de fenêtre et au-delà → `SOURCE_MANQUANTE`,
+    car la convention ne dit pas ce qui se passe ensuite.
+    **Non couvert : la catégorie 19**, pour laquelle la table donne
+    « 950 dinars », montant périmé (inférieur au degré 11 actuel) :
+    refus `SOURCE_MANQUANTE`.
+- **Article 13 de la métallurgie (au-delà du degré 11, atteint à 20 ans),
+  couvert sous hypothèses (D10).** Montant = degré 11 + n × (degré 11 −
+  degré 10), avec n = ⌊(ancienneté − 20) / 2⌋, valeurs de la grille en
+  vigueur à la date du calcul (page 9). Les paliers exacts (22, 24, 26… ans)
+  sont refusés (`PARAM_INVALIDE`). Il n'y a plus de plafond d'ancienneté.
+- **Hypothèses à afficher.** Quand l'article 13 s'applique, `detail` contient
+  `regle_art13`, les hypothèses d'interprétation (`hypotheses`,
+  `hypotheses_ar`) et la réponse porte deux citations : la grille et
+  l'article 13 avec sa page. **DS1 et DS4 doivent afficher ces hypothèses à
+  l'utilisateur** avec le montant (écart cumulé, progression normale sans
+  les ±6 mois liés à la note ou aux sanctions, montant intégré au salaire de
+  base, valeurs de la grille en vigueur ; BTP : case servie pendant sa
+  fenêtre). Ce sont des interprétations, pas des certitudes (voir les risques
+  en D10).
 - **Le SMAG et la prime de transport SMIG** figurent dans
   `data/processed/smig_smag/smig_smag.json`, mais aucune opération ne les
   expose encore.

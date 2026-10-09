@@ -1,14 +1,12 @@
-"""Salaire de base conventionnel : grille sectorielle × population × catégorie × degré d'ancienneté × date (D4, D6, D9)."""
+"""Salaire de base conventionnel : grille sectorielle × population × catégorie × degré d'ancienneté × date
+(D4, D6, D9), et règle de l'article 13 au-delà du dernier degré (D10)."""
 from __future__ import annotations
 
-import re
+import math
 from decimal import Decimal
 
-from .loaders import GRILLES, charger_grille, decision_ref, exiger_tables_transcrites
+from .loaders import GRILLES, bornes_degre, charger_grille, decision_ref, exiger_tables_transcrites
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
-
-_BORNES = re.compile(r"^\s*(\d+)\s*-\s*(\d+)")
-_OUVERT = re.compile(r"^\s*(\d+)\s*\+\s*$")
 
 
 def _annees(anciennete) -> Decimal:
@@ -27,13 +25,11 @@ def _intervalles(degres: list[dict]) -> list[tuple[int, int, int | None]]:
     out = []
     for d in degres:
         label = d["anciennete_label"]
-        if m := _BORNES.match(label):
-            out.append((d["degre"], int(m[1]), int(m[2])))
-        elif m := _OUVERT.match(label):
-            out.append((d["degre"], int(m[1]), None))
-        else:
+        bornes = bornes_degre(label)
+        if bornes is None:
             raise Refus(Refus.SOURCE_MANQUANTE, f"Libellé de degré illisible : {label!r}.",
                         f"تسمية الدرجة غير مقروءة: {label!r}.")
+        out.append((d["degre"], *bornes))
     return out
 
 
@@ -100,14 +96,14 @@ def _cle_categorie(grille: dict, population: str, categorie, sous_categorie) -> 
 
 
 def degre_from_anciennete(annees, secteur=None, population=None) -> int:
-    """Degré dont l'intervalle contient strictement l'ancienneté (degrés propres à chaque population).
+    """Degré de la grille dont l'intervalle contient strictement l'ancienneté (degrés propres à chaque population).
 
     Les libellés du PDF (« 2/0 », « 4/2 », …, « 20+ ») font apparaître chaque borne intérieure
     (2, 4, …, 20) dans deux degrés sans dire lequel s'applique : ces valeurs exactes → Refus
     PARAM_INVALIDE (D6), plutôt que de choisir. 0 n'appartient qu'au degré 1.
-    Au-delà du dernier degré, la règle de la convention n'est pas implémentée : ancienneté ≥
-    au_dela_dernier_degre[population].anciennete_max_couverte_annees → Refus SOURCE_MANQUANTE,
-    messages FR/AR lus dans le JSON, où seul {a} est remplacé par l'ancienneté (D8, D9).
+    Le dernier degré est ouvert (« 20+ ») : ce qui s'applique au-delà (article 13) est traité par
+    regle_au_dela_dernier_degre (D10). Si la population déclare seulement un refus (regle « refus »),
+    toute ancienneté ≥ anciennete_max_couverte_annees est refusée ici (SOURCE_MANQUANTE, D8).
     Aucun secteur par défaut : secteur absent → Refus PARAM_INVALIDE.
     """
     grille = charger_grille(secteur)
@@ -118,7 +114,7 @@ def degre_from_anciennete(annees, secteur=None, population=None) -> int:
                     f"جدول الأجور {secteur}/{pop} لا يتضمن درجات أقدمية.")
     a = _annees(annees)
     au_dela = grille["au_dela_dernier_degre"][pop]
-    if a >= au_dela["anciennete_max_couverte_annees"]:
+    if au_dela.get("regle", "refus") == "refus" and a >= au_dela["anciennete_max_couverte_annees"]:
         raise Refus(Refus.SOURCE_MANQUANTE, au_dela["message_fr"].replace("{a}", str(a)),
                     au_dela["message_ar"].replace("{a}", str(a)))
     intervalles = _intervalles(degres)
@@ -133,6 +129,53 @@ def degre_from_anciennete(annees, secteur=None, population=None) -> int:
                     "ينطبق. يرجى تحديد الأقدمية بدقة.")
     raise Refus(Refus.SOURCE_MANQUANTE, f"Aucun degré de la grille ne couvre {a} ans.",
                 f"لا توجد درجة في الجدول تغطي {a} سنة.")
+
+
+def _texte_art13(gabarit: str, **valeurs) -> str:
+    """Seuls {a}, {categorie}, {case} et {fin} sont remplacés dans les textes lus dans le JSON (D10)."""
+    for k, v in valeurs.items():
+        gabarit = gabarit.replace("{" + k + "}", str(v))
+    return gabarit
+
+
+def regle_au_dela_dernier_degre(grille: dict, population: str, cle: str, annees) -> dict | None:
+    """Règle de l'article 13 au-delà du dernier degré, ou None si elle ne s'applique pas (D10).
+
+    - « ecart_cumule_biennal » (métallurgie, p.9) : n = ⌊(a − âge du dernier degré) / période⌋ paliers ;
+      n = 0 → None (dernier degré simple). Palier exact (22, 24, 26… ans) → PARAM_INVALIDE, comme les bornes de D6.
+    - « table_correspondance » (BTP, p.8) : après dernier degré + durée (27 ans), case cible de la table
+      pendant sa fenêtre (2 ou 3 ans). 27 ans pile → PARAM_INVALIDE ; fin de fenêtre et au-delà, ou catégorie
+      refusée (19) → SOURCE_MANQUANTE. Textes FR/AR lus dans le JSON.
+    """
+    bloc = grille["au_dela_dernier_degre"][population]
+    regle = bloc.get("regle", "refus")
+    if regle == "refus":
+        return None                      # plafond déjà appliqué par degre_from_anciennete (D8)
+    a = _annees(annees)
+    debut = bloc["dernier_degre_atteint_a_annees"]
+    if regle == "ecart_cumule_biennal":
+        periode = bloc["periode_annees"]
+        if a > debut and (a - debut) % periode == 0:
+            raise Refus(Refus.PARAM_INVALIDE, _texte_art13(bloc["message_borne_fr"], a=a),
+                        _texte_art13(bloc["message_borne_ar"], a=a))
+        n = math.floor((a - debut) / periode)
+        return {"regle": regle, "bloc": bloc, "n": n} if n >= 1 else None
+    seuil = debut + bloc["duree_au_dernier_degre_annees"]
+    if a < seuil:
+        return None
+    if a == seuil:
+        raise Refus(Refus.PARAM_INVALIDE, _texte_art13(bloc["message_borne_fr"], a=a),
+                    _texte_art13(bloc["message_borne_ar"], a=a))
+    if cle in bloc["categories_refusees"]:
+        r = bloc["categories_refusees"][cle]
+        raise Refus(Refus.SOURCE_MANQUANTE, r["message_fr"], r["message_ar"])
+    cible = bloc["table_correspondance"][cle]
+    fin = seuil + cible["fenetre_annees"]
+    if a >= fin:
+        valeurs = {"a": a, "categorie": cle, "case": cible["case_imprimee"], "fin": fin}
+        raise Refus(Refus.SOURCE_MANQUANTE, _texte_art13(bloc["message_hors_fenetre_fr"], **valeurs),
+                    _texte_art13(bloc["message_hors_fenetre_ar"], **valeurs))
+    return {"regle": regle, "bloc": bloc, "cible": cible, "debut": seuil, "fin": fin}
 
 
 def _tables_population(grille: dict, population: str) -> list[dict]:
@@ -168,13 +211,15 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
     grille = charger_grille(secteur)
     pop = _population(grille, population)
     cat, cle, info_sous = _cle_categorie(grille, pop, categorie, sous_categorie)
-    degre = None
+    degre = art13 = None
     if grille["degres"][pop]:
         if anciennete_annees is None:
             raise Refus(Refus.PARAM_INVALIDE,
                         f"anciennete_annees obligatoire pour {secteur}/{pop} (grille à degrés d'ancienneté).",
                         f"anciennete_annees إلزامي لـ {secteur}/{pop} (جدول بدرجات أقدمية).")
         degre = degre_from_anciennete(anciennete_annees, secteur, pop)
+        if degre == len(grille["degres"][pop]):
+            art13 = regle_au_dela_dernier_degre(grille, pop, cle, anciennete_annees)
     elif anciennete_annees is not None:
         raise Refus(Refus.PARAM_INVALIDE,
                     f"anciennete_annees non prévue : la grille {secteur}/{pop} n'a pas de degré d'ancienneté.",
@@ -191,6 +236,16 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
     detail = {"secteur": secteur, "population": pop, "categorie": cat, **info_sous}
     if degre is not None:
         detail.update(degre=degre, anciennete_annees=_annees(anciennete_annees))
+    citations = [Citation(source_file=grille["_meta"]["source_file"], page=table["source_pdf_page"], article=None,
+                          data_file=GRILLES[secteur], decision_ref=ref)]
+    if art13 is not None:
+        # Article 13 (D10) : montant recalculé, hypothèses dans detail, seconde citation (article et page).
+        valeur, info_art13 = _appliquer_art13(art13, table, cle, valeur)
+        detail.update(info_art13)
+        bloc = art13["bloc"]
+        citations.append(Citation(source_file=grille["_meta"]["source_file"], page=bloc["source_pdf_page"],
+                                  article=bloc["source_article"], data_file=GRILLES[secteur],
+                                  decision_ref=decision_ref({"_meta": bloc}, secteur)))
     detail.update({
         "table_id": table["table_id"],
         "effective_date": table["effective_date"],
@@ -198,15 +253,23 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
         "regime_hebdomadaire_heures": table.get("regime_hebdomadaire_heures"),
         "regles": "D6",
     })
-    return Result(
-        montant=arrondi_millime(valeur),
-        unite=table["unite"],
-        detail=detail,
-        citations=[Citation(
-            source_file=grille["_meta"]["source_file"],
-            page=table["source_pdf_page"],
-            article=None,
-            data_file=GRILLES[secteur],
-            decision_ref=ref,
-        )],
-    )
+    return Result(montant=arrondi_millime(valeur), unite=table["unite"], detail=detail, citations=citations)
+
+
+def _appliquer_art13(art13: dict, table: dict, cle: str, valeur_dernier_degre: Decimal) -> tuple[Decimal, dict]:
+    """Montant et détail de la règle de l'article 13 (D10). Les hypothèses sont renvoyées pour être affichées."""
+    bloc = art13["bloc"]
+    info = {"regle_art13": art13["regle"]}
+    if art13["regle"] == "ecart_cumule_biennal":
+        d10, d11 = table["valeurs"][cle][-2], table["valeurs"][cle][-1]
+        ecart = d11 - d10
+        valeur = d11 + art13["n"] * ecart
+        info.update(n_paliers=art13["n"], ecart=ecart, montant_dernier_degre=d11)
+    else:
+        cible = art13["cible"]
+        valeur = table["valeurs"][cible["categorie"]][cible["degre"] - 1]
+        info.update(case_cible=cible["case_imprimee"], degre_cible=cible["degre"], categorie_cible=cible["categorie"],
+                    montant_dernier_degre=valeur_dernier_degre, ecart=valeur - valeur_dernier_degre,
+                    fenetre_debut_annees=art13["debut"], fenetre_fin_annees=art13["fin"])
+    info.update(hypotheses=list(bloc["hypotheses_fr"]), hypotheses_ar=list(bloc["hypotheses_ar"]))
+    return valeur, info

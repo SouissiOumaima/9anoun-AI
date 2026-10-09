@@ -483,6 +483,8 @@ comportement.
 
 **Statut** : ✅ correctif minimal appliqué ; implémentation de l'article 13
 en attente des 4 points ci-dessus.
+→ **Remplacé par D10** : l'article 13 est implémenté (écart cumulé, paliers
+exacts refusés) ; les 4 points ci-dessus y sont tranchés comme hypothèses.
 
 ---
 
@@ -648,7 +650,8 @@ l'indiquent pas.
 2. **Annexe 4** (ouvriers permanents) : absente du corpus. Il faut la retrouver
    pour couvrir cette population.
 3. **Article 13 au-delà de 27 ans** : la table de correspondance de la p.8
-   n'est ni transcrite ni implémentée.
+   n'est ni transcrite ni implémentée. → **Traité en D10** (catégories 1 à 18
+   pendant leur fenêtre ; catégorie 19 refusée).
 4. **Origine des sauts de +2,500 et des 5 anomalies** : non expliquée par le
    document.
 5. **Autres primes BTP** (transport, etc.) : non transcrites ; toute demande
@@ -656,3 +659,153 @@ l'indiquent pas.
 
 **Statut** : ✅ 6 tables vérifiées et validées par DS5 ; questions 1 à 5
 ouvertes.
+
+---
+
+### D10 — Article 13 : règle au-delà du dernier degré (métallurgie p.9, BTP p.8)
+
+**Contexte** : D8 (métallurgie) et D9 (BTP) refusaient toute ancienneté au-delà
+d'un plafond (22 et 27 ans), faute de règle implémentée. Les deux conventions
+disent pourtant, dans leur article 13 (جديد) §ب, ce qui se passe après le dernier
+degré. Pages relues à 250-300 dpi le 2026-10-09 ; décisions validées par DS5.
+
+#### Métallurgie : écart cumulé tous les deux ans (p.9)
+
+**Texte** (§ب « التقدم ») :
+
+> يتمثل التقدم في التدرج الآلي حسب الأقدمية كل سنتين وذلك طبقا لجداول الأجور
+> المرفقة بالاتفاقية. وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل
+> التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في
+> السلم المرتب به والقيمة المالية للدرجة التي تسبقها.
+> و يمكن التنقيص في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة المتميزين
+> والمتحصلين على عدد مهني سنوي لا يقل عن 17 من 20.
+> كما يمكن الزيادة في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة الذين سلطت
+> عليهم عقوبة من الدرجة الثانية وذلك بعد استشارة النواب النقابيين وإن لم يوجدوا
+> فممثلي العملة بالمؤسسة.
+
+**Règle implémentée** : `montant = d11 + n × (d11 − d10)`, avec
+`n = ⌊(a − 20) / 2⌋` ; d10 et d11 sont lus dans la table en vigueur à la date du
+calcul. Premier palier à 22 ans ; entre 20 et 22 ans, c'est le degré 11 simple.
+
+**Bornes** : 22, 24, 26… ans pile → `PARAM_INVALIDE`, avec un message FR + AR
+qui explique que la convention ne dit pas si le palier est acquis à cette date
+exacte. C'est la même règle que pour 2, 4, …, 20 ans (D6) : sinon, 20 ans pile
+serait refusé et 22 ans pile accepté.
+
+**Exemples calculés à la main** (tables 2024, p.34 et 35, testés) :
+
+| Ancienneté | n | admin_tech cat. 4 (d11 680,334 ; écart 2,148) | execution cat. 7 (d11 4,620 ; écart 0,016) |
+|---|---|---|---|
+| 22,5 ans | 1 | 682,482 TND/mois | 4,636 TND/heure |
+| 24,5 ans | 2 | 684,630 | 4,652 |
+| 30,5 ans | 5 | 691,074 | 4,700 |
+
+**Hypothèses** (renvoyées dans `detail.hypotheses` et `detail.hypotheses_ar`) :
+1. **Écart cumulé** : « يواصل التمتع كل سنتين » est lu comme un écart de plus tous
+   les deux ans. Le texte ne dit pas explicitement « cumulé ».
+2. **Progression normale** : les ±6 mois (note ≥ 17/20, sanction du 2e degré)
+   ne sont pas pris en compte ; les requêtes ne contiennent ni note ni sanction.
+   C'est déjà le cas pour les degrés 1 à 11 (D6).
+3. **Salaire de base** : le montant obtenu est traité comme du salaire de base
+   (le texte est dans « التقدم » ; il ne dit ni « أجر أساسي » ni « منحة »).
+4. **Grille en vigueur** : d10 et d11 sont ceux de la table applicable à la date
+   du calcul, et non ceux de l'année où chaque palier a été atteint.
+
+#### BTP : table de correspondance (p.8)
+
+**Texte** (§ب « التدرج ») :
+
+> التدرج العادي يتمثل في الارتقاء بصفة متواصلة إلى درجة أعلى مباشرة حسب الأقدمية
+> في الدرجة طبق الجدول الملحق بهذه الاتفاقية.
+> يتقاضى كل عامل وعون مرتب في الدرجة 11 من شبكة الأجور المتعلقة بالأعوان الإداريين
+> والفنيين الخالصين بالشهر وذلك مهما كان صنفه، وبعد قضاء 3 سنوات في هذه الدرجة أجرا
+> أساسيا وفق الجدول التالي:
+
+Note n° 10 : « نقح بالملحق التعديلي عدد 9 » (avenant n° 9, 2009).
+
+**Transcription de la table** (19 lignes, « التأجير الحالي » 11/c → « مستوى التأجير
+الجديد ») : double lecture (250 dpi tableau entier ; 400 dpi colonne seule),
+0 divergence ; les 18 paires et la ligne 19 ont été vérifiées sur le PDF par DS5.
+Format « degré/catégorie » : dans les tables 2021, 2023 et 2024, les 18 cases
+cibles sont toutes supérieures au degré 11 de la catégorie d'origine.
+
+**Règle implémentée** : après 27 ans (24 + 3), le salaire de base est celui de
+la case cible, lue dans la grille en vigueur à la date du calcul.
+
+**Fenêtres de validité** (choix de DS5) : la convention ne dit pas ce qui se
+passe après la nouvelle case (la progression reprend-elle à partir de là ?).
+Plutôt que de servir la même case indéfiniment, le module ne la sert que pendant
+la durée de la tranche de son degré (en-tête p.23) ; ensuite, refus.
+
+| Fenêtre | Catégories (case cible) | Ancienneté servie |
+|---|---|---|
+| 2 ans (degrés cibles 1 à 6) | 1 (2/2), 2 (2/3), 3 (5/4), 4 (5/5), 5 (5/6), 6 (1/7), 7 (6/8), 13 (2/14), 14 (4/15), 16 (6/17), 18 (3/19) | 27 < a < 29 |
+| 3 ans (degrés cibles 7 à 10) | 8 (7/9), 11 (10/13), 15 (10/16), 17 (8/18) | 27 < a < 30 |
+| 3 ans (degré cible 11 : l'article 13 s'appliquerait à nouveau, d'où un refus au-delà) | 9 (11/10), 10 (11/11), 12 (11/13) | 27 < a < 30 |
+
+**Bornes** : 27 ans pile → `PARAM_INVALIDE` (« بعد قضاء 3 سنوات » ne dit pas si
+27 ans pile en relève, comme en D6). Fin de fenêtre pile (29 ou 30 ans) et
+au-delà → `SOURCE_MANQUANTE`, sur le même principe que les plafonds de D8 et D9
+(refus dès que l'ancienneté atteint la limite). Messages FR + AR dans le JSON,
+qui citent l'article 13 et la page 8.
+
+**Catégorie 19 refusée** : la table donne « 950 دينارا » comme nouveau salaire
+de base. Ce montant, probablement fixé par l'avenant n° 9 (2009), est inférieur
+au degré 11 actuel de la catégorie 19 (1841,256 TND en 2021, 2084,729 en 2024) :
+l'appliquer ferait baisser le salaire de plus de moitié. Refus `SOURCE_MANQUANTE`,
+texte FR + AR dans le JSON.
+
+**Hypothèses** (renvoyées dans `detail`) : lecture « degré/catégorie » ; grille
+en vigueur à la date du calcul ; case servie pendant sa fenêtre seulement.
+
+#### Mise en œuvre
+
+- **Données** : `au_dela_dernier_degre.<population>` porte désormais une
+  `regle` : `ecart_cumule_biennal` (métallurgie, les deux populations),
+  `table_correspondance` (BTP `admin_tech`, avec `table_correspondance`,
+  `fenetre_annees` par catégorie et `categories_refusees`), ou `refus` (simple
+  plafond de D8, gardé pour un futur secteur). Chaque bloc porte sa page, son
+  article, son texte arabe, sa `decision_ref` (« D10 »), ses hypothèses FR/AR et
+  ses messages de refus. **Aucun montant de grille n'a été modifié.**
+- **Validation** (`calc/loaders.py`) : le dernier degré doit être ouvert et
+  atteint à l'âge déclaré ; chaque catégorie BTP a soit une case cible, soit un
+  refus ; la case imprimée correspond au degré et à la catégorie ; chaque fenêtre
+  est égale à la durée de la tranche du degré cible (dérivée des libellés de
+  degré, 3 ans pour le degré 11).
+- **Calcul** (`calc/salary.py`, `regle_au_dela_dernier_degre`) : le degré est
+  toujours lu dans la grille ; au dernier degré, la règle de l'article 13
+  s'applique. `detail` reçoit `regle_art13`, `n_paliers` ou `case_cible`
+  (`degre_cible`, `categorie_cible`, `fenetre_debut_annees`,
+  `fenetre_fin_annees`), `ecart`, `montant_dernier_degre`, `hypotheses` et
+  `hypotheses_ar`. La réponse porte **deux citations** : la grille (page de la
+  table) et l'article 13 (page 9 ou 8, article « 13 (جديد) ب », D10).
+- **Contrat** : le schéma de réponse accepte désormais, dans `detail`, des
+  listes de chaînes non vides (`hypotheses`). DS1 et DS4 doivent afficher ces
+  hypothèses avec le montant (§3.2 et §7 du contrat).
+- **Démo** : demo-13 (BTP, catégorie 19, 28 ans) reste un refus, avec le texte
+  de la catégorie 19. Ajout de demo-14 (métallurgie, admin_tech cat. 4, 25 ans,
+  2024 : 684,630 TND/mois, deux citations). Les réponses de demo-01 à demo-12
+  sont inchangées.
+
+#### Risques : ce qui peut encore produire un montant faux avec une citation
+
+1. **Métallurgie, cumul** : si l'écart n'est pas cumulé, l'erreur vaut
+   (n − 1) × écart, soit 8,592 TND/mois de trop à 30 ans pour la catégorie 4
+   (1,3 %).
+2. **Métallurgie, ±6 mois** : un salarié bien noté ou sanctionné peut avoir un
+   palier d'avance ou de retard (même risque que pour les degrés 1 à 11).
+3. **Métallurgie, nature du montant** : si l'écart est une prime distincte, le
+   total est juste mais présenté comme salaire de base, ce qui fausserait les
+   calculs futurs fondés sur le salaire de base.
+4. **Les deux secteurs, grille de quelle année** : si la convention vise les
+   valeurs de l'année où le palier ou la case ont été atteints, le montant est
+   surestimé.
+5. **BTP, pendant la fenêtre** : si la progression reprenait plus tôt à partir
+   de la nouvelle case, le montant serait sous-estimé ; au-delà de la fenêtre,
+   le module refuse.
+
+Ces points sont visibles dans `detail.hypotheses` : ils ne sont pas silencieux,
+mais ce sont des interprétations.
+
+**Statut** : ✅ implémenté (métallurgie ; BTP catégories 1 à 18 pendant leur
+fenêtre) ; catégorie 19 du BTP et BTP au-delà des fenêtres refusés.

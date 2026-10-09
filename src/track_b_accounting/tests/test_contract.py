@@ -112,9 +112,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_8_ok_5_refus():
+def test_bilan_demo_9_ok_5_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 8 and list(statuts.values()).count("refus") == 5
+    assert list(statuts.values()).count("ok") == 9 and list(statuts.values()).count("refus") == 5
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -123,6 +123,9 @@ def test_bilan_demo_8_ok_5_refus():
         "demo-10-refus-secteur-non-couvert": "SOURCE_MANQUANTE",
         "demo-13-refus-btp-anciennete-27-ans": "SOURCE_MANQUANTE",
     }
+    # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
+    rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
+    assert rep13["refus"]["message_fr"].startswith("Catégorie 19, après 3 ans au degré 11")
 
 
 def test_demo_10_secteur_fictif():
@@ -138,6 +141,9 @@ def test_montants_demo_identiques_a_calc():
     assert [handle(r)["result"]["montant"] for r in DEMO[:6]] == attendus
     # BTP (D9) : tableau 6 p.25, cat. 4 degré 7 ; tableau 3 p.24, chef d'équipe 2e degré.
     assert [handle(r)["result"]["montant"] for r in DEMO[10:12]] == ["699.751", "4.276"]
+    # Article 13 (D10) : métallurgie admin_tech cat. 4, 25 ans, 2024 : 680.334 + 2 × 2.148.
+    rep14 = handle(DEMO[13])
+    assert rep14["result"]["montant"] == "684.630" and len(rep14["citations"]) == 2
 
 
 @pytest.mark.parametrize("req", DEMO, ids=lambda r: r["request_id"])
@@ -189,12 +195,21 @@ def test_refus_metier_attribue_a_calc():
     assert rep["refus"]["code"] == "PARAM_INVALIDE" and rep["computed_by"] == "track_b_accounting.calc.salaire_base"
 
 
-def test_anciennete_22_ans_refus_source_manquante_sans_montant():
-    """Au-delà du dernier degré (art. 13, p.9, D8) : refus explicite, jamais la valeur du degré 11."""
+def test_anciennete_25_ans_article_13_deux_citations_et_hypotheses():
+    """Au-delà du dernier degré (art. 13, p.9, D10) : montant, deux citations et hypothèses à afficher."""
     rep = valide(handle(_alterer(lambda r: r["params"].__setitem__("anciennete_annees", 25))))
-    assert rep["status"] == "refus" and rep["refus"]["code"] == "SOURCE_MANQUANTE"
-    assert rep["result"] is None and rep["citations"] == []
-    assert "الفصل 13" in rep["refus"]["message_ar"] and "page 9" in rep["refus"]["message_fr"]
+    assert rep["status"] == "ok" and rep["result"]["detail"]["regle_art13"] == "ecart_cumule_biennal"
+    assert [(c["page"], c["article"], c["decision_ref"]) for c in rep["citations"]] == [(30, None, "D4"), (9, "13 (جديد) ب", "D10")]
+    assert isinstance(rep["result"]["detail"]["hypotheses"], list) and len(rep["result"]["detail"]["hypotheses_ar"]) == 4
+    assert re.fullmatch(r"\d+\.\d{3}", rep["result"]["detail"]["ecart"])            # Decimal → chaîne, jamais float
+
+
+def test_schema_reponse_rejette_hypotheses_mal_formees():
+    rep = handle(_alterer(lambda r: r["params"].__setitem__("anciennete_annees", 25)))
+    rep["result"]["detail"]["hypotheses"] = [1, 2]
+    assert not REP_V.is_valid(rep)
+    rep["result"]["detail"]["hypotheses"] = [""]
+    assert not REP_V.is_valid(rep)
 
 
 def test_parametre_prime_inconnu_refuse_par_calc():
@@ -226,7 +241,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 13 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 14 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -265,9 +280,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_13_echanges():
+def test_demo_affiche_14_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 13 and "Bilan : 8 ok, 5 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 14 and "Bilan : 9 ok, 5 refus, 0 erreur(s)." in texte

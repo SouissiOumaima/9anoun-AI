@@ -120,24 +120,56 @@
  },
  "au_dela_dernier_degre": {
   "admin_tech": {
-   "anciennete_max_couverte_annees": 22,
+   "regle": "ecart_cumule_biennal",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 20,
+   "periode_annees": 2,
    "source_pdf_page": 9,
    "source_article": "13 (جديد) ب",
-   "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
-   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
-   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8).",
-   "message_fr": "Ancienneté de {a} ans : à partir de 22 ans, l'article 13 (جديد) ب de la convention (page 9) prévoit d'ajouter tous les deux ans l'écart entre les deux derniers degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 22 ans).",
-   "message_ar": "أقدمية {a} سنة: ابتداءً من 22 سنة، ينص الفصل 13 (جديد) ب من الاتفاقية (الصفحة 9) على إضافة الفارق بين آخر درجتين كل سنتين. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 22 سنة)."
+   "texte_source_ar": "يتمثل التقدم في التدرج الآلي حسب الأقدمية كل سنتين وذلك طبقا لجداول الأجور المرفقة بالاتفاقية. وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها. و يمكن التنقيص في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة المتميزين والمتحصلين على عدد مهني سنوي لا يقل عن 17 من 20. كما يمكن الزيادة في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة الذين سلطت عليهم عقوبة من الدرجة الثانية وذلك بعد استشارة النواب النقابيين وإن لم يوجدوا فممثلي العملة بالمؤسسة.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent. La durée de séjour dans un degré peut être réduite de 6 mois (note annuelle ≥ 17/20) ou allongée de 6 mois (sanction du 2e degré).",
+   "formule": "montant = d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋ ; d10 et d11 lus dans la table en vigueur à la date du calcul",
+   "hypotheses_fr": [
+    "Écart cumulé : un écart (degré 11 − degré 10) de plus tous les deux ans après le degré 11 (lecture de « يواصل التمتع كل سنتين »).",
+    "Progression normale : la réduction ou l'allongement de 6 mois de la durée de séjour (note ≥ 17/20, sanction du 2e degré) n'est pas pris en compte.",
+    "Le montant obtenu est considéré comme faisant partie du salaire de base.",
+    "Valeurs des degrés 10 et 11 de la grille en vigueur à la date du calcul."
+   ],
+   "hypotheses_ar": [
+    "فارق تراكمي: يُضاف فارق (الدرجة 11 − الدرجة 10) كل سنتين بعد بلوغ الدرجة 11 (قراءة عبارة «يواصل التمتع كل سنتين»).",
+    "تدرج عادي: لا يؤخذ بعين الاعتبار التنقيص أو الزيادة بستة أشهر في مدة البقاء بالدرجة (عدد مهني لا يقل عن 17 من 20، عقوبة من الدرجة الثانية).",
+    "يُعتبر المبلغ المتحصل عليه جزءًا من الأجر الأساسي.",
+    "قيم الدرجتين 10 و11 من جدول الأجور الساري بتاريخ الاحتساب."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : c'est un palier exact de l'article 13 (جديد) ب (page 9), qui ajoute l'écart entre les deux derniers degrés tous les deux ans après le degré 11 (atteint à 20 ans). La convention ne précise pas si le palier est acquis à {a} ans pile. Indiquer l'ancienneté exacte (par exemple {a} ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: هذه مرحلة دقيقة من مراحل الفصل 13 (جديد) ب (الصفحة 9) الذي يضيف الفارق بين آخر درجتين كل سنتين بعد بلوغ الدرجة 11 (عند 20 سنة). لا تحدد الاتفاقية إن كانت المرحلة تُكتسب عند {a} سنة بالضبط. يرجى تحديد الأقدمية بدقة.",
+   "statut": "IMPLÉMENTÉ (D10) : montant = d11 + n × (d11 − d10) ; paliers exacts (22, 24, 26… ans) refusés (PARAM_INVALIDE) ; hypothèses renvoyées dans detail.hypotheses. Remplace le refus de D8."
   },
   "execution": {
-   "anciennete_max_couverte_annees": 22,
+   "regle": "ecart_cumule_biennal",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 20,
+   "periode_annees": 2,
    "source_pdf_page": 9,
    "source_article": "13 (جديد) ب",
-   "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
-   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
-   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8).",
-   "message_fr": "Ancienneté de {a} ans : à partir de 22 ans, l'article 13 (جديد) ب de la convention (page 9) prévoit d'ajouter tous les deux ans l'écart entre les deux derniers degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 22 ans).",
-   "message_ar": "أقدمية {a} سنة: ابتداءً من 22 سنة، ينص الفصل 13 (جديد) ب من الاتفاقية (الصفحة 9) على إضافة الفارق بين آخر درجتين كل سنتين. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 22 سنة)."
+   "texte_source_ar": "يتمثل التقدم في التدرج الآلي حسب الأقدمية كل سنتين وذلك طبقا لجداول الأجور المرفقة بالاتفاقية. وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها. و يمكن التنقيص في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة المتميزين والمتحصلين على عدد مهني سنوي لا يقل عن 17 من 20. كما يمكن الزيادة في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة الذين سلطت عليهم عقوبة من الدرجة الثانية وذلك بعد استشارة النواب النقابيين وإن لم يوجدوا فممثلي العملة بالمؤسسة.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent. La durée de séjour dans un degré peut être réduite de 6 mois (note annuelle ≥ 17/20) ou allongée de 6 mois (sanction du 2e degré).",
+   "formule": "montant = d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋ ; d10 et d11 lus dans la table en vigueur à la date du calcul",
+   "hypotheses_fr": [
+    "Écart cumulé : un écart (degré 11 − degré 10) de plus tous les deux ans après le degré 11 (lecture de « يواصل التمتع كل سنتين »).",
+    "Progression normale : la réduction ou l'allongement de 6 mois de la durée de séjour (note ≥ 17/20, sanction du 2e degré) n'est pas pris en compte.",
+    "Le montant obtenu est considéré comme faisant partie du salaire de base.",
+    "Valeurs des degrés 10 et 11 de la grille en vigueur à la date du calcul."
+   ],
+   "hypotheses_ar": [
+    "فارق تراكمي: يُضاف فارق (الدرجة 11 − الدرجة 10) كل سنتين بعد بلوغ الدرجة 11 (قراءة عبارة «يواصل التمتع كل سنتين»).",
+    "تدرج عادي: لا يؤخذ بعين الاعتبار التنقيص أو الزيادة بستة أشهر في مدة البقاء بالدرجة (عدد مهني لا يقل عن 17 من 20، عقوبة من الدرجة الثانية).",
+    "يُعتبر المبلغ المتحصل عليه جزءًا من الأجر الأساسي.",
+    "قيم الدرجتين 10 و11 من جدول الأجور الساري بتاريخ الاحتساب."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : c'est un palier exact de l'article 13 (جديد) ب (page 9), qui ajoute l'écart entre les deux derniers degrés tous les deux ans après le degré 11 (atteint à 20 ans). La convention ne précise pas si le palier est acquis à {a} ans pile. Indiquer l'ancienneté exacte (par exemple {a} ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: هذه مرحلة دقيقة من مراحل الفصل 13 (جديد) ب (الصفحة 9) الذي يضيف الفارق بين آخر درجتين كل سنتين بعد بلوغ الدرجة 11 (عند 20 سنة). لا تحدد الاتفاقية إن كانت المرحلة تُكتسب عند {a} سنة بالضبط. يرجى تحديد الأقدمية بدقة.",
+   "statut": "IMPLÉMENTÉ (D10) : montant = d11 + n × (d11 − d10) ; paliers exacts (22, 24, 26… ans) refusés (PARAM_INVALIDE) ; hypothèses renvoyées dans detail.hypotheses. Remplace le refus de D8."
   }
  },
  "categories": {

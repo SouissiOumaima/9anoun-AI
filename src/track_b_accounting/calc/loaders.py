@@ -65,6 +65,72 @@ def _exiger_refus_declare(bloc: dict, objet: str, avec_anciennete: bool = False)
         _exiger("{a}" in bloc["message_fr"] and "{a}" in bloc["message_ar"], f"{objet} : {{a}} attendu dans les messages")
 
 
+_BORNES = re.compile(r"^\s*(\d+)\s*-\s*(\d+)")
+_OUVERT = re.compile(r"^\s*(\d+)\s*\+\s*$")
+
+
+def bornes_degre(label: str) -> tuple[int, int | None] | None:
+    """(borne basse, borne haute | None si tranche ouverte) lues dans un libellé de degré ; None si illisible."""
+    if m := _BORNES.match(label):
+        return int(m[1]), int(m[2])
+    if m := _OUVERT.match(label):
+        return int(m[1]), None
+    return None
+
+
+def _liste_textes(v) -> bool:
+    return isinstance(v, list) and bool(v) and all(_texte(x) for x in v)
+
+
+def _valider_art13_commun(bloc: dict, objet: str) -> None:
+    """Règle au-delà du dernier degré implémentée (D10) : source, référence, hypothèses FR/AR, message de borne."""
+    _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"])
+            and _texte(bloc["texte_source_ar"]), f"{objet} : source_pdf_page, source_article et texte_source_ar attendus")
+    _exiger(isinstance(bloc["decision_ref"], str) and re.fullmatch(r"D[0-9]+", bloc["decision_ref"]),
+            f"{objet} : decision_ref attendue")
+    _exiger(_liste_textes(bloc["hypotheses_fr"]) and _liste_textes(bloc["hypotheses_ar"])
+            and len(bloc["hypotheses_fr"]) == len(bloc["hypotheses_ar"]), f"{objet} : hypotheses_fr/ar attendues")
+    _exiger(all(_texte(bloc[k]) and "{a}" in bloc[k] for k in ("message_borne_fr", "message_borne_ar")),
+            f"{objet} : message_borne_fr/ar avec {{a}} attendus")
+    _exiger(_entier_positif(bloc["dernier_degre_atteint_a_annees"]), f"{objet} : dernier_degre_atteint_a_annees attendu")
+
+
+def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
+    """Bloc au_dela_dernier_degre d'une population : refus déclaré (D8) ou règle implémentée (D10)."""
+    objet = f"au_dela_dernier_degre[{pop}]"
+    regle = bloc.get("regle", "refus")
+    if regle == "refus":
+        _exiger(_entier_positif(bloc["anciennete_max_couverte_annees"]),
+                f"{objet} : anciennete_max_couverte_annees entier > 0 attendu")
+        _exiger_refus_declare(bloc, objet, avec_anciennete=True)
+        return
+    _exiger(regle in ("ecart_cumule_biennal", "table_correspondance"), f"{objet} : règle inconnue {regle!r}")
+    _valider_art13_commun(bloc, objet)
+    bornes = [bornes_degre(d["anciennete_label"]) for d in degres]
+    _exiger(len(degres) >= 2 and all(bornes) and bornes[-1][1] is None
+            and bornes[-1][0] == bloc["dernier_degre_atteint_a_annees"],
+            f"{objet} : dernier degré ouvert atteint à {bloc['dernier_degre_atteint_a_annees']} ans attendu")
+    if regle == "ecart_cumule_biennal":
+        _exiger(_entier_positif(bloc["periode_annees"]), f"{objet} : periode_annees attendu")
+        return
+    # table_correspondance : chaque catégorie renvoie à une case de la grille, ou est refusée avec son texte.
+    _exiger(_entier_positif(bloc["duree_au_dernier_degre_annees"]), f"{objet} : duree_au_dernier_degre_annees attendu")
+    _exiger(all(_texte(bloc[k]) and "{a}" in bloc[k] and "{fin}" in bloc[k]
+                for k in ("message_hors_fenetre_fr", "message_hors_fenetre_ar")),
+            f"{objet} : message_hors_fenetre_fr/ar avec {{a}} et {{fin}} attendus")
+    table, refusees = bloc["table_correspondance"], bloc["categories_refusees"]
+    _exiger(not set(table) & set(refusees) and set(table) | set(refusees) == set(cats),
+            f"{objet} : chaque catégorie doit avoir une case cible ou un refus")
+    for cat, e in table.items():
+        _exiger(isinstance(e["degre"], int) and 1 <= e["degre"] <= len(degres) and e["categorie"] in cats
+                and e["case_imprimee"] == f"{e['degre']}/{e['categorie']}", f"{objet}[{cat}] : case cible invalide")
+        bas, haut = bornes[e["degre"] - 1]
+        duree = bloc["duree_au_dernier_degre_annees"] if haut is None else haut - bas
+        _exiger(e["fenetre_annees"] == duree, f"{objet}[{cat}] : fenêtre {e['fenetre_annees']} ≠ tranche du degré cible ({duree})")
+    for cat, r in refusees.items():
+        _exiger(_texte(r["message_fr"]) and _texte(r["message_ar"]), f"{objet} : refus de la catégorie {cat} sans texte")
+
+
 def population_de_table(data: dict, table: dict) -> str | None:
     """Population dont les catégories sont exactement celles de la table."""
     cles = set(table["valeurs"])
@@ -83,14 +149,12 @@ def valider_grille(data: dict, chemin: str) -> dict:
         for pop, liste in degres.items():
             _exiger(isinstance(liste, list) and all("degre" in d and "anciennete_label" in d for d in liste),
                     f"degres[{pop}] : liste de degrés attendue")
-        # Ce que dit la source au-delà du dernier degré (D8) : obligatoire pour toute population à degrés.
+        # Ce que dit la source au-delà du dernier degré (D8, D10) : obligatoire pour toute population à degrés.
         au_dela = data["au_dela_dernier_degre"]
         _exiger(isinstance(au_dela, dict) and set(au_dela) == {p for p, l in degres.items() if l},
                 "au_dela_dernier_degre : un bloc par population à degrés attendu")
         for pop, bloc in au_dela.items():
-            _exiger(_entier_positif(bloc["anciennete_max_couverte_annees"]),
-                    f"au_dela_dernier_degre[{pop}] : anciennete_max_couverte_annees entier > 0 attendu")
-            _exiger_refus_declare(bloc, f"au_dela_dernier_degre[{pop}]", avec_anciennete=True)
+            _valider_au_dela(bloc, pop, degres[pop], cats[pop])
         for pop, sc in data.get("sous_categories", {}).items():
             _exiger(pop in cats and _entier_positif(sc["source_pdf_page"]), f"sous_categories[{pop}] invalide")
             for cat, sous in sc["par_categorie"].items():

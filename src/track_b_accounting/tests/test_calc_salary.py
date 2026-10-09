@@ -44,7 +44,7 @@ def test_degre_invalide(val):
     refus(Refus.PARAM_INVALIDE, degre_from_anciennete, val, S, "admin_tech")
 
 
-# --- au-delà du dernier degré : art. 13, p.9, règle non implémentée (D8) ----------------------------
+# --- au-delà du dernier degré : art. 13 (جديد) ب, p.9, écart cumulé tous les deux ans (D10) ---------------
 
 @pytest.mark.parametrize("pop,cat", [("admin_tech", "4"), ("execution", "7")])
 @pytest.mark.parametrize("annees", [21, 21.99, Decimal("21.999")])
@@ -54,28 +54,73 @@ def test_dernier_degre_avant_22_ans(pop, cat, annees, ok):
     assert r.detail["degre"] == 11 and r.montant == table["valeurs"][cat][10]
 
 
+# Calculés à la main (tables 2024, p.34 et 35) : d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋.
+#   admin_tech cat. 4 : d11 = 680.334, d10 = 678.186, écart 2.148 ; execution cat. 7 : d11 = 4.620, d10 = 4.604, écart 0.016.
+@pytest.mark.parametrize("pop,cat,annees,n,ecart,attendu,page", [
+    ("admin_tech", "4", Decimal("22.5"), 1, "2.148", "682.482", 34),   # 680.334 + 1 × 2.148
+    ("admin_tech", "4", Decimal("24.5"), 2, "2.148", "684.630", 34),   # 680.334 + 2 × 2.148
+    ("admin_tech", "4", Decimal("30.5"), 5, "2.148", "691.074", 34),   # 680.334 + 5 × 2.148
+    ("execution", "7", Decimal("22.5"), 1, "0.016", "4.636", 35),      # 4.620 + 1 × 0.016
+    ("execution", "7", Decimal("24.5"), 2, "0.016", "4.652", 35),      # 4.620 + 2 × 0.016
+    ("execution", "7", Decimal("30.5"), 5, "0.016", "4.700", 35),      # 4.620 + 5 × 0.016
+])
+def test_art13_exemples_calcules_a_la_main(pop, cat, annees, n, ecart, attendu, page, ok):
+    r = ok(salaire_base(S, pop, cat, annees, "2024-06-01"))
+    assert r.montant == Decimal(attendu)
+    assert r.detail["degre"] == 11 and r.detail["regle_art13"] == "ecart_cumule_biennal"
+    assert r.detail["n_paliers"] == n and r.detail["ecart"] == Decimal(ecart)
+    assert r.detail["hypotheses"] == BM["au_dela_dernier_degre"][pop]["hypotheses_fr"] and len(r.detail["hypotheses"]) == 4
+    assert r.detail["hypotheses_ar"] == BM["au_dela_dernier_degre"][pop]["hypotheses_ar"]
+    grille, art13 = r.citations
+    assert (grille.page, grille.article, grille.decision_ref) == (page, None, "D4")
+    assert (art13.page, art13.article, art13.decision_ref) == (9, "13 (جديد) ب", "D10")
+
+
 @pytest.mark.parametrize("pop,cat", [("admin_tech", "4"), ("execution", "7")])
-@pytest.mark.parametrize("annees", [22, Decimal("22.000"), 23, 30])
-def test_a_partir_de_22_ans_refus_source_manquante(pop, cat, annees):
-    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, S, pop, cat, annees, "2024-06-01")
+@pytest.mark.parametrize("annees", [22, Decimal("22.000"), 24, 26, 30, 40])
+def test_art13_paliers_exacts_refuses(pop, cat, annees):
+    e = refus(Refus.PARAM_INVALIDE, salaire_base, S, pop, cat, annees, "2024-06-01")
+    bloc = BM["au_dela_dernier_degre"][pop]
+    a = str(Decimal(str(annees)))
+    assert e.message_fr == bloc["message_borne_fr"].replace("{a}", a)
+    assert e.message_ar == bloc["message_borne_ar"].replace("{a}", a)
     assert "article 13 (جديد) ب" in e.message_fr and "page 9" in e.message_fr
     assert "الفصل 13 (جديد) ب" in e.message_ar and "الصفحة 9" in e.message_ar
-    assert "22" in e.message_fr and "22" in e.message_ar
 
 
-def test_plafond_lu_dans_le_json(monkeypatch):
+@pytest.mark.parametrize("annees,n", [(Decimal("22.01"), 1), (Decimal("23.99"), 1), (Decimal("24.01"), 2), (45, 12)])
+def test_art13_nombre_de_paliers(annees, n, ok):
+    r = ok(salaire_base(S, "admin_tech", "4", annees, "2024-06-01"))
+    assert r.detail["n_paliers"] == n and r.montant == Decimal("680.334") + n * Decimal("2.148")
+
+
+def test_art13_grille_en_vigueur_a_la_date(ok):
+    """d10 et d11 lus dans la table en vigueur (2022 : BM_T_2021-12-01, p.30)."""
+    r = ok(salaire_base(S, "admin_tech", "4", 25, "2022-06-01"))
+    v = TABLES["BM_T_2021-12-01"]["valeurs"]["4"]
+    assert r.montant == v[10] + 2 * (v[10] - v[9]) and r.citations[0].page == 30
+
+
+def test_regle_refus_toujours_supportee(monkeypatch):
+    """Un bloc de simple refus (D8) reste accepté pour un futur secteur : plafond lu dans le JSON."""
     grille = copy.deepcopy(BM)
-    grille["au_dela_dernier_degre"]["admin_tech"]["anciennete_max_couverte_annees"] = 30
+    grille["au_dela_dernier_degre"]["admin_tech"] = {
+        "regle": "refus", "anciennete_max_couverte_annees": 30, "source_pdf_page": 9, "source_article": "13",
+        "message_fr": "FR {a}", "message_ar": "AR {a}"}
+    grille = loaders.valider_grille(grille, "x.json")
     monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
     assert degre_from_anciennete(25, S, "admin_tech") == 11
-    refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, 30, S, "admin_tech")
+    e = refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, 30, S, "admin_tech")
+    assert (e.message_fr, e.message_ar) == ("FR 30", "AR 30")
 
 
 def test_bloc_au_dela_dernier_degre_dans_le_json():
     for pop in ("admin_tech", "execution"):
         b = BM["au_dela_dernier_degre"][pop]
-        assert b["anciennete_max_couverte_annees"] == 22 and b["source_pdf_page"] == 9
-        assert b["statut"].startswith("RÈGLE NON IMPLÉMENTÉE")
+        assert b["regle"] == "ecart_cumule_biennal" and b["source_pdf_page"] == 9 and b["decision_ref"] == "D10"
+        assert b["dernier_degre_atteint_a_annees"] == 20 and b["periode_annees"] == 2
+        assert b["statut"].startswith("IMPLÉMENTÉ (D10)")
+        assert "يواصل التمتع كل سنتين" in b["texte_source_ar"] and "17 من 20" in b["texte_source_ar"]
 
 
 def test_degre_libelle_illisible(monkeypatch):
@@ -211,12 +256,15 @@ def test_loader_nombres_en_decimal():
     lambda g: g["_meta"].pop("source_file"),
     lambda g: g.__setitem__("degres", []),
     lambda g: g.pop("au_dela_dernier_degre"),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("anciennete_max_couverte_annees", "22"),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("anciennete_max_couverte_annees", True),
+    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("regle", "inconnue"),
+    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("periode_annees", 0),
     lambda g: g["au_dela_dernier_degre"]["admin_tech"].pop("source_pdf_page"),
     lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("source_article", ""),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_ar", ""),
-    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("message_fr", "sans ancienneté"),
+    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_borne_ar", ""),
+    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("message_borne_fr", "sans ancienneté"),
+    lambda g: g["au_dela_dernier_degre"]["execution"]["hypotheses_ar"].pop(),
+    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("decision_ref", "D-10"),
+    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("dernier_degre_atteint_a_annees", 18),
     lambda g: g["au_dela_dernier_degre"].pop("execution"),
     lambda g: g["degres"].pop("execution"),
     lambda g: g["_meta"].__setitem__("tables_transcrites", False),

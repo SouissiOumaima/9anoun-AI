@@ -1,4 +1,4 @@
-"""BATIMENT_TRAVAUX_PUBLICS : refus, sous-catégories, degrés par population et plafond 27 ans (D9).
+"""BATIMENT_TRAVAUX_PUBLICS : refus, sous-catégories, degrés par population (D9) et textes de l'article 13 (D10).
 Les montants BTP eux-mêmes (657 cellules, règle entre années, calcul de bout en bout) : test_grid_btp.py.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_btp.py
 """
@@ -145,7 +145,7 @@ def test_anciennete_obligatoire_avec_degres(secteur):
     assert "anciennete_annees obligatoire" in e.message_fr
 
 
-# --- BTP admin_tech : degrés p.23 et plafond 27 ans (art. 13, p.8) ------------------------------------
+# --- BTP admin_tech : degrés p.23 et borne de 27 ans (art. 13, p.8, D10) --------------------------------
 
 @pytest.mark.parametrize("annees,degre", [(0, 1), (11.5, 6), (13, 7), (Decimal("23.9"), 10), (25, 11), (26.99, 11)])
 def test_degres_btp(annees, degre):
@@ -157,32 +157,45 @@ def test_bornes_btp_ambigues(borne):
     refus(Refus.PARAM_INVALIDE, degre_from_anciennete, borne, BTP, "admin_tech")
 
 
-@pytest.mark.parametrize("annees", [27, Decimal("27.000"), 30])
-def test_plafond_btp_27_ans(annees):
+@pytest.mark.parametrize("annees", [27, Decimal("27.000")])
+def test_btp_27_ans_pile_refuse(annees):
+    """« après 3 ans » au degré 11 : 27 ans pile est une borne, comme en D6 (PARAM_INVALIDE)."""
     bloc = G["au_dela_dernier_degre"]["admin_tech"]
-    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, "admin_tech", "4", annees, "2024-01-01")
-    assert e.message_fr == bloc["message_fr"].replace("{a}", str(Decimal(str(annees))))
-    assert e.message_ar == bloc["message_ar"].replace("{a}", str(Decimal(str(annees))))
+    e = refus(Refus.PARAM_INVALIDE, salaire_base, BTP, "admin_tech", "4", annees, "2024-01-01")
+    assert e.message_fr == bloc["message_borne_fr"].replace("{a}", str(Decimal(str(annees))))
+    assert e.message_ar == bloc["message_borne_ar"].replace("{a}", str(Decimal(str(annees))))
     assert "article 13 (جديد) ب" in e.message_fr and "page 8" in e.message_fr
     assert "الفصل 13 (جديد) ب" in e.message_ar and "الصفحة 8" in e.message_ar
 
 
 # --- textes de refus lus dans le JSON, pour les deux secteurs ----------------------------------------
 
-@pytest.mark.parametrize("secteur,grille,annees", [(BM_S, BM, 25), (BTP, G, 30)])
-def test_textes_plafond_lus_dans_le_json(secteur, grille, annees, monkeypatch):
+@pytest.mark.parametrize("secteur,grille,cat,annees", [(BM_S, BM, "4", 24), (BTP, G, "4", 27)])
+def test_textes_borne_art13_lus_dans_le_json(secteur, grille, cat, annees, monkeypatch):
     g = copy.deepcopy(grille)
-    g["au_dela_dernier_degre"]["admin_tech"]["message_fr"] = "FR-TEST {a}"
-    g["au_dela_dernier_degre"]["admin_tech"]["message_ar"] = "AR-TEST {a}"
+    g["au_dela_dernier_degre"]["admin_tech"]["message_borne_fr"] = "FR-TEST {a}"
+    g["au_dela_dernier_degre"]["admin_tech"]["message_borne_ar"] = "AR-TEST {a}"
     monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: g)
-    e = refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, annees, secteur, "admin_tech")
+    e = refus(Refus.PARAM_INVALIDE, salaire_base, secteur, "admin_tech", cat, annees, "2024-06-01")
     assert (e.message_fr, e.message_ar) == (f"FR-TEST {annees}", f"AR-TEST {annees}")
 
 
-def test_texte_metallurgie_inchange_depuis_d8():
-    e = refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, 25, BM_S, "execution")
-    assert e.message_fr.startswith("Ancienneté de 25 ans : à partir de 22 ans, l'article 13 (جديد) ب de la convention (page 9)")
-    assert e.message_ar.startswith("أقدمية 25 سنة: ابتداءً من 22 سنة، ينص الفصل 13 (جديد) ب من الاتفاقية (الصفحة 9)")
+def test_textes_fenetre_et_categorie_19_lus_dans_le_json(monkeypatch):
+    g = copy.deepcopy(G)
+    b = g["au_dela_dernier_degre"]["admin_tech"]
+    b.update(message_hors_fenetre_fr="F {a} {categorie} {case} {fin}", message_hors_fenetre_ar="A {a} {categorie} {case} {fin}")
+    b["categories_refusees"]["19"].update(message_fr="C19-FR", message_ar="C19-AR")
+    monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: g)
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, "admin_tech", "4", 29, "2024-06-01")
+    assert (e.message_fr, e.message_ar) == ("F 29 4 5/5 29", "A 29 4 5/5 29")
+    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, "admin_tech", "19", 28, "2024-06-01")
+    assert (e.message_fr, e.message_ar) == ("C19-FR", "C19-AR")
+
+
+def test_metallurgie_25_ans_plus_de_refus_d8(ok):
+    """Le refus de D8 (≥ 22 ans) est remplacé par la règle de l'article 13 (D10)."""
+    r = ok(salaire_base(BM_S, "execution", "7", 25, "2024-06-01"))
+    assert r.montant == Decimal("4.652") and r.detail["n_paliers"] == 2
 
 
 def test_texte_permanents_et_qefa_lus_dans_le_json(monkeypatch):
@@ -230,6 +243,16 @@ def test_valider_grille_rejette_structures_btp_incoherentes():
         lambda g: g["populations_non_couvertes"].__setitem__("admin_tech", {}),
         lambda g: g["primes_non_couvertes"]["prime_panier_qefa"].__setitem__("source_pdf_page", None),
         lambda g: g["_meta"].__setitem__("tables_transcrites", False),  # tables présentes mais déclarées absentes
+        # article 13 (D10) : table de correspondance cohérente avec la grille
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("fenetre_annees", 3),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("case_imprimee", "5/4"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("degre", 12),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("categorie", "20"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"].pop("18"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["categories_refusees"].pop("19"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["categories_refusees"]["19"].__setitem__("message_ar", ""),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_hors_fenetre_fr", "sans fin {a}"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("dernier_degre_atteint_a_annees", 21),
         lambda g: g["grilles"][0]["valeurs"].__setitem__("1", [Decimal("2.567")]),   # occasionnels : montant unique
         lambda g: g["grilles"][1]["valeurs"]["4"].pop(),                # admin_tech : 10 degrés au lieu de 11
     ]
