@@ -144,7 +144,7 @@ def _citation(r, page):
     (0, "2022-01-01", 1, "605.979", 23),             # 2021-12-01 : cat. 4, degré 1
     (13, "2024-03-01", 7, "699.751", 25),            # 12-15 ans -> degré 7
     (D("23.9"), "2023-06-30", 10, "662.413", 24),
-    (26.99, "2024-01-01", 11, "710.687", 25),        # dernier jour couvert avant le plafond de 27 ans
+    (26.99, "2024-01-01", 11, "710.687", 25),        # dernier jour au degré 11 avant l'article 13 (27 ans)
 ])
 def test_admin_tech_bout_en_bout(annees, date, degre, attendu, page, ok):
     r = ok(salaire_base(BTP, "admin_tech", "4", annees, date))
@@ -173,11 +173,12 @@ def test_occasionnels_bout_en_bout(cat, sous, date, attendu, page, libelle, ok):
     _citation(r, page)
 
 
-@pytest.mark.parametrize("annees", [27, 28, D("40")])
-def test_plafond_27_ans(annees):
+@pytest.mark.parametrize("annees,code", [(27, Refus.PARAM_INVALIDE), (28, Refus.SOURCE_MANQUANTE), (D("40"), Refus.SOURCE_MANQUANTE)])
+def test_categorie_19_jamais_servie_apres_27_ans(annees, code):
+    """Catégorie 19 : « 950 دينارا » (p.8) périmé → refus ; 27 ans pile reste une borne (D10)."""
     with pytest.raises(Refus) as e:
         salaire_base(BTP, "admin_tech", "19", annees, "2024-01-01")
-    assert e.value.code == Refus.SOURCE_MANQUANTE and "27 ans" in e.value.message_fr
+    assert e.value.code == code and "page 8" in e.value.message_fr
 
 
 @pytest.mark.parametrize("borne", [2, 4, 6, 8, 10, 12, 15, 18, 21, 24])
@@ -191,3 +192,75 @@ def test_avant_premiere_date():
     with pytest.raises(Refus) as e:
         salaire_base(BTP, OCC, 1, date="2021-11-30")
     assert e.value.code == Refus.SOURCE_MANQUANTE and "2021-12-01" in e.value.message_fr
+
+
+# --- article 13 (جديد) ب, p.8 : table de correspondance et fenêtres de validité (D10) ----------------------
+
+ART13 = GRID["au_dela_dernier_degre"]["admin_tech"]
+# Les 18 paires relues sur la page 8 (double lecture, validées sur le PDF) : catégorie -> « degré/catégorie ».
+PAIRES_P8 = {"1": "2/2", "2": "2/3", "3": "5/4", "4": "5/5", "5": "5/6", "6": "1/7", "7": "6/8", "8": "7/9",
+             "9": "11/10", "10": "11/11", "11": "10/13", "12": "11/13", "13": "2/14", "14": "4/15", "15": "10/16",
+             "16": "6/17", "17": "8/18", "18": "3/19"}
+# Fenêtre = durée de la tranche du degré cible (en-tête p.23) ; degré cible 11 : 3 ans (catégories 9, 10, 12).
+FENETRES = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2, "7": 2, "8": 3, "9": 3, "10": 3, "11": 3, "12": 3,
+            "13": 2, "14": 2, "15": 3, "16": 2, "17": 3, "18": 2}
+
+
+def test_table_correspondance_18_paires_page_8():
+    assert ART13["regle"] == "table_correspondance" and ART13["source_pdf_page"] == 8 and ART13["decision_ref"] == "D10"
+    assert {c: e["case_imprimee"] for c, e in ART13["table_correspondance"].items()} == PAIRES_P8
+    for c, e in ART13["table_correspondance"].items():
+        assert f"{e['degre']}/{e['categorie']}" == PAIRES_P8[c] and e["fenetre_annees"] == FENETRES[c]
+    assert list(ART13["categories_refusees"]) == ["19"] and ART13["categories_refusees"]["19"]["case_imprimee"] == "950 دينارا"
+
+
+@pytest.mark.parametrize("date", DATES)
+def test_case_cible_superieure_au_degre_11(date):
+    v = TABLES[f"BTP_AT_{date}"]["valeurs"]
+    for c, case in PAIRES_P8.items():
+        deg, cat = case.split("/")
+        assert v[cat][int(deg) - 1] > v[c][10], (date, c, case)
+    assert v["19"][10] > D("950")               # le montant fixe de la catégorie 19 est inférieur au degré 11
+
+
+def _attendu(cat):
+    deg, cible = PAIRES_P8[cat].split("/")
+    return TABLES["BTP_AT_2024-01-01"]["valeurs"][cible][int(deg) - 1]
+
+
+@pytest.mark.parametrize("cat", list(PAIRES_P8))
+@pytest.mark.parametrize("position", ["debut", "milieu", "dernier_jour"])
+def test_fenetre_servie(cat, position, ok):
+    w = FENETRES[cat]
+    a = {"debut": D("27.01"), "milieu": D(27) + D(w) / 2, "dernier_jour": D(27 + w) - D("0.01")}[position]
+    r = ok(salaire_base(BTP, "admin_tech", cat, a, "2024-06-01"))
+    assert r.montant == _attendu(cat) and r.detail["case_cible"] == PAIRES_P8[cat]
+    assert (r.detail["fenetre_debut_annees"], r.detail["fenetre_fin_annees"]) == (27, 27 + w)
+    assert r.detail["regle_art13"] == "table_correspondance" and r.detail["degre"] == 11
+    assert r.detail["ecart"] == r.montant - TABLES["BTP_AT_2024-01-01"]["valeurs"][cat][10]
+    assert r.detail["hypotheses"] == ART13["hypotheses_fr"] and r.detail["hypotheses_ar"] == ART13["hypotheses_ar"]
+    grille, art13 = r.citations
+    assert (grille.page, grille.decision_ref) == (25, "D9")
+    assert (art13.page, art13.article, art13.decision_ref, art13.data_file) == (8, "13 (جديد) ب", "D10", DATA_FILE)
+
+
+@pytest.mark.parametrize("cat", list(PAIRES_P8))
+@pytest.mark.parametrize("decalage", [0, 5])
+def test_fin_de_fenetre_et_au_dela_refuses(cat, decalage):
+    fin = 27 + FENETRES[cat]
+    with pytest.raises(Refus) as e:
+        salaire_base(BTP, "admin_tech", cat, fin + decalage, "2024-06-01")
+    assert e.value.code == Refus.SOURCE_MANQUANTE
+    assert f"case {PAIRES_P8[cat]}" in e.value.message_fr and f"inférieure à {fin} ans" in e.value.message_fr
+    assert "page 8" in e.value.message_fr and "الصفحة 8" in e.value.message_ar
+
+
+@pytest.mark.parametrize("cat", ["4", "19"])
+def test_avant_27_ans_degre_11_sans_article_13(cat, ok):
+    r = ok(salaire_base(BTP, "admin_tech", cat, D("26.99"), "2024-06-01"))
+    assert "regle_art13" not in r.detail and len(r.citations) == 1
+
+
+def test_art13_grille_en_vigueur_a_la_date(ok):
+    r = ok(salaire_base(BTP, "admin_tech", "4", 28, "2022-06-01"))         # table 2021, case 5/5
+    assert r.montant == D("644.070") and r.citations[0].page == 23

@@ -77,14 +77,147 @@
  },
  "au_dela_dernier_degre": {
   "admin_tech": {
-   "anciennete_max_couverte_annees": 27,
+   "regle": "table_correspondance",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 24,
+   "duree_au_dernier_degre_annees": 3,
    "source_pdf_page": 8,
    "source_article": "13 (جديد) ب",
-   "texte_source_ar": "يتقاضى كل عامل وعون مرتب في الدرجة 11 من شبكة الأجور المتعلقة بالأعوان الإداريين والفنيين الخالصين بالشهر وذلك مهما كان صنفه، وبعد قضاء 3 سنوات في هذه الدرجة أجرا أساسيا وفق الجدول التالي",
-   "regle_fr": "Après 3 ans au degré 11 (atteint à 24 ans, p.23), l'agent administratif ou technicien payé au mois perçoit le salaire d'une autre case de la grille, selon une table de correspondance par catégorie (art. 13, p.8 ; catégorie 19 : « 950 dinars »).",
-   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 27 ans (24 + 3) est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D9).",
-   "message_fr": "Ancienneté de {a} ans : à partir de 27 ans (degré 11 atteint à 24 ans, puis 3 ans dans ce degré), l'article 13 (جديد) ب de la convention BTP (page 8) fixe le salaire selon une table de correspondance entre catégories et degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 27 ans).",
-   "message_ar": "أقدمية {a} سنة: ابتداءً من 27 سنة (بلوغ الدرجة 11 عند 24 سنة ثم قضاء 3 سنوات فيها)، يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) الأجر وفق جدول مقابلة بين الأصناف والدرجات. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 27 سنة)."
+   "texte_source_ar": "التدرج العادي يتمثل في الارتقاء بصفة متواصلة إلى درجة أعلى مباشرة حسب الأقدمية في الدرجة طبق الجدول الملحق بهذه الاتفاقية. يتقاضى كل عامل وعون مرتب في الدرجة 11 من شبكة الأجور المتعلقة بالأعوان الإداريين والفنيين الخالصين بالشهر وذلك مهما كان صنفه، وبعد قضاء 3 سنوات في هذه الدرجة أجرا أساسيا وفق الجدول التالي",
+   "regle_fr": "Après 3 ans au degré 11 (atteint à 24 ans, p.23), l'agent administratif ou technicien payé au mois perçoit comme salaire de base la valeur d'une autre case de la grille, selon la table de correspondance de la page 8 (« degré/catégorie »). Catégorie 19 : « 950 دينارا ».",
+   "statut_transcription": "VÉRIFIÉ (2026-10-09) : 19 lignes, double lecture (250 dpi tableau entier, 400 dpi colonne « مستوى التأجير الجديد » seule), 0 divergence ; validé sur le PDF par DS5.",
+   "table_correspondance": {
+    "1": {
+     "case_imprimee": "2/2",
+     "degre": 2,
+     "categorie": "2",
+     "fenetre_annees": 2
+    },
+    "2": {
+     "case_imprimee": "2/3",
+     "degre": 2,
+     "categorie": "3",
+     "fenetre_annees": 2
+    },
+    "3": {
+     "case_imprimee": "5/4",
+     "degre": 5,
+     "categorie": "4",
+     "fenetre_annees": 2
+    },
+    "4": {
+     "case_imprimee": "5/5",
+     "degre": 5,
+     "categorie": "5",
+     "fenetre_annees": 2
+    },
+    "5": {
+     "case_imprimee": "5/6",
+     "degre": 5,
+     "categorie": "6",
+     "fenetre_annees": 2
+    },
+    "6": {
+     "case_imprimee": "1/7",
+     "degre": 1,
+     "categorie": "7",
+     "fenetre_annees": 2
+    },
+    "7": {
+     "case_imprimee": "6/8",
+     "degre": 6,
+     "categorie": "8",
+     "fenetre_annees": 2
+    },
+    "8": {
+     "case_imprimee": "7/9",
+     "degre": 7,
+     "categorie": "9",
+     "fenetre_annees": 3
+    },
+    "9": {
+     "case_imprimee": "11/10",
+     "degre": 11,
+     "categorie": "10",
+     "fenetre_annees": 3
+    },
+    "10": {
+     "case_imprimee": "11/11",
+     "degre": 11,
+     "categorie": "11",
+     "fenetre_annees": 3
+    },
+    "11": {
+     "case_imprimee": "10/13",
+     "degre": 10,
+     "categorie": "13",
+     "fenetre_annees": 3
+    },
+    "12": {
+     "case_imprimee": "11/13",
+     "degre": 11,
+     "categorie": "13",
+     "fenetre_annees": 3
+    },
+    "13": {
+     "case_imprimee": "2/14",
+     "degre": 2,
+     "categorie": "14",
+     "fenetre_annees": 2
+    },
+    "14": {
+     "case_imprimee": "4/15",
+     "degre": 4,
+     "categorie": "15",
+     "fenetre_annees": 2
+    },
+    "15": {
+     "case_imprimee": "10/16",
+     "degre": 10,
+     "categorie": "16",
+     "fenetre_annees": 3
+    },
+    "16": {
+     "case_imprimee": "6/17",
+     "degre": 6,
+     "categorie": "17",
+     "fenetre_annees": 2
+    },
+    "17": {
+     "case_imprimee": "8/18",
+     "degre": 8,
+     "categorie": "18",
+     "fenetre_annees": 3
+    },
+    "18": {
+     "case_imprimee": "3/19",
+     "degre": 3,
+     "categorie": "19",
+     "fenetre_annees": 2
+    }
+   },
+   "categories_refusees": {
+    "19": {
+     "case_imprimee": "950 دينارا",
+     "message_fr": "Catégorie 19, après 3 ans au degré 11 : l'article 13 (جديد) ب de la convention BTP (page 8) fixe un salaire de base de « 950 dinars ». Ce montant, inférieur au degré 11 actuel de la catégorie 19 dans toutes les grilles vérifiées (1841,256 TND en 2021), paraît périmé ; il n'est pas appliqué et aucun montant n'est renvoyé.",
+     "message_ar": "الصنف 19، بعد قضاء 3 سنوات في الدرجة 11: يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) أجرا أساسيا قدره «950 دينارا». هذا المبلغ أقل من أجر الدرجة 11 الحالي للصنف 19 في كل الجداول المتحقق منها (1841,256 دينارا سنة 2021)، ويبدو متجاوزا؛ لذلك لا يُطبَّق ولا يُرجَع أي مبلغ."
+    }
+   },
+   "hypotheses_fr": [
+    "Case cible lue dans la table de l'article 13 (page 8), au format « degré/catégorie ».",
+    "Valeur de la case cible dans la grille en vigueur à la date du calcul.",
+    "La case cible n'est servie que pendant la durée de la tranche de son degré (en-tête p.23 : 2 ou 3 ans) ; la convention ne dit pas ce qui se passe ensuite."
+   ],
+   "hypotheses_ar": [
+    "الخانة المستهدفة مقروءة في جدول الفصل 13 (الصفحة 8) بصيغة «الدرجة/الصنف».",
+    "قيمة الخانة المستهدفة في جدول الأجور الساري بتاريخ الاحتساب.",
+    "لا تُعتمد الخانة المستهدفة إلا طيلة مدة شريحة درجتها (رأس الجدول، الصفحة 23: سنتان أو 3 سنوات)؛ ولا تحدد الاتفاقية ما يحصل بعد ذلك."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : l'article 13 (جديد) ب de la convention BTP (page 8) s'applique « après 3 ans » au degré 11 (atteint à 24 ans), mais ne précise pas si 27 ans pile en relève. Indiquer l'ancienneté exacte (par exemple 27 ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: ينطبق الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) «بعد قضاء 3 سنوات» في الدرجة 11 (المبلوغة عند 24 سنة)، لكنه لا يحدد إن كانت 27 سنة بالضبط مشمولة. يرجى تحديد الأقدمية بدقة.",
+   "message_hors_fenetre_fr": "Ancienneté de {a} ans, catégorie {categorie} : après 3 ans au degré 11, l'article 13 (جديد) ب de la convention BTP (page 8) fixe le salaire de la case {case} de la grille, sans dire ce qui se passe ensuite. Cette case n'est servie que pendant la durée de la tranche de son degré, soit pour une ancienneté inférieure à {fin} ans (D10) : aucun montant n'est renvoyé au-delà.",
+   "message_hors_fenetre_ar": "أقدمية {a} سنة، الصنف {categorie}: بعد قضاء 3 سنوات في الدرجة 11، يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) أجر الخانة {case} من الجدول دون تحديد ما يحصل بعد ذلك. لا تُعتمد هذه الخانة إلا طيلة مدة شريحة درجتها، أي لأقدمية تقل عن {fin} سنة؛ لا يُرجَع أي مبلغ بعد ذلك.",
+   "statut": "IMPLÉMENTÉ (D10) : catégories 1 à 18 → case cible pendant sa fenêtre (27 ans exclus → 27 + 2 ou 3 ans exclus) ; 27 ans pile refusé (PARAM_INVALIDE) ; fin de fenêtre et au-delà refusées (SOURCE_MANQUANTE) ; catégorie 19 refusée (950 dinars périmé). Remplace le refus de D9."
   }
  },
  "categories": {
