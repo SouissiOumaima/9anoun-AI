@@ -79,7 +79,7 @@ Les fichiers sources font foi :
 - `data/mock_cards/schemas/track_b_request.v0.schema.json`
 - `data/mock_cards/schemas/track_b_response.v0.schema.json`
 
-Les deux sont au format JSON Schema draft 2020-12.
+Les deux sont au format JSON Schema draft 2020-12. Le schéma commun v0 des réponses de tous les tracks (statut, citation, refus), proposé à l'équipe, est [`src/shared/schemas/common.v0.schema.json`](../src/shared/schemas/common.v0.schema.json) : les réponses Track B y sont déjà conformes.
 
 ### 3.1 Requête
 
