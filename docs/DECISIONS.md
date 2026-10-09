@@ -483,3 +483,176 @@ comportement.
 
 **Statut** : ✅ correctif minimal appliqué ; implémentation de l'article 13
 en attente des 4 points ci-dessus.
+
+---
+
+### D9 — Grille salariale BATIMENT_TRAVAUX_PUBLICS (pages 8, 15, 16, 23-25)
+
+**Source** : `data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf`
+(25 pages). Les tableaux des pages 23 à 25 sont des **scans sans couche texte**
+(image d'environ 1652 × 1976 px, soit ~200 dpi natifs). Chaque page porte deux
+tableaux :
+
+| Tableau | Page | Population | Unité | Date d'effet | Cellules |
+|---|---|---|---|---|---|
+| 1 | 23 | العملة العرضيين (ouvriers occasionnels) | TND/heure | 2021-12-01 | 10 |
+| 2 | 23 | الأعوان الاداريون والفنيون الخالصون بالشهر (admin_tech) | TND/mois | 2021-12-01 | 209 |
+| 3 | 24 | ouvriers occasionnels | TND/heure | 2023-01-01 | 10 |
+| 4 | 24 | admin_tech | TND/mois | 2023-01-01 | 209 |
+| 5 | 25 | ouvriers occasionnels | TND/heure | 2024-01-01 | 10 |
+| 6 | 25 | admin_tech | TND/mois | 2024-01-01 | 209 |
+
+Total : **657 cellules** (3 × 209 + 3 × 10). Données :
+`data/processed/salary_grids/batiment_travaux_publics.json` ; contrôles
+automatiques : `src/track_b_accounting/tests/test_grid_btp.py`.
+
+**Méthode de transcription (2026-10-07/08)** :
+1. **Double lecture indépendante** de chaque tableau :
+   - lecture A : rendu 200 dpi, bandes horizontales de 4 à 5 lignes (tables
+     administratives) ou tableau entier avec les libellés (occasionnels) ;
+   - lecture B : rendu 300 dpi, bandes verticales de 3 à 4 colonnes avec la
+     colonne des catégories accolée (administratives) ou colonne des valeurs
+     seule en deux demi-tableaux (occasionnels).
+
+   Résultat : **0 divergence et 0 cellule douteuse** sur les 657 cellules.
+2. **Relecture en pixels natifs agrandis ×4** des cellules signalées par les
+   contrôles (tableau 2) : lecture confirmée.
+3. **Règle entre années, cellule par cellule** (voir ci-dessous) : les 418
+   cellules administratives de 2023 et 2024 et les 20 cellules occasionnels de
+   2023 et 2024 sont conformes.
+4. **Validation par DS5** : les 5 cellules anormales du tableau 2 ont été
+   vérifiées directement sur le PDF.
+
+**Règle de revalorisation constatée** (elle n'est pas écrite dans la
+convention ; elle est déduite des tables et vérifiée sur toutes les cellules) :
+- **admin_tech** : entre deux dates d'effet, chaque catégorie reçoit
+  `degré 1 de l'année précédente × 6,75 %`, **ajouté tel quel à ses 11
+  degrés**. Ce n'est donc pas un ratio uniforme : le test « nouveau = ancien ×
+  1,0675 » échoue sur 190 cellules sur 209, seul le degré 1 passe. Écart
+  maximal à la règle : 0,0009 TND (arrondis).
+- **ouvriers occasionnels** : chaque taux horaire est multiplié par 1,0675
+  puis arrondi au millime (|nouveau − ancien × 1,0675| ≤ 0,0005 × 2,0675 ≈
+  0,00104 ; résidus constatés entre −0,0006 et +0,0008).
+
+**Limites des contrôles** :
+- Le **test d'incrément constant par catégorie** (utilisé pour la métallurgie,
+  D4) **n'est pas discriminant sur cette grille** : 15 catégories sur 19 du
+  tableau 2 sont signalées, à cause de la structure imprimée elle-même (sauts,
+  changements de pas). Il n'est gardé que comme indicateur.
+- Avec la tolérance de ±0,001, la règle entre années détecte une erreur de
+  lecture de **0,002 TND ou plus** dans une table administrative ; une erreur
+  de 0,001 peut passer (mesuré par mutation). La double lecture reste donc la
+  vérification principale. Pour les occasionnels, une erreur de 0,001 est
+  détectée, et les 30 valeurs sont en plus figées dans les tests.
+- Les contrôles ne prouvent pas l'exactitude : ils repèrent des erreurs de
+  lecture.
+
+**5 anomalies d'incrément conservées telles qu'imprimées** (champ
+`anomalies_increment` des 3 tables administratives). L'écart avec le degré
+précédent se retrouve **à l'identique en valeur absolue** en 2023 et 2024, ce
+qui découle de la règle ci-dessus :
+
+| Cellule (tableau 2, p.23) | 2021 | 2023 | 2024 | Constat |
+|---|---|---|---|---|
+| cat. 1, degré 11 | 535,028 | 570,375 | 608,109 | écart 0,450 contre 0,432-0,433 dans la ligne |
+| cat. 2, degré 11 | 562,267 | 599,828 | 639,924 | écart 1,617 contre 0,465-0,466 |
+| cat. 3, degré 7 | 588,076 | 627,469 | 669,521 | écart 1,761, puis 1,860-1,861 |
+| cat. 6, degré 3 | 678,440 | 723,903 | 772,435 | écarts 2,439 puis 2,500 contre 2,469-2,470 |
+| cat. 14, degré 6 | 1220,466 | 1300,939 | 1386,844 | écarts 5,164 puis 5,144 contre 5,153-5,154 |
+
+Elles pourraient être des coquilles de la convention. Elles ne sont **pas
+corrigées** : le texte imprimé fait foi, et le module sert la valeur imprimée.
+
+**Sauts de +2,500 TND (origine non expliquée)** : dans 10 catégories, une
+seule transition entre deux degrés dépasse de +2,500 l'incrément habituel. Le
+degré où tombe le saut **varie** :
+
+| Saut vers le degré | Catégories (saut constaté en 2021) |
+|---|---|
+| 2 | 15 (8,191 ; +2,501) |
+| 5 | 6 (4,969), 14 (7,653) |
+| 6 | 13 (7,332) |
+| 8 | 5 (4,862), 7 (5,721), 12 (7,010) |
+| 9 | 11 (6,801) |
+| 11 | 4 (4,608), 10 (6,587) |
+
+Les sauts sont identiques en 2023 et 2024 (±0,001). Le montant constant et
+leur reprise d'une année sur l'autre font penser à un élément voulu par la
+convention (rattrapage ou reclassement ?), mais aucun texte du document ne
+l'explique. Les valeurs sont conservées telles qu'imprimées.
+
+**Note sous chaque tableau** : les salaires incluent l'indemnité
+complémentaire provisoire (المنحة التكميلية المؤقتة, décret n° 437 du
+7 avril 1981, modifié par le décret n° 501 du 16 mars 1982) ;
+`_meta.remarque_pdf`.
+
+**`regime_hebdomadaire_heures`** : laissé à `null`, car les pages 23 à 25 ne
+l'indiquent pas.
+
+**Décisions de structure (validées par DS5 avant transcription)** :
+1. **Sous-catégories des ouvriers occasionnels** (p.23) : la catégorie 6
+   comprend « عامل ذو كفاءة عالية I » et « II » (clés `6_I`, `6_II`), la
+   catégorie 7 « رئيس فريق درجة أولى / ثانية / ثالثة » (clés `7_1`, `7_2`,
+   `7_3`). La requête porte `categorie` (6 ou 7) et `sous_categorie`
+   (« I », « II », « 1 », « 2 », « 3 »). Une sous-catégorie manquante,
+   inconnue ou fournie pour une catégorie qui n'en a pas donne
+   `PARAM_INVALIDE` ; la clé technique (`6_I`) n'est pas acceptée comme
+   catégorie. Les libellés FR et AR du PDF (« درجة » traduit par « degré »)
+   sont renvoyés dans `detail`.
+2. **Degrés et plafond (admin_tech)** : en-tête « مدة البقاء بالدرجة » (p.23),
+   tranches cumulées 0-2, 2-4, …, 10-12, 12-15, 15-18, 18-21, 21-24, 24+ :
+   le degré 11 est atteint à 24 ans. L'article 13 (جديد) ب (p.8) prévoit,
+   après 3 ans au degré 11, un salaire selon une table de correspondance.
+   Cette règle n'est **pas implémentée** : toute ancienneté **≥ 27 ans** donne
+   un refus `SOURCE_MANQUANTE` qui cite l'article 13 et la page 8, avec la
+   même sémantique de borne que la métallurgie (D8). Les bornes communes (2,
+   4, …, 12, 15, 18, 21, 24) donnent `PARAM_INVALIDE`, comme en D6. Les textes
+   FR et AR du refus sont dans le JSON (`au_dela_dernier_degre.admin_tech`) ;
+   la métallurgie a aussi déplacé les siens dans son JSON, sans les modifier.
+3. **Prime de panier (qefa) non exposée** (art. 51 (جديد) أ, p.15) : le texte
+   imprimé fixe 800 millimes et conditionne la prime à « سبع سنوات متتالية »
+   (sept ans consécutifs), mais la phrase ajoute « y compris la pause d'une
+   heure au plus », ce qui renvoie plutôt à des heures de travail (la même
+   prime, côté métallurgie, renvoie à l'article 89 du Code du travail). Refus `SOURCE_MANQUANTE` qui expose les deux
+   lectures ; pas de paramètre `condition_remplie`.
+4. **Populations** : seuls `ouvriers_occasionnels` (TND/heure, sans degré ;
+   `anciennete_annees` **refusé**, `PARAM_INVALIDE`) et `admin_tech`
+   (TND/mois, 11 degrés) sont couverts. Les **ouvriers permanents** relèvent
+   de l'annexe 4 (citée à l'article 56, p.16), **absente** du PDF fourni comme
+   de `data.zip` (fichiers identiques, même empreinte SHA-256) : refus
+   `SOURCE_MANQUANTE`.
+
+**Changements de code et de contrat associés** (étape a, puis intégration) :
+- les degrés et le bloc `au_dela_dernier_degre` sont déclarés **par
+  population** (`degres.<population>`), y compris pour la métallurgie. Cela
+  remplace la liste unique `degres` décrite en D6, sans changer aucun montant
+  métallurgie ;
+- plus de secteur par défaut : `secteur` absent ou vide → `PARAM_INVALIDE` ;
+- schéma de requête : `anciennete_annees` n'est plus obligatoire au schéma
+  (le calcul l'exige ou le refuse selon la population) ; nouveau champ
+  optionnel `sous_categorie` ;
+- un secteur enregistré dont `_meta.tables_transcrites` n'est pas `true` est
+  refusé comme un secteur inconnu ;
+- `_meta.decision_ref = "D9"` dans le fichier BTP ;
+- démo : `demo-10-refus-secteur-non-couvert` visait `BATIMENT_TRAVAUX_PUBLICS`,
+  désormais couvert. Elle utilise maintenant le code fictif
+  `SECTEUR_FICTIF_NON_SUPPORTE`, pour garder un refus « secteur inconnu ».
+  Trois requêtes BTP ont été ajoutées (demo-11 à demo-13 : 699.751 TND/mois,
+  4.276 TND/heure, refus à 28 ans). Les réponses des demo-01 à demo-09 sont
+  inchangées à l'octet près.
+
+**Questions ouvertes** :
+1. **Qefa** : « sept ans » imprimé contre contexte horaire (heures de travail
+   consécutives ?). À trancher avec un texte de référence ou un juriste avant
+   d'exposer la prime.
+2. **Annexe 4** (ouvriers permanents) : absente du corpus. Il faut la retrouver
+   pour couvrir cette population.
+3. **Article 13 au-delà de 27 ans** : la table de correspondance de la p.8
+   n'est ni transcrite ni implémentée.
+4. **Origine des sauts de +2,500 et des 5 anomalies** : non expliquée par le
+   document.
+5. **Autres primes BTP** (transport, etc.) : non transcrites ; toute demande
+   donne `SOURCE_MANQUANTE` (« aucune prime transcrite »).
+
+**Statut** : ✅ 6 tables vérifiées et validées par DS5 ; questions 1 à 5
+ouvertes.

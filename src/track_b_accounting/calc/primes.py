@@ -8,7 +8,7 @@ Les paramètres exigés dépendent de ce que contient l'entrée JSON de la prime
 """
 from __future__ import annotations
 
-from .loaders import GRILLES, charger_grille, decision_ref
+from .loaders import GRILLES, charger_grille, decision_ref, exiger_tables_transcrites
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
 _CLES_NON_MONTANT = {"effective_date", "au_titre_de"}
@@ -50,9 +50,14 @@ def _ligne_datee(lignes: list[dict], jour, code: str) -> dict:
 def prime(secteur: str, code: str, date, **params) -> Result:
     grille = charger_grille(secteur)
     jour = parse_date(date)
+    if code in grille.get("primes_non_couvertes", {}):
+        # Prime présente dans la source mais non exposée (ex. condition ambiguë) : refus lu dans le JSON (D9).
+        bloc = grille["primes_non_couvertes"][code]
+        raise Refus(Refus.SOURCE_MANQUANTE, bloc["message_fr"], bloc["message_ar"])
+    exiger_tables_transcrites(grille, secteur)
     p = next((x for x in grille.get("primes", []) if x["code"] == code), None)
     if p is None:
-        codes = ", ".join(x["code"] for x in grille.get("primes", []))
+        codes = ", ".join(x["code"] for x in grille.get("primes", [])) or "aucune prime transcrite"
         raise Refus(Refus.SOURCE_MANQUANTE, f"Prime {code!r} absente des données vérifiées ({secteur} : {codes}).",
                     f"المنحة {code!r} غير موجودة في البيانات المُتحقَّق منها ({secteur}).")
 

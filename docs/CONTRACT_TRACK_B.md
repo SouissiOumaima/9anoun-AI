@@ -38,11 +38,18 @@ limite pas à déposer un fichier dans `data/processed/salary_grids/` :
    fichier métallurgie :
    - les tables sont rattachées à une population quand leurs catégories sont
      exactement celles de la population ;
-   - les intervalles de degré sont lus dans des libellés de la forme `"0-2 ans"`
-     et `"20+"` ;
-   - chaque grille doit déclarer, dans un bloc `au_dela_dernier_degre`, ce
-     que dit sa source au-delà du dernier degré (ancienneté maximale couverte,
-     page et article) ; sans ce bloc, la grille est refusée (D8) ;
+   - les degrés sont déclarés **par population** (`degres.<population>`, liste
+     vide pour une population sans degré) ; leurs intervalles sont lus dans
+     des libellés de la forme `"0-2 ans"`, `"12-15"` et `"20+"` ;
+   - une catégorie peut avoir des sous-catégories (`sous_categories`), une
+     population ou une prime peut être déclarée non couverte
+     (`populations_non_couvertes`, `primes_non_couvertes`) avec son texte
+     de refus FR/AR dans le JSON ;
+   - chaque population à degrés doit déclarer, dans
+     `au_dela_dernier_degre.<population>`, ce que dit sa source au-delà du
+     dernier degré (ancienneté maximale couverte, page, article et textes de
+     refus FR/AR où seul `{a}` est remplacé) ; sans ce bloc, la grille est
+     refusée (D8, D9) ;
    - les paramètres de prime dépendent de clés JSON précises (`montants`,
      `complement_si_prime_superieure`, `montant_reduit_si_transport_assure`,
      `condition`).
@@ -57,7 +64,8 @@ transcrites.
 
 **Point réglé : la référence de vérification.** Le champ `decision_ref` des
 citations (l'entrée de `DECISIONS.md` qui documente la vérification) est lu
-dans le fichier du secteur (`_meta.decision_ref`, `"D4"` pour la métallurgie).
+dans le fichier du secteur (`_meta.decision_ref` : `"D4"` pour la métallurgie,
+`"D9"` pour le BTP).
 Il n'est plus écrit en dur dans le code. Le SMIG suit la même règle : sa
 référence est lue dans `smig_non_agricole.decision_ref` (`"D2"`) de
 `smig_smag.json`. Chaque nouveau fichier de secteur
@@ -89,10 +97,11 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur, ex. `METALLURGIE_BATIMENT`. |
-| `population` | chaîne | `admin_tech` (grille mensuelle) ou `execution` (grille horaire) pour la métallurgie. |
-| `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. |
-| `anciennete_annees` | nombre | Ancienneté en années. Une valeur exactement égale à une borne (2, 4, …, 20) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). |
+| `secteur` | chaîne | Code du secteur, ex. `METALLURGIE_BATIMENT` ou `BATIMENT_TRAVAUX_PUBLICS`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `population` | chaîne | Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). |
+| `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. |
+| `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
+| `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). Au-delà du plafond de la grille (métallurgie : 22 ans ; BTP `admin_tech` : 27 ans), refus `SOURCE_MANQUANTE` (D8, D9). |
 | `date` | `AAAA-MM-JJ` | Date de calcul : la table appliquée est la plus récente dont la date d'effet est ≤ cette date. |
 | `unite_souhaitee` | chaîne, optionnel | Si elle diffère de l'unité de la grille, la requête est refusée (`HORS_SCOPE`) : aucune conversion horaire ↔ mensuel n'est écrite dans les sources. |
 
@@ -172,10 +181,11 @@ pas conforme, il la remplace par une réponse `erreur`.
 |---|---|---|
 | `HORS_SCOPE` | `demo-07-refus-cnss` | Opération `cotisation_cnss` (voir §5.2). |
 | `SOURCE_MANQUANTE` | `demo-08-refus-date-anterieure` | Date 2021-11-30, avant la première grille (2021-12-01). |
-| `SOURCE_MANQUANTE` | `demo-10-refus-secteur-non-couvert` | Secteur `BATIMENT_TRAVAUX_PUBLICS`, sans données vérifiées. |
+| `SOURCE_MANQUANTE` | `demo-10-refus-secteur-non-couvert` | Secteur fictif `SECTEUR_FICTIF_NON_SUPPORTE` (avant D9, cette requête visait `BATIMENT_TRAVAUX_PUBLICS`, désormais couvert). |
+| `SOURCE_MANQUANTE` | `demo-13-refus-btp-anciennete-27-ans` | BTP `admin_tech`, ancienneté de 28 ans : article 13 non implémenté au-delà de 27 ans (D9). |
 | `PARAM_INVALIDE` | `demo-09-refus-categorie-inconnue` | Catégorie `19`, absente de la grille. La requête est conforme au schéma ; c'est donc un `PARAM_INVALIDE` émis par le calcul, pas un refus de contrat. |
 
-Aucune des 10 requêtes de démo n'est non conforme au schéma. L'exemple de
+Aucune des 13 requêtes de démo n'est non conforme au schéma. L'exemple de
 refus de contrat du §5.4 a donc été produit à part, avec une opération
 inconnue.
 
@@ -373,7 +383,7 @@ l'entrée standard. Il écrit la réponse JSON en UTF-8 sur la sortie standard
 (arabe en clair, `ensure_ascii=False`).
 
 ```
-# Les 10 requêtes de démo → liste de 10 réponses
+# Les 13 requêtes de démo → liste de 13 réponses
 python -m src.track_b_accounting.contract.cli data/mock_cards/track_b_requests_demo.json
 
 # Une requête dans un fichier à vous
@@ -393,10 +403,12 @@ la réponse imprimée a le statut `erreur`.
 ```
 python -m src.track_b_accounting.demo
 ```
-La démo affiche les 10 échanges : requête, réponse, puis la phrase produite
+La démo affiche les 13 échanges : requête, réponse, puis la phrase produite
 par une doublure de Track A (`MockTrackA`, dans
 `src/track_b_accounting/tests/mocks.py`). Le bilan attendu est :
-`Bilan : 6 ok, 4 refus, 0 erreur(s).`
+`Bilan : 8 ok, 5 refus, 0 erreur(s).` Les échanges 11 à 13 portent sur le BTP
+(administratif, ouvrier occasionnel avec `sous_categorie`, refus au-delà de
+27 ans d'ancienneté).
 
 `MockTrackA` ne fait que mettre en forme : il recopie le montant et les
 sources de la réponse, sans rien calculer. C'est une doublure de test, pas
@@ -416,19 +428,45 @@ Draft202012Validator(schema).validate(ma_requete)
 
 ## 7. Ce qui n'est pas encore couvert
 
-- **Un seul secteur a des données vérifiées : `METALLURGIE_BATIMENT`.** Il
-  comprend 6 grilles (3 dates d'effet × 2 populations) et 6 primes. Tout
-  autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
+- **Deux secteurs ont des données vérifiées :**
+  - `METALLURGIE_BATIMENT` (D4) : 6 grilles (3 dates d'effet × 2 populations)
+    et 6 primes ;
+  - `BATIMENT_TRAVAUX_PUBLICS` (D9) : 6 grilles (3 dates d'effet × 2
+    populations), aucune prime.
+
+  Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
   référence `_meta.decision_ref` ; sans elle, le secteur est refusé
   (`SOURCE_MANQUANTE`). Voir le §2 pour ce que demande aujourd'hui l'ajout
   d'un secteur.
 - **Les dates sont bornées par le corpus.**
-  - Grilles métallurgie : à partir du 2021-12-01. Après le 2024-01-01, la
-    grille 2024 reste appliquée, car le corpus ne contient pas de grille plus
-    récente : le module ne sait pas si une grille plus récente existe ailleurs.
+  - Grilles métallurgie et BTP : à partir du 2021-12-01. Après le
+    2024-01-01, la grille 2024 reste appliquée, car le corpus ne contient pas
+    de grille plus récente : le module ne sait pas si une grille plus récente
+    existe ailleurs.
   - SMIG : seul le décret n°769/2022 (effet 2022-10-01) est vérifié. Le module
     ne connaît pas de SMIG postérieur.
+- **Secteur `BATIMENT_TRAVAUX_PUBLICS` : couvert pour deux populations
+  seulement (D9).**
+  - Couvert : `admin_tech` (agents administratifs et techniciens, TND/mois,
+    11 degrés, ancienneté < 27 ans) et `ouvriers_occasionnels` (العملة
+    العرضيين, TND/heure, sans degré d'ancienneté ; `anciennete_annees` est
+    **refusé** pour cette population, `PARAM_INVALIDE`, et `sous_categorie`
+    est obligatoire pour les catégories 6 et 7).
+  - **Non couvert : les ouvriers permanents (`ouvriers_permanents`).** Leur
+    grille (annexe 4, citée à l'article 56, page 16) est absente du document
+    fourni. Ils reçoivent un refus `SOURCE_MANQUANTE` explicite :
+    l'orchestrateur ne doit pas router vers ce secteur une question sur un
+    ouvrier permanent du BTP.
+  - **Non couvert : la prime de panier (qefa) du BTP.** Sa condition d'octroi
+    est ambiguë dans la source (art. 51 (جديد) أ, p.15 : « sept ans »
+    imprimé, contexte horaire) ; refus `SOURCE_MANQUANTE`. Aucune autre prime
+    BTP n'est transcrite.
+  - **Non couvert : l'article 13 au-delà de 27 ans d'ancienneté**
+    (`admin_tech`). Après 3 ans au degré 11 (atteint à 24 ans), l'article 13
+    (جديد) ب (page 8) renvoie à une table de correspondance qui n'est pas
+    implémentée : toute ancienneté ≥ 27 ans donne un refus `SOURCE_MANQUANTE`
+    qui cite l'article et la page, jamais la valeur du degré 11.
 - **L'ancienneté est bornée à moins de 22 ans (métallurgie).** Au-delà du
   dernier degré (degré 11, atteint à 20 ans), l'article 13 de la convention
   (page 9) ajoute tous les deux ans l'écart entre les deux derniers degrés.

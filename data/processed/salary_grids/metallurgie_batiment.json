@@ -24,59 +24,121 @@
    "2024-01-01"
   ]
  },
- "degres": [
-  {
-   "degre": 1,
-   "anciennete_label": "0-2 ans"
-  },
-  {
-   "degre": 2,
-   "anciennete_label": "2-4"
-  },
-  {
-   "degre": 3,
-   "anciennete_label": "4-6"
-  },
-  {
-   "degre": 4,
-   "anciennete_label": "6-8"
-  },
-  {
-   "degre": 5,
-   "anciennete_label": "8-10"
-  },
-  {
-   "degre": 6,
-   "anciennete_label": "10-12"
-  },
-  {
-   "degre": 7,
-   "anciennete_label": "12-14"
-  },
-  {
-   "degre": 8,
-   "anciennete_label": "14-16"
-  },
-  {
-   "degre": 9,
-   "anciennete_label": "16-18"
-  },
-  {
-   "degre": 10,
-   "anciennete_label": "18-20"
-  },
-  {
-   "degre": 11,
-   "anciennete_label": "20+"
-  }
- ],
+ "degres": {
+  "admin_tech": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20+"
+   }
+  ],
+  "execution": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20+"
+   }
+  ]
+ },
  "au_dela_dernier_degre": {
-  "anciennete_max_couverte_annees": 22,
-  "source_pdf_page": 9,
-  "source_article": "13 (جديد) ب",
-  "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
-  "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
-  "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8)."
+  "admin_tech": {
+   "anciennete_max_couverte_annees": 22,
+   "source_pdf_page": 9,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
+   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8).",
+   "message_fr": "Ancienneté de {a} ans : à partir de 22 ans, l'article 13 (جديد) ب de la convention (page 9) prévoit d'ajouter tous les deux ans l'écart entre les deux derniers degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 22 ans).",
+   "message_ar": "أقدمية {a} سنة: ابتداءً من 22 سنة، ينص الفصل 13 (جديد) ب من الاتفاقية (الصفحة 9) على إضافة الفارق بين آخر درجتين كل سنتين. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 22 سنة)."
+  },
+  "execution": {
+   "anciennete_max_couverte_annees": 22,
+   "source_pdf_page": 9,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent.",
+   "statut": "RÈGLE NON IMPLÉMENTÉE : toute ancienneté >= 22 ans est refusée (SOURCE_MANQUANTE) au lieu de renvoyer la valeur du degré 11 — cf. docs/DECISIONS.md (D8).",
+   "message_fr": "Ancienneté de {a} ans : à partir de 22 ans, l'article 13 (جديد) ب de la convention (page 9) prévoit d'ajouter tous les deux ans l'écart entre les deux derniers degrés. Cette règle n'est pas encore implémentée : aucun montant n'est renvoyé (ancienneté couverte : moins de 22 ans).",
+   "message_ar": "أقدمية {a} سنة: ابتداءً من 22 سنة، ينص الفصل 13 (جديد) ب من الاتفاقية (الصفحة 9) على إضافة الفارق بين آخر درجتين كل سنتين. هذه القاعدة غير مطبقة بعد، لذلك لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 22 سنة)."
+  }
  },
  "categories": {
   "admin_tech": [
