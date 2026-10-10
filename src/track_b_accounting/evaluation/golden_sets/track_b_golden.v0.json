@@ -8,7 +8,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -42,7 +42,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -76,7 +76,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -111,7 +111,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -145,7 +145,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -179,7 +179,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -213,7 +213,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -247,7 +247,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -281,7 +281,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -315,7 +315,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -348,7 +348,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -382,7 +382,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -416,7 +416,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "prime",
     "params": {
@@ -450,7 +450,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "prime",
     "params": {
@@ -484,7 +484,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "prime",
     "params": {
@@ -518,7 +518,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "prime",
     "params": {
@@ -552,7 +552,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "smig",
     "params": {
@@ -585,7 +585,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "smig",
     "params": {
@@ -618,7 +618,7 @@
    "categorie": "art13",
    "certitude": "C",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -657,7 +657,7 @@
    "categorie": "art13",
    "certitude": "C",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -696,7 +696,7 @@
    "categorie": "art13",
    "certitude": "C",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -735,7 +735,7 @@
    "categorie": "art13",
    "certitude": "I",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -773,7 +773,7 @@
    "categorie": "art13",
    "certitude": "I",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -811,7 +811,7 @@
    "categorie": "art13",
    "certitude": "I",
    "decision": "D10",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1012,7 +1012,7 @@
    "categorie": "refus",
    "certitude": "L",
    "decision": "D9",
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1143,7 +1143,7 @@
    "categorie": "refus",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1170,7 +1170,7 @@
    "categorie": "piege",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1198,7 +1198,7 @@
    "categorie": "piege",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1224,7 +1224,7 @@
    "categorie": "piege",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1251,7 +1251,7 @@
    "categorie": "piege",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "smig",
     "params": {
@@ -1277,7 +1277,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1312,7 +1312,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1346,7 +1346,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1380,7 +1380,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1415,7 +1415,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1450,7 +1450,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
@@ -1485,7 +1485,7 @@
    "categorie": "ok",
    "certitude": "L",
    "decision": null,
-   "verification_humaine": false,
+   "verification_humaine": true,
    "requete": {
     "operation": "salaire_base",
     "params": {
