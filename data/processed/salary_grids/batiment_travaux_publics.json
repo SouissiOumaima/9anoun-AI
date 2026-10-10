@@ -1,0 +1,1274 @@
+{
+ "_meta": {
+  "secteur_code": "BATIMENT_TRAVAUX_PUBLICS",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة",
+  "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+  "pages_sources": [
+   8,
+   15,
+   16,
+   23,
+   24,
+   25
+  ],
+  "extraction_method": "Pages 23-25 = images scannées sans couche texte -> lecture visuelle (rastérisation 200 et 300 dpi, recadrages par lignes et par colonnes) puis saisie manuelle ; cellules signalées relues en pixels natifs agrandis.",
+  "tables_transcrites": true,
+  "statut_verification": "VÉRIFIÉ (2026-10-08) : 6 tables, 657 cellules (3 × 209 administratifs et techniciens, 3 × 10 ouvriers occasionnels) ; double lecture sans divergence + règle de revalorisation entre années vérifiée cellule par cellule. 5 anomalies d'incrément conservées telles qu'imprimées (anomalies_increment). Détail : docs/DECISIONS.md (D9) ; contrôles automatiques : tests/test_grid_btp.py",
+  "decision_ref": "D9",
+  "currency": "TND",
+  "note_degres": "admin_tech : en-tête « مدة البقاء بالدرجة » (p.23), tranches cumulées 0-2 … 21-24, 24+ (degré 11 atteint à 24 ans). ouvriers_occasionnels : aucun degré d'ancienneté (une valeur par catégorie).",
+  "remarque_pdf": "Note sous chaque tableau (p.23-25) : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, modifié par le décret n° 501 du 16 mars 1982).",
+  "remarque_pdf_ar": "ملاحظة : تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982",
+  "regle_revalorisation": "Constat sur les tables (non écrit dans la convention) : administratifs et techniciens, chaque catégorie reçoit le degré 1 de l'année précédente × 6,75 %, ajouté tel quel à ses 11 degrés ; ouvriers occasionnels, chaque taux horaire × 1,0675 (arrondi au millime).",
+  "dates_effet_tables": [
+   "2021-12-01",
+   "2023-01-01",
+   "2024-01-01"
+  ]
+ },
+ "degres": {
+  "admin_tech": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24+"
+   }
+  ],
+  "ouvriers_occasionnels": []
+ },
+ "au_dela_dernier_degre": {
+  "admin_tech": {
+   "regle": "table_correspondance",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 24,
+   "duree_au_dernier_degre_annees": 3,
+   "source_pdf_page": 8,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "التدرج العادي يتمثل في الارتقاء بصفة متواصلة إلى درجة أعلى مباشرة حسب الأقدمية في الدرجة طبق الجدول الملحق بهذه الاتفاقية. يتقاضى كل عامل وعون مرتب في الدرجة 11 من شبكة الأجور المتعلقة بالأعوان الإداريين والفنيين الخالصين بالشهر وذلك مهما كان صنفه، وبعد قضاء 3 سنوات في هذه الدرجة أجرا أساسيا وفق الجدول التالي",
+   "regle_fr": "Après 3 ans au degré 11 (atteint à 24 ans, p.23), l'agent administratif ou technicien payé au mois perçoit comme salaire de base la valeur d'une autre case de la grille, selon la table de correspondance de la page 8 (« degré/catégorie »). Catégorie 19 : « 950 دينارا ».",
+   "statut_transcription": "VÉRIFIÉ (2026-10-09) : 19 lignes, double lecture (250 dpi tableau entier, 400 dpi colonne « مستوى التأجير الجديد » seule), 0 divergence ; validé sur le PDF par DS5.",
+   "table_correspondance": {
+    "1": {
+     "case_imprimee": "2/2",
+     "degre": 2,
+     "categorie": "2",
+     "fenetre_annees": 2
+    },
+    "2": {
+     "case_imprimee": "2/3",
+     "degre": 2,
+     "categorie": "3",
+     "fenetre_annees": 2
+    },
+    "3": {
+     "case_imprimee": "5/4",
+     "degre": 5,
+     "categorie": "4",
+     "fenetre_annees": 2
+    },
+    "4": {
+     "case_imprimee": "5/5",
+     "degre": 5,
+     "categorie": "5",
+     "fenetre_annees": 2
+    },
+    "5": {
+     "case_imprimee": "5/6",
+     "degre": 5,
+     "categorie": "6",
+     "fenetre_annees": 2
+    },
+    "6": {
+     "case_imprimee": "1/7",
+     "degre": 1,
+     "categorie": "7",
+     "fenetre_annees": 2
+    },
+    "7": {
+     "case_imprimee": "6/8",
+     "degre": 6,
+     "categorie": "8",
+     "fenetre_annees": 2
+    },
+    "8": {
+     "case_imprimee": "7/9",
+     "degre": 7,
+     "categorie": "9",
+     "fenetre_annees": 3
+    },
+    "9": {
+     "case_imprimee": "11/10",
+     "degre": 11,
+     "categorie": "10",
+     "fenetre_annees": 3
+    },
+    "10": {
+     "case_imprimee": "11/11",
+     "degre": 11,
+     "categorie": "11",
+     "fenetre_annees": 3
+    },
+    "11": {
+     "case_imprimee": "10/13",
+     "degre": 10,
+     "categorie": "13",
+     "fenetre_annees": 3
+    },
+    "12": {
+     "case_imprimee": "11/13",
+     "degre": 11,
+     "categorie": "13",
+     "fenetre_annees": 3
+    },
+    "13": {
+     "case_imprimee": "2/14",
+     "degre": 2,
+     "categorie": "14",
+     "fenetre_annees": 2
+    },
+    "14": {
+     "case_imprimee": "4/15",
+     "degre": 4,
+     "categorie": "15",
+     "fenetre_annees": 2
+    },
+    "15": {
+     "case_imprimee": "10/16",
+     "degre": 10,
+     "categorie": "16",
+     "fenetre_annees": 3
+    },
+    "16": {
+     "case_imprimee": "6/17",
+     "degre": 6,
+     "categorie": "17",
+     "fenetre_annees": 2
+    },
+    "17": {
+     "case_imprimee": "8/18",
+     "degre": 8,
+     "categorie": "18",
+     "fenetre_annees": 3
+    },
+    "18": {
+     "case_imprimee": "3/19",
+     "degre": 3,
+     "categorie": "19",
+     "fenetre_annees": 2
+    }
+   },
+   "categories_refusees": {
+    "19": {
+     "case_imprimee": "950 دينارا",
+     "message_fr": "Catégorie 19, après 3 ans au degré 11 : l'article 13 (جديد) ب de la convention BTP (page 8) fixe un salaire de base de « 950 dinars ». Ce montant, inférieur au degré 11 actuel de la catégorie 19 dans toutes les grilles vérifiées (1841,256 TND en 2021), paraît périmé ; il n'est pas appliqué et aucun montant n'est renvoyé.",
+     "message_ar": "الصنف 19، بعد قضاء 3 سنوات في الدرجة 11: يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) أجرا أساسيا قدره «950 دينارا». هذا المبلغ أقل من أجر الدرجة 11 الحالي للصنف 19 في كل الجداول المتحقق منها (1841,256 دينارا سنة 2021)، ويبدو متجاوزا؛ لذلك لا يُطبَّق ولا يُرجَع أي مبلغ."
+    }
+   },
+   "hypotheses_fr": [
+    "Case cible lue dans la table de l'article 13 (page 8), au format « degré/catégorie ».",
+    "Valeur de la case cible dans la grille en vigueur à la date du calcul.",
+    "La case cible n'est servie que pendant la durée de la tranche de son degré (en-tête p.23 : 2 ou 3 ans) ; la convention ne dit pas ce qui se passe ensuite."
+   ],
+   "hypotheses_ar": [
+    "الخانة المستهدفة مقروءة في جدول الفصل 13 (الصفحة 8) بصيغة «الدرجة/الصنف».",
+    "قيمة الخانة المستهدفة في جدول الأجور الساري بتاريخ الاحتساب.",
+    "لا تُعتمد الخانة المستهدفة إلا طيلة مدة شريحة درجتها (رأس الجدول، الصفحة 23: سنتان أو 3 سنوات)؛ ولا تحدد الاتفاقية ما يحصل بعد ذلك."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : l'article 13 (جديد) ب de la convention BTP (page 8) s'applique « après 3 ans » au degré 11 (atteint à 24 ans), mais ne précise pas si 27 ans pile en relève. Indiquer l'ancienneté exacte (par exemple 27 ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: ينطبق الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) «بعد قضاء 3 سنوات» في الدرجة 11 (المبلوغة عند 24 سنة)، لكنه لا يحدد إن كانت 27 سنة بالضبط مشمولة. يرجى تحديد الأقدمية بدقة.",
+   "message_hors_fenetre_fr": "Ancienneté de {a} ans, catégorie {categorie} : après 3 ans au degré 11, l'article 13 (جديد) ب de la convention BTP (page 8) fixe le salaire de la case {case} de la grille, sans dire ce qui se passe ensuite. Cette case n'est servie que pendant la durée de la tranche de son degré, soit pour une ancienneté inférieure à {fin} ans (D10) : aucun montant n'est renvoyé au-delà.",
+   "message_hors_fenetre_ar": "أقدمية {a} سنة، الصنف {categorie}: بعد قضاء 3 سنوات في الدرجة 11، يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) أجر الخانة {case} من الجدول دون تحديد ما يحصل بعد ذلك. لا تُعتمد هذه الخانة إلا طيلة مدة شريحة درجتها، أي لأقدمية تقل عن {fin} سنة؛ لا يُرجَع أي مبلغ بعد ذلك.",
+   "statut": "IMPLÉMENTÉ (D10) : catégories 1 à 18 → case cible pendant sa fenêtre (27 ans exclus → 27 + 2 ou 3 ans exclus) ; 27 ans pile refusé (PARAM_INVALIDE) ; fin de fenêtre et au-delà refusées (SOURCE_MANQUANTE) ; catégorie 19 refusée (950 dinars périmé). Remplace le refus de D9."
+  }
+ },
+ "categories": {
+  "admin_tech": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19"
+  ],
+  "ouvriers_occasionnels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6_I",
+   "6_II",
+   "7_1",
+   "7_2",
+   "7_3"
+  ]
+ },
+ "sous_categories": {
+  "ouvriers_occasionnels": {
+   "source_pdf_page": 23,
+   "par_categorie": {
+    "6": {
+     "I": {
+      "cle": "6_I",
+      "libelle_ar": "عامل ذو كفاءة عالية I",
+      "libelle_fr": "Ouvrier hautement qualifié I"
+     },
+     "II": {
+      "cle": "6_II",
+      "libelle_ar": "عامل ذو كفاءة عالية II",
+      "libelle_fr": "Ouvrier hautement qualifié II"
+     }
+    },
+    "7": {
+     "1": {
+      "cle": "7_1",
+      "libelle_ar": "رئيس فريق درجة أولى",
+      "libelle_fr": "Chef d'équipe, 1er degré"
+     },
+     "2": {
+      "cle": "7_2",
+      "libelle_ar": "رئيس فريق درجة ثانية",
+      "libelle_fr": "Chef d'équipe, 2e degré"
+     },
+     "3": {
+      "cle": "7_3",
+      "libelle_ar": "رئيس فريق درجة ثالثة",
+      "libelle_fr": "Chef d'équipe, 3e degré"
+     }
+    }
+   }
+  }
+ },
+ "populations_non_couvertes": {
+  "ouvriers_permanents": {
+   "source_pdf_page": 16,
+   "source_article": "56",
+   "message_fr": "Ouvriers permanents (العملة القارين) : leur grille (annexe 4, citée à l'article 56, page 16) est absente du document fourni. Pour ce secteur, seuls les ouvriers occasionnels et les agents administratifs et techniciens sont couverts ; aucun montant n'est renvoyé.",
+   "message_ar": "العملة القارون: جدول أجورهم (الملحق عدد 4 المشار إليه في الفصل 56، الصفحة 16) غير موجود في الوثيقة المتوفرة. لا يغطي هذا القطاع إلا العملة العرضيين والأعوان الإداريين والفنيين؛ لا يُرجَع أي مبلغ."
+  }
+ },
+ "primes_non_couvertes": {
+  "prime_panier_qefa": {
+   "source_pdf_page": 15,
+   "source_article": "51 (جديد) أ",
+   "texte_source_ar": "حدد مبلغ هذه المنحة بـ 800 مليم بداية من أول جانفي 2011، وتسند لكل العمال القارين والوقتيين والعرضيين الذين قضوا سبع سنوات متتالية أو أكثر في العمل بما في ذلك الاستراحة التي تساوي أو تقل مدتها عن ساعة واحدة.",
+   "message_fr": "Prime de panier (qefa) BTP : la condition d'octroi est ambiguë dans la source (article 51 (جديد) أ, page 15). Le texte imprimé dit « sept ans consécutifs » (سبع سنوات), mais la phrase ajoute « y compris la pause d'une heure au plus », ce qui renvoie plutôt à des heures de travail. La prime n'est pas exposée tant que ce point n'est pas tranché ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة القفة (البناء والأشغال العامة): شرط الإسناد غامض في المصدر (الفصل 51 (جديد) أ، الصفحة 15). ينص النص المطبوع على «سبع سنوات متتالية»، لكن الجملة تضيف «بما في ذلك الاستراحة التي تساوي أو تقل مدتها عن ساعة واحدة»، مما يوحي بساعات عمل. لا تُعرض هذه المنحة إلى حين حسم هذه المسألة؛ لا يُرجَع أي مبلغ."
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "BTP_OCC_2021-12-01",
+   "titre_ar": "جدول أجور عدد 1",
+   "population_ar": "العملة العرضيين",
+   "population_fr": "Ouvriers occasionnels",
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 23,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 1, p.23 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; ratio entre années 1,0675 vérifié cellule par cellule (borne d'arrondi ±0,00104). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": 2.567,
+    "2": 2.675,
+    "3": 2.830,
+    "4": 2.961,
+    "5": 3.103,
+    "6_I": 3.280,
+    "6_II": 3.516,
+    "7_1": 3.766,
+    "7_2": 4.006,
+    "7_3": 4.340
+   }
+  },
+  {
+   "table_id": "BTP_AT_2021-12-01",
+   "titre_ar": "جدول أجور عدد 2",
+   "population_ar": "الأعوان الاداريون والفنيون الخالصون بالشهر",
+   "population_fr": "Agents administratifs et techniciens payés au mois",
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 23,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 2, p.23 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; règle entre années « degré 1 × 6,75 % ajouté à tous les degrés » vérifiée sur les 209 cellules (±0,001). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": [
+     523.665,
+     531.119,
+     531.551,
+     531.984,
+     532.416,
+     532.849,
+     533.281,
+     533.714,
+     534.146,
+     534.578,
+     535.028
+    ],
+    "2": [
+     556.459,
+     556.925,
+     557.390,
+     557.856,
+     558.322,
+     558.787,
+     559.253,
+     559.719,
+     560.184,
+     560.650,
+     562.267
+    ],
+    "3": [
+     583.602,
+     584.144,
+     584.687,
+     585.230,
+     585.772,
+     586.315,
+     588.076,
+     589.936,
+     591.797,
+     593.658,
+     595.519
+    ],
+    "4": [
+     605.979,
+     606.596,
+     607.212,
+     608.856,
+     610.965,
+     613.074,
+     615.183,
+     617.292,
+     619.401,
+     621.510,
+     626.118
+    ],
+    "5": [
+     634.621,
+     636.983,
+     639.345,
+     641.708,
+     644.070,
+     646.432,
+     648.794,
+     653.656,
+     656.000,
+     658.148,
+     660.295
+    ],
+    "6": [
+     673.531,
+     676.001,
+     678.440,
+     680.940,
+     685.909,
+     688.379,
+     690.848,
+     693.318,
+     695.787,
+     698.257,
+     700.726
+    ],
+    "7": [
+     789.665,
+     792.886,
+     796.107,
+     799.328,
+     802.549,
+     805.770,
+     808.991,
+     814.712,
+     817.933,
+     821.155,
+     824.376
+    ],
+    "8": [
+     844.406,
+     848.661,
+     852.194,
+     855.727,
+     859.260,
+     862.793,
+     866.326,
+     869.859,
+     873.391,
+     876.924,
+     880.457
+    ],
+    "9": [
+     896.310,
+     900.182,
+     904.054,
+     907.926,
+     911.798,
+     915.670,
+     919.542,
+     923.415,
+     927.287,
+     931.159,
+     935.031
+    ],
+    "10": [
+     914.464,
+     918.551,
+     922.638,
+     926.725,
+     930.811,
+     934.898,
+     938.985,
+     943.072,
+     947.159,
+     951.245,
+     957.832
+    ],
+    "11": [
+     937.096,
+     941.398,
+     945.699,
+     950.001,
+     954.302,
+     958.604,
+     962.905,
+     967.207,
+     974.008,
+     978.310,
+     982.612
+    ],
+    "12": [
+     958.098,
+     962.608,
+     967.117,
+     971.627,
+     976.136,
+     980.646,
+     985.155,
+     992.165,
+     996.675,
+     1001.184,
+     1005.694
+    ],
+    "13": [
+     1026.105,
+     1030.936,
+     1035.768,
+     1040.599,
+     1045.431,
+     1052.763,
+     1057.594,
+     1062.426,
+     1067.258,
+     1072.089,
+     1076.921
+    ],
+    "14": [
+     1192.187,
+     1197.341,
+     1202.495,
+     1207.649,
+     1215.302,
+     1220.466,
+     1225.610,
+     1230.763,
+     1235.917,
+     1241.071,
+     1246.225
+    ],
+    "15": [
+     1298.053,
+     1306.244,
+     1311.934,
+     1317.625,
+     1323.315,
+     1329.006,
+     1334.696,
+     1340.387,
+     1346.078,
+     1351.768,
+     1357.459
+    ],
+    "16": [
+     1357.294,
+     1363.522,
+     1369.749,
+     1375.977,
+     1382.204,
+     1388.432,
+     1394.659,
+     1400.886,
+     1407.114,
+     1413.341,
+     1419.569
+    ],
+    "17": [
+     1459.891,
+     1466.655,
+     1473.420,
+     1480.184,
+     1486.948,
+     1493.713,
+     1500.477,
+     1507.241,
+     1514.005,
+     1520.770,
+     1527.534
+    ],
+    "18": [
+     1537.351,
+     1545.403,
+     1553.456,
+     1561.508,
+     1569.561,
+     1577.614,
+     1585.667,
+     1593.720,
+     1601.772,
+     1609.825,
+     1617.878
+    ],
+    "19": [
+     1744.624,
+     1754.287,
+     1763.950,
+     1773.613,
+     1783.277,
+     1792.940,
+     1802.603,
+     1812.266,
+     1821.930,
+     1831.593,
+     1841.256
+    ]
+   },
+   "anomalies_increment": [
+    {
+     "categorie": "1",
+     "degre": 11,
+     "valeur_imprimee": 535.028,
+     "anomalie_increment": "écart de 0,450 avec le degré 10, contre 0,432-0,433 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "2",
+     "degre": 11,
+     "valeur_imprimee": 562.267,
+     "anomalie_increment": "écart de 1,617 avec le degré 10, contre 0,465-0,466 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "3",
+     "degre": 7,
+     "valeur_imprimee": 588.076,
+     "anomalie_increment": "écart de 1,761 avec le degré 6, puis 1,860-1,861 pour les degrés suivants",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "6",
+     "degre": 3,
+     "valeur_imprimee": 678.440,
+     "anomalie_increment": "écarts de 2,439 puis 2,500 autour du degré 3, contre 2,469-2,470 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "14",
+     "degre": 6,
+     "valeur_imprimee": 1220.466,
+     "anomalie_increment": "écarts de 5,164 puis 5,144 autour du degré 6, contre 5,153-5,154 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    }
+   ]
+  },
+  {
+   "table_id": "BTP_OCC_2023-01-01",
+   "titre_ar": "جدول أجور عدد 3",
+   "population_ar": "العملة العرضيين",
+   "population_fr": "Ouvriers occasionnels",
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 24,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 3, p.24 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; ratio entre années 1,0675 vérifié cellule par cellule (borne d'arrondi ±0,00104). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": 2.740,
+    "2": 2.856,
+    "3": 3.021,
+    "4": 3.161,
+    "5": 3.313,
+    "6_I": 3.502,
+    "6_II": 3.754,
+    "7_1": 4.021,
+    "7_2": 4.276,
+    "7_3": 4.633
+   }
+  },
+  {
+   "table_id": "BTP_AT_2023-01-01",
+   "titre_ar": "جدول أجور عدد 4",
+   "population_ar": "الأعوان الاداريون والفنيون الخالصون بالشهر",
+   "population_fr": "Agents administratifs et techniciens payés au mois",
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 24,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 4, p.24 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; règle entre années « degré 1 × 6,75 % ajouté à tous les degrés » vérifiée sur les 209 cellules (±0,001). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": [
+     559.012,
+     566.467,
+     566.899,
+     567.331,
+     567.764,
+     568.196,
+     568.628,
+     569.061,
+     569.493,
+     569.926,
+     570.375
+    ],
+    "2": [
+     594.020,
+     594.486,
+     594.951,
+     595.417,
+     595.883,
+     596.348,
+     596.814,
+     597.280,
+     597.745,
+     598.211,
+     599.828
+    ],
+    "3": [
+     622.995,
+     623.537,
+     624.080,
+     624.623,
+     625.166,
+     625.708,
+     627.469,
+     629.329,
+     631.190,
+     633.051,
+     634.912
+    ],
+    "4": [
+     646.882,
+     647.499,
+     648.116,
+     649.760,
+     651.868,
+     653.977,
+     656.086,
+     658.195,
+     660.304,
+     662.413,
+     667.022
+    ],
+    "5": [
+     677.458,
+     679.820,
+     682.182,
+     684.545,
+     686.907,
+     689.269,
+     691.631,
+     696.493,
+     698.837,
+     700.985,
+     703.132
+    ],
+    "6": [
+     718.995,
+     721.464,
+     723.903,
+     726.403,
+     731.373,
+     733.842,
+     736.312,
+     738.781,
+     741.251,
+     743.720,
+     746.190
+    ],
+    "7": [
+     842.967,
+     846.188,
+     849.409,
+     852.630,
+     855.851,
+     859.073,
+     862.294,
+     868.015,
+     871.236,
+     874.457,
+     877.678
+    ],
+    "8": [
+     901.403,
+     905.659,
+     909.192,
+     912.724,
+     916.257,
+     919.790,
+     923.323,
+     926.856,
+     930.389,
+     933.922,
+     937.455
+    ],
+    "9": [
+     956.811,
+     960.683,
+     964.555,
+     968.427,
+     972.299,
+     976.171,
+     980.043,
+     983.915,
+     987.788,
+     991.660,
+     995.532
+    ],
+    "10": [
+     976.191,
+     980.277,
+     984.364,
+     988.451,
+     992.538,
+     996.625,
+     1000.711,
+     1004.798,
+     1008.885,
+     1012.972,
+     1019.558
+    ],
+    "11": [
+     1000.350,
+     1004.652,
+     1008.953,
+     1013.255,
+     1017.556,
+     1021.858,
+     1026.159,
+     1030.461,
+     1037.262,
+     1041.564,
+     1045.866
+    ],
+    "12": [
+     1022.770,
+     1027.279,
+     1031.789,
+     1036.299,
+     1040.808,
+     1045.318,
+     1049.827,
+     1056.837,
+     1061.346,
+     1065.856,
+     1070.365
+    ],
+    "13": [
+     1095.367,
+     1100.198,
+     1105.030,
+     1109.862,
+     1114.693,
+     1122.025,
+     1126.856,
+     1131.688,
+     1136.520,
+     1141.351,
+     1146.183
+    ],
+    "14": [
+     1272.660,
+     1277.814,
+     1282.967,
+     1288.121,
+     1295.775,
+     1300.939,
+     1306.082,
+     1311.236,
+     1316.390,
+     1321.544,
+     1326.697
+    ],
+    "15": [
+     1385.671,
+     1393.862,
+     1399.553,
+     1405.243,
+     1410.934,
+     1416.624,
+     1422.315,
+     1428.006,
+     1433.696,
+     1439.387,
+     1445.077
+    ],
+    "16": [
+     1448.912,
+     1455.139,
+     1461.367,
+     1467.594,
+     1473.822,
+     1480.049,
+     1486.276,
+     1492.504,
+     1498.731,
+     1504.959,
+     1511.186
+    ],
+    "17": [
+     1558.434,
+     1565.198,
+     1571.962,
+     1578.727,
+     1585.491,
+     1592.255,
+     1599.020,
+     1605.784,
+     1612.548,
+     1619.312,
+     1626.077
+    ],
+    "18": [
+     1641.122,
+     1649.174,
+     1657.227,
+     1665.279,
+     1673.333,
+     1681.385,
+     1689.438,
+     1697.491,
+     1705.543,
+     1713.596,
+     1721.649
+    ],
+    "19": [
+     1862.386,
+     1872.049,
+     1881.712,
+     1891.375,
+     1901.039,
+     1910.702,
+     1920.365,
+     1930.029,
+     1939.692,
+     1949.355,
+     1959.018
+    ]
+   },
+   "anomalies_increment": [
+    {
+     "categorie": "1",
+     "degre": 11,
+     "valeur_imprimee": 570.375,
+     "anomalie_increment": "écart de 0,450 avec le degré 10, contre 0,432-0,433 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "2",
+     "degre": 11,
+     "valeur_imprimee": 599.828,
+     "anomalie_increment": "écart de 1,617 avec le degré 10, contre 0,465-0,466 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "3",
+     "degre": 7,
+     "valeur_imprimee": 627.469,
+     "anomalie_increment": "écart de 1,761 avec le degré 6, puis 1,860-1,861 pour les degrés suivants",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "6",
+     "degre": 3,
+     "valeur_imprimee": 723.903,
+     "anomalie_increment": "écarts de 2,439 puis 2,500 autour du degré 3, contre 2,469-2,470 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "14",
+     "degre": 6,
+     "valeur_imprimee": 1300.939,
+     "anomalie_increment": "écarts de 5,164 puis 5,144 autour du degré 6, contre 5,153-5,154 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    }
+   ]
+  },
+  {
+   "table_id": "BTP_OCC_2024-01-01",
+   "titre_ar": "جدول أجور عدد 5",
+   "population_ar": "العملة العرضيين",
+   "population_fr": "Ouvriers occasionnels",
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 25,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 5, p.25 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; ratio entre années 1,0675 vérifié cellule par cellule (borne d'arrondi ±0,00104). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": 2.925,
+    "2": 3.049,
+    "3": 3.225,
+    "4": 3.374,
+    "5": 3.536,
+    "6_I": 3.738,
+    "6_II": 4.007,
+    "7_1": 4.292,
+    "7_2": 4.565,
+    "7_3": 4.946
+   }
+  },
+  {
+   "table_id": "BTP_AT_2024-01-01",
+   "titre_ar": "جدول أجور عدد 6",
+   "population_ar": "الأعوان الاداريون والفنيون الخالصون بالشهر",
+   "population_fr": "Agents administratifs et techniciens payés au mois",
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": null,
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 25,
+   "statut_verification": "VÉRIFIÉ (2026-10-08) : tableau 6, p.25 (scan sans couche texte). Double lecture indépendante (200 dpi par lignes, 300 dpi par colonnes), 0 divergence, 0 cellule douteuse ; règle entre années « degré 1 × 6,75 % ajouté à tous les degrés » vérifiée sur les 209 cellules (±0,001). Validé par DS5 — docs/DECISIONS.md (D9).",
+   "valeurs": {
+    "1": [
+     596.745,
+     604.200,
+     604.632,
+     605.064,
+     605.497,
+     605.929,
+     606.362,
+     606.794,
+     607.227,
+     607.659,
+     608.109
+    ],
+    "2": [
+     634.117,
+     634.582,
+     635.048,
+     635.513,
+     635.979,
+     636.445,
+     636.910,
+     637.376,
+     637.842,
+     638.307,
+     639.924
+    ],
+    "3": [
+     665.047,
+     665.589,
+     666.132,
+     666.675,
+     667.218,
+     667.761,
+     669.521,
+     671.382,
+     673.242,
+     675.103,
+     676.964
+    ],
+    "4": [
+     690.547,
+     691.164,
+     691.781,
+     693.424,
+     695.533,
+     697.642,
+     699.751,
+     701.860,
+     703.969,
+     706.078,
+     710.687
+    ],
+    "5": [
+     723.186,
+     725.549,
+     727.911,
+     730.273,
+     732.635,
+     734.997,
+     737.359,
+     742.222,
+     744.566,
+     746.713,
+     748.860
+    ],
+    "6": [
+     767.527,
+     769.997,
+     772.435,
+     774.936,
+     779.905,
+     782.375,
+     784.844,
+     787.314,
+     789.783,
+     792.253,
+     794.722
+    ],
+    "7": [
+     899.867,
+     903.088,
+     906.310,
+     909.531,
+     912.752,
+     915.973,
+     919.194,
+     924.915,
+     928.136,
+     931.357,
+     934.578
+    ],
+    "8": [
+     962.248,
+     966.503,
+     970.036,
+     973.569,
+     977.102,
+     980.635,
+     984.168,
+     987.701,
+     991.234,
+     994.766,
+     998.299
+    ],
+    "9": [
+     1021.396,
+     1025.268,
+     1029.140,
+     1033.012,
+     1036.884,
+     1040.756,
+     1044.628,
+     1048.500,
+     1052.372,
+     1056.244,
+     1060.116
+    ],
+    "10": [
+     1042.084,
+     1046.170,
+     1050.257,
+     1054.344,
+     1058.431,
+     1062.517,
+     1066.604,
+     1070.691,
+     1074.778,
+     1078.865,
+     1085.451
+    ],
+    "11": [
+     1067.874,
+     1072.175,
+     1076.477,
+     1080.778,
+     1085.080,
+     1089.382,
+     1093.683,
+     1097.985,
+     1104.786,
+     1109.088,
+     1113.389
+    ],
+    "12": [
+     1091.807,
+     1096.316,
+     1100.826,
+     1105.336,
+     1109.845,
+     1114.355,
+     1118.864,
+     1125.874,
+     1130.383,
+     1134.893,
+     1139.402
+    ],
+    "13": [
+     1169.304,
+     1174.136,
+     1178.967,
+     1183.799,
+     1188.630,
+     1195.962,
+     1200.794,
+     1205.625,
+     1210.457,
+     1215.289,
+     1220.120
+    ],
+    "14": [
+     1358.564,
+     1363.718,
+     1368.872,
+     1374.026,
+     1381.679,
+     1386.844,
+     1391.987,
+     1397.141,
+     1402.294,
+     1407.448,
+     1412.602
+    ],
+    "15": [
+     1479.204,
+     1487.395,
+     1493.085,
+     1498.776,
+     1504.467,
+     1510.157,
+     1515.848,
+     1521.538,
+     1527.229,
+     1532.920,
+     1538.610
+    ],
+    "16": [
+     1546.713,
+     1552.941,
+     1559.168,
+     1565.396,
+     1571.623,
+     1577.851,
+     1584.078,
+     1590.305,
+     1596.533,
+     1602.760,
+     1608.988
+    ],
+    "17": [
+     1663.628,
+     1670.392,
+     1677.157,
+     1683.921,
+     1690.685,
+     1697.450,
+     1704.214,
+     1710.978,
+     1717.742,
+     1724.507,
+     1731.271
+    ],
+    "18": [
+     1751.897,
+     1759.950,
+     1768.003,
+     1776.055,
+     1784.108,
+     1792.161,
+     1800.214,
+     1808.266,
+     1816.319,
+     1824.372,
+     1832.425
+    ],
+    "19": [
+     1988.097,
+     1997.760,
+     2007.423,
+     2017.086,
+     2026.750,
+     2036.413,
+     2046.076,
+     2055.740,
+     2065.403,
+     2075.066,
+     2084.729
+    ]
+   },
+   "anomalies_increment": [
+    {
+     "categorie": "1",
+     "degre": 11,
+     "valeur_imprimee": 608.109,
+     "anomalie_increment": "écart de 0,450 avec le degré 10, contre 0,432-0,433 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "2",
+     "degre": 11,
+     "valeur_imprimee": 639.924,
+     "anomalie_increment": "écart de 1,617 avec le degré 10, contre 0,465-0,466 ailleurs dans la ligne",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "3",
+     "degre": 7,
+     "valeur_imprimee": 669.521,
+     "anomalie_increment": "écart de 1,761 avec le degré 6, puis 1,860-1,861 pour les degrés suivants",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "6",
+     "degre": 3,
+     "valeur_imprimee": 772.435,
+     "anomalie_increment": "écarts de 2,439 puis 2,500 autour du degré 3, contre 2,469-2,470 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    },
+    {
+     "categorie": "14",
+     "degre": 6,
+     "valeur_imprimee": 1386.844,
+     "anomalie_increment": "écarts de 5,164 puis 5,144 autour du degré 6, contre 5,153-5,154 ailleurs",
+     "note": "Valeur conservée telle qu'imprimée ; écart reproduit à l'identique dans les tables 2023 et 2024."
+    }
+   ]
+  }
+ ],
+ "primes": []
+}

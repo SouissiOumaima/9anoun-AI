@@ -27,7 +27,7 @@ Règle appliquée : *« Citation ou Silence »* — on ne corrige rien sans avoi
 4. Classement de chaque trou dans une cause unique.
 
 > La recherche `Ctrl+F` ne fonctionne pas dans ces PDF : leur texte arabe est stocké en
-> glyphes Unicode « Private Use » (`U+F2xx`, constat D5 de DS5, complété par D-DS2-6). La vérification est donc visuelle.
+> glyphes Unicode « Private Use » (`U+F2xx`, constat D5 de DS5, complété par D16). La vérification est donc visuelle.
 
 ## 3. Résultats par fichier
 
@@ -103,7 +103,7 @@ doit répondre *« article absent du document source fourni »*.
 | R3 | `… و10 مكرر` | « مكرر » accepté dans une liste abrogée |
 | R4 | `… الفصل 51 (جديد): …` | en-tête accepté en milieu de ligne **seulement** s'il est suivi de « : » |
 | R5 | `بالفصل 51 فقرة` · `من الفصل 7` · `الفصل 12 من هذه` | renvoi : ne jamais couper |
-| R6 | `الفصل 47 (جديد)` | version actuelle, `modified: true` ; **toutes les versions sont renvoyées et annoncées** (D-DS2-7) ; si l'ancien texte manque : `previous_version_available: false`, annoncé à l'utilisateur |
+| R6 | `الفصل 47 (جديد)` | version actuelle, `modified: true` ; **toutes les versions sont renvoyées et annoncées** (D17) ; si l'ancien texte manque : `previous_version_available: false`, annoncé à l'utilisateur |
 | R7 | avenant n° N | identifiant d'avenant préfixé par la convention |
 | R8 | trous vérifiés à la main | `manual_checks.json` : verdict, auteur, date — exclus des alertes du rapport |
 

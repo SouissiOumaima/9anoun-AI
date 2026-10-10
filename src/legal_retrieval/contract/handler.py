@@ -1,9 +1,15 @@
 """Contract handler of DS2: validated JSON in -> validated JSON out.
 
-Sprint 1 = mock mode: every valid request receives the demo response
-(data/mock_cards/legal_retrieval_search_demo.json), truncated to top_k ARTICLES.
+The response follows the team envelope src/shared/schemas/common.v0.schema.json:
+  status "ok"     -> >= 1 article, one citation per article, refus = null
+  status "refus"  -> no article, no citation, refus {code, message_fr, message_ar}
+  status "erreur" -> unexpected incident, no article, erreur {type, message_fr, message_ar}
 
-Rule "all versions" (decided with the user, D-DS2-7): for every relevant article
+Sprint 1 = mock mode: valid requests receive the demo articles
+(data/mock_cards/legal_retrieval_search_demo.json), filtered by sector like the
+real metadata filter will be, then truncated to top_k ARTICLES.
+
+Rule "all versions" (decided with the user, D17): for every relevant article
 ALL its known versions are returned (in force, modified, repealed), so a lawyer
 or accountant always sees the old AND the new text. top_k counts articles
 (version_group), never individual versions.
@@ -14,7 +20,7 @@ from __future__ import annotations
 
 import copy
 import json
-from functools import cache, lru_cache
+from functools import cache
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +33,20 @@ _REPO_ROOT = Path(__file__).resolve().parents[3]
 _MOCK_DIR = _REPO_ROOT / "data" / "mock_cards"
 _SCHEMA_DIR = _MOCK_DIR / "schemas"
 
+# Bilingual messages (common.v0: every refus/erreur is given in FR and AR)
+_MSG_NO_SOURCE = (
+    "Aucun article suffisamment pertinent n'a été trouvé dans le corpus juridique.",
+    "لم يتم العثور على أي فصل وثيق الصلة في المدونة القانونية.",
+)
+_MSG_BAD_REQUEST = (
+    "Requête non conforme au contrat legal_retrieval.v0 : {details}",
+    "الطلب غير مطابق لعقد legal_retrieval.v0.",
+)
+_MSG_INTERNAL = (
+    "Incident technique dans le service de recherche juridique.",
+    "خلل تقني في خدمة البحث القانوني.",
+)
+
 
 @cache
 def _validator(name: str) -> Draft202012Validator:
@@ -36,7 +56,7 @@ def _validator(name: str) -> Draft202012Validator:
     return Draft202012Validator(schema, format_checker=FormatChecker())
 
 
-def validation_errors(payload: dict[str, Any], name: str) -> list[str]:
+def validation_errors(payload: Any, name: str) -> list[str]:
     """Return readable schema errors ([] when the payload is valid)."""
     return [
         f"{'/'.join(map(str, e.absolute_path)) or '<root>'}: {e.message}"
@@ -44,7 +64,7 @@ def validation_errors(payload: dict[str, Any], name: str) -> list[str]:
     ]
 
 
-@lru_cache(maxsize=1)
+@cache
 def _demo() -> dict[str, Any]:
     """Demo request/response pair shared with the other roles."""
     data: dict[str, Any] = json.loads(
@@ -66,34 +86,68 @@ def keep_top_k_articles(results: list[dict[str, Any]], top_k: int) -> list[dict[
 
 
 def _search(request: dict[str, Any]) -> list[dict[str, Any]]:
-    """MOCK search: fixed results. Replaced by hybrid retrieval in Sprint 4."""
+    """MOCK search. Replaced by hybrid retrieval in Sprint 4.
+
+    Sector filter: an article applies to the requested sector, or to all
+    sectors (sector = null). A request on another sector gets no article.
+    """
     results: list[dict[str, Any]] = copy.deepcopy(_demo()["response"]["results"])
+    sector = request.get("sector")
+    if sector is not None:
+        results = [r for r in results if r["sector"] in (None, sector)]
     return keep_top_k_articles(results, request.get("top_k", 10))
 
 
-def handle(request: dict[str, Any]) -> dict[str, Any]:
-    """Validate the request, run the search, validate and return the response.
+def _envelope(request_id: Any, status: str, computed_by: str) -> dict[str, Any]:
+    """Common fields of every response (common.v0 response_envelope)."""
+    return {
+        "contract_version": CONTRACT_VERSION,
+        # common.v0: copy of request_id, null if it was not readable
+        "request_id": request_id if isinstance(request_id, str) else None,
+        "status": status,
+        "citations": [],
+        "refus": None,
+        "computed_by": computed_by,
+        "mode": "mock",
+        "results": [],
+    }
 
-    Never raises on bad input: returns status="error" so DS1 can fail safely.
-    """
-    errors = validation_errors(request, "search_request")
-    if errors:
-        response: dict[str, Any] = {
-            "contract_version": CONTRACT_VERSION,
-            "request_id": request.get("request_id") if isinstance(request, dict) else None,
-            "status": "error", "mode": "mock",
-            "error": "; ".join(errors), "results": [],
-        }
-    else:
-        results = _search(request)
-        response = {
-            "contract_version": CONTRACT_VERSION,
-            "request_id": request.get("request_id"),
-            # Citation or silence: no result -> explicit no_decisive_source
-            "status": "success" if results else "no_decisive_source",
-            "mode": "mock", "error": None, "results": results,
-        }
-    out_errors = validation_errors(response, "search_response")
-    if out_errors:  # our own bug: never send an invalid message to others
-        raise RuntimeError(f"DS2 produced an invalid response: {out_errors}")
+
+def _refus(request_id: Any, code: str, fr: str, ar: str, computed_by: str) -> dict[str, Any]:
+    """A motivated refusal, always in French AND Arabic."""
+    response = _envelope(request_id, "refus", computed_by)
+    response["refus"] = {"code": code, "message_fr": fr, "message_ar": ar}
     return response
+
+
+def handle(request: Any) -> dict[str, Any]:
+    """Validate the request, search, validate and return the response.
+
+    Never raises: a bad request gives refus PARAM_INVALIDE (contract refusal,
+    like Track B), an internal bug gives status "erreur". DS1 can fail safely.
+    """
+    request_id = request.get("request_id") if isinstance(request, dict) else None
+    try:
+        errors = validation_errors(request, "search_request")
+        if errors:  # contract refusal: the caller sent a non-conforming message
+            fr, ar = _MSG_BAD_REQUEST
+            response = _refus(request_id, "PARAM_INVALIDE", fr.format(details="; ".join(errors)),
+                              ar, "legal_retrieval.contract")
+        else:
+            results = _search(request)
+            if not results:  # Citation or Silence: explicit refusal, never a guess
+                response = _refus(request_id, "SOURCE_MANQUANTE", *_MSG_NO_SOURCE,
+                                  "legal_retrieval.search.mock")
+            else:
+                response = _envelope(request_id, "ok", "legal_retrieval.search.mock")
+                response["results"] = results
+                response["citations"] = [r["citation"] for r in results]
+        out_errors = validation_errors(response, "search_response")
+        if out_errors:  # our own bug: never send an invalid message to others
+            raise RuntimeError(f"invalid DS2 response: {out_errors}")
+        return response
+    except Exception:  # noqa: BLE001 - last-resort guard, no internal detail leaked
+        response = _envelope(request_id, "erreur", "legal_retrieval.contract")
+        response["erreur"] = {"type": "INTERNE", "message_fr": _MSG_INTERNAL[0],
+                              "message_ar": _MSG_INTERNAL[1]}
+        return response

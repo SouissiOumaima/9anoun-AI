@@ -1,13 +1,21 @@
-"""DS2 contract tests: JSON Schema validation, CLI-style handler and HTTP."""
+"""DS2 contract tests: JSON Schema validation, common envelope, handler and HTTP."""
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any
+from unittest.mock import patch
 
+import pytest
 from fastapi.testclient import TestClient
+from jsonschema import Draft202012Validator
 
 from src.legal_retrieval.contract.api import app
 from src.legal_retrieval.contract.handler import _demo, handle, validation_errors
+
+# tests -> legal_retrieval -> src ; the team schema lives in src/shared/schemas
+_COMMON = Path(__file__).resolve().parents[2] / "shared" / "schemas" / "common.v0.schema.json"
 
 
 def _request(**overrides: Any) -> dict[str, Any]:
@@ -15,17 +23,38 @@ def _request(**overrides: Any) -> dict[str, Any]:
     return {**_demo()["request"], **overrides}
 
 
+# --- schemas ------------------------------------------------------------
 def test_demo_pair_matches_the_schemas() -> None:
     assert validation_errors(_demo()["request"], "search_request") == []
     assert validation_errors(_demo()["response"], "search_response") == []
 
 
+@pytest.mark.skipif(not _COMMON.exists(), reason="common.v0.schema.json not merged yet")
+@pytest.mark.parametrize("request_", [
+    _request(),                          # ok
+    _request(sector="banques"),          # refus SOURCE_MANQUANTE
+    _request(query=""),                  # refus PARAM_INVALIDE (contract)
+])
+def test_every_response_conforms_to_the_team_common_envelope(request_: dict[str, Any]) -> None:
+    """The REAL team file is used, not DS2's copy of its definitions."""
+    common = json.loads(_COMMON.read_text(encoding="utf-8"))
+    errors = list(Draft202012Validator(common).iter_errors(handle(request_)))
+    assert errors == []
+
+
+# --- status ok : all versions -----------------------------------------
 def test_top_k_counts_articles_and_keeps_all_their_versions() -> None:
     response = handle(_request(top_k=1))
     versions = [r["article_id"] for r in response["results"]]
     # 1 article requested -> its 2 versions (new AND old) are both returned
     assert versions == ["MOCK-CCS-BTP-ART-50-v2", "MOCK-CCS-BTP-ART-50-v1"]
-    assert response["status"] == "success" and response["request_id"] == "demo-001"
+    assert response["status"] == "ok" and response["request_id"] == "demo-001"
+
+
+def test_one_citation_per_article_in_the_same_order() -> None:
+    response = handle(_request())
+    assert response["citations"] == [r["citation"] for r in response["results"]]
+    assert all(c["data_file"].startswith("data/processed/") for c in response["citations"])
 
 
 def test_at_most_one_applicable_version_per_article() -> None:
@@ -44,16 +73,46 @@ def test_repealed_and_unavailable_previous_versions_are_announced() -> None:
     assert results["MOCK-CCS-BTP-ART-51-v2"]["previous_version_available"] is False
 
 
-def test_invalid_requests_return_explicit_error() -> None:
-    assert handle(_request(query=""))["status"] == "error"  # empty query
-    assert handle(_request(reference_date="15/01/2024"))["status"] == "error"  # bad date
-    assert handle(_request(contract_version="legal_retrieval.v9"))["status"] == "error"
-    assert "unknown" in handle(_request(unknown=1))["error"]  # no extra fields
+# --- status refus : Citation ou Silence ---------------------------------
+def test_no_relevant_article_gives_bilingual_source_manquante() -> None:
+    response = handle(_request(sector="banques"))  # mock only has BTP articles
+    assert response["status"] == "refus" and response["results"] == []
+    assert response["citations"] == []
+    assert response["refus"]["code"] == "SOURCE_MANQUANTE"
+    assert response["refus"]["message_fr"] and response["refus"]["message_ar"]
 
 
-def test_http_endpoints() -> None:
+@pytest.mark.parametrize("bad", [
+    {"query": ""},                                   # empty question
+    {"reference_date": "15/01/2024"},                # wrong date format
+    {"reference_date": "2024-13-45"},                # matches the pattern, not a real date
+    {"contract_version": "legal_retrieval.v9"},      # wrong contract
+    {"unknown": 1},                                  # no extra fields
+])
+def test_non_conforming_requests_give_param_invalide(bad: dict[str, Any]) -> None:
+    response = handle(_request(**bad))
+    assert response["status"] == "refus" and response["refus"]["code"] == "PARAM_INVALIDE"
+    assert response["computed_by"] == "legal_retrieval.contract"
+
+
+def test_non_dict_request_is_refused_not_crashing() -> None:
+    response = handle(["not", "a", "dict"])
+    assert response["status"] == "refus" and response["request_id"] is None
+
+
+# --- status erreur -------------------------------------------------------
+def test_internal_bug_gives_erreur_without_internal_detail() -> None:
+    with patch("src.legal_retrieval.contract.handler._search", side_effect=KeyError("secret")):
+        response = handle(_request())
+    assert response["status"] == "erreur" and response["citations"] == []
+    assert "secret" not in json.dumps(response, ensure_ascii=False)
+
+
+# --- HTTP ---------------------------------------------------------------
+def test_http_codes() -> None:
     client = TestClient(app)
     assert client.get("/health").json()["status"] == "ok"
-    ok = client.post("/legal/search", json=_request())
-    assert ok.status_code == 200 and ok.json()["mode"] == "mock"
+    assert client.post("/legal/search", json=_request()).status_code == 200
+    # "no source" is a valid answer -> 200 ; a malformed request -> 422
+    assert client.post("/legal/search", json=_request(sector="banques")).status_code == 200
     assert client.post("/legal/search", json=_request(query="")).status_code == 422

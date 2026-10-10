@@ -49,4 +49,4 @@ uvicorn src.legal_retrieval.contract.api:app --port 8002        # contrat en HTT
 - Messages échangés avec les autres rôles : JSON Schema versionnés (`src/shared/schemas/`).
 - Dépendances : section **DS2** du `requirements.txt` racine → `src/legal_retrieval/requirements.txt`.
 - Règle « Citation ou Silence » : toute réponse factuelle est sourcée, sinon refus explicite
-  (`status: "no_decisive_source"`).
+  (`status: "refus"`, code `SOURCE_MANQUANTE`, message FR + AR — enveloppe `common.v0`, D19).

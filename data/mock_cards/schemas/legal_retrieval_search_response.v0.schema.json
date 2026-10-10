@@ -2,12 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "legal_retrieval_search_response.v0.schema.json",
   "title": "Legal retrieval — search response",
-  "description": "v0 — proposition, à valider. Articles de loi renvoyés par DS2. Règle « Citation ou Silence » : status = no_decisive_source quand aucun article n'est assez pertinent. Règle « toutes les versions » : pour chaque article pertinent, TOUTES ses versions connues sont renvoyées (en vigueur, modifiées, abrogées), avec applicable_at_reference_date = true sur au plus une version par version_group. top_k compte des articles (version_group), pas des versions.",
+  "description": "v0 — proposition, à valider. Articles de loi renvoyés par DS2. Enveloppe conforme à src/shared/schemas/common.v0.schema.json ($defs/response_envelope) : status ok/refus/erreur, citations[], refus {code, message_fr, message_ar}. Les définitions citation/refus/erreur sont recopiées à l'identique (aucun track ne référence encore le schéma commun par $ref, cf. son README). Règle « Citation ou Silence » : aucun article pertinent ⇒ status refus, code SOURCE_MANQUANTE. Règle « toutes les versions » (D17) : pour chaque article pertinent, TOUTES ses versions connues sont renvoyées ; top_k compte des articles (version_group).",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "contract_version",
+    "request_id",
     "status",
+    "citations",
+    "refus",
     "results"
   ],
   "properties": {
@@ -18,27 +21,47 @@
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Copie du request_id de la requête (common.v0 $defs/response_request_id)."
     },
     "status": {
       "enum": [
-        "success",
-        "no_decisive_source",
-        "error"
+        "ok",
+        "refus",
+        "erreur"
       ]
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/citation"
+      },
+      "description": "Une citation par article renvoyé (même ordre que results)."
+    },
+    "refus": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/refus"
+        }
+      ]
+    },
+    "erreur": {
+      "$ref": "#/$defs/erreur"
+    },
+    "computed_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "legal_retrieval.contract (refus de contrat) ou legal_retrieval.search.<mode>."
     },
     "mode": {
       "enum": [
         "mock",
         "live"
       ],
-      "description": "mock tant que la vraie recherche n'est pas branchée."
-    },
-    "error": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "description": "Extension DS2 : mock tant que la vraie recherche n'est pas branchée."
     },
     "results": {
       "type": "array",
@@ -64,7 +87,8 @@
           "applicable_at_reference_date",
           "modified",
           "amended_by",
-          "previous_version_available"
+          "previous_version_available",
+          "citation"
         ],
         "properties": {
           "article_id": {
@@ -102,15 +126,15 @@
               "string",
               "null"
             ],
-            "format": "date"
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
           },
           "effective_to": {
             "type": [
               "string",
               "null"
             ],
-            "format": "date",
-            "description": "null = toujours en vigueur."
+            "description": "null = toujours en vigueur.",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
           },
           "status": {
             "enum": [
@@ -169,7 +193,188 @@
               "null"
             ],
             "description": "false = l'article a été modifié mais le texte de la version précédente n'est pas dans le corpus (texte consolidé) : l'appelant doit l'annoncer."
+          },
+          "citation": {
+            "$ref": "#/$defs/citation",
+            "description": "Citation de CET article (même objet que dans citations[])."
           }
+        }
+      },
+      "description": "Extension DS2 : articles renvoyés, avec toutes leurs versions."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "citations": {
+            "minItems": 1
+          },
+          "results": {
+            "minItems": 1
+          },
+          "refus": {
+            "type": "null"
+          }
+        },
+        "not": {
+          "required": [
+            "erreur"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "refus"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "citations": {
+            "maxItems": 0
+          },
+          "results": {
+            "maxItems": 0
+          },
+          "refus": {
+            "type": "object"
+          }
+        },
+        "not": {
+          "required": [
+            "erreur"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "erreur"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "erreur"
+        ],
+        "properties": {
+          "citations": {
+            "maxItems": 0
+          },
+          "results": {
+            "maxItems": 0
+          },
+          "refus": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "citation": {
+      "description": "Source d'une valeur : PDF du corpus, page, article, fichier de données vérifié et entrée de docs/DECISIONS.md.",
+      "type": "object",
+      "required": [
+        "source_file",
+        "page",
+        "article",
+        "data_file",
+        "decision_ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "article": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "data_file": {
+          "type": "string",
+          "pattern": "^data/processed/"
+        },
+        "decision_ref": {
+          "type": "string",
+          "pattern": "^D[0-9]+$"
+        }
+      }
+    },
+    "refus": {
+      "description": "Refus motivé, toujours en français et en arabe.",
+      "type": "object",
+      "required": [
+        "code",
+        "message_fr",
+        "message_ar"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/refus_code"
+        },
+        "message_fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message_ar": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "refus_code": {
+      "description": "SOURCE_MANQUANTE : aucune source vérifiée ; HORS_SCOPE : demande hors du périmètre ; PARAM_INVALIDE : paramètre invalide ou requête non conforme.",
+      "enum": [
+        "SOURCE_MANQUANTE",
+        "HORS_SCOPE",
+        "PARAM_INVALIDE"
+      ]
+    },
+    "erreur": {
+      "description": "Incident technique (status = erreur) : type d'incident, sans détail interne.",
+      "type": "object",
+      "required": [
+        "type",
+        "message_fr",
+        "message_ar"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "message_fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message_ar": {
+          "type": "string",
+          "minLength": 1
         }
       }
     }

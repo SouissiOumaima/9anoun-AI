@@ -12,7 +12,7 @@ Definition of Done : tests pytest verts, ruff et mypy propres, README à jour, P
 | S5 | Filtre temporel : `effective_from ≤ reference_date < effective_to` | Avertissement si `reference_date` absente | Tests de précision temporelle |
 | S6 | Vraie API `/legal/search` + `GET /legal/article/{id}` (pour la vérification des citations) branchée à DS1 | Expansion par le graphe (`related`) | Appel de bout en bout depuis l'orchestrateur |
 | S7 | Reranking (cross-encoder ou petit tier Gemini 3) | Reformulation de requête (darija/FR → AR) si la latence le permet | Comparaison Recall avant/après |
-| S8 | Recall@10 ≥ 88 % sur le golden set | Seuil d'abstention `no_decisive_source` | Rapport de métriques |
+| S8 | Recall@10 ≥ 88 % sur le golden set | Seuil d’abstention (`refus` `SOURCE_MANQUANTE`) | Rapport de métriques |
 | S9 | Gel des index + procédure de mise à jour du corpus | Latence recherche < 3 s (P95) | Index versionné |
 | S10 | Documentation + transfert | Démo recette | Handover |
 

@@ -22,7 +22,13 @@
             "unite": {"type": "string", "pattern": "^TND/"},
             "detail": {
               "type": "object",
-              "additionalProperties": {"type": ["string", "integer", "boolean", "null"]}
+              "additionalProperties": {
+                "anyOf": [
+                  {"type": ["string", "integer", "boolean", "null"]},
+                  {"type": "array", "items": {"type": "string", "minLength": 1},
+                   "description": "Liste de textes, ex. detail.hypotheses (D10) : à afficher à l'utilisateur."}
+                ]
+              }
             }
           }
         }

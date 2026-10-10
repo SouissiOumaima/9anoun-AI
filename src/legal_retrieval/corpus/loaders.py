@@ -2,7 +2,7 @@
 
 TEXT source  = data/raw/txt/*.json (Tradrly OCR): Arabic words are readable.
 NUMBER check = data/raw/pdf/*.pdf (pymupdf): digits reliable, but Arabic is
-stored as private-use glyphs U+F2xx (see DECISIONS D-DS2-6 and D1 of DS5).
+stored as private-use glyphs U+F2xx (see DECISIONS D16 and D1 of DS5).
 
 The JSON loader accepts these shapes:
   1. [{"page": 1, "text": "..."}, ...]

@@ -23,6 +23,15 @@ def health() -> dict[str, str]:
 
 @app.post("/legal/search")
 def search(request: Annotated[dict[str, Any], Body()]) -> JSONResponse:
-    """Same logic as the CLI; invalid request -> HTTP 422 + status=error."""
+    """Same logic as the CLI.
+
+    HTTP code: 200 for ok and SOURCE_MANQUANTE (a valid answer: "no source"),
+    422 for a contract refusal (PARAM_INVALIDE), 500 for status "erreur".
+    """
     response = handle(request)
-    return JSONResponse(response, status_code=422 if response["status"] == "error" else 200)
+    code = 200
+    if response["status"] == "erreur":
+        code = 500
+    elif response["refus"] and response["refus"]["code"] == "PARAM_INVALIDE":
+        code = 422
+    return JSONResponse(response, status_code=code)

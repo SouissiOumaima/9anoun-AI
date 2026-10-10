@@ -1,5 +1,5 @@
 {
-  "_comment": "Mock DS2 (Sprint 1). Les textes sont FAUX et marqués [MOCK]. Il illustre la règle « toutes les versions » : (1) un article avec 2 versions disponibles, (2) un article modifié dont l'ancienne version n'est pas dans le corpus, (3) un article abrogé.",
+  "_comment": "Mock DS2 (Sprint 1). Textes FAUX, marqués [MOCK]. Enveloppe conforme à common.v0 (status ok/refus/erreur, citations[], refus). Illustre la règle « toutes les versions » (D17) : (1) un article en 2 versions, (2) un article modifié dont l'ancienne version n'est pas dans le corpus, (3) un article abrogé. Le mock filtre par secteur : une requête sur un autre secteur que 'btp' renvoie un refus SOURCE_MANQUANTE (pour tester la règle « Citation ou Silence »).",
   "request": {
     "contract_version": "legal_retrieval.v0",
     "request_id": "demo-001",
@@ -7,15 +7,46 @@
     "reference_date": "2024-01-15",
     "sector": "btp",
     "worker_category": null,
-    "language": "ar",
-    "top_k": 10
+    "top_k": 10,
+    "lang": "ar"
   },
   "response": {
     "contract_version": "legal_retrieval.v0",
     "request_id": "demo-001",
-    "status": "success",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 12,
+        "article": "الفصل 50 (جديد)",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 12,
+        "article": "الفصل 50",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 13,
+        "article": "الفصل 51 (جديد)",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 10,
+        "article": "الفصول 38-39-40-41",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D18"
+      }
+    ],
+    "refus": null,
+    "computed_by": "legal_retrieval.search.mock",
     "mode": "mock",
-    "error": null,
     "results": [
       {
         "source_id": "MOCK-CCS-BTP",
@@ -36,7 +67,14 @@
         "modified": true,
         "amended_by": "MOCK-CCS-BTP-AVENANT-5",
         "previous_version_available": true,
-        "score": 0.93
+        "score": 0.93,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 12,
+          "article": "الفصل 50 (جديد)",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
       },
       {
         "source_id": "MOCK-CCS-BTP",
@@ -57,7 +95,14 @@
         "modified": false,
         "amended_by": "MOCK-CCS-BTP-AVENANT-5",
         "previous_version_available": null,
-        "score": 0.93
+        "score": 0.93,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 12,
+          "article": "الفصل 50",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
       },
       {
         "source_id": "MOCK-CCS-BTP",
@@ -80,7 +125,14 @@
         "modified": true,
         "amended_by": null,
         "previous_version_available": false,
-        "score": 0.88
+        "score": 0.88,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 13,
+          "article": "الفصل 51 (جديد)",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
       },
       {
         "source_id": "MOCK-CCS-BTP",
@@ -101,7 +153,14 @@
         "modified": false,
         "amended_by": "MOCK-CCS-BTP-AVENANT-5",
         "previous_version_available": null,
-        "score": 0.61
+        "score": 0.61,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 10,
+          "article": "الفصول 38-39-40-41",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D18"
+        }
       }
     ]
   }

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common.v0.schema.json",
+  "title": "Schéma commun des réponses des tracks — v0",
+  "description": "v0 : proposition, à valider par l'équipe. Définitions reprises à l'identique de ce que Track B émet déjà (track_b_response.v0.schema.json) : statut, citation, refus, erreur, montant, date, langue, identifiants. La racine valide une enveloppe de réponse (response_envelope) ; chaque track l'étend avec son propre contenu (ex. result pour Track B). Règle « Citation ou Silence » : status 'ok' ⇒ au moins une citation ; 'refus' ⇒ motif FR + AR, aucune citation ; 'erreur' ⇒ incident technique, aucune citation.",
+  "$ref": "#/$defs/response_envelope",
+  "$defs": {
+    "contract_version": {
+      "description": "Version du contrat du track émetteur : <track>.v<N>, ex. track_b.v0, track_a.v0.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*\\.v[0-9]+$"
+    },
+    "request_id": {
+      "description": "Identifiant de la requête, fourni par l'appelant (requêtes Track B et Track A : chaîne de 1 à 128 caractères).",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "response_request_id": {
+      "description": "Copie du request_id de la requête dans la réponse ; null si la requête n'en contenait pas de lisible (comme Track B).",
+      "type": ["string", "null"]
+    },
+    "case_id": {
+      "description": "OPTIONNEL (question ouverte) : identifiant du dossier, pour relier les réponses de plusieurs tracks sur un même dossier. Obligatoire dans la requête Track A v0 (DS4), absent de Track B v0.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "lang": {
+      "description": "Langue de la réponse attendue.",
+      "enum": ["fr", "ar"]
+    },
+    "status": {
+      "description": "Issue du traitement : ok (résultat cité), refus (motif métier FR + AR, aucun résultat), erreur (incident technique).",
+      "enum": ["ok", "refus", "erreur"]
+    },
+    "montant": {
+      "description": "Montant décimal à exactement 3 chiffres après le point (millimes), en chaîne, jamais un nombre JSON.",
+      "type": "string",
+      "pattern": "^-?[0-9]+\\.[0-9]{3}$"
+    },
+    "date": {
+      "description": "Date ISO AAAA-MM-JJ (même motif que la requête Track B ; un motif est vérifié, contrairement à \"format\": \"date\").",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "citation": {
+      "description": "Source d'une valeur : PDF du corpus, page, article, fichier de données vérifié et entrée de docs/DECISIONS.md.",
+      "type": "object",
+      "required": ["source_file", "page", "article", "data_file", "decision_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": {"type": "string", "minLength": 1},
+        "page": {"type": ["integer", "null"], "minimum": 1},
+        "article": {"type": ["string", "null"]},
+        "data_file": {"type": "string", "pattern": "^data/processed/"},
+        "decision_ref": {"type": "string", "pattern": "^D[0-9]+$"}
+      }
+    },
+    "refus_code": {
+      "description": "SOURCE_MANQUANTE : aucune source vérifiée ; HORS_SCOPE : demande hors du périmètre ; PARAM_INVALIDE : paramètre invalide ou requête non conforme.",
+      "enum": ["SOURCE_MANQUANTE", "HORS_SCOPE", "PARAM_INVALIDE"]
+    },
+    "refus": {
+      "description": "Refus motivé, toujours en français et en arabe.",
+      "type": "object",
+      "required": ["code", "message_fr", "message_ar"],
+      "additionalProperties": false,
+      "properties": {
+        "code": {"$ref": "#/$defs/refus_code"},
+        "message_fr": {"type": "string", "minLength": 1},
+        "message_ar": {"type": "string", "minLength": 1}
+      }
+    },
+    "erreur": {
+      "description": "Incident technique (status = erreur) : type d'incident, sans détail interne.",
+      "type": "object",
+      "required": ["type", "message_fr", "message_ar"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"type": "string"},
+        "message_fr": {"type": "string", "minLength": 1},
+        "message_ar": {"type": "string", "minLength": 1}
+      }
+    },
+    "response_envelope": {
+      "description": "Enveloppe de base d'une réponse. Chaque track l'étend (allOf + unevaluatedProperties: false) avec son contenu propre, ex. result chez Track B. computed_by et case_id sont facultatifs ici.",
+      "type": "object",
+      "required": ["contract_version", "request_id", "status", "citations", "refus"],
+      "properties": {
+        "contract_version": {"$ref": "#/$defs/contract_version"},
+        "request_id": {"$ref": "#/$defs/response_request_id"},
+        "case_id": {"$ref": "#/$defs/case_id"},
+        "status": {"$ref": "#/$defs/status"},
+        "citations": {"type": "array", "items": {"$ref": "#/$defs/citation"}},
+        "refus": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/refus"}]},
+        "erreur": {"$ref": "#/$defs/erreur"},
+        "computed_by": {
+          "description": "Composant qui a produit la réponse (Track B : track_b_accounting.calc.<operation> ou track_b_accounting.contract).",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "ok"}}},
+          "then": {
+            "properties": {"citations": {"minItems": 1}, "refus": {"type": "null"}},
+            "not": {"required": ["erreur"]}
+          }
+        },
+        {
+          "if": {"properties": {"status": {"const": "refus"}}},
+          "then": {
+            "properties": {"citations": {"maxItems": 0}, "refus": {"type": "object"}},
+            "not": {"required": ["erreur"]}
+          }
+        },
+        {
+          "if": {"properties": {"status": {"const": "erreur"}}},
+          "then": {
+            "required": ["erreur"],
+            "properties": {"citations": {"maxItems": 0}, "refus": {"type": "null"}}
+          }
+        }
+      ]
+    }
+  }
+}

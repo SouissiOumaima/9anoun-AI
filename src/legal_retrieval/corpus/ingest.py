@@ -1,7 +1,7 @@
 """Sprint 1 ingestion (hybrid): OCR JSON for the text, PDF for the numbers.
 
 - Arabic TEXT comes from data/raw/txt/*.json (Tradrly OCR): the PDF text layer
-  stores Arabic as private-use glyphs (U+F2xx), unusable (DECISIONS D-DS2-6).
+  stores Arabic as private-use glyphs (U+F2xx), unusable (DECISIONS D16).
 - NUMBERS of each article are checked against the PDF text layer
   (data/raw/pdf), whose digits are reliable (DECISIONS D1, DS5).
 
