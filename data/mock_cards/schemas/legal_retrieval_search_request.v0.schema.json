@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "legal_retrieval_search_request.v0.schema.json",
+  "title": "Legal retrieval — search request",
+  "description": "v0 — proposition, à valider. Requête envoyée par l'orchestrateur (DS1) au service de recherche juridique (DS2).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "query"],
+  "properties": {
+    "contract_version": { "const": "legal_retrieval.v0" },
+    "request_id": { "type": "string", "description": "Identifiant de traçabilité (audit trail)." },
+    "query": { "type": "string", "minLength": 1, "description": "Question reformulée, en arabe ou en français." },
+    "reference_date": { "type": ["string", "null"], "format": "date", "description": "La loi renvoyée doit être en vigueur à cette date (YYYY-MM-DD). null = date du jour." },
+    "sector": { "type": ["string", "null"], "description": "Secteur du travailleur, ex. banques, btp, assurance." },
+    "worker_category": { "type": ["string", "null"], "description": "Catégorie du travailleur, ex. ouvrier, cadre." },
+    "language": { "enum": ["ar", "fr"], "default": "ar" },
+    "top_k": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
+  }
+}

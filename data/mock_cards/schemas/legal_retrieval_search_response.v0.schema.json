@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "legal_retrieval_search_response.v0.schema.json",
+  "title": "Legal retrieval — search response",
+  "description": "v0 — proposition, à valider. Articles de loi renvoyés par DS2. Règle « Citation ou Silence » : status = no_decisive_source quand aucun article n'est assez pertinent. Règle « toutes les versions » : pour chaque article pertinent, TOUTES ses versions connues sont renvoyées (en vigueur, modifiées, abrogées), avec applicable_at_reference_date = true sur au plus une version par version_group. top_k compte des articles (version_group), pas des versions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "status",
+    "results"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "legal_retrieval.v0"
+    },
+    "request_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "success",
+        "no_decisive_source",
+        "error"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "mock",
+        "live"
+      ],
+      "description": "mock tant que la vraie recherche n'est pas branchée."
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "article_id",
+          "source_id",
+          "source_title",
+          "article_number",
+          "hierarchy_path",
+          "text",
+          "page",
+          "effective_from",
+          "effective_to",
+          "status",
+          "sector",
+          "related",
+          "score",
+          "version_group",
+          "version",
+          "applicable_at_reference_date",
+          "modified",
+          "amended_by",
+          "previous_version_available"
+        ],
+        "properties": {
+          "article_id": {
+            "type": "string",
+            "description": "Identifiant stable et versionné, ex. CCS-BANQUES-ART-14-v1. Sert à vérifier la citation."
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "source_title": {
+            "type": "string"
+          },
+          "article_number": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "hierarchy_path": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "description": "Texte EXACT de l'article (jamais normalisé). Pour une version abrogée : la mention d'abrogation telle qu'écrite dans la source."
+          },
+          "page": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Page du PDF source où commence l'article."
+          },
+          "effective_from": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "effective_to": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date",
+            "description": "null = toujours en vigueur."
+          },
+          "status": {
+            "enum": [
+              "en_vigueur",
+              "modifie",
+              "abroge",
+              "inconnu"
+            ]
+          },
+          "sector": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "null = tous secteurs."
+          },
+          "related": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Voisins dans le graphe juridique (Sprint 3)."
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "version_group": {
+            "type": "string",
+            "description": "Identifiant commun à toutes les versions d'un même article, ex. CCS-BTP-ART-51."
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1 = plus ancienne version connue."
+          },
+          "applicable_at_reference_date": {
+            "type": "boolean",
+            "description": "true pour la version en vigueur à reference_date (au plus une par version_group)."
+          },
+          "modified": {
+            "type": "boolean",
+            "description": "true si l'article porte la mention « (جديد) » : modifié par un avenant."
+          },
+          "amended_by": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Avenant qui a modifié ou abrogé cette version, ex. CCS-BTP-AVENANT-5."
+          },
+          "previous_version_available": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "false = l'article a été modifié mais le texte de la version précédente n'est pas dans le corpus (texte consolidé) : l'appelant doit l'annoncer."
+          }
+        }
+      }
+    }
+  }
+}

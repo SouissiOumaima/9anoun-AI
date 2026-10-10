@@ -401,3 +401,145 @@ CLI : `python -m src.track_b_accounting.contract.cli <fichier.json>`, ou
 l'entrée standard. La sortie est en UTF-8, avec `ensure_ascii=False`.
 
 **Statut** : ⏳ proposition v0, à valider avec l'équipe (orchestrateur, Track A).
+
+---
+
+## 2026 — DS2 (Legal Retrieval, Abd Mouhib Souri)
+
+Les décisions DS2 sont préfixées `D-DS2-` pour ne pas entrer en collision avec la
+numérotation D1, D2… de DS5.
+
+### D-DS2-1 — Ingestion hybride : texte de l'OCR, chiffres vérifiés sur le PDF
+
+**Décision** : le texte arabe des articles vient de `data/raw/txt/*.json` (OCR fourni
+par Tradrly). Chaque nombre d'un article est recherché dans la couche texte du PDF
+correspondant (`data/raw/pdf`). Les nombres non retrouvés sont listés dans le champ
+`numbers_unverified` de l'article : ils ne doivent jamais être cités sans vérification.
+
+**Alternatives envisagées** :
+- Texte depuis la couche texte des PDF → rejeté : l'arabe y est encodé en zone
+  « Private Use » (constat D5 de DS5, quantifié en D-DS2-6).
+- Texte OCR seul, sans contrôle des chiffres → rejeté : les chiffres de l'OCR sont
+  parfois incohérents (D1, D2 de DS5).
+
+**Raison** : chaque source est utilisée pour ce qu'elle a de fiable. Mesure du
+2026-10-10 sur les 9 fichiers (`tools/diagnose_pua.py`) : OCR = 95,8 à 99,8 % de
+lettres arabes et 20 à 132 « فصل » par fichier ; couche texte PDF = 0 à 1 « فصل ».
+
+**Limite** : la couche texte PDF n'expose que 110 à 315 nombres distincts par fichier
+(les grilles sont des pages scannées, D4/D5). `numbers_unverified` signifie donc
+« non confirmé », pas « faux ». Les montants de paie restent ceux vérifiés par DS5
+(`data/processed/smig_smag/`, `data/processed/salary_grids/`).
+
+---
+
+### D-DS2-2 — Un chunk = un article
+
+**Décision** : l'unité de recherche est un article (« الفصل N ») ; un chunk ne
+chevauche jamais deux articles.
+
+**Alternatives envisagées** :
+- Chunks de taille fixe (ex. 512 tokens) → rejeté : un article coupé en deux n'est
+  plus citable tel quel.
+
+**Raison** : règle « Citation ou Silence ».
+
+---
+
+### D-DS2-3 — Texte original pour les citations, texte normalisé pour la recherche
+
+**Décision** : chaque article stocke `text` (original, après NFKC) et
+`text_normalized` (sans diacritiques ni tatweel, alef unifié, chiffres ASCII).
+
+**Alternatives envisagées** :
+- Normaliser le texte directement → rejeté : la vérification des citations échouerait.
+
+**Raison** : la normalisation forte ne sert qu'à la recherche par mots-clés.
+
+---
+
+### D-DS2-4 — Détection du texte arabe inversé
+
+**Décision** : le rapport d'ingestion calcule `reversed_text_ratio` (part de « لصف »
+parmi les « فصل »). Un fichier signalé n'est pas corrigé automatiquement.
+
+**Alternatives envisagées** :
+- Inverser automatiquement chaque ligne → rejeté pour l'instant : inverserait aussi
+  les nombres (14 → 41).
+
+**Raison** : cas observé dans l'OCR de la convention métallurgie bâtiment
+(28 « لصف » pour 122 « فصل », ratio 0,19).
+
+---
+
+### D-DS2-5 — Identifiants d'articles versionnés
+
+**Décision** : `article_id = <SOURCE>-ART-<N>[BIS]-v<version>`. Un article « مكرر »
+(bis) est un article distinct (`ART-7BIS`), pas un doublon. Un numéro réellement
+répété reçoit `-DUP<k>` en attendant la correction du chargeur (Sprint 2).
+
+**Raison** : la validation doit pouvoir retrouver la version exacte du texte cité.
+
+---
+
+### D-DS2-6 — Complément à D5 : la couche texte PDF n'est pas réparable pour l'arabe
+
+**Constat** (`tools/diagnose_pua.py`, 2026-10-10) : confirme et quantifie D5. Dans les
+9 PDF, l'arabe est encodé en `U+F2xx` (8 988 à 75 077 caractères par fichier).
+Trois décodages ont été testés (cp1256, ISO-8859-6, Mac Arabic, sur la plage
+`U+F0xx` des polices « symbole ») : aucun ne restaure de texte (0 « فصل »).
+Les codes `U+F2xx` sont des numéros de glyphes propres à chaque police : aucune
+table de conversion standard n'existe.
+
+**Conséquence** : pour le texte arabe, la seule source exploitable du corpus est
+l'OCR `data/raw/txt/*.json` (D-DS2-1). DS3 rencontrera probablement le même
+encodage sur les PDF des utilisateurs : la couche texte ne suffira pas, prévoir l'OCR.
+
+---
+
+### D-DS2-7 — Toujours renvoyer toutes les versions d'un article
+
+**Décision** : pour chaque article pertinent, la recherche renvoie toutes ses versions
+connues (en vigueur, modifiées, abrogées). Une seule version au plus est marquée
+`applicable_at_reference_date`. L'appelant (DS4, DS5) annonce l'ancienne **et** la
+nouvelle règle. Si l'ancien texte n'est pas dans le corpus (texte consolidé, mention
+« (جديد) »), `previous_version_available = false` et l'appelant le dit explicitement.
+`top_k` compte des articles, pas des versions.
+
+**Alternatives envisagées** :
+- Ne renvoyer que la version en vigueur → rejeté : un avocat ou un comptable doit voir
+  l'historique (litige sur une période passée, rappel de salaire, contestation).
+- Supprimer les « doublons » → rejeté : une nouvelle version n'est pas un doublon
+  (proposé par Abd Mouhib Souri après vérification manuelle des PDF).
+
+**Raison** : transparence pour le professionnel, précision temporelle (≥ 90 %),
+règle « Citation ou Silence ».
+
+**Contrat** : champs `version_group`, `version`, `applicable_at_reference_date`,
+`modified`, `amended_by`, `previous_version_available` dans
+`legal_retrieval_search_response.v0.schema.json` (voir `docs/CONTRACT_LEGAL_RETRIEVAL.md`).
+
+---
+
+### D-DS2-8 — Vérification manuelle des articles manquants (37/37 expliqués)
+
+**Décision** : chaque numéro d'article absent du découpage automatique est vérifié
+visuellement dans le PDF avant toute correction du code. Le détail est dans
+`docs/ds2/VERIFICATION_MANUELLE_CORPUS_2026-10-10.md`.
+
+**Résultat** (7 conventions, 2026-10-10) :
+
+| Cause | Articles |
+|---|---|
+| Abrogés par un avenant (`الفصول … ألغيت بمقتضى الملحق التعديلي عدد N`) | 22 |
+| En-tête mal lu par l'OCR ou collé en milieu de ligne | 9 |
+| En-tête sans espace (`الفصل56`) | 4 |
+| Absents du PDF source (cadre art. 40, associations art. 20) | 2 |
+
+**Conséquences** : un article abrogé est enregistré avec `status: abroge` et l'avenant
+qui l'abroge (jamais « introuvable ») ; chaque convention a sa propre numérotation
+d'avenants (`CCS-BTP-AVENANT-5` ≠ `CCS-CONSTRUCTION-METALLIQUE-AVENANT-5`) ;
+les dates des avenants sont nécessaires au filtre temporel (à obtenir auprès de Tradrly).
+
+**Statut** : ✅ vérification visuelle par Abd Mouhib Souri (DS2) ; règles de découpage
+correspondantes à coder au Sprint 2.
