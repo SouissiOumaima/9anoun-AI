@@ -978,3 +978,68 @@ la règle « Citation ou Silence » devient vérifiable de la même façon parto
 **Statut** : ⏳ v0, proposition à valider ; conformité prouvée par
 `test_every_response_conforms_to_the_team_common_envelope` (ok, refus SOURCE_MANQUANTE,
 refus PARAM_INVALIDE) et par appels HTTP réels.
+
+---
+
+### D20 — Lecture des sections Tradrly (1 section = 1 article) et historique des avenants
+
+**Décision** : à partir du Sprint 2, l'ingestion des fichiers `data/raw/txt/*.json` lit les
+`sections` déjà découpées par Tradrly (`corpus/ingest_sections.py`) au lieu de redécouper
+le texte :
+- texte d'un article = `content` **seulement** (`paragraphs` répète le même texte : c'était
+  la cause du comptage surestimé de 492 au lieu d'environ 451) ;
+- la section `legal_history_reconstructed_from_page_images` donne les dates de la
+  convention et de chaque avenant (signature, approbation ministérielle) → `avenants.json`,
+  identifiants préfixés par la convention (`CCS-BTP-AVENANT-5`, règle R7) ;
+- règles de D18 appliquées **à l'intérieur** des textes : en-tête d'un article manquant
+  caché dans une autre section → article découpé (R1/R4, ex. Cadre art. 5) ; listes
+  d'abrogation (pluriel, duel, « مكرر », « : » optionnel) → entrées `abroge` reliées à
+  leur avenant (R2/R3), ligne retirée de l'article qui la contenait ; renvois jamais
+  coupés (R5) ; « (جديد) » → `modified`, `previous_version_available: false` (R6, D17) ;
+- numérotation qui repart à 1 → nouvelle partie (`-P2-` dans l'identifiant), pas un doublon ;
+- trous vérifiés à la main → `corpus/manual_checks.json` (R8), exclus des alertes.
+
+**Alternatives envisagées** :
+- Garder le découpage par regex du Sprint 1 → rejeté : il lisait le texte deux fois et
+  ignorait les métadonnées fournies par Tradrly.
+- Remplir `effective_from` / `effective_to` avec les dates d'avenant → reporté : la date
+  d'effet (signature ou approbation ministérielle ?) est une question juridique ouverte,
+  posée à Tradrly. Les deux dates sont conservées dans `avenants.json`.
+
+**Ajouts après le premier passage réel (2026-10-10)** :
+- une nouvelle partie ne commence que si la numérotation **repart à 1** ; un numéro répété
+  ou dans le désordre reste dans sa partie (identifiant `-DUP2`, jamais supprimé) et est
+  listé dans le rapport (`numbering_out_of_order`, outil `tools/inspect_sections.py`) ;
+- tiret cadratin « — » accepté dans les listes d'abrogation (Gardiennage, Construction) ;
+- « الغيابات » (absences), « الغير », « الغيار » ne sont pas des abrogations ;
+- **R9** : « 50, 5, 52 » → le 5 est l'article 51 dont l'OCR a perdu le dernier chiffre ;
+  corrigé seulement si les deux voisins le prouvent, numéro d'origine gardé
+  (`numbers_corrected_r9`) ;
+- `manual_checks.json` (R8) accepte le verdict `abroge` : complète une abrogation que
+  l'OCR a cassée (BTP « 38 -39- ()I4 41 », Construction « عدد؟ ») avec le texte lu dans le
+  PDF ; verdict `present_pdf_absent_digest` pour Cadre 5 et Assurance 40.
+
+**Ajouts après l'inspection des sections (2026-10-10, `tools/inspect_sections.py`)** :
+- **R10** : Tradrly a parfois coupé une section sur un **renvoi** et non sur un en-tête
+  (« وينص الفصل 46 من هذه الاتفاقية », « الفصل 36 من هذه الاتفاقية. », « بالفصل 5 من الأمر
+  المؤرخ في 8 جانفي 1948 ») ; ces sections sont recollées à l'article précédent (rien n'est
+  perdu, positions listées dans `continuations_r10`) ;
+- R9 s'exécute **après** R10 : au premier passage, R9 avait « corrigé » en 51 le renvoi
+  BTP « بالفصل 5 من الأمر » — fausse correction détectée par l'inspection ;
+- suffixes lus dans l'en-tête : « مثلث / ثالثا » → `TER`, « رابعا » → `QUATER`,
+  sous-articles « الفصل 46 - 3: » → `46-3` (Gardiennage 46-3/46-4, Enseignement 54 ثالثا
+  et 54-5, Cadre 51 ثالثا) : ce ne sont pas des doublons ;
+- le texte placé **après le dernier article** (« تاريخ التطبيق ») devient une **annexe**
+  (`<SOURCE>-ANNEXE-<k>`, statut `inconnu`, renvoi à l'article cité) au lieu d'être collé
+  au dernier article : liste des sanctions (Construction, renvoi au fasl 36), conditions de
+  recrutement (Enseignement, renvoi au fasl 15). Résultat après inspection : 0 doublon,
+  0 désordre sur les 9 fichiers ;
+- en-tête interne écrit « إلفصل » par l'OCR (alef hamza) accepté : BTP art. 51
+  « إلفصل 51 (جديد): منح القفة » est découpé de l'article 50 (R4).
+
+**Limites connues** : pas de page par article dans le digest (`page_start` vide) ; l'avenant
+qui a modifié un article « (جديد) » n'est pas indiqué (`amended_by` vide pour ces articles).
+
+**Statut** : ⏳ codé et testé sur des formes réelles (parseur validé sur l'historique réel
+BTP : convention 16/01/1975 – 12/03/1975 et 16 avenants, 0 ligne non lue) ; exécution sur
+les 9 fichiers à faire en local par DS2.
