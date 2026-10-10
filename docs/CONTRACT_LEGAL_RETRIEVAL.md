@@ -19,6 +19,38 @@ Il **n'interprète pas** le droit : l'interprétation revient à DS4/DS5.
 | CLI | `python -m src.legal_retrieval.contract.cli request.json` (ou `--demo`) |
 | HTTP | `POST /legal/search` (lancer `uvicorn src.legal_retrieval.contract.api:app --port 8002`) |
 
+## Intégration DS1 (appel Python direct)
+
+Une seule opération : **`search`**. Le contrat est indépendant du transport : le même
+message JSON passe par Python, la CLI ou HTTP.
+
+```python
+# depuis la racine du dépôt
+from src.legal_retrieval.contract.handler import handle
+
+response = handle({
+    "contract_version": "legal_retrieval.v0",   # obligatoire
+    "query": "ما هي منحة النقل في قطاع البناء؟",  # obligatoire
+    "request_id": "req-123",                    # optionnel (audit trail)
+    "reference_date": "2024-01-15",             # optionnel, AAAA-MM-JJ
+    "sector": "btp",                            # optionnel
+    "lang": "ar",                               # optionnel (ar par défaut)
+    "top_k": 5,                                 # optionnel (10 par défaut), compte des ARTICLES
+})
+# handle() ne lève jamais d'exception : toujours une réponse conforme au schéma
+if response["status"] == "ok":
+    ...  # response["results"] (toutes les versions) + response["citations"]
+elif response["status"] == "refus":
+    ...  # response["refus"]["code"], ["message_fr"], ["message_ar"]
+else:  # "erreur"
+    ...  # response["erreur"] : incident technique, aucun détail interne
+```
+
+**Exemples prêts à l'emploi** : `data/mock_cards/legal_retrieval_requests_demo.json`
+(5 requêtes avec leur réponse attendue — 2 succès, 1 refus `SOURCE_MANQUANTE`,
+2 refus `PARAM_INVALIDE` — et 1 exemple `erreur`). Les réponses sont produites par le
+vrai handler et un test vérifie qu'elles restent à jour.
+
 ## Requête — `legal_retrieval_search_request.v0.schema.json`
 
 | Champ | Type | Obligatoire | Rôle |

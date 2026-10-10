@@ -116,3 +116,25 @@ def test_http_codes() -> None:
     # "no source" is a valid answer -> 200 ; a malformed request -> 422
     assert client.post("/legal/search", json=_request(sector="banques")).status_code == 200
     assert client.post("/legal/search", json=_request(query="")).status_code == 422
+
+
+# --- integration examples for DS1 ---------------------------------------
+_EXAMPLES = Path(__file__).resolve().parents[3] / "data" / "mock_cards" / "legal_retrieval_requests_demo.json"
+
+
+def test_integration_examples_file_is_up_to_date() -> None:
+    """The file sent to DS1 must equal what the handler produces today."""
+    from src.legal_retrieval.tools.build_demo_examples import build
+
+    on_disk = json.loads(_EXAMPLES.read_text(encoding="utf-8"))
+    assert on_disk == json.loads(json.dumps(build(), ensure_ascii=False)), (
+        "re-run: python -m src.legal_retrieval.tools.build_demo_examples")
+
+
+def test_erreur_example_is_valid() -> None:
+    from src.legal_retrieval.tools.build_demo_examples import ERREUR_EXAMPLE
+
+    assert validation_errors(ERREUR_EXAMPLE, "search_response") == []
+    if _COMMON.exists():
+        common = json.loads(_COMMON.read_text(encoding="utf-8"))
+        assert list(Draft202012Validator(common).iter_errors(ERREUR_EXAMPLE)) == []
