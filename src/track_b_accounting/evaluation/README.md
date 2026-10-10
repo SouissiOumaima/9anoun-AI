@@ -1,0 +1,97 @@
+# Évaluation — DS5 Comptable Track (Track B)
+
+Ce dossier contient le **jeu de référence** (golden set) et les **métriques**
+du Track B. Comme pour les autres rôles, l'évaluation n'est pas un rôle à
+part : DS5 évalue son propre module.
+
+```
+evaluation/
+  README.md                                ce fichier
+  golden_sets/track_b_golden.v0.json       47 cas, valeurs attendues lues dans les PDF
+  metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
+  results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
+  results/eval_<date>.json, .md            rapports des relances (ignorés par git)
+```
+
+## Méthode
+
+**Indépendance.** Les valeurs attendues viennent **des PDF de `data/raw/pdf/`**,
+lus visuellement (rendu à 100-300 dpi), **jamais** de `data/processed/` ni du
+code. Les tests unitaires (`../tests/`) vérifient le code contre nos propres
+données ; cette évaluation vérifie le module contre la source.
+
+**Chaque cas** contient :
+- `requete` : opération, paramètres et langue, envoyés tels quels au handler ;
+- `attendu` : `ok` avec montant, unité et citations attendues (PDF et page),
+  ou `refus` avec son code ;
+- `justification` : PDF, page et emplacement (tableau, ligne, colonne, ou
+  article et texte lu), pour vérifier le cas sur le document ;
+- `certitude` : **L** (lu directement), **C** (calculé à la main à partir de
+  cellules lues), **I** (interprétation) ; `decision` donne l'entrée de
+  `docs/DECISIONS.md` (D6, D9, D10) qui fonde un cas I ou C ;
+- `verification_humaine` : `true` quand DS5 a vérifié le cas sur le PDF.
+
+Convention des colonnes : le numéro de colonne est le degré ; le degré 1 est
+la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP).
+
+**Répartition (47 cas).**
+
+| Catégorie | Cas | Contenu |
+|---|---|---|
+| `ok` | 25 | Métallurgie 2021, 2023, 2024 (administratifs et exécution) ; BTP 2021, 2023, 2024 (administratifs, occasionnels avec sous-catégorie) ; primes (transport, qefa) ; SMIG ; cellule corrigée en D4 ; 3 cellules BTP à anomalie d'incrément |
+| `art13` | 6 | Article 13 au-delà du dernier degré, métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
+| `refus` | 12 | Bornes exactes (D6, D10), fenêtre BTP dépassée, catégorie 19, ouvriers permanents, qefa BTP, CNSS, conversion d'unité, secteur non transcrit, catégorie inconnue |
+| `piege` | 4 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel |
+
+## Métriques
+
+| Métrique | Définition | Cible |
+|---|---|---|
+| **Faux montants** (critique) | Montant ou unité faux pour un `ok` attendu, **et** `ok` renvoyé alors qu'un refus est attendu : la règle « Citation ou Silence » est violée | **0** |
+| Exactitude des montants | `ok` attendu : même montant au millime et même unité | 100 % |
+| Silence excessif | `ok` attendu, refus renvoyé (perte de couverture, pas de faux montant) | 0 |
+| Refus corrects | Refus attendu : statut `refus` **et** même code | 100 % |
+| Citations valides | Pour un `ok` : nombre de citations, nom du PDF et page égaux à ceux du golden set ; `source_file` et `data_file` existent ; `decision_ref` est un titre `### Dn` de `docs/DECISIONS.md` | 100 % |
+| Conformité aux schémas | Réponse valide contre `track_b_response.v0` et contre le schéma commun (`src/shared/schemas/common.v0.schema.json`) | 100 % |
+| Statut erreur, exceptions | Réponses `erreur` et exceptions levées par le handler | 0 |
+
+Les métriques sont calculées **sur l'ensemble des cas et sur les seuls cas
+vérifiés par DS5** (`verification_humaine = true`), puis ventilées par
+certitude (L, C, I) et par catégorie. Un échec sur un cas L ou C est une
+**erreur de lecture** (du golden set ou du code) ; un échec sur un cas I est
+un **désaccord d'interprétation**, compté à part.
+
+## Relancer
+
+Depuis la racine du dépôt :
+```
+python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA-MM-JJ
+```
+- Le script appelle le handler en **Python direct**
+  (`track_b_accounting.contract.handle`), comme l'orchestrateur ; chaque
+  réponse passe par un aller-retour JSON, comme sur le réseau.
+- Une **exception** du handler est enregistrée comme échec
+  (`exception_inattendue`, type et message) et l'évaluation continue.
+- Sorties : `results/eval_<date>.json` (clés triées) et `.md`. La date est
+  passée en argument : à commit et date égaux, les fichiers sont identiques à
+  l'octet près.
+- Code de sortie **1** s'il y a au moins un faux montant ou une exception,
+  sinon 0.
+- `--baseline` réécrit le rapport de référence (`results/baseline.*`), à
+  faire seulement quand le golden set ou le module change volontairement.
+
+## Limites
+
+- **Indépendance partielle tant que `verification_humaine` n'est pas à
+  `true`.** Les valeurs ont été lues dans les PDF par la même personne qui a
+  transcrit les grilles ; une erreur de lecture systématique pourrait se
+  retrouver dans les deux. Seuls les cas vérifiés par DS5 sur le PDF sont une
+  vérification réellement indépendante : le rapport donne leur nombre et leurs
+  métriques à part.
+- **Les cas I traduisent nos décisions** (D6, D9, D10), pas le texte seul :
+  ils mesurent la conformité du module à ces décisions, pas leur justesse.
+- **47 cas sur environ 1 500 cellules** : c'est un échantillon. La couverture
+  exhaustive des grilles repose sur la double lecture et les contrôles
+  automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`).
+- Les scans des pages 30 à 35 de la métallurgie sont bruités ; les cas dont un
+  chiffre est peu net portent une `note`.
