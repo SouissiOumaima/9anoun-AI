@@ -143,6 +143,15 @@ v0 : `reference_date` est acceptée mais le filtre daté arrive au Sprint 5 ;
 `applicable_at_reference_date` = version consolidée en vigueur ; `page` = `null` (pas de page
 par article dans le digest Tradrly).
 
+### Cas réels pour DS4 — `data/mock_cards/legal_retrieval_ds4_cases.v0.json`
+
+12 cas `get_article` sur des **articles réels** (mode `live`) pour tester le raisonnement
+juridique temporel : abrogé avec avenant daté, abrogé sans numéro d'avenant, abrogation dans
+une autre convention, modifié « (جديد) » sans ancienne version, en vigueur non modifié, bis,
+ter, sous-article, annexe, trou motivé, article inexistant ; plus les dates des avenants des
+sources concernées. Généré (et vérifié cas par cas) par
+`python -m src.legal_retrieval.tools.build_ds4_mock`.
+
 ## Règle « toutes les versions » (D17)
 
 Quand un avocat, un client ou un comptable pose une question, **toutes les versions
