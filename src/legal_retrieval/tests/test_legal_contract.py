@@ -118,6 +118,14 @@ def test_http_codes() -> None:
     assert client.post("/legal/search", json=_request(query="")).status_code == 422
 
 
+def test_http_code_follows_the_layer_not_the_refusal_code() -> None:
+    """A BUSINESS refusal using PARAM_INVALIDE stays 200 (review of PR #6)."""
+    business = {**handle(_request(sector="banques")), "computed_by": "legal_retrieval.search.mock"}
+    business["refus"] = {**business["refus"], "code": "PARAM_INVALIDE"}
+    with patch("src.legal_retrieval.contract.api.handle", return_value=business):
+        assert TestClient(app).post("/legal/search", json=_request()).status_code == 200
+
+
 # --- integration examples for DS1 ---------------------------------------
 _EXAMPLES = Path(__file__).resolve().parents[3] / "data" / "mock_cards" / "legal_retrieval_requests_demo.json"
 
