@@ -1043,3 +1043,34 @@ qui a modifié un article « (جديد) » n'est pas indiqué (`amended_by` vide
 **Statut** : ⏳ codé et testé sur des formes réelles (parseur validé sur l'historique réel
 BTP : convention 16/01/1975 – 12/03/1975 et 16 avenants, 0 ligne non lue) ; exécution sur
 les 9 fichiers à faire en local par DS2.
+
+---
+
+### D21 — Vocabulaire des champs de la requête DS2, tiré du corpus
+
+**Décision** : les valeurs que DS1 transmet dans `sector` et `worker_category` sont des
+**codes stables** définis dans `data/mock_cards/legal_retrieval_vocabulary.v0.json`
+(libellés FR/AR, alias pour l'extraction, schéma JSON, accès Python
+`src/legal_retrieval/contract/vocabulary.py`) :
+- `sector` : les 7 secteurs du registre DS2, exactement (un test l'impose) ; la convention
+  cadre et le SMIG s'appliquent à tous les secteurs ; ambiguïté « البناء » signalée ;
+- `worker_category` : 9 catégories **comptées dans le corpus** (outil
+  `tools/diagnose_vocabulary.py`, 2026-10-11 : « أعوان التنفيذ » 18 articles,
+  « أعوان التسيير » 16, « الإطارات » 12, catégories propres aux banques et assurances,
+  à l'enseignement et aux associations) ;
+- statut d'emploi (قار / وقتي / عرضي) : **proposé pour v0.1**, pas ajouté au contrat v0 ;
+- « المتعاقدين » exclu : désigne surtout les parties signataires de la convention.
+
+**Alternatives envisagées** :
+- Rendre `sector` et `worker_category` obligatoirement égaux à ces codes (`enum` dans le
+  schéma de requête) → reporté à v0.1, après accord DS1 : changer la validation casserait
+  les appels existants.
+- Écrire une liste « classique » (ouvrier, employé, cadre) → rejeté : ces mots ne sont pas
+  les catégories de classement des conventions tunisiennes ; la recherche filtrerait mal.
+
+**Limites** : les équivalences entre catégories des banques et assurances (service,
+réalisation, encadrement) et catégories générales (exécution, maîtrise) ne sont pas
+déduites ; elles sont à valider par un juriste.
+
+**Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
+prouvée par `test_legal_vocabulary.py`.

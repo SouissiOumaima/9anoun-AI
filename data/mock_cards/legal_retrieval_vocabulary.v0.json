@@ -1,0 +1,303 @@
+{
+  "vocabulary_version": "legal_retrieval.vocabulary.v0",
+  "contract_version": "legal_retrieval.v0",
+  "decision_ref": "D21",
+  "_doc": "Valeurs reconnues par DS2 pour les champs de la requête legal_retrieval.v0. Les codes (champ 'code') sont ce que DS1 transmet ; les libellés et alias servent à l'extraction depuis la question. DS1 ne transmet qu'une valeur EXPLICITE dans la question de l'utilisateur, sinon null (ou demande de précision). Les catégories de travailleurs sont tirées du corpus (comptage du 2026-10-11, outil tools/diagnose_vocabulary.py), pas inventées.",
+  "reference_date": {
+    "format": "AAAA-MM-JJ (ISO 8601, date réelle)",
+    "null_means": "date du jour",
+    "examples": [
+      "2024-01-15",
+      "1996-10-16"
+    ],
+    "note_fr": "La date à laquelle la loi doit être en vigueur (filtre temporel). Ce n'est pas la date de la question."
+  },
+  "sectors": [
+    {
+      "code": "gardiennage_securite_transport_fonds",
+      "source_id": "CCS-GARDIENNAGE",
+      "label_fr": "Gardiennage, sécurité et transport de fonds",
+      "label_ar": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+      "aliases": [
+        "gardiennage",
+        "sécurité",
+        "transport de fonds",
+        "agent de sécurité",
+        "حراسة",
+        "نقل العملة"
+      ]
+    },
+    {
+      "code": "construction_metallique",
+      "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+      "label_fr": "Construction métallique",
+      "label_ar": "البناء المعدني",
+      "aliases": [
+        "construction métallique",
+        "charpente métallique",
+        "البناء المعدني"
+      ]
+    },
+    {
+      "code": "btp",
+      "source_id": "CCS-BTP",
+      "label_fr": "Bâtiment et travaux publics",
+      "label_ar": "البناء والأشغال العامة",
+      "aliases": [
+        "BTP",
+        "bâtiment",
+        "travaux publics",
+        "الأشغال العامة"
+      ]
+    },
+    {
+      "code": "associations",
+      "source_id": "CCS-ASSOCIATIONS",
+      "label_fr": "Associations de prise en charge des personnes handicapées",
+      "label_ar": "جمعيات رعاية الأشخاص المعوقين",
+      "aliases": [
+        "association",
+        "personnes handicapées",
+        "جمعيات رعاية",
+        "المعوقين"
+      ]
+    },
+    {
+      "code": "assurance",
+      "source_id": "CCS-ASSURANCE",
+      "label_fr": "Assurance",
+      "label_ar": "التأمين",
+      "aliases": [
+        "assurance",
+        "compagnie d'assurance",
+        "التأمين"
+      ]
+    },
+    {
+      "code": "enseignement_prive",
+      "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+      "label_fr": "Enseignement privé",
+      "label_ar": "التعليم الخاص",
+      "aliases": [
+        "enseignement privé",
+        "école privée",
+        "التعليم الخاص",
+        "مدرسة خاصة"
+      ]
+    },
+    {
+      "code": "banques",
+      "source_id": "CCS-BANQUES",
+      "label_fr": "Banques",
+      "label_ar": "البنوك",
+      "aliases": [
+        "banque",
+        "bancaire",
+        "البنوك",
+        "بنك"
+      ]
+    }
+  ],
+  "sector_ambiguities": [
+    {
+      "alias": "البناء / construction",
+      "codes": [
+        "btp",
+        "construction_metallique"
+      ],
+      "rule_fr": "Ne pas choisir : DS1 demande une précision (bâtiment et travaux publics, ou construction métallique ?)."
+    }
+  ],
+  "all_sectors_sources": [
+    {
+      "source_id": "CC-CADRE",
+      "label_fr": "Convention collective cadre",
+      "label_ar": "الاتفاقية المشتركة الإطارية",
+      "note_fr": "S'applique à tous les secteurs : renvoyée aussi quand sector est renseigné."
+    },
+    {
+      "source_id": "SMIG-GRILLE",
+      "label_fr": "Salaire minimum garanti (SMIG), secteurs non agricoles",
+      "label_ar": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية",
+      "note_fr": "S'applique à tous les secteurs non agricoles."
+    }
+  ],
+  "worker_categories": [
+    {
+      "code": "execution",
+      "label_fr": "Agent d'exécution",
+      "label_ar": "عون تنفيذ",
+      "corpus_terms_ar": [
+        "أعوان التنفيذ"
+      ],
+      "corpus_counts": {
+        "اعوان التنفيذ": 18
+      }
+    },
+    {
+      "code": "maitrise",
+      "label_fr": "Agent de maîtrise",
+      "label_ar": "عون تسيير",
+      "corpus_terms_ar": [
+        "أعوان التسيير"
+      ],
+      "corpus_counts": {
+        "اعوان التسيير": 16
+      }
+    },
+    {
+      "code": "cadre",
+      "label_fr": "Cadre",
+      "label_ar": "إطار",
+      "corpus_terms_ar": [
+        "الإطارات",
+        "إطارات"
+      ],
+      "corpus_counts": {
+        "الاطارات": 12,
+        "اطارات": 10
+      }
+    },
+    {
+      "code": "agent_service",
+      "label_fr": "Agent de service",
+      "label_ar": "عون خدمات",
+      "corpus_terms_ar": [
+        "أعوان الخدمات"
+      ],
+      "sectors": [
+        "banques",
+        "assurance",
+        "enseignement_prive",
+        "gardiennage_securite_transport_fonds"
+      ],
+      "corpus_counts": {
+        "اعوان الخدمات": 12
+      }
+    },
+    {
+      "code": "agent_realisation",
+      "label_fr": "Agent de réalisation",
+      "label_ar": "عون إنجاز",
+      "corpus_terms_ar": [
+        "أعوان الإنجاز"
+      ],
+      "sectors": [
+        "banques",
+        "assurance"
+      ],
+      "corpus_counts": {
+        "اعوان الانجاز": 4
+      }
+    },
+    {
+      "code": "agent_encadrement",
+      "label_fr": "Agent d'encadrement",
+      "label_ar": "عون إشراف",
+      "corpus_terms_ar": [
+        "أعوان الإشراف"
+      ],
+      "sectors": [
+        "banques",
+        "assurance",
+        "construction_metallique",
+        "btp"
+      ],
+      "corpus_counts": {
+        "اعوان الاشراف": 7
+      }
+    },
+    {
+      "code": "enseignant",
+      "label_fr": "Personnel enseignant",
+      "label_ar": "عون تدريس",
+      "corpus_terms_ar": [
+        "أعوان التدريس"
+      ],
+      "sectors": [
+        "enseignement_prive"
+      ],
+      "corpus_counts": {
+        "اعوان التدريس": 10
+      }
+    },
+    {
+      "code": "educateur",
+      "label_fr": "Personnel éducatif",
+      "label_ar": "عون تربية",
+      "corpus_terms_ar": [
+        "أعوان التربية"
+      ],
+      "sectors": [
+        "associations",
+        "enseignement_prive"
+      ],
+      "corpus_counts": {
+        "اعوان التربي": 5
+      }
+    },
+    {
+      "code": "administratif",
+      "label_fr": "Personnel administratif",
+      "label_ar": "عون إداري",
+      "corpus_terms_ar": [
+        "الأعوان الإداريون",
+        "الأعوان الإداريين"
+      ],
+      "sectors": [
+        "associations",
+        "enseignement_prive",
+        "btp",
+        "construction_metallique"
+      ],
+      "corpus_counts": {
+        "الاعوان الاداريين": 6,
+        "الاعوان الاداريون": 5
+      }
+    }
+  ],
+  "worker_category_open_questions": [
+    "Équivalences entre catégories des banques et assurances (service, réalisation, encadrement) et catégories générales (exécution, maîtrise) : non déduites, à valider par un juriste.",
+    "'ouvrier' (عامل) n'est pas une catégorie de classement dans les conventions : DS1 transmet null et DS2 cherche sans filtre de catégorie."
+  ],
+  "employment_statuses": {
+    "_status": "PROPOSITION v0.1 — pas encore un champ de la requête v0 (aucun changement de contrat sans accord DS1).",
+    "values": [
+      {
+        "code": "permanent",
+        "label_fr": "Permanent (titulaire)",
+        "label_ar": "قار",
+        "corpus_terms_ar": [
+          "القارون",
+          "القارين",
+          "قار",
+          "القار",
+          "الأعوان المرسمون"
+        ]
+      },
+      {
+        "code": "temporaire",
+        "label_fr": "Temporaire",
+        "label_ar": "وقتي",
+        "corpus_terms_ar": [
+          "الوقتيون",
+          "الوقتيين",
+          "الوقتي"
+        ]
+      },
+      {
+        "code": "occasionnel",
+        "label_fr": "Occasionnel",
+        "label_ar": "عرضي",
+        "corpus_terms_ar": [
+          "العرضيين"
+        ],
+        "sectors": [
+          "btp"
+        ]
+      }
+    ],
+    "excluded_fr": "« المتعاقدين / المتعاقدان » exclu : désigne surtout les parties signataires de la convention, pas un statut de travailleur."
+  },
+  "_counts_doc": "corpus_counts = nombre d'articles contenant le terme (texte normalisé : أ->ا, ة->ه ; l'OCR perd parfois le ة final : « التربي »). Un article peut contenir deux termes : ne pas additionner."
+}

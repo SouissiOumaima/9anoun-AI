@@ -66,6 +66,24 @@ vrai handler et un test vérifie qu'elles restent à jour.
 
 Aucun champ supplémentaire n'est accepté (`additionalProperties: false`).
 
+### Valeurs reconnues — vocabulaire (D21)
+
+Fichier de référence : `data/mock_cards/legal_retrieval_vocabulary.v0.json`
+(schéma : `data/mock_cards/schemas/legal_retrieval_vocabulary.v0.schema.json`).
+
+| Champ | Valeurs | Règle pour DS1 |
+|---|---|---|
+| `sector` | 7 codes : `gardiennage_securite_transport_fonds`, `construction_metallique`, `btp`, `associations`, `assurance`, `enseignement_prive`, `banques` (libellés FR/AR et alias dans le fichier) | valeur explicite dans la question, sinon `null`. « البناء / construction » est ambigu (`btp` ou `construction_metallique`) : demander une précision |
+| `worker_category` | 9 codes tirés du corpus : `execution`, `maitrise`, `cadre`, `agent_service`, `agent_realisation`, `agent_encadrement`, `enseignant`, `educateur`, `administratif` | valeur explicite, sinon `null` ; « ouvrier » n'est pas une catégorie de classement → `null` |
+| `reference_date` | `AAAA-MM-JJ` (date réelle) ; `null` = date du jour | date d'application de la loi, pas date de la question |
+
+Accès Python, sans recopier les listes :
+```python
+from src.legal_retrieval.contract.vocabulary import sector_codes, worker_category_codes
+```
+Le statut d'emploi (permanent / temporaire / occasionnel) est une **proposition v0.1** :
+il n'est pas encore un champ de la requête.
+
 ## Réponse — `legal_retrieval_search_response.v0.schema.json`
 
 L'enveloppe est **conforme au schéma commun de l'équipe**
