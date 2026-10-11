@@ -7,6 +7,17 @@
 
 ---
 
+> **Mise à jour du 2026-10-11 : nombre d'articles.** Le chiffre de 492 ci-dessous est celui
+> du découpage du Sprint 1 (regex sur une lecture générique du JSON Tradrly : titres,
+> `content` **et** `paragraphs`, qui répète `content`). Ce découpage n'est pas une mesure
+> fiable du corpus et son résultat dépend de ce qu'il lit (une relecture DS5 obtient environ
+> 452). Le chiffre de référence est **466 articles + 2 annexes**, produit par le chargeur des
+> sections Tradrly (D20, branche `DS2_Sprint2`) :
+> 451 sections numérotées (460 sections − 9 sections d'historique)
+> − 9 sections coupées par Tradrly sur un renvoi et recollées (R10 ; 4 d'entre elles forment
+> les 2 annexes) + 1 article découpé (BTP 51, R4) + 23 entrées « abrogé » créées à partir des
+> listes d'abrogation = **466**. Les 37 trous analysés ci-dessous restent valables.
+
 ## 1. Pourquoi cette vérification
 
 L'ingestion du Sprint 1 a découpé **492 articles**, mais le rapport automatique signalait
