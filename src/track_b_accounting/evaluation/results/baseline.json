@@ -1484,7 +1484,7 @@
   "cas": 47,
   "cas_verifies_par_ds5": 37,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "c32ce2c9820d909f585fb91bc73645cf821307fd992524e6aa401c8b845a83a0",
+  "sha256": "821beade5021d3526230f7b191d7d61ed5fb18cf25d32007a5edf2a5c8bd424a",
   "version": "track_b_golden.v0"
  },
  "metriques": {
