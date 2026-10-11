@@ -24,52 +24,154 @@
    "2024-01-01"
   ]
  },
- "degres": [
-  {
-   "degre": 1,
-   "anciennete_label": "0-2 ans"
+ "degres": {
+  "admin_tech": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20+"
+   }
+  ],
+  "execution": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2 ans"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20+"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "admin_tech": {
+   "regle": "ecart_cumule_biennal",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 20,
+   "periode_annees": 2,
+   "source_pdf_page": 9,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "يتمثل التقدم في التدرج الآلي حسب الأقدمية كل سنتين وذلك طبقا لجداول الأجور المرفقة بالاتفاقية. وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها. و يمكن التنقيص في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة المتميزين والمتحصلين على عدد مهني سنوي لا يقل عن 17 من 20. كما يمكن الزيادة في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة الذين سلطت عليهم عقوبة من الدرجة الثانية وذلك بعد استشارة النواب النقابيين وإن لم يوجدوا فممثلي العملة بالمؤسسة.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent. La durée de séjour dans un degré peut être réduite de 6 mois (note annuelle ≥ 17/20) ou allongée de 6 mois (sanction du 2e degré).",
+   "formule": "montant = d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋ ; d10 et d11 lus dans la table en vigueur à la date du calcul",
+   "hypotheses_fr": [
+    "Écart cumulé : un écart (degré 11 − degré 10) de plus tous les deux ans après le degré 11 (lecture de « يواصل التمتع كل سنتين »).",
+    "Progression normale : la réduction ou l'allongement de 6 mois de la durée de séjour (note ≥ 17/20, sanction du 2e degré) n'est pas pris en compte.",
+    "Le montant obtenu est considéré comme faisant partie du salaire de base.",
+    "Valeurs des degrés 10 et 11 de la grille en vigueur à la date du calcul."
+   ],
+   "hypotheses_ar": [
+    "فارق تراكمي: يُضاف فارق (الدرجة 11 − الدرجة 10) كل سنتين بعد بلوغ الدرجة 11 (قراءة عبارة «يواصل التمتع كل سنتين»).",
+    "تدرج عادي: لا يؤخذ بعين الاعتبار التنقيص أو الزيادة بستة أشهر في مدة البقاء بالدرجة (عدد مهني لا يقل عن 17 من 20، عقوبة من الدرجة الثانية).",
+    "يُعتبر المبلغ المتحصل عليه جزءًا من الأجر الأساسي.",
+    "قيم الدرجتين 10 و11 من جدول الأجور الساري بتاريخ الاحتساب."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : c'est un palier exact de l'article 13 (جديد) ب (page 9), qui ajoute l'écart entre les deux derniers degrés tous les deux ans après le degré 11 (atteint à 20 ans). La convention ne précise pas si le palier est acquis à {a} ans pile. Indiquer l'ancienneté exacte (par exemple {a} ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: هذه مرحلة دقيقة من مراحل الفصل 13 (جديد) ب (الصفحة 9) الذي يضيف الفارق بين آخر درجتين كل سنتين بعد بلوغ الدرجة 11 (عند 20 سنة). لا تحدد الاتفاقية إن كانت المرحلة تُكتسب عند {a} سنة بالضبط. يرجى تحديد الأقدمية بدقة.",
+   "statut": "IMPLÉMENTÉ (D10) : montant = d11 + n × (d11 − d10) ; paliers exacts (22, 24, 26… ans) refusés (PARAM_INVALIDE) ; hypothèses renvoyées dans detail.hypotheses. Remplace le refus de D8."
   },
-  {
-   "degre": 2,
-   "anciennete_label": "2-4"
-  },
-  {
-   "degre": 3,
-   "anciennete_label": "4-6"
-  },
-  {
-   "degre": 4,
-   "anciennete_label": "6-8"
-  },
-  {
-   "degre": 5,
-   "anciennete_label": "8-10"
-  },
-  {
-   "degre": 6,
-   "anciennete_label": "10-12"
-  },
-  {
-   "degre": 7,
-   "anciennete_label": "12-14"
-  },
-  {
-   "degre": 8,
-   "anciennete_label": "14-16"
-  },
-  {
-   "degre": 9,
-   "anciennete_label": "16-18"
-  },
-  {
-   "degre": 10,
-   "anciennete_label": "18-20"
-  },
-  {
-   "degre": 11,
-   "anciennete_label": "20+"
+  "execution": {
+   "regle": "ecart_cumule_biennal",
+   "decision_ref": "D10",
+   "dernier_degre_atteint_a_annees": 20,
+   "periode_annees": 2,
+   "source_pdf_page": 9,
+   "source_article": "13 (جديد) ب",
+   "texte_source_ar": "يتمثل التقدم في التدرج الآلي حسب الأقدمية كل سنتين وذلك طبقا لجداول الأجور المرفقة بالاتفاقية. وإذا بلغ العامل آخر درجة في السلم المرتب به، فإنه يواصل التمتع كل سنتين إلى آخر حياته المهنية بالفارق بين القيمة المالية لآخر درجة في السلم المرتب به والقيمة المالية للدرجة التي تسبقها. و يمكن التنقيص في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة المتميزين والمتحصلين على عدد مهني سنوي لا يقل عن 17 من 20. كما يمكن الزيادة في مدة البقاء بالدرجة بستة أشهر بالنسبة للعملة الذين سلطت عليهم عقوبة من الدرجة الثانية وذلك بعد استشارة النواب النقابيين وإن لم يوجدوا فممثلي العملة بالمؤسسة.",
+   "regle_fr": "Au dernier degré (degré 11, atteint à 20 ans), le travailleur continue de percevoir tous les deux ans, jusqu'à la fin de sa carrière, l'écart entre la valeur du dernier degré et celle du degré précédent. La durée de séjour dans un degré peut être réduite de 6 mois (note annuelle ≥ 17/20) ou allongée de 6 mois (sanction du 2e degré).",
+   "formule": "montant = d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋ ; d10 et d11 lus dans la table en vigueur à la date du calcul",
+   "hypotheses_fr": [
+    "Écart cumulé : un écart (degré 11 − degré 10) de plus tous les deux ans après le degré 11 (lecture de « يواصل التمتع كل سنتين »).",
+    "Progression normale : la réduction ou l'allongement de 6 mois de la durée de séjour (note ≥ 17/20, sanction du 2e degré) n'est pas pris en compte.",
+    "Le montant obtenu est considéré comme faisant partie du salaire de base.",
+    "Valeurs des degrés 10 et 11 de la grille en vigueur à la date du calcul."
+   ],
+   "hypotheses_ar": [
+    "فارق تراكمي: يُضاف فارق (الدرجة 11 − الدرجة 10) كل سنتين بعد بلوغ الدرجة 11 (قراءة عبارة «يواصل التمتع كل سنتين»).",
+    "تدرج عادي: لا يؤخذ بعين الاعتبار التنقيص أو الزيادة بستة أشهر في مدة البقاء بالدرجة (عدد مهني لا يقل عن 17 من 20، عقوبة من الدرجة الثانية).",
+    "يُعتبر المبلغ المتحصل عليه جزءًا من الأجر الأساسي.",
+    "قيم الدرجتين 10 و11 من جدول الأجور الساري بتاريخ الاحتساب."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans : c'est un palier exact de l'article 13 (جديد) ب (page 9), qui ajoute l'écart entre les deux derniers degrés tous les deux ans après le degré 11 (atteint à 20 ans). La convention ne précise pas si le palier est acquis à {a} ans pile. Indiquer l'ancienneté exacte (par exemple {a} ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة: هذه مرحلة دقيقة من مراحل الفصل 13 (جديد) ب (الصفحة 9) الذي يضيف الفارق بين آخر درجتين كل سنتين بعد بلوغ الدرجة 11 (عند 20 سنة). لا تحدد الاتفاقية إن كانت المرحلة تُكتسب عند {a} سنة بالضبط. يرجى تحديد الأقدمية بدقة.",
+   "statut": "IMPLÉMENTÉ (D10) : montant = d11 + n × (d11 − d10) ; paliers exacts (22, 24, 26… ans) refusés (PARAM_INVALIDE) ; hypothèses renvoyées dans detail.hypotheses. Remplace le refus de D8."
   }
- ],
+ },
  "categories": {
   "admin_tech": [
    "1A",

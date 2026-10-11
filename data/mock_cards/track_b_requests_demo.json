@@ -72,8 +72,40 @@
     "contract_version": "track_b.v0",
     "request_id": "demo-10-refus-secteur-non-couvert",
     "operation": "salaire_base",
-    "params": {"secteur": "BATIMENT_TRAVAUX_PUBLICS", "population": "admin_tech", "categorie": "4",
+    "params": {"secteur": "SECTEUR_FICTIF_NON_SUPPORTE", "population": "admin_tech", "categorie": "4",
                "anciennete_annees": 5, "date": "2024-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-11-salaire-btp-admin-2024",
+    "operation": "salaire_base",
+    "params": {"secteur": "BATIMENT_TRAVAUX_PUBLICS", "population": "admin_tech", "categorie": "4",
+               "anciennete_annees": 13, "date": "2024-03-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-12-salaire-btp-occasionnel-chef-equipe",
+    "operation": "salaire_base",
+    "params": {"secteur": "BATIMENT_TRAVAUX_PUBLICS", "population": "ouvriers_occasionnels", "categorie": "7",
+               "sous_categorie": "2", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-13-refus-btp-anciennete-27-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BATIMENT_TRAVAUX_PUBLICS", "population": "admin_tech", "categorie": "19",
+               "anciennete_annees": 28, "date": "2024-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-14-salaire-metallurgie-25-ans-article-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4",
+               "anciennete_annees": 25, "date": "2024-06-01"},
     "lang": "ar"
   }
 ]

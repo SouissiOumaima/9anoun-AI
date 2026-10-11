@@ -44,3 +44,6 @@ dist/
 # --- Éditeurs (complément) ---
 *.swp
 *~
+
+# --- Évaluation Track B : seul le rapport de référence (baseline) est versionné ---
+src/track_b_accounting/evaluation/results/eval_*
