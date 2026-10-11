@@ -1074,3 +1074,30 @@ déduites ; elles sont à valider par un juriste.
 
 **Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
 prouvée par `test_legal_vocabulary.py`.
+
+---
+
+### D22 — Opération `get_article` : un article par sa référence, sur le corpus réel
+
+**Décision** : DS2 expose une seconde opération, `get_article` (Python
+`src.legal_retrieval.contract.get_article.get_article`, HTTP `POST /legal/article`), demandée
+par DS4 :
+- désignation par `article_id` (avec ou sans version) **ou** par `source_id` + `article`
+  (`"39"`, `"7BIS"`, `"54TER"`, `"46-3"`), schéma de requête dédié ;
+- **même format de réponse que `search`** (enveloppe `common.v0`, toutes les versions, D17) ;
+- répond en mode **`live` sur le corpus réel** (466 articles, D20) dès qu'il est ingéré sur la
+  machine, sinon en mode `mock` ; un article abrogé est renvoyé avec sa mention d'abrogation
+  et son avenant ;
+- « Citation ou Silence » : un article inconnu donne `SOURCE_MANQUANTE` ; pour un trou vérifié
+  à la main (R8), le refus **donne la raison** (absent du PDF / absent du digest).
+
+**Alternatives envisagées** :
+- Passer par `search` avec la référence dans `query` → rejeté : une recherche renvoie des
+  articles *proches*, alors qu'une référence doit donner l'article exact ou un refus.
+- Un format de réponse propre à `get_article` → rejeté : DS1 et DS4 n'auraient pas un seul
+  format à lire.
+
+**Limites v0** : pas de filtre daté (Sprint 5) ; pas de page par article (digest Tradrly).
+
+**Statut** : ⏳ v0 proposée à DS4 et DS1 ; preuve HTTP réelle : 200 `ok` `live` (article
+abrogé avec son avenant), 200 `refus` (trou vérifié à la main), 422 (requête non conforme).

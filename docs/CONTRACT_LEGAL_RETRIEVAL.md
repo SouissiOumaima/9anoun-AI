@@ -110,6 +110,39 @@ normalisé**), `page`, `effective_from`, `effective_to` (null = en vigueur),
 `status` (`en_vigueur` / `modifie` / `abroge` / `inconnu`), `sector` (null = tous
 secteurs), `related` (voisins dans le graphe), `score` (0–1).
 
+## Opération `get_article` — consulter un article par sa référence (D22)
+
+Besoin exprimé par DS4 (et DS1 pour réafficher une citation). Requête :
+`data/mock_cards/schemas/legal_retrieval_get_article_request.v0.schema.json`.
+**Réponse : exactement le format de `search`** (même enveloppe `common.v0`, mêmes résultats,
+toutes les versions de l'article, la plus récente d'abord).
+
+| Désigner l'article | Exemple |
+|---|---|
+| `article_id` (avec ou sans `-vN`) | `{"contract_version": "legal_retrieval.v0", "article_id": "CCS-BTP-ART-39"}` |
+| `source_id` + `article` | `{"contract_version": "legal_retrieval.v0", "source_id": "CCS-BTP", "article": "7BIS"}` |
+
+`article` : `"39"`, `"7BIS"` (مكرر), `"54TER"` (ثالثا / مثلث), `"46-3"` (sous-article).
+Une source qui contient plusieurs textes (Assurance) renvoie l'article de chaque texte
+(identifiants `-P2-`, `-P3-`, chemin `جزء N`).
+
+| Cas | Réponse | HTTP |
+|---|---|---|
+| Article trouvé (y compris **abrogé** : la mention d'abrogation est la réponse) | `ok`, `mode` `live` | 200 |
+| Article inconnu | `refus` `SOURCE_MANQUANTE` | 200 |
+| Trou vérifié à la main (Cadre 5, Assurance 40 : présents dans le PDF, absents du corpus ; Cadre 40, Associations 20 : absents du PDF) | `refus` `SOURCE_MANQUANTE` **avec la raison** en FR/AR | 200 |
+| Requête non conforme (aucune référence, les deux à la fois, format invalide) | `refus` `PARAM_INVALIDE` | 422 |
+
+```python
+from src.legal_retrieval.contract.get_article import get_article   # appel Python direct
+```
+HTTP : `POST /legal/article`. **Mode** : `live` dès que le corpus a été ingéré sur la machine
+(`python -m src.legal_retrieval.corpus.ingest_sections`, données hors git) ; sinon `mock`
+(articles de démonstration, jamais un article inventé). `/health` indique `get_article_mode`.
+v0 : `reference_date` est acceptée mais le filtre daté arrive au Sprint 5 ;
+`applicable_at_reference_date` = version consolidée en vigueur ; `page` = `null` (pas de page
+par article dans le digest Tradrly).
+
 ## Règle « toutes les versions » (D17)
 
 Quand un avocat, un client ou un comptable pose une question, **toutes les versions
