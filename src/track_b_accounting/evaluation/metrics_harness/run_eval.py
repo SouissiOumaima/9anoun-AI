@@ -45,7 +45,8 @@ CRITIQUES = (FAUX_MONTANT, MONTANT_AU_LIEU_DE_REFUS)
 
 
 def _sha256(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+    """Empreinte du fichier, fins de ligne normalisées (CRLF → LF) : identique sous Windows, Linux et macOS."""
+    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _validateur(chemin: Path) -> Draft202012Validator:

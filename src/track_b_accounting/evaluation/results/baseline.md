@@ -1,6 +1,6 @@
 # Évaluation Track B — 2026-10-10
 
-Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 47 cas, sha256 `c32ce2c9820d…`).
+Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 47 cas, sha256 `821beade5021…`).
 Cas vérifiés sur les PDF par DS5 : **37 / 47**.
 
 **Faux montants : 0** (montant faux pour un ok attendu, ou montant renvoyé alors qu'un refus était attendu).
