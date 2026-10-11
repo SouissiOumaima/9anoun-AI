@@ -15,11 +15,36 @@ from .models import Refus
 # calc -> track_b_accounting -> src -> <racine du dépôt>
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
-GRILLES = {
-    "METALLURGIE_BATIMENT": "data/processed/salary_grids/metallurgie_batiment.json",
-    "BATIMENT_TRAVAUX_PUBLICS": "data/processed/salary_grids/batiment_travaux_publics.json",
-}
+SALARY_GRIDS_DIR = REPO_ROOT / "data" / "processed" / "salary_grids"
 SMIG_FILE = "data/processed/smig_smag/smig_smag.json"
+_DECISION_REF = re.compile(r"D([0-9]+)")
+
+
+def decouvrir_grilles(dossier: Path = SALARY_GRIDS_DIR) -> dict[str, str]:
+    """Registre des secteurs : {secteur_code: chemin du fichier}, découvert dans dossier/*.json.
+
+    Un fichier est retenu s'il porte un _meta.secteur_code non vide et un _meta.decision_ref valide
+    (« D » suivi d'un nombre) ; sinon il est ignoré et le secteur répond comme un secteur inconnu
+    (SOURCE_MANQUANTE). Un code porté par plusieurs fichiers est ignoré (ambigu). Ordre : numéro de
+    la décision, puis code, pour que la liste des secteurs disponibles ne dépende pas des noms de fichiers.
+    Chemins relatifs à la racine du dépôt (cités dans data_file), absolus pour un dossier hors du dépôt.
+    """
+    trouves: dict[str, list[tuple[int, str]]] = {}
+    for f in sorted(Path(dossier).glob("*.json")):
+        try:
+            meta = json.loads(f.read_text(encoding="utf-8")).get("_meta", {})
+            code, ref = meta.get("secteur_code"), meta.get("decision_ref")
+        except (OSError, json.JSONDecodeError, AttributeError):
+            continue
+        if not (_texte(code) and isinstance(ref, str) and (m := _DECISION_REF.fullmatch(ref))):
+            continue
+        try:
+            chemin = f.resolve().relative_to(REPO_ROOT).as_posix()
+        except ValueError:
+            chemin = f.resolve().as_posix()
+        trouves.setdefault(code, []).append((int(m[1]), chemin))
+    uniques = {code: v[0] for code, v in trouves.items() if len(v) == 1}
+    return {code: chemin for code, (_, chemin) in sorted(uniques.items(), key=lambda kv: (kv[1][0], kv[0]))}
 
 
 def _invalide(chemin: str, raison: str) -> Refus:
@@ -54,6 +79,10 @@ def _entier_positif(v) -> bool:
 
 def _texte(v) -> bool:
     return isinstance(v, str) and bool(v.strip())
+
+
+# Registre découvert une fois au chargement du module (même objet partagé avec salary.py et primes.py).
+GRILLES = decouvrir_grilles()
 
 
 def _exiger_refus_declare(bloc: dict, objet: str, avec_anciennete: bool = False) -> None:

@@ -30,10 +30,14 @@ schémas JSON, et les appelants n'ont rien à changer.
 **Côté code, pas encore entièrement.** Aujourd'hui, ajouter un secteur ne se
 limite pas à déposer un fichier dans `data/processed/salary_grids/` :
 
-1. **Registre explicite des secteurs.** Les secteurs connus sont listés en dur
-   dans `src/track_b_accounting/calc/loaders.py` (dictionnaire `GRILLES`).
-   Il faut y ajouter une ligne par nouveau secteur. Un fichier déposé sans
-   cette ligne n'est pas lu, et le secteur répond `SOURCE_MANQUANTE`.
+1. **Registre des secteurs : réglé.** Les secteurs sont découverts
+   automatiquement dans `data/processed/salary_grids/*.json`
+   (`decouvrir_grilles`, `src/track_b_accounting/calc/loaders.py`) : un
+   fichier est chargé s'il porte un `_meta.secteur_code` et un
+   `_meta.decision_ref` valide (`D` suivi d'un nombre). Un fichier sans
+   référence valide, illisible, ou dont le code est porté par un autre
+   fichier est ignoré, et le secteur répond `SOURCE_MANQUANTE` comme un
+   secteur inconnu. Ce n'est donc plus une limite.
 2. **Structure des données supposée.** Le code s'appuie sur la structure du
    fichier métallurgie :
    - les tables sont rattachées à une population quand leurs catégories sont
@@ -58,8 +62,7 @@ limite pas à déposer un fichier dans `data/processed/salary_grids/` :
    populations avec les mêmes catégories, ou des primes d'une autre forme)
    demandera une adaptation du code. Le schéma, lui, ne changera pas.
 
-Le point 1 est une petite correction, que je n'ai pas encore faite. Le point 2
-dépendra des grilles des autres conventions, qui ne sont pas encore
+Le point 2 dépendra des grilles des autres conventions, qui ne sont pas encore
 transcrites.
 
 **Point réglé : la référence de vérification.** Le champ `decision_ref` des
