@@ -1361,6 +1361,44 @@ privé ; le corpus traité n'en est qu'une transformation, il n'augmente pas l'e
 
 ---
 
+### D26 — Recherche réelle v0 : référence d'article + BM25, sans dépendance externe
+
+**Décision** : `POST /legal/search` (et `handle()`) répond en mode **`live`** dès que le corpus
+est ingéré sur la machine (`computed_by = legal_retrieval.search.live`) ; sinon le mock reste
+servi (`mode = mock`). Ordre de la réponse :
+1. les articles dont le **numéro est demandé** (« الفصل 42 مكرر », « article 14 bis »,
+   « الفصل 46 - 3 ») → score 1.0, conventions sectorielles avant la convention cadre ;
+2. puis **BM25** (k1 = 1.5, b = 0.75) sur le texte normalisé (`text_normalized`, D13),
+   racinisation arabe légère (« ال », « بال », « لل »… ; « ات », « ين », « ه »…), mots vides
+   retirés ; score = score / meilleur score.
+
+Filtre `sector` identique au mock : un article s'applique à son secteur ou à tous
+(`sector = null` : convention cadre, SMIG). `top_k` compte des articles, chaque article
+avec toutes ses versions (D17). Aucun mot en commun avec le corpus → refus
+`SOURCE_MANQUANTE`. Le texte renvoyé reste le texte exact.
+
+`handle(request, live=False)` force le mock : le fichier d'exemples partagé avec DS1
+(`legal_retrieval_requests_demo.json`) ne change pas selon la machine.
+
+**Alternatives envisagées** :
+- Bibliothèque `rank_bm25` → rejetée pour la v0 : 60 lignes de Python suffisent, aucune
+  dépendance à faire valider, résultat déterministe (égalités départagées par identifiant).
+- Embeddings denses + fusion RRF dès maintenant → reportés : il faut un modèle validé par
+  Tradrly, et aucune donnée ne doit sortir vers un service externe (hors Gemini 3).
+
+**Limites connues (v0)** :
+- une question en **français** ne trouve rien (le corpus est en arabe) → refus ; un glossaire
+  FR → AR est la prochaine amélioration ;
+- `worker_category` est accepté mais pas encore filtré (pas de catégorie par article) ;
+- `reference_date` : version en vigueur seulement (filtre daté au sprint 5) ;
+- l'abstention hors périmètre repose sur « aucun mot en commun » : un seuil sera fixé avec le
+  golden set (Recall@10 ≥ 88 %, abstention ≥ 85 %, spec §8.4).
+
+**Statut** : ⏳ v0 ; essai sur le corpus réel :
+`python -m src.legal_retrieval.tools.try_search "منحة النقل" --sector btp`.
+
+---
+
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
 
 **Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.

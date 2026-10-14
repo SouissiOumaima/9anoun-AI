@@ -22,9 +22,10 @@ app = FastAPI(title="DS2 Legal Retrieval", version=CONTRACT_VERSION)
 @app.get("/health")
 def health() -> dict[str, str]:
     """Liveness probe."""
-    # search is still mock; get_article is live as soon as the corpus is ingested here
-    return {"status": "ok", "contract_version": CONTRACT_VERSION, "mode": "mock",
-            "get_article_mode": "live" if load_store() is not None else "mock"}
+    # search and get_article are live as soon as the corpus is ingested on this machine
+    mode = "live" if load_store() is not None else "mock"
+    return {"status": "ok", "contract_version": CONTRACT_VERSION, "mode": mode,
+            "get_article_mode": mode}
 
 
 @app.post("/legal/search")
