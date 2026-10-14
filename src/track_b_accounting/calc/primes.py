@@ -37,6 +37,14 @@ def _params_attendus(p: dict) -> set[str]:
     return attendus
 
 
+def _notes(p: dict, detail: dict) -> None:
+    """Mention de la source reproduite sans calcul (ex. décrets exclus de la prime de transport), FR puis AR."""
+    if "note" in p:
+        detail["note"] = p["note"]
+    if "note_ar" in p:
+        detail["note_ar"] = p["note_ar"]
+
+
 def _ligne_datee(lignes: list[dict], jour, code: str) -> dict:
     ligne = plus_recent_avant(lignes, jour)
     if ligne is None:
@@ -94,22 +102,30 @@ def prime(secteur: str, code: str, date, **params) -> Result:
                             f"{code}: الصنف {groupe!r} غير صالح (المتوفر: {', '.join(groupes)}).")
             valeur = ligne[groupe]
             detail["groupe"] = groupe
+            libelle = p.get("libelles_groupes", {}).get(groupe)
+            if libelle:
+                detail["groupe_libelle"], detail["groupe_libelle_ar"] = libelle["fr"], libelle["ar"]
         if "variante" in _params_attendus(p):
             detail["variante"] = variante
         detail["effective_date"] = ligne["effective_date"]
         if "au_titre_de" in ligne:
             detail["au_titre_de"] = ligne["au_titre_de"]
+        _notes(p, detail)
     else:
         # Montant unique : la source ne fixe pas de date d'effet distincte (cf. D4, prime_panier_qefa).
         valeur = p["montant"]
         detail["effective_date"] = p.get("effective_date")
-        if "note" in p:
-            detail["note"] = p["note"]
+        _notes(p, detail)
         if "montant_reduit_si_transport_assure" in p:
             transport = _bool_obligatoire(params, "transport_assure", code)
             detail["transport_assure"] = transport
             if transport:
                 valeur = p["montant_reduit_si_transport_assure"]
+
+    hyp = p.get("hypotheses")
+    if hyp:
+        # Interprétations affichées (ex. « لكل الأصناف » : même montant pour toutes les catégories).
+        detail["hypotheses"], detail["hypotheses_ar"] = list(hyp["fr"]), list(hyp["ar"])
 
     ref = decision_ref(grille, secteur)
     return Result(

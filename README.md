@@ -55,7 +55,8 @@ src/
 
 Chaque rôle suit la même structure minimale : `README.md`, `tools/`,
 `tests/` et `evaluation/`. Track B, plus avancé, a sa propre organisation
-(`calc/`, `contract/`) et ses `tests/` font office d'évaluation.
+(`calc/`, `contract/`) ; son `evaluation/` contient un jeu de référence lu dans les PDF
+et un script de métriques ([`src/track_b_accounting/evaluation/`](src/track_b_accounting/evaluation/README.md)).
 
 ## Conventions
 

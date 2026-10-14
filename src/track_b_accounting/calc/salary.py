@@ -5,7 +5,8 @@ from __future__ import annotations
 import math
 from decimal import Decimal
 
-from .loaders import GRILLES, bornes_degre, charger_grille, decision_ref, exiger_tables_transcrites
+from .loaders import (GRILLES, bornes_degre, charger_grille, decision_ref, exiger_tables_transcrites,
+                      population_de_table)
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
 
@@ -83,16 +84,22 @@ def _cle_categorie(grille: dict, population: str, categorie, sous_categorie) -> 
         return cat, s["cle"], {"sous_categorie": sous_categorie,
                                "libelle_fr": s["libelle_fr"], "libelle_ar": s["libelle_ar"]}
     demandables = _categories_demandables(grille, population)
+    alias = grille.get("alias_categories", {}).get(population, {})
+    info_alias = {}
+    if isinstance(cat, str) and cat not in demandables and cat in alias:
+        # Alias déclaré dans le JSON (ex. numérotation de l'annexe → clé imprimée dans la grille).
+        cat, info_alias = alias[cat], {"categorie_demandee": cat}
     if not isinstance(cat, str) or cat not in demandables:
+        attendu = ", ".join(demandables) + (f" ; alias : {', '.join(alias)}" if alias else "")
         raise Refus(Refus.PARAM_INVALIDE,
-                    f"Catégorie inconnue : {categorie!r} pour {population} (attendu : {', '.join(demandables)}).",
+                    f"Catégorie inconnue : {categorie!r} pour {population} (attendu : {attendu}).",
                     f"صنف غير معروف: {categorie!r} لفئة {population}.")
     if sous_categorie is not None:
         raise Refus(Refus.PARAM_INVALIDE,
                     f"Sous-catégorie {sous_categorie!r} non prévue : la catégorie {cat} ({population}) "
                     "n'a pas de sous-catégorie.",
                     f"الصنف الفرعي {sous_categorie!r} غير متوقع: الصنف {cat} ({population}) لا يتضمن أصنافًا فرعية.")
-    return cat, cat, {}
+    return cat, cat, info_alias
 
 
 def degre_from_anciennete(annees, secteur=None, population=None) -> int:
@@ -179,8 +186,8 @@ def regle_au_dela_dernier_degre(grille: dict, population: str, cle: str, annees)
 
 
 def _tables_population(grille: dict, population: str) -> list[dict]:
-    attendues = set(grille["categories"][population])
-    return [t for t in grille["grilles"] if set(t["valeurs"]) == attendues]
+    """Tables de la population (champ « population » de la table, sinon ses catégories)."""
+    return [t for t in grille["grilles"] if population_de_table(grille, t) == population]
 
 
 def table_applicable(secteur, population, date) -> dict:
@@ -246,6 +253,12 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
         citations.append(Citation(source_file=grille["_meta"]["source_file"], page=bloc["source_pdf_page"],
                                   article=bloc["source_article"], data_file=GRILLES[secteur],
                                   decision_ref=decision_ref({"_meta": bloc}, secteur)))
+    # Interprétations lues dans le JSON : grille de la population, puis ligne demandée, puis article 13.
+    hyps = [h for h in (grille.get("hypotheses_grille", {}).get(pop),
+                        grille.get("hypotheses_categories", {}).get(pop, {}).get(cle)) if h]
+    if hyps:
+        detail["hypotheses"] = [x for h in hyps for x in h["fr"]] + detail.get("hypotheses", [])
+        detail["hypotheses_ar"] = [x for h in hyps for x in h["ar"]] + detail.get("hypotheses_ar", [])
     detail.update({
         "table_id": table["table_id"],
         "effective_date": table["effective_date"],
