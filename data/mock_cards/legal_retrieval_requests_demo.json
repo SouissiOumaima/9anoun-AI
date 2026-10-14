@@ -1,0 +1,363 @@
+{
+  "_comment": "Exemples DS2 pour l'intégration (DS1). Chaque expected_response est produite par le vrai handler (tools/build_demo_examples.py) et vérifiée par un test. Textes juridiques FAUX, marqués [MOCK].",
+  "contract_version": "legal_retrieval.v0",
+  "operations": [
+    {
+      "name": "search",
+      "python": "src.legal_retrieval.contract.handler.handle",
+      "http": "POST /legal/search",
+      "cli": "python -m src.legal_retrieval.contract.cli <fichier.json>"
+    }
+  ],
+  "examples": [
+    {
+      "id": "ok-toutes-versions",
+      "description": "Succès : 1 article demandé (top_k=1) → ses 2 versions (nouvelle + ancienne), règle D17.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-01",
+        "query": "ما هي منحة النقل في قطاع البناء؟",
+        "reference_date": "2024-01-15",
+        "sector": "btp",
+        "lang": "ar",
+        "top_k": 1
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-01",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 12,
+            "article": "الفصل 50 (جديد)",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D11"
+          },
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 12,
+            "article": "الفصل 50",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D11"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.search.mock",
+        "mode": "mock",
+        "results": [
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [],
+            "page": 12,
+            "article_id": "MOCK-CCS-BTP-ART-50-v2",
+            "version_group": "MOCK-CCS-BTP-ART-50",
+            "version": 2,
+            "article_number": 50,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50 (جديد)",
+            "text": "[MOCK] الفصل 50 (جديد): منحة النقل — نص تجريبي للنسخة الجديدة.",
+            "effective_from": "2021-12-01",
+            "effective_to": null,
+            "status": "en_vigueur",
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+            "previous_version_available": true,
+            "score": 0.93,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 12,
+              "article": "الفصل 50 (جديد)",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D11"
+            }
+          },
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [],
+            "page": 12,
+            "article_id": "MOCK-CCS-BTP-ART-50-v1",
+            "version_group": "MOCK-CCS-BTP-ART-50",
+            "version": 1,
+            "article_number": 50,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50",
+            "text": "[MOCK] الفصل 50: منحة النقل — نص تجريبي للنسخة القديمة.",
+            "effective_from": null,
+            "effective_to": "2021-11-30",
+            "status": "modifie",
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+            "previous_version_available": null,
+            "score": 0.93,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 12,
+              "article": "الفصل 50",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D11"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ok-abrogation-et-ancienne-version-absente",
+      "description": "Succès : plusieurs articles, dont un modifié sans ancienne version dans le corpus (previous_version_available=false) et un article abrogé (status=abroge).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-02",
+        "query": "Prime de transport et articles abrogés, secteur BTP",
+        "sector": "btp",
+        "lang": "fr"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-02",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 12,
+            "article": "الفصل 50 (جديد)",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D11"
+          },
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 12,
+            "article": "الفصل 50",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D11"
+          },
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 13,
+            "article": "الفصل 51 (جديد)",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D11"
+          },
+          {
+            "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+            "page": 10,
+            "article": "الفصول 38-39-40-41",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D18"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.search.mock",
+        "mode": "mock",
+        "results": [
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [],
+            "page": 12,
+            "article_id": "MOCK-CCS-BTP-ART-50-v2",
+            "version_group": "MOCK-CCS-BTP-ART-50",
+            "version": 2,
+            "article_number": 50,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50 (جديد)",
+            "text": "[MOCK] الفصل 50 (جديد): منحة النقل — نص تجريبي للنسخة الجديدة.",
+            "effective_from": "2021-12-01",
+            "effective_to": null,
+            "status": "en_vigueur",
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+            "previous_version_available": true,
+            "score": 0.93,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 12,
+              "article": "الفصل 50 (جديد)",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D11"
+            }
+          },
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [],
+            "page": 12,
+            "article_id": "MOCK-CCS-BTP-ART-50-v1",
+            "version_group": "MOCK-CCS-BTP-ART-50",
+            "version": 1,
+            "article_number": 50,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50",
+            "text": "[MOCK] الفصل 50: منحة النقل — نص تجريبي للنسخة القديمة.",
+            "effective_from": null,
+            "effective_to": "2021-11-30",
+            "status": "modifie",
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+            "previous_version_available": null,
+            "score": 0.93,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 12,
+              "article": "الفصل 50",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D11"
+            }
+          },
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [
+              "MOCK-CCS-BTP-ART-50"
+            ],
+            "page": 13,
+            "article_id": "MOCK-CCS-BTP-ART-51-v2",
+            "version_group": "MOCK-CCS-BTP-ART-51",
+            "version": 2,
+            "article_number": 51,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 51 (جديد)",
+            "text": "[MOCK] الفصل 51 (جديد): منح القفة والتنقل — نص تجريبي.",
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": null,
+            "previous_version_available": false,
+            "score": 0.88,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 13,
+              "article": "الفصل 51 (جديد)",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D11"
+            }
+          },
+          {
+            "source_id": "MOCK-CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+            "sector": "btp",
+            "related": [],
+            "page": 10,
+            "article_id": "MOCK-CCS-BTP-ART-39-v1",
+            "version_group": "MOCK-CCS-BTP-ART-39",
+            "version": 1,
+            "article_number": 39,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 39",
+            "text": "[MOCK] الفصول 38-39-40-41: (ألغيت بمقتضى الملحق التعديلي عدد 5)",
+            "effective_from": null,
+            "effective_to": null,
+            "status": "abroge",
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+            "previous_version_available": null,
+            "score": 0.61,
+            "citation": {
+              "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+              "page": 10,
+              "article": "الفصول 38-39-40-41",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D18"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "refus-source-manquante",
+      "description": "Refus « Citation ou Silence » : aucun article pertinent pour ce secteur → SOURCE_MANQUANTE (HTTP 200).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-03",
+        "query": "مدة التجربة في قطاع البنوك",
+        "sector": "banques",
+        "lang": "ar"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-03",
+        "status": "refus",
+        "citations": [],
+        "refus": {
+          "code": "SOURCE_MANQUANTE",
+          "message_fr": "Aucun article suffisamment pertinent n'a été trouvé dans le corpus juridique.",
+          "message_ar": "لم يتم العثور على أي فصل وثيق الصلة في المدونة القانونية."
+        },
+        "computed_by": "legal_retrieval.search.mock",
+        "mode": "mock",
+        "results": []
+      }
+    },
+    {
+      "id": "refus-param-invalide-date",
+      "description": "Refus de contrat : date au mauvais format → PARAM_INVALIDE (HTTP 422).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-04",
+        "query": "préavis de licenciement",
+        "reference_date": "15/01/2024"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-04",
+        "status": "refus",
+        "citations": [],
+        "refus": {
+          "code": "PARAM_INVALIDE",
+          "message_fr": "Requête non conforme au contrat legal_retrieval.v0 : reference_date: '15/01/2024' does not match '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; reference_date: '15/01/2024' is not a 'date'",
+          "message_ar": "الطلب غير مطابق لعقد legal_retrieval.v0."
+        },
+        "computed_by": "legal_retrieval.contract",
+        "mode": "mock",
+        "results": []
+      }
+    },
+    {
+      "id": "refus-param-invalide-champ-manquant",
+      "description": "Refus de contrat : champ obligatoire `query` absent → PARAM_INVALIDE (HTTP 422).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-05"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds2-demo-05",
+        "status": "refus",
+        "citations": [],
+        "refus": {
+          "code": "PARAM_INVALIDE",
+          "message_fr": "Requête non conforme au contrat legal_retrieval.v0 : <root>: 'query' is a required property",
+          "message_ar": "الطلب غير مطابق لعقد legal_retrieval.v0."
+        },
+        "computed_by": "legal_retrieval.contract",
+        "mode": "mock",
+        "results": []
+      }
+    }
+  ],
+  "erreur_example": {
+    "description": "status = erreur : incident technique inattendu, non déclenchable par une requête. HTTP 500, aucun détail interne.",
+    "response": {
+      "contract_version": "legal_retrieval.v0",
+      "request_id": "ds2-demo-06",
+      "status": "erreur",
+      "citations": [],
+      "refus": null,
+      "computed_by": "legal_retrieval.contract",
+      "mode": "mock",
+      "results": [],
+      "erreur": {
+        "type": "INTERNE",
+        "message_fr": "Incident technique dans le service de recherche juridique.",
+        "message_ar": "خلل تقني في خدمة البحث القانوني."
+      }
+    }
+  }
+}
