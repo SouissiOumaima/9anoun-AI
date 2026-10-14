@@ -22,6 +22,7 @@ _STOPWORDS_RAW = """
 في من على الي الى عن ان او و ثم قد لا لم لن ما ماذا متي كيف هل اي التي الذي الذين اللذين
 هذا هذه ذلك تلك هو هي هم هن كل بعض بين عند مع غير كان يكون تكون كانت ليس اذا حيث حتي
 لدي به بها له لها فيه فيها منه منها عليه عليها اليه عنه الا اما بعد قبل
+كم كيف لماذا اين متى ماهي ماهو
 فصل فصول الفصل الفصول
 le la les de des du un une et en au aux pour par sur dans est que qui quel quelle
 quels quelles ce cette ces se sa son ses il elle ils a l d
@@ -52,10 +53,25 @@ def stem(token: str) -> str:
     return token
 
 
+# one-letter preposition glued to a word WITHOUT "ال": "بعطلة", "لكل", "كعون"
+_ONE_LETTER = "بلكف"
+
+
 def terms(text: str) -> list[str]:
-    """Search terms of a text (normalized, without function words, stemmed)."""
-    words = _TOKEN.findall(normalize_arabic(text))
-    return [stem(w) for w in words if w not in STOPWORDS]
+    """Search terms of a text (normalized, without function words, stemmed).
+
+    A long word starting with ب/ل/ك/ف gives TWO terms, with and without that
+    letter: "بعطلة" -> "بعطل" + "عطل" (finds "عطلة"), while "بطاقة" keeps "بطاق"
+    (never only "طاق"). Same rule for the corpus and the question.
+    """
+    out: list[str] = []
+    for word in _TOKEN.findall(normalize_arabic(text)):
+        if word in STOPWORDS:
+            continue
+        out.append(stem(word))
+        if word[0] in _ONE_LETTER and len(word) >= 5 and not word.startswith(_PREFIXES):
+            out.append(stem(word[1:]))
+    return out
 
 
 # "الفصل 42" / "بالفصل 42 مكرر" / "الفصل 46 - 3" / "article 14 bis"

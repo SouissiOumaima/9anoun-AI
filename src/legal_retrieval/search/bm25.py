@@ -24,6 +24,8 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from ..contract.results import to_result
+from ..corpus.normalize import normalize_arabic
+from ..corpus.registry import REGISTRY
 from ..corpus.store import CorpusStore
 from .text import article_refs, terms, without_refs
 
@@ -59,6 +61,26 @@ class Bm25Index:
             best[group] = max(best.get(group, 0.0), score)
         return best
 
+    def best_match(self, query_terms: list[str], allowed: set[str]) -> tuple[float, float]:
+        """(raw BM25 score, coverage) of the best allowed document.
+
+        coverage = idf weight of the question terms found in that document / idf
+        weight of all question terms (0..1). A question sharing ONE rare word with
+        an article gets a high raw score but a low coverage (abstention study, D27).
+        """
+        unique = set(query_terms)
+        total = sum(self.idf(t) for t in unique)
+        raw, coverage = 0.0, 0.0
+        for doc, tf in enumerate(self.tfs):
+            shared = unique & tf.keys()
+            if not shared or self.groups[doc] not in allowed:
+                continue
+            norm = K1 * (1 - B + B * self.lengths[doc] / self.avgdl)
+            score = sum(self.idf(t) * tf[t] * (K1 + 1) / (tf[t] + norm) for t in shared)
+            if score > raw:
+                raw, coverage = score, sum(self.idf(t) for t in shared) / total
+        return raw, coverage
+
 
 def build_index(store: CorpusStore) -> Bm25Index:
     """Index every version of every article (text_normalized when present)."""
@@ -90,8 +112,18 @@ def _sector_ok(article_sector: str | None, wanted: str | None) -> bool:
     return wanted is None or article_sector in (None, wanted)
 
 
+def named_sources(question: str) -> list[str]:
+    """Sources named in the question ("الاتفاقية الإطارية" -> CC-CADRE), registry keywords."""
+    text = normalize_arabic(question)
+    return [e.source_id for e in REGISTRY if normalize_arabic(e.keyword) in text]
+
+
 def _exact_groups(store: CorpusStore, question: str, sector: str | None) -> list[str]:
-    """Groups whose article number is asked, sectoral sources before general ones."""
+    """Groups whose article number is asked, sectoral sources before general ones.
+
+    When the question names a convention that HAS this article ("الفصل 39 من
+    الاتفاقية الإطارية"), only that convention's article is kept.
+    """
     found: list[str] = []
     for number, suffix in article_refs(question):
         pattern = re.compile(rf"-ART-{re.escape(number)}{suffix}(-DUP\d+)?$")
@@ -100,6 +132,10 @@ def _exact_groups(store: CorpusStore, question: str, sector: str | None) -> list
             if pattern.search(group) and _sector_ok(article.get("sector"), sector) \
                     and group not in found:
                 found.append(group)
+    named = named_sources(question)
+    in_named = [g for g in found if store.groups[g][0]["source_id"] in named]
+    if in_named:
+        return in_named
     sectors = {g: store.groups[g][0].get("sector") for g in found}
     return sorted(found, key=lambda g: sectors[g] is None)  # stable: sectoral first
 
@@ -118,6 +154,20 @@ def ranked_groups(request: dict[str, Any], store: CorpusStore) -> list[tuple[str
         ranked += [(g, round(s / top, 4)) for g, s in
                    sorted(bm25.items(), key=lambda item: (-item[1], item[0]))]
     return ranked
+
+
+def top_signals(request: dict[str, Any], store: CorpusStore) -> dict[str, Any]:
+    """Signals of the best BM25 match, for the abstention study (evaluation/metrics.py).
+
+    The normalized score is always 1.0 for the first result, so it cannot decide
+    "nothing relevant": the raw score and the coverage can (threshold, D27).
+    """
+    question, sector = request["query"], request.get("sector")
+    index = index_for(store)
+    allowed = {g for g, s in zip(index.groups, index.sectors, strict=True) if _sector_ok(s, sector)}
+    raw, coverage = index.best_match(terms(without_refs(question)), allowed)
+    return {"raw": raw, "coverage": coverage,
+            "number_asked": bool(_exact_groups(store, question, sector))}
 
 
 def search_live(request: dict[str, Any], store: CorpusStore) -> list[dict[str, Any]]:

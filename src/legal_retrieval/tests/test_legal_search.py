@@ -158,3 +158,15 @@ def test_live_false_forces_the_mock(live_corpus: Path) -> None:
     assert _ask("منحة")["mode"] == "live"
     response = handle({"contract_version": V0, "query": "منحة", "sector": "btp"}, live=False)
     assert response["mode"] == "mock"
+
+
+def test_named_convention_keeps_only_its_article(live_corpus: Path) -> None:
+    """« الفصل 2 من الاتفاقية الإطارية » : the cadre article only, not the sectoral 2s."""
+    groups = _groups(_ask("ماذا يقول الفصل 2 من الاتفاقية الإطارية؟"))
+    assert groups[0] == "CC-CADRE-ART-2"  # BM25 may add other articles AFTER it
+    assert "CCS-BTP-ART-2" not in groups and "CCS-BANQUES-ART-2" not in groups
+
+
+def test_one_letter_preposition_gives_both_forms() -> None:
+    assert "عطل" in terms("بعطلة")  # finds "عطلة"
+    assert "بطاق" in terms("بطاقة")  # the card stays a card

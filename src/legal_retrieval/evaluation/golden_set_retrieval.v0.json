@@ -1,0 +1,450 @@
+{
+ "golden_set_version": "golden_set_retrieval.v0",
+ "decision_ref": "D27",
+ "_doc": "Golden set de la recherche DS2. expected = version_group attendus ; un succès = AU MOINS UN expected dans les k premiers articles. Les questions 'sujet' sont formulées avec les mots d'un travailleur, pas ceux de l'article. Pour remplir expected : python -m src.legal_retrieval.evaluation.find_candidates \"<mot>\" --sector <code> (recherche indépendante du moteur). status : a_completer -> complet (ignorées tant que a_completer). hors_perimetre : expected vide, DS2 doit refuser. Mesure : python -m src.legal_retrieval.evaluation.metrics",
+ "targets": {
+  "recall_at_10": 0.88,
+  "abstention": 0.85,
+  "source": "spec Tradrly §8.4"
+ },
+ "questions": [
+  {
+   "id": "G01",
+   "kind": "sujet",
+   "question": "كم يوما من العطلة السنوية يستحق عون البنك؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G02",
+   "kind": "sujet",
+   "question": "هل تتمتع الموظفة في البنك بعطلة عند الولادة وكم مدتها؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G03",
+   "kind": "sujet",
+   "question": "ماذا يحدث لأجر عون البنك إذا مرض ولم يستطع العمل؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G04",
+   "kind": "sujet",
+   "question": "هل يتحصل أعوان البنوك على منحة إنتاج كل سنة؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G05",
+   "kind": "sujet",
+   "question": "هل يحق لعامل البناء منحة للتنقل إلى الحضيرة؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G06",
+   "kind": "sujet",
+   "question": "ماذا تتقاضى عائلة عامل البناء إذا توفي؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G07",
+   "kind": "sujet",
+   "question": "كم ساعة يعمل عامل البناء في الأسبوع؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G08",
+   "kind": "sujet",
+   "question": "هل يمكن للمؤجر أن ينقل عامل البناء إلى مكان عمل آخر دون موافقته؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G09",
+   "kind": "sujet",
+   "question": "كم تدوم فترة التجربة قبل ترسيم العامل؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G10",
+   "kind": "sujet",
+   "question": "ما هي مدة الإعلام المسبق قبل إنهاء عقد العمل؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G11",
+   "kind": "sujet",
+   "question": "ما هي العقوبات التأديبية التي يمكن أن تسلط على العامل؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G12",
+   "kind": "sujet",
+   "question": "هل يجب على المؤجر أن يسلم للعامل وثيقة تبين تفاصيل أجره؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G13",
+   "kind": "sujet",
+   "question": "من يمثل العمال أمام الإدارة داخل المؤسسة؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G14",
+   "kind": "sujet",
+   "question": "كيف تحسب منحة الأقدمية؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G15",
+   "kind": "sujet",
+   "question": "كم يوم عطلة سنوية لأعوان شركات التأمين؟",
+   "sector": "assurance",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G16",
+   "kind": "sujet",
+   "question": "هل يتمتع عون التأمين بمنحة آخر السنة؟",
+   "sector": "assurance",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G17",
+   "kind": "sujet",
+   "question": "ما هو التوقيت الأسبوعي للعمل في الجمعيات التي تعتني بالأشخاص ذوي الإعاقة؟",
+   "sector": "associations",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G18",
+   "kind": "sujet",
+   "question": "متى يصبح العامل في الجمعية مرسما؟",
+   "sector": "associations",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G19",
+   "kind": "sujet",
+   "question": "كم ساعة تدريس في الأسبوع للمدرس في المدارس الخاصة؟",
+   "sector": "enseignement_prive",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G20",
+   "kind": "sujet",
+   "question": "هل يتقاضى مدرس التعليم الخاص أجره خلال العطلة الصيفية؟",
+   "sector": "enseignement_prive",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G21",
+   "kind": "sujet",
+   "question": "هل يتقاضى عون الحراسة منحة عن العمل بالليل؟",
+   "sector": "gardiennage_securite_transport_fonds",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G22",
+   "kind": "sujet",
+   "question": "هل يوفر المؤجر الزي الرسمي لعون الحراسة؟",
+   "sector": "gardiennage_securite_transport_fonds",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G23",
+   "kind": "sujet",
+   "question": "هل توجد منحة خطر لعمال البناء المعدني؟",
+   "sector": "construction_metallique",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G24",
+   "kind": "sujet",
+   "question": "كيف تتم ترقية العامل في قطاع البناء المعدني؟",
+   "sector": "construction_metallique",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G25",
+   "kind": "sujet",
+   "question": "كم يبلغ الأجر الأدنى المضمون؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G26",
+   "kind": "sujet",
+   "question": "هل يجوز طرد العامل بسبب خطأ فادح دون تعويض؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "G27",
+   "kind": "sujet",
+   "question": "هل يتمتع العامل برخصة خالصة الأجر عند زواجه؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": ""
+  },
+  {
+   "id": "D01",
+   "kind": "dialecte",
+   "question": "قداش من يوم كونجي نخلص في العام في البانكة؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": "même réponse attendue que G01"
+  },
+  {
+   "id": "D02",
+   "kind": "dialecte",
+   "question": "الباترون ينجم يبدلي بلاصة الخدمة بلاش ما نوافق؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": "même réponse attendue que G08"
+  },
+  {
+   "id": "F01",
+   "kind": "francais",
+   "question": "Combien de jours de congé annuel pour un employé de banque ?",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": "même réponse attendue que G01"
+  },
+  {
+   "id": "F02",
+   "kind": "francais",
+   "question": "Quelle est la durée de la période d'essai ?",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "a_completer",
+   "note": "même réponse attendue que G09"
+  },
+  {
+   "id": "N01",
+   "kind": "numero",
+   "question": "ماذا ينص الفصل 39 من اتفاقية البناء؟",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [
+    "CCS-BTP-ART-39"
+   ],
+   "status": "complet",
+   "note": "abrogé par l'avenant 5 : l'abrogation est la réponse"
+  },
+  {
+   "id": "N02",
+   "kind": "numero",
+   "question": "ما هو الفصل 21 من اتفاقية البنوك؟",
+   "sector": "banques",
+   "reference_date": null,
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "N03",
+   "kind": "numero",
+   "question": "الفصل 52",
+   "sector": "btp",
+   "reference_date": null,
+   "expected": [
+    "CCS-BTP-ART-52"
+   ],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "N04",
+   "kind": "numero",
+   "question": "ماذا يقول الفصل 39 من الاتفاقية الإطارية؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [
+    "CC-CADRE-ART-39"
+   ],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H01",
+   "kind": "hors_perimetre",
+   "question": "ما هي عاصمة فرنسا؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H02",
+   "kind": "hors_perimetre",
+   "question": "كيف أطبخ الكسكسي بالسمك؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H03",
+   "kind": "hors_perimetre",
+   "question": "من فاز بكأس إفريقيا للأمم؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H04",
+   "kind": "hors_perimetre",
+   "question": "ما هي نسبة الضريبة على الدخل للشركات؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": "fiscalité : domaine Track B, pas dans le corpus DS2"
+  },
+  {
+   "id": "H05",
+   "kind": "hors_perimetre",
+   "question": "ما هي إجراءات الطلاق في تونس؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H06",
+   "kind": "hors_perimetre",
+   "question": "ما هي عقوبة السرقة في المجلة الجزائية؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H07",
+   "kind": "hors_perimetre",
+   "question": "كيف أكري سيارة في المطار؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  },
+  {
+   "id": "H08",
+   "kind": "hors_perimetre",
+   "question": "ما هو سعر صرف الدينار مقابل اليورو اليوم؟",
+   "sector": null,
+   "reference_date": null,
+   "expected": [],
+   "status": "complet",
+   "note": ""
+  }
+ ]
+}

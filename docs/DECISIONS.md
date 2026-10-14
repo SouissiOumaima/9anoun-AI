@@ -1399,6 +1399,42 @@ avec toutes ses versions (D17). Aucun mot en commun avec le corpus → refus
 
 ---
 
+### D27 — Golden set de la recherche et mesure (Recall@k, abstention, seuil)
+
+**Décision** : la recherche DS2 est mesurée sur `src/legal_retrieval/evaluation/golden_set_retrieval.v0.json`
+par `python -m src.legal_retrieval.evaluation.metrics` (résultats datés dans `evaluation/results/`).
+- Types de questions : `sujet` (mots d'un travailleur, **pas** ceux de l'article), `numero`,
+  `dialecte` (tunisien), `francais`, `hors_perimetre` (DS2 doit refuser).
+- Succès = **au moins un** article attendu (`version_group`) dans les k premiers.
+- Chiffre de référence : Recall@10 sur `sujet` + `numero` (cible ≥ 88 %) ; abstention sur
+  `hors_perimetre` (cible ≥ 85 %) — spec Tradrly §8.4. Dialecte et français sont mesurés à part
+  (limites connues de la v0).
+- Les articles attendus sont choisis avec `evaluation/find_candidates.py`, recherche par mot
+  **indépendante du moteur** : on ne note pas le système avec ses propres réponses.
+- Étude de seuil : le premier résultat a toujours un score normalisé de 1.0 ; seul le score
+  BM25 **brut** peut dire « rien de pertinent ». `metrics` montre, pour chaque seuil candidat,
+  le Recall@10 conservé et l'abstention atteinte ; le seuil retenu sera fixé dans `bm25.py`.
+
+**Alternatives envisagées** :
+- Questions tirées des titres des articles → rejeté : elles reprennent les mots exacts de
+  l'article et surestiment le BM25.
+- Golden set généré par un LLM → rejeté : données confidentielles, et les questions doivent
+  venir de personnes qui connaissent le métier (DS2, DS4).
+
+**Statut** : ⏳ v0 : 43 questions (12 complètes : 4 `numero`, 8 `hors_perimetre` ; 31 à compléter).
+
+**Première mesure (2026-10-14, 12 questions complètes)** : numéros R@10 = 100 %, mais N04
+(« الفصل 39 من الاتفاقية الإطارية ») au rang 8 ; abstention **37,5 %** (cible 85 %) : 5 questions
+hors sujet partagent un mot rare avec un article (score brut 6,6 à 10, autant qu'une vraie question).
+Corrections :
+- convention nommée dans la question (mots-clés du registre) → seul son article est renvoyé ;
+- nouveau signal **couverture** (part de la question, pondérée par l'idf, trouvée dans le meilleur
+  article), étudié à côté du score brut pour fixer le seuil d'abstention ;
+- mots interrogatifs (« كم », « كيف »…) ajoutés aux mots vides ; un mot long commençant par
+  ب/ل/ك/ف donne aussi sa forme sans cette lettre (« بعطلة » → « عطل »), « بطاقة » reste « بطاق ».
+
+---
+
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
 
 **Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.
