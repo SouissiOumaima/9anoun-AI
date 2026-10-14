@@ -161,9 +161,57 @@ def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
 
 
 def population_de_table(data: dict, table: dict) -> str | None:
-    """Population dont les catégories sont exactement celles de la table."""
+    """Population d'une table : son champ « population » s'il est présent (catégories identiques exigées),
+    sinon la seule population dont les catégories sont exactement celles de la table. Plusieurs populations
+    avec les mêmes catégories sans champ « population » : ambigu → None (table refusée par valider_grille)."""
     cles = set(table["valeurs"])
-    return next((pop for pop, cats in data["categories"].items() if set(cats) == cles), None)
+    if "population" in table:
+        pop = table["population"]
+        return pop if isinstance(pop, str) and set(data["categories"].get(pop, ())) == cles else None
+    candidates = [pop for pop, cats in data["categories"].items() if set(cats) == cles]
+    return candidates[0] if len(candidates) == 1 else None
+
+
+def _valider_alias_et_hypotheses(data: dict, cats: dict) -> None:
+    """alias_categories (ex. numérotation de l'annexe → clé imprimée dans la grille) et hypotheses_grille."""
+    for pop, alias in data.get("alias_categories", {}).items():
+        _exiger(pop in cats and isinstance(alias, dict), f"alias_categories[{pop}] : population inconnue")
+        parents = set(data.get("sous_categories", {}).get(pop, {}).get("par_categorie", {}))
+        for a, cle in alias.items():
+            _exiger(_texte(a) and a not in cats[pop] and a not in parents,
+                    f"alias_categories[{pop}][{a!r}] : alias vide ou déjà utilisé comme catégorie")
+            _exiger(cle in cats[pop], f"alias_categories[{pop}][{a!r}] : catégorie cible {cle!r} inconnue")
+    def _hyp(h, objet):
+        _exiger(_liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
+                f"{objet} : listes fr et ar non vides et de même longueur attendues")
+    for pop, h in data.get("hypotheses_grille", {}).items():
+        _exiger(pop in cats, f"hypotheses_grille[{pop}] : population inconnue")
+        _hyp(h, f"hypotheses_grille[{pop}]")
+    # Hypothèses propres à une ligne de grille (ex. ligne combinée « III+II »), ajoutées seulement pour cette clé.
+    for pop, par_cle in data.get("hypotheses_categories", {}).items():
+        _exiger(pop in cats and isinstance(par_cle, dict), f"hypotheses_categories[{pop}] : population inconnue")
+        for cle, h in par_cle.items():
+            _exiger(cle in cats[pop], f"hypotheses_categories[{pop}][{cle!r}] : catégorie inconnue")
+            _hyp(h, f"hypotheses_categories[{pop}][{cle!r}]")
+
+
+def _valider_textes_prime(p: dict) -> None:
+    """Textes affichés d'une prime : note_ar, hypotheses (FR/AR), libelles_groupes (un par colonne de montants)."""
+    objet = f"prime {p['code']}"
+    if "note_ar" in p:
+        _exiger(_texte(p["note_ar"]), f"{objet} : note_ar non vide attendue")
+    if "hypotheses" in p:
+        h = p["hypotheses"]
+        _exiger(_liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
+                f"{objet} : hypotheses fr et ar non vides et de même longueur attendues")
+    if "libelles_groupes" in p:
+        libelles = p["libelles_groupes"]
+        _exiger(isinstance(libelles, dict) and all(_texte(l["fr"]) and _texte(l["ar"]) for l in libelles.values()),
+                f"{objet} : libelles_groupes fr et ar attendus")
+        for ligne in p.get("montants", []):
+            _exiger(set(libelles) == set(ligne) - {"effective_date", "au_titre_de"},
+                    f"{objet} : libelles_groupes différents des colonnes de montants ({ligne['effective_date']})")
+        _exiger(bool(p.get("montants")), f"{objet} : libelles_groupes sans montants datés")
 
 
 def valider_grille(data: dict, chemin: str) -> dict:
@@ -191,6 +239,7 @@ def valider_grille(data: dict, chemin: str) -> dict:
                 for s in sous.values():
                     _exiger(s["cle"] in cats[pop] and _texte(s["libelle_fr"]) and _texte(s["libelle_ar"]),
                             f"sous_categories[{pop}][{cat}] : cle, libelle_fr et libelle_ar attendus")
+        _valider_alias_et_hypotheses(data, cats)
         for pop, bloc in data.get("populations_non_couvertes", {}).items():
             _exiger(pop not in cats, f"population {pop} à la fois couverte et non couverte")
             _exiger_refus_declare(bloc, f"populations_non_couvertes[{pop}]")
@@ -201,7 +250,8 @@ def valider_grille(data: dict, chemin: str) -> dict:
             for k in ("table_id", "effective_date", "source_pdf_page", "unite", "valeurs"):
                 _exiger(k in t, f"{t.get('table_id', '?')} : clé {k} manquante")
             pop = population_de_table(data, t)
-            _exiger(pop is not None, f"{t['table_id']} : catégories sans population")
+            _exiger(pop is not None, f"{t['table_id']} : population absente, inconnue ou ambiguë "
+                                     "(champ population obligatoire si plusieurs populations ont ces catégories)")
             for cat, vals in t["valeurs"].items():
                 if degres[pop]:
                     _exiger(isinstance(vals, list) and len(vals) == len(degres[pop]),
@@ -212,6 +262,7 @@ def valider_grille(data: dict, chemin: str) -> dict:
         for p in data.get("primes", []):
             for k in ("code", "source_article", "source_pdf_page", "unite"):
                 _exiger(k in p, f"prime {p.get('code', '?')} : clé {k} manquante")
+            _valider_textes_prime(p)
         for code, bloc in data.get("primes_non_couvertes", {}).items():
             _exiger(code not in {p["code"] for p in data.get("primes", [])}, f"prime {code} à la fois servie et refusée")
             _exiger_refus_declare(bloc, f"primes_non_couvertes[{code}]")

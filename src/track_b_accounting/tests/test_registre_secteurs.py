@@ -36,8 +36,9 @@ def test_registre_actuel_identique():
     assert loaders.GRILLES == {
         "METALLURGIE_BATIMENT": "data/processed/salary_grids/metallurgie_batiment.json",
         "BATIMENT_TRAVAUX_PUBLICS": "data/processed/salary_grids/batiment_travaux_publics.json",
+        "ASSOCIATIONS_PERSONNES_HANDICAPEES": "data/processed/salary_grids/associations_personnes_handicapees.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9
+    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, puis D23
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -64,7 +65,7 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         salaire_base("SANS_REF", "admin_tech", "4", 15, "2022-06-01")
     assert e.value.code == Refus.SOURCE_MANQUANTE
     assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
-                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS).")
+                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).")
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):
