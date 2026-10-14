@@ -14,8 +14,10 @@
    "question": "كم يوما من العطلة السنوية يستحق عون البنك؟",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -24,8 +26,11 @@
    "question": "هل تتمتع الموظفة في البنك بعطلة عند الولادة وكم مدتها؟",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-23",
+    "CC-CADRE-ART-32"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -34,8 +39,11 @@
    "question": "ماذا يحدث لأجر عون البنك إذا مرض ولم يستطع العمل؟",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-26",
+    "CCS-BANQUES-ART-28"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -44,8 +52,10 @@
    "question": "هل يتحصل أعوان البنوك على منحة إنتاج كل سنة؟",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-52"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -54,8 +64,12 @@
    "question": "هل يحق لعامل البناء منحة للتنقل إلى الحضيرة؟",
    "sector": "btp",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BTP-ART-52",
+    "CCS-BTP-ART-51",
+    "CCS-BTP-ART-50"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -64,8 +78,10 @@
    "question": "ماذا تتقاضى عائلة عامل البناء إذا توفي؟",
    "sector": "btp",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BTP-ART-53"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -74,8 +90,10 @@
    "question": "كم ساعة يعمل عامل البناء في الأسبوع؟",
    "sector": "btp",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BTP-ART-23"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -84,8 +102,11 @@
    "question": "هل يمكن للمؤجر أن ينقل عامل البناء إلى مكان عمل آخر دون موافقته؟",
    "sector": "btp",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BTP-ART-21",
+    "CC-CADRE-ART-22"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -94,8 +115,16 @@
    "question": "كم تدوم فترة التجربة قبل ترسيم العامل؟",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CC-CADRE-ART-10",
+    "CCS-BTP-ART-9",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-9",
+    "CCS-GARDIENNAGE-ART-8",
+    "CCS-ASSOCIATIONS-ART-8",
+    "CCS-BANQUES-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-11"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -104,8 +133,17 @@
    "question": "ما هي مدة الإعلام المسبق قبل إنهاء عقد العمل؟",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CC-CADRE-ART-16",
+    "CCS-BTP-ART-15",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-15",
+    "CCS-BANQUES-ART-42",
+    "CCS-ASSOCIATIONS-ART-38",
+    "CCS-GARDIENNAGE-ART-37",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-17",
+    "CCS-ASSURANCE-P3-ART-12"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -114,8 +152,11 @@
    "question": "ما هي العقوبات التأديبية التي يمكن أن تسلط على العامل؟",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CC-CADRE-ART-37",
+    "CC-CADRE-ART-38"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -124,8 +165,13 @@
    "question": "هل يجب على المؤجر أن يسلم للعامل وثيقة تبين تفاصيل أجره؟",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-ASSOCIATIONS-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-14",
+    "CCS-BANQUES-ART-48",
+    "CC-CADRE-ART-13"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -254,8 +300,10 @@
    "question": "كم يبلغ الأجر الأدنى المضمون؟",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "SMIG-GRILLE-ART-1"
+   ],
+   "status": "complet",
    "note": ""
   },
   {
@@ -284,8 +332,10 @@
    "question": "قداش من يوم كونجي نخلص في العام في البانكة؟",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ],
+   "status": "complet",
    "note": "même réponse attendue que G01"
   },
   {
@@ -294,8 +344,11 @@
    "question": "الباترون ينجم يبدلي بلاصة الخدمة بلاش ما نوافق؟",
    "sector": "btp",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BTP-ART-21",
+    "CC-CADRE-ART-22"
+   ],
+   "status": "complet",
    "note": "même réponse attendue que G08"
   },
   {
@@ -304,8 +357,10 @@
    "question": "Combien de jours de congé annuel pour un employé de banque ?",
    "sector": "banques",
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ],
+   "status": "complet",
    "note": "même réponse attendue que G01"
   },
   {
@@ -314,8 +369,16 @@
    "question": "Quelle est la durée de la période d'essai ?",
    "sector": null,
    "reference_date": null,
-   "expected": [],
-   "status": "a_completer",
+   "expected": [
+    "CC-CADRE-ART-10",
+    "CCS-BTP-ART-9",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-9",
+    "CCS-GARDIENNAGE-ART-8",
+    "CCS-ASSOCIATIONS-ART-8",
+    "CCS-BANQUES-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-11"
+   ],
+   "status": "complet",
    "note": "même réponse attendue que G09"
   },
   {
@@ -446,5 +509,6 @@
    "status": "complet",
    "note": ""
   }
- ]
+ ],
+ "_filled_on": "2026-10-14 (find_candidates, validé par DS2)"
 }

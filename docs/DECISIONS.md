@@ -1433,6 +1433,20 @@ Corrections :
 - mots interrogatifs (« كم », « كيف »…) ajoutés aux mots vides ; un mot long commençant par
   ب/ل/ك/ف donne aussi sa forme sans cette lettre (« بعطلة » → « عطل »), « بطاقة » reste « بطاق ».
 
+**Mesure 2026-10-14 (28 questions complètes)** : `sujet` + `numero` R@10 = **93,8 %** (cible 88 %),
+R@1 62,5 %, MRR 0,77 ; ratée : G06 (« توفي » ≠ « الوفاة », racines différentes) ; dialecte et
+français 0 % (limites connues). Ni le score brut ni la couverture seuls ne séparent le hors sujet :
+G03 (couv. 0,27) et G12 (0,375) sont aussi bas que H08 (0,38).
+
+**Règle d'abstention retenue** (`bm25.py`, `MIN_RAW = 8.0`, `MIN_COVERAGE = 0.5`) : sans numéro
+d'article demandé, refus si le meilleur article est **à la fois** faible (brut < 8,0) **et**
+partiel (couverture < 0,5). 8,0 est entre le hors sujet le plus fort refusable (7,45) et la
+question légitime la plus faible (9,17) ; la couverture protège les questions courtes et
+complètes (« منحة النقل »). Effet attendu sur ce jeu : abstention 37,5 % → 75 %, R@10 inchangé.
+Plafond des signaux lexicaux : H06 (vol) et H08 (change) partagent de vrais mots avec un article ;
+les 85 % demanderont un signal sémantique (embeddings) ou le tri d'intention de DS1 en amont.
+⚠️ Valeurs fixées sur 28 questions : à revérifier quand le golden set grandit.
+
 ---
 
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)

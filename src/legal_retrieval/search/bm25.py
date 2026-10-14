@@ -30,6 +30,11 @@ from ..corpus.store import CorpusStore
 from .text import article_refs, terms, without_refs
 
 K1, B = 1.5, 0.75  # usual BM25 values; to tune with the golden set (Recall@10)
+# Abstention (D27, golden set 2026-10-14): refuse when the best match is BOTH weak
+# (raw < 8.0) AND partial (coverage < 0.5), unless an article number is asked.
+# 8.0 lies between the strongest refusable out-of-scope question (7.45) and the
+# weakest in-scope one (9.17); coverage protects short complete questions.
+MIN_RAW, MIN_COVERAGE = 8.0, 0.5
 
 
 @dataclass
@@ -146,7 +151,12 @@ def ranked_groups(request: dict[str, Any], store: CorpusStore) -> list[tuple[str
     ranked = [(g, 1.0) for g in _exact_groups(store, question, sector)]
     index = index_for(store)
     allowed = {g for g, s in zip(index.groups, index.sectors, strict=True) if _sector_ok(s, sector)}
-    bm25 = {g: s for g, s in index.scores(terms(without_refs(question))).items()
+    query_terms = terms(without_refs(question))
+    if not ranked:  # no article number asked: Citation ou Silence on weak AND partial matches
+        raw, coverage = index.best_match(query_terms, allowed)
+        if raw < MIN_RAW and coverage < MIN_COVERAGE:
+            return []
+    bm25 = {g: s for g, s in index.scores(query_terms).items()
             if g in allowed and g not in dict(ranked)}
     if bm25:
         top = max(bm25.values())

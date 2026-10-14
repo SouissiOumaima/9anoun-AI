@@ -170,3 +170,11 @@ def test_named_convention_keeps_only_its_article(live_corpus: Path) -> None:
 def test_one_letter_preposition_gives_both_forms() -> None:
     assert "عطل" in terms("بعطلة")  # finds "عطلة"
     assert "بطاق" in terms("بطاقة")  # the card stays a card
+
+
+def test_weak_and_partial_match_is_refused_short_complete_is_kept(live_corpus: Path) -> None:
+    """D27 abstention: one shared word in a long off-topic question -> refusal."""
+    off_topic = _ask("ما هي نسبة الضريبة على السيارات المستوردة والمنحة؟")
+    assert off_topic["status"] == "refus" and off_topic["refus"]["code"] == "SOURCE_MANQUANTE"
+    # short question, every word found: kept even if its raw score is low
+    assert _ask("منحة النقل", sector="btp")["status"] == "ok"
