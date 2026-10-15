@@ -981,6 +981,137 @@ refus PARAM_INVALIDE) et par appels HTTP réels.
 
 ---
 
+### D20 — Lecture des sections Tradrly (1 section = 1 article) et historique des avenants
+
+**Décision** : à partir du Sprint 2, l'ingestion des fichiers `data/raw/txt/*.json` lit les
+`sections` déjà découpées par Tradrly (`corpus/ingest_sections.py`) au lieu de redécouper
+le texte :
+- texte d'un article = `content` **seulement** (`paragraphs` répète le même texte : c'était
+  la cause du comptage surestimé de 492 au lieu d'environ 451) ;
+- la section `legal_history_reconstructed_from_page_images` donne les dates de la
+  convention et de chaque avenant (signature, approbation ministérielle) → `avenants.json`,
+  identifiants préfixés par la convention (`CCS-BTP-AVENANT-5`, règle R7) ;
+- règles de D18 appliquées **à l'intérieur** des textes : en-tête d'un article manquant
+  caché dans une autre section → article découpé (R1/R4, ex. Cadre art. 5) ; listes
+  d'abrogation (pluriel, duel, « مكرر », « : » optionnel) → entrées `abroge` reliées à
+  leur avenant (R2/R3), ligne retirée de l'article qui la contenait ; renvois jamais
+  coupés (R5) ; « (جديد) » → `modified`, `previous_version_available: false` (R6, D17) ;
+- numérotation qui repart à 1 → nouvelle partie (`-P2-` dans l'identifiant), pas un doublon ;
+- trous vérifiés à la main → `corpus/manual_checks.json` (R8), exclus des alertes.
+
+**Alternatives envisagées** :
+- Garder le découpage par regex du Sprint 1 → rejeté : il lisait le texte deux fois et
+  ignorait les métadonnées fournies par Tradrly.
+- Remplir `effective_from` / `effective_to` avec les dates d'avenant → reporté : la date
+  d'effet (signature ou approbation ministérielle ?) est une question juridique ouverte,
+  posée à Tradrly. Les deux dates sont conservées dans `avenants.json`.
+
+**Ajouts après le premier passage réel (2026-10-10)** :
+- une nouvelle partie ne commence que si la numérotation **repart à 1** ; un numéro répété
+  ou dans le désordre reste dans sa partie (identifiant `-DUP2`, jamais supprimé) et est
+  listé dans le rapport (`numbering_out_of_order`, outil `tools/inspect_sections.py`) ;
+- tiret cadratin « — » accepté dans les listes d'abrogation (Gardiennage, Construction) ;
+- « الغيابات » (absences), « الغير », « الغيار » ne sont pas des abrogations ;
+- **R9** : « 50, 5, 52 » → le 5 est l'article 51 dont l'OCR a perdu le dernier chiffre ;
+  corrigé seulement si les deux voisins le prouvent, numéro d'origine gardé
+  (`numbers_corrected_r9`) ;
+- `manual_checks.json` (R8) accepte le verdict `abroge` : complète une abrogation que
+  l'OCR a cassée (BTP « 38 -39- ()I4 41 », Construction « عدد؟ ») avec le texte lu dans le
+  PDF ; verdict `present_pdf_absent_digest` pour Cadre 5 et Assurance 40.
+
+**Ajouts après l'inspection des sections (2026-10-10, `tools/inspect_sections.py`)** :
+- **R10** : Tradrly a parfois coupé une section sur un **renvoi** et non sur un en-tête
+  (« وينص الفصل 46 من هذه الاتفاقية », « الفصل 36 من هذه الاتفاقية. », « بالفصل 5 من الأمر
+  المؤرخ في 8 جانفي 1948 ») ; ces sections sont recollées à l'article précédent (rien n'est
+  perdu, positions listées dans `continuations_r10`) ;
+- R9 s'exécute **après** R10 : au premier passage, R9 avait « corrigé » en 51 le renvoi
+  BTP « بالفصل 5 من الأمر » — fausse correction détectée par l'inspection ;
+- suffixes lus dans l'en-tête : « مثلث / ثالثا » → `TER`, « رابعا » → `QUATER`,
+  sous-articles « الفصل 46 - 3: » → `46-3` (Gardiennage 46-3/46-4, Enseignement 54 ثالثا
+  et 54-5, Cadre 51 ثالثا) : ce ne sont pas des doublons ;
+- le texte placé **après le dernier article** (« تاريخ التطبيق ») devient une **annexe**
+  (`<SOURCE>-ANNEXE-<k>`, statut `inconnu`, renvoi à l'article cité) au lieu d'être collé
+  au dernier article : liste des sanctions (Construction, renvoi au fasl 36), conditions de
+  recrutement (Enseignement, renvoi au fasl 15). Résultat après inspection : 0 doublon,
+  0 désordre sur les 9 fichiers ;
+- en-tête interne écrit « إلفصل » par l'OCR (alef hamza) accepté : BTP art. 51
+  « إلفصل 51 (جديد): منح القفة » est découpé de l'article 50 (R4).
+
+**Limites connues** : pas de page par article dans le digest (`page_start` vide) ; l'avenant
+qui a modifié un article « (جديد) » n'est pas indiqué (`amended_by` vide pour ces articles).
+
+**Statut** : ⏳ codé et testé sur des formes réelles (parseur validé sur l'historique réel
+BTP : convention 16/01/1975 – 12/03/1975 et 16 avenants, 0 ligne non lue) ; exécution sur
+les 9 fichiers à faire en local par DS2.
+
+---
+
+### D21 — Vocabulaire des champs de la requête DS2, tiré du corpus
+
+**Décision** : les valeurs que DS1 transmet dans `sector` et `worker_category` sont des
+**codes stables** définis dans `data/mock_cards/legal_retrieval_vocabulary.v0.json`
+(libellés FR/AR, alias pour l'extraction, schéma JSON, accès Python
+`src/legal_retrieval/contract/vocabulary.py`) :
+- `sector` : les 7 secteurs du registre DS2, exactement (un test l'impose) ; la convention
+  cadre et le SMIG s'appliquent à tous les secteurs ; ambiguïté « البناء » signalée ;
+- `worker_category` : 9 catégories **comptées dans le corpus** (outil
+  `tools/diagnose_vocabulary.py`, 2026-10-11 : « أعوان التنفيذ » 18 articles,
+  « أعوان التسيير » 16, « الإطارات » 12, catégories propres aux banques et assurances,
+  à l'enseignement et aux associations) ;
+- statut d'emploi (قار / وقتي / عرضي) : **proposé pour v0.1**, pas ajouté au contrat v0 ;
+- « المتعاقدين » exclu : désigne surtout les parties signataires de la convention.
+
+**Alternatives envisagées** :
+- Rendre `sector` et `worker_category` obligatoirement égaux à ces codes (`enum` dans le
+  schéma de requête) → reporté à v0.1, après accord DS1 : changer la validation casserait
+  les appels existants.
+- Écrire une liste « classique » (ouvrier, employé, cadre) → rejeté : ces mots ne sont pas
+  les catégories de classement des conventions tunisiennes ; la recherche filtrerait mal.
+
+**Limites** : les équivalences entre catégories des banques et assurances (service,
+réalisation, encadrement) et catégories générales (exécution, maîtrise) ne sont pas
+déduites ; elles sont à valider par un juriste.
+
+**Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
+prouvée par `test_legal_vocabulary.py`.
+
+**D21 v0.1 (2026-10-15)** — demandé par DS5 pour la table des secteurs (D30) :
+- « bâtiment » n'est plus un alias de `btp` : il rejoint l'ambiguïté « البناء / construction »
+  (le code DS5 `METALLURGIE_BATIMENT` le contient aussi) → DS1 demande une précision ;
+- « métallurgie » n'est pas un alias de `construction_metallique` : la convention couvre la
+  seule construction métallique ; sans précision, `sector = null` ;
+- `associations` est le code stable ; le vocabulaire DS2 reste la source de vérité, la table
+  `src/shared/sectors/` est vérifiée contre lui.
+
+---
+
+### D22 — Opération `get_article` : un article par sa référence, sur le corpus réel
+
+**Décision** : DS2 expose une seconde opération, `get_article` (Python
+`src.legal_retrieval.contract.get_article.get_article`, HTTP `POST /legal/article`), demandée
+par DS4 :
+- désignation par `article_id` (avec ou sans version) **ou** par `source_id` + `article`
+  (`"39"`, `"7BIS"`, `"54TER"`, `"46-3"`), schéma de requête dédié ;
+- **même format de réponse que `search`** (enveloppe `common.v0`, toutes les versions, D17) ;
+- répond en mode **`live` sur le corpus réel** (466 articles, D20) dès qu'il est ingéré sur la
+  machine, sinon en mode `mock` ; un article abrogé est renvoyé avec sa mention d'abrogation
+  et son avenant ;
+- « Citation ou Silence » : un article inconnu donne `SOURCE_MANQUANTE` ; pour un trou vérifié
+  à la main (R8), le refus **donne la raison** (absent du PDF / absent du digest).
+
+**Alternatives envisagées** :
+- Passer par `search` avec la référence dans `query` → rejeté : une recherche renvoie des
+  articles *proches*, alors qu'une référence doit donner l'article exact ou un refus.
+- Un format de réponse propre à `get_article` → rejeté : DS1 et DS4 n'auraient pas un seul
+  format à lire.
+
+**Limites v0** : pas de filtre daté (Sprint 5) ; pas de page par article (digest Tradrly).
+
+**Statut** : ⏳ v0 proposée à DS4 et DS1 ; preuve HTTP réelle : 200 `ok` `live` (article
+abrogé avec son avenant), 200 `refus` (trou vérifié à la main), 422 (requête non conforme).
+
+---
+
 ### D23 — Grille salariale ASSOCIATIONS_PERSONNES_HANDICAPEES (pages 7, 14-29)
 
 **Numéro** : D23. D11 à D22 sont pris par DS2 (`origin/DS2_Legal_Retrieval_Track`,

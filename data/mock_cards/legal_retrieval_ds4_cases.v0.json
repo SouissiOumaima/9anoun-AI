@@ -1,0 +1,1126 @@
+{
+  "mock_version": "legal_retrieval.ds4_cases.v0",
+  "contract_version": "legal_retrieval.v0",
+  "decision_ref": "D22",
+  "generated_on": "2026-10-11",
+  "_doc": "Articles RÉELS du corpus DS2 (mode live), choisis pour tester le raisonnement juridique temporel de DS4. Chaque cas : la requête get_article et la réponse exacte de DS2. Régénérer avec python -m src.legal_retrieval.tools.build_ds4_mock.",
+  "operation": {
+    "python": "src.legal_retrieval.contract.get_article.get_article",
+    "http": "POST /legal/article"
+  },
+  "cases": [
+    {
+      "id": "abroge-avec-avenant-date",
+      "purpose_fr": "Article abrogé : annoncer l'abrogation et l'avenant n° 5 (signé 24/09/1996, approuvé 16/10/1996) ; avant cette date l'article existait, mais son texte n'est pas dans le corpus.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-avec-avenant-date",
+        "article_id": "CCS-BTP-ART-39"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-avec-avenant-date",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+            "page": null,
+            "article": "الفصل 39",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-BTP-ART-39-v1",
+            "source_id": "CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة",
+            "article_number": 39,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة > الفصل 39",
+            "text": "الفصول 38 – 39 – 40 – 41 : (ألغيت بمقتضى الملحق التعديلي عدد 5)",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "abroge",
+            "sector": "btp",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-BTP-ART-39",
+            "version": 1,
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": "CCS-BTP-AVENANT-5",
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+              "page": null,
+              "article": "الفصل 39",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "abroge-avenant-inconnu",
+      "purpose_fr": "Article abrogé dont l'OCR a perdu le numéro d'avenant (« عدد؟ ») : amended_by = null, à dire tel quel, sans deviner.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-avenant-inconnu",
+        "article_id": "CCS-CONSTRUCTION-METALLIQUE-ART-55"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-avenant-inconnu",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+            "page": null,
+            "article": "الفصل 55",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-CONSTRUCTION-METALLIQUE-ART-55-v1",
+            "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+            "source_title": "الاتفاقية المشتركة القطاعية  للبناء المعدني",
+            "article_number": 55,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية  للبناء المعدني > الفصل 55",
+            "text": "(ألغي بمقتضى الملحق التعديلي عدد؟)",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "abroge",
+            "sector": "construction_metallique",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-CONSTRUCTION-METALLIQUE-ART-55",
+            "version": 1,
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": null,
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": null,
+              "article": "الفصل 55",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "abroge-autre-convention",
+      "purpose_fr": "Abrogation dans une autre convention (Assurance, avenant n° 4) : la numérotation des avenants est propre à chaque convention.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-autre-convention",
+        "source_id": "CCS-ASSURANCE",
+        "article": "6"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-abroge-autre-convention",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+            "page": null,
+            "article": "الفصل 6",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-ASSURANCE-P3-ART-6-v1",
+            "source_id": "CCS-ASSURANCE",
+            "source_title": "الاتفاقية المشتركة القطاعية للتأميـن",
+            "article_number": 6,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية للتأميـن > جزء 3 > الفصل 6",
+            "text": "الفصول 6 و7 و8 و9 و10 و10 مكرر: (ألغيت بمقتضى الملحق التعديلي عدد 4)",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "abroge",
+            "sector": "assurance",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-ASSURANCE-P3-ART-6",
+            "version": 1,
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": "CCS-ASSURANCE-AVENANT-4",
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+              "page": null,
+              "article": "الفصل 6",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "modifie-ancienne-version-absente",
+      "purpose_fr": "Article « (جديد) » récupéré en milieu de ligne : texte actuel seulement, previous_version_available = false à annoncer.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-modifie-ancienne-version-absente",
+        "article_id": "CCS-BTP-ART-51"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-modifie-ancienne-version-absente",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+            "page": null,
+            "article": "الفصل 51",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-BTP-ART-51-v1",
+            "source_id": "CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة",
+            "article_number": 51,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة > الفصل 51",
+            "text": "إلفصل 51 (جديد): منح القفة والتنقل والعمل في الماء والعمل في الإسفلت ا. منحة القفة: حدد مبلغ هذه المنحم بـ 800 مليم بداي من أول جانفي 2011، وتسند لكل العمال القارين والوقتيين والعرضيين الذين قضوا سبع سنوات متتالي أو أكثر في العمل بما في ذلك الاستراح التي تساوي أو تقل مدتها عن ساعم واحدة. بب، منحة التنقل: تسند لكل عامل قار أو وقتي يعمل بحضيرة توجد في مكان يبعد 40 كيلومترا فما فوق عن موقع عمله ويتعذر عليه الرجوع إلى مسكنه في المساء، منح تنقل جملي ضبط مقدارها بـ —()0().4: في اليوم. وتحمل تكاليف السكن على المؤجر وفي صورة ما إذا كانت المساف و ظروف الحضيرة تخول للمؤجر ضمان التنقل اليومي للعامل فإن هذا الأخير لا يتمتع إلا بمنح القف كما تم ضبطها بالفقرة السابقة. ولا يمكن الجمع بين منحم التنقل ومنح النقل الجملي كما لا يمكن الجمع بين منحة القفى ومنحة التنقل. ج. منحة العمل في الماء: الشغالون المدعوون للعمل وسط المياه مطالبون بانتعال أحذي وقائي من المطاط تحمل على المستأجر وإذا ما تجاوز ارتفاع المياه مستوى الأحذي المطاطي فإنه يوضع على ذم العمال أحذي واقي من المياه حتى مستوى الفخذ. لا يمكن تطبيق هذه الأحكام إلى جانب الأحكام المتعلق بمنح العمل في الماء المنصوص عليها بتراتيب الأجر. د. منحة العمل في الأسفلت: تسند للعمال الذين يشتغلون مباشرة على آلن bitume de répandeuse منحن مقدارها 800 مليم في اليوم، وذلك بداين من أول جانفي 2009. ه - منحة الحضور: تسند للعمال منحة حضور حدد مقدارها كما يلي: 6.894å بدايت من غرة ديسمبر 2021 في الشهر بعنوان سنة 2022. -7.359 د بداية من غرة جانفي 2023 في الشهر بعنوان سن 2023. -7.856 د بداي من غرة جانفي 2024 في الشهر بعنوان سنت 2024. ويتضمن هذا المبلغ \"المنح النصف يومي \"المنصوص عليها\nبالفصل 5 من الأمر المؤرخ في 8 جانفي 1948 والمنقح بالأمر المورخ في 31ديسمبر 30.1965",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "btp",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-BTP-ART-51",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": null,
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+              "page": null,
+              "article": "الفصل 51",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "modifie-jadid",
+      "purpose_fr": "Autre article modifié par un avenant non identifié dans le digest (amended_by = null).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-modifie-jadid",
+        "article_id": "CCS-BTP-ART-46"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-modifie-jadid",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+            "page": null,
+            "article": "الفصل 46",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-BTP-ART-46-v1",
+            "source_id": "CCS-BTP",
+            "source_title": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة",
+            "article_number": 46,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة > الفصل 46",
+            "text": "نظام الحيطة الاجتماعية\n\nيساهم المؤجرون والعمل القارون في إحداث نظام الحيط الاجتماعي ليغطي بصف تكميلي التأمينات الاجتماعي التي يوفرها الصندوق القومي للضمان الاجتماعي ويبقى الانخراط في هذا النظام اختياريا. 28",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "btp",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-BTP-ART-46",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": null,
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+              "page": null,
+              "article": "الفصل 46",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "en-vigueur-non-modifie",
+      "purpose_fr": "Article jamais modifié : cas de référence, previous_version_available = true.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-en-vigueur-non-modifie",
+        "source_id": "CCS-BANQUES",
+        "article": "2"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-en-vigueur-non-modifie",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/البنوك.pdf",
+            "page": null,
+            "article": "الفصل 2",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-BANQUES-ART-2-v1",
+            "source_id": "CCS-BANQUES",
+            "source_title": "البنوك",
+            "article_number": 2,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البنوك > الفصل 2",
+            "text": "مجال تطبيق الاتفاقية\n\nتنطبق هذه الاتفاقي بدون تمييز يقوم على أساس السن أو الجنس على سائر الأعوان القارين بالبنوك والمؤسسات المالي باستثناء أعوان البنك المركزي التونسي. الأعوان القازون هم الذين وقع انتدابهم لمدة غير معين ولا يتم استخدامهم لإنجاز أعمال وقتي أو عرضية. ويخضع الأعوان المنتدبون بمقتضى عقود شغل لمدة غير معين في ما يتعلق بفترة التجرب والترسيم للأحكام القانوني أو التعاقدي المنطبقة عليهم.",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "banques",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-BANQUES-ART-2",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": false,
+            "amended_by": null,
+            "previous_version_available": true,
+            "citation": {
+              "source_file": "data/raw/pdf/البنوك.pdf",
+              "page": null,
+              "article": "الفصل 2",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "article-bis",
+      "purpose_fr": "Article « مكرر » (bis) : distinct de l'article 1, identifiant 1BIS.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-bis",
+        "source_id": "CCS-BANQUES",
+        "article": "1BIS"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-bis",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/البنوك.pdf",
+            "page": null,
+            "article": "الفصل 1 مكرر",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-BANQUES-ART-1BIS-v1",
+            "source_id": "CCS-BANQUES",
+            "source_title": "البنوك",
+            "article_number": 1,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > البنوك > الفصل 1 مكرر",
+            "text": "عقد الشغل لمدة معينة\n\n1- يمكن إبرام عقد الشغل لمدة معين في الحالات التالية: - القيام بالأشغال الأولى لتركيز المؤسس أو بأشغال جديدة، - القيام بالأعمال التي تستوجبها زيادة غير عادي في حجم العمل، - التعويض الوقتي لعامل قار متغيب أو توقف تنفيذ عقد شغله، - القيام بأشغال متأكدة لتفادي حوادث محقق أو تنظيم عمليات إنقاذ أو لتصليح خلل بمعدات أو تجهيزات أو بناءات المؤسس، - القيام بأعمال موسمي أو بأنشط أخرى لا يمكن حسب العرف أو بسبب طبيعتها اللجوء فيها إلى عقود لمدة معين. كما يمكن إبرام عقد الشغل لمدة معين في غير الحالات المذكورة في الفقرة السابق بالاتفاق بين المؤجر والعون على أن لا تتجاوز مدة هذا العقد أربع سنوات بما في ذلك تجديداته. وكل انتداب للعون المعني بعد انقضاء هذه المدة يقع على أساس الاستخدام القار ودون الخضوع لفترة تجربة. ويبرم العقد بصف كتابي في نظيرين يحتفظ المؤجر بأحدهما ويسلم الاخر إلى العون. تعطى الأولوي في تجديد عقد الشغل لمدة معين للعون الذي انتهى عقد شغله في أجله وذلك في موقع العمل الذي كان يشغله، أو عند إحداث مواطن شغل جديدة بالمؤسس في نفس الاختصاص. وتسري هذه الأولوي طيل ست أشهر، بداي من انتهاء عقد الشغل ويمنع تعويضه بعون آخر طيلة هذه المدة. ويتم استدعاء العون المعني بالأمر للالتحاق بعمله برسال مضمون الوصول مع الإعلام بالبلوغ. وفي صورة عدم التحاقه بعمله في أجل أقصاه خمس عشر يوما من تاريخ بلوغه الإعلام، فإنه يعتبر متخليا عن حقه في أولوية الانتداب. أما بالنسب للعون الذي قضى أربع سنوات، وفي صورة استمرار موطن شغله أو إحداث موطن شغل جديد في نفس الاختصاص الذي كان ينتمي إليه العون، فيتم انتدابه على أساس الاستخدام القار طبقا لأحكام الفقرة الفرعي الثاني من هذا الفصل. ويتقاضى الأعوان المنتدبون بمقتضى عقود شغل لمدة معين أجورا أساسي ومنحا لا تقل عن الأجور الأساسي والمنح المسندة بمقتضى نصوص ترتيبي أو إتفاقيات مشترك للأعوان القارين الذين لهم نفس الاختصاص المهني.",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "banques",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-BANQUES-ART-1BIS",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": false,
+            "amended_by": null,
+            "previous_version_available": true,
+            "citation": {
+              "source_file": "data/raw/pdf/البنوك.pdf",
+              "page": null,
+              "article": "الفصل 1 مكرر",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "article-ter",
+      "purpose_fr": "Article « مثلث » (ter) : identifiant 54TER.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-ter",
+        "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+        "article": "54TER"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-ter",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+            "page": null,
+            "article": "الفصل 54 ثالثا",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-ENSEIGNEMENT-PRIVE-ART-54TER-v1",
+            "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+            "source_title": "الاتفاقية المشتركة القطاعية للتعليم الخا ص",
+            "article_number": 54,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية للتعليم الخا ص > الفصل 54 ثالثا",
+            "text": "امتيازات لفائدة أبناء العاملين بالمؤسسات التربوية الخاصة\n\nينتفع أبناء العاملين القارين بالمؤسسات التربوي الخاص بمجاني الدراس بالمدارس التي يشتغل بها أولياؤهم كما يخفض المعلوم المدرسي بمقدار 25 بالمائ في غير المدارس التي يعمل بها أولياؤهم. 36\n\n35 أضيف بالملحق التعديلي عدد 3\n\n36 أضيف بالملحق التعديلي عدد 3 ثم نقح بالملحق التعديلي عدد 4",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "enseignement_prive",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-ENSEIGNEMENT-PRIVE-ART-54TER",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": true,
+            "amended_by": null,
+            "previous_version_available": false,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+              "page": null,
+              "article": "الفصل 54 ثالثا",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sous-article",
+      "purpose_fr": "Sous-article « الفصل 46 - 3 » : identifiant 46-3.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-sous-article",
+        "source_id": "CCS-GARDIENNAGE",
+        "article": "46-3"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-sous-article",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+            "page": null,
+            "article": "الفصل 46-3",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-GARDIENNAGE-ART-46-3-v1",
+            "source_id": "CCS-GARDIENNAGE",
+            "source_title": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+            "article_number": 46,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > أعوان مؤسسات الحراسة والسلامة ونقل العملة > الفصل 46-3",
+            "text": "منحة الحضور\n\nتسند لأعوان التنفيذ والتسيير والإطارات منح حضور طبقا لمقتضيات الفصل 5 من الأمر المؤرخ في 8 جانفي 1948، ضبط مقدارها الجملي بثلاث دنانير ومائ وعشرين مليما (3,120 د)، أي بحساب 120 مليم عن كل يوم حضور. وتصرف هذه المنح بداية من أول ماي 2006.",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "en_vigueur",
+            "sector": "gardiennage_securite_transport_fonds",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-GARDIENNAGE-ART-46-3",
+            "version": 1,
+            "applicable_at_reference_date": true,
+            "modified": false,
+            "amended_by": null,
+            "previous_version_available": true,
+            "citation": {
+              "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+              "page": null,
+              "article": "الفصل 46-3",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "annexe",
+      "purpose_fr": "Annexe placée après le dernier article (liste des sanctions, renvoie au fasl 36) : à citer comme annexe, jamais comme l'article 58.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-annexe",
+        "article_id": "CCS-CONSTRUCTION-METALLIQUE-ANNEXE-1"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-annexe",
+        "status": "ok",
+        "citations": [
+          {
+            "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+            "page": null,
+            "article": "نص ملحق بالاتفاقية (يحيل إلى الفصل 36)",
+            "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+            "decision_ref": "D20"
+          }
+        ],
+        "refus": null,
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": [
+          {
+            "article_id": "CCS-CONSTRUCTION-METALLIQUE-ANNEXE-1-v1",
+            "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+            "source_title": "الاتفاقية المشتركة القطاعية  للبناء المعدني",
+            "article_number": null,
+            "hierarchy_path": "اتفاقية مشتركة قطاعية > الاتفاقية المشتركة القطاعية  للبناء المعدني > ملاحق > نص ملحق بالاتفاقية (يحيل إلى الفصل 36)",
+            "text": "(الفصل 36 من هذه الاتفاقين:\nأالانذار الكتابي مع التسجيل بدالتوبيخ مع تسجيله بالملف التوقيف عن العمل لمدة 3 أيام تسند الاعداد بالعناوين 3'4 شهريا من طرف المستأجر أو المسؤول الذي فوض له سلطته من طرف المستأجر أو المسؤول الذي فوض له سلطاته أما الحط من الرتبي الذي هو عقاب من الدرج الثاني يمكن أن ينجر عنه الحرمان التام أو الجزئي من المنح السنوية. بالنسبة للمنتدبين الجدد فان المبلغ الذي يتمتعون به بهذا العنوان يحرر استنادا على مدة العمل المقضاة في المؤسسة تدفع هذه المنحة من الاسبوع الاخير من شهر ديسمبر من كل عام.\n\nجدول الأجر عددر الاعوان الإداريون والفتيوز يقع العمل يه بداية من ديسمير 2D21 (نظام عمل42 ساعة في الأسيرع 011.$}_{5 2C•i 79). G)(C. 6!.15& 35..ف lil7.843 لا) / 5O6.iOS ()54„533 S9S.I67 642.431 i.S.S9,i9) !774.67 787.9i7 806.590 202()84 857.347 893 7. 74 945.036 Iii.7(l)(t 039.589! 1109.790 Ii94.926 S07.999 Sj6.29_S 531.375 575.395 596.020 639.671 694.988 722.284 SO6.()77 37-S.783 802.295 835,329 O32.S52 888.105 938.777 1000.261 S24.ID32 1101.733 1185.263 16/14 507 492. 515.721 529.209 S72.9I8 S73.593 637.2Oj 70ي. 9ن 718.316 766.940 .779 7S7 795.500 830.819 S46.7I7 882.436 932.5t7 993.411 026.060، 1093 582. 1175.600 14/12 506 _ggs 515.149 527 ر). إ جه ()S7 589.012 634.732 6S5 _75S 714.347 762.927 791.205 SI0.823 841.554 S76.766 S60.986 769.*IOi 1085.632 1165.936 12/10 506_531 S77.5I4 524.920 567 965. S2I.S86 632.262 682 537- 543.7iO 7S8.59S 786.911 Sl8.26S 836.723 871 097. 919 997. 979.711 1011.329 1077.579 IIS6.273 IO/S 506 094. 4.005!5 524.215 565.4S7 584.030 679.316 704-499 754.270 767 061. 2.616$7 814.791 S29.39l 773.86S 913.738 S6I.972 S88.l003 1069.527 1146.610 19S1QiÄl المؤرح فى 7 8/6 505.657 513 _506 523.5JO 563.011 539.5Sl 624.766 O9S.676 9S6.7OO 750.066 762.491 777 968. 810.281 824 560. il9.58$ 907 478. 966.011 996.448 iO6l 474. 1136.947 SO5.22O 513.013 522 805. 560.869 579 049. 621.901 672.809 697.413 743 700. جهو 757 773.158 805.470 819 728. 852.965 901.413 959.161 989.007 1053.024 1127.283 4/2 504 784. 512.520 522,155 S59.899 S76,558 619.036 669 363. 693.870 739.835 751-364 347.76S 800.419 814.865 851.371 895.722 952.310 981.566 1044.166 1117.620 الاثفقة المشتركة القطاعية للبناء المعدني 2/0 7\"49 324. O27.5L2 521,547 558.930 S73.3S6 616.171 666.142 689.417 735.970 747.284 761.523 795.36S 809.453 842.658 7.532$8 945.719 974.125 1035.308 1107.957 الدرجة الأقدمية الفعلية jl ب 1 5 11 13 J4 16 7/ 18 فريل I98i رالرفع فيها يازكمر ثد 5Ol لسته 1982 المؤرخ في 16 مازس 1982 «تثضسن الأجور المضبوطة يهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر صدر 7و)\n\nجدول الأجور عدد ج أعوان التنفيذ يقع العمل يه بداية من ديصمبر دد (تظام عمل42 ساعة فى الأسبىع) 18/()2 2.786 872,. 3.274 3.4é4 3.746 4. 059. 18/16 S62.2 3.26i 3-450 730„3 O44.4 16.44 2.781 2.85S 3.248 3.43S ?17.3 4.029 ن1٤ 2.854 3.234 3.410 3.703 4.013 üI/I2 2.775 2.850 3.094 3.394 3.996 8/Ü1 2.773 2.84S 3.090 3.208 3.380 3.674 3.980 لصنة 198 السذزت في 7 اقاقية لمشتركة القطاعية للبناع المعدتي 2.725 2.836 76().3 3.172 3.318 3.593 3 9O4, الأقدمية الفعنية الصنف é3.47 S45.2 OS6.3 3.195 3.364 3.647 3.965 2.768 2.842 3 _083 3.183 3.351 3.629 وو 2.766 2.83S. 3.080 3.17S 3.335 611„3 3.934 أريل 1981 والمرفع فييا بالأمر عدد 1()5 لسنة و السؤرح في 16 مارس 2$19 ملاحظة يتتضمن الأجور المضبوصة بيدا الجدول المنحة التكميلية المزقحة المحدثه بالأمر عدد 437\n\nجدولى الأجور عددد الأعيان الإداريون والفتيون يقع العمل به بداية من جانفي 2023 زخام عمل42 ساعة فى الأسبوع الاهفاقية الهشتركة لقطاعة لليناع المعدني تم سسسسحسحس جم ö68 ه 74.7.167 828,214 322.9it;. 2Ü3. 77()1 229. 6üii-I. .i87؛ 20/13 O7S.i42 St38 74S'. 6i5.436 70$.636 22().664 772.66S 824 8±838.3 S93-8S9 985.!91 654.SO؛ جدو. 004 ) 1070-947 342±iiO n79.673 269.713؛ f6/&1 _S4l..i68 855.()55 566.580 613.123 634.723 681.262 739.952 S2O.768 4S4.82O 34_27S& 53.698 889.016 ()906.67 _985 لمد 998.685 1064.097 577.lO9S 1171.616 1260-050 16/14 541.061 550.283 564 414. 646.6iO 632.576 736_443 764.852 816.618 830_198 3()846.9 8S4.5O6 901.355 939.316 992 425. 1057.247 1091.813 1163.465 387.()125 14/12 540.554 549.711 S62 249. 608 Ifi9. 627.715 676.323 730 722. 760.883 812.605 826.118 842.608 877 د i92.896 933.646 986.165 1050.396 1084 522. 1155.515 1240.723 12/10 540_100 549,139 56O.I2S 605.693 625.224 SOt.727 757 079. SO8.276 822.038 3l4.S3S 95_5.S7I 36[..891 979.905 1043.547 1077.082 1147-462 l23l.O6C IO/S 539 663. 548.567 559.420 603.215 622.733 671.384 724 280. 75l.O3S• 8O3.94S SI7 502 834.019 S68.47S 884.029 922.653 973.646 1036.697 1069.641 1139.410 1221.397 نستة198 المؤرخ في 7 8/6 S39.226 548.068 7I5-55S 600-739 620.242 666.357 721 _059 747.492 :799 744. 812.932 829.371 863.968 879.198 914.999 967.386 S47.lO29 1062.201 1131.357 734.i2ll 538.789 547.575 558 IO() 597.59S 617.752 663.492 743.949 793.378 808.38S S24.56I 859.157 874.366 909 845. 961.321 1022,997 1054.760 1122 907. 1202.070 538.353 547.082 557360 597 627. 615.261 660.627 714-327 740.406 789.5L3 801.805 819.750 854.106 869 3()5. 908-251 955.630 1016.146 1047.319 49().1114 1192.407 2/0 53O.S93 546.589 556_752 596,658 612.089 657 762. 711.136 735.9i3 785.648 797.725 812.926 849.055 864 09. l 899.538 1009.555 1039.878 1105.191 1182.744 الأقدمية الفعلية الصنف 1ب ()I 11 14 15 16 17 18 كريل l9Sl والمرفع فيها بالأر عدد 5Cl لسئة i9S2 المزرخفي ()l مارس هو: ملاحظة وتتضمن الأجور الدضيوطة بهذا الجدول المتحة التكميلية المؤقتة المحدثة بالأعر عدد 437\n\nجدول الأجور عدد ء أعوان التنفية يقع العسل به بداية من جانفي 2023 (نظام عمزده ساعة في الأسبوع) 2.973 3.361. 3 أاز 20/18 64().3 3.349 S$4.S 3.6S8 3.989 4.322 1S/I6 2.967 3.054 3.337 3.674 3.973 4.307 ':.16/1 2.965 3.050 3.325 3.462 3.662 3.959 4.293 4/12 !2.96 3 046. 3.3i4 3.634 3.945 4.277 2/10{_ 2.959 3.042 3.301 3 3.618 3.933 4.259 8/üI 3.040 3.29S 3-422 3.604 3.917 243.. 6/S 2.954 3.036 3.294 3-409 3.58S 3.889 4.229 2.952 3.034 3.291 3.397 3.575 3.871 4.213 2.950 3.030 3.288 3.392 3.559 3- 8S4. 4 ر\n\nالاتفاقية المشتركة القطاعية\n\nللبناع المعدني 2.909 3.027 3.284 3.3S6 3.542 g36.3 4.167 الدرجه الأقدمية الععلية الصنف لنسئة 198 السؤرخ في 7 أيريل 1981 والسرفع فيها بالأمر عدد 1()5 لسنة l9S2 المؤرخ في 16- مارس لآور ملاحظة وتتصدن الأجور المضيولة بيذا الجدول المنحة التكميلية المؤقتة السحثثة بالأمر عدد 437\n\nدول الأجور عددع الأعزان ابداريون والفليون يقع العمل به داية من جانفي 2024 نظام عمل2ه ساعة في الأسيوع 4I6.S7S 1_536$:' G7!.?95 8b4.i..2\"S. i•.78.39S 73.1ف) (if l?)i2 326. 1359.212 S77.9ll SS9.666 606.326 7IO.S.65 186„$67 !728.42 79I.SS9 و وو 877.381 205.±89 2.865!(i 1()951.2 9?0.311 1068.897 C92.li39 1175.534 1254 7) و4ي (ا! 18/16 5S7.749 604.161 653.397 676.039 725.661 787.952' 818.496 873.516 SSS.I25 ()9CS.S7 946.32S 964.996 7O_3.l00S 1062.638 132.242! 769.II6S 246.216، SS6.l339 f6/14 601.995 650.920 S92.673 723.191 784_443 4.52S!8 S69.65O O45.SS4 901.775 818.!94 9S9.68l 1000.034 IO56.37S 1125.392 1162.005 1238.065 1330.223 14/12 ()576.39 S86.6CS S3O.599 648.443 669.031 5S9.SIO 865.637 879.965 897.4SO 934.809 954.51S 994.364 1050.118 1118.541 1154.714 l1S.i230 1320.559 TO/I2 575.036 586.033 597.706 645.967 666.540 718.252 775.501 806.75S 861.308 sgs.875 IS6.893 929.267 49.6S7(C 695.9SS 1043.858 692.llli 1147.274 222.062! 1310.896 5 575 499 585 (46. 597.001 643.489 664 49(). 715.783 772.2S0 800.711 8S6.9SO 871 349. 888 891. 925.790 942.355 9S3.37l 1ö37.599 S42.ll04 1139.833 1214.010 1301.233 _S7S 062. 5X4 962. 596 296. 641.013 5S8.66l 710.7S6 769.059 797.168 SS2.776 g66 779. 884.243 9212*0 937 524. 975,717 1031.339 1097.992 1132.393 1205.957 1291.570 6/4 574.625 584.469 595.591 638.871 659.068 707.891 765.773 793.625 ع ()41. 862.232 879.433 916.469 92é.932 970.563 1025.274 lO9l.i42 1124.952 1197.507 1281.906 4/2 574.189 583.976 594.941 637.901 656.577 705.026 762.327 790 082„ 842.545 855.652 874.622 911.418 927.829 969.96S 1019.583 1084.291 511,.1117 649.$118 1272.243 افقية المشتركة لؤعثاعية للبناء المعدني 2/0 566.729 583.4S3 594.3.33 636.932 653.405 I6L.702 6()759.1 785 _629 S38.68O 851.572 S67.798 906.367 922.417 960.256 1011.393 1077.700 1110.070 9.791(11 1262.580 ادرجه الأقدمية القعلية IO 13 15 16 18 لسذة1981 المؤرخ في 7 اقريل8 والمرفع فها بالأسر عدد 1()5 لسنة l9S2 المؤرخ في $l سارس 82(!، ملاحظة «تتضمن الأجور المضبوطة بيذا الجدول المتحة التكسيلية المؤقتة المحدتة بالأمر عدد 437\n\nجدول الأجور عدد أعولن التنقيذ يقع العمل به يداية من افى 2024 (تظ عل42 ساعة\" الأسبوع .3 ! 69 X2:5.i':. (j_3\\ß 4.261 18/&2 3.167 3.57. I .3 IS/J6 3.163 3.258 3.558 3.704 3.913 S89.4. 16/1 3.161 3.254 3 547. 3.690 }()3.9 4.218 4.574 3.157 3.250 3.536 77é. S73.3 4 204. _i5S.4 (It/12 3-155 3-246 3.662 S57.3 4 192. 4.541 3.153 3.244 3.520 3.650 3-843 4 176. 4.525 لسنة 108 المؤرخ في 7 8/6 3.151 3.240 3.516 3.638 3.827 4 148. 4.5lO I4S.3 3.238 3.513 3.625 Sl4.3 4_130 4 494. i46.3 3.234 3.509 3.621 3.79S 4 ll3. 4 479. الاتفاهيه المشتركه القطاعيه لليناع المدني 3,23J 3.506 3.614 3.781 4 095. 4.449 الدرجه الأقدمية الفعلية الصنف 6 فريل 1981 رالسرفع فيها بالأسر عدد 5Ol لسئة L9S2 المورخف م تار يز ملاحظة إتتضمن الأجور السضبوطة بهدا الجدول المنحة التكميلية الموقتة السحدئة بالآمر دد 437",
+            "page": null,
+            "effective_from": null,
+            "effective_to": null,
+            "status": "inconnu",
+            "sector": "construction_metallique",
+            "related": [],
+            "score": 1.0,
+            "version_group": "CCS-CONSTRUCTION-METALLIQUE-ANNEXE-1",
+            "version": 1,
+            "applicable_at_reference_date": false,
+            "modified": false,
+            "amended_by": null,
+            "previous_version_available": true,
+            "citation": {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": null,
+              "article": "نص ملحق بالاتفاقية (يحيل إلى الفصل 36)",
+              "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+              "decision_ref": "D20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "trou-motive",
+      "purpose_fr": "Article présent dans le PDF mais absent du corpus : refus SOURCE_MANQUANTE avec la raison, à afficher tel quel (Citation ou Silence).",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-trou-motive",
+        "source_id": "CC-CADRE",
+        "article": "5"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-trou-motive",
+        "status": "refus",
+        "citations": [],
+        "refus": {
+          "code": "SOURCE_MANQUANTE",
+          "message_fr": "L'article 5 figure dans le PDF original, mais son texte manque dans le corpus fourni : il ne peut pas être cité.",
+          "message_ar": "الفصل 5 موجود في ملف PDF الأصلي لكن نصه غير متوفر في المدونة، فلا يمكن الاستشهاد به."
+        },
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": []
+      }
+    },
+    {
+      "id": "article-inexistant",
+      "purpose_fr": "Référence qui n'existe pas : refus SOURCE_MANQUANTE simple.",
+      "request": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-inexistant",
+        "source_id": "CCS-BTP",
+        "article": "99"
+      },
+      "expected_response": {
+        "contract_version": "legal_retrieval.v0",
+        "request_id": "ds4-article-inexistant",
+        "status": "refus",
+        "citations": [],
+        "refus": {
+          "code": "SOURCE_MANQUANTE",
+          "message_fr": "Aucun article ne correspond à cette référence dans le corpus juridique.",
+          "message_ar": "لا يوجد أي فصل يطابق هذا المرجع في المدونة القانونية."
+        },
+        "computed_by": "legal_retrieval.get_article.live",
+        "mode": "live",
+        "results": []
+      }
+    }
+  ],
+  "avenants": [
+    {
+      "source_id": "CCS-GARDIENNAGE",
+      "signed_on": "1989-02-24",
+      "approved_on": "1989-07-27",
+      "avenants": [
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-1",
+          "number": 1,
+          "signed_on": "1993-06-11",
+          "approved_on": "1993-08-02"
+        },
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-2",
+          "number": 2,
+          "signed_on": "1996-07-23",
+          "approved_on": "1996-07-24"
+        },
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-3",
+          "number": 3,
+          "signed_on": "1999-06-30",
+          "approved_on": "1999-07-14"
+        },
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-4",
+          "number": 4,
+          "signed_on": "2006-07-17",
+          "approved_on": "2006-08-10"
+        },
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-5",
+          "number": 5,
+          "signed_on": "2009-05-02",
+          "approved_on": "2009-06-01"
+        },
+        {
+          "avenant_id": "CCS-GARDIENNAGE-AVENANT-6",
+          "number": 6,
+          "signed_on": "2013-04-17",
+          "approved_on": "2013-04-29"
+        }
+      ]
+    },
+    {
+      "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+      "signed_on": "1974-07-26",
+      "approved_on": "1974-08-29",
+      "avenants": [
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-1",
+          "number": 1,
+          "signed_on": "1983-04-13",
+          "approved_on": "1983-04-28"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-2",
+          "number": 2,
+          "signed_on": "1989-03-25",
+          "approved_on": "1989-03-29"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-3",
+          "number": 3,
+          "signed_on": "1990-09-12",
+          "approved_on": "1990-10-13"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-4",
+          "number": 4,
+          "signed_on": "1993-06-11",
+          "approved_on": "1993-08-02"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-5",
+          "number": 5,
+          "signed_on": "1996-07-23",
+          "approved_on": "1996-07-24"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-6",
+          "number": 6,
+          "signed_on": "1999-06-30",
+          "approved_on": "1999-07-14"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-7",
+          "number": 7,
+          "signed_on": "2002-11-14",
+          "approved_on": "2002-11-25"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-8",
+          "number": 8,
+          "signed_on": "2005-12-29",
+          "approved_on": "2006-01-17"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-9",
+          "number": 9,
+          "signed_on": "2009-04-22",
+          "approved_on": "2009-05-12"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-10",
+          "number": 10,
+          "signed_on": "2011-10-22",
+          "approved_on": "2011-11-01"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-11",
+          "number": 11,
+          "signed_on": "2013-03-10",
+          "approved_on": "2013-03-25"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-12",
+          "number": 12,
+          "signed_on": "2014-11-17",
+          "approved_on": "2014-12-05"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-13",
+          "number": 13,
+          "signed_on": "2016-05-11",
+          "approved_on": "2016-06-14"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-14",
+          "number": 14,
+          "signed_on": "2017-07-26",
+          "approved_on": "2017-08-11"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-15",
+          "number": 15,
+          "signed_on": "2018-11-15",
+          "approved_on": "2018-12-03"
+        },
+        {
+          "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-16",
+          "number": 16,
+          "signed_on": "2022-04-15",
+          "approved_on": "2022-04-29"
+        }
+      ]
+    },
+    {
+      "source_id": "CCS-BTP",
+      "signed_on": "1975-01-16",
+      "approved_on": "1975-03-12",
+      "avenants": [
+        {
+          "avenant_id": "CCS-BTP-AVENANT-1",
+          "number": 1,
+          "signed_on": "1983-03-08",
+          "approved_on": "1983-04-14"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-2",
+          "number": 2,
+          "signed_on": "1989-07-12",
+          "approved_on": "1989-08-10"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-3",
+          "number": 3,
+          "signed_on": "1990-07-14",
+          "approved_on": "1990-08-16"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-4",
+          "number": 4,
+          "signed_on": "1993-08-01",
+          "approved_on": "1993-09-07"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-5",
+          "number": 5,
+          "signed_on": "1996-09-24",
+          "approved_on": "1996-10-16"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-6",
+          "number": 6,
+          "signed_on": "1999-05-28",
+          "approved_on": "1999-06-09"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-7",
+          "number": 7,
+          "signed_on": "2002-11-19",
+          "approved_on": "2002-11-25"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-8",
+          "number": 8,
+          "signed_on": "2005-03-10",
+          "approved_on": "2005-12-29"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-9",
+          "number": 9,
+          "signed_on": "2009-01-28",
+          "approved_on": "2009-02-17"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-10",
+          "number": 10,
+          "signed_on": "2011-10-14",
+          "approved_on": "2011-10-25"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-11",
+          "number": 11,
+          "signed_on": "2013-02-25",
+          "approved_on": "2013-03-08"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-12",
+          "number": 12,
+          "signed_on": "2014-10-10",
+          "approved_on": "2014-10-27"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-13",
+          "number": 13,
+          "signed_on": "2016-04-13",
+          "approved_on": "2016-05-02"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-14",
+          "number": 14,
+          "signed_on": "2017-07-11",
+          "approved_on": "2017-08-30"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-15",
+          "number": 15,
+          "signed_on": "2018-11-26",
+          "approved_on": "2018-12-17"
+        },
+        {
+          "avenant_id": "CCS-BTP-AVENANT-16",
+          "number": 16,
+          "signed_on": "2022-10-27",
+          "approved_on": "2022-11-25"
+        }
+      ]
+    },
+    {
+      "source_id": "CCS-ASSURANCE",
+      "signed_on": "1975-07-24",
+      "approved_on": "1975-12-24",
+      "avenants": [
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-1",
+          "number": 1,
+          "signed_on": "1989-03-09",
+          "approved_on": "1989-03-22"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-2",
+          "number": 2,
+          "signed_on": "1990-10-19",
+          "approved_on": "1990-11-09"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-3",
+          "number": 3,
+          "signed_on": "1993-08-12",
+          "approved_on": "1993-09-07"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-4",
+          "number": 4,
+          "signed_on": "1996-07-23",
+          "approved_on": "1996-07-24"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-5",
+          "number": 5,
+          "signed_on": "1999-05-28",
+          "approved_on": "1999-06-09"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-6",
+          "number": 6,
+          "signed_on": "2002-11-14",
+          "approved_on": "2002-11-25"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-7",
+          "number": 7,
+          "signed_on": "2007-05-10",
+          "approved_on": "2007-05-24"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-8",
+          "number": 8,
+          "signed_on": "2009-05-23",
+          "approved_on": "2009-06-01"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-9",
+          "number": 9,
+          "signed_on": "2012-02-21",
+          "approved_on": "2012-03-21"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-10",
+          "number": 10,
+          "signed_on": "2014-11-24",
+          "approved_on": "2014-12-16"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-11",
+          "number": 11,
+          "signed_on": "2014-11-24",
+          "approved_on": "2014-12-16"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-12",
+          "number": 12,
+          "signed_on": "2016-03-16",
+          "approved_on": "2016-04-05"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-13",
+          "number": 13,
+          "signed_on": "2017-06-14",
+          "approved_on": "2017-07-03"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-14",
+          "number": 14,
+          "signed_on": "2018-12-24",
+          "approved_on": "2019-01-25"
+        },
+        {
+          "avenant_id": "CCS-ASSURANCE-AVENANT-15",
+          "number": 15,
+          "signed_on": "2022-08-22",
+          "approved_on": "2022-10-20"
+        }
+      ]
+    },
+    {
+      "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+      "signed_on": "1987-03-25",
+      "approved_on": "1987-05-05",
+      "avenants": [
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-1",
+          "number": 1,
+          "signed_on": "1989-07-12",
+          "approved_on": "1989-08-10"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-2",
+          "number": 2,
+          "signed_on": "1990-07-14",
+          "approved_on": "1990-08-31"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-3",
+          "number": 3,
+          "signed_on": "1993-08-12",
+          "approved_on": "1993-09-07"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-4",
+          "number": 4,
+          "signed_on": "1996-12-30",
+          "approved_on": "1997-02-13"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-5",
+          "number": 5,
+          "signed_on": "1999-06-30",
+          "approved_on": "1999-07-14"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-6",
+          "number": 6,
+          "signed_on": "2002-11-14",
+          "approved_on": "2002-11-25"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-7",
+          "number": 7,
+          "signed_on": "2005-12-29",
+          "approved_on": "2006-01-17"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-8",
+          "number": 8,
+          "signed_on": "2009-01-28",
+          "approved_on": "2009-02-17"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-9",
+          "number": 9,
+          "signed_on": "2012-02-21",
+          "approved_on": "2012-03-21"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-10",
+          "number": 10,
+          "signed_on": "2013-03-21",
+          "approved_on": "2013-04-08"
+        },
+        {
+          "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-11",
+          "number": 11,
+          "signed_on": "2014-10-10",
+          "approved_on": "2014-10-27"
+        }
+      ]
+    },
+    {
+      "source_id": "CCS-BANQUES",
+      "signed_on": "1975-07-24",
+      "approved_on": "1975-12-24",
+      "avenants": [
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-1",
+          "number": 1,
+          "signed_on": "1989-03-09",
+          "approved_on": "1989-03-22"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-2",
+          "number": 2,
+          "signed_on": "1991-01-30",
+          "approved_on": "1991-03-13"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-3",
+          "number": 3,
+          "signed_on": "1993-08-12",
+          "approved_on": "1993-09-07"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-4",
+          "number": 4,
+          "signed_on": "1996-07-23",
+          "approved_on": "1996-07-24"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-5",
+          "number": 5,
+          "signed_on": "1999-06-30",
+          "approved_on": "1999-07-14"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-6",
+          "number": 6,
+          "signed_on": "2002-11-14",
+          "approved_on": "2002-11-25"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-7",
+          "number": 7,
+          "signed_on": "2005-12-29",
+          "approved_on": "2006-01-17"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-1",
+          "number": 1,
+          "signed_on": "2014-11-27",
+          "approved_on": "2014-12-16"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-2",
+          "number": 2,
+          "signed_on": "2016-03-09",
+          "approved_on": "2016-04-05"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-3",
+          "number": 3,
+          "signed_on": "2017-05-15",
+          "approved_on": "2017-06-15"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-4",
+          "number": 4,
+          "signed_on": "2018-11-12",
+          "approved_on": "2019-02-18"
+        },
+        {
+          "avenant_id": "CCS-BANQUES-AVENANT-5",
+          "number": 5,
+          "signed_on": "2022-08-22",
+          "approved_on": "2022-11-17"
+        }
+      ]
+    }
+  ]
+}
