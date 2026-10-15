@@ -106,3 +106,24 @@ def test_handler_technical_error():
     # La réponse doit respecter le contrat JSON.
     schema = load_schema(RESPONSE_SCHEMA)
     Draft202012Validator(schema).validate(response)
+def test_handler_accepts_case_without_evidence():
+    """Un dossier sans preuves est accepté, sans conclusion inventée."""
+
+    # Charger un dossier fictif valide
+    request = load_demo_case()
+
+    # Supprimer les preuves
+    request["evidence"] = []
+
+    # Supprimer les références aux preuves absentes
+    for event in request["events"]:
+        event["source_ids"] = []
+
+    # Envoyer le dossier au handler DS4
+    response = handle(request)
+
+    # Vérifier la réponse
+    assert response["status"] == "refus"
+    assert response["refus"]["code"] == "SOURCE_MANQUANTE"
+    assert response["result"] is None
+    assert response["citations"] == []
