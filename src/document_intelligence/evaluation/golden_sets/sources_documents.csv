@@ -1,0 +1,6 @@
+doc_id,fichier,type_document,langue,format,source,url,licence,date_telechargement,donnees_personnelles,anonymise,stockage,collecte_par,remarques
+FICTIF-01,paie_fictive_01_fr.pdf,fiche_de_paie,fr,pdf_natif,fictif,,création de l'équipe,2026-10-15,non,na,src/document_intelligence/evaluation/golden_sets/documents/,Hadil,généré par fictive_documents.py
+FICTIF-02,paie_fictive_02_tampon.pdf,fiche_de_paie,fr,pdf_natif,fictif,,création de l'équipe,2026-10-15,non,na,src/document_intelligence/evaluation/golden_sets/documents/,Hadil,généré par fictive_documents.py
+FICTIF-03,paie_fictive_03_ar_scan.pdf,fiche_de_paie,ar,pdf_scanne,fictif,,création de l'équipe,2026-10-15,non,na,src/document_intelligence/evaluation/golden_sets/documents/,Hadil,généré par fictive_documents.py
+FICTIF-04,paie_fictive_04_pieges.pdf,fiche_de_paie,fr,pdf_natif,fictif,,création de l'équipe,2026-10-15,non,na,src/document_intelligence/evaluation/golden_sets/documents/,Hadil,généré par fictive_documents.py
+FICTIF-05,facture_fictive_05.pdf,facture,fr,pdf_natif,fictif,,création de l'équipe,2026-10-15,non,na,src/document_intelligence/evaluation/golden_sets/documents/,Hadil,généré par fictive_documents.py
