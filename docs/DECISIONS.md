@@ -1166,3 +1166,85 @@ valeur.
 
 **Statut** : ✅ implémenté et exposé (2026-10-13) ; vérification visuelle
 terminée le 2026-10-12.
+
+---
+
+### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
+
+**Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.
+- DS2 (D21) : 7 codes en minuscules (`btp`, `construction_metallique`, `associations`, …), chacun relié à une
+  source (`CCS-BTP`, …) par `src/legal_retrieval/corpus/registry.py` ;
+- DS5 : les codes des grilles vérifiées (`_meta.secteur_code` de `data/processed/salary_grids/*.json`, registre
+  `loaders.GRILLES`) : `METALLURGIE_BATIMENT` (D4), `BATIMENT_TRAVAUX_PUBLICS` (D9),
+  `ASSOCIATIONS_PERSONNES_HANDICAPEES` (D23).
+
+Les noms ne suffisent pas à les relier : `METALLURGIE_BATIMENT` correspond à la **construction métallique**, pas au
+« bâtiment » (alias DS2 de `btp`). DS1 détecte le secteur Track B par des mots codés en dur (dans la PR #13 de
+DS1, pas encore sur main) ; DS3 renvoie, dans sa PR #12 (contrat v2, pas encore sur main),
+`WageGrid.sector_code = null` « tant que la table n'est pas fixée ».
+
+**Décision** : une table de données commune, sans code métier, dans `src/shared/` :
+- `src/shared/sectors/sectors.v0.json` (`table_version` `common.sectors.v0`, `vocabulary_ref` D21) ;
+- schéma `src/shared/schemas/common_sectors.v0.schema.json` (v0 : proposition, à valider par l'équipe) ;
+- une entrée par secteur D21 : `ds2_code`, `source_id`, `label_fr`, `label_ar`, `aliases` (copie fidèle du
+  vocabulaire D21, `origin/DS2_Sprint4`), puis `ds5_code`, `ds5_status`, `ds5_decision_ref`, `evidence` ;
+- `ds5_status` : `actif` (grille vérifiée dans le registre DS5 ; les trois champs DS5 sont obligatoires),
+  `en_preparation` ou `aucun` (les trois champs à `null`, imposé par le schéma).
+
+| ds2_code | source_id | ds5_code | ds5_status |
+|---|---|---|---|
+| `construction_metallique` | CCS-CONSTRUCTION-METALLIQUE | `METALLURGIE_BATIMENT` (D4) | actif |
+| `btp` | CCS-BTP | `BATIMENT_TRAVAUX_PUBLICS` (D9) | actif |
+| `associations` | CCS-ASSOCIATIONS | `ASSOCIATIONS_PERSONNES_HANDICAPEES` (D23) | actif |
+| `assurance` | CCS-ASSURANCE | null | en_preparation (grille non fusionnée : non supportée) |
+| `gardiennage_securite_transport_fonds` | CCS-GARDIENNAGE | null | aucun |
+| `enseignement_prive` | CCS-ENSEIGNEMENT-PRIVE | null | aucun |
+| `banques` | CCS-BANQUES | null | aucun |
+
+La convention cadre (`CC-CADRE`) et le SMIG (`SMIG-GRILLE`) s'appliquent à tous les secteurs : pas d'entrée.
+
+**Preuve exécutable** (`src/shared/tests/test_sectors_table.py`) : une correspondance n'est inscrite que si la grille
+DS5 et la source DS2 désignent **le même fichier** de `data/raw/pdf/` (`evidence.type = meme_source_file`).
+Le test vérifie :
+1. le schéma et la conformité de la table, et que le schéma refuse un statut incohérent avec les champs DS5 ;
+2. tout `ds5_code` non nul est dans `loaders.GRILLES` et `secteurs_disponibles()`, avec `decision_ref`,
+   `source_file` et `convention_ar` égaux au `_meta` de la grille ;
+3. chaque secteur DS5 disponible figure une fois dans la table (une nouvelle grille ne peut pas être oubliée) ;
+4. `match_source` (registre DS2) appliqué au `source_file` DS5 rend le `source_id` et le `ds2_code` de l'entrée ;
+5. les 7 `ds2_code` et `source_id` sont ceux du registre DS2 déjà sur main ;
+6. copie fidèle du vocabulaire D21 : **ignoré** tant que `data/mock_cards/legal_retrieval_vocabulary.v0.json` est
+   absent de main, exécuté automatiquement dès qu'il est présent (vérifié hors dépôt sur la copie de
+   `origin/DS2_Sprint4` : conforme).
+
+**Ambiguïtés non tranchées** : le bloc D21 est recopié (« البناء / construction » → `btp` ou
+`construction_metallique` : demander une précision). Note ajoutée : « bâtiment » seul et « البناء » seul ne sont
+jamais envoyés vers `METALLURGIE_BATIMENT` ; la table ne résout aucune ambiguïté, l'appelant la gère. Aucun alias
+n'a été ajouté (ex. « métallurgie », utilisé par DS1 mais absent de D21).
+
+**Alternatives envisagées** :
+- Module Python dans `src/shared` → rejeté : `src/shared/README.md` interdit le code métier ; des données JSON
+  suffisent et se lisent depuis n'importe quel rôle.
+- Correspondance par ressemblance de nom → rejetée : elle aurait relié « bâtiment » à `METALLURGIE_BATIMENT`.
+- Inscrire un code DS5 pour l'assurance → rejeté : aucune grille assurance n'est fusionnée ; statut
+  `en_preparation`, `ds5_code` null jusqu'à la fusion.
+
+**Ce qui change** :
+- DS1 : lire la table au lieu de la détection codée en dur ; appeler Track B seulement si `ds5_status = actif`,
+  avec `ds5_code` ; sinon répondre sans calcul. Gérer l'ambiguïté « البناء » (demande de précision).
+- DS2 : aucun changement de code ; tout ajout ou renommage de secteur D21 doit être répercuté dans la table
+  (tests 5 et 6).
+- DS3 : `WageGrid.sector_code` reçoit le `ds2_code` (comme le dit déjà son schéma v2), ou `null` si le
+  rapprochement n'est pas certain ; le code DS5 se lit dans la table.
+- DS5 : une grille ajoutée (assurance) fait échouer le test 3 tant que la table n'est pas mise à jour
+  (`ds5_status` → `actif`, `ds5_code`, `ds5_decision_ref`, `evidence`).
+
+**Questions ouvertes pour DS2** :
+1. `associations` est-il le code stable (le code DS5 est `ASSOCIATIONS_PERSONNES_HANDICAPEES`) ?
+2. Faut-il ajouter « métallurgie » aux alias de `construction_metallique` (DS1 l'utilise) ?
+3. « bâtiment » seul doit-il rester un alias de `btp` ou devenir une ambiguïté comme « البناء » ?
+4. Quand le vocabulaire `legal_retrieval_vocabulary.v0.json` et D21 arrivent-ils sur main (active le test 6) ?
+5. La table recopie libellés et alias : d'accord pour que la source de vérité reste le vocabulaire D21, la table
+   étant vérifiée contre lui ?
+
+**Statut** : ⏳ v0 proposée à DS1, DS2, DS3 ; `pytest src/shared/tests/test_sectors_table.py` : 12 réussis,
+1 ignoré (vocabulaire D21 absent de main).
