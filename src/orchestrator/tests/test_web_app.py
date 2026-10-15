@@ -167,7 +167,7 @@ def test_chat_calculates_btp_occasional_salary_from_prompt() -> None:
 
 def test_chat_displays_ds5_article_13_hypotheses_with_salary() -> None:
     response = chat({
-        "message": "Calcule le salaire de base secteur métallurgie bâtiment, population admin-tech, "
+        "message": "Calcule le salaire de base secteur construction métallique, population admin-tech, "
         "catégorie 4, 25 ans d'ancienneté au 2024-06-01.",
         "language": "fr", "card_id": "company-demo-001",
     })

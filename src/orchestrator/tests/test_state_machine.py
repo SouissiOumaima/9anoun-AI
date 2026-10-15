@@ -76,7 +76,7 @@ def test_track_b_missing_required_fields_requests_clarification() -> None:
 
 def test_salary_base_prompt_extracts_explicit_parameters_for_track_b() -> None:
     result = StateMachine(success_executor).run(envelope(
-        "Calcule le salaire de base secteur métallurgie bâtiment, population admin-tech, "
+        "Calcule le salaire de base secteur construction métallique, population admin-tech, "
         "catégorie 4, 15 ans d'ancienneté au 2022-06-01.",
         card_type=CardType.COMPANY,
     ))
@@ -91,7 +91,7 @@ def test_salary_base_prompt_extracts_explicit_parameters_for_track_b() -> None:
 
 def test_salary_base_prompt_lists_only_missing_fields() -> None:
     result = StateMachine(success_executor).run(envelope(
-        "Calcule le salaire de base secteur métallurgie bâtiment, catégorie 4 au 2022-06-01.",
+        "Calcule le salaire de base secteur construction métallique, catégorie 4 au 2022-06-01.",
         card_type=CardType.COMPANY,
     ))
     assert result.state is FlowState.CLARIFICATION_REQUIRED

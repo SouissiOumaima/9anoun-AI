@@ -11,6 +11,8 @@ from dataclasses import dataclass
 import re
 from typing import Any, Mapping
 
+from .sector_mapping import resolve_active_ds5_sector
+
 
 @dataclass(frozen=True, slots=True)
 class TrackBPromptExtraction:
@@ -93,13 +95,9 @@ def _operation(message: str) -> str | None:
 
 
 def _secteur(message: str) -> str | None:
-    if "metallurgie_batiment" in message or "métallurgie_bâtiment" in message:
-        return "METALLURGIE_BATIMENT"
-    if "métallurgie" in message or "metallurgie" in message or "bâtiment métallique" in message or "batiment metallique" in message:
-        return "METALLURGIE_BATIMENT"
-    if re.search(r"\bbtp\b", message) or "bâtiment travaux publics" in message or "batiment travaux publics" in message:
-        return "BATIMENT_TRAVAUX_PUBLICS"
-    return None
+    """Map only explicit D30 sector terms to an active DS5 grid."""
+
+    return resolve_active_ds5_sector(message)
 
 
 def _population(message: str, _secteur: str | None) -> str | None:
