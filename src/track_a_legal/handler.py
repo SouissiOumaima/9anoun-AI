@@ -66,18 +66,7 @@ def handle(request: dict) -> dict:
 
     Ne produit pas encore de conclusion juridique sourcée.
     """
-
-    # 1. Charger les schémas
-    request_schema = load_schema(REQUEST_SCHEMA)
-    response_schema = load_schema(RESPONSE_SCHEMA)
-
-    request_validator = Draft202012Validator(
-        request_schema,
-        format_checker=FormatChecker()
-    )
-    response_validator = Draft202012Validator(response_schema)
-
-    # 2. Récupérer les identifiants lisibles
+    # 1. Récupérer les identifiants lisibles
     request_id = None
     case_id = None
 
@@ -87,6 +76,37 @@ def handle(request: dict) -> dict:
 
         if isinstance(request.get("case_id"), str):
             case_id = request["case_id"]
+        # 2. Charger les schémas de manière sécurisée
+    try:
+        request_schema = load_schema(REQUEST_SCHEMA)
+        response_schema = load_schema(RESPONSE_SCHEMA)
+
+        request_validator = Draft202012Validator(
+            request_schema,
+            format_checker=FormatChecker()
+        )
+        response_validator = Draft202012Validator(response_schema)
+
+    except Exception:
+        response = {
+            "contract_version": "track_a.v0",
+            "request_id": request_id,
+            "status": "erreur",
+            "result": None,
+            "citations": [],
+            "refus": None,
+            "erreur": {
+                "type": "INTERNAL_ERROR",
+                "message_fr": "Une erreur technique est survenue pendant le traitement.",
+                "message_ar": "حدث خطأ تقني أثناء معالجة الطلب."
+            },
+            "computed_by": "track_a_legal.handler"
+        }
+
+        if case_id is not None:
+            response["case_id"] = case_id
+
+        return response
 
     # 3. Valider la requête
     if not request_validator.is_valid(request):
@@ -142,6 +162,26 @@ def handle(request: dict) -> dict:
                 response["case_id"] = case_id
 
     # 7. Vérifier la réponse avant de la retourner
-    response_validator.validate(response)
+    try:
+        response_validator.validate(response)
+
+    except Exception:
+        response = {
+            "contract_version": "track_a.v0",
+            "request_id": request_id,
+            "status": "erreur",
+            "result": None,
+            "citations": [],
+            "refus": None,
+            "erreur": {
+                "type": "INTERNAL_ERROR",
+                "message_fr": "Une erreur technique est survenue pendant le traitement.",
+                "message_ar": "حدث خطأ تقني أثناء معالجة الطلب."
+            },
+            "computed_by": "track_a_legal.handler"
+        }
+
+        if case_id is not None:
+            response["case_id"] = case_id
 
     return response

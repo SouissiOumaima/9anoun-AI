@@ -102,3 +102,44 @@ def test_track_a_demo_cases_match_request_schema() -> None:
         assert not errors, "\n".join(
             error.message for error in errors
         )
+def test_handle_schema_loading_error(monkeypatch):
+    """Le handler doit retourner INTERNAL_ERROR si un schéma est introuvable."""
+    from src.track_a_legal import handler
+
+    def fake_load_schema(path):
+        raise FileNotFoundError("Schéma introuvable")
+        
+
+    monkeypatch.setattr(handler, "load_schema", fake_load_schema)
+
+    response = handler.handle({
+        "request_id": "TEST-ERROR-001",
+        "case_id": "CASE-ERROR-001"
+    })
+
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+    assert response["request_id"] == "TEST-ERROR-001"
+    assert response["case_id"] == "CASE-ERROR-001"
+
+def test_handle_response_validation_error(monkeypatch):
+    """Le handler doit gérer une erreur de validation finale."""
+    from src.track_a_legal import handler
+
+    def fake_validate(self, instance):
+        raise RuntimeError("Erreur de validation simulée")
+
+    monkeypatch.setattr(
+        handler.Draft202012Validator,
+        "validate",
+        fake_validate
+    )
+
+    response = handler.handle({
+        "request_id": "TEST-ERROR-002",
+        "case_id": "CASE-ERROR-002"
+    })
+
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+    assert response["request_id"] == "TEST-ERROR-002"
