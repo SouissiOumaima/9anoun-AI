@@ -47,3 +47,5 @@ dist/
 
 # --- Évaluation Track B : seul le rapport de référence (baseline) est versionné ---
 src/track_b_accounting/evaluation/results/eval_*
+# DS2 : vecteurs Gemini du corpus, recalculés localement (D28)
+data/processed/legal_corpus/embeddings/

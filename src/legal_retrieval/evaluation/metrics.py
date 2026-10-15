@@ -54,6 +54,7 @@ def run_question(item: dict[str, Any], store: CorpusStore) -> dict[str, Any]:
             "status": response["status"], "rank": min(ranks) if ranks else None,
             "top1": groups[0] if groups else None, "raw_top": round(signals["raw"], 3),
             "coverage": round(signals["coverage"], 3),
+            "cosine": None if signals["cosine"] is None else round(signals["cosine"], 3),
             "article_number_asked": signals["number_asked"], "expected": item["expected"]}
 
 
@@ -80,6 +81,10 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
     summary["threshold_study"] = threshold_study(core, outside, "raw_top")
     summary["coverage_study"] = threshold_study(core, outside, "coverage")
+    summary["retrieval"] = "hybride (BM25 + embeddings, RRF)" if any(
+        r["cosine"] is not None for r in rows) else "BM25 seul"
+    if summary["retrieval"].startswith("hybride"):  # D28: same study on the meaning signal
+        summary["cosine_study"] = threshold_study(core, outside, "cosine")
     return summary
 
 
@@ -87,13 +92,17 @@ def threshold_study(core: list[dict[str, Any]], outside: list[dict[str, Any]],
                     signal: str = "raw_top") -> list[dict[str, Any]]:
     """Recall@10 / abstention if questions without number and <signal> < t were refused.
 
-    signal = "raw_top" (raw BM25 score) or "coverage" (share of the question found).
+    signal = "raw_top" (raw BM25 score), "coverage" (share of the question found) or
+    "cosine" (best meaning similarity, D28 ; a missing value counts as 0).
     """
+    def value(r: dict[str, Any]) -> float:
+        return r[signal] if r[signal] is not None else 0.0
+
     def refused(r: dict[str, Any], t: float) -> bool:
-        return r["status"] == "refus" or (not r["article_number_asked"] and r[signal] < t)
+        return r["status"] == "refus" or (not r["article_number_asked"] and value(r) < t)
 
     # candidates: just above each out-of-scope value (refuses that question) + 0
-    candidates = sorted({0.0, *(round(r[signal] + 0.001, 3) for r in outside)})
+    candidates = sorted({0.0, *(round(value(r) + 0.001, 3) for r in outside)})
     study = []
     for t in candidates:
         kept = [r for r in core if not refused(r, t)]
@@ -135,7 +144,7 @@ def main() -> None:
     for r in report["rows"]:
         rank = r["rank"] if r["rank"] else "-"
         print(f"{r['id']:<4} {r['kind']:<15} {r['status']:<6} rang={rank!s:<3} "
-              f"raw={r['raw_top']:<7} cov={r['coverage']:<5} n°={'oui' if r['article_number_asked'] else 'non'}  top1={r['top1']}")
+              f"raw={r['raw_top']:<7} cov={r['coverage']:<5} cos={r['cosine']!s:<6} n°={'oui' if r['article_number_asked'] else 'non'}  top1={r['top1']}")
     s = report["summary"]
     print(f"\nquestions mesurées : {s['n_questions']}  (ignorées, a_completer : "
           f"{len(report['skipped_a_completer'])})")
@@ -145,7 +154,11 @@ def main() -> None:
     print("R@10 par type :", {k: _pct(v) for k, v in s["per_kind_recall@10"].items()})
     print(f"abstention hors périmètre : {_pct(s['abstention'])}  (cible 85 %)")
     print("refus à tort :", s["false_refusals"], " | ratées à 10 :", s["missed@10"])
-    for title, key in (("seuil brut", "threshold_study"), ("seuil couverture", "coverage_study")):
+    print("recherche :", s["retrieval"])
+    for title, key in (("seuil brut", "threshold_study"), ("seuil couverture", "coverage_study"),
+                       ("seuil cosinus", "cosine_study")):
+        if key not in s:
+            continue
         print(f"\n{title:<16} R@10     abstention  questions du périmètre refusées")
         for t in s[key]:
             print(f"{t['threshold']:<16} {_pct(t['recall@10'])}  {_pct(t['abstention'])}    "

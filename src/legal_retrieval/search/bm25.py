@@ -11,8 +11,10 @@ top_k counts ARTICLES; every article comes with ALL its versions (D17).
 No term in common with the corpus -> [] -> refus SOURCE_MANQUANTE (Citation ou Silence).
 
 Pure Python, no extra dependency, nothing sent outside (confidential corpus).
-Not yet: dense embeddings + RRF fusion (need a model validated by Tradrly),
-worker_category filter (no category metadata per article), dated versions (S5).
+With Gemini embeddings available (search/embeddings.py, D28), steps 2 becomes the
+RRF fusion of the BM25 ranking and the meaning (cosine) ranking; without key, cache
+or network it stays BM25 only. The abstention rule (D27) is unchanged.
+Not yet: worker_category filter (no category metadata per article), dated versions (S5).
 """
 
 from __future__ import annotations
@@ -27,6 +29,7 @@ from ..contract.results import to_result
 from ..corpus.normalize import normalize_arabic
 from ..corpus.registry import REGISTRY
 from ..corpus.store import CorpusStore
+from .embeddings import dense_scores, rrf
 from .text import article_refs, terms, without_refs
 
 K1, B = 1.5, 0.75  # usual BM25 values; to tune with the golden set (Recall@10)
@@ -156,13 +159,20 @@ def ranked_groups(request: dict[str, Any], store: CorpusStore) -> list[tuple[str
         raw, coverage = index.best_match(query_terms, allowed)
         if raw < MIN_RAW and coverage < MIN_COVERAGE:
             return []
-    bm25 = {g: s for g, s in index.scores(query_terms).items()
-            if g in allowed and g not in dict(ranked)}
-    if bm25:
-        top = max(bm25.values())
-        # ties broken by id so that the same question always gives the same order
-        ranked += [(g, round(s / top, 4)) for g, s in
-                   sorted(bm25.items(), key=lambda item: (-item[1], item[0]))]
+    exact = dict(ranked)
+    bm25 = {g: s for g, s in index.scores(query_terms).items() if g in allowed and g not in exact}
+    # ties broken by id so that the same question always gives the same order
+    by_bm25 = sorted(bm25.items(), key=lambda item: (-item[1], item[0]))
+    dense = dense_scores(without_refs(question), store, allowed)  # None = BM25 only
+    if dense:  # D28: fuse the word ranking and the meaning ranking
+        by_dense = [g for g, _ in sorted(dense.items(), key=lambda item: (-item[1], item[0]))
+                    if g not in exact]
+        fused = rrf([[g for g, _ in by_bm25], by_dense])
+        top = fused[0][1] if fused else 1.0
+        return ranked + [(g, round(s / top, 4)) for g, s in fused]
+    if by_bm25:
+        top = by_bm25[0][1]
+        ranked += [(g, round(s / top, 4)) for g, s in by_bm25]
     return ranked
 
 
@@ -176,7 +186,9 @@ def top_signals(request: dict[str, Any], store: CorpusStore) -> dict[str, Any]:
     index = index_for(store)
     allowed = {g for g, s in zip(index.groups, index.sectors, strict=True) if _sector_ok(s, sector)}
     raw, coverage = index.best_match(terms(without_refs(question)), allowed)
+    dense = dense_scores(without_refs(question), store, allowed)
     return {"raw": raw, "coverage": coverage,
+            "cosine": max(dense.values()) if dense else None,  # D28 signal, None = BM25 only
             "number_asked": bool(_exact_groups(store, question, sector))}
 
 

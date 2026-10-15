@@ -1446,6 +1446,33 @@ complètes (« منحة النقل »). Effet attendu sur ce jeu : abstention 37
 Plafond des signaux lexicaux : H06 (vol) et H08 (change) partagent de vrais mots avec un article ;
 les 85 % demanderont un signal sémantique (embeddings) ou le tri d'intention de DS1 en amont.
 ⚠️ Valeurs fixées sur 28 questions : à revérifier quand le golden set grandit.
+---
+
+### D28 — Recherche par le sens : embeddings Gemini + fusion RRF avec BM25
+
+**Décision** : quand une clé Gemini et le cache de vecteurs existent, l'ordre des résultats
+(après les numéros d'article demandés) est la **fusion RRF** (k = 60) du classement BM25 et du
+classement par similarité cosinus des embeddings Gemini (`src/legal_retrieval/search/embeddings.py`).
+- Gemini est le **seul service externe autorisé** pour les données (règle Tradrly) ; la clé est lue
+  dans `GEMINI_API_KEY` ou dans `.env` (ignoré par Git), jamais dans le code.
+- Les vecteurs des articles sont calculés **une fois** (`python -m src.legal_retrieval.search.embeddings
+  --build`) et gardés en local dans `data/processed/legal_corpus/embeddings/<modèle>.json` (ignoré par
+  Git) ; le fichier porte une empreinte SHA-256 du corpus : un cache périmé n'est jamais utilisé.
+- À la recherche, seule la **question** est envoyée à Gemini.
+- Sans clé, sans cache ou sans réseau : **BM25 seul**, sans erreur (repli automatique, testé).
+- Modèle choisi par `DS2_EMBED_MODEL` (défaut `gemini-embedding-001`, dimension 768) ; modèles
+  disponibles avec la clé du projet : `gemini-embedding-001`, `gemini-embedding-2`, `gemini-embedding-2-preview`.
+- La règle d'abstention D27 est **inchangée** ; `metrics` mesure en plus le signal cosinus.
+
+**Alternatives envisagées** :
+- Modèle d'embedding local → rejeté pour la v0 : pas de GPU, et Gemini est déjà fourni par Tradrly.
+- Remplacer BM25 par les embeddings → rejeté : BM25 trouve les termes juridiques exacts, les
+  embeddings le sens ; la fusion garde les deux.
+
+**Statut** : ⏳ code et tests prêts (faux modèle, sans réseau) ; corpus **pas encore envoyé** à Gemini :
+attente de la confirmation de Tradrly pour le modèle d'embedding. Ensuite : mesure golden set
+BM25 seul vs hybride, `gemini-embedding-001` vs `gemini-embedding-2`, puis seuil d'abstention.
+
 
 ---
 
