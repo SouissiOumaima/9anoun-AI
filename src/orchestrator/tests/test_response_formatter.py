@@ -56,3 +56,26 @@ def test_ds3_errors_are_mapped_to_safe_specific_user_messages() -> None:
         assert formatted.status == "error"
         assert formatted.code is expected
         assert "internal secret" not in str(formatted.to_payload())
+
+
+def test_refusals_from_all_specialists_share_the_same_ui_codes() -> None:
+    cases = {
+        "ACCES_REFUSE": UserResponseCode.ACCESS_DENIED,  # DS3 v2 / DS4
+        "HORS_SCOPE": UserResponseCode.OUT_OF_SCOPE,      # DS2 / DS5
+        "SOURCE_MANQUANTE": UserResponseCode.SOURCE_MISSING,  # DS2 / DS4 / DS5
+        "PARAM_INVALIDE": UserResponseCode.INVALID_PARAMETERS,  # DS3 / DS5
+        "UNSUPPORTED_FORMAT": UserResponseCode.UNSUPPORTED_FORMAT,  # DS3
+    }
+    for specialist_code, expected in cases.items():
+        formatted = format_flow_result(result("completed", response={
+            "status": "refused", "error": {"code": specialist_code, "message_fr": "secret"},
+        }))
+        assert formatted.code is expected
+        assert "secret" not in str(formatted.to_payload())
+
+
+def test_error_type_and_ds3_code_are_normalized_without_leaking_messages() -> None:
+    for error in ({"type": "TIMEOUT", "message_fr": "secret"}, {"ds3_code": "TIMEOUT", "message_ar": "secret"}):
+        formatted = format_flow_result(result("failed", response={"status": "error", "error": error}))
+        assert formatted.code is UserResponseCode.TOOL_TIMEOUT
+        assert "secret" not in str(formatted.to_payload())

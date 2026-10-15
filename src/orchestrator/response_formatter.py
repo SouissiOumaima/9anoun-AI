@@ -94,14 +94,14 @@ def format_flow_result(result: Any) -> UserResponse:
     if state == "completed":
         tool_status = (result.tool_response or {}).get("status")
         if tool_status == "refused":
-            code = _track_b_refusal_code((result.tool_response or {}).get("error"))
+            code = _refusal_code((result.tool_response or {}).get("error"))
             return _response("refused", code, result.request_id)
         return _response("success", UserResponseCode.SUCCESS, result.request_id)
     if state == "clarification_required":
         return _response("clarification_required", UserResponseCode.CLARIFICATION_REQUIRED, result.request_id)
     tool_error = (result.tool_response or {}).get("error") if isinstance(getattr(result, "tool_response", None), dict) else None
     if isinstance(tool_error, dict):
-        code = _specialist_error_code(tool_error.get("code"))
+        code = _specialist_error_code(_error_identifier(tool_error))
         if code is not None:
             return _response("error", code, result.request_id)
     return _response("error", _failure_code(result.reason or ""), result.request_id)
@@ -111,24 +111,34 @@ def _specialist_error_code(code: Any) -> UserResponseCode | None:
     """Normalize public specialist codes without exposing their raw payload."""
     return {
         "ACCESS_DENIED": UserResponseCode.ACCESS_DENIED,
+        "ACCES_REFUSE": UserResponseCode.ACCESS_DENIED,
         "UNSUPPORTED_FORMAT": UserResponseCode.UNSUPPORTED_FORMAT,
         "FILE_EMPTY_OR_CORRUPTED": UserResponseCode.DOCUMENT_UNREADABLE,
         "UNREADABLE_DOCUMENT": UserResponseCode.DOCUMENT_UNREADABLE,
         "NO_TABLE_FOUND": UserResponseCode.SOURCE_MISSING,
+        "SOURCE_MANQUANTE": UserResponseCode.SOURCE_MISSING,
         "TIMEOUT": UserResponseCode.TOOL_TIMEOUT,
+        "TOOL_TIMEOUT": UserResponseCode.TOOL_TIMEOUT,
         "INVALID_REQUEST": UserResponseCode.INVALID_PARAMETERS,
+        "PARAM_INVALIDE": UserResponseCode.INVALID_PARAMETERS,
         "FILE_TOO_LARGE": UserResponseCode.INVALID_PARAMETERS,
         "UNSUPPORTED_OPERATION": UserResponseCode.OUT_OF_SCOPE,
-    }.get(code, UserResponseCode.INTERNAL_ERROR if code == "INTERNAL_ERROR" else None)
-
-
-def _track_b_refusal_code(error: Any) -> UserResponseCode:
-    code = error.get("code") if isinstance(error, dict) else None
-    return {
         "HORS_SCOPE": UserResponseCode.OUT_OF_SCOPE,
-        "SOURCE_MANQUANTE": UserResponseCode.SOURCE_MISSING,
-        "PARAM_INVALIDE": UserResponseCode.INVALID_PARAMETERS,
-    }.get(code, UserResponseCode.INVALID_TOOL_RESPONSE)
+    }.get(code, UserResponseCode.INTERNAL_ERROR if code in {"INTERNAL_ERROR", "INTERNE"} else None)
+
+
+def _refusal_code(error: Any) -> UserResponseCode:
+    """Map every public specialist refusal (DS2–DS5) to one UI vocabulary."""
+
+    return _specialist_error_code(_error_identifier(error)) or UserResponseCode.INVALID_TOOL_RESPONSE
+
+
+def _error_identifier(error: Any) -> Any:
+    """Contracts use ``code`` for refusals and ``type``/``ds3_code`` for errors."""
+
+    if not isinstance(error, dict):
+        return None
+    return error.get("code") or error.get("type") or error.get("ds3_code")
 
 
 def _failure_code(reason: str) -> UserResponseCode:
