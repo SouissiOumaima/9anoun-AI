@@ -1,0 +1,612 @@
+{
+  "$defs": {
+    "Citation": {
+      "additionalProperties": false,
+      "properties": {
+        "citation_id": {
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Position"
+        },
+        "excerpt": {
+          "description": "Texte exact lu à cet endroit, pour la vérification DS6.",
+          "title": "Excerpt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation_id",
+        "document_id",
+        "position",
+        "excerpt"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "DS3Error": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_OPERATION",
+            "UNSUPPORTED_FORMAT",
+            "FILE_EMPTY_OR_CORRUPTED",
+            "FILE_TOO_LARGE",
+            "ACCESS_DENIED",
+            "UNREADABLE_DOCUMENT",
+            "NO_TABLE_FOUND",
+            "TIMEOUT",
+            "INTERNAL_ERROR"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "message_fr": {
+          "title": "Message Fr",
+          "type": "string"
+        },
+        "message_ar": {
+          "title": "Message Ar",
+          "type": "string"
+        },
+        "retryable": {
+          "title": "Retryable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message_fr",
+        "message_ar",
+        "retryable"
+      ],
+      "title": "DS3Error",
+      "type": "object"
+    },
+    "DocumentAnalysis": {
+      "additionalProperties": false,
+      "properties": {
+        "document_type": {
+          "enum": [
+            "fiche_de_paie",
+            "facture",
+            "contrat_travail",
+            "convention_collective",
+            "piece_dossier",
+            "inconnu"
+          ],
+          "title": "Document Type",
+          "type": "string"
+        },
+        "document_type_confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Document Type Confidence",
+          "type": "number"
+        },
+        "languages": {
+          "items": {
+            "enum": [
+              "ar",
+              "fr"
+            ],
+            "type": "string"
+          },
+          "title": "Languages",
+          "type": "array"
+        },
+        "page_count": {
+          "title": "Page Count",
+          "type": "integer"
+        },
+        "summary": {
+          "description": "Résumé factuel, sans interprétation juridique.",
+          "title": "Summary",
+          "type": "string"
+        },
+        "fields": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ExtractedField"
+          },
+          "title": "Fields",
+          "type": "object"
+        },
+        "tables": {
+          "items": {
+            "$ref": "#/$defs/ExtractedTable"
+          },
+          "title": "Tables",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_type",
+        "document_type_confidence",
+        "languages",
+        "page_count",
+        "summary",
+        "fields"
+      ],
+      "title": "DocumentAnalysis",
+      "type": "object"
+    },
+    "ExtractedField": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "citation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Citation Id"
+        },
+        "unreadable_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "zone_illisible",
+                "valeur_incoherente",
+                "absent_du_document"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unreadable Reason"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "const": "TND",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        }
+      },
+      "required": [
+        "value",
+        "confidence",
+        "citation_id"
+      ],
+      "title": "ExtractedField",
+      "type": "object"
+    },
+    "ExtractedTable": {
+      "additionalProperties": false,
+      "properties": {
+        "table_id": {
+          "title": "Table Id",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "citation_id": {
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "n_rows": {
+          "title": "N Rows",
+          "type": "integer"
+        },
+        "n_cols": {
+          "title": "N Cols",
+          "type": "integer"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/TableCell"
+          },
+          "title": "Cells",
+          "type": "array"
+        }
+      },
+      "required": [
+        "table_id",
+        "title",
+        "citation_id",
+        "n_rows",
+        "n_cols",
+        "cells"
+      ],
+      "title": "ExtractedTable",
+      "type": "object"
+    },
+    "GradeInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "grade": {
+          "title": "Grade",
+          "type": "integer"
+        },
+        "duration_years": {
+          "title": "Duration Years",
+          "type": "integer"
+        },
+        "seniority": {
+          "title": "Seniority",
+          "type": "string"
+        }
+      },
+      "required": [
+        "grade",
+        "duration_years",
+        "seniority"
+      ],
+      "title": "GradeInfo",
+      "type": "object"
+    },
+    "Position": {
+      "additionalProperties": false,
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "[x0, y0, x1, y1] en points PDF, origine en haut à gauche.",
+          "title": "Bbox"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "Position",
+      "type": "object"
+    },
+    "ResponseMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "pipeline_version": {
+          "title": "Pipeline Version",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "mock",
+            "real"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "processing_ms": {
+          "title": "Processing Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pipeline_version",
+        "mode",
+        "processing_ms"
+      ],
+      "title": "ResponseMeta",
+      "type": "object"
+    },
+    "TableCell": {
+      "additionalProperties": false,
+      "properties": {
+        "row": {
+          "title": "Row",
+          "type": "integer"
+        },
+        "col": {
+          "title": "Col",
+          "type": "integer"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "row",
+        "col",
+        "value",
+        "confidence"
+      ],
+      "title": "TableCell",
+      "type": "object"
+    },
+    "WageGrid": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "sector_ar": {
+          "title": "Sector Ar",
+          "type": "string"
+        },
+        "effective_date": {
+          "description": "Date d'effet ISO (AAAA-MM-JJ).",
+          "title": "Effective Date",
+          "type": "string"
+        },
+        "unit": {
+          "const": "TND/mois",
+          "title": "Unit",
+          "type": "string"
+        },
+        "legal_basis": {
+          "title": "Legal Basis",
+          "type": "string"
+        },
+        "citation_id": {
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "complete": {
+          "description": "False si toutes les cases n'ont pas été extraites.",
+          "title": "Complete",
+          "type": "boolean"
+        },
+        "grades": {
+          "items": {
+            "$ref": "#/$defs/GradeInfo"
+          },
+          "title": "Grades",
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/$defs/WageValue"
+          },
+          "title": "Values",
+          "type": "array"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "title",
+        "sector_ar",
+        "effective_date",
+        "unit",
+        "legal_basis",
+        "citation_id",
+        "complete",
+        "grades",
+        "values"
+      ],
+      "title": "WageGrid",
+      "type": "object"
+    },
+    "WageValue": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "title": "Category",
+          "type": "integer"
+        },
+        "grade": {
+          "title": "Grade",
+          "type": "integer"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "unreadable_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "zone_illisible",
+                "valeur_incoherente",
+                "absent_du_document"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unreadable Reason"
+        }
+      },
+      "required": [
+        "category",
+        "grade",
+        "amount",
+        "confidence"
+      ],
+      "title": "WageValue",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "ds3.v1",
+      "default": "ds3.v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "operation": {
+      "title": "Operation",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "partial",
+        "error"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "card_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Card Id"
+    },
+    "document_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Document Id"
+    },
+    "result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DocumentAnalysis"
+        },
+        {
+          "$ref": "#/$defs/WageGrid"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Result"
+    },
+    "citations": {
+      "items": {
+        "$ref": "#/$defs/Citation"
+      },
+      "title": "Citations",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DS3Error"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "meta": {
+      "$ref": "#/$defs/ResponseMeta"
+    }
+  },
+  "required": [
+    "request_id",
+    "operation",
+    "status",
+    "card_id",
+    "document_id",
+    "result",
+    "meta"
+  ],
+  "title": "DS3Response",
+  "type": "object"
+}

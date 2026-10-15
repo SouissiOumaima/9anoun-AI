@@ -1,0 +1,496 @@
+[
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-01-salaire-admin-2022",
+    "status": "ok",
+    "result": {
+      "montant": "593.873",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "population": "admin_tech",
+        "categorie": "4",
+        "degre": 8,
+        "anciennete_annees": "15",
+        "table_id": "BM_T_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": 42,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-02-salaire-execution-2024",
+    "status": "ok",
+    "result": {
+      "montant": "4.620",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "population": "execution",
+        "categorie": "7",
+        "degre": 11,
+        "anciennete_annees": "21",
+        "table_id": "BM_E_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-03-01",
+        "regime_hebdomadaire_heures": 42,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 35,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-03-prime-transport-cadres",
+    "status": "ok",
+    "result": {
+      "montant": "100.533",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "code": "prime_transport",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "groupe": "cadres",
+        "effective_date": "2024-01-01",
+        "au_titre_de": 2024
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-04-prime-panier-reduite",
+    "status": "ok",
+    "result": {
+      "montant": "0.160",
+      "unite": "TND/jour",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "code": "prime_panier_qefa",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "note": "560 millimes/jour (art. 89 Code du travail). Montant unique, date d'effet non précisée dans la source (art. 51 (جديد) أ).",
+        "transport_assure": true
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) أ",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-05-smig-mensuel-48h",
+    "status": "ok",
+    "result": {
+      "montant": "459.264",
+      "unite": "TND/mois",
+      "detail": {
+        "mode_remuneration": "mensuel",
+        "regime_hebdomadaire_heures": 48,
+        "decret": "769/2022",
+        "effective_date": "2022-10-01",
+        "date_calcul": "2024-01-01",
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.smig"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-06-smig-horaire-40h",
+    "status": "ok",
+    "result": {
+      "montant": "2.254",
+      "unite": "TND/heure",
+      "detail": {
+        "mode_remuneration": "horaire",
+        "regime_hebdomadaire_heures": 40,
+        "decret": "769/2022",
+        "effective_date": "2022-10-01",
+        "date_calcul": "2023-05-01",
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.smig"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-07-refus-cnss",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "HORS_SCOPE",
+      "message_fr": "Opération 'cotisation_cnss' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
+      "message_ar": "العملية 'cotisation_cnss' خارج نطاق المسار B (المتوفر: salaire_base, prime, smig). الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه."
+    },
+    "computed_by": "track_b_accounting.contract"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-08-refus-date-anterieure",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille METALLURGIE_BATIMENT/admin_tech en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+      "message_ar": "لا يوجد جدول أجور METALLURGIE_BATIMENT/admin_tech ساري المفعول بتاريخ 2021-11-30 (أول تاريخ نفاذ متوفر: 2021-12-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-09-refus-categorie-inconnue",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Catégorie inconnue : '19' pour admin_tech (attendu : 1A, 1B, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18).",
+      "message_ar": "صنف غير معروف: '19' لفئة admin_tech."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-10-refus-secteur-non-couvert",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-11-salaire-btp-admin-2024",
+    "status": "ok",
+    "result": {
+      "montant": "699.751",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+        "population": "admin_tech",
+        "categorie": "4",
+        "degre": 7,
+        "anciennete_annees": "13",
+        "table_id": "BTP_AT_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-03-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/batiment_travaux_publics.json",
+        "decision_ref": "D9"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-12-salaire-btp-occasionnel-chef-equipe",
+    "status": "ok",
+    "result": {
+      "montant": "4.276",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+        "population": "ouvriers_occasionnels",
+        "categorie": "7",
+        "sous_categorie": "2",
+        "libelle_fr": "Chef d'équipe, 2e degré",
+        "libelle_ar": "رئيس فريق درجة ثانية",
+        "table_id": "BTP_OCC_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+        "page": 24,
+        "article": null,
+        "data_file": "data/processed/salary_grids/batiment_travaux_publics.json",
+        "decision_ref": "D9"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-13-refus-btp-anciennete-27-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Catégorie 19, après 3 ans au degré 11 : l'article 13 (جديد) ب de la convention BTP (page 8) fixe un salaire de base de « 950 dinars ». Ce montant, inférieur au degré 11 actuel de la catégorie 19 dans toutes les grilles vérifiées (1841,256 TND en 2021), paraît périmé ; il n'est pas appliqué et aucun montant n'est renvoyé.",
+      "message_ar": "الصنف 19، بعد قضاء 3 سنوات في الدرجة 11: يحدد الفصل 13 (جديد) ب من اتفاقية البناء والأشغال العامة (الصفحة 8) أجرا أساسيا قدره «950 دينارا». هذا المبلغ أقل من أجر الدرجة 11 الحالي للصنف 19 في كل الجداول المتحقق منها (1841,256 دينارا سنة 2021)، ويبدو متجاوزا؛ لذلك لا يُطبَّق ولا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-14-salaire-metallurgie-25-ans-article-13",
+    "status": "ok",
+    "result": {
+      "montant": "684.630",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "population": "admin_tech",
+        "categorie": "4",
+        "degre": 11,
+        "anciennete_annees": "25",
+        "regle_art13": "ecart_cumule_biennal",
+        "n_paliers": 2,
+        "ecart": "2.148",
+        "montant_dernier_degre": "680.334",
+        "hypotheses": [
+          "Écart cumulé : un écart (degré 11 − degré 10) de plus tous les deux ans après le degré 11 (lecture de « يواصل التمتع كل سنتين »).",
+          "Progression normale : la réduction ou l'allongement de 6 mois de la durée de séjour (note ≥ 17/20, sanction du 2e degré) n'est pas pris en compte.",
+          "Le montant obtenu est considéré comme faisant partie du salaire de base.",
+          "Valeurs des degrés 10 et 11 de la grille en vigueur à la date du calcul."
+        ],
+        "hypotheses_ar": [
+          "فارق تراكمي: يُضاف فارق (الدرجة 11 − الدرجة 10) كل سنتين بعد بلوغ الدرجة 11 (قراءة عبارة «يواصل التمتع كل سنتين»).",
+          "تدرج عادي: لا يؤخذ بعين الاعتبار التنقيص أو الزيادة بستة أشهر في مدة البقاء بالدرجة (عدد مهني لا يقل عن 17 من 20، عقوبة من الدرجة الثانية).",
+          "يُعتبر المبلغ المتحصل عليه جزءًا من الأجر الأساسي.",
+          "قيم الدرجتين 10 و11 من جدول الأجور الساري بتاريخ الاحتساب."
+        ],
+        "table_id": "BM_T_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 42,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 9,
+        "article": "13 (جديد) ب",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D10"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-15-prime-transport-associations",
+    "status": "ok",
+    "result": {
+      "montant": "34.414",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+        "code": "prime_transport",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "groupe": "execution_et_gestion",
+        "groupe_libelle": "agents d'exécution et de gestion",
+        "groupe_libelle_ar": "أعوان التنفيذ والتسيير",
+        "effective_date": "2024-01-01",
+        "au_titre_de": 2024,
+        "note": "Le montant de la prime de transport n'inclut pas les montants prévus par le décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 42 (جديد) 1, p.14) : mention reproduite, sans calcul.",
+        "note_ar": "ولا يتضمن مقدار منحة النقل المقادير المنصوص عليها بالأمر عدد 503 المؤرخ في 16 مارس 1982 والمنقح بالأمر عدد 691 المؤرخ في 19 جويلية 1986."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+        "page": 14,
+        "article": "42 (جديد) 1",
+        "data_file": "data/processed/salary_grids/associations_personnes_handicapees.json",
+        "decision_ref": "D23"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-16-salaire-associations-alias-categorie",
+    "status": "ok",
+    "result": {
+      "montant": "630.395",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+        "population": "ouvriers_administratifs_surveillants",
+        "categorie": "III",
+        "categorie_demandee": "3",
+        "degre": 4,
+        "anciennete_annees": "7",
+        "hypotheses": [
+          "Degrés d'ancienneté : l'en-tête « الأقدمية الفعلية » des grilles (p.21 à 29) donne un seul nombre par degré (2, 4, …, 32) ; le degré k est lu comme couvrant de 2k−2 à 2k ans (degré 1 : de 0 à 2 ans).",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : aucune phrase de la convention ne précise l'unité des grilles de salaires.",
+          "La ligne IV de la grille correspond à la catégorie 4 de l'annexe 3, d'après l'article 42-9 (page 15) qui vise « الصنف 4 من جدول التصنيف المهني عدد 3 » ; pour les autres lignes, la catégorie de l'annexe de même numéro est déduite de l'ordre des lignes, sans être écrite explicitement dans la convention."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: يذكر رأس الجداول «الأقدمية الفعلية» (الصفحات 21 إلى 29) عددا واحدا لكل درجة (2، 4، …، 32)؛ وتُقرأ الدرجة k على أنها تغطي من 2k−2 إلى 2k سنة (الدرجة 1: من 0 إلى 2 سنة).",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا توجد في الاتفاقية جملة تحدد وحدة جداول الأجور.",
+          "يتطابق السطر IV من جدول الأجور مع الصنف 4 من الملحق عدد 3 حسب الفصل 42-9 (الصفحة 15) الذي ينص على «الصنف 4 من جدول التصنيف المهني عدد 3»؛ أما بقية الأسطر فيُستنتج الصنف الذي يحمل نفس الرقم في الملحق من ترتيب الأسطر دون أن تنص عليه الاتفاقية صراحة."
+        ],
+        "table_id": "APH_OUVRIERS_ADMINISTRATIFS_SURVEILLANTS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/associations_personnes_handicapees.json",
+        "decision_ref": "D23"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-17-refus-associations-anciennete-33-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 33 ans : les grilles de la convention des associations pour personnes handicapées s'arrêtent au degré 16 (32 ans), et l'article 12 (جديد) ب (page 7) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 32 ans).",
+      "message_ar": "أقدمية 33 سنة: تنتهي جداول أجور اتفاقية جمعيات رعاية الأشخاص المعوقين عند الدرجة 16 (32 سنة)، ولا ينص الفصل 12 (جديد) ب (الصفحة 7) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 32 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-18-salaire-associations-date-effet-exacte",
+    "status": "ok",
+    "result": {
+      "montant": "1014.207",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+        "population": "education_specialisee",
+        "categorie": "II",
+        "degre": 1,
+        "anciennete_annees": "1",
+        "hypotheses": [
+          "Degrés d'ancienneté : l'en-tête « الأقدمية الفعلية » des grilles (p.21 à 29) donne un seul nombre par degré (2, 4, …, 32) ; le degré k est lu comme couvrant de 2k−2 à 2k ans (degré 1 : de 0 à 2 ans).",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : aucune phrase de la convention ne précise l'unité des grilles de salaires.",
+          "La ligne de la grille (chiffre romain) est rattachée à la catégorie de l'annexe de même numéro d'après l'ordre des lignes ; cette correspondance n'est pas écrite explicitement dans la convention."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: يذكر رأس الجداول «الأقدمية الفعلية» (الصفحات 21 إلى 29) عددا واحدا لكل درجة (2، 4، …، 32)؛ وتُقرأ الدرجة k على أنها تغطي من 2k−2 إلى 2k سنة (الدرجة 1: من 0 إلى 2 سنة).",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا توجد في الاتفاقية جملة تحدد وحدة جداول الأجور.",
+          "تُربط سطر جدول الأجور (الرقم الروماني) بالصنف الذي يحمل نفس الرقم في الملحق اعتمادا على ترتيب الأسطر؛ ولا تنص الاتفاقية على هذا التطابق صراحة."
+        ],
+        "table_id": "APH_EDUCATION_SPECIALISEE_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+        "page": 24,
+        "article": null,
+        "data_file": "data/processed/salary_grids/associations_personnes_handicapees.json",
+        "decision_ref": "D23"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  }
+]
