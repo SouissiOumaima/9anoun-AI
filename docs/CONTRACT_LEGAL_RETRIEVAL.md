@@ -73,7 +73,7 @@ Fichier de référence : `data/mock_cards/legal_retrieval_vocabulary.v0.json`
 
 | Champ | Valeurs | Règle pour DS1 |
 |---|---|---|
-| `sector` | 7 codes : `gardiennage_securite_transport_fonds`, `construction_metallique`, `btp`, `associations`, `assurance`, `enseignement_prive`, `banques` (libellés FR/AR et alias dans le fichier) | valeur explicite dans la question, sinon `null`. « البناء / construction » est ambigu (`btp` ou `construction_metallique`) : demander une précision |
+| `sector` | 7 codes : `gardiennage_securite_transport_fonds`, `construction_metallique`, `btp`, `associations`, `assurance`, `enseignement_prive`, `banques` (libellés FR/AR et alias dans le fichier) | valeur explicite dans la question, sinon `null`. « البناء / construction / bâtiment » est ambigu (`btp` ou `construction_metallique`) : demander une précision ; « métallurgie » : demander une précision, sinon `null` (D21 v0.1) |
 | `worker_category` | 9 codes tirés du corpus : `execution`, `maitrise`, `cadre`, `agent_service`, `agent_realisation`, `agent_encadrement`, `enseignant`, `educateur`, `administratif` | valeur explicite, sinon `null` ; « ouvrier » n'est pas une catégorie de classement → `null` |
 | `reference_date` | `AAAA-MM-JJ` (date réelle) ; `null` = date du jour | date d'application de la loi, pas date de la question |
 

@@ -39,6 +39,7 @@ FAUX_MONTANT = "faux_montant"                   # ok attendu, montant ou unité 
 MONTANT_AU_LIEU_DE_REFUS = "montant_au_lieu_de_refus"   # refus attendu, ok renvoyé
 SILENCE_EXCESSIF = "silence_excessif"           # ok attendu, refus renvoyé
 CODE_INCORRECT = "code_refus_incorrect"         # refus attendu, autre code
+MESSAGE_INCORRECT = "message_refus_incorrect"   # bon code, mais message FR ou AR différent de celui attendu
 ERREUR = "statut_erreur"                        # réponse status = erreur
 EXCEPTION = "exception_inattendue"              # le handler a levé une exception
 CRITIQUES = (FAUX_MONTANT, MONTANT_AU_LIEU_DE_REFUS)
@@ -67,7 +68,12 @@ def _verdict(attendu: dict, rep: dict) -> str:
         return CORRECT if (r["montant"], r["unite"]) == (attendu["montant"], attendu["unite"]) else FAUX_MONTANT
     if rep["status"] == "ok":
         return MONTANT_AU_LIEU_DE_REFUS
-    return CORRECT if rep["refus"]["code"] == attendu["code"] else CODE_INCORRECT
+    if rep["refus"]["code"] != attendu["code"]:
+        return CODE_INCORRECT
+    # Messages comparés seulement quand le cas les fixe (message_fr, message_ar).
+    if any(k in attendu and rep["refus"][k] != attendu[k] for k in ("message_fr", "message_ar")):
+        return MESSAGE_INCORRECT
+    return CORRECT
 
 
 def _citations_valides(attendu: dict, rep: dict, refs: set[str]) -> list[str]:
@@ -107,6 +113,8 @@ def evaluer_cas(c: dict, refs: set[str], v_tb, v_commun) -> dict:
                                  for x in rep["citations"]])
     elif rep["status"] == "refus":
         obtenu.update(code=rep["refus"]["code"], message_fr=rep["refus"]["message_fr"])
+        if "message_ar" in c["attendu"]:
+            obtenu["message_ar"] = rep["refus"]["message_ar"]
     else:
         obtenu.update(erreur=rep["erreur"]["type"])
     verdict = _verdict(c["attendu"], rep)
@@ -136,6 +144,7 @@ def metriques(res: list[dict]) -> dict:
         "silence_excessif": _taux(sum(r["verdict"] == SILENCE_EXCESSIF for r in ok_att), len(ok_att)),
         "refus_corrects": _taux(sum(r["verdict"] == CORRECT for r in refus_att), len(refus_att)),
         "codes_refus_incorrects": _taux(sum(r["verdict"] == CODE_INCORRECT for r in refus_att), len(refus_att)),
+        "messages_refus_incorrects": _taux(sum(r["verdict"] == MESSAGE_INCORRECT for r in refus_att), len(refus_att)),
         "citations_valides": _taux(sum(bool(r["citations_ok"]) for r in avec_cit), len(avec_cit)),
         "conformite_schema_track_b": _taux(sum(bool(r["conforme_schema_track_b"]) for r in evalues), len(evalues)),
         "conformite_schema_commun": _taux(sum(bool(r["conforme_schema_commun"]) for r in evalues), len(evalues)),
@@ -192,7 +201,8 @@ def markdown(rap: dict) -> str:
                    _ligne_taux("Montant au lieu d'un refus", mm["montants_au_lieu_de_refus"]),
                    _ligne_taux("Exactitude des montants", mm["exactitude_montants"]),
                    _ligne_taux("Silence excessif", mm["silence_excessif"]),
-                   _ligne_taux("Refus corrects (même code)", mm["refus_corrects"]),
+                   _ligne_taux("Refus corrects (même code ; même message s'il est fixé)", mm["refus_corrects"]),
+                   _ligne_taux("Messages de refus différents de l'attendu", mm["messages_refus_incorrects"]),
                    _ligne_taux("Citations valides", mm["citations_valides"]),
                    _ligne_taux("Conformité schéma Track B", mm["conformite_schema_track_b"]),
                    _ligne_taux("Conformité schéma commun", mm["conformite_schema_commun"]),

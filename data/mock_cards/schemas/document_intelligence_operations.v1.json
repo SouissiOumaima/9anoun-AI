@@ -1,0 +1,54 @@
+[
+  {
+    "operation": "analyze_document",
+    "description": "Lit un document de carte (fiche de paie, facture, contrat, pièce) et renvoie type, résumé, champs extraits, tableaux et citations.",
+    "required": [
+      "contract_version",
+      "request_id",
+      "operation",
+      "context.organization_id",
+      "context.user_id",
+      "context.role",
+      "context.card_id",
+      "context.card_type",
+      "document.document_id",
+      "document.card_id",
+      "document.file_name",
+      "document.mime_type",
+      "document.storage_ref"
+    ],
+    "optional": [
+      "options.language_hint",
+      "options.expected_type",
+      "options.pages",
+      "options.min_confidence"
+    ],
+    "result_type": "DocumentAnalysis"
+  },
+  {
+    "operation": "extract_wage_grid",
+    "description": "Extrait une grille de salaires (catégorie x échelon) d'une convention collective, avec date d'effet et confiance par case.",
+    "required": [
+      "contract_version",
+      "request_id",
+      "operation",
+      "context.organization_id",
+      "context.user_id",
+      "context.role",
+      "context.card_id",
+      "context.card_type",
+      "document.document_id",
+      "document.card_id",
+      "document.file_name",
+      "document.mime_type",
+      "document.storage_ref"
+    ],
+    "optional": [
+      "options.language_hint",
+      "options.expected_type",
+      "options.pages",
+      "options.min_confidence"
+    ],
+    "result_type": "WageGrid"
+  }
+]

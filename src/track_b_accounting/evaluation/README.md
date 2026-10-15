@@ -7,7 +7,7 @@ part : DS5 évalue son propre module.
 ```
 evaluation/
   README.md                                ce fichier
-  golden_sets/track_b_golden.v0.json       47 cas, valeurs attendues lues dans les PDF
+  golden_sets/track_b_golden.v0.json       63 cas, valeurs attendues lues dans les PDF
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
   results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
   results/eval_<date>.json, .md            rapports des relances (ignorés par git)
@@ -23,25 +23,26 @@ données ; cette évaluation vérifie le module contre la source.
 **Chaque cas** contient :
 - `requete` : opération, paramètres et langue, envoyés tels quels au handler ;
 - `attendu` : `ok` avec montant, unité et citations attendues (PDF et page),
-  ou `refus` avec son code ;
+  ou `refus` avec son code (et, pour certains cas, les messages FR et AR attendus) ;
 - `justification` : PDF, page et emplacement (tableau, ligne, colonne, ou
   article et texte lu), pour vérifier le cas sur le document ;
 - `certitude` : **L** (lu directement), **C** (calculé à la main à partir de
   cellules lues), **I** (interprétation) ; `decision` donne l'entrée de
-  `docs/DECISIONS.md` (D6, D9, D10) qui fonde un cas I ou C ;
+  `docs/DECISIONS.md` (D6, D9, D10, D23) qui fonde un cas I ou C ;
 - `verification_humaine` : `true` quand DS5 a vérifié le cas sur le PDF.
 
 Convention des colonnes : le numéro de colonne est le degré ; le degré 1 est
-la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP).
+la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP, « 1 » / « 2 » dans les grilles
+des associations pour personnes handicapées).
 
-**Répartition (47 cas).**
+**Répartition (63 cas, dont 53 vérifiés par DS5 sur le PDF : `verification_humaine = true`).**
 
 | Catégorie | Cas | Contenu |
 |---|---|---|
-| `ok` | 25 | Métallurgie 2021, 2023, 2024 (administratifs et exécution) ; BTP 2021, 2023, 2024 (administratifs, occasionnels avec sous-catégorie) ; primes (transport, qefa) ; SMIG ; cellule corrigée en D4 ; 3 cellules BTP à anomalie d'incrément |
+| `ok` | 34 | Métallurgie 2021, 2023, 2024 (administratifs et exécution) ; BTP 2021, 2023, 2024 (administratifs, occasionnels avec sous-catégorie) ; primes (transport, qefa) ; SMIG ; cellule corrigée en D4 ; 3 cellules BTP à anomalie d'incrément ; associations pour personnes handicapées (D23) : un salaire par population sur 2021, 2023 et 2024, alias « 1 », ligne « III+II », primes de transport, de présence et spécifique |
 | `art13` | 6 | Article 13 au-delà du dernier degré, métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
-| `refus` | 12 | Bornes exactes (D6, D10), fenêtre BTP dépassée, catégorie 19, ouvriers permanents, qefa BTP, CNSS, conversion d'unité, secteur non transcrit, catégorie inconnue |
-| `piege` | 4 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel |
+| `refus` | 17 | Bornes exactes (D6, D10), fenêtre BTP dépassée, catégorie 19, ouvriers permanents, qefa BTP, CNSS, conversion d'unité, secteur non transcrit, catégorie inconnue ; associations : 32 ans, borne de 10 ans, catégorie inconnue, prime sans date d'effet, prime de production |
+| `piege` | 6 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel ; associations : date antérieure, « II » pour les techniciens (alias non admis, messages FR et AR attendus) |
 
 ## Métriques
 
@@ -50,7 +51,7 @@ la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au B
 | **Faux montants** (critique) | Montant ou unité faux pour un `ok` attendu, **et** `ok` renvoyé alors qu'un refus est attendu : la règle « Citation ou Silence » est violée | **0** |
 | Exactitude des montants | `ok` attendu : même montant au millime et même unité | 100 % |
 | Silence excessif | `ok` attendu, refus renvoyé (perte de couverture, pas de faux montant) | 0 |
-| Refus corrects | Refus attendu : statut `refus` **et** même code | 100 % |
+| Refus corrects | Refus attendu : statut `refus` **et** même code ; si le cas fixe `message_fr` ou `message_ar`, même texte | 100 % |
 | Citations valides | Pour un `ok` : nombre de citations, nom du PDF et page égaux à ceux du golden set ; `source_file` et `data_file` existent ; `decision_ref` est un titre `### Dn` de `docs/DECISIONS.md` | 100 % |
 | Conformité aux schémas | Réponse valide contre `track_b_response.v0` et contre le schéma commun (`src/shared/schemas/common.v0.schema.json`) | 100 % |
 | Statut erreur, exceptions | Réponses `erreur` et exceptions levées par le handler | 0 |
@@ -88,10 +89,11 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   retrouver dans les deux. Seuls les cas vérifiés par DS5 sur le PDF sont une
   vérification réellement indépendante : le rapport donne leur nombre et leurs
   métriques à part.
-- **Les cas I traduisent nos décisions** (D6, D9, D10), pas le texte seul :
+- **Les cas I traduisent nos décisions** (D6, D9, D10, D23), pas le texte seul :
   ils mesurent la conformité du module à ces décisions, pas leur justesse.
-- **47 cas sur environ 1 500 cellules** : c'est un échantillon. La couverture
+- **63 cas sur environ 2 400 cellules** : c'est un échantillon. La couverture
   exhaustive des grilles repose sur la double lecture et les contrôles
-  automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`).
+  automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`,
+  `../tests/test_grid_associations.py`).
 - Les scans des pages 30 à 35 de la métallurgie sont bruités ; les cas dont un
   chiffre est peu net portent une `note`.

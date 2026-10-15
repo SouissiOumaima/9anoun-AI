@@ -1075,6 +1075,14 @@ déduites ; elles sont à valider par un juriste.
 **Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
 prouvée par `test_legal_vocabulary.py`.
 
+**D21 v0.1 (2026-10-15)** — demandé par DS5 pour la table des secteurs (D30) :
+- « bâtiment » n'est plus un alias de `btp` : il rejoint l'ambiguïté « البناء / construction »
+  (le code DS5 `METALLURGIE_BATIMENT` le contient aussi) → DS1 demande une précision ;
+- « métallurgie » n'est pas un alias de `construction_metallique` : la convention couvre la
+  seule construction métallique ; sans précision, `sector = null` ;
+- `associations` est le code stable ; le vocabulaire DS2 reste la source de vérité, la table
+  `src/shared/sectors/` est vérifiée contre lui.
+
 ---
 
 ### D22 — Opération `get_article` : un article par sa référence, sur le corpus réel
@@ -1101,6 +1109,194 @@ par DS4 :
 
 **Statut** : ⏳ v0 proposée à DS4 et DS1 ; preuve HTTP réelle : 200 `ok` `live` (article
 abrogé avec son avenant), 200 `refus` (trou vérifié à la main), 422 (requête non conforme).
+
+---
+
+### D23 — Grille salariale ASSOCIATIONS_PERSONNES_HANDICAPEES (pages 7, 14-29)
+
+**Numéro** : D23. D11 à D22 sont pris par DS2 (`origin/DS2_Legal_Retrieval_Track`,
+`origin/DS2_Sprint2`, dont D21 vocabulaire et D22 `get_article`) ; `origin/main`
+s'arrête à D10. Vérifié avec `git fetch origin` le 2026-10-13 : aucune branche
+distante ne contient de D23.
+
+**Source** : `data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf`
+(29 pages). Grilles scannées p.21 à 29 (15 tables : 5 populations × 3 dates,
+1er décembre 2021, 1er janvier 2023, 1er janvier 2024) ; annexes de
+classification p.16 à 20 ; article 12 (جديد) (progression) p.7 ; article 14
+(جديد) (durée du travail) p.8 ; article 42 (جديد) (primes) p.14 et 15.
+
+**Constat** :
+- Les lignes des grilles sont titrées « الرتبة » et numérotées en chiffres
+  romains ; elles sont rattachées aux catégories (« الصنف ») des annexes d'après
+  leur position (hypothèse) : même nombre de lignes que de catégories dans
+  chaque annexe ; seul l'article 42 (جديد) 9 (p.15) le confirme pour une ligne,
+  la IV des ouvriers, agents administratifs et surveillants : « بالصنف 4 من جدول
+  التصنيف المهني عدد 3 ».
+- Deux populations (éducation spécialisée, sport) ont les mêmes lignes
+  {I, II, III} : leurs tables ne peuvent pas être rattachées à une population
+  par leurs seules catégories.
+- Agents techniques : ligne imprimée « III+II ». L'annexe 4 (p.19) liste les
+  catégories 2 et 3 séparément, sans dire qu'elles partagent une ligne.
+- En-tête d'ancienneté : « مدة البقاء بالدرجة » = 2 pour les 16 degrés ;
+  « الأقدمية الفعلية » = 2, 4, …, 32 (un seul nombre par degré ; dernière colonne
+  « 32 », sans « + »).
+- L'article 12 (جديد) ب (p.7) renvoie aux grilles annexées et ne dit rien
+  au-delà du dernier degré.
+- Aucune phrase de la convention ne précise l'unité des grilles (mensuelle ou
+  horaire). L'article 40 (p.13) parle de « معدل الأجور الشهري » pour l'indemnité
+  de fin de service, sans viser les grilles.
+
+#### Décisions (validées par DS5)
+
+1. **Clé de catégorie** = chiffre romain imprimé dans la grille ; alias en
+   chiffres arabes (numérotation des annexes) déclarés par population dans le
+   JSON (`alias_categories`). La réponse donne `categorie` (clé) et
+   `categorie_demandee` (alias reçu).
+2. **Champ `population`** explicite par table ; le validateur l'exige quand
+   plusieurs populations ont exactement les mêmes catégories.
+3. **« III+II »** : une seule clé, **sans** alias « 2 » ni « 3 » (ni « II »,
+   « III ») tant que l'annexe ne confirme pas le partage de la ligne. Pour les
+   techniciens, le seul alias est « 1 » → « I » ; « II », « III », « 2 » et
+   « 3 » sont refusés (`PARAM_INVALIDE`).
+4. **Degré k = de 2k−2 à 2k ans** (libellés « 0-2 » … « 30-32 ») ; bornes
+   exactes 2, 4, …, 30 refusées (`PARAM_INVALIDE`, D6) ; à partir de 32 ans,
+   refus `SOURCE_MANQUANTE` qui cite l'article 12 (جديد) ب (p.7). Lecture
+   affichée dans `detail.hypotheses` (FR et AR).
+5. **Primes exposées** (article 42 (جديد), p.14) : transport, présence et prime
+   spécifique (« منحة خاصة لرعاية المعوقين »). La date « بداية من » est la date
+   d'effet ; « بعنوان سنة » n'est qu'une information (`au_titre_de`).
+   - Groupes de la prime de transport, choisis par l'appelant :
+     `execution_et_gestion` (« أعوان التنفيذ والتسيير », agents d'exécution et
+     de gestion) et `cadres` (« الإطارات ») ; libellés FR et AR renvoyés dans
+     `detail` (`groupe_libelle`, `groupe_libelle_ar`). La métallurgie garde ses
+     clés (`execution_et_maitrise`, `cadres`).
+   - La phrase qui exclut de la prime de transport les montants des décrets
+     503/1982 et 691/1986 (« ولا يتضمن مقدار منحة النقل المقادير المنصوص عليها
+     بالأمر عدد 503 المؤرخ في 16 مارس 1982 والمنقح بالأمر عدد 691 المؤرخ في 19
+     جويلية 1986 ») est recopiée dans `detail` (`note`, `note_ar`), sans calcul.
+   - Primes de frais scolaires, pédagogique, de santé, fonctionnelle et des
+     chauffeurs : `primes_non_couvertes`, motif « montant sans date d'effet dans
+     la source » (texte arabe et page dans le JSON). Prime de production :
+     refusée, motif « formule, pas de montant ».
+6. **Unité mensuelle**, déduite de l'ordre de grandeur des montants ; hypothèse
+   affichée dans `detail.hypotheses`.
+
+**Montants transcrits** : 864 cellules de grille et 12 montants de primes
+(transport : 30,199 / 32,238 / 34,414 pour les agents d'exécution et de
+gestion, 36,239 / 38,685 / 41,296 pour les cadres ; présence : 6,281 / 6,705 /
+7,158 ; prime spécifique : 54,358 / 58,027 / 61,944 TND/mois, aux dates d'effet
+du 2021-12-01, du 2023-01-01 et du 2024-01-01), par double lecture indépendante,
+0 divergence.
+
+#### Anomalies imprimées conservées
+
+Neuf cellules s'écartent de 0,002 de la progression habituelle de leur ligne.
+Chacune est lue nettement (deux lectures concordantes, relecture en pixels
+natifs, vérification visuelle par DS5) ; la valeur imprimée est conservée,
+**aucune correction** (`anomalies_increment` des tables 10, 12, 13 et 15) :
+
+| Table (page) | Ligne | Degré | Valeur imprimée |
+|---|---|---|---|
+| 10, المكونين المهنيين, 2023 (p.26) | III (معلم تعليم تقني) | 12 | 1 225,010 |
+| 12, أعوان الرياضة, 2024 (p.27) | I (مرافق رياضة) | 6 | 665,982 |
+| 12, أعوان الرياضة, 2024 (p.27) | I | 16 | 811,828 |
+| 13, العملة والأعوان الإداريين و القيمين, 2024 (p.28) | I (عامل بدون اختصاص) | 4 | 492,399 |
+| 13 (p.28) | II (عامل مختص) | 6 | 665,982 |
+| 13 (p.28) | II | 16 | 811,828 |
+| 15, المكونين المهنيين, 2024 (p.29) | I (مرافق تدريب تقني) | 6 | 665,982 |
+| 15 (p.29) | I | 16 | 811,828 |
+| 15 (p.29) | III (معلم تعليم تقني) | 14 | 1 360,529 |
+
+D'une date à l'autre, ces cellules suivent la même relation que leurs voisines.
+La source n'explique pas leur écart : la cause (arrondis du texte imprimé ou
+autre) n'est pas établie, et la valeur imprimée est conservée.
+
+#### Limite des contrôles de lecture
+
+- Deux régularités ont été **observées** entre les montants imprimés : environ
+  2 % d'un degré au suivant dans une ligne, et environ 6,75 % d'une date d'effet
+  à la suivante. Aucun texte de la convention ne les fixe. Elles servent
+  uniquement de contrôles de lecture dans les tests (tolérance ±0,001), jamais
+  à calculer ni à corriger un montant.
+- Ces contrôles ne détectent pas toute erreur : 29 cellules ne sont protégées
+  par aucun d'eux contre une erreur de 0,002. **Vérification visuelle faite le
+  2026-10-12** : les 29 cellules et les 12 montants de primes correspondent au
+  PDF.
+- La double lecture indépendante et la vérification visuelle sont les vrais
+  contrôles.
+
+#### Note de source (avenants)
+
+Au bas de la page 15, la note 8 se lit « نقح بالملحق التعديلي 1 ثم عدد 2 ثم عدد3 ».
+Son appel est placé à la fin de l'article 42 (جديد) (après le point 9, « منحة
+السواق ») : l'article 42 a été modifié par l'avenant 1, puis par les avenants 2
+et 3. Les montants transcrits sont ceux du texte consolidé tel qu'imprimé ; les
+avenants eux-mêmes ne figurent pas dans les sources.
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- Lecture des degrés : le degré k couvre de 2k−2 à 2k ans.
+- Unité mensuelle, déduite de l'ordre de grandeur des montants.
+- Rattachement de chaque ligne de grille à la catégorie de l'annexe de même
+  numéro, d'après l'ordre des lignes (pour la ligne IV des ouvriers, agents
+  administratifs et surveillants, confirmé par l'article 42 (جديد) 9).
+- Ligne « III+II » des techniciens : catégories 2 et 3 de l'annexe 4
+  rattachées d'après le seul libellé de la grille.
+- Présence et prime spécifique : le texte les prévoit pour toutes les
+  catégories (« لكل الأصناف »).
+
+#### Mise en œuvre
+
+- **Données** : `data/processed/salary_grids/associations_personnes_handicapees.json`
+  (`_meta.decision_ref` = « D23 », `tables_transcrites` = true) : 15 tables dans
+  `grilles` (population, date, page, unité, valeurs, anomalies), 3 primes dans
+  `primes`, `primes_non_couvertes`, `regle_date_effet_primes`, hypothèses,
+  alias, refus au-delà de 32 ans.
+- **Calcul** : `calc/loaders.py` (`population_de_table`, alias, hypothèses de
+  grille, textes des primes : `note_ar`, `hypotheses`, `libelles_groupes`
+  validés) ; `calc/salary.py` (tables choisies par population, alias, hypothèses
+  avant celles de l'article 13) ; `calc/primes.py` (`groupe_libelle`,
+  `note_ar`, `hypotheses` dans `detail`, lus seulement s'ils sont présents).
+- **Non-régression** : réponses de la métallurgie et du BTP identiques à l'octet
+  près ; seule la liste des secteurs disponibles des refus « secteur inconnu »
+  s'allonge (demo-10). Démo : demo-15 à demo-18. Évaluation : 63/63 (dont 16 cas de ce secteur, TB-48 à TB-63, vérifiés par DS5). Les 47 cas précédents sont inchangés, sauf le message de TB-35 (liste des secteurs).
+
+#### Points non tranchés par la source (hypothèses retenues)
+
+Consigne d'encadrement du 2026-10-13 : travailler avec les données disponibles.
+Ces points sont documentés comme hypothèses et ne bloquent pas
+l'implémentation ; un refus reste la règle quand aucune source ne contient la
+valeur.
+
+1. **Correspondance ligne-catégorie** des populations 1, 2, 4 et 5 (éducation
+   spécialisée, sport, techniciens, formateurs professionnels) : déduite de
+   l'ordre des lignes, non écrite dans la convention.
+2. **Sens de « III+II »** : faut-il accepter « 2 » et « 3 » comme alias ? Seule
+   la grille l'indique ; l'annexe 4 liste les deux catégories séparément.
+3. **Unité mensuelle**, déduite de l'ordre de grandeur : aucune phrase ne la fixe.
+4. **Lecture de l'ancienneté** (degré 1 = de 0 à 2 ans) et **règle au-delà de
+   32 ans** : l'article 12 (جديد) ب ne dit rien après le degré 16.
+5. **Catégories de chaque groupe de transport** : la classification de cette
+   convention ne définit ni « أعوان التنفيذ والتسيير » ni « الإطارات ».
+6. **Régime hebdomadaire de la population 3** (ouvriers, agents administratifs
+   et surveillants) : l'article 14 (جديد) (p.8) fixe 48 h pour les ouvriers et
+   40 h pour les agents administratifs et les surveillants, dans une même grille ;
+   non renseigné.
+7. **Article 13** : dans cette convention, l'article 13 (p.7, « تكليف الأعوان
+   بوظائف غير مطابقة لأصنافهم ») ne porte pas sur l'ancienneté au-delà du dernier
+   degré (contrairement à l'article 13 (جديد) ب de la métallurgie et du BTP,
+   D10). Il prévoit une prime égale à la différence de salaire en cas
+   d'affectation temporaire à une catégorie supérieure (trois mois au plus) ;
+   cette prime n'est pas couverte.
+8. **Primes avec montant mais sans date d'effet** : frais scolaires (10 d par
+   enfant, début de l'année scolaire), pédagogique (30 d par mois), santé (30 d
+   par mois) et fonctionnelle (150 d par mois), art. 42 (جديد) 4 à 7 (p.14).
+   Elles restent refusées (SOURCE_MANQUANTE) car aucune date d'effet n'est
+   donnée. Elles pourraient être exposées plus tard avec une hypothèse affichée
+   « date d'effet non précisée par la source », si l'équipe le décide.
+
+**Statut** : ✅ implémenté et exposé (2026-10-13) ; vérification visuelle
+terminée le 2026-10-12.
 
 ---
 
