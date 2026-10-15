@@ -204,7 +204,8 @@ class WageGrid(_Strict):
     title: str
     sector_ar: str
     sector_code: str | None = Field(
-        default=None, description="Code de secteur du vocabulaire D21 ; null tant que la table n'est pas fixée."
+        default=None, description="Code DS2 du secteur (table src/shared/sectors, D30), seulement si le libellé arabe ou le "
+        "titre de la convention correspond exactement ; sinon null (jamais déduit d'un alias)."
     )
     effective_date: str = Field(pattern=DATE_PATTERN, description="Date d'effet ISO (AAAA-MM-JJ).")
     unit: Literal["TND/mois"]

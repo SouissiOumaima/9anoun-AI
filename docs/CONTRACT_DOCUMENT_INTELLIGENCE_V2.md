@@ -116,8 +116,11 @@ Le modèle Pydantic refuse toute valeur qui ne respecte pas son `value_type`.
 
 ## Grille de salaires (`extract_wage_grid`)
 
-Inchangée depuis la v1, sauf `sector_code` (code de secteur du vocabulaire D21), à `null` tant que la table des
-secteurs n'est pas fixée ; `sector_ar` reste fourni. La citation est une citation de document (page 21, `bbox = null`).
+Inchangée depuis la v1, sauf `sector_code` : le code DS2 du secteur, pris dans la table commune
+`src/shared/sectors/sectors.v0.json` (D30), seulement si le libellé arabe ou le titre exact de la convention
+correspond (jamais à partir d'un alias, trompeur sur un document : « sécurité sociale », « virement bancaire ») ;
+sinon `null`. Le mock renvoie `gardiennage_securite_transport_fonds`.
+`sector_ar` reste fourni. La citation est une citation de document (page 21, `bbox = null`).
 
 ## Comportement du mock
 

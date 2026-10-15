@@ -185,12 +185,24 @@ def test_null_value_requires_a_reason() -> None:
 # ------------------------------------------------------------ grille de salaires
 
 
-def test_wage_grid_has_sector_code_placeholder() -> None:
+SECTORS_TABLE = REPO / "src" / "shared" / "sectors" / "sectors.v0.json"
+
+
+def test_wage_grid_is_cited_on_its_page() -> None:
     data = _resp("05_ok_grille_salaires")
     grid = data["result"]
     assert data["status"] == "ok" and grid["complete"] is False
-    assert grid["sector_code"] is None and grid["sector_ar"]
     assert data["citations"][0]["page"] == 21 and data["citations"][0]["bbox"] is None
+
+
+@pytest.mark.skipif(not SECTORS_TABLE.exists(), reason="table des secteurs (D30) absente")
+def test_wage_grid_sector_code_comes_from_the_shared_table() -> None:
+    """sector_code = code DS2 de la table D30, choisi parce que le libellé arabe est identique."""
+    grid = _resp("05_ok_grille_salaires")["result"]
+    table = json.loads(SECTORS_TABLE.read_text(encoding="utf-8"))
+    by_code = {sector["ds2_code"]: sector for sector in table["sectors"]}
+    assert grid["sector_code"] in by_code
+    assert by_code[grid["sector_code"]]["label_ar"] == grid["sector_ar"]
 
 
 # ------------------------------------------------------------ fichiers livrés
