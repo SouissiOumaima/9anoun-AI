@@ -181,3 +181,38 @@ def test_incomplete_case_without_evidence() -> None:
     assert result["claims_analysis"][0]["status"] == "unverified"
     assert result["evidence_mapping"] == []
     assert result["legal_conclusion"] is None
+
+def test_opposite_claims_remain_unverified() -> None:
+    """Deux affirmations opposees ne doivent pas etre jugees automatiquement."""
+
+    case = create_fake_case()
+
+    # Deux parties donnent des versions opposees.
+    case["claims"] = [
+        {
+            "claim_id": "C1",
+            "party_id": "P1",
+            "text": "Le salarie affirme avoir travaille le 10 septembre.",
+        },
+        {
+            "claim_id": "C2",
+            "party_id": "P2",
+            "text": "L'employeur affirme que le salarie n'a pas travaille le 10 septembre.",
+        },
+    ]
+
+    result = analyze_case(case)
+
+    # Aucune affirmation ne devient automatiquement un fait.
+    assert len(result["claims_analysis"]) == 2
+
+    assert all(
+        claim["status"] == "unverified"
+        for claim in result["claims_analysis"]
+    )
+
+    # La detection des contradictions n'est pas encore implementee.
+    assert result["contradictions"] == []
+
+    # Aucune conclusion juridique inventee.
+    assert result["legal_conclusion"] is None
