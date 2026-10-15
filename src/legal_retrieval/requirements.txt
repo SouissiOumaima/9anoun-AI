@@ -1,0 +1,9 @@
+# DS2 — Legal Knowledge & Retrieval. Versions figées (==).
+pymupdf==1.28.2        # lecture de la couche texte native des PDF
+pydantic==2.13.5       # modèles internes (sources, articles)
+jsonschema==4.26.0     # validation des contrats JSON Schema 2020-12
+fastapi==0.143.0       # API HTTP du service
+uvicorn==0.53.0        # serveur de l'API
+httpx==0.28.1          # client de test FastAPI
+pytest==9.1.1
+pytest-cov==7.1.0

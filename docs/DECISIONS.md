@@ -809,3 +809,579 @@ mais ce sont des interprétations.
 
 **Statut** : ✅ implémenté (métallurgie ; BTP catégories 1 à 18 pendant leur
 fenêtre) ; catégorie 19 du BTP et BTP au-delà des fenêtres refusés.
+
+---
+
+## 2026 — DS2 (Legal Retrieval, Abd Mouhib Souri)
+
+Les décisions DS2 suivent la numérotation continue du journal (à la suite de D10),
+comme l'impose le motif `decision_ref` (`^D[0-9]+$`) du schéma commun
+`src/shared/schemas/common.v0.schema.json`.
+
+### D11 — Ingestion hybride : texte de l'OCR, chiffres vérifiés sur le PDF
+
+**Décision** : le texte arabe des articles vient de `data/raw/txt/*.json` (OCR fourni
+par Tradrly). Chaque nombre d'un article est recherché dans la couche texte du PDF
+correspondant (`data/raw/pdf`). Les nombres non retrouvés sont listés dans le champ
+`numbers_unverified` de l'article : ils ne doivent jamais être cités sans vérification.
+
+**Alternatives envisagées** :
+- Texte depuis la couche texte des PDF → rejeté : l'arabe y est encodé en zone
+  « Private Use » (constat D5 de DS5, quantifié en D16).
+- Texte OCR seul, sans contrôle des chiffres → rejeté : les chiffres de l'OCR sont
+  parfois incohérents (D1, D2 de DS5).
+
+**Raison** : chaque source est utilisée pour ce qu'elle a de fiable. Mesure du
+2026-10-10 sur les 9 fichiers (`tools/diagnose_pua.py`) : OCR = 95,8 à 99,8 % de
+lettres arabes et 20 à 132 « فصل » par fichier ; couche texte PDF = 0 à 1 « فصل ».
+
+**Limite** : la couche texte PDF n'expose que 110 à 315 nombres distincts par fichier
+(les grilles sont des pages scannées, D4/D5). `numbers_unverified` signifie donc
+« non confirmé », pas « faux ». Les montants de paie restent ceux vérifiés par DS5
+(`data/processed/smig_smag/`, `data/processed/salary_grids/`).
+
+---
+
+### D12 — Un chunk = un article
+
+**Décision** : l'unité de recherche est un article (« الفصل N ») ; un chunk ne
+chevauche jamais deux articles.
+
+**Alternatives envisagées** :
+- Chunks de taille fixe (ex. 512 tokens) → rejeté : un article coupé en deux n'est
+  plus citable tel quel.
+
+**Raison** : règle « Citation ou Silence ».
+
+---
+
+### D13 — Texte original pour les citations, texte normalisé pour la recherche
+
+**Décision** : chaque article stocke `text` (original, après NFKC) et
+`text_normalized` (sans diacritiques ni tatweel, alef unifié, chiffres ASCII).
+
+**Alternatives envisagées** :
+- Normaliser le texte directement → rejeté : la vérification des citations échouerait.
+
+**Raison** : la normalisation forte ne sert qu'à la recherche par mots-clés.
+
+---
+
+### D14 — Détection du texte arabe inversé
+
+**Décision** : le rapport d'ingestion calcule `reversed_text_ratio` (part de « لصف »
+parmi les « فصل »). Un fichier signalé n'est pas corrigé automatiquement.
+
+**Alternatives envisagées** :
+- Inverser automatiquement chaque ligne → rejeté pour l'instant : inverserait aussi
+  les nombres (14 → 41).
+
+**Raison** : cas observé dans l'OCR de la convention métallurgie bâtiment
+(28 « لصف » pour 122 « فصل », ratio 0,19).
+
+---
+
+### D15 — Identifiants d'articles versionnés
+
+**Décision** : `article_id = <SOURCE>-ART-<N>[BIS]-v<version>`. Un article « مكرر »
+(bis) est un article distinct (`ART-7BIS`), pas un doublon. Un numéro réellement
+répété reçoit `-DUP<k>` en attendant la correction du chargeur (Sprint 2).
+
+**Raison** : la validation doit pouvoir retrouver la version exacte du texte cité.
+
+---
+
+### D16 — Complément à D5 : la couche texte PDF n'est pas réparable pour l'arabe
+
+**Constat** (`tools/diagnose_pua.py`, 2026-10-10) : confirme et quantifie D5. Dans les
+9 PDF, l'arabe est encodé en `U+F2xx` (8 988 à 75 077 caractères par fichier).
+Trois décodages ont été testés (cp1256, ISO-8859-6, Mac Arabic, sur la plage
+`U+F0xx` des polices « symbole ») : aucun ne restaure de texte (0 « فصل »).
+Les codes `U+F2xx` sont des numéros de glyphes propres à chaque police : aucune
+table de conversion standard n'existe.
+
+**Conséquence** : pour le texte arabe, la seule source exploitable du corpus est
+l'OCR `data/raw/txt/*.json` (D11). DS3 rencontrera probablement le même
+encodage sur les PDF des utilisateurs : la couche texte ne suffira pas, prévoir l'OCR.
+
+---
+
+### D17 — Toujours renvoyer toutes les versions d'un article
+
+**Décision** : pour chaque article pertinent, la recherche renvoie toutes ses versions
+connues (en vigueur, modifiées, abrogées). Une seule version au plus est marquée
+`applicable_at_reference_date`. L'appelant (DS4, DS5) annonce l'ancienne **et** la
+nouvelle règle. Si l'ancien texte n'est pas dans le corpus (texte consolidé, mention
+« (جديد) »), `previous_version_available = false` et l'appelant le dit explicitement.
+`top_k` compte des articles, pas des versions.
+
+**Alternatives envisagées** :
+- Ne renvoyer que la version en vigueur → rejeté : un avocat ou un comptable doit voir
+  l'historique (litige sur une période passée, rappel de salaire, contestation).
+- Supprimer les « doublons » → rejeté : une nouvelle version n'est pas un doublon
+  (proposé par Abd Mouhib Souri après vérification manuelle des PDF).
+
+**Raison** : transparence pour le professionnel, précision temporelle (≥ 90 %),
+règle « Citation ou Silence ».
+
+**Contrat** : champs `version_group`, `version`, `applicable_at_reference_date`,
+`modified`, `amended_by`, `previous_version_available` dans
+`legal_retrieval_search_response.v0.schema.json` (voir `docs/CONTRACT_LEGAL_RETRIEVAL.md`).
+
+---
+
+### D18 — Vérification manuelle des articles manquants (37/37 expliqués)
+
+**Décision** : chaque numéro d'article absent du découpage automatique est vérifié
+visuellement dans le PDF avant toute correction du code. Le détail est dans
+`docs/ds2/VERIFICATION_MANUELLE_CORPUS_2026-10-10.md`.
+
+**Résultat** (7 conventions, 2026-10-10) :
+
+| Cause | Articles |
+|---|---|
+| Abrogés par un avenant (`الفصول … ألغيت بمقتضى الملحق التعديلي عدد N`) | 22 |
+| En-tête mal lu par l'OCR ou collé en milieu de ligne | 9 |
+| En-tête sans espace (`الفصل56`) | 4 |
+| Absents du PDF source (cadre art. 40, associations art. 20) | 2 |
+
+**Conséquences** : un article abrogé est enregistré avec `status: abroge` et l'avenant
+qui l'abroge (jamais « introuvable ») ; chaque convention a sa propre numérotation
+d'avenants (`CCS-BTP-AVENANT-5` ≠ `CCS-CONSTRUCTION-METALLIQUE-AVENANT-5`) ;
+les dates des avenants sont nécessaires au filtre temporel (à obtenir auprès de Tradrly).
+
+**Statut** : ✅ vérification visuelle par Abd Mouhib Souri (DS2) ; règles de découpage
+correspondantes à coder au Sprint 2.
+
+---
+
+### D19 — Contrat DS2 aligné sur l'enveloppe commune `common.v0`
+
+**Décision** : la réponse `legal_retrieval.v0` suit `src/shared/schemas/common.v0.schema.json`
+(`$defs/response_envelope`) : `status` `ok` / `refus` / `erreur`, `citations[]` (une par
+article, objet `$defs/citation`), `refus {code, message_fr, message_ar}`, `erreur`,
+`computed_by`. DS2 y ajoute `mode` et `results`. Correspondances avec la proposition
+initiale DS2 : `success` → `ok` ; `no_decisive_source` → `refus` / `SOURCE_MANQUANTE` ;
+requête invalide → `refus` / `PARAM_INVALIDE` (comme Track B) ; `language` → `lang`.
+Dates de la requête : motif `$defs/date` **et** `format: date` (rejette aussi 2024-13-45).
+
+**Alternatives envisagées** :
+- Garder un format propre à DS2 → rejeté : l'orchestrateur (DS1) devrait gérer un format
+  de statut et de citation par rôle.
+- Référencer le schéma commun par `$ref` → reporté : aucun rôle ne le fait encore
+  (question ouverte n° 3 du README des schémas) ; les définitions sont recopiées à
+  l'identique, et un test valide chaque réponse DS2 contre le vrai fichier commun.
+
+**Raison** : un seul format de statut, de citation et de refus pour toute l'équipe ;
+la règle « Citation ou Silence » devient vérifiable de la même façon partout.
+
+**Statut** : ⏳ v0, proposition à valider ; conformité prouvée par
+`test_every_response_conforms_to_the_team_common_envelope` (ok, refus SOURCE_MANQUANTE,
+refus PARAM_INVALIDE) et par appels HTTP réels.
+
+---
+
+### D20 — Lecture des sections Tradrly (1 section = 1 article) et historique des avenants
+
+**Décision** : à partir du Sprint 2, l'ingestion des fichiers `data/raw/txt/*.json` lit les
+`sections` déjà découpées par Tradrly (`corpus/ingest_sections.py`) au lieu de redécouper
+le texte :
+- texte d'un article = `content` **seulement** (`paragraphs` répète le même texte : c'était
+  la cause du comptage surestimé de 492 au lieu d'environ 451) ;
+- la section `legal_history_reconstructed_from_page_images` donne les dates de la
+  convention et de chaque avenant (signature, approbation ministérielle) → `avenants.json`,
+  identifiants préfixés par la convention (`CCS-BTP-AVENANT-5`, règle R7) ;
+- règles de D18 appliquées **à l'intérieur** des textes : en-tête d'un article manquant
+  caché dans une autre section → article découpé (R1/R4, ex. Cadre art. 5) ; listes
+  d'abrogation (pluriel, duel, « مكرر », « : » optionnel) → entrées `abroge` reliées à
+  leur avenant (R2/R3), ligne retirée de l'article qui la contenait ; renvois jamais
+  coupés (R5) ; « (جديد) » → `modified`, `previous_version_available: false` (R6, D17) ;
+- numérotation qui repart à 1 → nouvelle partie (`-P2-` dans l'identifiant), pas un doublon ;
+- trous vérifiés à la main → `corpus/manual_checks.json` (R8), exclus des alertes.
+
+**Alternatives envisagées** :
+- Garder le découpage par regex du Sprint 1 → rejeté : il lisait le texte deux fois et
+  ignorait les métadonnées fournies par Tradrly.
+- Remplir `effective_from` / `effective_to` avec les dates d'avenant → reporté : la date
+  d'effet (signature ou approbation ministérielle ?) est une question juridique ouverte,
+  posée à Tradrly. Les deux dates sont conservées dans `avenants.json`.
+
+**Ajouts après le premier passage réel (2026-10-10)** :
+- une nouvelle partie ne commence que si la numérotation **repart à 1** ; un numéro répété
+  ou dans le désordre reste dans sa partie (identifiant `-DUP2`, jamais supprimé) et est
+  listé dans le rapport (`numbering_out_of_order`, outil `tools/inspect_sections.py`) ;
+- tiret cadratin « — » accepté dans les listes d'abrogation (Gardiennage, Construction) ;
+- « الغيابات » (absences), « الغير », « الغيار » ne sont pas des abrogations ;
+- **R9** : « 50, 5, 52 » → le 5 est l'article 51 dont l'OCR a perdu le dernier chiffre ;
+  corrigé seulement si les deux voisins le prouvent, numéro d'origine gardé
+  (`numbers_corrected_r9`) ;
+- `manual_checks.json` (R8) accepte le verdict `abroge` : complète une abrogation que
+  l'OCR a cassée (BTP « 38 -39- ()I4 41 », Construction « عدد؟ ») avec le texte lu dans le
+  PDF ; verdict `present_pdf_absent_digest` pour Cadre 5 et Assurance 40.
+
+**Ajouts après l'inspection des sections (2026-10-10, `tools/inspect_sections.py`)** :
+- **R10** : Tradrly a parfois coupé une section sur un **renvoi** et non sur un en-tête
+  (« وينص الفصل 46 من هذه الاتفاقية », « الفصل 36 من هذه الاتفاقية. », « بالفصل 5 من الأمر
+  المؤرخ في 8 جانفي 1948 ») ; ces sections sont recollées à l'article précédent (rien n'est
+  perdu, positions listées dans `continuations_r10`) ;
+- R9 s'exécute **après** R10 : au premier passage, R9 avait « corrigé » en 51 le renvoi
+  BTP « بالفصل 5 من الأمر » — fausse correction détectée par l'inspection ;
+- suffixes lus dans l'en-tête : « مثلث / ثالثا » → `TER`, « رابعا » → `QUATER`,
+  sous-articles « الفصل 46 - 3: » → `46-3` (Gardiennage 46-3/46-4, Enseignement 54 ثالثا
+  et 54-5, Cadre 51 ثالثا) : ce ne sont pas des doublons ;
+- le texte placé **après le dernier article** (« تاريخ التطبيق ») devient une **annexe**
+  (`<SOURCE>-ANNEXE-<k>`, statut `inconnu`, renvoi à l'article cité) au lieu d'être collé
+  au dernier article : liste des sanctions (Construction, renvoi au fasl 36), conditions de
+  recrutement (Enseignement, renvoi au fasl 15). Résultat après inspection : 0 doublon,
+  0 désordre sur les 9 fichiers ;
+- en-tête interne écrit « إلفصل » par l'OCR (alef hamza) accepté : BTP art. 51
+  « إلفصل 51 (جديد): منح القفة » est découpé de l'article 50 (R4).
+
+**Limites connues** : pas de page par article dans le digest (`page_start` vide) ; l'avenant
+qui a modifié un article « (جديد) » n'est pas indiqué (`amended_by` vide pour ces articles).
+
+**Statut** : ⏳ codé et testé sur des formes réelles (parseur validé sur l'historique réel
+BTP : convention 16/01/1975 – 12/03/1975 et 16 avenants, 0 ligne non lue) ; exécution sur
+les 9 fichiers à faire en local par DS2.
+
+---
+
+### D21 — Vocabulaire des champs de la requête DS2, tiré du corpus
+
+**Décision** : les valeurs que DS1 transmet dans `sector` et `worker_category` sont des
+**codes stables** définis dans `data/mock_cards/legal_retrieval_vocabulary.v0.json`
+(libellés FR/AR, alias pour l'extraction, schéma JSON, accès Python
+`src/legal_retrieval/contract/vocabulary.py`) :
+- `sector` : les 7 secteurs du registre DS2, exactement (un test l'impose) ; la convention
+  cadre et le SMIG s'appliquent à tous les secteurs ; ambiguïté « البناء » signalée ;
+- `worker_category` : 9 catégories **comptées dans le corpus** (outil
+  `tools/diagnose_vocabulary.py`, 2026-10-11 : « أعوان التنفيذ » 18 articles,
+  « أعوان التسيير » 16, « الإطارات » 12, catégories propres aux banques et assurances,
+  à l'enseignement et aux associations) ;
+- statut d'emploi (قار / وقتي / عرضي) : **proposé pour v0.1**, pas ajouté au contrat v0 ;
+- « المتعاقدين » exclu : désigne surtout les parties signataires de la convention.
+
+**Alternatives envisagées** :
+- Rendre `sector` et `worker_category` obligatoirement égaux à ces codes (`enum` dans le
+  schéma de requête) → reporté à v0.1, après accord DS1 : changer la validation casserait
+  les appels existants.
+- Écrire une liste « classique » (ouvrier, employé, cadre) → rejeté : ces mots ne sont pas
+  les catégories de classement des conventions tunisiennes ; la recherche filtrerait mal.
+
+**Limites** : les équivalences entre catégories des banques et assurances (service,
+réalisation, encadrement) et catégories générales (exécution, maîtrise) ne sont pas
+déduites ; elles sont à valider par un juriste.
+
+**Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
+prouvée par `test_legal_vocabulary.py`.
+
+**D21 v0.1 (2026-10-15)** — demandé par DS5 pour la table des secteurs (D30) :
+- « bâtiment » n'est plus un alias de `btp` : il rejoint l'ambiguïté « البناء / construction »
+  (le code DS5 `METALLURGIE_BATIMENT` le contient aussi) → DS1 demande une précision ;
+- « métallurgie » n'est pas un alias de `construction_metallique` : la convention couvre la
+  seule construction métallique ; sans précision, `sector = null` ;
+- `associations` est le code stable ; le vocabulaire DS2 reste la source de vérité, la table
+  `src/shared/sectors/` est vérifiée contre lui.
+
+---
+
+### D22 — Opération `get_article` : un article par sa référence, sur le corpus réel
+
+**Décision** : DS2 expose une seconde opération, `get_article` (Python
+`src.legal_retrieval.contract.get_article.get_article`, HTTP `POST /legal/article`), demandée
+par DS4 :
+- désignation par `article_id` (avec ou sans version) **ou** par `source_id` + `article`
+  (`"39"`, `"7BIS"`, `"54TER"`, `"46-3"`), schéma de requête dédié ;
+- **même format de réponse que `search`** (enveloppe `common.v0`, toutes les versions, D17) ;
+- répond en mode **`live` sur le corpus réel** (466 articles, D20) dès qu'il est ingéré sur la
+  machine, sinon en mode `mock` ; un article abrogé est renvoyé avec sa mention d'abrogation
+  et son avenant ;
+- « Citation ou Silence » : un article inconnu donne `SOURCE_MANQUANTE` ; pour un trou vérifié
+  à la main (R8), le refus **donne la raison** (absent du PDF / absent du digest).
+
+**Alternatives envisagées** :
+- Passer par `search` avec la référence dans `query` → rejeté : une recherche renvoie des
+  articles *proches*, alors qu'une référence doit donner l'article exact ou un refus.
+- Un format de réponse propre à `get_article` → rejeté : DS1 et DS4 n'auraient pas un seul
+  format à lire.
+
+**Limites v0** : pas de filtre daté (Sprint 5) ; pas de page par article (digest Tradrly).
+
+**Statut** : ⏳ v0 proposée à DS4 et DS1 ; preuve HTTP réelle : 200 `ok` `live` (article
+abrogé avec son avenant), 200 `refus` (trou vérifié à la main), 422 (requête non conforme).
+
+---
+
+### D23 — Grille salariale ASSOCIATIONS_PERSONNES_HANDICAPEES (pages 7, 14-29)
+
+**Numéro** : D23. D11 à D22 sont pris par DS2 (`origin/DS2_Legal_Retrieval_Track`,
+`origin/DS2_Sprint2`, dont D21 vocabulaire et D22 `get_article`) ; `origin/main`
+s'arrête à D10. Vérifié avec `git fetch origin` le 2026-10-13 : aucune branche
+distante ne contient de D23.
+
+**Source** : `data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf`
+(29 pages). Grilles scannées p.21 à 29 (15 tables : 5 populations × 3 dates,
+1er décembre 2021, 1er janvier 2023, 1er janvier 2024) ; annexes de
+classification p.16 à 20 ; article 12 (جديد) (progression) p.7 ; article 14
+(جديد) (durée du travail) p.8 ; article 42 (جديد) (primes) p.14 et 15.
+
+**Constat** :
+- Les lignes des grilles sont titrées « الرتبة » et numérotées en chiffres
+  romains ; elles sont rattachées aux catégories (« الصنف ») des annexes d'après
+  leur position (hypothèse) : même nombre de lignes que de catégories dans
+  chaque annexe ; seul l'article 42 (جديد) 9 (p.15) le confirme pour une ligne,
+  la IV des ouvriers, agents administratifs et surveillants : « بالصنف 4 من جدول
+  التصنيف المهني عدد 3 ».
+- Deux populations (éducation spécialisée, sport) ont les mêmes lignes
+  {I, II, III} : leurs tables ne peuvent pas être rattachées à une population
+  par leurs seules catégories.
+- Agents techniques : ligne imprimée « III+II ». L'annexe 4 (p.19) liste les
+  catégories 2 et 3 séparément, sans dire qu'elles partagent une ligne.
+- En-tête d'ancienneté : « مدة البقاء بالدرجة » = 2 pour les 16 degrés ;
+  « الأقدمية الفعلية » = 2, 4, …, 32 (un seul nombre par degré ; dernière colonne
+  « 32 », sans « + »).
+- L'article 12 (جديد) ب (p.7) renvoie aux grilles annexées et ne dit rien
+  au-delà du dernier degré.
+- Aucune phrase de la convention ne précise l'unité des grilles (mensuelle ou
+  horaire). L'article 40 (p.13) parle de « معدل الأجور الشهري » pour l'indemnité
+  de fin de service, sans viser les grilles.
+
+#### Décisions (validées par DS5)
+
+1. **Clé de catégorie** = chiffre romain imprimé dans la grille ; alias en
+   chiffres arabes (numérotation des annexes) déclarés par population dans le
+   JSON (`alias_categories`). La réponse donne `categorie` (clé) et
+   `categorie_demandee` (alias reçu).
+2. **Champ `population`** explicite par table ; le validateur l'exige quand
+   plusieurs populations ont exactement les mêmes catégories.
+3. **« III+II »** : une seule clé, **sans** alias « 2 » ni « 3 » (ni « II »,
+   « III ») tant que l'annexe ne confirme pas le partage de la ligne. Pour les
+   techniciens, le seul alias est « 1 » → « I » ; « II », « III », « 2 » et
+   « 3 » sont refusés (`PARAM_INVALIDE`).
+4. **Degré k = de 2k−2 à 2k ans** (libellés « 0-2 » … « 30-32 ») ; bornes
+   exactes 2, 4, …, 30 refusées (`PARAM_INVALIDE`, D6) ; à partir de 32 ans,
+   refus `SOURCE_MANQUANTE` qui cite l'article 12 (جديد) ب (p.7). Lecture
+   affichée dans `detail.hypotheses` (FR et AR).
+5. **Primes exposées** (article 42 (جديد), p.14) : transport, présence et prime
+   spécifique (« منحة خاصة لرعاية المعوقين »). La date « بداية من » est la date
+   d'effet ; « بعنوان سنة » n'est qu'une information (`au_titre_de`).
+   - Groupes de la prime de transport, choisis par l'appelant :
+     `execution_et_gestion` (« أعوان التنفيذ والتسيير », agents d'exécution et
+     de gestion) et `cadres` (« الإطارات ») ; libellés FR et AR renvoyés dans
+     `detail` (`groupe_libelle`, `groupe_libelle_ar`). La métallurgie garde ses
+     clés (`execution_et_maitrise`, `cadres`).
+   - La phrase qui exclut de la prime de transport les montants des décrets
+     503/1982 et 691/1986 (« ولا يتضمن مقدار منحة النقل المقادير المنصوص عليها
+     بالأمر عدد 503 المؤرخ في 16 مارس 1982 والمنقح بالأمر عدد 691 المؤرخ في 19
+     جويلية 1986 ») est recopiée dans `detail` (`note`, `note_ar`), sans calcul.
+   - Primes de frais scolaires, pédagogique, de santé, fonctionnelle et des
+     chauffeurs : `primes_non_couvertes`, motif « montant sans date d'effet dans
+     la source » (texte arabe et page dans le JSON). Prime de production :
+     refusée, motif « formule, pas de montant ».
+6. **Unité mensuelle**, déduite de l'ordre de grandeur des montants ; hypothèse
+   affichée dans `detail.hypotheses`.
+
+**Montants transcrits** : 864 cellules de grille et 12 montants de primes
+(transport : 30,199 / 32,238 / 34,414 pour les agents d'exécution et de
+gestion, 36,239 / 38,685 / 41,296 pour les cadres ; présence : 6,281 / 6,705 /
+7,158 ; prime spécifique : 54,358 / 58,027 / 61,944 TND/mois, aux dates d'effet
+du 2021-12-01, du 2023-01-01 et du 2024-01-01), par double lecture indépendante,
+0 divergence.
+
+#### Anomalies imprimées conservées
+
+Neuf cellules s'écartent de 0,002 de la progression habituelle de leur ligne.
+Chacune est lue nettement (deux lectures concordantes, relecture en pixels
+natifs, vérification visuelle par DS5) ; la valeur imprimée est conservée,
+**aucune correction** (`anomalies_increment` des tables 10, 12, 13 et 15) :
+
+| Table (page) | Ligne | Degré | Valeur imprimée |
+|---|---|---|---|
+| 10, المكونين المهنيين, 2023 (p.26) | III (معلم تعليم تقني) | 12 | 1 225,010 |
+| 12, أعوان الرياضة, 2024 (p.27) | I (مرافق رياضة) | 6 | 665,982 |
+| 12, أعوان الرياضة, 2024 (p.27) | I | 16 | 811,828 |
+| 13, العملة والأعوان الإداريين و القيمين, 2024 (p.28) | I (عامل بدون اختصاص) | 4 | 492,399 |
+| 13 (p.28) | II (عامل مختص) | 6 | 665,982 |
+| 13 (p.28) | II | 16 | 811,828 |
+| 15, المكونين المهنيين, 2024 (p.29) | I (مرافق تدريب تقني) | 6 | 665,982 |
+| 15 (p.29) | I | 16 | 811,828 |
+| 15 (p.29) | III (معلم تعليم تقني) | 14 | 1 360,529 |
+
+D'une date à l'autre, ces cellules suivent la même relation que leurs voisines.
+La source n'explique pas leur écart : la cause (arrondis du texte imprimé ou
+autre) n'est pas établie, et la valeur imprimée est conservée.
+
+#### Limite des contrôles de lecture
+
+- Deux régularités ont été **observées** entre les montants imprimés : environ
+  2 % d'un degré au suivant dans une ligne, et environ 6,75 % d'une date d'effet
+  à la suivante. Aucun texte de la convention ne les fixe. Elles servent
+  uniquement de contrôles de lecture dans les tests (tolérance ±0,001), jamais
+  à calculer ni à corriger un montant.
+- Ces contrôles ne détectent pas toute erreur : 29 cellules ne sont protégées
+  par aucun d'eux contre une erreur de 0,002. **Vérification visuelle faite le
+  2026-10-12** : les 29 cellules et les 12 montants de primes correspondent au
+  PDF.
+- La double lecture indépendante et la vérification visuelle sont les vrais
+  contrôles.
+
+#### Note de source (avenants)
+
+Au bas de la page 15, la note 8 se lit « نقح بالملحق التعديلي 1 ثم عدد 2 ثم عدد3 ».
+Son appel est placé à la fin de l'article 42 (جديد) (après le point 9, « منحة
+السواق ») : l'article 42 a été modifié par l'avenant 1, puis par les avenants 2
+et 3. Les montants transcrits sont ceux du texte consolidé tel qu'imprimé ; les
+avenants eux-mêmes ne figurent pas dans les sources.
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- Lecture des degrés : le degré k couvre de 2k−2 à 2k ans.
+- Unité mensuelle, déduite de l'ordre de grandeur des montants.
+- Rattachement de chaque ligne de grille à la catégorie de l'annexe de même
+  numéro, d'après l'ordre des lignes (pour la ligne IV des ouvriers, agents
+  administratifs et surveillants, confirmé par l'article 42 (جديد) 9).
+- Ligne « III+II » des techniciens : catégories 2 et 3 de l'annexe 4
+  rattachées d'après le seul libellé de la grille.
+- Présence et prime spécifique : le texte les prévoit pour toutes les
+  catégories (« لكل الأصناف »).
+
+#### Mise en œuvre
+
+- **Données** : `data/processed/salary_grids/associations_personnes_handicapees.json`
+  (`_meta.decision_ref` = « D23 », `tables_transcrites` = true) : 15 tables dans
+  `grilles` (population, date, page, unité, valeurs, anomalies), 3 primes dans
+  `primes`, `primes_non_couvertes`, `regle_date_effet_primes`, hypothèses,
+  alias, refus au-delà de 32 ans.
+- **Calcul** : `calc/loaders.py` (`population_de_table`, alias, hypothèses de
+  grille, textes des primes : `note_ar`, `hypotheses`, `libelles_groupes`
+  validés) ; `calc/salary.py` (tables choisies par population, alias, hypothèses
+  avant celles de l'article 13) ; `calc/primes.py` (`groupe_libelle`,
+  `note_ar`, `hypotheses` dans `detail`, lus seulement s'ils sont présents).
+- **Non-régression** : réponses de la métallurgie et du BTP identiques à l'octet
+  près ; seule la liste des secteurs disponibles des refus « secteur inconnu »
+  s'allonge (demo-10). Démo : demo-15 à demo-18. Évaluation : 63/63 (dont 16 cas de ce secteur, TB-48 à TB-63, vérifiés par DS5). Les 47 cas précédents sont inchangés, sauf le message de TB-35 (liste des secteurs).
+
+#### Points non tranchés par la source (hypothèses retenues)
+
+Consigne d'encadrement du 2026-10-13 : travailler avec les données disponibles.
+Ces points sont documentés comme hypothèses et ne bloquent pas
+l'implémentation ; un refus reste la règle quand aucune source ne contient la
+valeur.
+
+1. **Correspondance ligne-catégorie** des populations 1, 2, 4 et 5 (éducation
+   spécialisée, sport, techniciens, formateurs professionnels) : déduite de
+   l'ordre des lignes, non écrite dans la convention.
+2. **Sens de « III+II »** : faut-il accepter « 2 » et « 3 » comme alias ? Seule
+   la grille l'indique ; l'annexe 4 liste les deux catégories séparément.
+3. **Unité mensuelle**, déduite de l'ordre de grandeur : aucune phrase ne la fixe.
+4. **Lecture de l'ancienneté** (degré 1 = de 0 à 2 ans) et **règle au-delà de
+   32 ans** : l'article 12 (جديد) ب ne dit rien après le degré 16.
+5. **Catégories de chaque groupe de transport** : la classification de cette
+   convention ne définit ni « أعوان التنفيذ والتسيير » ni « الإطارات ».
+6. **Régime hebdomadaire de la population 3** (ouvriers, agents administratifs
+   et surveillants) : l'article 14 (جديد) (p.8) fixe 48 h pour les ouvriers et
+   40 h pour les agents administratifs et les surveillants, dans une même grille ;
+   non renseigné.
+7. **Article 13** : dans cette convention, l'article 13 (p.7, « تكليف الأعوان
+   بوظائف غير مطابقة لأصنافهم ») ne porte pas sur l'ancienneté au-delà du dernier
+   degré (contrairement à l'article 13 (جديد) ب de la métallurgie et du BTP,
+   D10). Il prévoit une prime égale à la différence de salaire en cas
+   d'affectation temporaire à une catégorie supérieure (trois mois au plus) ;
+   cette prime n'est pas couverte.
+8. **Primes avec montant mais sans date d'effet** : frais scolaires (10 d par
+   enfant, début de l'année scolaire), pédagogique (30 d par mois), santé (30 d
+   par mois) et fonctionnelle (150 d par mois), art. 42 (جديد) 4 à 7 (p.14).
+   Elles restent refusées (SOURCE_MANQUANTE) car aucune date d'effet n'est
+   donnée. Elles pourraient être exposées plus tard avec une hypothèse affichée
+   « date d'effet non précisée par la source », si l'équipe le décide.
+
+**Statut** : ✅ implémenté et exposé (2026-10-13) ; vérification visuelle
+terminée le 2026-10-12.
+
+---
+
+### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
+
+**Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.
+- DS2 (D21) : 7 codes en minuscules (`btp`, `construction_metallique`, `associations`, …), chacun relié à une
+  source (`CCS-BTP`, …) par `src/legal_retrieval/corpus/registry.py` ;
+- DS5 : les codes des grilles vérifiées (`_meta.secteur_code` de `data/processed/salary_grids/*.json`, registre
+  `loaders.GRILLES`) : `METALLURGIE_BATIMENT` (D4), `BATIMENT_TRAVAUX_PUBLICS` (D9),
+  `ASSOCIATIONS_PERSONNES_HANDICAPEES` (D23).
+
+Les noms ne suffisent pas à les relier : `METALLURGIE_BATIMENT` correspond à la **construction métallique**, pas au
+« bâtiment » (alias DS2 de `btp`). DS1 détecte le secteur Track B par des mots codés en dur (dans la PR #13 de
+DS1, pas encore sur main) ; DS3 renvoie, dans sa PR #12 (contrat v2, pas encore sur main),
+`WageGrid.sector_code = null` « tant que la table n'est pas fixée ».
+
+**Décision** : une table de données commune, sans code métier, dans `src/shared/` :
+- `src/shared/sectors/sectors.v0.json` (`table_version` `common.sectors.v0`, `vocabulary_ref` D21) ;
+- schéma `src/shared/schemas/common_sectors.v0.schema.json` (v0 : proposition, à valider par l'équipe) ;
+- une entrée par secteur D21 : `ds2_code`, `source_id`, `label_fr`, `label_ar`, `aliases` (copie fidèle du
+  vocabulaire D21, `origin/DS2_Sprint4`), puis `ds5_code`, `ds5_status`, `ds5_decision_ref`, `evidence` ;
+- `ds5_status` : `actif` (grille vérifiée dans le registre DS5 ; les trois champs DS5 sont obligatoires),
+  `en_preparation` ou `aucun` (les trois champs à `null`, imposé par le schéma).
+
+| ds2_code | source_id | ds5_code | ds5_status |
+|---|---|---|---|
+| `construction_metallique` | CCS-CONSTRUCTION-METALLIQUE | `METALLURGIE_BATIMENT` (D4) | actif |
+| `btp` | CCS-BTP | `BATIMENT_TRAVAUX_PUBLICS` (D9) | actif |
+| `associations` | CCS-ASSOCIATIONS | `ASSOCIATIONS_PERSONNES_HANDICAPEES` (D23) | actif |
+| `assurance` | CCS-ASSURANCE | null | en_preparation (grille non fusionnée : non supportée) |
+| `gardiennage_securite_transport_fonds` | CCS-GARDIENNAGE | null | aucun |
+| `enseignement_prive` | CCS-ENSEIGNEMENT-PRIVE | null | aucun |
+| `banques` | CCS-BANQUES | null | aucun |
+
+La convention cadre (`CC-CADRE`) et le SMIG (`SMIG-GRILLE`) s'appliquent à tous les secteurs : pas d'entrée.
+
+**Preuve exécutable** (`src/shared/tests/test_sectors_table.py`) : une correspondance n'est inscrite que si la grille
+DS5 et la source DS2 désignent **le même fichier** de `data/raw/pdf/` (`evidence.type = meme_source_file`).
+Le test vérifie :
+1. le schéma et la conformité de la table, et que le schéma refuse un statut incohérent avec les champs DS5 ;
+2. tout `ds5_code` non nul est dans `loaders.GRILLES` et `secteurs_disponibles()`, avec `decision_ref`,
+   `source_file` et `convention_ar` égaux au `_meta` de la grille ;
+3. chaque secteur DS5 disponible figure une fois dans la table (une nouvelle grille ne peut pas être oubliée) ;
+4. `match_source` (registre DS2) appliqué au `source_file` DS5 rend le `source_id` et le `ds2_code` de l'entrée ;
+5. les 7 `ds2_code` et `source_id` sont ceux du registre DS2 déjà sur main ;
+6. copie fidèle du vocabulaire D21 : **ignoré** tant que `data/mock_cards/legal_retrieval_vocabulary.v0.json` est
+   absent de main, exécuté automatiquement dès qu'il est présent (vérifié hors dépôt sur la copie de
+   `origin/DS2_Sprint4` : conforme).
+
+**Ambiguïtés non tranchées** : le bloc `sector_ambiguities` de D21 v0.1 est recopié à l'identique :
+- « البناء / construction / bâtiment » → `btp` ou `construction_metallique` : DS1 demande une précision
+  (« bâtiment » n'est plus un alias de `btp`) ;
+- « métallurgie / المعادن » → pas de choix automatique : la convention du corpus couvre seulement la construction
+  métallique ; sans précision, `sector = null`.
+`ambiguity_note_fr` : aucune de ces trois formes seules (« البناء », « bâtiment », « métallurgie ») ne mène à
+`METALLURGIE_BATIMENT` ; la table ne résout aucune ambiguïté, l'appelant la gère. Le schéma accepte désormais un
+bloc d'ambiguïté à un seul code (`minItems` 1 au lieu de 2), forme du bloc « métallurgie ».
+
+**Alternatives envisagées** :
+- Module Python dans `src/shared` → rejeté : `src/shared/README.md` interdit le code métier ; des données JSON
+  suffisent et se lisent depuis n'importe quel rôle.
+- Correspondance par ressemblance de nom → rejetée : elle aurait relié « bâtiment » à `METALLURGIE_BATIMENT`.
+- Inscrire un code DS5 pour l'assurance → rejeté : aucune grille assurance n'est fusionnée ; statut
+  `en_preparation`, `ds5_code` null jusqu'à la fusion.
+
+**Ce qui change** :
+- DS1 : lire la table au lieu de la détection codée en dur ; appeler Track B seulement si `ds5_status = actif`,
+  avec `ds5_code` ; sinon répondre sans calcul. Gérer l'ambiguïté « البناء » (demande de précision).
+- DS2 : aucun changement de code ; tout ajout ou renommage de secteur D21 doit être répercuté dans la table
+  (tests 5 et 6).
+- DS3 : `WageGrid.sector_code` reçoit le `ds2_code` (comme le dit déjà son schéma v2), ou `null` si le
+  rapprochement n'est pas certain ; le code DS5 se lit dans la table.
+- DS5 : une grille ajoutée (assurance) fait échouer le test 3 tant que la table n'est pas mise à jour
+  (`ds5_status` → `actif`, `ds5_code`, `ds5_decision_ref`, `evidence`).
+
+**Réponses de DS2** (PR #15, D21 v0.1, 2026-10-15) :
+1. `associations` est le code stable.
+2. « métallurgie » n'est pas un alias de `construction_metallique` : c'est une ambiguïté ; sans précision,
+   `sector = null`.
+3. « bâtiment » seul n'est plus un alias de `btp` : il devient ambigu comme « البناء ».
+4. Le vocabulaire `legal_retrieval_vocabulary.v0.json` et D21 v0.1 arrivent sur main avec la PR #15 (non fusionnée
+   au 2026-10-15) ; le test 6 est réussi sur une fusion à blanc de cette PR.
+5. Le vocabulaire DS2 reste la source de vérité ; la table est vérifiée contre lui (test 6).
+
+**Statut** : ⏳ v0 alignée sur D21 v0.1 (PR #15 de DS2), proposée à DS1, DS2, DS3 ;
+`pytest src/shared/tests/test_sectors_table.py` : 12 réussis, 1 ignoré sur la branche (vocabulaire D21 absent de
+main) ; 13 réussis sur une fusion à blanc avec la PR #15.

@@ -1,0 +1,149 @@
+{
+  "table_version": "common.sectors.v0",
+  "decision_ref": "D30",
+  "vocabulary_ref": "D21",
+  "_doc": "Table de correspondance des secteurs entre DS2 (recherche juridique) et DS5 (calcul de paie, Track B). Les codes ds2_code, source_id, label_fr, label_ar et aliases sont recopiés à l'identique du vocabulaire D21 (data/mock_cards/legal_retrieval_vocabulary.v0.json, branche DS2) ; les codes ds5_code viennent du registre DS5 (_meta.secteur_code des grilles data/processed/salary_grids/*.json, lu par src/track_b_accounting/calc/loaders.py). ds5_status : 'actif' = grille vérifiée disponible dans le registre DS5 ; 'en_preparation' = grille en cours sur une autre branche, non supportée ; 'aucun' = aucune grille. Une correspondance n'est inscrite que si la grille DS5 et la source DS2 désignent le même fichier de data/raw/pdf/ (evidence.type = 'meme_source_file'). La table ne contient aucune règle : elle ne choisit pas un secteur à partir d'une question.",
+  "sectors": [
+    {
+      "ds2_code": "gardiennage_securite_transport_fonds",
+      "source_id": "CCS-GARDIENNAGE",
+      "label_fr": "Gardiennage, sécurité et transport de fonds",
+      "label_ar": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+      "aliases": [
+        "gardiennage",
+        "sécurité",
+        "transport de fonds",
+        "agent de sécurité",
+        "حراسة",
+        "نقل العملة"
+      ],
+      "ds5_code": null,
+      "ds5_status": "aucun",
+      "ds5_decision_ref": null,
+      "evidence": null
+    },
+    {
+      "ds2_code": "construction_metallique",
+      "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+      "label_fr": "Construction métallique",
+      "label_ar": "البناء المعدني",
+      "aliases": [
+        "construction métallique",
+        "charpente métallique",
+        "البناء المعدني"
+      ],
+      "ds5_code": "METALLURGIE_BATIMENT",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D4",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية للبناء المعدني"
+      }
+    },
+    {
+      "ds2_code": "btp",
+      "source_id": "CCS-BTP",
+      "label_fr": "Bâtiment et travaux publics",
+      "label_ar": "البناء والأشغال العامة",
+      "aliases": [
+        "BTP",
+        "travaux publics",
+        "الأشغال العامة"
+      ],
+      "ds5_code": "BATIMENT_TRAVAUX_PUBLICS",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D9",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة"
+      }
+    },
+    {
+      "ds2_code": "associations",
+      "source_id": "CCS-ASSOCIATIONS",
+      "label_fr": "Associations de prise en charge des personnes handicapées",
+      "label_ar": "جمعيات رعاية الأشخاص المعوقين",
+      "aliases": [
+        "association",
+        "personnes handicapées",
+        "جمعيات رعاية",
+        "المعوقين"
+      ],
+      "ds5_code": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D23",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+        "convention_ar": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقين"
+      }
+    },
+    {
+      "ds2_code": "assurance",
+      "source_id": "CCS-ASSURANCE",
+      "label_fr": "Assurance",
+      "label_ar": "التأمين",
+      "aliases": [
+        "assurance",
+        "compagnie d'assurance",
+        "التأمين"
+      ],
+      "ds5_code": null,
+      "ds5_status": "en_preparation",
+      "ds5_decision_ref": null,
+      "evidence": null
+    },
+    {
+      "ds2_code": "enseignement_prive",
+      "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+      "label_fr": "Enseignement privé",
+      "label_ar": "التعليم الخاص",
+      "aliases": [
+        "enseignement privé",
+        "école privée",
+        "التعليم الخاص",
+        "مدرسة خاصة"
+      ],
+      "ds5_code": null,
+      "ds5_status": "aucun",
+      "ds5_decision_ref": null,
+      "evidence": null
+    },
+    {
+      "ds2_code": "banques",
+      "source_id": "CCS-BANQUES",
+      "label_fr": "Banques",
+      "label_ar": "البنوك",
+      "aliases": [
+        "banque",
+        "bancaire",
+        "البنوك",
+        "بنك"
+      ],
+      "ds5_code": null,
+      "ds5_status": "aucun",
+      "ds5_decision_ref": null,
+      "evidence": null
+    }
+  ],
+  "sector_ambiguities": [
+    {
+      "alias": "البناء / construction / bâtiment",
+      "codes": [
+        "btp",
+        "construction_metallique"
+      ],
+      "rule_fr": "Ne pas choisir : DS1 demande une précision (bâtiment et travaux publics, ou construction métallique ?). « bâtiment » seul est ambigu : le code DS5 METALLURGIE_BATIMENT le contient aussi (D21 v0.1)."
+    },
+    {
+      "alias": "métallurgie / المعادن",
+      "codes": [
+        "construction_metallique"
+      ],
+      "rule_fr": "Ne pas choisir automatiquement : la convention du corpus couvre seulement la CONSTRUCTION métallique (البناء المعدني). DS1 demande une précision ; si l'activité est la métallurgie en général, sa convention n'est pas dans le corpus → sector = null (D21 v0.1)."
+    }
+  ],
+  "ambiguity_note_fr": "Trois ambiguïtés (D21 v0.1) ne mènent jamais à METALLURGIE_BATIMENT : « البناء » seul et « bâtiment » seul (btp ou construction_metallique : DS1 demande une précision) ; « métallurgie » seul (la convention du corpus couvre seulement la construction métallique : sans précision, sector = null). La table ne résout aucune ambiguïté : elle en laisse la gestion à l'appelant."
+}

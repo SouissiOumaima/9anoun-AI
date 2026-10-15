@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common_sectors.v0.schema.json",
+  "title": "Table de correspondance des secteurs DS2 ↔ DS5 — v0",
+  "description": "v0 : proposition, à valider par l'équipe. Relie chaque secteur du vocabulaire DS2 (D21) au code de grille du registre DS5 quand une grille vérifiée existe. Statut 'actif' ⇒ ds5_code, ds5_decision_ref et evidence renseignés ; 'en_preparation' ou 'aucun' ⇒ ces trois champs à null. La table ne résout aucune ambiguïté : l'appelant la gère.",
+  "type": "object",
+  "required": ["table_version", "decision_ref", "vocabulary_ref", "_doc", "sectors", "sector_ambiguities", "ambiguity_note_fr"],
+  "additionalProperties": false,
+  "properties": {
+    "table_version": {"const": "common.sectors.v0"},
+    "decision_ref": {"$ref": "#/$defs/decision_ref"},
+    "vocabulary_ref": {"$ref": "#/$defs/decision_ref"},
+    "_doc": {"$ref": "#/$defs/texte"},
+    "sectors": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sector"}},
+    "sector_ambiguities": {"type": "array", "items": {"$ref": "#/$defs/ambiguity"}},
+    "ambiguity_note_fr": {"$ref": "#/$defs/texte"}
+  },
+  "$defs": {
+    "texte": {"type": "string", "minLength": 1},
+    "decision_ref": {"type": "string", "pattern": "^D[0-9]+$"},
+    "ds2_code": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "ds5_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+    "evidence": {
+      "description": "Preuve de la correspondance : la grille DS5 (_meta.source_file) et la source DS2 désignent le même fichier de data/raw/pdf/.",
+      "type": "object",
+      "required": ["type", "source_file", "convention_ar"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"const": "meme_source_file"},
+        "source_file": {"type": "string", "pattern": "^data/raw/pdf/.+\\.pdf$"},
+        "convention_ar": {"$ref": "#/$defs/texte"}
+      }
+    },
+    "sector": {
+      "type": "object",
+      "required": ["ds2_code", "source_id", "label_fr", "label_ar", "aliases", "ds5_code", "ds5_status", "ds5_decision_ref", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "ds2_code": {"$ref": "#/$defs/ds2_code"},
+        "source_id": {"$ref": "#/$defs/texte"},
+        "label_fr": {"$ref": "#/$defs/texte"},
+        "label_ar": {"$ref": "#/$defs/texte"},
+        "aliases": {"type": "array", "items": {"$ref": "#/$defs/texte"}},
+        "ds5_code": {"anyOf": [{"$ref": "#/$defs/ds5_code"}, {"type": "null"}]},
+        "ds5_status": {"enum": ["actif", "en_preparation", "aucun"]},
+        "ds5_decision_ref": {"anyOf": [{"$ref": "#/$defs/decision_ref"}, {"type": "null"}]},
+        "evidence": {"anyOf": [{"$ref": "#/$defs/evidence"}, {"type": "null"}]}
+      },
+      "if": {"properties": {"ds5_status": {"const": "actif"}}},
+      "then": {
+        "properties": {
+          "ds5_code": {"$ref": "#/$defs/ds5_code"},
+          "ds5_decision_ref": {"$ref": "#/$defs/decision_ref"},
+          "evidence": {"$ref": "#/$defs/evidence"}
+        }
+      },
+      "else": {
+        "properties": {
+          "ds5_code": {"type": "null"},
+          "ds5_decision_ref": {"type": "null"},
+          "evidence": {"type": "null"}
+        }
+      }
+    },
+    "ambiguity": {
+      "type": "object",
+      "required": ["alias", "codes", "rule_fr"],
+      "additionalProperties": false,
+      "properties": {
+        "alias": {"$ref": "#/$defs/texte"},
+        "codes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/ds2_code"}},
+        "rule_fr": {"$ref": "#/$defs/texte"}
+      }
+    }
+  }
+}

@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'ASSURANCE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'ASSURANCE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -1474,118 +1474,593 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1323.587",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-48",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 21,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1323.587",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 24,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "716.630",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-49",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 24,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "716.630",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 28,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "906.083",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-50",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 28,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "906.083",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1119.767",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D23",
+   "id": "TB-51",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 25,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1119.767",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 28,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1519.237",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-52",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 28,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1519.237",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1018.335",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-53",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 23,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "1018.335",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "message_ar": "صنف غير معروف: 'II' لفئة techniciens.",
+    "message_fr": "Catégorie inconnue : 'II' pour techniciens (attendu : I, III+II ; alias : 1).",
+    "status": "refus"
+   },
+   "categorie": "piege",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D23",
+   "id": "TB-54",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_ar": "صنف غير معروف: 'II' لفئة techniciens.",
+    "message_fr": "Catégorie inconnue : 'II' pour techniciens (attendu : I, III+II ; alias : 1).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D23",
+   "id": "TB-55",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 32 ans : les grilles de la convention des associations pour personnes handicapées s'arrêtent au degré 16 (32 ans), et l'article 12 (جديد) ب (page 7) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 32 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-56",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 10 ans = borne commune aux degrés [5, 6] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-57",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Catégorie inconnue : 'V' pour formateurs_professionnels (attendu : I, II, III, IV ; alias : 1, 2, 3, 4).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D23",
+   "id": "TB-58",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de frais scolaires (article 42 (جديد) 4, page 14) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D23",
+   "id": "TB-59",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de production (article 42 (جديد) 8, page 14) : montant défini par une formule (note professionnelle annuelle, plafond exprimé en mois de salaire), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "piege",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-60",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille ASSOCIATIONS_PERSONNES_HANDICAPEES/sport en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "38.685",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-61",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "38.685",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "6.281",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-62",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "6.281",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "61.944",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-63",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D23",
+      "page": 14,
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf"
+     }
+    ],
+    "montant": "61.944",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
- "date": "2026-10-10",
+ "date": "2026-10-14",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 47,
-  "cas_verifies_par_ds5": 37,
+  "cas": 63,
+  "cas_verifies_par_ds5": 53,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "821beade5021d3526230f7b191d7d61ed5fb18cf25d32007a5edf2a5c8bd424a",
+  "sha256": "44d419214b60290deb9c51c8fffeae3e5d969d1fe47a1023c49988edcbb2584c",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 37,
+   "cas": 53,
    "citations_valides": {
-    "n": 31,
-    "sur": 31,
+    "n": 40,
+    "sur": 40,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 6,
+    "sur": 13,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 37,
-    "sur": 37,
+    "n": 53,
+    "sur": 53,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 37,
-    "sur": 37,
+    "n": 53,
+    "sur": 53,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 31,
-    "sur": 31,
+    "n": 40,
+    "sur": 40,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 31,
+    "sur": 40,
     "taux": 0.0
    },
    "faux_montants_total": 0,
+   "messages_refus_incorrects": {
+    "n": 0,
+    "sur": 13,
+    "taux": 0.0
+   },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 6,
+    "sur": 13,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 6,
-    "sur": 6,
+    "n": 13,
+    "sur": 13,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 31,
+    "sur": 40,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 47,
+   "cas": 63,
    "citations_valides": {
-    "n": 31,
-    "sur": 31,
+    "n": 40,
+    "sur": 40,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 16,
+    "sur": 23,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 47,
-    "sur": 47,
+    "n": 63,
+    "sur": 63,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 47,
-    "sur": 47,
+    "n": 63,
+    "sur": 63,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 31,
-    "sur": 31,
+    "n": 40,
+    "sur": 40,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 31,
+    "sur": 40,
     "taux": 0.0
    },
    "faux_montants_total": 0,
+   "messages_refus_incorrects": {
+    "n": 0,
+    "sur": 23,
+    "taux": 0.0
+   },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 16,
+    "sur": 23,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 16,
-    "sur": 16,
+    "n": 23,
+    "sur": 23,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 31,
+    "sur": 40,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -1625,6 +2100,11 @@
      "taux": 0.0
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 0,
+     "taux": null
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
      "sur": 0,
@@ -1643,10 +2123,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 25,
+    "cas": 34,
     "citations_valides": {
-     "n": 25,
-     "sur": 25,
+     "n": 34,
+     "sur": 34,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -1655,27 +2135,32 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 25,
-     "sur": 25,
+     "n": 34,
+     "sur": 34,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 25,
-     "sur": 25,
+     "n": 34,
+     "sur": 34,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 25,
-     "sur": 25,
+     "n": 34,
+     "sur": 34,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 25,
+     "sur": 34,
      "taux": 0.0
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 0,
+     "taux": null
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
      "sur": 0,
@@ -1688,13 +2173,13 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 25,
+     "sur": 34,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "piege": {
-    "cas": 4,
+    "cas": 6,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -1702,17 +2187,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 4,
+     "sur": 6,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 4,
-     "sur": 4,
+     "n": 6,
+     "sur": 6,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 4,
-     "sur": 4,
+     "n": 6,
+     "sur": 6,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -1727,14 +2212,19 @@
      "taux": null
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 6,
+     "taux": 0.0
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 4,
+     "sur": 6,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 4,
-     "sur": 4,
+     "n": 6,
+     "sur": 6,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -1745,7 +2235,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 12,
+    "cas": 17,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -1753,17 +2243,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 12,
+     "sur": 17,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 12,
-     "sur": 12,
+     "n": 17,
+     "sur": 17,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 12,
-     "sur": 12,
+     "n": 17,
+     "sur": 17,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -1778,14 +2268,19 @@
      "taux": null
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 17,
+     "taux": 0.0
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 12,
+     "sur": 17,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 12,
-     "sur": 12,
+     "n": 17,
+     "sur": 17,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -1831,6 +2326,11 @@
      "taux": 0.0
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 0,
+     "taux": null
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
      "sur": 0,
@@ -1849,103 +2349,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 10,
+    "cas": 16,
     "citations_valides": {
-     "n": 3,
-     "sur": 3,
+     "n": 4,
+     "sur": 4,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 7,
+     "sur": 12,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 10,
-     "sur": 10,
+     "n": 16,
+     "sur": 16,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 10,
-     "sur": 10,
+     "n": 16,
+     "sur": 16,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 3,
-     "sur": 3,
+     "n": 4,
+     "sur": 4,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 3,
+     "sur": 4,
      "taux": 0.0
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 12,
+     "taux": 0.0
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 7,
+     "sur": 12,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 7,
-     "sur": 7,
+     "n": 12,
+     "sur": 12,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 3,
+     "sur": 4,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 34,
+    "cas": 44,
     "citations_valides": {
-     "n": 25,
-     "sur": 25,
+     "n": 33,
+     "sur": 33,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 9,
+     "sur": 11,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 34,
-     "sur": 34,
+     "n": 44,
+     "sur": 44,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 34,
-     "sur": 34,
+     "n": 44,
+     "sur": 44,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 25,
-     "sur": 25,
+     "n": 33,
+     "sur": 33,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 25,
+     "sur": 33,
      "taux": 0.0
     },
     "faux_montants_total": 0,
+    "messages_refus_incorrects": {
+     "n": 0,
+     "sur": 11,
+     "taux": 0.0
+    },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 9,
+     "sur": 11,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 9,
-     "sur": 9,
+     "n": 11,
+     "sur": 11,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 25,
+     "sur": 33,
      "taux": 0.0
     },
     "statut_erreur": 0
