@@ -1,0 +1,229 @@
+from src.orchestrator.web_app import (
+    approval_history, audit_history, available_cards, calculate, chat, decide_approval,
+    calculate_from_document_review, confirm_document_review, prepare_from_card, propose_approval,
+)
+
+
+def test_api_calculates_real_smig_with_citation() -> None:
+    response = calculate({"operation": "smig", "card_type": "company", "language": "fr", "params": {"mode": "mensuel", "regime_heures": 48, "date": "2024-01-01"}})
+    assert response["user_response"]["status"] == "success"
+    assert response["result"]["montant"] == "459.264"
+    assert response["citations"][0]["page"] == 2
+
+
+def test_api_calculates_real_salary_base() -> None:
+    response = calculate({"operation": "salaire_base", "card_type": "company", "language": "fr", "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4", "anciennete_annees": 15, "date": "2022-06-01"}})
+    assert response["user_response"]["status"] == "success"
+    assert response["result"]["montant"] == "593.873"
+
+
+def test_api_returns_safe_invalid_parameter_response() -> None:
+    response = calculate({"operation": "salaire_base", "card_type": "company", "language": "fr", "params": {"secteur": "METALLURGIE_BATIMENT"}})
+    assert response["user_response"]["code"] == "INVALID_PARAMETERS"
+    assert response["result"] is None
+
+
+def test_card_selector_only_exposes_authorized_minimal_data() -> None:
+    cards = available_cards()
+    assert [card["card_id"] for card in cards] == ["company-demo-001", "client-demo-001", "case-demo-001"]
+    assert cards[2]["label"] == "Affaire Démo"
+    assert cards[0]["employees"] == [{"employee_id": "employee-demo-01", "label": "Ahmed"}]
+    assert "track_b_profile" not in cards[0]
+    assert cards[0]["documents"] == [
+        {"document_id": "doc-company-payslip-01", "label": "Fiche de paie scannée — mars 2026"},
+        {"document_id": "doc-company-wage-grid-01", "label": "Convention collective — grille des salaires"},
+    ]
+
+
+def test_chat_routes_selected_card_document_to_ds3() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    assert response["user_response"]["status"] == "success"
+    assert response["route"] == {"agent": "document_intelligence", "operation": "analyze_document"}
+    assert response["answer"]["kind"] == "document"
+    assert response["answer"]["fields"]["cnss_employee"]["value"] is None
+    assert response["citations"][0]["document_id"] == "doc-company-payslip-01"
+
+
+def test_document_review_requires_user_selection_and_never_starts_calculation() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    review = response["document_review"]
+    assert review["threshold"] == 0.9
+    states = {field["name"]: field["state"] for field in review["fields"]}
+    assert states["base_salary"] == "verified"
+    assert states["cnss_employee"] == "unavailable"
+    confirmed = confirm_document_review({
+        "review_id": review["review_id"], "confirmed_fields": ["base_salary"],
+    })
+    assert confirmed["status"] == "confirmed"
+    assert confirmed["next_action"] == "review_ds5_prefill_then_submit_explicit_calculation"
+    assert confirmed["ds5_prefill"]["candidates"][0]["operation"] == "salaire_base"
+
+
+def test_document_review_rejects_an_unusable_field() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    rejected = confirm_document_review({
+        "review_id": response["document_review"]["review_id"], "confirmed_fields": ["cnss_employee"],
+    })
+    assert rejected["error"] == "unconfirmed_or_unusable_field"
+
+
+def test_confirmed_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    review = response["document_review"]
+    confirmed = confirm_document_review({
+        "review_id": review["review_id"],
+        "confirmed_fields": ["period_start", "pay_mode", "work_hours_regime", "hire_date", "category", "base_salary"],
+    })
+    assert {candidate["operation"] for candidate in confirmed["ds5_prefill"]["candidates"]} == {
+        "smig", "salaire_base", "prime",
+    }
+    calculation = calculate_from_document_review({
+        "review_id": review["review_id"], "operation": "salaire_base", "language": "fr",
+        "user_inputs": {"population": "admin_tech", "secteur": "INTERDIT"},
+    })
+    assert calculation["user_response"]["status"] == "success"
+    assert calculation["prepared_params"]["secteur"] == "METALLURGIE_BATIMENT"
+    assert calculation["document_citations"]
+    assert calculation["payroll_citations"]
+    assert calculation["salary_comparison_warning"] is not None
+
+
+def test_document_review_cannot_call_ds5_before_confirmation() -> None:
+    blocked = calculate_from_document_review({
+        "review_id": "unknown", "operation": "smig", "language": "fr", "user_inputs": {},
+    })
+    assert blocked["error"] == "document_confirmation_required"
+
+
+def test_chat_rejects_document_not_owned_by_active_card() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "client-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    assert response["user_response"]["status"] == "error"
+
+
+def test_chat_routes_a_general_prompt_to_ds2_mock() -> None:
+    response = chat({"message": "Quel article du code du travail s'applique ?", "language": "fr"})
+    assert response["user_response"]["status"] == "success"
+    assert response["route"] == {"agent": "legal_retrieval", "operation": "search"}
+    assert response["answer"]["kind"] == "legal_research"
+    assert response["answer"]["mode"] == "mock"
+
+
+def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:
+    response = chat({
+        "message": "Analyse les preuves de ce dossier", "language": "fr", "card_id": "case-demo-001",
+    })
+    assert response["user_response"]["status"] == "refused"
+    assert response["user_response"]["code"] == "SOURCE_MISSING"
+    assert response["route"] == {"agent": "track_a_legal", "operation": "analyze_case"}
+    assert response["answer"] is None
+
+
+def test_chat_asks_for_clarification_without_guessing_payroll_fields() -> None:
+    response = chat({"message": "Calcule le salaire de base", "language": "fr", "card_id": "company-demo-001"})
+    assert response["user_response"]["code"] == "CLARIFICATION_REQUIRED"
+    assert response["route"] == {"agent": None, "operation": None}
+
+
+def test_chat_calculates_btp_occasional_salary_from_prompt() -> None:
+    response = chat({
+        "message": "Calcule le salaire de base BTP pour un ouvrier occasionnel, catégorie 7, "
+        "sous-catégorie 2 au 2023-06-01.",
+        "language": "fr", "card_id": "company-demo-001",
+    })
+    assert response["user_response"]["status"] == "success"
+    assert response["answer"]["amount"] == "4.276"
+    assert response["answer"]["unit"] == "TND/heure"
+
+
+def test_chat_displays_ds5_article_13_hypotheses_with_salary() -> None:
+    response = chat({
+        "message": "Calcule le salaire de base secteur métallurgie bâtiment, population admin-tech, "
+        "catégorie 4, 25 ans d'ancienneté au 2024-06-01.",
+        "language": "fr", "card_id": "company-demo-001",
+    })
+    assert response["user_response"]["status"] == "success"
+    assert response["answer"]["hypotheses"]
+    assert response["answer"]["hypotheses_label"] == "Hypothèses"
+
+
+def test_chat_runs_human_approval_lifecycle_from_prompt_only() -> None:
+    proposed = chat({
+        "message": "Génère un rapport de paie", "language": "fr", "card_id": "company-demo-001",
+    })
+    assert proposed["answer"]["status"] == "pending_approval"
+    assert proposed["route"] == {"agent": "orchestrator", "operation": "human_approval"}
+
+    approved = chat({"message": "Approuve la dernière demande", "language": "fr"})
+    assert approved["answer"]["status"] == "approved"
+
+    executed = chat({"message": "Exécute la dernière demande", "language": "fr"})
+    assert executed["answer"]["status"] == "executed"
+
+
+def test_chat_refuses_payroll_report_proposal_without_company_card() -> None:
+    response = chat({"message": "Génère un rapport de paie", "language": "fr", "card_id": "client-demo-001"})
+    assert response["user_response"]["status"] == "error"
+    assert response["user_response"]["next_action"] == "select_company_card"
+
+
+def test_card_prepare_prefills_salary_without_inference() -> None:
+    response = prepare_from_card({
+        "operation": "salaire_base", "card_id": "company-demo-001",
+        "employee_id": "employee-demo-01", "date": "2022-06-01",
+    })
+    assert response["missing"] == []
+    assert response["prepared_params"]["categorie"] == "4"
+    assert response["prepared_params"]["anciennete_annees"] == 15
+
+
+def test_card_prepare_keeps_missing_date_explicit() -> None:
+    response = prepare_from_card({
+        "operation": "salaire_base", "card_id": "company-demo-001",
+        "employee_id": "employee-demo-01",
+    })
+    assert response["missing"] == ["date"]
+
+
+def test_calculation_creates_unique_safe_audit_history_entry() -> None:
+    response = calculate({
+        "operation": "smig", "card_id": "company-demo-001", "language": "fr",
+        "params": {"mode": "mensuel", "regime_heures": 48, "date": "2024-01-01"},
+    })
+    event = audit_history()[0]
+    serialized = str(event)
+    assert response["request_id"].startswith("web-")
+    assert event["request_id"] == response["request_id"]
+    assert event["operation"] == "smig"
+    assert event["card_id"] == "company-demo-001"
+    assert "459.264" not in serialized
+    assert "regime_heures" not in serialized
+
+
+def test_human_approval_requires_pending_then_approval_before_mock_execution() -> None:
+    proposed = propose_approval({"action_type": "generate_payroll_report", "card_id": "company-demo-001"})
+    approval_id = proposed["action"]["approval_id"]
+    assert proposed["action"]["status"] == "pending_approval"
+    assert decide_approval(approval_id, "execute")["error"] == "invalid_transition"
+    assert decide_approval(approval_id, "approve")["action"]["status"] == "approved"
+    assert decide_approval(approval_id, "execute")["action"]["status"] == "executed"
+    assert approval_history()[0]["approval_id"] == approval_id
+
+
+def test_human_approval_rejects_incompatible_card() -> None:
+    response = propose_approval({"action_type": "generate_payroll_report", "card_id": "client-demo-001"})
+    assert response["error"] == "incompatible_card"

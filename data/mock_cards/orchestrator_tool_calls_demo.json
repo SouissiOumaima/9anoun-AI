@@ -1,0 +1,22 @@
+[
+  {
+    "contract_version": "orchestrator.tool.v0",
+    "tool_call_id": "call-demo-legal-001",
+    "request_id": "orchestrator-demo-002",
+    "agent": "legal_retrieval",
+    "operation": "search",
+    "read_only": true,
+    "context": {"organization_id": "org-demo"},
+    "params": {"query": "مدة الإشعار", "language": "ar"}
+  },
+  {
+    "contract_version": "orchestrator.tool.v0",
+    "tool_call_id": "call-demo-track-b-001",
+    "request_id": "orchestrator-demo-001",
+    "agent": "track_b_accounting",
+    "operation": "compute",
+    "read_only": true,
+    "context": {"organization_id": "org-demo", "card_id": "company-demo-001", "card_type": "company"},
+    "params": {"operation": "smig", "date": "2024-06-01"}
+  }
+]

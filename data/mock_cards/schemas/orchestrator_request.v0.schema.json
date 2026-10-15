@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orchestrator_request.v0.schema.json",
+  "title": "Requête orchestrateur — v0",
+  "description": "v0 — proposition DS1, à valider avec l'équipe. L'identité et les autorisations proviennent du backend authentifié; le modèle ne peut pas les modifier.",
+  "type": "object",
+  "required": ["contract_version", "request_id", "message", "language", "context"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "orchestrator.v0"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "message": {"type": "string", "minLength": 1, "maxLength": 12000},
+    "language": {"enum": ["fr", "ar"]},
+    "context": {"$ref": "#/$defs/context"}
+  },
+  "$defs": {
+    "context": {
+      "type": "object",
+      "required": ["organization_id"],
+      "additionalProperties": false,
+      "properties": {
+        "organization_id": {"type": "string", "minLength": 1},
+        "card_id": {"type": "string", "minLength": 1},
+        "card_type": {"enum": ["company", "client", "case"]},
+        "entity_ids": {"type": "object", "additionalProperties": {"type": "string"}}
+      },
+      "allOf": [
+        {"if": {"required": ["card_id"]}, "then": {"required": ["card_type"]}},
+        {"if": {"required": ["card_type"]}, "then": {"required": ["card_id"]}}
+      ]
+    }
+  }
+}

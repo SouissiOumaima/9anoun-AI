@@ -1,0 +1,21 @@
+[
+  {
+    "contract_version": "orchestrator.v0",
+    "request_id": "orchestrator-demo-001",
+    "message": "Le salaire de cet employé respecte-t-il le minimum applicable ?",
+    "language": "fr",
+    "context": {
+      "organization_id": "org-demo",
+      "card_id": "company-demo-001",
+      "card_type": "company",
+      "entity_ids": {"employee_id": "employee-demo-01", "period": "2024-06"}
+    }
+  },
+  {
+    "contract_version": "orchestrator.v0",
+    "request_id": "orchestrator-demo-002",
+    "message": "ما هي مدة الإشعار في هذه الحالة؟",
+    "language": "ar",
+    "context": {"organization_id": "org-demo"}
+  }
+]

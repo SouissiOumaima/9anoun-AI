@@ -1,0 +1,20 @@
+{
+  "legal_retrieval.search": {
+    "status": "success",
+    "data": {"findings": [{"summary": "Mock legal finding - replace with DS2 retrieval result.", "effective_date": "2024-01-01"}]},
+    "citations": [{"source_file": "data/mock_cards/legal_retrieval_mock.pdf", "page": 1, "article": "Art. mock-1"}],
+    "error": null
+  },
+  "track_a_legal.analyze_case": {
+    "status": "success",
+    "data": {"facts": ["Mock fact - replace with DS4 case analysis."], "timeline": [], "evidence_mapping": [], "risks": ["mock"], "strategy": null},
+    "citations": [{"source_file": "data/mock_cards/track_a_mock.pdf", "page": 1, "article": null}],
+    "error": null
+  },
+  "track_b_accounting.compute": {
+    "status": "success",
+    "data": {"result": {"montant": "459.264", "unite": "TND/mois", "detail": {"mock": true}}, "computed_by": "mock_track_b_adapter"},
+    "citations": [{"source_file": "data/mock_cards/track_b_mock.pdf", "page": 2, "article": "Décret mock"}],
+    "error": null
+  }
+}
