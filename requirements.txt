@@ -6,7 +6,7 @@
 # (à compléter par DS1)
 
 # --- DS2 : Legal Knowledge & Retrieval ---
-# (à compléter par DS2)
+-r src/legal_retrieval/requirements.txt
 
 # --- DS3 : Document Intelligence ---
 # (à compléter par DS3)

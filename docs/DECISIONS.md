@@ -809,3 +809,360 @@ mais ce sont des interprétations.
 
 **Statut** : ✅ implémenté (métallurgie ; BTP catégories 1 à 18 pendant leur
 fenêtre) ; catégorie 19 du BTP et BTP au-delà des fenêtres refusés.
+
+---
+
+## 2026 — DS2 (Legal Retrieval, Abd Mouhib Souri)
+
+Les décisions DS2 suivent la numérotation continue du journal (à la suite de D10),
+comme l'impose le motif `decision_ref` (`^D[0-9]+$`) du schéma commun
+`src/shared/schemas/common.v0.schema.json`.
+
+### D11 — Ingestion hybride : texte de l'OCR, chiffres vérifiés sur le PDF
+
+**Décision** : le texte arabe des articles vient de `data/raw/txt/*.json` (OCR fourni
+par Tradrly). Chaque nombre d'un article est recherché dans la couche texte du PDF
+correspondant (`data/raw/pdf`). Les nombres non retrouvés sont listés dans le champ
+`numbers_unverified` de l'article : ils ne doivent jamais être cités sans vérification.
+
+**Alternatives envisagées** :
+- Texte depuis la couche texte des PDF → rejeté : l'arabe y est encodé en zone
+  « Private Use » (constat D5 de DS5, quantifié en D16).
+- Texte OCR seul, sans contrôle des chiffres → rejeté : les chiffres de l'OCR sont
+  parfois incohérents (D1, D2 de DS5).
+
+**Raison** : chaque source est utilisée pour ce qu'elle a de fiable. Mesure du
+2026-10-10 sur les 9 fichiers (`tools/diagnose_pua.py`) : OCR = 95,8 à 99,8 % de
+lettres arabes et 20 à 132 « فصل » par fichier ; couche texte PDF = 0 à 1 « فصل ».
+
+**Limite** : la couche texte PDF n'expose que 110 à 315 nombres distincts par fichier
+(les grilles sont des pages scannées, D4/D5). `numbers_unverified` signifie donc
+« non confirmé », pas « faux ». Les montants de paie restent ceux vérifiés par DS5
+(`data/processed/smig_smag/`, `data/processed/salary_grids/`).
+
+---
+
+### D12 — Un chunk = un article
+
+**Décision** : l'unité de recherche est un article (« الفصل N ») ; un chunk ne
+chevauche jamais deux articles.
+
+**Alternatives envisagées** :
+- Chunks de taille fixe (ex. 512 tokens) → rejeté : un article coupé en deux n'est
+  plus citable tel quel.
+
+**Raison** : règle « Citation ou Silence ».
+
+---
+
+### D13 — Texte original pour les citations, texte normalisé pour la recherche
+
+**Décision** : chaque article stocke `text` (original, après NFKC) et
+`text_normalized` (sans diacritiques ni tatweel, alef unifié, chiffres ASCII).
+
+**Alternatives envisagées** :
+- Normaliser le texte directement → rejeté : la vérification des citations échouerait.
+
+**Raison** : la normalisation forte ne sert qu'à la recherche par mots-clés.
+
+---
+
+### D14 — Détection du texte arabe inversé
+
+**Décision** : le rapport d'ingestion calcule `reversed_text_ratio` (part de « لصف »
+parmi les « فصل »). Un fichier signalé n'est pas corrigé automatiquement.
+
+**Alternatives envisagées** :
+- Inverser automatiquement chaque ligne → rejeté pour l'instant : inverserait aussi
+  les nombres (14 → 41).
+
+**Raison** : cas observé dans l'OCR de la convention métallurgie bâtiment
+(28 « لصف » pour 122 « فصل », ratio 0,19).
+
+---
+
+### D15 — Identifiants d'articles versionnés
+
+**Décision** : `article_id = <SOURCE>-ART-<N>[BIS]-v<version>`. Un article « مكرر »
+(bis) est un article distinct (`ART-7BIS`), pas un doublon. Un numéro réellement
+répété reçoit `-DUP<k>` en attendant la correction du chargeur (Sprint 2).
+
+**Raison** : la validation doit pouvoir retrouver la version exacte du texte cité.
+
+---
+
+### D16 — Complément à D5 : la couche texte PDF n'est pas réparable pour l'arabe
+
+**Constat** (`tools/diagnose_pua.py`, 2026-10-10) : confirme et quantifie D5. Dans les
+9 PDF, l'arabe est encodé en `U+F2xx` (8 988 à 75 077 caractères par fichier).
+Trois décodages ont été testés (cp1256, ISO-8859-6, Mac Arabic, sur la plage
+`U+F0xx` des polices « symbole ») : aucun ne restaure de texte (0 « فصل »).
+Les codes `U+F2xx` sont des numéros de glyphes propres à chaque police : aucune
+table de conversion standard n'existe.
+
+**Conséquence** : pour le texte arabe, la seule source exploitable du corpus est
+l'OCR `data/raw/txt/*.json` (D11). DS3 rencontrera probablement le même
+encodage sur les PDF des utilisateurs : la couche texte ne suffira pas, prévoir l'OCR.
+
+---
+
+### D17 — Toujours renvoyer toutes les versions d'un article
+
+**Décision** : pour chaque article pertinent, la recherche renvoie toutes ses versions
+connues (en vigueur, modifiées, abrogées). Une seule version au plus est marquée
+`applicable_at_reference_date`. L'appelant (DS4, DS5) annonce l'ancienne **et** la
+nouvelle règle. Si l'ancien texte n'est pas dans le corpus (texte consolidé, mention
+« (جديد) »), `previous_version_available = false` et l'appelant le dit explicitement.
+`top_k` compte des articles, pas des versions.
+
+**Alternatives envisagées** :
+- Ne renvoyer que la version en vigueur → rejeté : un avocat ou un comptable doit voir
+  l'historique (litige sur une période passée, rappel de salaire, contestation).
+- Supprimer les « doublons » → rejeté : une nouvelle version n'est pas un doublon
+  (proposé par Abd Mouhib Souri après vérification manuelle des PDF).
+
+**Raison** : transparence pour le professionnel, précision temporelle (≥ 90 %),
+règle « Citation ou Silence ».
+
+**Contrat** : champs `version_group`, `version`, `applicable_at_reference_date`,
+`modified`, `amended_by`, `previous_version_available` dans
+`legal_retrieval_search_response.v0.schema.json` (voir `docs/CONTRACT_LEGAL_RETRIEVAL.md`).
+
+---
+
+### D18 — Vérification manuelle des articles manquants (37/37 expliqués)
+
+**Décision** : chaque numéro d'article absent du découpage automatique est vérifié
+visuellement dans le PDF avant toute correction du code. Le détail est dans
+`docs/ds2/VERIFICATION_MANUELLE_CORPUS_2026-10-10.md`.
+
+**Résultat** (7 conventions, 2026-10-10) :
+
+| Cause | Articles |
+|---|---|
+| Abrogés par un avenant (`الفصول … ألغيت بمقتضى الملحق التعديلي عدد N`) | 22 |
+| En-tête mal lu par l'OCR ou collé en milieu de ligne | 9 |
+| En-tête sans espace (`الفصل56`) | 4 |
+| Absents du PDF source (cadre art. 40, associations art. 20) | 2 |
+
+**Conséquences** : un article abrogé est enregistré avec `status: abroge` et l'avenant
+qui l'abroge (jamais « introuvable ») ; chaque convention a sa propre numérotation
+d'avenants (`CCS-BTP-AVENANT-5` ≠ `CCS-CONSTRUCTION-METALLIQUE-AVENANT-5`) ;
+les dates des avenants sont nécessaires au filtre temporel (à obtenir auprès de Tradrly).
+
+**Statut** : ✅ vérification visuelle par Abd Mouhib Souri (DS2) ; règles de découpage
+correspondantes à coder au Sprint 2.
+
+---
+
+### D19 — Contrat DS2 aligné sur l'enveloppe commune `common.v0`
+
+**Décision** : la réponse `legal_retrieval.v0` suit `src/shared/schemas/common.v0.schema.json`
+(`$defs/response_envelope`) : `status` `ok` / `refus` / `erreur`, `citations[]` (une par
+article, objet `$defs/citation`), `refus {code, message_fr, message_ar}`, `erreur`,
+`computed_by`. DS2 y ajoute `mode` et `results`. Correspondances avec la proposition
+initiale DS2 : `success` → `ok` ; `no_decisive_source` → `refus` / `SOURCE_MANQUANTE` ;
+requête invalide → `refus` / `PARAM_INVALIDE` (comme Track B) ; `language` → `lang`.
+Dates de la requête : motif `$defs/date` **et** `format: date` (rejette aussi 2024-13-45).
+
+**Alternatives envisagées** :
+- Garder un format propre à DS2 → rejeté : l'orchestrateur (DS1) devrait gérer un format
+  de statut et de citation par rôle.
+- Référencer le schéma commun par `$ref` → reporté : aucun rôle ne le fait encore
+  (question ouverte n° 3 du README des schémas) ; les définitions sont recopiées à
+  l'identique, et un test valide chaque réponse DS2 contre le vrai fichier commun.
+
+**Raison** : un seul format de statut, de citation et de refus pour toute l'équipe ;
+la règle « Citation ou Silence » devient vérifiable de la même façon partout.
+
+**Statut** : ⏳ v0, proposition à valider ; conformité prouvée par
+`test_every_response_conforms_to_the_team_common_envelope` (ok, refus SOURCE_MANQUANTE,
+refus PARAM_INVALIDE) et par appels HTTP réels.
+
+---
+
+### D23 — Grille salariale ASSOCIATIONS_PERSONNES_HANDICAPEES (pages 7, 14-29)
+
+**Numéro** : D23. D11 à D22 sont pris par DS2 (`origin/DS2_Legal_Retrieval_Track`,
+`origin/DS2_Sprint2`, dont D21 vocabulaire et D22 `get_article`) ; `origin/main`
+s'arrête à D10. Vérifié avec `git fetch origin` le 2026-10-13 : aucune branche
+distante ne contient de D23.
+
+**Source** : `data/raw/pdf/الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf`
+(29 pages). Grilles scannées p.21 à 29 (15 tables : 5 populations × 3 dates,
+1er décembre 2021, 1er janvier 2023, 1er janvier 2024) ; annexes de
+classification p.16 à 20 ; article 12 (جديد) (progression) p.7 ; article 14
+(جديد) (durée du travail) p.8 ; article 42 (جديد) (primes) p.14 et 15.
+
+**Constat** :
+- Les lignes des grilles sont titrées « الرتبة » et numérotées en chiffres
+  romains ; elles sont rattachées aux catégories (« الصنف ») des annexes d'après
+  leur position (hypothèse) : même nombre de lignes que de catégories dans
+  chaque annexe ; seul l'article 42 (جديد) 9 (p.15) le confirme pour une ligne,
+  la IV des ouvriers, agents administratifs et surveillants : « بالصنف 4 من جدول
+  التصنيف المهني عدد 3 ».
+- Deux populations (éducation spécialisée, sport) ont les mêmes lignes
+  {I, II, III} : leurs tables ne peuvent pas être rattachées à une population
+  par leurs seules catégories.
+- Agents techniques : ligne imprimée « III+II ». L'annexe 4 (p.19) liste les
+  catégories 2 et 3 séparément, sans dire qu'elles partagent une ligne.
+- En-tête d'ancienneté : « مدة البقاء بالدرجة » = 2 pour les 16 degrés ;
+  « الأقدمية الفعلية » = 2, 4, …, 32 (un seul nombre par degré ; dernière colonne
+  « 32 », sans « + »).
+- L'article 12 (جديد) ب (p.7) renvoie aux grilles annexées et ne dit rien
+  au-delà du dernier degré.
+- Aucune phrase de la convention ne précise l'unité des grilles (mensuelle ou
+  horaire). L'article 40 (p.13) parle de « معدل الأجور الشهري » pour l'indemnité
+  de fin de service, sans viser les grilles.
+
+#### Décisions (validées par DS5)
+
+1. **Clé de catégorie** = chiffre romain imprimé dans la grille ; alias en
+   chiffres arabes (numérotation des annexes) déclarés par population dans le
+   JSON (`alias_categories`). La réponse donne `categorie` (clé) et
+   `categorie_demandee` (alias reçu).
+2. **Champ `population`** explicite par table ; le validateur l'exige quand
+   plusieurs populations ont exactement les mêmes catégories.
+3. **« III+II »** : une seule clé, **sans** alias « 2 » ni « 3 » (ni « II »,
+   « III ») tant que l'annexe ne confirme pas le partage de la ligne. Pour les
+   techniciens, le seul alias est « 1 » → « I » ; « II », « III », « 2 » et
+   « 3 » sont refusés (`PARAM_INVALIDE`).
+4. **Degré k = de 2k−2 à 2k ans** (libellés « 0-2 » … « 30-32 ») ; bornes
+   exactes 2, 4, …, 30 refusées (`PARAM_INVALIDE`, D6) ; à partir de 32 ans,
+   refus `SOURCE_MANQUANTE` qui cite l'article 12 (جديد) ب (p.7). Lecture
+   affichée dans `detail.hypotheses` (FR et AR).
+5. **Primes exposées** (article 42 (جديد), p.14) : transport, présence et prime
+   spécifique (« منحة خاصة لرعاية المعوقين »). La date « بداية من » est la date
+   d'effet ; « بعنوان سنة » n'est qu'une information (`au_titre_de`).
+   - Groupes de la prime de transport, choisis par l'appelant :
+     `execution_et_gestion` (« أعوان التنفيذ والتسيير », agents d'exécution et
+     de gestion) et `cadres` (« الإطارات ») ; libellés FR et AR renvoyés dans
+     `detail` (`groupe_libelle`, `groupe_libelle_ar`). La métallurgie garde ses
+     clés (`execution_et_maitrise`, `cadres`).
+   - La phrase qui exclut de la prime de transport les montants des décrets
+     503/1982 et 691/1986 (« ولا يتضمن مقدار منحة النقل المقادير المنصوص عليها
+     بالأمر عدد 503 المؤرخ في 16 مارس 1982 والمنقح بالأمر عدد 691 المؤرخ في 19
+     جويلية 1986 ») est recopiée dans `detail` (`note`, `note_ar`), sans calcul.
+   - Primes de frais scolaires, pédagogique, de santé, fonctionnelle et des
+     chauffeurs : `primes_non_couvertes`, motif « montant sans date d'effet dans
+     la source » (texte arabe et page dans le JSON). Prime de production :
+     refusée, motif « formule, pas de montant ».
+6. **Unité mensuelle**, déduite de l'ordre de grandeur des montants ; hypothèse
+   affichée dans `detail.hypotheses`.
+
+**Montants transcrits** : 864 cellules de grille et 12 montants de primes
+(transport : 30,199 / 32,238 / 34,414 pour les agents d'exécution et de
+gestion, 36,239 / 38,685 / 41,296 pour les cadres ; présence : 6,281 / 6,705 /
+7,158 ; prime spécifique : 54,358 / 58,027 / 61,944 TND/mois, aux dates d'effet
+du 2021-12-01, du 2023-01-01 et du 2024-01-01), par double lecture indépendante,
+0 divergence.
+
+#### Anomalies imprimées conservées
+
+Neuf cellules s'écartent de 0,002 de la progression habituelle de leur ligne.
+Chacune est lue nettement (deux lectures concordantes, relecture en pixels
+natifs, vérification visuelle par DS5) ; la valeur imprimée est conservée,
+**aucune correction** (`anomalies_increment` des tables 10, 12, 13 et 15) :
+
+| Table (page) | Ligne | Degré | Valeur imprimée |
+|---|---|---|---|
+| 10, المكونين المهنيين, 2023 (p.26) | III (معلم تعليم تقني) | 12 | 1 225,010 |
+| 12, أعوان الرياضة, 2024 (p.27) | I (مرافق رياضة) | 6 | 665,982 |
+| 12, أعوان الرياضة, 2024 (p.27) | I | 16 | 811,828 |
+| 13, العملة والأعوان الإداريين و القيمين, 2024 (p.28) | I (عامل بدون اختصاص) | 4 | 492,399 |
+| 13 (p.28) | II (عامل مختص) | 6 | 665,982 |
+| 13 (p.28) | II | 16 | 811,828 |
+| 15, المكونين المهنيين, 2024 (p.29) | I (مرافق تدريب تقني) | 6 | 665,982 |
+| 15 (p.29) | I | 16 | 811,828 |
+| 15 (p.29) | III (معلم تعليم تقني) | 14 | 1 360,529 |
+
+D'une date à l'autre, ces cellules suivent la même relation que leurs voisines.
+La source n'explique pas leur écart : la cause (arrondis du texte imprimé ou
+autre) n'est pas établie, et la valeur imprimée est conservée.
+
+#### Limite des contrôles de lecture
+
+- Deux régularités ont été **observées** entre les montants imprimés : environ
+  2 % d'un degré au suivant dans une ligne, et environ 6,75 % d'une date d'effet
+  à la suivante. Aucun texte de la convention ne les fixe. Elles servent
+  uniquement de contrôles de lecture dans les tests (tolérance ±0,001), jamais
+  à calculer ni à corriger un montant.
+- Ces contrôles ne détectent pas toute erreur : 29 cellules ne sont protégées
+  par aucun d'eux contre une erreur de 0,002. **Vérification visuelle faite le
+  2026-10-12** : les 29 cellules et les 12 montants de primes correspondent au
+  PDF.
+- La double lecture indépendante et la vérification visuelle sont les vrais
+  contrôles.
+
+#### Note de source (avenants)
+
+Au bas de la page 15, la note 8 se lit « نقح بالملحق التعديلي 1 ثم عدد 2 ثم عدد3 ».
+Son appel est placé à la fin de l'article 42 (جديد) (après le point 9, « منحة
+السواق ») : l'article 42 a été modifié par l'avenant 1, puis par les avenants 2
+et 3. Les montants transcrits sont ceux du texte consolidé tel qu'imprimé ; les
+avenants eux-mêmes ne figurent pas dans les sources.
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- Lecture des degrés : le degré k couvre de 2k−2 à 2k ans.
+- Unité mensuelle, déduite de l'ordre de grandeur des montants.
+- Rattachement de chaque ligne de grille à la catégorie de l'annexe de même
+  numéro, d'après l'ordre des lignes (pour la ligne IV des ouvriers, agents
+  administratifs et surveillants, confirmé par l'article 42 (جديد) 9).
+- Ligne « III+II » des techniciens : catégories 2 et 3 de l'annexe 4
+  rattachées d'après le seul libellé de la grille.
+- Présence et prime spécifique : le texte les prévoit pour toutes les
+  catégories (« لكل الأصناف »).
+
+#### Mise en œuvre
+
+- **Données** : `data/processed/salary_grids/associations_personnes_handicapees.json`
+  (`_meta.decision_ref` = « D23 », `tables_transcrites` = true) : 15 tables dans
+  `grilles` (population, date, page, unité, valeurs, anomalies), 3 primes dans
+  `primes`, `primes_non_couvertes`, `regle_date_effet_primes`, hypothèses,
+  alias, refus au-delà de 32 ans.
+- **Calcul** : `calc/loaders.py` (`population_de_table`, alias, hypothèses de
+  grille, textes des primes : `note_ar`, `hypotheses`, `libelles_groupes`
+  validés) ; `calc/salary.py` (tables choisies par population, alias, hypothèses
+  avant celles de l'article 13) ; `calc/primes.py` (`groupe_libelle`,
+  `note_ar`, `hypotheses` dans `detail`, lus seulement s'ils sont présents).
+- **Non-régression** : réponses de la métallurgie et du BTP identiques à l'octet
+  près ; seule la liste des secteurs disponibles des refus « secteur inconnu »
+  s'allonge (demo-10). Démo : demo-15 à demo-18. Évaluation : 63/63 (dont 16 cas de ce secteur, TB-48 à TB-63, vérifiés par DS5). Les 47 cas précédents sont inchangés, sauf le message de TB-35 (liste des secteurs).
+
+#### Points non tranchés par la source (hypothèses retenues)
+
+Consigne d'encadrement du 2026-10-13 : travailler avec les données disponibles.
+Ces points sont documentés comme hypothèses et ne bloquent pas
+l'implémentation ; un refus reste la règle quand aucune source ne contient la
+valeur.
+
+1. **Correspondance ligne-catégorie** des populations 1, 2, 4 et 5 (éducation
+   spécialisée, sport, techniciens, formateurs professionnels) : déduite de
+   l'ordre des lignes, non écrite dans la convention.
+2. **Sens de « III+II »** : faut-il accepter « 2 » et « 3 » comme alias ? Seule
+   la grille l'indique ; l'annexe 4 liste les deux catégories séparément.
+3. **Unité mensuelle**, déduite de l'ordre de grandeur : aucune phrase ne la fixe.
+4. **Lecture de l'ancienneté** (degré 1 = de 0 à 2 ans) et **règle au-delà de
+   32 ans** : l'article 12 (جديد) ب ne dit rien après le degré 16.
+5. **Catégories de chaque groupe de transport** : la classification de cette
+   convention ne définit ni « أعوان التنفيذ والتسيير » ni « الإطارات ».
+6. **Régime hebdomadaire de la population 3** (ouvriers, agents administratifs
+   et surveillants) : l'article 14 (جديد) (p.8) fixe 48 h pour les ouvriers et
+   40 h pour les agents administratifs et les surveillants, dans une même grille ;
+   non renseigné.
+7. **Article 13** : dans cette convention, l'article 13 (p.7, « تكليف الأعوان
+   بوظائف غير مطابقة لأصنافهم ») ne porte pas sur l'ancienneté au-delà du dernier
+   degré (contrairement à l'article 13 (جديد) ب de la métallurgie et du BTP,
+   D10). Il prévoit une prime égale à la différence de salaire en cas
+   d'affectation temporaire à une catégorie supérieure (trois mois au plus) ;
+   cette prime n'est pas couverte.
+8. **Primes avec montant mais sans date d'effet** : frais scolaires (10 d par
+   enfant, début de l'année scolaire), pédagogique (30 d par mois), santé (30 d
+   par mois) et fonctionnelle (150 d par mois), art. 42 (جديد) 4 à 7 (p.14).
+   Elles restent refusées (SOURCE_MANQUANTE) car aucune date d'effet n'est
+   donnée. Elles pourraient être exposées plus tard avec une hypothèse affichée
+   « date d'effet non précisée par la source », si l'équipe le décide.
+
+**Statut** : ✅ implémenté et exposé (2026-10-13) ; vérification visuelle
+terminée le 2026-10-12.

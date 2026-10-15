@@ -1,0 +1,167 @@
+{
+  "_comment": "Mock DS2 (Sprint 1). Textes FAUX, marqués [MOCK]. Enveloppe conforme à common.v0 (status ok/refus/erreur, citations[], refus). Illustre la règle « toutes les versions » (D17) : (1) un article en 2 versions, (2) un article modifié dont l'ancienne version n'est pas dans le corpus, (3) un article abrogé. Le mock filtre par secteur : une requête sur un autre secteur que 'btp' renvoie un refus SOURCE_MANQUANTE (pour tester la règle « Citation ou Silence »).",
+  "request": {
+    "contract_version": "legal_retrieval.v0",
+    "request_id": "demo-001",
+    "query": "منحة النقل في قطاع البناء",
+    "reference_date": "2024-01-15",
+    "sector": "btp",
+    "worker_category": null,
+    "top_k": 10,
+    "lang": "ar"
+  },
+  "response": {
+    "contract_version": "legal_retrieval.v0",
+    "request_id": "demo-001",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 12,
+        "article": "الفصل 50 (جديد)",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 12,
+        "article": "الفصل 50",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 13,
+        "article": "الفصل 51 (جديد)",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D11"
+      },
+      {
+        "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+        "page": 10,
+        "article": "الفصول 38-39-40-41",
+        "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+        "decision_ref": "D18"
+      }
+    ],
+    "refus": null,
+    "computed_by": "legal_retrieval.search.mock",
+    "mode": "mock",
+    "results": [
+      {
+        "source_id": "MOCK-CCS-BTP",
+        "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+        "sector": "btp",
+        "related": [],
+        "page": 12,
+        "article_id": "MOCK-CCS-BTP-ART-50-v2",
+        "version_group": "MOCK-CCS-BTP-ART-50",
+        "version": 2,
+        "article_number": 50,
+        "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50 (جديد)",
+        "text": "[MOCK] الفصل 50 (جديد): منحة النقل — نص تجريبي للنسخة الجديدة.",
+        "effective_from": "2021-12-01",
+        "effective_to": null,
+        "status": "en_vigueur",
+        "applicable_at_reference_date": true,
+        "modified": true,
+        "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+        "previous_version_available": true,
+        "score": 0.93,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 12,
+          "article": "الفصل 50 (جديد)",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
+      },
+      {
+        "source_id": "MOCK-CCS-BTP",
+        "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+        "sector": "btp",
+        "related": [],
+        "page": 12,
+        "article_id": "MOCK-CCS-BTP-ART-50-v1",
+        "version_group": "MOCK-CCS-BTP-ART-50",
+        "version": 1,
+        "article_number": 50,
+        "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 50",
+        "text": "[MOCK] الفصل 50: منحة النقل — نص تجريبي للنسخة القديمة.",
+        "effective_from": null,
+        "effective_to": "2021-11-30",
+        "status": "modifie",
+        "applicable_at_reference_date": false,
+        "modified": false,
+        "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+        "previous_version_available": null,
+        "score": 0.93,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 12,
+          "article": "الفصل 50",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
+      },
+      {
+        "source_id": "MOCK-CCS-BTP",
+        "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+        "sector": "btp",
+        "related": [
+          "MOCK-CCS-BTP-ART-50"
+        ],
+        "page": 13,
+        "article_id": "MOCK-CCS-BTP-ART-51-v2",
+        "version_group": "MOCK-CCS-BTP-ART-51",
+        "version": 2,
+        "article_number": 51,
+        "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 51 (جديد)",
+        "text": "[MOCK] الفصل 51 (جديد): منح القفة والتنقل — نص تجريبي.",
+        "effective_from": null,
+        "effective_to": null,
+        "status": "en_vigueur",
+        "applicable_at_reference_date": true,
+        "modified": true,
+        "amended_by": null,
+        "previous_version_available": false,
+        "score": 0.88,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 13,
+          "article": "الفصل 51 (جديد)",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D11"
+        }
+      },
+      {
+        "source_id": "MOCK-CCS-BTP",
+        "source_title": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة (MOCK)",
+        "sector": "btp",
+        "related": [],
+        "page": 10,
+        "article_id": "MOCK-CCS-BTP-ART-39-v1",
+        "version_group": "MOCK-CCS-BTP-ART-39",
+        "version": 1,
+        "article_number": 39,
+        "hierarchy_path": "اتفاقية مشتركة قطاعية > البناء والأشغال العامة > الفصل 39",
+        "text": "[MOCK] الفصول 38-39-40-41: (ألغيت بمقتضى الملحق التعديلي عدد 5)",
+        "effective_from": null,
+        "effective_to": null,
+        "status": "abroge",
+        "applicable_at_reference_date": false,
+        "modified": false,
+        "amended_by": "MOCK-CCS-BTP-AVENANT-5",
+        "previous_version_available": null,
+        "score": 0.61,
+        "citation": {
+          "source_file": "data/raw/pdf/[MOCK] الاتفاقية المشتركة القطاعية للبناء والأشغال العامة.pdf",
+          "page": 10,
+          "article": "الفصول 38-39-40-41",
+          "data_file": "data/processed/legal_corpus/legal_articles.jsonl",
+          "decision_ref": "D18"
+        }
+      }
+    ]
+  }
+}

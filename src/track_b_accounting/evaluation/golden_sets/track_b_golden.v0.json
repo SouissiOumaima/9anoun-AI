@@ -1,6 +1,6 @@
 {
  "version": "track_b_golden.v0",
- "description": "Jeu de référence de l'évaluation Track B. Valeurs attendues lues dans les PDF de data/raw/pdf/ (lecture visuelle, 2026-10-09), jamais dans data/processed/ ni dans le code. certitude : L = lu directement, C = calculé à la main à partir de cellules lues, I = interprétation (decision = Dn). verification_humaine = true quand DS5 a vérifié le cas sur le PDF.",
+ "description": "Jeu de référence de l'évaluation Track B. Valeurs attendues lues dans les PDF de data/raw/pdf/ (lecture visuelle, 2026-10-09 ; TB-48 à TB-63 : 2026-10-13, 300 dpi en pixels natifs), jamais dans data/processed/ ni dans le code. certitude : L = lu directement, C = calculé à la main à partir de cellules lues, I = interprétation (decision = Dn). verification_humaine = true quand DS5 a vérifié le cas sur le PDF.",
  "convention_colonnes": "col. = degré ; le degré 1 est la colonne la plus à droite",
  "cases": [
   {
@@ -1514,6 +1514,519 @@
     "emplacement": "tableau 2, ligne 3, col. 7 « 12-15 »"
    },
    "note": "Anomalie d'incrément conservée telle qu'imprimée (D9)."
+  },
+  {
+   "id": "TB-48",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "education_specialisee",
+     "categorie": "III",
+     "date": "2022-03-01",
+     "anciennete_annees": 21
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1323.587",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 21,
+    "emplacement": "جدول الأجور عدد 1 (أعوان التربية المختصون, 2021-12-01), ligne « III », col. degré 11 (« الأقدمية الفعلية » 22)",
+    "valeur_imprimee": "1 323,587"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-49",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "sport",
+     "categorie": "I",
+     "date": "2023-09-01",
+     "anciennete_annees": 25
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "716.630",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 24
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 24,
+    "emplacement": "جدول الأجور عدد 7 (أعوان الرياضة, 2023-01-01, bas de page), ligne « I », col. degré 13 (« الأقدمية الفعلية » 26)",
+    "valeur_imprimee": "716,630"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-50",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "ouvriers_administratifs_surveillants",
+     "categorie": "V",
+     "date": "2024-03-01",
+     "anciennete_annees": 17
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "906.083",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 28
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 28,
+    "emplacement": "جدول الأجور عدد 13 (العملة والأعوان الإداريين و القيمين, 2024-01-01, haut de page), ligne « V », col. degré 9 (« الأقدمية الفعلية » 18)",
+    "valeur_imprimee": "906,083"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-51",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D23",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "techniciens",
+     "categorie": "1",
+     "date": "2023-04-01",
+     "anciennete_annees": 11
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1119.767",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 25,
+    "emplacement": "جدول الأجور عدد 9 (الأعوان الفنيين, 2023-01-01, bas de page), ligne « I », col. degré 6 (« الأقدمية الفعلية » 12)",
+    "valeur_imprimee": "1 119,767"
+   },
+   "note": "Valeur lue en pixels natifs (2026-10-13) ; catégorie demandée « 1 » : alias de la ligne « I » (numéro de l'annexe 4, D23) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-52",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "techniciens",
+     "categorie": "III+II",
+     "date": "2025-01-15",
+     "anciennete_annees": 23
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1519.237",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 28
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 28,
+    "emplacement": "جدول الأجور عدد 14 (الأعوان الفنيين, 2024-01-01, bas de page), ligne « III+II », col. degré 12 (« الأقدمية الفعلية » 24) ; date après le 2024-01-01 : grille 2024 (D6)",
+    "valeur_imprimee": "1 519,237"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-53",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "formateurs_professionnels",
+     "categorie": "II",
+     "date": "2022-07-01",
+     "anciennete_annees": 27
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1018.335",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 23,
+    "emplacement": "جدول الأجور عدد 5 (المكونين المهنيين, 2021-12-01), ligne « II », col. degré 14 (« الأقدمية الفعلية » 28)",
+    "valeur_imprimee": "1 018,335"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; degré k lu comme couvrant de 2k−2 à 2k ans (en-tête « الأقدمية الفعلية » : un seul nombre par degré, D23)."
+  },
+  {
+   "id": "TB-54",
+   "categorie": "piege",
+   "certitude": "I",
+   "decision": "D23",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "techniciens",
+     "categorie": "II",
+     "date": "2024-06-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Catégorie inconnue : 'II' pour techniciens (attendu : I, III+II ; alias : 1).",
+    "message_ar": "صنف غير معروف: 'II' لفئة techniciens."
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 28,
+    "emplacement": "جدول الأجور عدد 14 : lignes « I » et « III+II » seulement ; « II » n'est ni une ligne ni un alias admis (D23, décision 3)"
+   }
+  },
+  {
+   "id": "TB-55",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D23",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "sport",
+     "categorie": "II",
+     "date": "2024-06-01",
+     "anciennete_annees": 32
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 7,
+    "emplacement": "art. 12 (جديد) ب, p.7 ; grilles p.21-29 : dernier degré 16, « الأقدمية الفعلية » 32 (vu p.27, table 12)",
+    "texte_lu": "يتمثل التدرج في التحول من درجة إلى درجة أعلى مباشرة بصورة متواصلة على أساس الأقدمية في التدرج طبق سلالم الأجور الملحقة بهذه الاتفاقية"
+   }
+  },
+  {
+   "id": "TB-56",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "education_specialisee",
+     "categorie": "I",
+     "date": "2022-06-01",
+     "anciennete_annees": 10
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 21,
+    "emplacement": "جدول الأجور عدد 1 : « الأقدمية الفعلية » 10 sous le degré 5 et 12 sous le degré 6 ; 10 ans est la borne commune"
+   }
+  },
+  {
+   "id": "TB-57",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "formateurs_professionnels",
+     "categorie": "V",
+     "date": "2024-06-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 29,
+    "emplacement": "جدول الأجور عدد 15 (المكونين المهنيين) : quatre lignes « I » à « IV », pas de ligne « V »"
+   }
+  },
+  {
+   "id": "TB-58",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D23",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "code": "prime_frais_scolaires",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 14,
+    "emplacement": "art. 42 (جديد) 4 : montant sans date d'effet",
+    "texte_lu": "منحة التكاليف المدرسية: حددت هذه المنحة بـ10 د لكل ابن في الدراسة تسند في بداية السنة الدراسية"
+   }
+  },
+  {
+   "id": "TB-59",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D23",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "code": "prime_production",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 14,
+    "emplacement": "art. 42 (جديد) 8 : formule (عدد مهني), pas de montant",
+    "texte_lu": "تسند هذه المنحة لكل الأصناف وضبط مقدارها الأقصى بأجرة شهرين"
+   }
+  },
+  {
+   "id": "TB-60",
+   "categorie": "piege",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "population": "sport",
+     "categorie": "I",
+     "date": "2021-11-30",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 21,
+    "emplacement": "titre du جدول الأجور عدد 1",
+    "texte_lu": "يقع العمل به بداية من غرة ديسمبر 2021"
+   }
+  },
+  {
+   "id": "TB-61",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "code": "prime_transport",
+     "date": "2023-03-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "38.685",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 14,
+    "emplacement": "art. 42 (جديد) 1, « بعنوان سنة 2023 », ligne « بالنسبة للإطارات »",
+    "texte_lu": "بالنسبة للإطارات تقدر بـ 38.685 د شهريا بداية من غرة جانفي 2023",
+    "valeur_imprimee": "38.685"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; date d'effet = « بداية من » (D23)."
+  },
+  {
+   "id": "TB-62",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "code": "prime_presence",
+     "date": "2022-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "6.281",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 14,
+    "emplacement": "art. 42 (جديد) 2, « بعنوان سنة 2022 »",
+    "texte_lu": "بداية من غرة ديسمبر 2021 تقدر بـ 6.281 د شهريا",
+    "valeur_imprimee": "6.281"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; date d'effet = « بداية من » (D23)."
+  },
+  {
+   "id": "TB-63",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+     "code": "prime_specifique_handicap",
+     "date": "2024-02-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "61.944",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+    "page": 14,
+    "emplacement": "art. 42 (جديد) 3, « بعنوان سنة 2024 »",
+    "texte_lu": "بداية من غرة جانفي 2024 تقدر بـ 61.944 د في الشهر",
+    "valeur_imprimee": "61.944"
+   },
+   "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; date d'effet = « بداية من » (D23)."
   }
  ]
 }

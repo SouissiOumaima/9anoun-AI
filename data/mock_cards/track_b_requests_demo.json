@@ -107,5 +107,37 @@
     "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4",
                "anciennete_annees": 25, "date": "2024-06-01"},
     "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-15-prime-transport-associations",
+    "operation": "prime",
+    "params": {"secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES", "code": "prime_transport", "date": "2024-06-01",
+               "groupe": "execution_et_gestion"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-16-salaire-associations-alias-categorie",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES", "population": "ouvriers_administratifs_surveillants",
+               "categorie": "3", "anciennete_annees": 7, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-17-refus-associations-anciennete-33-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES", "population": "sport", "categorie": "I",
+               "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-18-salaire-associations-date-effet-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES", "population": "education_specialisee",
+               "categorie": "II", "anciennete_annees": 1, "date": "2023-01-01"},
+    "lang": "ar"
   }
 ]

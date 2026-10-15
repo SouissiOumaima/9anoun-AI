@@ -112,9 +112,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_9_ok_5_refus():
+def test_bilan_demo_12_ok_6_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 9 and list(statuts.values()).count("refus") == 5
+    assert list(statuts.values()).count("ok") == 12 and list(statuts.values()).count("refus") == 6
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -122,6 +122,7 @@ def test_bilan_demo_9_ok_5_refus():
         "demo-09-refus-categorie-inconnue": "PARAM_INVALIDE",
         "demo-10-refus-secteur-non-couvert": "SOURCE_MANQUANTE",
         "demo-13-refus-btp-anciennete-27-ans": "SOURCE_MANQUANTE",
+        "demo-17-refus-associations-anciennete-33-ans": "SOURCE_MANQUANTE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -132,7 +133,7 @@ def test_demo_10_secteur_fictif():
     """Depuis D9, BATIMENT_TRAVAUX_PUBLICS est couvert : demo-10 garde un refus « secteur inconnu » avec un code fictif."""
     rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
     assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
-                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS).")
+                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).")
 
 
 def test_montants_demo_identiques_a_calc():
@@ -241,7 +242,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 14 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 18 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -280,9 +281,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_14_echanges():
+def test_demo_affiche_18_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 14 and "Bilan : 9 ok, 5 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 18 and "Bilan : 12 ok, 6 refus, 0 erreur(s)." in texte
