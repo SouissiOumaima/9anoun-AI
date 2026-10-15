@@ -1075,6 +1075,14 @@ déduites ; elles sont à valider par un juriste.
 **Statut** : ⏳ v0 proposée à DS1 (Achref) ; cohérence avec le registre et le contrat
 prouvée par `test_legal_vocabulary.py`.
 
+**D21 v0.1 (2026-10-15)** — demandé par DS5 pour la table des secteurs (D30) :
+- « bâtiment » n'est plus un alias de `btp` : il rejoint l'ambiguïté « البناء / construction »
+  (le code DS5 `METALLURGIE_BATIMENT` le contient aussi) → DS1 demande une précision ;
+- « métallurgie » n'est pas un alias de `construction_metallique` : la convention couvre la
+  seule construction métallique ; sans précision, `sector = null` ;
+- `associations` est le code stable ; le vocabulaire DS2 reste la source de vérité, la table
+  `src/shared/sectors/` est vérifiée contre lui.
+
 ---
 
 ### D22 — Opération `get_article` : un article par sa référence, sur le corpus réel

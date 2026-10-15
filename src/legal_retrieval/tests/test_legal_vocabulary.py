@@ -54,3 +54,12 @@ def test_mock_and_examples_only_use_vocabulary_codes() -> None:
         response = handle({**_demo()["request"], field: code})
         assert response["status"] in ("ok", "refus")
         assert not response["refus"] or response["refus"]["code"] != "PARAM_INVALIDE"
+
+
+def test_ambiguous_words_are_never_plain_aliases() -> None:
+    """D21 v0.1: "bâtiment" and "métallurgie" make DS1 ask, they never pick a sector."""
+    data = load_vocabulary()
+    aliases = {a.lower() for s in data["sectors"] for a in s["aliases"]}
+    assert "bâtiment" not in aliases and "métallurgie" not in aliases
+    ambiguous = " ".join(a["alias"] for a in data["sector_ambiguities"])
+    assert "bâtiment" in ambiguous and "métallurgie" in ambiguous
