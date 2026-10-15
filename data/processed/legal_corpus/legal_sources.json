@@ -1,0 +1,101 @@
+[
+  {
+    "source_id": "CCS-GARDIENNAGE",
+    "title_ar": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+    "source_type": "convention_sectorielle",
+    "sector": "gardiennage_securite_transport_fonds",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.json"
+  },
+  {
+    "source_id": "SMIG-GRILLE",
+    "title_ar": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية",
+    "source_type": "bareme_salaire_minimum",
+    "sector": null,
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.json"
+  },
+  {
+    "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+    "title_ar": "الاتفاقية المشتركة القطاعية  للبناء المعدني",
+    "source_type": "convention_sectorielle",
+    "sector": "construction_metallique",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاتفاقية المشتركة القطاعية  للبناء المعدني.json"
+  },
+  {
+    "source_id": "CCS-BTP",
+    "title_ar": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة",
+    "source_type": "convention_sectorielle",
+    "sector": "btp",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.json"
+  },
+  {
+    "source_id": "CCS-ASSURANCE",
+    "title_ar": "الاتفاقية المشتركة القطاعية للتأميـن",
+    "source_type": "convention_sectorielle",
+    "sector": "assurance",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاتفاقية المشتركة القطاعية للتأميـن.json"
+  },
+  {
+    "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+    "title_ar": "الاتفاقية المشتركة القطاعية للتعليم الخا ص",
+    "source_type": "convention_sectorielle",
+    "sector": "enseignement_prive",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.json"
+  },
+  {
+    "source_id": "CCS-ASSOCIATIONS",
+    "title_ar": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن",
+    "source_type": "convention_sectorielle",
+    "sector": "associations",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.json"
+  },
+  {
+    "source_id": "CC-CADRE",
+    "title_ar": "الاطارية",
+    "source_type": "convention_cadre",
+    "sector": null,
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "الاطارية.json"
+  },
+  {
+    "source_id": "CCS-BANQUES",
+    "title_ar": "البنوك",
+    "source_type": "convention_sectorielle",
+    "sector": "banques",
+    "language": "ar",
+    "official_reference": null,
+    "publication_date": null,
+    "effective_date": null,
+    "file_name": "البنوك.json"
+  }
+]

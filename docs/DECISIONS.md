@@ -1357,4 +1357,4 @@ des sources.
 **Confidentialité** : les sources (`data/raw/pdf`, `data/raw/txt`) sont déjà dans ce dépôt
 privé ; le corpus traité n'en est qu'une transformation, il n'augmente pas l'exposition.
 
-**Statut** : ⏳ à valider par DS5 (Oumaima).
+**Statut** : ✅ accepté par DS5 (Oumaima) le 2026-10-14 ; corpus commité.
