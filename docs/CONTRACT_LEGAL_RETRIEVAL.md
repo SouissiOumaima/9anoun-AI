@@ -66,6 +66,24 @@ vrai handler et un test vérifie qu'elles restent à jour.
 
 Aucun champ supplémentaire n'est accepté (`additionalProperties: false`).
 
+### Valeurs reconnues — vocabulaire (D21)
+
+Fichier de référence : `data/mock_cards/legal_retrieval_vocabulary.v0.json`
+(schéma : `data/mock_cards/schemas/legal_retrieval_vocabulary.v0.schema.json`).
+
+| Champ | Valeurs | Règle pour DS1 |
+|---|---|---|
+| `sector` | 7 codes : `gardiennage_securite_transport_fonds`, `construction_metallique`, `btp`, `associations`, `assurance`, `enseignement_prive`, `banques` (libellés FR/AR et alias dans le fichier) | valeur explicite dans la question, sinon `null`. « البناء / construction / bâtiment » est ambigu (`btp` ou `construction_metallique`) : demander une précision ; « métallurgie » : demander une précision, sinon `null` (D21 v0.1) |
+| `worker_category` | 9 codes tirés du corpus : `execution`, `maitrise`, `cadre`, `agent_service`, `agent_realisation`, `agent_encadrement`, `enseignant`, `educateur`, `administratif` | valeur explicite, sinon `null` ; « ouvrier » n'est pas une catégorie de classement → `null` |
+| `reference_date` | `AAAA-MM-JJ` (date réelle) ; `null` = date du jour | date d'application de la loi, pas date de la question |
+
+Accès Python, sans recopier les listes :
+```python
+from src.legal_retrieval.contract.vocabulary import sector_codes, worker_category_codes
+```
+Le statut d'emploi (permanent / temporaire / occasionnel) est une **proposition v0.1** :
+il n'est pas encore un champ de la requête.
+
 ## Réponse — `legal_retrieval_search_response.v0.schema.json`
 
 L'enveloppe est **conforme au schéma commun de l'équipe**
@@ -91,6 +109,48 @@ Chaque résultat contient : `citation` (voir ci-dessus), `article_id` (ex. `CCS-
 normalisé**), `page`, `effective_from`, `effective_to` (null = en vigueur),
 `status` (`en_vigueur` / `modifie` / `abroge` / `inconnu`), `sector` (null = tous
 secteurs), `related` (voisins dans le graphe), `score` (0–1).
+
+## Opération `get_article` — consulter un article par sa référence (D22)
+
+Besoin exprimé par DS4 (et DS1 pour réafficher une citation). Requête :
+`data/mock_cards/schemas/legal_retrieval_get_article_request.v0.schema.json`.
+**Réponse : exactement le format de `search`** (même enveloppe `common.v0`, mêmes résultats,
+toutes les versions de l'article, la plus récente d'abord).
+
+| Désigner l'article | Exemple |
+|---|---|
+| `article_id` (avec ou sans `-vN`) | `{"contract_version": "legal_retrieval.v0", "article_id": "CCS-BTP-ART-39"}` |
+| `source_id` + `article` | `{"contract_version": "legal_retrieval.v0", "source_id": "CCS-BTP", "article": "7BIS"}` |
+
+`article` : `"39"`, `"7BIS"` (مكرر), `"54TER"` (ثالثا / مثلث), `"46-3"` (sous-article).
+Une source qui contient plusieurs textes (Assurance) renvoie l'article de chaque texte
+(identifiants `-P2-`, `-P3-`, chemin `جزء N`).
+
+| Cas | Réponse | HTTP |
+|---|---|---|
+| Article trouvé (y compris **abrogé** : la mention d'abrogation est la réponse) | `ok`, `mode` `live` | 200 |
+| Article inconnu | `refus` `SOURCE_MANQUANTE` | 200 |
+| Trou vérifié à la main (Cadre 5, Assurance 40 : présents dans le PDF, absents du corpus ; Cadre 40, Associations 20 : absents du PDF) | `refus` `SOURCE_MANQUANTE` **avec la raison** en FR/AR | 200 |
+| Requête non conforme (aucune référence, les deux à la fois, format invalide) | `refus` `PARAM_INVALIDE` | 422 |
+
+```python
+from src.legal_retrieval.contract.get_article import get_article   # appel Python direct
+```
+HTTP : `POST /legal/article`. **Mode** : `live` dès que le corpus a été ingéré sur la machine
+(`python -m src.legal_retrieval.corpus.ingest_sections`, données hors git) ; sinon `mock`
+(articles de démonstration, jamais un article inventé). `/health` indique `get_article_mode`.
+v0 : `reference_date` est acceptée mais le filtre daté arrive au Sprint 5 ;
+`applicable_at_reference_date` = version consolidée en vigueur ; `page` = `null` (pas de page
+par article dans le digest Tradrly).
+
+### Cas réels pour DS4 — `data/mock_cards/legal_retrieval_ds4_cases.v0.json`
+
+12 cas `get_article` sur des **articles réels** (mode `live`) pour tester le raisonnement
+juridique temporel : abrogé avec avenant daté, abrogé sans numéro d'avenant, abrogation dans
+une autre convention, modifié « (جديد) » sans ancienne version, en vigueur non modifié, bis,
+ter, sous-article, annexe, trou motivé, article inexistant ; plus les dates des avenants des
+sources concernées. Généré (et vérifié cas par cas) par
+`python -m src.legal_retrieval.tools.build_ds4_mock`.
 
 ## Règle « toutes les versions » (D17)
 

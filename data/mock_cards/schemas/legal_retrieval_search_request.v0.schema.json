@@ -38,14 +38,14 @@
         "string",
         "null"
       ],
-      "description": "Secteur du travailleur, ex. banques, btp, assurance."
+      "description": "Secteur du travailleur : un code du vocabulaire D21 (data/mock_cards/legal_retrieval_vocabulary.v0.json), ex. banques, btp. null = non précisé."
     },
     "worker_category": {
       "type": [
         "string",
         "null"
       ],
-      "description": "Catégorie du travailleur, ex. ouvrier, cadre."
+      "description": "Catégorie du travailleur : un code du vocabulaire D21, ex. execution, maitrise, cadre. null = non précisée."
     },
     "top_k": {
       "type": "integer",

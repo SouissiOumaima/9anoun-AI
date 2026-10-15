@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vocabulaire DS2 legal_retrieval.v0 (D21)",
+  "type": "object",
+  "required": ["vocabulary_version", "contract_version", "decision_ref", "reference_date",
+               "sectors", "all_sectors_sources", "worker_categories", "employment_statuses"],
+  "properties": {
+    "vocabulary_version": {"const": "legal_retrieval.vocabulary.v0"},
+    "contract_version": {"const": "legal_retrieval.v0"},
+    "decision_ref": {"type": "string", "pattern": "^D[0-9]+$"},
+    "sectors": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["code", "source_id", "label_fr", "label_ar", "aliases"],
+        "properties": {
+          "code": {"$ref": "#/$defs/code"},
+          "source_id": {"type": "string", "minLength": 1},
+          "label_fr": {"type": "string", "minLength": 1},
+          "label_ar": {"type": "string", "minLength": 1},
+          "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "worker_categories": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["code", "label_fr", "label_ar", "corpus_terms_ar", "corpus_counts"],
+        "properties": {
+          "code": {"$ref": "#/$defs/code"},
+          "label_fr": {"type": "string", "minLength": 1},
+          "label_ar": {"type": "string", "minLength": 1},
+          "corpus_terms_ar": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "corpus_counts": {"type": "object", "minProperties": 1,
+                            "additionalProperties": {"type": "integer", "minimum": 1}},
+          "sectors": {"type": "array", "items": {"$ref": "#/$defs/code"}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "code": {"type": "string", "pattern": "^[a-z][a-z_]*$",
+             "description": "Code stable transmis par DS1 (ASCII, snake_case)."}
+  }
+}

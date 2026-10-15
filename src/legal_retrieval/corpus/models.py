@@ -70,3 +70,11 @@ class LegalArticle(BaseModel):
     # Non-empty -> never cite these figures without checking the PDF.
     # None = check not run (no PDF available).
     numbers_unverified: list[str] | None = None
+    # --- Sprint 2 (reader of the Tradrly sections, D20) ---
+    part: int = 1  # >1 when the numbering restarts inside one file (Assurance)
+    modified: bool = False  # "(جديد)": consolidated text of a modified article
+    amended_by: str | None = None  # avenant id, e.g. "CCS-BTP-AVENANT-5"
+    # False when the text before modification is NOT in the corpus (R6, D17)
+    previous_version_available: bool = True
+    # how the article was found: "section" | "split_from_section" | "abrogation_line"
+    origin: str = "section"

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "legal_retrieval_get_article_request.v0.schema.json",
+  "title": "Legal retrieval — get_article request",
+  "description": "v0 — D22. Consulter un article précis par sa référence (besoin DS4 / DS1). Deux façons de désigner l'article : article_id (ex. CCS-BTP-ART-39-v1 ou sans version CCS-BTP-ART-39), OU source_id + article (ex. CCS-BTP + \"39\"). La réponse a EXACTEMENT le format de legal_retrieval_search_response.v0 (même enveloppe common.v0, mêmes résultats), toutes les versions de l'article étant renvoyées (D17).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version"],
+  "oneOf": [
+    {"required": ["article_id"], "not": {"anyOf": [{"required": ["source_id"]}, {"required": ["article"]}]}},
+    {"required": ["source_id", "article"], "not": {"required": ["article_id"]}}
+  ],
+  "properties": {
+    "contract_version": {"const": "legal_retrieval.v0"},
+    "request_id": {
+      "type": "string", "minLength": 1, "maxLength": 128,
+      "description": "Identifiant de traçabilité (audit trail). Même définition que common.v0 $defs/request_id."
+    },
+    "article_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]*-(ART-[0-9]+(BIS|TER|QUATER|-[0-9]+)?|ANNEXE-[0-9]+)(-DUP[0-9]+)?(-v[0-9]+)?$",
+      "description": "Identifiant DS2, avec ou sans version (-vN). Sans version : toutes les versions."
+    },
+    "source_id": {
+      "type": "string", "pattern": "^[A-Z][A-Z0-9-]*$",
+      "description": "Source du vocabulaire D21, ex. CCS-BTP, CC-CADRE, SMIG-GRILLE."
+    },
+    "article": {
+      "type": "string", "pattern": "^[0-9]+(BIS|TER|QUATER|-[0-9]+)?$",
+      "description": "Numéro de l'article dans la source : \"39\", \"7BIS\" (مكرر), \"54TER\" (ثالثا), \"46-3\"."
+    },
+    "reference_date": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "format": "date",
+      "description": "Date de référence (AAAA-MM-JJ), null = date du jour. v0 : transmise, filtre temporel complet au Sprint 5."
+    },
+    "lang": {"enum": ["fr", "ar"], "default": "ar"}
+  }
+}
