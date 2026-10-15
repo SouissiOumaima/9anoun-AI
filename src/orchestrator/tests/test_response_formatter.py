@@ -3,8 +3,9 @@ from types import SimpleNamespace
 from src.orchestrator.response_formatter import UserResponseCode, format_flow_result
 
 
-def result(state, *, response=None, reason=None):
-    return SimpleNamespace(request_id="request-1", state=state, tool_response=response, reason=reason)
+def result(state, *, response=None, reason=None, agent=None):
+    tool_call = SimpleNamespace(agent=agent) if agent else None
+    return SimpleNamespace(request_id="request-1", state=state, tool_response=response, reason=reason, tool_call=tool_call)
 
 
 def test_success_response_is_bilingual_and_safe() -> None:
@@ -79,3 +80,11 @@ def test_error_type_and_ds3_code_are_normalized_without_leaking_messages() -> No
         formatted = format_flow_result(result("failed", response={"status": "error", "error": error}))
         assert formatted.code is UserResponseCode.TOOL_TIMEOUT
         assert "secret" not in str(formatted.to_payload())
+
+
+def test_ds5_refusal_keeps_its_public_message_and_code() -> None:
+    formatted = format_flow_result(result("completed", agent="track_b_accounting", response={
+        "status": "refused", "error": {"code": "PARAM_INVALIDE", "message_fr": "Catégorie inconnue.", "message_ar": "الصنف غير معروف."},
+    }))
+    assert formatted.message_fr == "Catégorie inconnue."
+    assert formatted.specialist_code == "PARAM_INVALIDE"

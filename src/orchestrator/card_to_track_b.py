@@ -62,8 +62,10 @@ class CardToTrackBMapper:
             "code": code,
             "date": date,
         }
+        # A card value can be displayed as a suggestion by the UI, but the
+        # transport group remains an interpretation the user must confirm.
         if code == "prime_transport" and "groupe" not in (extra_params or {}):
-            values["groupe"] = defaults.get("groupe")
+            values["groupe"] = None
         values.update(extra_params or {})
         return _prepared("prime", values)
 

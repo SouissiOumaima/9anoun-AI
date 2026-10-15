@@ -100,7 +100,7 @@ def test_salary_base_prompt_lists_only_missing_fields() -> None:
 
 def test_btp_occasionnel_prompt_omits_forbidden_seniority_and_calls_ds5() -> None:
     result = StateMachine(success_executor).run(envelope(
-        "Calcule le salaire de base BTP pour un ouvrier occasionnel, catégorie 7, "
+        "Calcule le salaire de base BTP pour population ouvriers_occasionnels, catégorie 7, "
         "sous-catégorie 2 au 2023-06-01.", card_type=CardType.COMPANY,
     ))
     request = result.tool_call.params["track_b_request"]

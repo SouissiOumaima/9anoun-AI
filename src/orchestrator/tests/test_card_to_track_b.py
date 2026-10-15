@@ -36,11 +36,11 @@ def test_missing_date_requires_clarification_instead_of_defaulting(setup) -> Non
     assert prepared.missing == ("date",)
 
 
-def test_prime_uses_card_default_only_when_present(setup) -> None:
+def test_prime_group_from_card_requires_user_confirmation(setup) -> None:
     mapper, actor, context = setup
     prepared = mapper.prepare_prime(actor=actor, context=context, code="prime_transport", date="2024-06-01")
-    assert prepared.ready
-    assert prepared.params["groupe"] == "cadres"
+    assert not prepared.ready
+    assert prepared.missing == ("groupe",)
 
 
 def test_card_mapper_keeps_authorization_boundary(setup) -> None:

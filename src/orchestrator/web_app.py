@@ -38,7 +38,7 @@ _WEB_AUDIT = AuditTrail()
 _WEB_APPROVALS = ApprovalWorkflow(_WEB_AUDIT)
 _DOCUMENT_REVIEWS: dict[str, dict[str, Any]] = {}
 _DOCUMENT_REVIEWS_LOCK = Lock()
-_REVIEW_MIN_CONFIDENCE = 0.90  # Threshold agreed by DS5 for payroll-bound facts.
+_REVIEW_MIN_CONFIDENCE = 0.90  # Local UI review threshold for payroll-bound facts.
 _APPROVAL_ACTIONS = {
     "generate_payroll_report": {
         "card_type": CardType.COMPANY,
@@ -239,7 +239,7 @@ def _create_document_review(
         }
     return {
         "review_id": review_id, "complete": data.get("complete", result.get("complete", True)),
-        "threshold": _REVIEW_MIN_CONFIDENCE, "fields": fields,
+        "threshold": _REVIEW_MIN_CONFIDENCE, "mode": data.get("mode"), "fields": fields,
     }
 
 
@@ -297,13 +297,20 @@ def calculate_from_document_review(payload: Mapping[str, Any]) -> dict[str, Any]
         return {"error": "operation_not_available"}
     params = dict(candidate["params"])
     permitted = {
-        "salaire_base": {"population", "sous_categorie"},
+        "salaire_base": {"population", "sous_categorie", "anciennete_annees"},
         "prime": {"code", "groupe", "transport_assure", "variante", "condition_remplie"},
         "smig": set(),
     }[operation]
     for key in permitted:
         value = user_inputs.get(key)
-        if isinstance(value, (str, bool)) and value != "":
+        if key == "anciennete_annees" and isinstance(value, str) and value:
+            try:
+                # The value is user-confirmed; float is only the JSON transport
+                # representation. DS5 converts it with Decimal(str(value)).
+                params[key] = float(Decimal(value.replace(",", ".")))
+            except InvalidOperation:
+                return {"error": "invalid_seniority_confirmation"}
+        elif isinstance(value, (str, bool)) and value != "":
             params[key] = value
     result = calculate({"operation": operation, "language": language, "card_id": review["card_id"], "params": params})
     result["document_citations"] = list(review["citations"])

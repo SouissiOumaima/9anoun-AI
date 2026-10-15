@@ -54,6 +54,7 @@ def test_document_review_requires_user_selection_and_never_starts_calculation() 
     })
     review = response["document_review"]
     assert review["threshold"] == 0.9
+    assert review["mode"] == "mock"
     states = {field["name"]: field["state"] for field in review["fields"]}
     assert states["base_salary"] == "verified"
     assert states["cnss_employee"] == "unavailable"
@@ -91,13 +92,27 @@ def test_confirmed_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_c
     }
     calculation = calculate_from_document_review({
         "review_id": review["review_id"], "operation": "salaire_base", "language": "fr",
-        "user_inputs": {"population": "admin_tech", "secteur": "INTERDIT"},
+        "user_inputs": {"population": "admin_tech", "anciennete_annees": "6.495890", "secteur": "INTERDIT"},
     })
     assert calculation["user_response"]["status"] == "success"
     assert calculation["prepared_params"]["secteur"] == "METALLURGIE_BATIMENT"
     assert calculation["document_citations"]
     assert calculation["payroll_citations"]
     assert calculation["salary_comparison_warning"] is not None
+
+
+def test_document_seniority_is_only_a_proposal_until_the_user_confirms_it() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    review = response["document_review"]
+    confirmed = confirm_document_review({
+        "review_id": review["review_id"], "confirmed_fields": ["period_start", "hire_date", "category"],
+    })
+    salary = next(item for item in confirmed["ds5_prefill"]["candidates"] if item["operation"] == "salaire_base")
+    assert "anciennete_annees" not in salary["params"]
+    assert salary["proposed_values"]["anciennete_annees"]
 
 
 def test_document_review_cannot_call_ds5_before_confirmation() -> None:
@@ -141,7 +156,7 @@ def test_chat_asks_for_clarification_without_guessing_payroll_fields() -> None:
 
 def test_chat_calculates_btp_occasional_salary_from_prompt() -> None:
     response = chat({
-        "message": "Calcule le salaire de base BTP pour un ouvrier occasionnel, catégorie 7, "
+        "message": "Calcule le salaire de base BTP pour population ouvriers_occasionnels, catégorie 7, "
         "sous-catégorie 2 au 2023-06-01.",
         "language": "fr", "card_id": "company-demo-001",
     })

@@ -38,10 +38,10 @@ def build_payroll_prefill(
         base_params["categorie"] = category
     if date:
         base_params["date"] = date
+    proposed_values: dict[str, str] = {}
     if hire_date and date:
         try:
-            # Decimal preserves an exact boundary for DS5 to refuse when its grid requires it.
-            base_params["anciennete_annees"] = float(calculate_seniority_years(
+            proposed_values["anciennete_annees"] = str(calculate_seniority_years(
                 hire_date=hire_date, reference_date=date,
             ))
         except SeniorityError:
@@ -49,7 +49,10 @@ def build_payroll_prefill(
     missing = [key for key in ("secteur", "population", "categorie", "anciennete_annees", "date") if key not in base_params]
     if "population" not in missing:
         raise AssertionError("population is an interpretation and must not be inferred from DS3")
-    out["candidates"].append({"operation": "salaire_base", "params": base_params, "ready": False, "missing": missing})
+    out["candidates"].append({
+        "operation": "salaire_base", "params": base_params, "ready": False, "missing": missing,
+        "proposed_values": proposed_values,
+    })
     prime_params = {"secteur": company_sector, "date": date}
     if all(isinstance(value, str) and value for value in prime_params.values()):
         out["candidates"].append({

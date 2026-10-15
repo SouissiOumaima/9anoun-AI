@@ -34,6 +34,7 @@ class UserResponse:
     message_ar: str
     next_action: str
     request_id: str
+    specialist_code: str | None = None
 
     def to_payload(self) -> dict[str, Any]:
         payload = asdict(self)
@@ -94,7 +95,10 @@ def format_flow_result(result: Any) -> UserResponse:
     if state == "completed":
         tool_status = (result.tool_response or {}).get("status")
         if tool_status == "refused":
-            code = _refusal_code((result.tool_response or {}).get("error"))
+            refusal = (result.tool_response or {}).get("error")
+            code = _refusal_code(refusal)
+            if getattr(getattr(result, "tool_call", None), "agent", None) == "track_b_accounting":
+                return _ds5_refusal_response(refusal, code, result.request_id)
             return _response("refused", code, result.request_id)
         return _response("success", UserResponseCode.SUCCESS, result.request_id)
     if state == "clarification_required":
@@ -131,6 +135,15 @@ def _refusal_code(error: Any) -> UserResponseCode:
     """Map every public specialist refusal (DS2–DS5) to one UI vocabulary."""
 
     return _specialist_error_code(_error_identifier(error)) or UserResponseCode.INVALID_TOOL_RESPONSE
+
+
+def _ds5_refusal_response(error: Any, code: UserResponseCode, request_id: str) -> UserResponse:
+    """Preserve DS5's bilingual, source-aware refusal for the user."""
+
+    if isinstance(error, dict) and all(isinstance(error.get(key), str) and error[key] for key in ("code", "message_fr", "message_ar")):
+        _, _, next_action = _MESSAGES[code]
+        return UserResponse("refused", code, error["message_fr"], error["message_ar"], next_action, request_id, error["code"])
+    return _response("refused", code, request_id)
 
 
 def _error_identifier(error: Any) -> Any:

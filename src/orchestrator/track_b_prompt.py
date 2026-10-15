@@ -102,17 +102,15 @@ def _secteur(message: str) -> str | None:
     return None
 
 
-def _population(message: str, secteur: str | None) -> str | None:
-    if secteur == "BATIMENT_TRAVAUX_PUBLICS":
-        if "occasionnel" in message or "occasionnelle" in message or "العرضي" in message:
-            return "ouvriers_occasionnels"
-        if "permanent" in message or "دائم" in message:
-            return "ouvriers_permanents"
-    if any(term in message for term in ("admin-tech", "admin tech", "administratif", "technicien", "administrative")):
-        return "admin_tech"
-    if any(term in message for term in ("exécution", "execution", "ouvrier", "ouvrière", "عمال")):
-        return "execution"
-    return None
+def _population(message: str, _secteur: str | None) -> str | None:
+    """Accept only a population code explicitly supplied by the user.
+
+    Job titles such as ``technicien`` are not population codes: their meaning
+    changes with the sector and must be proposed/confirmed in the UI.
+    """
+
+    match = re.search(r"\bpopulation\s*(?:=|:)?\s*([a-z][a-z0-9_-]*)", message, re.IGNORECASE)
+    return match.group(1).replace("-", "_") if match else None
 
 
 def _prime_code(message: str) -> str | None:

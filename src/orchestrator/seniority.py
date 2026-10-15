@@ -11,11 +11,11 @@ class SeniorityError(ValueError):
 
 
 def calculate_seniority_years(*, hire_date: str, reference_date: str) -> Decimal:
-    """Return elapsed calendar years, preserving exact anniversary boundaries.
+    """Return a local, reviewable elapsed-years proposal.
 
-    The result is truncated to six decimal places.  If it is exactly a grid
-    boundary, DS5 retains the final refusal/clarification decision; DS1 never
-    shifts it by a day to force a calculation.
+    This helper is not a DS5 business rule.  Its output is presented to the
+    user for confirmation, including on the local 29-February convention.
+    DS5 remains the authority for every grid boundary and refusal.
     """
 
     try:
@@ -42,5 +42,5 @@ def calculate_seniority_years(*, hire_date: str, reference_date: str) -> Decimal
     except ValueError:
         next_anniversary = date(anniversary.year + 1, 2, 28)
     fraction = Decimal((reference - anniversary).days) / Decimal((next_anniversary - anniversary).days)
-    # DS5's agreed rule is strict: never round upward into a higher grid band.
+    # Never round a local proposal upward into a higher grid band.
     return (Decimal(completed_years) + fraction).quantize(Decimal("0.000001"), rounding=ROUND_DOWN)

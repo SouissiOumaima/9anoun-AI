@@ -90,11 +90,14 @@
     const candidates = prefill?.candidates || [];
     if (!candidates.length) return '<p class="review-required">Aucun calcul ne peut être préparé avec les champs confirmés.</p>';
     const options = candidates.map(candidate => `<option value="${escapeHtml(candidate.operation)}">${escapeHtml(candidate.operation)}${candidate.ready ? ' — prêt' : ' — informations à compléter'}</option>`).join('');
+    const salaryCandidate = candidates.find(candidate => candidate.operation === 'salaire_base');
+    const proposedSeniority = salaryCandidate?.proposed_values?.anciennete_annees || '';
     return `<section class="ds5-form"><h4>Calcul DS5 après confirmation</h4>
       <p class="note">Les valeurs lues dans le document ne peuvent pas être modifiées ici. Les champs ci-dessous sont des choix utilisateur obligatoires selon le calcul.</p>
       <div class="grid">
         <label>Calcul <select id="ds5_operation">${options}</select></label>
         <label>Population <input id="ds5_population" placeholder="Ex. admin_tech"></label>
+        <label>Ancienneté proposée à confirmer <input id="ds5_anciennete" value="${escapeHtml(proposedSeniority)}" placeholder="Ex. 6.495890"></label>
         <label>Sous-catégorie <input id="ds5_sous_categorie" placeholder="Si le secteur l’exige"></label>
         <label>Code de prime <input id="ds5_code" placeholder="Ex. prime_transport"></label>
         <label>Groupe <input id="ds5_groupe" placeholder="Ex. cadres"></label>
@@ -125,7 +128,7 @@
     }
     const review = data.document_review;
     if (review?.fields?.length) {
-      html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Seuil d’affichage : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.</p>`;
+      html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Source DS3 : <code>${escapeHtml(review.mode || 'inconnu')}</code> · Seuil d’affichage : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.</p>`;
       html += review.fields.map(field => {
         const unavailable = field.state === 'unavailable';
         const checked = field.state === 'verified' ? ' checked' : '';
@@ -192,7 +195,7 @@
       const transport = $('ds5_transport_assure').value;
       const userInputs = {
         population: $('ds5_population').value.trim(), sous_categorie: $('ds5_sous_categorie').value.trim(),
-        code: $('ds5_code').value.trim(), groupe: $('ds5_groupe').value.trim(),
+        anciennete_annees: $('ds5_anciennete').value.trim(), code: $('ds5_code').value.trim(), groupe: $('ds5_groupe').value.trim(),
       };
       if (transport) userInputs.transport_assure = transport === 'true';
       try {
@@ -208,7 +211,8 @@
           $('ds5Status').textContent = message;
           refreshHistory();
         } else {
-          $('ds5Status').textContent = 'Le calcul a été refusé : complétez ou corrigez les paramètres demandés.';
+          const code = data.user_response?.specialist_code ? ` (${data.user_response.specialist_code})` : '';
+          $('ds5Status').textContent = (data.user_response?.message_fr || 'Le calcul a été refusé.') + code;
         }
       } catch (_) {
         $('ds5Status').textContent = 'Le calcul DS5 n’a pas pu être envoyé.';
