@@ -142,3 +142,34 @@ def test_map_event_evidence_without_sources() -> None:
     )
 
     assert result == []
+
+def test_multiple_sources_do_not_invent_relations() -> None:
+    """Deux preuves ne doivent pas créer de relation supposée."""
+
+    events = [
+        {
+            "event_id": "EV-CONFLICT-001",
+            "date": "2026-09-10",
+            "description": "Date de licenciement contestée.",
+            "source_ids": ["E2", "E3"],
+        }
+    ]
+
+    result = map_event_evidence(
+        events,
+        create_fake_evidence(),
+    )
+
+    assert len(result) == 2
+
+    assert {item["evidence_id"] for item in result} == {"E2", "E3"}
+
+    assert all(
+        item["relation"] == "source"
+        for item in result
+    )
+
+    assert not any(
+        item["relation"] in ("supports", "contradicts")
+        for item in result
+    )

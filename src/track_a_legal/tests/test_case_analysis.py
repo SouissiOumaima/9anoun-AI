@@ -159,3 +159,25 @@ def test_analyze_case_includes_evidence_mapping() -> None:
 
     # Aucune conclusion juridique inventée.
     assert result["legal_conclusion"] is None
+
+def test_incomplete_case_without_evidence() -> None:
+    """Un dossier sans preuves ne doit pas produire de conclusion juridique."""
+
+    # 1. Creer un dossier fictif existant
+    case = create_fake_case()
+
+    # 2. Supprimer les preuves du dossier
+    case["evidence"] = []
+
+    # 3. Supprimer les references aux preuves absentes
+    for event in case["events"]:
+        event["source_ids"] = []
+
+    # 4. Analyser le dossier incomplet
+    result = analyze_case(case)
+
+    # 5. Verifier que DS4 n'invente rien
+    assert result["case_summary"]["number_of_evidence"] == 0
+    assert result["claims_analysis"][0]["status"] == "unverified"
+    assert result["evidence_mapping"] == []
+    assert result["legal_conclusion"] is None
