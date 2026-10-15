@@ -127,3 +127,22 @@ def test_handler_accepts_case_without_evidence():
     assert response["refus"]["code"] == "SOURCE_MANQUANTE"
     assert response["result"] is None
     assert response["citations"] == []
+def test_handler_rejects_nonexistent_evidence_reference():
+    """Une reference vers une preuve inexistante ne doit pas etre acceptee."""
+
+    # Charger un dossier fictif valide
+    request = load_demo_case()
+
+    # Ajouter une reference vers une preuve inexistante
+    request["events"][0]["source_ids"] = ["E99"]
+
+    # Envoyer le dossier au handler
+    response = handle(request)
+
+    # Le handler v0 doit signaler une erreur
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+
+    # Aucune conclusion ni citation ne doit etre inventee
+    assert response["result"] is None
+    assert response["citations"] == []
