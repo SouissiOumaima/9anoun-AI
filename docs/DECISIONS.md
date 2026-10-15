@@ -1216,10 +1216,14 @@ Le test vérifie :
    absent de main, exécuté automatiquement dès qu'il est présent (vérifié hors dépôt sur la copie de
    `origin/DS2_Sprint4` : conforme).
 
-**Ambiguïtés non tranchées** : le bloc D21 est recopié (« البناء / construction » → `btp` ou
-`construction_metallique` : demander une précision). Note ajoutée : « bâtiment » seul et « البناء » seul ne sont
-jamais envoyés vers `METALLURGIE_BATIMENT` ; la table ne résout aucune ambiguïté, l'appelant la gère. Aucun alias
-n'a été ajouté (ex. « métallurgie », utilisé par DS1 mais absent de D21).
+**Ambiguïtés non tranchées** : le bloc `sector_ambiguities` de D21 v0.1 est recopié à l'identique :
+- « البناء / construction / bâtiment » → `btp` ou `construction_metallique` : DS1 demande une précision
+  (« bâtiment » n'est plus un alias de `btp`) ;
+- « métallurgie / المعادن » → pas de choix automatique : la convention du corpus couvre seulement la construction
+  métallique ; sans précision, `sector = null`.
+`ambiguity_note_fr` : aucune de ces trois formes seules (« البناء », « bâtiment », « métallurgie ») ne mène à
+`METALLURGIE_BATIMENT` ; la table ne résout aucune ambiguïté, l'appelant la gère. Le schéma accepte désormais un
+bloc d'ambiguïté à un seul code (`minItems` 1 au lieu de 2), forme du bloc « métallurgie ».
 
 **Alternatives envisagées** :
 - Module Python dans `src/shared` → rejeté : `src/shared/README.md` interdit le code métier ; des données JSON
@@ -1238,13 +1242,15 @@ n'a été ajouté (ex. « métallurgie », utilisé par DS1 mais absent de D21).
 - DS5 : une grille ajoutée (assurance) fait échouer le test 3 tant que la table n'est pas mise à jour
   (`ds5_status` → `actif`, `ds5_code`, `ds5_decision_ref`, `evidence`).
 
-**Questions ouvertes pour DS2** :
-1. `associations` est-il le code stable (le code DS5 est `ASSOCIATIONS_PERSONNES_HANDICAPEES`) ?
-2. Faut-il ajouter « métallurgie » aux alias de `construction_metallique` (DS1 l'utilise) ?
-3. « bâtiment » seul doit-il rester un alias de `btp` ou devenir une ambiguïté comme « البناء » ?
-4. Quand le vocabulaire `legal_retrieval_vocabulary.v0.json` et D21 arrivent-ils sur main (active le test 6) ?
-5. La table recopie libellés et alias : d'accord pour que la source de vérité reste le vocabulaire D21, la table
-   étant vérifiée contre lui ?
+**Réponses de DS2** (PR #15, D21 v0.1, 2026-10-15) :
+1. `associations` est le code stable.
+2. « métallurgie » n'est pas un alias de `construction_metallique` : c'est une ambiguïté ; sans précision,
+   `sector = null`.
+3. « bâtiment » seul n'est plus un alias de `btp` : il devient ambigu comme « البناء ».
+4. Le vocabulaire `legal_retrieval_vocabulary.v0.json` et D21 v0.1 arrivent sur main avec la PR #15 (non fusionnée
+   au 2026-10-15) ; le test 6 est réussi sur une fusion à blanc de cette PR.
+5. Le vocabulaire DS2 reste la source de vérité ; la table est vérifiée contre lui (test 6).
 
-**Statut** : ⏳ v0 proposée à DS1, DS2, DS3 ; `pytest src/shared/tests/test_sectors_table.py` : 12 réussis,
-1 ignoré (vocabulaire D21 absent de main).
+**Statut** : ⏳ v0 alignée sur D21 v0.1 (PR #15 de DS2), proposée à DS1, DS2, DS3 ;
+`pytest src/shared/tests/test_sectors_table.py` : 12 réussis, 1 ignoré sur la branche (vocabulaire D21 absent de
+main) ; 13 réussis sur une fusion à blanc avec la PR #15.
