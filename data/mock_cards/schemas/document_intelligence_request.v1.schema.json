@@ -1,0 +1,184 @@
+{
+  "$defs": {
+    "DocumentRef": {
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "card_id": {
+          "description": "Carte à laquelle appartient le document.",
+          "title": "Card Id",
+          "type": "string"
+        },
+        "file_name": {
+          "title": "File Name",
+          "type": "string"
+        },
+        "mime_type": {
+          "title": "Mime Type",
+          "type": "string"
+        },
+        "storage_ref": {
+          "description": "Chemin ou clé de stockage Tradrly, jamais le contenu.",
+          "title": "Storage Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document_id",
+        "card_id",
+        "file_name",
+        "mime_type",
+        "storage_ref"
+      ],
+      "title": "DocumentRef",
+      "type": "object"
+    },
+    "RequestContext": {
+      "additionalProperties": false,
+      "description": "Contexte imposé par le backend (DS1). DS3 ne l'invente jamais.",
+      "properties": {
+        "organization_id": {
+          "title": "Organization Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "lawyer",
+            "accountant",
+            "admin"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "card_id": {
+          "title": "Card Id",
+          "type": "string"
+        },
+        "card_type": {
+          "enum": [
+            "company",
+            "client",
+            "case"
+          ],
+          "title": "Card Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "organization_id",
+        "user_id",
+        "role",
+        "card_id",
+        "card_type"
+      ],
+      "title": "RequestContext",
+      "type": "object"
+    },
+    "RequestOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "language_hint": {
+          "items": {
+            "enum": [
+              "ar",
+              "fr"
+            ],
+            "type": "string"
+          },
+          "title": "Language Hint",
+          "type": "array"
+        },
+        "expected_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "fiche_de_paie",
+                "facture",
+                "contrat_travail",
+                "convention_collective",
+                "piece_dossier",
+                "inconnu"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Type"
+        },
+        "pages": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Pages à traiter (1-based).",
+          "title": "Pages"
+        },
+        "min_confidence": {
+          "default": 0.8,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Min Confidence",
+          "type": "number"
+        }
+      },
+      "title": "RequestOptions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "ds3.v1",
+      "default": "ds3.v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "operation": {
+      "enum": [
+        "analyze_document",
+        "extract_wage_grid"
+      ],
+      "title": "Operation",
+      "type": "string"
+    },
+    "context": {
+      "$ref": "#/$defs/RequestContext"
+    },
+    "document": {
+      "$ref": "#/$defs/DocumentRef"
+    },
+    "options": {
+      "$ref": "#/$defs/RequestOptions"
+    }
+  },
+  "required": [
+    "request_id",
+    "operation",
+    "context",
+    "document"
+  ],
+  "title": "DS3Request",
+  "type": "object"
+}

@@ -1,0 +1,31 @@
+{
+  "_doc": "R8 (D18, D20): checks made BY EYE in the original PDF by DS2. 'abroge' entries complete what the OCR broke (avenant number lost, list unreadable); the other verdicts explain a gap so it is no longer an alert. pdf_text = header line as read in the PDF (no article body).",
+  "checks": [
+    {"source_id": "CCS-BTP", "part": 1, "articles": ["38", "39", "40", "41"],
+     "verdict": "abroge", "avenant": 5,
+     "pdf_text": "الفصول 38 – 39 – 40 – 41 : (ألغيت بمقتضى الملحق التعديلي عدد 5)",
+     "ocr_problem": "OCR line '38 -39- ()I4 41' : 40 unreadable",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10"},
+    {"source_id": "CCS-CONSTRUCTION-METALLIQUE", "part": 1, "articles": ["38", "39", "40", "41"],
+     "verdict": "abroge", "avenant": 5,
+     "pdf_text": "الفصول 38-39-40-41: (ألغيت بمقتضى الملحق التعديلي عدد 5)",
+     "ocr_problem": "OCR line ends with 'عدد؟' : avenant number lost",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10"},
+    {"source_id": "CC-CADRE", "part": 1, "articles": ["5"],
+     "verdict": "present_pdf_absent_digest",
+     "pdf_text": "الفصل5 (جديد): الحق النقابي وحرية الرأي",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10",
+     "follow_up": "texte de l'article absent du digest Tradrly : à demander"},
+    {"source_id": "CCS-ASSURANCE", "part": 3, "articles": ["40"],
+     "verdict": "present_pdf_absent_digest",
+     "pdf_text": "الفصل 40 :",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10",
+     "follow_up": "texte de l'article absent du digest Tradrly : à demander"},
+    {"source_id": "CC-CADRE", "part": 1, "articles": ["40"], "verdict": "absent_du_pdf_source",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10",
+     "follow_up": "PDF complet demandé à Tradrly"},
+    {"source_id": "CCS-ASSOCIATIONS", "part": 1, "articles": ["20"], "verdict": "absent_du_pdf_source",
+     "checked_by": "Abd Elmouhib Souri (DS2)", "checked_on": "2026-10-10",
+     "follow_up": "PDF complet demandé à Tradrly"}
+  ]
+}
