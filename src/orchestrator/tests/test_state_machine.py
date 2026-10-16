@@ -95,7 +95,17 @@ def test_salary_base_prompt_lists_only_missing_fields() -> None:
         card_type=CardType.COMPANY,
     ))
     assert result.state is FlowState.CLARIFICATION_REQUIRED
-    assert "population, anciennete_annees" in result.reason
+    assert "anciennete_annees" in result.reason
+
+
+def test_salary_base_does_not_assume_population_is_universally_required() -> None:
+    result = StateMachine(success_executor).run(envelope(
+        "Calcule le salaire de base secteur construction métallique, catégorie 4, "
+        "15 ans d'ancienneté au 2022-06-01.", card_type=CardType.COMPANY,
+    ))
+    assert result.state is FlowState.COMPLETED
+    request = result.tool_call.params["track_b_request"]
+    assert "population" not in request["params"]
 
 
 def test_btp_occasionnel_prompt_omits_forbidden_seniority_and_calls_ds5() -> None:

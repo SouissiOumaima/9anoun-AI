@@ -63,7 +63,11 @@ def extract_track_b_prompt(message: str) -> TrackBPromptExtraction:
             "anciennete_annees": _seniority(message),
             "date": date,
         })
-        required = ["secteur", "population", "categorie", "date"]
+        # Population is a DS5 business rule, not a universal DS1 requirement:
+        # a single-population sector (for example Assurance when it is added)
+        # may calculate without it. Multi-population sectors refuse a missing
+        # population with their public PARAM_INVALIDE response.
+        required = ["secteur", "categorie", "date"]
         if not (secteur == "BATIMENT_TRAVAUX_PUBLICS" and population == "ouvriers_occasionnels"):
             required.append("anciennete_annees")
         if secteur == "BATIMENT_TRAVAUX_PUBLICS" and population == "ouvriers_occasionnels" and categorie in {"6", "7"}:

@@ -590,10 +590,11 @@ def calculate(payload: Mapping[str, Any]) -> dict[str, Any]:
     except ToolContractError as error:
         return _input_error("Les paramètres de calcul sont incomplets ou invalides.", "معطيات الحساب ناقصة أو غير صالحة.", str(error))
 
+    tool_data = result.tool_response.get("data") if result.tool_response else None
     return {
         "request_id": request_id,
         "user_response": format_flow_result(result).to_payload(),
-        "result": result.tool_response.get("data", {}).get("result") if result.tool_response else None,
+        "result": tool_data.get("result") if isinstance(tool_data, Mapping) else None,
         "citations": result.tool_response.get("citations", []) if result.tool_response else [],
         "prepared_params": dict(params),
     }

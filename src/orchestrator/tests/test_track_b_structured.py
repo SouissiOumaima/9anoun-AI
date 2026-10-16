@@ -36,9 +36,19 @@ def test_structured_prime_uses_real_track_b_and_citation() -> None:
     assert result.tool_response["citations"][0]["page"] == 16
 
 
-def test_builder_rejects_incomplete_salary_parameters_before_ds5_call() -> None:
+def test_builder_delegates_a_missing_population_to_ds5() -> None:
+    request = build_track_b_request(
+        request_id="bad", language="fr", operation="salaire_base",
+        params={"secteur": "METALLURGIE_BATIMENT", "categorie": "4", "date": "2024-01-01"},
+    )
+    assert "population" not in request["params"]
+
+
+def test_builder_still_rejects_other_incomplete_salary_parameters() -> None:
     with pytest.raises(ToolContractError, match="Track B request is invalid"):
-        build_track_b_request(request_id="bad", language="fr", operation="salaire_base", params={"secteur": "METALLURGIE_BATIMENT"})
+        build_track_b_request(
+            request_id="bad", language="fr", operation="salaire_base", params={"secteur": "METALLURGIE_BATIMENT"},
+        )
 
 
 def test_structured_planner_requires_a_payroll_intent() -> None:

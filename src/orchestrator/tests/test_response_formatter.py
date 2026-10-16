@@ -87,4 +87,5 @@ def test_ds5_refusal_keeps_its_public_message_and_code() -> None:
         "status": "refused", "error": {"code": "PARAM_INVALIDE", "message_fr": "Catégorie inconnue.", "message_ar": "الصنف غير معروف."},
     }))
     assert formatted.message_fr == "Catégorie inconnue."
+    assert formatted.message_ar == "الصنف غير معروف."
     assert formatted.specialist_code == "PARAM_INVALIDE"

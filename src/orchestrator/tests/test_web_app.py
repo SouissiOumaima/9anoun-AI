@@ -130,12 +130,12 @@ def test_chat_rejects_document_not_owned_by_active_card() -> None:
     assert response["user_response"]["status"] == "error"
 
 
-def test_chat_routes_a_general_prompt_to_ds2_mock() -> None:
-    response = chat({"message": "Quel article du code du travail s'applique ?", "language": "fr"})
+def test_chat_routes_a_cited_arabic_prompt_to_ds2_in_any_mode() -> None:
+    response = chat({"message": "ما هو الفصل المتعلق بالعطلة السنوية في قطاع BTP؟", "language": "ar"})
     assert response["user_response"]["status"] == "success"
     assert response["route"] == {"agent": "legal_retrieval", "operation": "search"}
     assert response["answer"]["kind"] == "legal_research"
-    assert response["answer"]["mode"] == "mock"
+    assert response["answer"]["mode"] in {"mock", "live"}
 
 
 def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:

@@ -25,7 +25,7 @@ def _validator() -> Draft202012Validator:
 def build_track_b_request(
     *, request_id: str, language: str, operation: str, params: Mapping[str, Any]
 ) -> dict[str, Any]:
-    """Return a schema-valid Track B request or fail before calling DS5.
+    """Return a validated Track B request or fail before calling DS5.
 
     Values come from a validated form/card extraction; this function never
     infers sector, category, seniority, prime conditions, or dates.
@@ -38,8 +38,28 @@ def build_track_b_request(
         "params": dict(params),
         "lang": language,
     }
-    error = best_match(_validator().iter_errors(request))
+    errors = list(_validator().iter_errors(request))
+    error = best_match(errors)
+    # DS5 decides whether a population is mandatory for the selected grid.
+    # The v0 schema still lists it as required, but forwarding this one missing
+    # value lets a multi-population grid return its bilingual PARAM_INVALIDE
+    # refusal and keeps DS1 compatible with a future single-population sector.
+    if error is not None and _only_missing_population(errors, error, operation, params):
+        error = None
     if error is not None:
         field = "/".join(str(part) for part in error.absolute_path) or "request"
         raise ToolContractError(f"Track B request is invalid at {field}: {error.message}")
     return request
+
+
+def _only_missing_population(errors: list[Any], error: Any, operation: str, params: Mapping[str, Any]) -> bool:
+    """Allow DS5 to apply its own population rule for a salary-base request."""
+
+    return (
+        operation == "salaire_base"
+        and "population" not in params
+        and len(errors) == 1
+        and getattr(error, "validator", None) == "required"
+        and list(getattr(error, "absolute_path", ())) == ["params"]
+        and "population" in str(getattr(error, "message", ""))
+    )

@@ -50,17 +50,18 @@ def test_hybrid_preserves_track_b_invalid_parameter_refusal() -> None:
     assert response["error"]["code"] == "PARAM_INVALIDE"
 
 
-def test_hybrid_uses_real_ds2_adapter_with_citations() -> None:
+def test_hybrid_uses_real_ds2_adapter_with_citations_in_any_mode() -> None:
     response = HybridSpecialistDispatcher()({
         "request_id": "hybrid-ds2", "agent": "legal_retrieval", "operation": "search",
         "params": {"legal_retrieval_request": {
             "contract_version": "legal_retrieval.v0", "request_id": "hybrid-ds2",
-            "query": "Quel article du BTP s'applique ?", "sector": "btp", "lang": "fr", "top_k": 5,
+            "query": "العطلة السنوية", "sector": "btp", "lang": "ar", "top_k": 5,
         }},
     })
     assert response["status"] == "success"
     assert response["data"]["results"]
     assert response["citations"]
+    assert response["data"]["mode"] in {"mock", "live"}
 
 
 def test_hybrid_uses_real_ds4_handler_and_preserves_source_missing_refusal() -> None:
