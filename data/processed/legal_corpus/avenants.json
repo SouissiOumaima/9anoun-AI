@@ -1,0 +1,531 @@
+[
+  {
+    "source_id": "CCS-GARDIENNAGE",
+    "signed_on": "1989-02-24",
+    "approved_on": "1989-07-27",
+    "avenants": [
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-1",
+        "number": 1,
+        "signed_on": "1993-06-11",
+        "approved_on": "1993-08-02"
+      },
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-2",
+        "number": 2,
+        "signed_on": "1996-07-23",
+        "approved_on": "1996-07-24"
+      },
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-3",
+        "number": 3,
+        "signed_on": "1999-06-30",
+        "approved_on": "1999-07-14"
+      },
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-4",
+        "number": 4,
+        "signed_on": "2006-07-17",
+        "approved_on": "2006-08-10"
+      },
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-5",
+        "number": 5,
+        "signed_on": "2009-05-02",
+        "approved_on": "2009-06-01"
+      },
+      {
+        "avenant_id": "CCS-GARDIENNAGE-AVENANT-6",
+        "number": 6,
+        "signed_on": "2013-04-17",
+        "approved_on": "2013-04-29"
+      }
+    ]
+  },
+  {
+    "source_id": "SMIG-GRILLE",
+    "signed_on": "2022-10-19",
+    "approved_on": null,
+    "avenants": []
+  },
+  {
+    "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+    "signed_on": "1974-07-26",
+    "approved_on": "1974-08-29",
+    "avenants": [
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-1",
+        "number": 1,
+        "signed_on": "1983-04-13",
+        "approved_on": "1983-04-28"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-2",
+        "number": 2,
+        "signed_on": "1989-03-25",
+        "approved_on": "1989-03-29"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-3",
+        "number": 3,
+        "signed_on": "1990-09-12",
+        "approved_on": "1990-10-13"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-4",
+        "number": 4,
+        "signed_on": "1993-06-11",
+        "approved_on": "1993-08-02"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-5",
+        "number": 5,
+        "signed_on": "1996-07-23",
+        "approved_on": "1996-07-24"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-6",
+        "number": 6,
+        "signed_on": "1999-06-30",
+        "approved_on": "1999-07-14"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-7",
+        "number": 7,
+        "signed_on": "2002-11-14",
+        "approved_on": "2002-11-25"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-8",
+        "number": 8,
+        "signed_on": "2005-12-29",
+        "approved_on": "2006-01-17"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-9",
+        "number": 9,
+        "signed_on": "2009-04-22",
+        "approved_on": "2009-05-12"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-10",
+        "number": 10,
+        "signed_on": "2011-10-22",
+        "approved_on": "2011-11-01"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-11",
+        "number": 11,
+        "signed_on": "2013-03-10",
+        "approved_on": "2013-03-25"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-12",
+        "number": 12,
+        "signed_on": "2014-11-17",
+        "approved_on": "2014-12-05"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-13",
+        "number": 13,
+        "signed_on": "2016-05-11",
+        "approved_on": "2016-06-14"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-14",
+        "number": 14,
+        "signed_on": "2017-07-26",
+        "approved_on": "2017-08-11"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-15",
+        "number": 15,
+        "signed_on": "2018-11-15",
+        "approved_on": "2018-12-03"
+      },
+      {
+        "avenant_id": "CCS-CONSTRUCTION-METALLIQUE-AVENANT-16",
+        "number": 16,
+        "signed_on": "2022-04-15",
+        "approved_on": "2022-04-29"
+      }
+    ]
+  },
+  {
+    "source_id": "CCS-BTP",
+    "signed_on": "1975-01-16",
+    "approved_on": "1975-03-12",
+    "avenants": [
+      {
+        "avenant_id": "CCS-BTP-AVENANT-1",
+        "number": 1,
+        "signed_on": "1983-03-08",
+        "approved_on": "1983-04-14"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-2",
+        "number": 2,
+        "signed_on": "1989-07-12",
+        "approved_on": "1989-08-10"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-3",
+        "number": 3,
+        "signed_on": "1990-07-14",
+        "approved_on": "1990-08-16"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-4",
+        "number": 4,
+        "signed_on": "1993-08-01",
+        "approved_on": "1993-09-07"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-5",
+        "number": 5,
+        "signed_on": "1996-09-24",
+        "approved_on": "1996-10-16"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-6",
+        "number": 6,
+        "signed_on": "1999-05-28",
+        "approved_on": "1999-06-09"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-7",
+        "number": 7,
+        "signed_on": "2002-11-19",
+        "approved_on": "2002-11-25"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-8",
+        "number": 8,
+        "signed_on": "2005-03-10",
+        "approved_on": "2005-12-29"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-9",
+        "number": 9,
+        "signed_on": "2009-01-28",
+        "approved_on": "2009-02-17"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-10",
+        "number": 10,
+        "signed_on": "2011-10-14",
+        "approved_on": "2011-10-25"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-11",
+        "number": 11,
+        "signed_on": "2013-02-25",
+        "approved_on": "2013-03-08"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-12",
+        "number": 12,
+        "signed_on": "2014-10-10",
+        "approved_on": "2014-10-27"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-13",
+        "number": 13,
+        "signed_on": "2016-04-13",
+        "approved_on": "2016-05-02"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-14",
+        "number": 14,
+        "signed_on": "2017-07-11",
+        "approved_on": "2017-08-30"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-15",
+        "number": 15,
+        "signed_on": "2018-11-26",
+        "approved_on": "2018-12-17"
+      },
+      {
+        "avenant_id": "CCS-BTP-AVENANT-16",
+        "number": 16,
+        "signed_on": "2022-10-27",
+        "approved_on": "2022-11-25"
+      }
+    ]
+  },
+  {
+    "source_id": "CCS-ASSURANCE",
+    "signed_on": "1975-07-24",
+    "approved_on": "1975-12-24",
+    "avenants": [
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-1",
+        "number": 1,
+        "signed_on": "1989-03-09",
+        "approved_on": "1989-03-22"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-2",
+        "number": 2,
+        "signed_on": "1990-10-19",
+        "approved_on": "1990-11-09"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-3",
+        "number": 3,
+        "signed_on": "1993-08-12",
+        "approved_on": "1993-09-07"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-4",
+        "number": 4,
+        "signed_on": "1996-07-23",
+        "approved_on": "1996-07-24"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-5",
+        "number": 5,
+        "signed_on": "1999-05-28",
+        "approved_on": "1999-06-09"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-6",
+        "number": 6,
+        "signed_on": "2002-11-14",
+        "approved_on": "2002-11-25"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-7",
+        "number": 7,
+        "signed_on": "2007-05-10",
+        "approved_on": "2007-05-24"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-8",
+        "number": 8,
+        "signed_on": "2009-05-23",
+        "approved_on": "2009-06-01"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-9",
+        "number": 9,
+        "signed_on": "2012-02-21",
+        "approved_on": "2012-03-21"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-10",
+        "number": 10,
+        "signed_on": "2014-11-24",
+        "approved_on": "2014-12-16"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-11",
+        "number": 11,
+        "signed_on": "2014-11-24",
+        "approved_on": "2014-12-16"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-12",
+        "number": 12,
+        "signed_on": "2016-03-16",
+        "approved_on": "2016-04-05"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-13",
+        "number": 13,
+        "signed_on": "2017-06-14",
+        "approved_on": "2017-07-03"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-14",
+        "number": 14,
+        "signed_on": "2018-12-24",
+        "approved_on": "2019-01-25"
+      },
+      {
+        "avenant_id": "CCS-ASSURANCE-AVENANT-15",
+        "number": 15,
+        "signed_on": "2022-08-22",
+        "approved_on": "2022-10-20"
+      }
+    ]
+  },
+  {
+    "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+    "signed_on": "1987-03-25",
+    "approved_on": "1987-05-05",
+    "avenants": [
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-1",
+        "number": 1,
+        "signed_on": "1989-07-12",
+        "approved_on": "1989-08-10"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-2",
+        "number": 2,
+        "signed_on": "1990-07-14",
+        "approved_on": "1990-08-31"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-3",
+        "number": 3,
+        "signed_on": "1993-08-12",
+        "approved_on": "1993-09-07"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-4",
+        "number": 4,
+        "signed_on": "1996-12-30",
+        "approved_on": "1997-02-13"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-5",
+        "number": 5,
+        "signed_on": "1999-06-30",
+        "approved_on": "1999-07-14"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-6",
+        "number": 6,
+        "signed_on": "2002-11-14",
+        "approved_on": "2002-11-25"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-7",
+        "number": 7,
+        "signed_on": "2005-12-29",
+        "approved_on": "2006-01-17"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-8",
+        "number": 8,
+        "signed_on": "2009-01-28",
+        "approved_on": "2009-02-17"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-9",
+        "number": 9,
+        "signed_on": "2012-02-21",
+        "approved_on": "2012-03-21"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-10",
+        "number": 10,
+        "signed_on": "2013-03-21",
+        "approved_on": "2013-04-08"
+      },
+      {
+        "avenant_id": "CCS-ENSEIGNEMENT-PRIVE-AVENANT-11",
+        "number": 11,
+        "signed_on": "2014-10-10",
+        "approved_on": "2014-10-27"
+      }
+    ]
+  },
+  {
+    "source_id": "CCS-ASSOCIATIONS",
+    "signed_on": "2012-10-24",
+    "approved_on": "2013-01-04",
+    "avenants": [
+      {
+        "avenant_id": "CCS-ASSOCIATIONS-AVENANT-1",
+        "number": 1,
+        "signed_on": "2018-04-17",
+        "approved_on": "2018-05-16"
+      },
+      {
+        "avenant_id": "CCS-ASSOCIATIONS-AVENANT-2",
+        "number": 2,
+        "signed_on": "2019-05-28",
+        "approved_on": "2019-06-26"
+      }
+    ]
+  },
+  {
+    "source_id": "CC-CADRE",
+    "signed_on": "1973-03-20",
+    "approved_on": "1973-05-29",
+    "avenants": []
+  },
+  {
+    "source_id": "CCS-BANQUES",
+    "signed_on": "1975-07-24",
+    "approved_on": "1975-12-24",
+    "avenants": [
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-1",
+        "number": 1,
+        "signed_on": "1989-03-09",
+        "approved_on": "1989-03-22"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-2",
+        "number": 2,
+        "signed_on": "1991-01-30",
+        "approved_on": "1991-03-13"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-3",
+        "number": 3,
+        "signed_on": "1993-08-12",
+        "approved_on": "1993-09-07"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-4",
+        "number": 4,
+        "signed_on": "1996-07-23",
+        "approved_on": "1996-07-24"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-5",
+        "number": 5,
+        "signed_on": "1999-06-30",
+        "approved_on": "1999-07-14"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-6",
+        "number": 6,
+        "signed_on": "2002-11-14",
+        "approved_on": "2002-11-25"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-7",
+        "number": 7,
+        "signed_on": "2005-12-29",
+        "approved_on": "2006-01-17"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-1",
+        "number": 1,
+        "signed_on": "2014-11-27",
+        "approved_on": "2014-12-16"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-2",
+        "number": 2,
+        "signed_on": "2016-03-09",
+        "approved_on": "2016-04-05"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-3",
+        "number": 3,
+        "signed_on": "2017-05-15",
+        "approved_on": "2017-06-15"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-4",
+        "number": 4,
+        "signed_on": "2018-11-12",
+        "approved_on": "2019-02-18"
+      },
+      {
+        "avenant_id": "CCS-BANQUES-AVENANT-5",
+        "number": 5,
+        "signed_on": "2022-08-22",
+        "approved_on": "2022-11-17"
+      }
+    ]
+  }
+]

@@ -1300,6 +1300,67 @@ terminée le 2026-10-12.
 
 ---
 
+### D24 — Graphe juridique v0 : sources, articles, avenants, textes externes
+
+*(Numérotée D24 : D23 est prise par DS5 pour Track B, secteur associations.)*
+
+**Décision** : `src/legal_retrieval/graph/build.py` construit, à partir du corpus ingéré, un
+graphe JSON (`legal_graph.json`, hors git comme le corpus) :
+- nœuds `SECTOR` (vocabulaire D21), `SOURCE`, `ARTICLE` (un par article, toutes versions),
+  `AVENANT` (daté si présent dans l'historique, sinon `known: false`), `EXTERNAL` (Code du
+  travail article par article, décrets `DECRET-501-1982`, lois — cités mais absents du corpus) ;
+- arêtes `APPARTIENT_A`, `S_APPLIQUE_AU_SECTEUR` (convention cadre et SMIG → tous les
+  secteurs), `AVENANT_DE`, `ABROGE` (avenant → article abrogé), `MENTIONNE_AVENANT`, `CITE` ;
+- chaque arête de citation garde sa **preuve** (le renvoi tel qu'écrit, ≤ 60 caractères) ;
+  une citation déduite (numéro absent de la convention, Code du travail nommé dans le même
+  article) porte `inferred: true`.
+
+Lecture des renvois (`graph/references.py`), construite sur le diagnostic du corpus réel
+(142 articles sur 468 citent un autre texte) : « بالفصل / للفصل / الفصلين » ; cible lue dans
+les mots qui suivent (« من مجلة الشغل », « من الاتفاقية الإطارية », « من الأمر ») ; « … مجلة
+الشغل وخاصة الفصل 143 منها » (renvoi en arrière) ; forme OCR « مجل الشغل » ; jamais un en-tête
+(R1/R4) ni une liste d'abrogation (R2).
+
+**Constats du diagnostic** : les 22 renvois « introuvables » (articles 76 à 333) sont tous des
+articles du **Code du travail** ; la convention cadre cite 6 fois son avenant n° 3, absent de
+son historique ; l'Enseignement cite un avenant n° 12 (historique : 11).
+
+**Alternatives envisagées** :
+- Une base de graphe (Neo4j) → reportée : 468 articles tiennent dans un JSON ; aucun service
+  de plus à installer pour l'équipe.
+- Une arête `MODIFIE` avenant → article pour chaque « (جديد) » → rejetée : le digest ne dit
+  pas quel avenant a modifié l'article ; on ne crée que ce qui est écrit (`MENTIONNE_AVENANT`).
+
+**Statut** : ⏳ v0 ; démonstration du plan : `python -m src.legal_retrieval.graph.query
+--sector banques` (convention des banques + convention cadre + SMIG).
+
+---
+
+### D25 — Corpus traité versionné dans le dépôt, vérifié contre les sources
+
+**Décision** : les sorties de l'ingestion `data/processed/legal_corpus/legal_articles.jsonl`,
+`legal_sources.json` et `avenants.json` sont commitées, pour que tous les rôles (DS1 en
+premier) aient le corpus réel sans relancer l'ingestion ; `get_article` passe alors en mode
+`live` sur toutes les machines. Les rapports et le graphe (`ingestion_report.json`,
+`*_diagnosis.json`, `legal_graph.json`) restent générés localement.
+
+Un test (`test_legal_corpus_committed.py`) relance l'ingestion sur `data/raw/` et exige que
+les fichiers commités soient **identiques** : un corpus commité ne peut pas dériver du code ni
+des sources.
+
+**Alternatives envisagées** :
+- Garder le corpus hors git, chaque rôle relançant l'ingestion → rejeté : DS1 a constaté que
+  le corpus « n'est pas dans la branche » ; l'intégration dépendait d'une étape manuelle.
+- Stockage partagé externe → rejeté : un service de plus, et des données hors des outils
+  Tradrly.
+
+**Confidentialité** : les sources (`data/raw/pdf`, `data/raw/txt`) sont déjà dans ce dépôt
+privé ; le corpus traité n'en est qu'une transformation, il n'augmente pas l'exposition.
+
+**Statut** : ✅ accepté par DS5 (Oumaima) le 2026-10-14 ; corpus commité.
+
+---
+
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
 
 **Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.
