@@ -1,3 +1,7 @@
+import src.orchestrator.web_app as web_app
+from src.orchestrator.models import ActiveContext, CardType
+from src.orchestrator.document_to_track_b import build_payroll_prefill
+
 from src.orchestrator.web_app import (
     approval_history, audit_history, available_cards, calculate, chat, decide_approval,
     calculate_from_document_review, confirm_document_review, prepare_from_card, propose_approval,
@@ -77,7 +81,32 @@ def test_document_review_rejects_an_unusable_field() -> None:
     assert rejected["error"] == "unconfirmed_or_unusable_field"
 
 
-def test_confirmed_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
+def test_low_confidence_document_field_is_visible_but_cannot_be_confirmed() -> None:
+    review = web_app._create_document_review(
+        data={"mode": "live", "result": {"fields": {
+            "weak_field": {
+                "value": "valeur lue", "value_type": "texte", "confidence": 0.89,
+                "citation_id": "citation-weak",
+            },
+        }}},
+        citations=[{
+            "citation_id": "citation-weak", "document_id": "doc-company-payslip-01",
+            "page": 1, "excerpt": "valeur lue",
+        }],
+        context=ActiveContext(
+            "org-demo", "company-demo-001", CardType.COMPANY,
+            {"document_id": "doc-company-payslip-01"},
+        ),
+    )
+    assert review is not None
+    assert review["fields"][0]["state"] == "review_required"
+    rejected = confirm_document_review({
+        "review_id": review["review_id"], "confirmed_fields": ["weak_field"],
+    })
+    assert rejected["error"] == "unconfirmed_or_unusable_field"
+
+
+def test_mock_document_review_cannot_launch_a_real_ds5_calculation() -> None:
     response = chat({
         "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
         "document_id": "doc-company-payslip-01",
@@ -90,6 +119,27 @@ def test_confirmed_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_c
     assert {candidate["operation"] for candidate in confirmed["ds5_prefill"]["candidates"]} == {
         "smig", "salaire_base", "prime",
     }
+    calculation = calculate_from_document_review({
+        "review_id": review["review_id"], "operation": "salaire_base", "language": "fr",
+        "user_inputs": {"population": "admin_tech", "anciennete_annees": "6.495890", "secteur": "INTERDIT"},
+    })
+    assert calculation["user_response"]["status"] == "refused"
+    assert calculation["user_response"]["specialist_code"] == "MOCK_DOCUMENT"
+    assert calculation["user_response"]["message_ar"]
+
+
+def test_live_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
+    response = chat({
+        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+        "document_id": "doc-company-payslip-01",
+    })
+    review = response["document_review"]
+    confirmed = confirm_document_review({
+        "review_id": review["review_id"],
+        "confirmed_fields": ["period_start", "pay_mode", "work_hours_regime", "hire_date", "category", "base_salary"],
+    })
+    assert confirmed["status"] == "confirmed"
+    web_app._DOCUMENT_REVIEWS[review["review_id"]]["mode"] = "live"
     calculation = calculate_from_document_review({
         "review_id": review["review_id"], "operation": "salaire_base", "language": "fr",
         "user_inputs": {"population": "admin_tech", "anciennete_annees": "6.495890", "secteur": "INTERDIT"},
@@ -120,6 +170,20 @@ def test_document_review_cannot_call_ds5_before_confirmation() -> None:
         "review_id": "unknown", "operation": "smig", "language": "fr", "user_inputs": {},
     })
     assert blocked["error"] == "document_confirmation_required"
+
+
+def test_document_prefill_rejects_a_sector_without_an_active_d30_grid() -> None:
+    prefill = build_payroll_prefill(
+        fields={
+            "period_start": {"value": "2024-01-01"},
+            "category": {"value": "4"},
+        },
+        confirmed_fields={"period_start", "category"},
+        company_sector="UNKNOWN_SECTOR",
+    )
+    salary = next(item for item in prefill["candidates"] if item["operation"] == "salaire_base")
+    assert "secteur" in salary["missing"]
+    assert "secteur" not in salary["params"]
 
 
 def test_chat_rejects_document_not_owned_by_active_card() -> None:

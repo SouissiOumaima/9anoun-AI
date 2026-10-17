@@ -51,5 +51,5 @@ class TrackAAdapter:
         try:
             from src.track_a_legal.handler import handle
         except ImportError as error:
-            raise ToolContractError("DS4 Track A dependencies are not installed") from error
+            raise ToolContractError("DS4 Track A handler is not available until PR #9 is integrated") from error
         return handle

@@ -128,13 +128,14 @@
     }
     const review = data.document_review;
     if (review?.fields?.length) {
-      html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Source DS3 : <code>${escapeHtml(review.mode || 'inconnu')}</code> · Seuil d’affichage : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.</p>`;
+      const mockNotice = review.mode === 'mock' ? ' Lecture simulée : tout calcul DS5 est bloqué.' : '';
+      html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Source DS3 : <code>${escapeHtml(review.mode || 'inconnu')}</code> · Seuil pour calcul : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.${mockNotice}</p>`;
       html += review.fields.map(field => {
         const unavailable = field.state === 'unavailable';
         const checked = field.state === 'verified' ? ' checked' : '';
-        const disabled = unavailable ? ' disabled' : '';
+        const disabled = field.state !== 'verified' ? ' disabled' : '';
         const className = unavailable ? 'review-unavailable' : field.state === 'review_required' ? 'review-required' : '';
-        const state = unavailable ? `Non utilisable : ${field.reason || 'valeur ou citation manquante'}` : field.state === 'review_required' ? `À confirmer : ${field.reason || 'confiance insuffisante'}` : 'Vérifié';
+        const state = unavailable ? `Non utilisable : ${field.reason || 'valeur ou citation manquante'}` : field.state === 'review_required' ? `Visible, non sélectionnable : ${field.reason || 'confiance sous le seuil'}` : 'Vérifié';
         return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(Math.round((field.confidence || 0) * 100))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
       }).join('');
       html += `<button class="small-button" data-document-review-id="${escapeHtml(review.review_id)}">Confirmer les champs sélectionnés</button><div id="reviewStatus" class="note"></div></section>`;
@@ -212,7 +213,9 @@
           refreshHistory();
         } else {
           const code = data.user_response?.specialist_code ? ` (${data.user_response.specialist_code})` : '';
-          $('ds5Status').textContent = (data.user_response?.message_fr || 'Le calcul a été refusé.') + code;
+          const fr = data.user_response?.message_fr || 'Le calcul a été refusé.';
+          const ar = data.user_response?.message_ar || '';
+          $('ds5Status').innerHTML = `${escapeHtml(fr)}${escapeHtml(code)}${ar ? `<br><span dir="rtl">${escapeHtml(ar)}</span>` : ''}`;
         }
       } catch (_) {
         $('ds5Status').textContent = 'Le calcul DS5 n’a pas pu être envoyé.';

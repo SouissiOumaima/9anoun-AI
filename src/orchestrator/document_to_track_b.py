@@ -1,8 +1,9 @@
 """Safe DS3-v2 to DS5 prefill generation owned by DS1.
 
 The output is a reviewable *candidate*, never an automatic DS5 call.  Facts
-must have been explicitly selected by the user in DS1, while sector comes only
-from the Company Card and population/prime interpretation remain user inputs.
+must have been explicitly selected by the user.  A sector from the active
+Company Card is used only when D30 declares its DS5 grid active; population
+and prime interpretation remain user inputs.
 """
 
 from __future__ import annotations
@@ -10,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Mapping
 
 from .seniority import SeniorityError, calculate_seniority_years
+from .sector_mapping import is_active_ds5_sector
 
 
 def build_payroll_prefill(
@@ -32,7 +34,7 @@ def build_payroll_prefill(
 
     category, hire_date = value("category"), value("hire_date")
     base_params: dict[str, Any] = {}
-    if company_sector:
+    if is_active_ds5_sector(company_sector):
         base_params["secteur"] = company_sector
     if category:
         base_params["categorie"] = category
@@ -53,7 +55,7 @@ def build_payroll_prefill(
         "operation": "salaire_base", "params": base_params, "ready": False, "missing": missing,
         "proposed_values": proposed_values,
     })
-    prime_params = {"secteur": company_sector, "date": date}
+    prime_params = {"secteur": company_sector if is_active_ds5_sector(company_sector) else None, "date": date}
     if all(isinstance(value, str) and value for value in prime_params.values()):
         out["candidates"].append({
             "operation": "prime", "params": prime_params, "ready": False,

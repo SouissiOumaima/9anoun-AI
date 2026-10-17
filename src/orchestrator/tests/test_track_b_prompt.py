@@ -1,3 +1,4 @@
+from src.orchestrator.sector_mapping import needs_sector_clarification, resolve_active_ds5_sector
 from src.orchestrator.track_b_prompt import extract_track_b_prompt
 
 
@@ -58,3 +59,17 @@ def test_prompt_extractor_never_maps_ambiguous_building_or_metallurgy() -> None:
 def test_prompt_extractor_does_not_call_ds5_for_preparation_sector() -> None:
     extracted = extract_track_b_prompt("Calcule le salaire de base assurance, catégorie 4 au 2024-01-01.")
     assert "secteur" in extracted.missing
+
+
+def test_prompt_extractor_marks_multiple_active_sectors_for_clarification() -> None:
+    extracted = extract_track_b_prompt(
+        "Calcule le salaire de base BTP et construction métallique, catégorie 4 au 2024-01-01."
+    )
+    assert extracted.sector_clarification is True
+    assert "secteur" in extracted.missing
+
+
+def test_sector_detection_does_not_match_unrelated_substrings() -> None:
+    message = "Je veux comprendre mes cotisations de sécurité sociale."
+    assert resolve_active_ds5_sector(message) is None
+    assert needs_sector_clarification(message) is False

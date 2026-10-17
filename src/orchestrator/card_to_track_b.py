@@ -7,6 +7,7 @@ from typing import Any, Mapping
 
 from .card_repository import CardNotFoundError, MockCardRepository
 from .models import ActiveContext, UserIdentity
+from .sector_mapping import is_active_ds5_sector
 
 
 @dataclass(frozen=True, slots=True)
@@ -38,7 +39,7 @@ class CardToTrackBMapper:
             raise CardNotFoundError("employee was not found in the active card")
         profile = employee.get("track_b_profile", {})
         values = {
-            "secteur": profile.get("secteur"),
+            "secteur": _active_sector(profile.get("secteur")),
             "population": profile.get("population"),
             "categorie": profile.get("categorie"),
             "anciennete_annees": profile.get("anciennete_annees"),
@@ -58,7 +59,7 @@ class CardToTrackBMapper:
         card = self._repository.read_active_card(actor=actor, context=context)
         defaults = card.data.get("track_b_defaults", {})
         values: dict[str, Any] = {
-            "secteur": defaults.get("secteur"),
+            "secteur": _active_sector(defaults.get("secteur")),
             "code": code,
             "date": date,
         }
@@ -73,3 +74,9 @@ class CardToTrackBMapper:
 def _prepared(operation: str, values: Mapping[str, Any]) -> PreparedTrackBOperation:
     missing = tuple(key for key, value in values.items() if value is None or value == "")
     return PreparedTrackBOperation(operation, {key: value for key, value in values.items() if value is not None and value != ""}, missing)
+
+
+def _active_sector(value: Any) -> str | None:
+    """Use Card sector data only when D30 declares the DS5 grid active."""
+
+    return value if isinstance(value, str) and is_active_ds5_sector(value) else None

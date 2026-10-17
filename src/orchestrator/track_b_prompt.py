@@ -11,7 +11,7 @@ from dataclasses import dataclass
 import re
 from typing import Any, Mapping
 
-from .sector_mapping import resolve_active_ds5_sector
+from .sector_mapping import needs_sector_clarification, resolve_active_ds5_sector
 
 
 @dataclass(frozen=True, slots=True)
@@ -21,6 +21,7 @@ class TrackBPromptExtraction:
     operation: str | None
     params: Mapping[str, Any]
     missing: tuple[str, ...]
+    sector_clarification: bool = False
 
 
 _DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
@@ -74,7 +75,7 @@ def extract_track_b_prompt(message: str) -> TrackBPromptExtraction:
             required.append("sous_categorie")
         return TrackBPromptExtraction(
             "salaire_base", params,
-            _missing(params, *required),
+            _missing(params, *required), needs_sector_clarification(message),
         )
 
     params = _without_none({
@@ -85,7 +86,9 @@ def extract_track_b_prompt(message: str) -> TrackBPromptExtraction:
         "transport_assure": _transport_assure(lowered),
         "condition_remplie": _condition_remplie(lowered),
     })
-    return TrackBPromptExtraction("prime", params, _missing(params, "secteur", "code", "date"))
+    return TrackBPromptExtraction(
+        "prime", params, _missing(params, "secteur", "code", "date"), needs_sector_clarification(message),
+    )
 
 
 def _operation(message: str) -> str | None:

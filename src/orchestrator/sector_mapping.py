@@ -10,6 +10,7 @@ from __future__ import annotations
 from functools import lru_cache
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 
@@ -33,23 +34,50 @@ def resolve_active_ds5_sector(message: str) -> str | None:
     request clarification instead of invoking Track B.
     """
 
-    lowered = message.casefold()
-    if _has_ambiguous_term(lowered) and not _has_unambiguous_sector_term(lowered):
+    matches = _matched_sectors(message.casefold())
+    if len(matches) != 1:
         return None
+    sector = matches[0]
+    return sector["ds5_code"] if sector["ds5_status"] == "actif" else None
 
+
+def is_active_ds5_sector(ds5_code: str | None) -> bool:
+    """Whether a DS5 code is explicitly active in the common D30 table."""
+
+    return isinstance(ds5_code, str) and any(
+        sector["ds5_status"] == "actif" and sector.get("ds5_code") == ds5_code
+        for sector in load_sector_table()["sectors"]
+    )
+
+
+def needs_sector_clarification(message: str) -> bool:
+    """True for D30 ambiguities or more than one sector in the same message."""
+
+    lowered = message.casefold()
+    return len(_matched_sectors(lowered)) > 1 or (
+        _has_ambiguous_term(lowered) and not _has_unambiguous_sector_term(lowered)
+    )
+
+
+def _matched_sectors(message: str) -> list[dict[str, Any]]:
+    matches: list[dict[str, Any]] = []
     for sector in load_sector_table()["sectors"]:
         terms = (
-            sector["ds2_code"],
-            sector["label_fr"],
-            sector["label_ar"],
-            sector.get("ds5_code") or "",
-            *sector.get("aliases", ()),
+            sector["ds2_code"], sector["label_fr"], sector["label_ar"],
+            sector.get("ds5_code") or "", *sector.get("aliases", ()),
         )
-        if any(term and term.casefold() in lowered for term in terms):
-            if sector["ds5_status"] == "actif":
-                return sector["ds5_code"]
-            return None
-    return None
+        if any(_matches_term(message, term) for term in terms if term):
+            matches.append(sector)
+    return matches
+
+
+def _matches_term(message: str, term: str) -> bool:
+    """Match a whole Latin term, while retaining substring matching for Arabic."""
+
+    normalized = term.casefold()
+    if any("\u0600" <= char <= "\u06ff" for char in normalized):
+        return normalized in message
+    return re.search(rf"(?<!\w){re.escape(normalized)}(?!\w)", message) is not None
 
 
 def _has_ambiguous_term(message: str) -> bool:

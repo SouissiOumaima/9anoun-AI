@@ -74,6 +74,15 @@ def test_track_b_missing_required_fields_requests_clarification() -> None:
     assert "SMIG requires" in result.reason
 
 
+def test_multiple_payroll_sectors_request_an_explicit_choice() -> None:
+    result = StateMachine(success_executor).run(envelope(
+        "Calcule le salaire de base BTP et construction métallique, catégorie 4 au 2024-01-01.",
+        card_type=CardType.COMPANY,
+    ))
+    assert result.state is FlowState.CLARIFICATION_REQUIRED
+    assert "BTP ou construction métallique" in result.reason
+
+
 def test_salary_base_prompt_extracts_explicit_parameters_for_track_b() -> None:
     result = StateMachine(success_executor).run(envelope(
         "Calcule le salaire de base secteur construction métallique, population admin-tech, "

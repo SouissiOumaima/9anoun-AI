@@ -219,7 +219,10 @@ def _create_document_review(
         citation = citation_by_id.get(field.get("citation_id"))
         has_value_and_citation = field.get("value") is not None and citation is not None and bool(citation.get("excerpt"))
         state = "verified" if assessment and assessment.usable else "review_required" if has_value_and_citation else "unavailable"
-        if state != "unavailable":
+        # Only documentary facts at or above the agreed DS5 threshold may be
+        # confirmed for a calculation.  Lower-confidence values remain visible
+        # to the user, but cannot cross the DS3 -> DS5 boundary.
+        if state == "verified":
             selectable.add(name)
         fields.append({
             "name": name, "value": field.get("value"), "value_type": field.get("value_type"),
@@ -233,6 +236,7 @@ def _create_document_review(
         _DOCUMENT_REVIEWS[review_id] = {
             "organization_id": context.organization_id, "card_id": context.card_id,
             "document_id": context.entity_ids.get("document_id"), "selectable": selectable,
+            "mode": data.get("mode"),
             "fields": {name: dict(field) for name, field in result["fields"].items()
                        if isinstance(name, str) and isinstance(field, Mapping)},
             "citations": citation_list,
@@ -288,6 +292,21 @@ def calculate_from_document_review(payload: Mapping[str, Any]) -> dict[str, Any]
         review = _DOCUMENT_REVIEWS.get(review_id)
     if review is None or not isinstance(review.get("confirmed_fields"), set):
         return {"error": "document_confirmation_required"}
+    if review.get("mode") == "mock":
+        refusal = UserResponse(
+            status="refused",
+            code=UserResponseCode.OUT_OF_SCOPE,
+            message_fr="Le calcul à partir d'une lecture simulée est une démonstration et ne peut pas être exécuté.",
+            message_ar="لا يمكن تنفيذ الحساب انطلاقًا من قراءة تجريبية؛ هذه مجرد عرض توضيحي.",
+            next_action="use_a_live_document",
+            request_id=review_id,
+            specialist_code="MOCK_DOCUMENT",
+        ).to_payload()
+        return {
+            "user_response": refusal, "result": None, "citations": [],
+            "document_citations": list(review["citations"]), "payroll_citations": [],
+            "salary_comparison_warning": None,
+        }
     prefill = review.get("ds5_prefill")
     if not isinstance(prefill, Mapping):
         return {"error": "document_confirmation_required"}

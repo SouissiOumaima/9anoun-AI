@@ -127,6 +127,10 @@ class Planner:
         extracted = extract_track_b_prompt(envelope.message)
         if extracted.operation is None:
             raise ClarificationNeeded("Track B requires the exact operation: SMIG, salaire de base, or prime")
+        if extracted.sector_clarification:
+            raise ClarificationNeeded(
+                "Le secteur est ambigu : précisez BTP ou construction métallique avant le calcul"
+            )
         if extracted.missing:
             fields = ", ".join(extracted.missing)
             label = "SMIG" if extracted.operation == "smig" else extracted.operation
