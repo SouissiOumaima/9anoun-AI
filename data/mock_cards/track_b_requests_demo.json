@@ -139,5 +139,51 @@
     "params": {"secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES", "population": "education_specialisee",
                "categorie": "II", "anciennete_annees": 1, "date": "2023-01-01"},
     "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-19-salaire-assurance-table-2020",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSURANCE", "population": "tous_agents", "categorie": "14", "anciennete_annees": 9,
+               "date": "2021-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-20-salaire-assurance-table-2021",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSURANCE", "population": "tous_agents", "categorie": "9", "anciennete_annees": 11,
+               "date": "2022-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-21-salaire-assurance-dernier-degre-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSURANCE", "categorie": "17", "anciennete_annees": 40, "date": "2023-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-22-prime-transport-assurance",
+    "operation": "prime",
+    "params": {"secteur": "ASSURANCE", "code": "prime_transport", "date": "2018-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-23-refus-assurance-avant-2020-10-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSURANCE", "population": "tous_agents", "categorie": "21", "anciennete_annees": 5,
+               "date": "2020-09-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-24-refus-assurance-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "ASSURANCE", "population": "tous_agents", "categorie": "15", "anciennete_annees": 13,
+               "date": "2022-01-01"},
+    "lang": "ar"
   }
 ]

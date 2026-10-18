@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'ASSURANCE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'GARDIENNAGE_SECURITE_TRANSPORT_FONDS' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -1939,6 +1939,510 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2444.852",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-64",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2444.852",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2195.134",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-65",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2195.134",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2021.621",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-66",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2021.621",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1716.244",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-67",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1716.244",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1510.891",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-68",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1510.891",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2821.764",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-69",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2821.764",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1598.617",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-70",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1598.617",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1935.459",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-71",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1935.459",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 11,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "75.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-72",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 11,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "75.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 11,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "85.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-73",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 11,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "85.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2821.764",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D29",
+   "id": "TB-74",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 21,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "2821.764",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1716.244",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D29",
+   "id": "TB-75",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D29",
+      "page": 20,
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf"
+     }
+    ],
+    "montant": "1716.244",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-76",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille ASSURANCE/tous_agents en vigueur au 2020-09-30 (première date d'effet disponible : 2020-10-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-77",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 13 ans = borne commune aux degrés [8, 9] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D29",
+   "id": "TB-78",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime fonctionnelle (article 21 (جديد), page 11) : montant absent de la source (fixé par chaque société). Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D29",
+   "id": "TB-79",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Population inconnue : 'admin_tech' (attendu : tous_agents).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
  "date": "2026-10-14",
@@ -1946,121 +2450,121 @@
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 63,
-  "cas_verifies_par_ds5": 53,
+  "cas": 79,
+  "cas_verifies_par_ds5": 69,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "44d419214b60290deb9c51c8fffeae3e5d969d1fe47a1023c49988edcbb2584c",
+  "sha256": "34c958e5c35147d6e2f00794468c97c3a2f84e64ba153a62f8db413879a3b270",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 53,
+   "cas": 69,
    "citations_valides": {
-    "n": 40,
-    "sur": 40,
+    "n": 52,
+    "sur": 52,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 13,
+    "sur": 17,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 53,
-    "sur": 53,
+    "n": 69,
+    "sur": 69,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 53,
-    "sur": 53,
+    "n": 69,
+    "sur": 69,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 40,
-    "sur": 40,
+    "n": 52,
+    "sur": 52,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 40,
+    "sur": 52,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 13,
+    "sur": 17,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 13,
+    "sur": 17,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 13,
-    "sur": 13,
+    "n": 17,
+    "sur": 17,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 40,
+    "sur": 52,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 63,
+   "cas": 79,
    "citations_valides": {
-    "n": 40,
-    "sur": 40,
+    "n": 52,
+    "sur": 52,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 23,
+    "sur": 27,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 63,
-    "sur": 63,
+    "n": 79,
+    "sur": 79,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 63,
-    "sur": 63,
+    "n": 79,
+    "sur": 79,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 40,
-    "sur": 40,
+    "n": 52,
+    "sur": 52,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 40,
+    "sur": 52,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 23,
+    "sur": 27,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 23,
+    "sur": 27,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 23,
-    "sur": 23,
+    "n": 27,
+    "sur": 27,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 40,
+    "sur": 52,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -2123,10 +2627,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 34,
+    "cas": 46,
     "citations_valides": {
-     "n": 34,
-     "sur": 34,
+     "n": 46,
+     "sur": 46,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -2135,24 +2639,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 34,
-     "sur": 34,
+     "n": 46,
+     "sur": 46,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 34,
-     "sur": 34,
+     "n": 46,
+     "sur": 46,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 34,
-     "sur": 34,
+     "n": 46,
+     "sur": 46,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 34,
+     "sur": 46,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -2173,7 +2677,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 34,
+     "sur": 46,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -2235,7 +2739,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 17,
+    "cas": 21,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -2243,17 +2747,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 17,
+     "sur": 21,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 17,
-     "sur": 17,
+     "n": 21,
+     "sur": 21,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 17,
-     "sur": 17,
+     "n": 21,
+     "sur": 21,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -2270,17 +2774,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 17,
+     "sur": 21,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 17,
+     "sur": 21,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 17,
-     "sur": 17,
+     "n": 21,
+     "sur": 21,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -2349,113 +2853,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 16,
+    "cas": 20,
     "citations_valides": {
-     "n": 4,
-     "sur": 4,
+     "n": 6,
+     "sur": 6,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 12,
+     "sur": 14,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 16,
-     "sur": 16,
+     "n": 20,
+     "sur": 20,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 16,
-     "sur": 16,
+     "n": 20,
+     "sur": 20,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 4,
-     "sur": 4,
+     "n": 6,
+     "sur": 6,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 4,
+     "sur": 6,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 12,
+     "sur": 14,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 12,
+     "sur": 14,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 12,
-     "sur": 12,
+     "n": 14,
+     "sur": 14,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 4,
+     "sur": 6,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 44,
+    "cas": 56,
     "citations_valides": {
-     "n": 33,
-     "sur": 33,
+     "n": 43,
+     "sur": 43,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 11,
+     "sur": 13,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 44,
-     "sur": 44,
+     "n": 56,
+     "sur": 56,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 44,
-     "sur": 44,
+     "n": 56,
+     "sur": 56,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 33,
-     "sur": 33,
+     "n": 43,
+     "sur": 43,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 33,
+     "sur": 43,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 11,
+     "sur": 13,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 11,
+     "sur": 13,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 11,
-     "sur": 11,
+     "n": 13,
+     "sur": 13,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 33,
+     "sur": 43,
      "taux": 0.0
     },
     "statut_erreur": 0

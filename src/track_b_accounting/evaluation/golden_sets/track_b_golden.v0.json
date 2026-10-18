@@ -1120,7 +1120,7 @@
    "requete": {
     "operation": "salaire_base",
     "params": {
-     "secteur": "ASSURANCE",
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
      "population": "admin_tech",
      "categorie": "4",
      "date": "2024-06-01",
@@ -1135,7 +1135,7 @@
    "justification": {
     "pdf": null,
     "page": null,
-    "emplacement": "convention de l'assurance présente dans data/raw/pdf/ mais non transcrite"
+    "emplacement": "convention du gardiennage, de la sécurité et du transport de fonds présente dans data/raw/pdf/ mais non transcrite"
    }
   },
   {
@@ -2027,6 +2027,539 @@
     "valeur_imprimee": "61.944"
    },
    "note": "Lecture 300 dpi en pixels natifs (2026-10-13) ; date d'effet = « بداية من » (D23)."
+  },
+  {
+   "id": "TB-64",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "21",
+     "date": "2021-01-01",
+     "anciennete_annees": 0.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2444.852",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 1re ligne depuis le haut (échelle 21), col. degré 1 (tranche 0-1)",
+    "valeur_imprimee": "2444,852"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-65",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "14",
+     "date": "2021-01-01",
+     "anciennete_annees": 9
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2195.134",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 8e ligne depuis le haut (échelle 14), col. degré 7 (tranche 8-10)",
+    "valeur_imprimee": "2195,134"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-66",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "11",
+     "date": "2021-01-01",
+     "anciennete_annees": 35
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2021.621",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 11e ligne depuis le haut (échelle 11), col. degré 14 (tranche 30+)",
+    "valeur_imprimee": "2021,621"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-67",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "7",
+     "date": "2021-01-01",
+     "anciennete_annees": 3.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1716.244",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 15e ligne depuis le haut (échelle 7), col. degré 4 (tranche 3-4)",
+    "valeur_imprimee": "1716,244"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-68",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "استثنائي",
+     "date": "2021-01-01",
+     "anciennete_annees": 17
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1510.891",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 19e ligne depuis le haut (échelle ligne exceptionnelle, cellule fusionnée), col. degré 10 (tranche 16-19)",
+    "valeur_imprimee": "1510,891"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-69",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "17",
+     "date": "2022-01-01",
+     "anciennete_annees": 31
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2821.764",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 21,
+    "emplacement": "table du 2021-06-01 (p.21), 5e ligne depuis le haut (échelle 17), col. degré 14 (tranche 30+)",
+    "valeur_imprimee": "2821,764"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-70",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "1",
+     "date": "2022-01-01",
+     "anciennete_annees": 0.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1598.617",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 21,
+    "emplacement": "table du 2021-06-01 (p.21), 22e ligne depuis le haut (échelle 1), col. degré 1 (tranche 0-1)",
+    "valeur_imprimee": "1598,617"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-71",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "9",
+     "date": "2022-01-01",
+     "anciennete_annees": 11
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1935.459",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 21,
+    "emplacement": "table du 2021-06-01 (p.21), 13e ligne depuis le haut (échelle 9), col. degré 8 (tranche 10-13)",
+    "valeur_imprimee": "1935,459"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2)."
+  },
+  {
+   "id": "TB-72",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSURANCE",
+     "code": "prime_transport",
+     "date": "2016-12-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "75.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 11
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 11,
+    "emplacement": "art. 20 (جديد), avant-dernière ligne du paragraphe, « 2016 »",
+    "valeur_imprimee": "75"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2). Montant du décret n° 503 du 16 mars 1982 inclus (art. 20 (جديد))."
+  },
+  {
+   "id": "TB-73",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSURANCE",
+     "code": "prime_transport",
+     "date": "2018-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "85.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 11
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 11,
+    "emplacement": "art. 20 (جديد), dernière ligne du paragraphe, « 2017 » suivi du renvoi 11",
+    "valeur_imprimee": "85"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2). Montant du décret n° 503 du 16 mars 1982 inclus (art. 20 (جديد))."
+  },
+  {
+   "id": "TB-74",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D29",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "17",
+     "date": "2023-01-01",
+     "anciennete_annees": 60
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2821.764",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 21,
+    "emplacement": "table du 2021-06-01 (p.21), 5e ligne depuis le haut (échelle 17), col. degré 14 (tranche 30+)",
+    "valeur_imprimee": "2821,764"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2). Règle « ouvert » : degré 14 servi à 60 ans, sans plafond (D29)."
+  },
+  {
+   "id": "TB-75",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D29",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "categorie": "7",
+     "date": "2021-03-01",
+     "anciennete_annees": 3.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1716.244",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "table du 2020-10-01 (p.20), 15e ligne depuis le haut (échelle 7), col. degré 4 (tranche 3-4)",
+    "valeur_imprimee": "1716,244"
+   },
+   "note": "Lecture indépendante 300 dpi (2026-10-18), image du degré accolée à la colonne des échelles (étape E2). Population omise : secteur à population unique (D29)."
+  },
+  {
+   "id": "TB-76",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "21",
+     "date": "2020-09-30",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 20,
+    "emplacement": "aucune table avant le 2020-10-01 (tables p.20 : 2020-10-01, p.21 : 2021-06-01)"
+   }
+  },
+  {
+   "id": "TB-77",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "tous_agents",
+     "categorie": "15",
+     "date": "2022-01-01",
+     "anciennete_annees": 13
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 21,
+    "emplacement": "en-tête : 13 ans figure dans « 13-10 » et dans « 16-13 »"
+   }
+  },
+  {
+   "id": "TB-78",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": "D29",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ASSURANCE",
+     "code": "prime_fonctionnelle",
+     "date": "2022-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 11,
+    "emplacement": "art. 21 (جديد) : montant fixé par chaque société, absent de la source"
+   }
+  },
+  {
+   "id": "TB-79",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D29",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ASSURANCE",
+     "population": "admin_tech",
+     "categorie": "15",
+     "date": "2022-01-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+    "page": 11,
+    "emplacement": "une seule population, tous les agents des sociétés d'assurance (art. 20 (جديد))"
+   }
   }
  ]
 }
