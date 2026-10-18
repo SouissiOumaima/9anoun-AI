@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_a_request.v0.schema.json",
+
+  "title": "Requête Track A - Lawyer Track - v0",
+
+  "description": "Proposition v0 du contrat d'entrée de DS4. Ce message contient les informations structurées d'un dossier juridique nécessaires au Case-Analysis Agent.",
+
+  "type": "object",
+
+  "required": [
+    "contract_version",
+    "request_id",
+    "case_id",
+    "lang",
+    "parties",
+    "events",
+    "claims",
+    "evidence"
+  ],
+
+  "additionalProperties": false,
+
+  "properties": {
+
+    "contract_version": {
+      "const": "track_a.v0"
+    },
+
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+
+    "lang": {
+      "enum": ["fr", "ar"]
+    },
+
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "party_id",
+          "name",
+          "role"
+        ],
+        "additionalProperties": false,
+        "properties": {
+
+          "party_id": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "date",
+          "description",
+          "source_ids"
+        ],
+        "additionalProperties": false,
+        "properties": {
+
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "party_id",
+          "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "party_id": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "text": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "type",
+          "description",
+          "source"
+        ],
+        "additionalProperties": false,
+        "properties": {
+
+          "evidence_id": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+
+          "source": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
