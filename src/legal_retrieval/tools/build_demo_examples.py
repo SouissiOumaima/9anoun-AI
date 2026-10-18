@@ -61,7 +61,7 @@ def build() -> dict[str, Any]:
         "contract_version": CONTRACT_VERSION,
         "operations": [{"name": "search", "python": "src.legal_retrieval.contract.handler.handle",
                         "http": "POST /legal/search", "cli": "python -m src.legal_retrieval.contract.cli <fichier.json>"}],
-        "examples": [{"id": i, "description": d, "request": r, "expected_response": handle(r)}
+        "examples": [{"id": i, "description": d, "request": r, "expected_response": handle(r, live=False)}
                      for i, d, r in EXAMPLES],
         "erreur_example": {"description": ("status = erreur : incident technique inattendu, non "
                                            "déclenchable par une requête. HTTP 500, aucun détail interne."),

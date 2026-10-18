@@ -7,3 +7,4 @@ uvicorn==0.53.0        # serveur de l'API
 httpx==0.28.1          # client de test FastAPI
 pytest==9.1.1
 pytest-cov==7.1.0
+google-genai==2.31.0  # embeddings Gemini (D28), seul service externe autorisé
