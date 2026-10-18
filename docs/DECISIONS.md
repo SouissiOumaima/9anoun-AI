@@ -585,7 +585,7 @@ l'explique. Les valeurs sont conservées telles qu'imprimées.
 
 **Note sous chaque tableau** : les salaires incluent l'indemnité
 complémentaire provisoire (المنحة التكميلية المؤقتة, décret n° 437 du
-7 avril 1981, modifié par le décret n° 501 du 16 mars 1982) ;
+7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) ;
 `_meta.remarque_pdf`.
 
 **`regime_hebdomadaire_heures`** : laissé à `null`, car les pages 23 à 25 ne

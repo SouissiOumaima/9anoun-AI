@@ -164,6 +164,7 @@ est toujours un refus `HORS_SCOPE`.
 | `result.detail` | objet | Contexte du calcul : table appliquée, degré, date d'effet, etc. Les valeurs sont des chaînes, des entiers, des booléens ou `null`, jamais des nombres décimaux, ou **des listes de chaînes** (nouveau, D10 : `hypotheses`, `hypotheses_ar`). |
 | `result.detail.regle_art13` | chaîne, si présente | Règle de l'article 13 appliquée au-delà du dernier degré (D10) : `ecart_cumule_biennal` (métallurgie ; avec `n_paliers`, `ecart`, `montant_dernier_degre`) ou `table_correspondance` (BTP ; avec `case_cible`, `degre_cible`, `categorie_cible`, `ecart`, `montant_dernier_degre`, `fenetre_debut_annees`, `fenetre_fin_annees`). `ecart` et `montant_dernier_degre` sont des chaînes décimales. |
 | `result.detail.hypotheses` / `hypotheses_ar` | liste de chaînes, si présente | Hypothèses d'interprétation de la source sur lesquelles repose le montant, en français et en arabe. **DS1 (orchestration) et DS4 doivent les afficher à l'utilisateur avec le montant**, dans sa langue : le montant n'est exact que si ces hypothèses le sont. |
+| `result.detail.label_fr` / `label_ar` | chaîne, si présente (`prime`) | Libellé de la prime : `label_ar` tel qu'imprimé dans la convention, `label_fr` **traduction** de ce libellé (pas une citation de la source). |
 | `citations` | liste | Au moins un élément si `ok` ; vide si `refus` ou `erreur`. |
 | `citations[].source_file` | chaîne | PDF source du corpus (`data/raw/pdf/...`). |
 | `citations[].page` | entier ou `null` | Page du PDF où la valeur a été lue. |

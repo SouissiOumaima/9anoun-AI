@@ -76,7 +76,12 @@ def prime(secteur: str, code: str, date, **params) -> Result:
                     f"(acceptés : {', '.join(sorted(_params_attendus(p))) or 'aucun'}).",
                     f"{code}: معامل غير متوقع: {', '.join(sorted(inconnus))}.")
 
-    detail = {"secteur": secteur, "code": code, "date_calcul": jour.isoformat(), "regles": "D6"}
+    detail = {"secteur": secteur, "code": code}
+    # Libellé de la prime : label_ar tel qu'imprimé, label_fr traduction (pas une citation).
+    for cle in ("label_fr", "label_ar"):
+        if p.get(cle):
+            detail[cle] = p[cle]
+    detail.update(date_calcul=jour.isoformat(), regles="D6")
 
     if "condition" in p:
         if not _bool_obligatoire(params, "condition_remplie", code):
