@@ -1298,6 +1298,106 @@ valeur.
 **Statut** : ✅ implémenté et exposé (2026-10-13) ; vérification visuelle
 terminée le 2026-10-12.
 
+### D29 — Grille salariale ASSURANCE (pages 1, 9-11, 17, 20-21)
+
+**Numéro** : D29. D24 à D28 sont pris ou réservés par DS2 ; D30 est la table de correspondance des secteurs.
+
+**Source** : `data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf` (21 pages). Page de titre (p.1) : « الاتفاقية المشتركة القطاعية للتأمين ». Pages 1 à 19 : couche texte
+sans arabe lisible ; textes lus sur les images. Pages 20 et 21 : grilles scannées (attribut de rotation 270
+appliqué au rendu). Articles utilisés : art. 14 (p.9, catégories), art. 16 (جديد) أ (p.9, progression),
+art. 19 (جديد) (p.11, grille et unité), art. 20 (جديد) à 22 (جديد) (p.11, primes), art. 44, 46 et 47 (جديد)
+(p.17, avantages sociaux).
+
+**Constat** :
+- Deux tables : « جدول الأجور عدد 1 », en vigueur à partir du 1er octobre 2020 (p.20), et « جدول الأجور عدد 2 »,
+  en vigueur à partir du 1er juin 2021 (p.21). 22 lignes × 14 degrés chacune, soit 616 montants ; TND/mois
+  (art. 19 (جديد), p.11 : le salaire mensuel résulte de la grille annexée).
+- En-tête : degrés 1 à 14 (degré 1 à droite) ; durées de séjour 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 3, 3 ;
+  ancienneté effective en tranches 0-1 … 27-30, puis « 30+ » (degré 13 imprimé « 27-30 » p.20 et « 30-27 »
+  p.21, mêmes bornes).
+- Lignes, de haut en bas : échelles 21 à 4, puis la ligne « استثنائي » (cellule fusionnée, sans lettre de
+  sous-groupe), puis 3, 2, 1. Catégories imprimées 1 à 5, conformes à l'art. 14 (p.9).
+- Art. 19 (جديد) (p.11) : l'agent atteint le degré 14 au terme de 33 ans de service effectif ; l'en-tête des
+  grilles ouvre le degré 14 à 30 ans.
+- Art. 16 (جديد) أ (p.9) : « يتمثل التدرج في الارتقاء آليا من درجة إلى درجة أعلى مباشرة بصفة مستمرة كما هو مقرر بسلم الأجور. »
+- Art. 20 (جديد) (p.11) : une prime de transport pour tous les agents des sociétés d'assurance, montant du
+  décret n° 503 du 16 mars 1982 inclus : 75 dinars par mois à partir du 1er juin 2016, 85 dinars par mois à
+  partir du 1er juin 2017. Note 11 (p.11) : la prime de transport entre dans le calcul de la prime de
+  production et des 13e et 14e mois.
+- Note sous chaque tableau (p.20 et 21) : les salaires incluent l'indemnité complémentaire provisoire
+  (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) ; `_meta.remarque_pdf`,
+  mention reproduite sans calcul.
+
+#### Décisions (validées par DS5)
+
+1. **Population unique** `tous_agents` (« كافة أعوان شركات التأمين », art. 20 (جديد), p.11). **Changement de contrat** :
+   `population` n'est plus obligatoire au schéma de requête ; pour un secteur à une seule population, elle
+   peut être omise, et si elle est donnée elle doit être `tous_agents` (sinon `PARAM_INVALIDE`). Pour un
+   secteur à plusieurs populations, rien ne change : omise, elle est refusée par calc/ (`PARAM_INVALIDE`).
+   Changement à annoncer à DS1.
+2. **Clé de ligne** : numéro d'échelle imprimé (`"21"` à `"1"`) ; la ligne « استثنائي » a sa propre clé, sans alias,
+   et n'est reliée à aucune autre catégorie : aucun texte ne fait ce lien.
+3. **Règle « ouvert » du dernier degré** (`au_dela_dernier_degre.regle = "ouvert"`, art. 16 (جديد) أ, p.9) : le
+   degré 14 est servi dès 30 ans, sans plafond ni extrapolation. Les 33 ans de l'art. 19 (جديد) sont une note
+   de lecture affichée (`detail.hypotheses`), jamais une borne.
+4. **Bornes exactes** 1, 2, 3, 4, 6, 8, 10, 13, 16, 19, 23, 27 et 30 ans : refusées (`PARAM_INVALIDE`, D6).
+5. **Dates** : avant le 2020-10-01, aucune grille : `SOURCE_MANQUANTE`. Après le 2021-06-01, la grille du
+   2021-06-01 reste servie (D6), avec l'hypothèse affichée qu'aucune grille postérieure n'est présente dans
+   les sources.
+6. **Prime de transport** (`prime_transport`, art. 20 (جديد), p.11) : même montant pour tous les agents ;
+   75.000 TND/mois à partir du 2016-06-01, 85.000 TND/mois à partir du 2017-06-01 ; avant le 2016-06-01,
+   `SOURCE_MANQUANTE`. `detail` recopie la mention du décret n° 503 du 16 mars 1982 (montant inclus) et la
+   note 11 (`note`, `note_ar`), sans calcul, et l'hypothèse qu'aucune révision postérieure au 2017-06-01
+   n'est présente dans les sources. Double lecture des montants et des dates : aucun écart.
+7. **Primes non couvertes** (`primes_non_couvertes`, `SOURCE_MANQUANTE`, refus lu dans le JSON) :
+   - 13e et 14e mois (art. 20 (جديد), p.11) : formule ;
+   - prime de production (art. 20 (جديد), p.11) : formule selon un tableau (50 % à 150 % du salaire brut de
+     décembre) ;
+   - prime fonctionnelle (art. 21 (جديد), p.11) : montant absent (fixé par chaque société) ;
+   - prime de l'art. 22 (جديد) (p.11) : montant absent (fixé par chaque société) ;
+   - aide en cas de décès (art. 44, p.17) : formule (trois mois de salaire) ;
+   - aide scolaire (art. 46, p.17) : montant absent (fixé par l'employeur) ;
+   - prime de départ à la retraite (art. 47 (جديد), p.17) : formule (quatre mois, six mois en départ anticipé).
+8. **Régime hebdomadaire** : `null` ; les tables n'indiquent aucun régime horaire.
+9. **Table des secteurs** (D30) : l'entrée `assurance` passe à `actif`, `ds5_code` `ASSURANCE`,
+   `ds5_decision_ref` D29, preuve `meme_source_file` (même fichier que `_meta.source_file`).
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- « L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne. »
+- « Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite. »
+
+#### Contrôles de lecture
+
+- Double lecture indépendante de chaque lot (200 dpi ligne par ligne, 300 dpi colonne par colonne), relecture
+  en pixels natifs des signes ambigus, vérification humaine par lot.
+- **Contrôle croisé entre les deux tables** : pour chaque ligne, l'écart « table 2 − table 1 » est le même
+  aux 14 degrés : +235 (catégorie 1, échelles 21 à 16), +200 (catégorie 2, 15 à 13), +185 (catégorie 3, 12 à
+  10), +170 (catégorie 4, 9 à 4), +160 (catégorie 5, « استثنائي », 3, 2, 1) ; aucune exception sur les 308 paires
+  (616 cellules). C'est un **contrôle de lecture** : il n'est jamais utilisé pour déduire, corriger ou
+  calculer un montant.
+
+#### Mise en œuvre
+
+- Données : `data/processed/salary_grids/assurance.json` (`_meta.decision_ref` D29, 2 tables, 616 montants,
+  1 prime, 7 primes non couvertes).
+- `calc/loaders.py` : `"regle": "ouvert"` accepté avec sa source (`source_pdf_page`, `source_article`,
+  `texte_source_ar`) et un dernier degré au libellé `"n+"`. `calc/salary.py` : population omise admise pour
+  un secteur à une seule population.
+- Schéma de requête : `population` facultative ; `docs/CONTRACT_TRACK_B.md` mis à jour.
+- Tests : `test_dernier_degre_ouvert_population_unique.py`, `test_assurance_primes.py`, et les listes de
+  secteurs des tests existants ; le golden set garde un cas « secteur non couvert » (TB-35, sur le
+  gardiennage).
+
+#### Points non tranchés par la source (hypothèses retenues)
+
+1. **Degré 14 et 33 ans** : la somme des durées de séjour des degrés 1 à 13 vaut 30, et 30 + 3 (durée du
+   degré 14) = 33. Observation de lecture seulement ; aucune règle déduite.
+2. **Ligne « استثنائي »** : catégorie 5 par position ; non reliée à une autre catégorie (décision 2).
+3. **Sous-groupes imprimés dans la grille** : aucun texte de la convention ne les définit ; non exposés.
+
+**Statut** : ✅ activée (2026-10-17) ; `pytest` complet : tous réussis.
+
 ---
 
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
@@ -1385,3 +1485,5 @@ bloc d'ambiguïté à un seul code (`minItems` 1 au lieu de 2), forme du bloc «
 **Statut** : ⏳ v0 alignée sur D21 v0.1 (PR #15 de DS2), proposée à DS1, DS2, DS3 ;
 `pytest src/shared/tests/test_sectors_table.py` : 12 réussis, 1 ignoré sur la branche (vocabulaire D21 absent de
 main) ; 13 réussis sur une fusion à blanc avec la PR #15.
+
+Mise à jour : l'entrée assurance est passée à actif (D29).

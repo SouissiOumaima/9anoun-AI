@@ -112,9 +112,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_12_ok_6_refus():
+def test_bilan_demo_16_ok_8_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 12 and list(statuts.values()).count("refus") == 6
+    assert list(statuts.values()).count("ok") == 16 and list(statuts.values()).count("refus") == 8
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -123,6 +123,8 @@ def test_bilan_demo_12_ok_6_refus():
         "demo-10-refus-secteur-non-couvert": "SOURCE_MANQUANTE",
         "demo-13-refus-btp-anciennete-27-ans": "SOURCE_MANQUANTE",
         "demo-17-refus-associations-anciennete-33-ans": "SOURCE_MANQUANTE",
+        "demo-23-refus-assurance-avant-2020-10-01": "SOURCE_MANQUANTE",
+        "demo-24-refus-assurance-borne-exacte": "PARAM_INVALIDE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -133,7 +135,7 @@ def test_demo_10_secteur_fictif():
     """Depuis D9, BATIMENT_TRAVAUX_PUBLICS est couvert : demo-10 garde un refus « secteur inconnu » avec un code fictif."""
     rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
     assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
-                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).")
+                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE).")
 
 
 def test_montants_demo_identiques_a_calc():
@@ -242,7 +244,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 18 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 24 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -281,9 +283,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_18_echanges():
+def test_demo_affiche_24_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 18 and "Bilan : 12 ok, 6 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 24 and "Bilan : 16 ok, 8 refus, 0 erreur(s)." in texte

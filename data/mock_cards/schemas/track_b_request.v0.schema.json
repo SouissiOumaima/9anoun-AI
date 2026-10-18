@@ -34,11 +34,11 @@
     "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
     "params_salaire_base": {
       "type": "object",
-      "required": ["secteur", "population", "categorie", "date"],
+      "required": ["secteur", "categorie", "date"],
       "additionalProperties": false,
       "properties": {
         "secteur": {"type": "string"},
-        "population": {"type": "string"},
+        "population": {"type": "string", "description": "Obligatoire pour un secteur à plusieurs populations ; peut être omise pour un secteur à une seule population (si elle est donnée, elle doit être celle-là). Vérifié par calc/ (refus PARAM_INVALIDE)."},
         "categorie": {"type": ["string", "integer"]},
         "sous_categorie": {"type": "string", "minLength": 1, "description": "Obligatoire si la catégorie a des sous-catégories (ex. BATIMENT_TRAVAUX_PUBLICS/ouvriers_occasionnels, catégorie 6 : I ou II ; catégorie 7 : 1, 2 ou 3), interdite sinon. Vérifié par calc/ (refus PARAM_INVALIDE)."},
         "anciennete_annees": {"type": "number", "description": "Obligatoire pour une population à degrés d'ancienneté, interdite pour une population sans degré (ex. BATIMENT_TRAVAUX_PUBLICS/ouvriers_occasionnels). Vérifié par calc/ (refus PARAM_INVALIDE)."},
