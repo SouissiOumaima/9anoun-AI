@@ -35,11 +35,19 @@ def _intervalles(degres: list[dict]) -> list[tuple[int, int, int | None]]:
 
 
 def _population(grille: dict, population) -> str:
-    """Population couverte par la grille ; population déclarée non couverte → refus lu dans le JSON (D9)."""
+    """Population couverte par la grille ; population déclarée non couverte → refus lu dans le JSON (D9).
+    Secteur à une seule population : la population peut être omise (D29) ; donnée, elle doit être celle-là."""
     if isinstance(population, str) and population in grille.get("populations_non_couvertes", {}):
         bloc = grille["populations_non_couvertes"][population]
         raise Refus(Refus.SOURCE_MANQUANTE, bloc["message_fr"], bloc["message_ar"])
     cats = grille["categories"]
+    if population is None and len(cats) == 1:
+        return next(iter(cats))
+    if population is None:
+        secteur = grille["_meta"]["secteur_code"]
+        raise Refus(Refus.PARAM_INVALIDE,
+                    f"Population obligatoire pour le secteur {secteur} (disponibles : {', '.join(cats)}).",
+                    f"يجب تحديد فئة الأعوان للقطاع {secteur} (المتوفر: {', '.join(cats)}).")
     if not isinstance(population, str) or population not in cats:
         raise Refus(Refus.PARAM_INVALIDE,
                     f"Population inconnue : {population!r} (attendu : {', '.join(cats)}).",
@@ -110,7 +118,8 @@ def degre_from_anciennete(annees, secteur=None, population=None) -> int:
     PARAM_INVALIDE (D6), plutôt que de choisir. 0 n'appartient qu'au degré 1.
     Le dernier degré est ouvert (« 20+ ») : ce qui s'applique au-delà (article 13) est traité par
     regle_au_dela_dernier_degre (D10). Si la population déclare seulement un refus (regle « refus »),
-    toute ancienneté ≥ anciennete_max_couverte_annees est refusée ici (SOURCE_MANQUANTE, D8).
+    toute ancienneté ≥ anciennete_max_couverte_annees est refusée ici (SOURCE_MANQUANTE, D8). Règle « ouvert » :
+    le dernier degré est servi quelle que soit l'ancienneté au-delà de sa borne basse (D29).
     Aucun secteur par défaut : secteur absent → Refus PARAM_INVALIDE.
     """
     grille = charger_grille(secteur)
@@ -153,11 +162,14 @@ def regle_au_dela_dernier_degre(grille: dict, population: str, cle: str, annees)
     - « table_correspondance » (BTP, p.8) : après dernier degré + durée (27 ans), case cible de la table
       pendant sa fenêtre (2 ou 3 ans). 27 ans pile → PARAM_INVALIDE ; fin de fenêtre et au-delà, ou catégorie
       refusée (19) → SOURCE_MANQUANTE. Textes FR/AR lus dans le JSON.
+    - « refus » (D8) et « ouvert » (D29) → None : aucune règle à appliquer ici.
     """
     bloc = grille["au_dela_dernier_degre"][population]
     regle = bloc.get("regle", "refus")
     if regle == "refus":
         return None                      # plafond déjà appliqué par degre_from_anciennete (D8)
+    if regle == "ouvert":
+        return None                      # dernier degré ouvert servi tel quel, sans plafond (D29)
     a = _annees(annees)
     debut = bloc["dernier_degre_atteint_a_annees"]
     if regle == "ecart_cumule_biennal":
@@ -201,9 +213,9 @@ def table_applicable(secteur, population, date) -> dict:
     if table is None:
         premiere = min((t["effective_date"] for t in tables), default="—")
         raise Refus(Refus.SOURCE_MANQUANTE,
-                    f"Aucune grille {secteur}/{population} en vigueur au {jour.isoformat()} "
+                    f"Aucune grille {secteur}/{pop} en vigueur au {jour.isoformat()} "
                     f"(première date d'effet disponible : {premiere}).",
-                    f"لا يوجد جدول أجور {secteur}/{population} ساري المفعول بتاريخ {jour.isoformat()} "
+                    f"لا يوجد جدول أجور {secteur}/{pop} ساري المفعول بتاريخ {jour.isoformat()} "
                     f"(أول تاريخ نفاذ متوفر: {premiere}).")
     return table
 

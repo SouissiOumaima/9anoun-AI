@@ -227,10 +227,16 @@ def test_sans_decision_ref_valide_fichier_ignore(tmp_path, monkeypatch, ref):
         g["_meta"]["decision_ref"] = ref
     (tmp_path / "associations_personnes_handicapees.json").write_text(json.dumps(g, ensure_ascii=False), encoding="utf-8")
     assert loaders.decouvrir_grilles(tmp_path) == {}
-    monkeypatch.delitem(loaders.GRILLES, "ASSOCIATIONS_PERSONNES_HANDICAPEES")
-    e = refus(Refus.SOURCE_MANQUANTE, salaire_base, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "sport", "I", 5, "2022-06-01")
-    assert e.message_fr.startswith("Aucune grille vérifiée pour le secteur 'ASSOCIATIONS_PERSONNES_HANDICAPEES'")
-    refus(Refus.SOURCE_MANQUANTE, prime, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "prime_presence", "2022-06-01")
+    sauvegarde = dict(loaders.GRILLES)  # registre entier, ordre compris : restauré tel quel après le test
+    del loaders.GRILLES["ASSOCIATIONS_PERSONNES_HANDICAPEES"]
+    try:
+        e = refus(Refus.SOURCE_MANQUANTE, salaire_base, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "sport", "I", 5,
+                  "2022-06-01")
+        assert e.message_fr.startswith("Aucune grille vérifiée pour le secteur 'ASSOCIATIONS_PERSONNES_HANDICAPEES'")
+        refus(Refus.SOURCE_MANQUANTE, prime, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "prime_presence", "2022-06-01")
+    finally:
+        loaders.GRILLES.clear()
+        loaders.GRILLES.update(sauvegarde)
 
 
 # Tables dont les valeurs ont été transcrites (double lecture) et vérifiées par DS5 : lots B1 à B3 (2021, p.21 à 23),
@@ -373,7 +379,7 @@ def test_b1_cellules_de_base_verifiees():
 
 def test_b1_secteur_charge():
     assert loaders.decouvrir_grilles().keys() == {"METALLURGIE_BATIMENT", "BATIMENT_TRAVAUX_PUBLICS",
-                                                  "ASSOCIATIONS_PERSONNES_HANDICAPEES"}
+                                                  "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE"}
 
 
 # --- lot B2 (p.22, tables 3 et 4 de 2021) : contrôles de lecture --------------------------------------------------
@@ -945,12 +951,12 @@ def test_aph_presence_et_specifique_hypotheses(code):
 
 # Ensemble des clés de detail de chaque prime de la métallurgie, relevé avant la modification de calc/primes.py.
 CLES_DETAIL_BM = {
-    "prime_transport": {"secteur", "code", "date_calcul", "regles", "groupe", "effective_date", "au_titre_de"},
-    "prime_presence": {"secteur", "code", "date_calcul", "regles", "effective_date"},
-    "prime_logement": {"secteur", "code", "date_calcul", "regles", "variante", "effective_date"},
-    "prime_panier_qefa": {"secteur", "code", "date_calcul", "regles", "effective_date", "note", "transport_assure"},
-    "prime_deplacement_chantier": {"secteur", "code", "date_calcul", "regles", "condition", "effective_date"},
-    "prime_travail_en_hauteur": {"secteur", "code", "date_calcul", "regles", "condition", "effective_date"},
+    "prime_transport": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "groupe", "effective_date", "au_titre_de"},
+    "prime_presence": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "effective_date"},
+    "prime_logement": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "variante", "effective_date"},
+    "prime_panier_qefa": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "effective_date", "note", "transport_assure"},
+    "prime_deplacement_chantier": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "condition", "effective_date"},
+    "prime_travail_en_hauteur": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "condition", "effective_date"},
 }
 PARAMS_BM = {"prime_transport": [{"groupe": "execution_et_maitrise"}, {"groupe": "cadres"}],
              "prime_logement": [{"variante": "base"}, {"variante": "complement_si_prime_superieure"}],
@@ -986,8 +992,9 @@ def test_loaders_refuse_textes_de_prime_invalides(mutation, message):
 
 
 def test_demos_identiques_a_la_reference_a_l_octet():
-    """Les 18 réponses de démo, telles qu'écrites par le CLI, identiques à la référence (avec D23, seule la liste des
-    secteurs disponibles de demo-10 a changé parmi les 14 premières ; demo-15 à demo-18 portent sur le secteur)."""
+    """Les 24 réponses de démo, telles qu'écrites par le CLI, identiques à la référence (avec D23, seule la liste des
+    secteurs disponibles de demo-10 a changé parmi les 14 premières ; demo-15 à demo-18 portent sur le secteur ;
+    avec D29, demo-10 gagne ASSURANCE et demo-19 à demo-24 portent sur l'assurance)."""
     from track_b_accounting.contract import cli
     sortie = io.StringIO()
     assert cli.main([str(loaders.REPO_ROOT / "data/mock_cards/track_b_requests_demo.json")], stdout=sortie) == 0

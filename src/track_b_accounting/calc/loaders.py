@@ -125,13 +125,22 @@ def _valider_art13_commun(bloc: dict, objet: str) -> None:
 
 
 def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
-    """Bloc au_dela_dernier_degre d'une population : refus déclaré (D8) ou règle implémentée (D10)."""
+    """Bloc au_dela_dernier_degre d'une population : refus déclaré (D8), dernier degré ouvert (D29)
+    ou règle implémentée (D10)."""
     objet = f"au_dela_dernier_degre[{pop}]"
     regle = bloc.get("regle", "refus")
     if regle == "refus":
         _exiger(_entier_positif(bloc["anciennete_max_couverte_annees"]),
                 f"{objet} : anciennete_max_couverte_annees entier > 0 attendu")
         _exiger_refus_declare(bloc, objet, avec_anciennete=True)
+        return
+    if regle == "ouvert":
+        # Dernier degré ouvert (« 30+ ») servi tel quel : ni plafond ni extrapolation, texte de la source cité.
+        _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"])
+                and _texte(bloc["texte_source_ar"]), f"{objet} : source_pdf_page, source_article et texte_source_ar attendus")
+        bornes = [bornes_degre(d["anciennete_label"]) for d in degres]
+        _exiger(bool(degres) and all(bornes) and bornes[-1][1] is None,
+                f"{objet} : dernier degré ouvert (« n+ ») attendu")
         return
     _exiger(regle in ("ecart_cumule_biennal", "table_correspondance"), f"{objet} : règle inconnue {regle!r}")
     _valider_art13_commun(bloc, objet)

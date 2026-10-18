@@ -1,0 +1,1196 @@
+{
+ "_meta": {
+  "secteur_code": "ASSURANCE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للتأمين",
+  "convention_fr": "Convention collective sectorielle de l'assurance",
+  "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+  "pages_sources": [
+   3,
+   9,
+   10,
+   11,
+   20,
+   21
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "Grille transcrite (2026-10-15) : 2 tables, 22 lignes, 14 degrés, 616 cellules ; double lecture, contrôle croisé entre les deux tables et vérification humaine par lot ; primes de l'article 20 transcrites ; activée par la décision D29.",
+  "decision_ref": "D29",
+  "currency": "TND",
+  "note_unite": "Art. 19 (جديد), p.11 : « الأجر الشهري للأعوان ينتج عن سلم الأجور الملحق بهذه الاتفاقية. » → TND/mois.",
+  "note_degres": "En-tête p.20 et 21 : « الدرجة » 1 à 14 (degré 1 à droite) ; « مدة البقاء بالدرجة » ; « الأقدمية الفعلية » en tranches imprimées « haut-bas » (« 1-0 » … « 27-23 », « 30+ ») ; degré 13 imprimé « 27-30 » p.20 et « 30-27 » p.21 (mêmes bornes). Libellés retenus « 0-1 » … « 27-30 », « 30+ ». Bornes exactes 1, 2, 3, 4, 6, 8, 10, 13, 16, 19, 23, 27 et 30 refusées (D6).",
+  "remarque_pdf": "Note sous chaque tableau (p.20 et 21) : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحتان 20 و21): تتضمن الأجور المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 المؤرخ في 7 أفريل 1981، والمرفّع فيها بالأمر عدد 501 المؤرخ في 16 مارس 1982.",
+  "note_categories": "Clé de ligne : numéro d'échelle imprimé (« السلم » 1 à 21) ; ligne « استثنائي » : clé propre. Sous-groupes (أ à ز) et catégories (« الصنف » 1 à 5) imprimés dans la grille ; catégories conformes à l'art. 14, p.9.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Les tables p.20 et 21 n'indiquent aucun régime horaire : non renseigné."
+ },
+ "populations": {
+  "tous_agents": {
+   "libelle_ar": "كافة أعوان شركات التأمين",
+   "libelle_fr": "Tous les agents des sociétés d'assurance",
+   "source_article": "20 (جديد)",
+   "source_pdf_page": 11,
+   "note": "Population unique : les tables p.20 et 21 ne distinguent aucune population ; la requête peut l'omettre."
+  }
+ },
+ "categories": {
+  "tous_agents": [
+   "21",
+   "20",
+   "19",
+   "18",
+   "17",
+   "16",
+   "15",
+   "14",
+   "13",
+   "12",
+   "11",
+   "10",
+   "9",
+   "8",
+   "7",
+   "6",
+   "5",
+   "4",
+   "استثنائي",
+   "3",
+   "2",
+   "1"
+  ]
+ },
+ "lignes_grille": {
+  "tous_agents": [
+   {
+    "cle": "21",
+    "libelle_imprime": "21",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "أ",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 21"
+   },
+   {
+    "cle": "20",
+    "libelle_imprime": "20",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "أ",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 20"
+   },
+   {
+    "cle": "19",
+    "libelle_imprime": "19",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "أ",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 19"
+   },
+   {
+    "cle": "18",
+    "libelle_imprime": "18",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ب",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 18"
+   },
+   {
+    "cle": "17",
+    "libelle_imprime": "17",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ب",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 17"
+   },
+   {
+    "cle": "16",
+    "libelle_imprime": "16",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ب",
+    "categorie_imprimee": 1,
+    "libelle_fr": "Échelle 16"
+   },
+   {
+    "cle": "15",
+    "libelle_imprime": "15",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ج",
+    "categorie_imprimee": 2,
+    "libelle_fr": "Échelle 15"
+   },
+   {
+    "cle": "14",
+    "libelle_imprime": "14",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ج",
+    "categorie_imprimee": 2,
+    "libelle_fr": "Échelle 14"
+   },
+   {
+    "cle": "13",
+    "libelle_imprime": "13",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ج",
+    "categorie_imprimee": 2,
+    "libelle_fr": "Échelle 13"
+   },
+   {
+    "cle": "12",
+    "libelle_imprime": "12",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "د",
+    "categorie_imprimee": 3,
+    "libelle_fr": "Échelle 12"
+   },
+   {
+    "cle": "11",
+    "libelle_imprime": "11",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "د",
+    "categorie_imprimee": 3,
+    "libelle_fr": "Échelle 11"
+   },
+   {
+    "cle": "10",
+    "libelle_imprime": "10",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "د",
+    "categorie_imprimee": 3,
+    "libelle_fr": "Échelle 10"
+   },
+   {
+    "cle": "9",
+    "libelle_imprime": "9",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "هـ",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 9"
+   },
+   {
+    "cle": "8",
+    "libelle_imprime": "8",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "هـ",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 8"
+   },
+   {
+    "cle": "7",
+    "libelle_imprime": "7",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "هـ",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 7"
+   },
+   {
+    "cle": "6",
+    "libelle_imprime": "6",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "و",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 6"
+   },
+   {
+    "cle": "5",
+    "libelle_imprime": "5",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "و",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 5"
+   },
+   {
+    "cle": "4",
+    "libelle_imprime": "4",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "و",
+    "categorie_imprimee": 4,
+    "libelle_fr": "Échelle 4"
+   },
+   {
+    "cle": "استثنائي",
+    "libelle_imprime": "استثنائي",
+    "colonne": "السلم",
+    "sous_groupe_imprime": null,
+    "categorie_imprimee": 5,
+    "libelle_fr": "Ligne « استثنائي » (exceptionnelle)",
+    "note": "Cellule fusionnée sur les colonnes « السلم » et sous-groupe (aucune lettre), entre l'échelle 4 et l'échelle 3, dans la catégorie 5. Clé propre, sans alias ; non reliée à « خارج الرتبة » (art. 14 p.9, 16 ب p.10, 17 p.11) : aucun texte ne fait ce lien."
+   },
+   {
+    "cle": "3",
+    "libelle_imprime": "3",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ز",
+    "categorie_imprimee": 5,
+    "libelle_fr": "Échelle 3"
+   },
+   {
+    "cle": "2",
+    "libelle_imprime": "2",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ز",
+    "categorie_imprimee": 5,
+    "libelle_fr": "Échelle 2"
+   },
+   {
+    "cle": "1",
+    "libelle_imprime": "1",
+    "colonne": "السلم",
+    "sous_groupe_imprime": "ز",
+    "categorie_imprimee": 5,
+    "libelle_fr": "Échelle 1"
+   }
+  ]
+ },
+ "degres": {
+  "tous_agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "libelle_imprime_p20": "1-0",
+    "libelle_imprime_p21": "1-0"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "libelle_imprime_p20": "2-1",
+    "libelle_imprime_p21": "2-1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1,
+    "libelle_imprime_p20": "3-2",
+    "libelle_imprime_p21": "3-2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-4",
+    "duree_imprimee": 1,
+    "libelle_imprime_p20": "4-3",
+    "libelle_imprime_p21": "4-3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "libelle_imprime_p20": "6-4",
+    "libelle_imprime_p21": "6-4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "libelle_imprime_p20": "8-6",
+    "libelle_imprime_p21": "8-6"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "libelle_imprime_p20": "10-8",
+    "libelle_imprime_p21": "10-8"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "10-13",
+    "duree_imprimee": 3,
+    "libelle_imprime_p20": "13-10",
+    "libelle_imprime_p21": "13-10"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "13-16",
+    "duree_imprimee": 3,
+    "libelle_imprime_p20": "16-13",
+    "libelle_imprime_p21": "16-13"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-19",
+    "duree_imprimee": 3,
+    "libelle_imprime_p20": "19-16",
+    "libelle_imprime_p21": "19-16"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "19-23",
+    "duree_imprimee": 4,
+    "libelle_imprime_p20": "23-19",
+    "libelle_imprime_p21": "23-19"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-27",
+    "duree_imprimee": 4,
+    "libelle_imprime_p20": "27-23",
+    "libelle_imprime_p21": "27-23"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "libelle_imprime_p20": "27-30",
+    "libelle_imprime_p21": "30-27"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "30+",
+    "duree_imprimee": 3,
+    "libelle_imprime_p20": "30+",
+    "libelle_imprime_p21": "30+"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "tous_agents": {
+   "regle": "ouvert",
+   "source_pdf_page": 9,
+   "source_article": "16 (جديد) أ",
+   "texte_source_ar": "يتمثل التدرج في الارتقاء آليا من درجة إلى درجة أعلى مباشرة بصفة مستمرة كما هو مقرر بسلم الأجور.",
+   "regle_fr": "Le dernier degré est imprimé « 30+ » (p.20 et 21) : à partir de 30 ans, le degré 14 est servi, sans plafond ni extrapolation."
+  }
+ },
+ "hypotheses_grille": {
+  "tous_agents": {
+   "fr": [
+    "L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne.",
+    "Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite."
+   ],
+   "ar": [
+    "ينص الفصل 19 (جديد) (الصفحة 11) على أن العون يبلغ الدرجة الرابعة عشر «في موفى 33 سنة من الخدمة الفعلية»؛ ويفتح رأس جدولي الأجور (الصفحتان 20 و21) الدرجة 14 ابتداء من 30 سنة («30+»): تُطبَّق الدرجة 14 ابتداء من 30 سنة دون سقف، ولا تمثل 33 سنة حدا.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-06-01؛ وجدول 2021-06-01 هو آخر جدول تم نقله."
+   ]
+  }
+ },
+ "tables_a_transcrire": [
+  {
+   "table_id": "ASS_2020-10-01",
+   "titre_ar": "جدول الأجور عدد 1",
+   "date_effet_ar": "يقع العمل به بداية من غرة أكتوبر 2020",
+   "effective_date": "2020-10-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": null,
+   "note_ar": "ملاحظة : تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982"
+  },
+  {
+   "table_id": "ASS_2021-06-01",
+   "titre_ar": "جدول الأجور عدد 2",
+   "date_effet_ar": "يقع العمل به بداية من غرة جوان 2021",
+   "effective_date": "2021-06-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": null,
+   "note_ar": "ملاحظة : تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982"
+  }
+ ],
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "20 (جديد)",
+   "source_pdf_page": 11,
+   "unite": "TND/mois",
+   "toutes_categories": true,
+   "montants": [
+    {
+     "effective_date": "2016-06-01",
+     "montant": 75.000
+    },
+    {
+     "effective_date": "2017-06-01",
+     "montant": 85.000
+    }
+   ],
+   "note": "Le montant inclut celui de la prime de transport prévue par le décret n° 503 du 16 mars 1982 (art. 20 (جديد), p.11) : mention reproduite, sans calcul. Note 11 (p.11) : la prime de transport entre dans le calcul de la prime de production et des 13e et 14e mois (avenant n° 3, puis avenants 6, 7, 10, 11, 12 et 13) : mention reproduite, sans calcul.",
+   "note_ar": "يتضمن هذا المقدار مبلغ منحة النقل المنصوص عليها بالأمر عدد 503 المؤرخ في 16 مارس 1982. وتدخل منحة النقل في احتساب منحة الإنتاج وجرايتي الشهر 13 و14 (الإحالة 11، الصفحة 11).",
+   "hypotheses": {
+    "fr": [
+     "Le texte attribue cette prime à tous les agents des sociétés d'assurance (art. 20 (جديد), p.11) : même montant pour toutes les lignes de la grille.",
+     "Aucune révision de la prime de transport postérieure au 2017-06-01 n'est présente dans les sources ; le montant du 2017-06-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "يسند النص هذه المنحة لكافة أعوان شركات التأمين (الفصل 20 (جديد)، الصفحة 11): نفس المبلغ لكل أسطر الجدول.",
+     "لا توجد في المصادر أي مراجعة لمنحة النقل بعد 2017-06-01؛ ومبلغ 2017-06-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_13e_14e_mois": {
+   "source_pdf_page": 11,
+   "source_article": "20 (جديد)",
+   "message_fr": "Treizième et quatorzième mois (article 20 (جديد), page 11) : montant défini par une formule, sans montant fixe (dernier salaire brut, réduit selon les absences non payées). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "جرايتا الشهر الثالث عشر والرابع عشر (الفصل 20 (جديد)، الصفحة 11): مبلغ محدد بصيغة حسابية، دون مبلغ قار (الأجر الأخير الخام، مع تخفيض حسب الغيابات غير خالصة الأجر). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule, pas de montant"
+  },
+  "prime_production": {
+   "source_pdf_page": 11,
+   "source_article": "20 (جديد)",
+   "message_fr": "Prime de production (article 20 (جديد), page 11) : montant défini par une formule, sans montant fixe (pourcentage du salaire brut de décembre selon un tableau, de 50 % à 150 %). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 20 (جديد)، الصفحة 11): مبلغ محدد بصيغة حسابية، دون مبلغ قار (نسبة مئوية من الأجر الخام لشهر ديسمبر حسب جدول، من 50% إلى 150%). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule selon un tableau, pas de montant"
+  },
+  "prime_fonctionnelle": {
+   "source_pdf_page": 11,
+   "source_article": "21 (جديد)",
+   "message_fr": "Prime fonctionnelle (article 21 (جديد), page 11) : montant absent de la source (fixé par chaque société). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المنحة الوظيفية (الفصل 21 (جديد)، الصفحة 11): مبلغ غير مذكور في المصدر (تضبطه كل مؤسسة). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant absent"
+  },
+  "prime_sujetion_services": {
+   "source_pdf_page": 11,
+   "source_article": "22 (جديد)",
+   "message_fr": "Prime de l'article 22 (article 22 (جديد), page 11) : montant absent de la source (fixé par chaque société). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الفصل 22 (الفصل 22 (جديد)، الصفحة 11): مبلغ غير مذكور في المصدر (تضبطه كل مؤسسة). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant absent"
+  },
+  "aide_deces": {
+   "source_pdf_page": 17,
+   "source_article": "44",
+   "message_fr": "Aide en cas de décès (article 44, page 17) : montant défini par une formule, sans montant fixe (trois mois de salaire). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المساعدة في صورة الوفاة (الفصل 44، الصفحة 17): مبلغ محدد بصيغة حسابية، دون مبلغ قار (أجر ثلاثة أشهر). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule, pas de montant"
+  },
+  "aide_scolaire": {
+   "source_pdf_page": 17,
+   "source_article": "46",
+   "message_fr": "Aide scolaire (article 46, page 17) : montant absent de la source (fixé par l'employeur). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المساعدة الدراسية (الفصل 46، الصفحة 17): مبلغ غير مذكور في المصدر (يضبطه المؤجر). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant absent"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 17,
+   "source_article": "47 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 47 (جديد), page 17) : montant défini par une formule, sans montant fixe (quatre mois de salaire brut, six mois en départ anticipé). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 47 (جديد)، الصفحة 17): مبلغ محدد بصيغة حسابية، دون مبلغ قار (أجرة أربعة أشهر، وستة أشهر عند التقاعد المبكر). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule, pas de montant"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "ASS_2020-10-01",
+   "population": "tous_agents",
+   "effective_date": "2020-10-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "valeurs": {
+    "21": [
+     2444.852,
+     2463.164,
+     2481.474,
+     2499.786,
+     2518.096,
+     2536.408,
+     2554.694,
+     2572.934,
+     2591.342,
+     2609.654,
+     2630.118,
+     2646.276,
+     2664.588,
+     2682.900
+    ],
+    "20": [
+     2431.119,
+     2449.431,
+     2467.741,
+     2486.053,
+     2503.719,
+     2522.675,
+     2540.987,
+     2558.651,
+     2576.963,
+     2596.121,
+     2614.231,
+     2632.543,
+     2650.855,
+     2669.167
+    ],
+    "19": [
+     2417.385,
+     2435.697,
+     2454.007,
+     2472.319,
+     2490.629,
+     2508.941,
+     2527.253,
+     2545.499,
+     2563.675,
+     2582.187,
+     2600.497,
+     2618.609,
+     2636.921,
+     2655.233
+    ],
+    "18": [
+     2402.158,
+     2417.385,
+     2432.644,
+     2447.903,
+     2463.164,
+     2478.423,
+     2493.682,
+     2508.941,
+     2524.200,
+     2539.461,
+     2554.720,
+     2569.979,
+     2585.238,
+     2600.497
+    ],
+    "17": [
+     2388.393,
+     2403.652,
+     2418.911,
+     2434.170,
+     2449.365,
+     2464.690,
+     2479.949,
+     2495.208,
+     2510.467,
+     2525.728,
+     2540.987,
+     2556.246,
+     2571.505,
+     2586.764
+    ],
+    "16": [
+     2374.659,
+     2389.918,
+     2405.177,
+     2420.436,
+     2435.697,
+     2450.956,
+     2466.215,
+     2481.474,
+     2496.733,
+     2511.994,
+     2527.253,
+     2542.512,
+     2557.771,
+     2573.030
+    ],
+    "15": [
+     2127.383,
+     2140.202,
+     2153.019,
+     2165.836,
+     2178.655,
+     2191.472,
+     2204.291,
+     2217.108,
+     2229.919,
+     2242.744,
+     2255.561,
+     2268.380,
+     2281.198,
+     2294.016
+    ],
+    "14": [
+     2118.228,
+     2131.045,
+     2143.864,
+     2156.681,
+     2169.500,
+     2182.317,
+     2195.134,
+     2207.307,
+     2220.770,
+     2233.589,
+     2246.406,
+     2259.225,
+     2272.043,
+     2284.861
+    ],
+    "13": [
+     2109.071,
+     2121.890,
+     2134.707,
+     2147.526,
+     2160.343,
+     2173.162,
+     2185.979,
+     2198.798,
+     2211.310,
+     2224.432,
+     2237.251,
+     2250.068,
+     2262.886,
+     2275.704
+    ],
+    "12": [
+     1887.754,
+     1898.437,
+     1911.752,
+     1922.435,
+     1933.115,
+     1943.798,
+     1954.478,
+     1965.161,
+     1975.843,
+     1986.324,
+     1997.206,
+     2007.887,
+     2018.569,
+     2029.251
+    ],
+    "11": [
+     1880.125,
+     1890.807,
+     1901.488,
+     1914.805,
+     1925.486,
+     1936.168,
+     1946.849,
+     1957.331,
+     1968.212,
+     1978.894,
+     1989.577,
+     2000.257,
+     2010.939,
+     2021.621
+    ],
+    "10": [
+     1872.495,
+     1883.177,
+     1894.074,
+     1907.175,
+     1917.856,
+     1928.766,
+     1939.219,
+     1949.901,
+     1960.582,
+     1971.264,
+     1981.945,
+     1992.621,
+     2003.303,
+     2013.985
+    ],
+    "9": [
+     1700.381,
+     1711.560,
+     1720.106,
+     1728.650,
+     1737.196,
+     1748.375,
+     1756.921,
+     1765.459,
+     1774.011,
+     1782.557,
+     1791.103,
+     1799.647,
+     1808.192,
+     1816.737
+    ],
+    "8": [
+     1694.277,
+     1702.821,
+     1713.801,
+     1722.548,
+     1731.092,
+     1739.638,
+     1750.617,
+     1759.363,
+     1767.907,
+     1776.453,
+     1784.999,
+     1793.543,
+     1802.088,
+     1810.633
+    ],
+    "7": [
+     1688.173,
+     1696.719,
+     1705.263,
+     1716.244,
+     1724.988,
+     1733.734,
+     1742.080,
+     1753.259,
+     1761.805,
+     1770.349,
+     1778.895,
+     1787.439,
+     1795.984,
+     1804.529
+    ],
+    "6": [
+     1682.069,
+     1689.090,
+     1696.108,
+     1703.127,
+     1712.092,
+     1719.801,
+     1726.819,
+     1733.840,
+     1740.858,
+     1750.512,
+     1757.532,
+     1764.551,
+     1771.572,
+     1778.593
+    ],
+    "5": [
+     1675.830,
+     1682.986,
+     1690.004,
+     1697.023,
+     1704.043,
+     1713.697,
+     1720.715,
+     1727.736,
+     1734.754,
+     1741.883,
+     1749.898,
+     1758.447,
+     1765.468,
+     1772.489
+    ],
+    "4": [
+     1667.078,
+     1676.732,
+     1683.750,
+     1690.771,
+     1697.789,
+     1704.808,
+     1714.444,
+     1721.482,
+     1728.500,
+     1735.521,
+     1742.539,
+     1752.203,
+     1759.224,
+     1766.245
+    ],
+    "استثنائي": [
+     1457.507,
+     1462.695,
+     1472.072,
+     1477.262,
+     1482.449,
+     1487.637,
+     1492.826,
+     1498.014,
+     1505.701,
+     1510.891,
+     1516.078,
+     1521.200,
+     1526.388,
+     1531.576
+    ],
+    "3": [
+     1453.201,
+     1458.389,
+     1463.576,
+     1471.401,
+     1476.588,
+     1481.776,
+     1486.965,
+     1491.507,
+     1497.332,
+     1505.163,
+     1510.152,
+     1515.540,
+     1520.728,
+     1525.916
+    ],
+    "2": [
+     1446.897,
+     1452.285,
+     1457.472,
+     1462.662,
+     1470.484,
+     1475.672,
+     1480.981,
+     1486.048,
+     1491.236,
+     1496.426,
+     1504.248,
+     1509.436,
+     1514.824,
+     1520.212
+    ],
+    "1": [
+     1438.617,
+     1446.181,
+     1451.304,
+     1456.558,
+     1461.745,
+     1469.568,
+     1474.757,
+     1479.945,
+     1485.360,
+     1490.322,
+     1495.509,
+     1503.332,
+     1508.520,
+     1513.708
+    ]
+   }
+  },
+  {
+   "table_id": "ASS_2021-06-01",
+   "population": "tous_agents",
+   "effective_date": "2021-06-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "valeurs": {
+    "21": [
+     2679.852,
+     2698.164,
+     2716.474,
+     2734.786,
+     2753.096,
+     2771.408,
+     2789.694,
+     2807.934,
+     2826.342,
+     2844.654,
+     2865.118,
+     2881.276,
+     2899.588,
+     2917.900
+    ],
+    "20": [
+     2666.119,
+     2684.431,
+     2702.741,
+     2721.053,
+     2738.719,
+     2757.675,
+     2775.987,
+     2793.651,
+     2811.963,
+     2831.121,
+     2849.231,
+     2867.543,
+     2885.855,
+     2904.167
+    ],
+    "19": [
+     2652.385,
+     2670.697,
+     2689.007,
+     2707.319,
+     2725.629,
+     2743.941,
+     2762.253,
+     2780.499,
+     2798.675,
+     2817.187,
+     2835.497,
+     2853.609,
+     2871.921,
+     2890.233
+    ],
+    "18": [
+     2637.158,
+     2652.385,
+     2667.644,
+     2682.903,
+     2698.164,
+     2713.423,
+     2728.682,
+     2743.941,
+     2759.200,
+     2774.461,
+     2789.720,
+     2804.979,
+     2820.238,
+     2835.497
+    ],
+    "17": [
+     2623.393,
+     2638.652,
+     2653.911,
+     2669.170,
+     2684.365,
+     2699.690,
+     2714.949,
+     2730.208,
+     2745.467,
+     2760.728,
+     2775.987,
+     2791.246,
+     2806.505,
+     2821.764
+    ],
+    "16": [
+     2609.659,
+     2624.918,
+     2640.177,
+     2655.436,
+     2670.697,
+     2685.956,
+     2701.215,
+     2716.474,
+     2731.733,
+     2746.994,
+     2762.253,
+     2777.512,
+     2792.771,
+     2808.030
+    ],
+    "15": [
+     2327.383,
+     2340.202,
+     2353.019,
+     2365.836,
+     2378.655,
+     2391.472,
+     2404.291,
+     2417.108,
+     2429.919,
+     2442.744,
+     2455.561,
+     2468.380,
+     2481.198,
+     2494.016
+    ],
+    "14": [
+     2318.228,
+     2331.045,
+     2343.864,
+     2356.681,
+     2369.500,
+     2382.317,
+     2395.134,
+     2407.307,
+     2420.770,
+     2433.589,
+     2446.406,
+     2459.225,
+     2472.043,
+     2484.861
+    ],
+    "13": [
+     2309.071,
+     2321.890,
+     2334.707,
+     2347.526,
+     2360.343,
+     2373.162,
+     2385.979,
+     2398.798,
+     2411.310,
+     2424.432,
+     2437.251,
+     2450.068,
+     2462.886,
+     2475.704
+    ],
+    "12": [
+     2072.754,
+     2083.437,
+     2096.752,
+     2107.435,
+     2118.115,
+     2128.798,
+     2139.478,
+     2150.161,
+     2160.843,
+     2171.324,
+     2182.206,
+     2192.887,
+     2203.569,
+     2214.251
+    ],
+    "11": [
+     2065.125,
+     2075.807,
+     2086.488,
+     2099.805,
+     2110.486,
+     2121.168,
+     2131.849,
+     2142.331,
+     2153.212,
+     2163.894,
+     2174.577,
+     2185.257,
+     2195.939,
+     2206.621
+    ],
+    "10": [
+     2057.495,
+     2068.177,
+     2079.074,
+     2092.175,
+     2102.856,
+     2113.766,
+     2124.219,
+     2134.901,
+     2145.582,
+     2156.264,
+     2166.945,
+     2177.621,
+     2188.303,
+     2198.985
+    ],
+    "9": [
+     1870.381,
+     1881.560,
+     1890.106,
+     1898.650,
+     1907.196,
+     1918.375,
+     1926.921,
+     1935.459,
+     1944.011,
+     1952.557,
+     1961.103,
+     1969.647,
+     1978.192,
+     1986.737
+    ],
+    "8": [
+     1864.277,
+     1872.821,
+     1883.801,
+     1892.548,
+     1901.092,
+     1909.638,
+     1920.617,
+     1929.363,
+     1937.907,
+     1946.453,
+     1954.999,
+     1963.543,
+     1972.088,
+     1980.633
+    ],
+    "7": [
+     1858.173,
+     1866.719,
+     1875.263,
+     1886.244,
+     1894.988,
+     1903.734,
+     1912.080,
+     1923.259,
+     1931.805,
+     1940.349,
+     1948.895,
+     1957.439,
+     1965.984,
+     1974.529
+    ],
+    "6": [
+     1852.069,
+     1859.090,
+     1866.108,
+     1873.127,
+     1882.092,
+     1889.801,
+     1896.819,
+     1903.840,
+     1910.858,
+     1920.512,
+     1927.532,
+     1934.551,
+     1941.572,
+     1948.593
+    ],
+    "5": [
+     1845.830,
+     1852.986,
+     1860.004,
+     1867.023,
+     1874.043,
+     1883.697,
+     1890.715,
+     1897.736,
+     1904.754,
+     1911.883,
+     1919.898,
+     1928.447,
+     1935.468,
+     1942.489
+    ],
+    "4": [
+     1837.078,
+     1846.732,
+     1853.750,
+     1860.771,
+     1867.789,
+     1874.808,
+     1884.444,
+     1891.482,
+     1898.500,
+     1905.521,
+     1912.539,
+     1922.203,
+     1929.224,
+     1936.245
+    ],
+    "استثنائي": [
+     1617.507,
+     1622.695,
+     1632.072,
+     1637.262,
+     1642.449,
+     1647.637,
+     1652.826,
+     1658.014,
+     1665.701,
+     1670.891,
+     1676.078,
+     1681.200,
+     1686.388,
+     1691.576
+    ],
+    "3": [
+     1613.201,
+     1618.389,
+     1623.576,
+     1631.401,
+     1636.588,
+     1641.776,
+     1646.965,
+     1651.507,
+     1657.332,
+     1665.163,
+     1670.152,
+     1675.540,
+     1680.728,
+     1685.916
+    ],
+    "2": [
+     1606.897,
+     1612.285,
+     1617.472,
+     1622.662,
+     1630.484,
+     1635.672,
+     1640.981,
+     1646.048,
+     1651.236,
+     1656.426,
+     1664.248,
+     1669.436,
+     1674.824,
+     1680.212
+    ],
+    "1": [
+     1598.617,
+     1606.181,
+     1611.304,
+     1616.558,
+     1621.745,
+     1629.568,
+     1634.757,
+     1639.945,
+     1645.360,
+     1650.322,
+     1655.509,
+     1663.332,
+     1668.520,
+     1673.708
+    ]
+   }
+  }
+ ]
+}

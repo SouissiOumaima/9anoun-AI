@@ -90,10 +90,14 @@
         "compagnie d'assurance",
         "التأمين"
       ],
-      "ds5_code": null,
-      "ds5_status": "en_preparation",
-      "ds5_decision_ref": null,
-      "evidence": null
+      "ds5_code": "ASSURANCE",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D29",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية للتأمين"
+      }
     },
     {
       "ds2_code": "enseignement_prive",

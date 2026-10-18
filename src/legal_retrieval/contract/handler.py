@@ -5,15 +5,18 @@ The response follows the team envelope src/shared/schemas/common.v0.schema.json:
   status "refus"  -> no article, no citation, refus {code, message_fr, message_ar}
   status "erreur" -> unexpected incident, no article, erreur {type, message_fr, message_ar}
 
-Sprint 1 = mock mode: valid requests receive the demo articles
-(data/mock_cards/legal_retrieval_search_demo.json), filtered by sector like the
-real metadata filter will be, then truncated to top_k ARTICLES.
+Two modes (field "mode" at the root of every response):
+- "live": the corpus is ingested on this machine -> real search, article
+  reference + BM25 (search/bm25.py, D26);
+- "mock": no corpus -> the demo articles
+  (data/mock_cards/legal_retrieval_search_demo.json), filtered by sector, then
+  truncated to top_k ARTICLES. Never an invented article.
 
 Rule "all versions" (decided with the user, D17): for every relevant article
 ALL its known versions are returned (in force, modified, repealed), so a lawyer
 or accountant always sees the old AND the new text. top_k counts articles
 (version_group), never individual versions.
-The real hybrid search will replace `_search` without changing the contract.
+Dense embeddings + RRF will be added inside search/ without changing the contract.
 """
 
 from __future__ import annotations
@@ -25,6 +28,9 @@ from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator, FormatChecker
+
+from ..corpus.store import load_store
+from ..search.bm25 import search_live
 
 CONTRACT_VERSION = "legal_retrieval.v0"
 
@@ -86,7 +92,7 @@ def keep_top_k_articles(results: list[dict[str, Any]], top_k: int) -> list[dict[
 
 
 def _search(request: dict[str, Any]) -> list[dict[str, Any]]:
-    """MOCK search. Replaced by hybrid retrieval in Sprint 4.
+    """MOCK search (no corpus on this machine).
 
     Sector filter: an article applies to the requested sector, or to all
     sectors (sector = null). A request on another sector gets no article.
@@ -120,28 +126,32 @@ def _refus(request_id: Any, code: str, fr: str, ar: str, computed_by: str) -> di
     return response
 
 
-def handle(request: Any) -> dict[str, Any]:
+def handle(request: Any, *, live: bool = True) -> dict[str, Any]:
     """Validate the request, search, validate and return the response.
 
     Never raises: a bad request gives refus PARAM_INVALIDE (contract refusal,
     like Track B), an internal bug gives status "erreur". DS1 can fail safely.
+    live=False forces the mock (demo files shared with the team stay stable).
     """
     request_id = request.get("request_id") if isinstance(request, dict) else None
     try:
+        store = load_store() if live else None
+        mode = "live" if store is not None else "mock"
         errors = validation_errors(request, "search_request")
         if errors:  # contract refusal: the caller sent a non-conforming message
             fr, ar = _MSG_BAD_REQUEST
             response = _refus(request_id, "PARAM_INVALIDE", fr.format(details="; ".join(errors)),
                               ar, "legal_retrieval.contract")
         else:
-            results = _search(request)
+            computed_by = f"legal_retrieval.search.{mode}"
+            results = search_live(request, store) if store is not None else _search(request)
             if not results:  # Citation or Silence: explicit refusal, never a guess
-                response = _refus(request_id, "SOURCE_MANQUANTE", *_MSG_NO_SOURCE,
-                                  "legal_retrieval.search.mock")
+                response = _refus(request_id, "SOURCE_MANQUANTE", *_MSG_NO_SOURCE, computed_by)
             else:
-                response = _envelope(request_id, "ok", "legal_retrieval.search.mock")
+                response = _envelope(request_id, "ok", computed_by)
                 response["results"] = results
                 response["citations"] = [r["citation"] for r in results]
+        response["mode"] = mode
         out_errors = validation_errors(response, "search_response")
         if out_errors:  # our own bug: never send an invalid message to others
             raise RuntimeError(f"invalid DS2 response: {out_errors}")

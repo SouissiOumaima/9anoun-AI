@@ -585,7 +585,7 @@ l'explique. Les valeurs sont conservées telles qu'imprimées.
 
 **Note sous chaque tableau** : les salaires incluent l'indemnité
 complémentaire provisoire (المنحة التكميلية المؤقتة, décret n° 437 du
-7 avril 1981, modifié par le décret n° 501 du 16 mars 1982) ;
+7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) ;
 `_meta.remarque_pdf`.
 
 **`regime_hebdomadaire_heures`** : laissé à `null`, car les pages 23 à 25 ne
@@ -1300,6 +1300,284 @@ terminée le 2026-10-12.
 
 ---
 
+### D24 — Graphe juridique v0 : sources, articles, avenants, textes externes
+
+*(Numérotée D24 : D23 est prise par DS5 pour Track B, secteur associations.)*
+
+**Décision** : `src/legal_retrieval/graph/build.py` construit, à partir du corpus ingéré, un
+graphe JSON (`legal_graph.json`, hors git comme le corpus) :
+- nœuds `SECTOR` (vocabulaire D21), `SOURCE`, `ARTICLE` (un par article, toutes versions),
+  `AVENANT` (daté si présent dans l'historique, sinon `known: false`), `EXTERNAL` (Code du
+  travail article par article, décrets `DECRET-501-1982`, lois — cités mais absents du corpus) ;
+- arêtes `APPARTIENT_A`, `S_APPLIQUE_AU_SECTEUR` (convention cadre et SMIG → tous les
+  secteurs), `AVENANT_DE`, `ABROGE` (avenant → article abrogé), `MENTIONNE_AVENANT`, `CITE` ;
+- chaque arête de citation garde sa **preuve** (le renvoi tel qu'écrit, ≤ 60 caractères) ;
+  une citation déduite (numéro absent de la convention, Code du travail nommé dans le même
+  article) porte `inferred: true`.
+
+Lecture des renvois (`graph/references.py`), construite sur le diagnostic du corpus réel
+(142 articles sur 468 citent un autre texte) : « بالفصل / للفصل / الفصلين » ; cible lue dans
+les mots qui suivent (« من مجلة الشغل », « من الاتفاقية الإطارية », « من الأمر ») ; « … مجلة
+الشغل وخاصة الفصل 143 منها » (renvoi en arrière) ; forme OCR « مجل الشغل » ; jamais un en-tête
+(R1/R4) ni une liste d'abrogation (R2).
+
+**Constats du diagnostic** : les 22 renvois « introuvables » (articles 76 à 333) sont tous des
+articles du **Code du travail** ; la convention cadre cite 6 fois son avenant n° 3, absent de
+son historique ; l'Enseignement cite un avenant n° 12 (historique : 11).
+
+**Alternatives envisagées** :
+- Une base de graphe (Neo4j) → reportée : 468 articles tiennent dans un JSON ; aucun service
+  de plus à installer pour l'équipe.
+- Une arête `MODIFIE` avenant → article pour chaque « (جديد) » → rejetée : le digest ne dit
+  pas quel avenant a modifié l'article ; on ne crée que ce qui est écrit (`MENTIONNE_AVENANT`).
+
+**Statut** : ⏳ v0 ; démonstration du plan : `python -m src.legal_retrieval.graph.query
+--sector banques` (convention des banques + convention cadre + SMIG).
+
+---
+
+### D25 — Corpus traité versionné dans le dépôt, vérifié contre les sources
+
+**Décision** : les sorties de l'ingestion `data/processed/legal_corpus/legal_articles.jsonl`,
+`legal_sources.json` et `avenants.json` sont commitées, pour que tous les rôles (DS1 en
+premier) aient le corpus réel sans relancer l'ingestion ; `get_article` passe alors en mode
+`live` sur toutes les machines. Les rapports et le graphe (`ingestion_report.json`,
+`*_diagnosis.json`, `legal_graph.json`) restent générés localement.
+
+Un test (`test_legal_corpus_committed.py`) relance l'ingestion sur `data/raw/` et exige que
+les fichiers commités soient **identiques** : un corpus commité ne peut pas dériver du code ni
+des sources.
+
+**Alternatives envisagées** :
+- Garder le corpus hors git, chaque rôle relançant l'ingestion → rejeté : DS1 a constaté que
+  le corpus « n'est pas dans la branche » ; l'intégration dépendait d'une étape manuelle.
+- Stockage partagé externe → rejeté : un service de plus, et des données hors des outils
+  Tradrly.
+
+**Confidentialité** : les sources (`data/raw/pdf`, `data/raw/txt`) sont déjà dans ce dépôt
+privé ; le corpus traité n'en est qu'une transformation, il n'augmente pas l'exposition.
+
+**Statut** : ✅ accepté par DS5 (Oumaima) le 2026-10-14 ; corpus commité.
+
+---
+
+### D26 — Recherche réelle v0 : référence d'article + BM25, sans dépendance externe
+
+**Décision** : `POST /legal/search` (et `handle()`) répond en mode **`live`** dès que le corpus
+est ingéré sur la machine (`computed_by = legal_retrieval.search.live`) ; sinon le mock reste
+servi (`mode = mock`). Ordre de la réponse :
+1. les articles dont le **numéro est demandé** (« الفصل 42 مكرر », « article 14 bis »,
+   « الفصل 46 - 3 ») → score 1.0, conventions sectorielles avant la convention cadre ;
+2. puis **BM25** (k1 = 1.5, b = 0.75) sur le texte normalisé (`text_normalized`, D13),
+   racinisation arabe légère (« ال », « بال », « لل »… ; « ات », « ين », « ه »…), mots vides
+   retirés ; score = score / meilleur score.
+
+Filtre `sector` identique au mock : un article s'applique à son secteur ou à tous
+(`sector = null` : convention cadre, SMIG). `top_k` compte des articles, chaque article
+avec toutes ses versions (D17). Aucun mot en commun avec le corpus → refus
+`SOURCE_MANQUANTE`. Le texte renvoyé reste le texte exact.
+
+`handle(request, live=False)` force le mock : le fichier d'exemples partagé avec DS1
+(`legal_retrieval_requests_demo.json`) ne change pas selon la machine.
+
+**Alternatives envisagées** :
+- Bibliothèque `rank_bm25` → rejetée pour la v0 : 60 lignes de Python suffisent, aucune
+  dépendance à faire valider, résultat déterministe (égalités départagées par identifiant).
+- Embeddings denses + fusion RRF dès maintenant → reportés : il faut un modèle validé par
+  Tradrly, et aucune donnée ne doit sortir vers un service externe (hors Gemini 3).
+
+**Limites connues (v0)** :
+- une question en **français** ne trouve rien (le corpus est en arabe) → refus ; un glossaire
+  FR → AR est la prochaine amélioration ;
+- `worker_category` est accepté mais pas encore filtré (pas de catégorie par article) ;
+- `reference_date` : version en vigueur seulement (filtre daté au sprint 5) ;
+- l'abstention hors périmètre repose sur « aucun mot en commun » : un seuil sera fixé avec le
+  golden set (Recall@10 ≥ 88 %, abstention ≥ 85 %, spec §8.4).
+
+**Statut** : ⏳ v0 ; essai sur le corpus réel :
+`python -m src.legal_retrieval.tools.try_search "منحة النقل" --sector btp`.
+
+---
+
+### D27 — Golden set de la recherche et mesure (Recall@k, abstention, seuil)
+
+**Décision** : la recherche DS2 est mesurée sur `src/legal_retrieval/evaluation/golden_set_retrieval.v0.json`
+par `python -m src.legal_retrieval.evaluation.metrics` (résultats datés dans `evaluation/results/`).
+- Types de questions : `sujet` (mots d'un travailleur, **pas** ceux de l'article), `numero`,
+  `dialecte` (tunisien), `francais`, `hors_perimetre` (DS2 doit refuser).
+- Succès = **au moins un** article attendu (`version_group`) dans les k premiers.
+- Chiffre de référence : Recall@10 sur `sujet` + `numero` (cible ≥ 88 %) ; abstention sur
+  `hors_perimetre` (cible ≥ 85 %) — spec Tradrly §8.4. Dialecte et français sont mesurés à part
+  (limites connues de la v0).
+- Les articles attendus sont choisis avec `evaluation/find_candidates.py`, recherche par mot
+  **indépendante du moteur** : on ne note pas le système avec ses propres réponses.
+- Étude de seuil : le premier résultat a toujours un score normalisé de 1.0 ; seul le score
+  BM25 **brut** peut dire « rien de pertinent ». `metrics` montre, pour chaque seuil candidat,
+  le Recall@10 conservé et l'abstention atteinte ; le seuil retenu sera fixé dans `bm25.py`.
+
+**Alternatives envisagées** :
+- Questions tirées des titres des articles → rejeté : elles reprennent les mots exacts de
+  l'article et surestiment le BM25.
+- Golden set généré par un LLM → rejeté : données confidentielles, et les questions doivent
+  venir de personnes qui connaissent le métier (DS2, DS4).
+
+**Statut** : ⏳ v0 : 43 questions (12 complètes : 4 `numero`, 8 `hors_perimetre` ; 31 à compléter).
+
+**Première mesure (2026-10-14, 12 questions complètes)** : numéros R@10 = 100 %, mais N04
+(« الفصل 39 من الاتفاقية الإطارية ») au rang 8 ; abstention **37,5 %** (cible 85 %) : 5 questions
+hors sujet partagent un mot rare avec un article (score brut 6,6 à 10, autant qu'une vraie question).
+Corrections :
+- convention nommée dans la question (mots-clés du registre) → seul son article est renvoyé ;
+- nouveau signal **couverture** (part de la question, pondérée par l'idf, trouvée dans le meilleur
+  article), étudié à côté du score brut pour fixer le seuil d'abstention ;
+- mots interrogatifs (« كم », « كيف »…) ajoutés aux mots vides ; un mot long commençant par
+  ب/ل/ك/ف donne aussi sa forme sans cette lettre (« بعطلة » → « عطل »), « بطاقة » reste « بطاق ».
+
+**Mesure 2026-10-14 (28 questions complètes)** : `sujet` + `numero` R@10 = **93,8 %** (cible 88 %),
+R@1 62,5 %, MRR 0,77 ; ratée : G06 (« توفي » ≠ « الوفاة », racines différentes) ; dialecte et
+français 0 % (limites connues). Ni le score brut ni la couverture seuls ne séparent le hors sujet :
+G03 (couv. 0,27) et G12 (0,375) sont aussi bas que H08 (0,38).
+
+**Règle d'abstention retenue** (`bm25.py`, `MIN_RAW = 8.0`, `MIN_COVERAGE = 0.5`) : sans numéro
+d'article demandé, refus si le meilleur article est **à la fois** faible (brut < 8,0) **et**
+partiel (couverture < 0,5). 8,0 est entre le hors sujet le plus fort refusable (7,45) et la
+question légitime la plus faible (9,17) ; la couverture protège les questions courtes et
+complètes (« منحة النقل »). Effet attendu sur ce jeu : abstention 37,5 % → 75 %, R@10 inchangé.
+Plafond des signaux lexicaux : H06 (vol) et H08 (change) partagent de vrais mots avec un article ;
+les 85 % demanderont un signal sémantique (embeddings) ou le tri d'intention de DS1 en amont.
+⚠️ Valeurs fixées sur 28 questions : à revérifier quand le golden set grandit.
+---
+
+### D28 — Recherche par le sens : embeddings Gemini + fusion RRF avec BM25
+
+**Décision** : quand une clé Gemini et le cache de vecteurs existent, l'ordre des résultats
+(après les numéros d'article demandés) est la **fusion RRF** (k = 60) du classement BM25 et du
+classement par similarité cosinus des embeddings Gemini (`src/legal_retrieval/search/embeddings.py`).
+- Gemini est le **seul service externe autorisé** pour les données (règle Tradrly) ; la clé est lue
+  dans `GEMINI_API_KEY` ou dans `.env` (ignoré par Git), jamais dans le code.
+- Les vecteurs des articles sont calculés **une fois** (`python -m src.legal_retrieval.search.embeddings
+  --build`) et gardés en local dans `data/processed/legal_corpus/embeddings/<modèle>.json` (ignoré par
+  Git) ; le fichier porte une empreinte SHA-256 du corpus : un cache périmé n'est jamais utilisé.
+- À la recherche, seule la **question** est envoyée à Gemini.
+- Sans clé, sans cache ou sans réseau : **BM25 seul**, sans erreur (repli automatique, testé).
+- Modèle choisi par `DS2_EMBED_MODEL` (défaut `gemini-embedding-001`, dimension 768) ; modèles
+  disponibles avec la clé du projet : `gemini-embedding-001`, `gemini-embedding-2`, `gemini-embedding-2-preview`.
+- La règle d'abstention D27 est **inchangée** ; `metrics` mesure en plus le signal cosinus.
+
+**Alternatives envisagées** :
+- Modèle d'embedding local → rejeté pour la v0 : pas de GPU, et Gemini est déjà fourni par Tradrly.
+- Remplacer BM25 par les embeddings → rejeté : BM25 trouve les termes juridiques exacts, les
+  embeddings le sens ; la fusion garde les deux.
+
+**Statut** : ⏳ code et tests prêts (faux modèle, sans réseau) ; corpus **pas encore envoyé** à Gemini :
+attente de la confirmation de Tradrly pour le modèle d'embedding. Ensuite : mesure golden set
+BM25 seul vs hybride, `gemini-embedding-001` vs `gemini-embedding-2`, puis seuil d'abstention.
+
+
+---
+
+### D29 — Grille salariale ASSURANCE (pages 1, 9-11, 17, 20-21)
+
+**Numéro** : D29. D24 à D28 sont pris ou réservés par DS2 ; D30 est la table de correspondance des secteurs.
+
+**Source** : `data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf` (21 pages). Page de titre (p.1) : « الاتفاقية المشتركة القطاعية للتأمين ». Pages 1 à 19 : couche texte
+sans arabe lisible ; textes lus sur les images. Pages 20 et 21 : grilles scannées (attribut de rotation 270
+appliqué au rendu). Articles utilisés : art. 14 (p.9, catégories), art. 16 (جديد) أ (p.9, progression),
+art. 19 (جديد) (p.11, grille et unité), art. 20 (جديد) à 22 (جديد) (p.11, primes), art. 44, 46 et 47 (جديد)
+(p.17, avantages sociaux).
+
+**Constat** :
+- Deux tables : « جدول الأجور عدد 1 », en vigueur à partir du 1er octobre 2020 (p.20), et « جدول الأجور عدد 2 »,
+  en vigueur à partir du 1er juin 2021 (p.21). 22 lignes × 14 degrés chacune, soit 616 montants ; TND/mois
+  (art. 19 (جديد), p.11 : le salaire mensuel résulte de la grille annexée).
+- En-tête : degrés 1 à 14 (degré 1 à droite) ; durées de séjour 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 3, 3 ;
+  ancienneté effective en tranches 0-1 … 27-30, puis « 30+ » (degré 13 imprimé « 27-30 » p.20 et « 30-27 »
+  p.21, mêmes bornes).
+- Lignes, de haut en bas : échelles 21 à 4, puis la ligne « استثنائي » (cellule fusionnée, sans lettre de
+  sous-groupe), puis 3, 2, 1. Catégories imprimées 1 à 5, conformes à l'art. 14 (p.9).
+- Art. 19 (جديد) (p.11) : l'agent atteint le degré 14 au terme de 33 ans de service effectif ; l'en-tête des
+  grilles ouvre le degré 14 à 30 ans.
+- Art. 16 (جديد) أ (p.9) : « يتمثل التدرج في الارتقاء آليا من درجة إلى درجة أعلى مباشرة بصفة مستمرة كما هو مقرر بسلم الأجور. »
+- Art. 20 (جديد) (p.11) : une prime de transport pour tous les agents des sociétés d'assurance, montant du
+  décret n° 503 du 16 mars 1982 inclus : 75 dinars par mois à partir du 1er juin 2016, 85 dinars par mois à
+  partir du 1er juin 2017. Note 11 (p.11) : la prime de transport entre dans le calcul de la prime de
+  production et des 13e et 14e mois.
+- Note sous chaque tableau (p.20 et 21) : les salaires incluent l'indemnité complémentaire provisoire
+  (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) ; `_meta.remarque_pdf`,
+  mention reproduite sans calcul.
+
+#### Décisions (validées par DS5)
+
+1. **Population unique** `tous_agents` (« كافة أعوان شركات التأمين », art. 20 (جديد), p.11). **Changement de contrat** :
+   `population` n'est plus obligatoire au schéma de requête ; pour un secteur à une seule population, elle
+   peut être omise, et si elle est donnée elle doit être `tous_agents` (sinon `PARAM_INVALIDE`). Pour un
+   secteur à plusieurs populations, rien ne change : omise, elle est refusée par calc/ (`PARAM_INVALIDE`).
+   Changement à annoncer à DS1.
+2. **Clé de ligne** : numéro d'échelle imprimé (`"21"` à `"1"`) ; la ligne « استثنائي » a sa propre clé, sans alias,
+   et n'est reliée à aucune autre catégorie : aucun texte ne fait ce lien.
+3. **Règle « ouvert » du dernier degré** (`au_dela_dernier_degre.regle = "ouvert"`, art. 16 (جديد) أ, p.9) : le
+   degré 14 est servi dès 30 ans, sans plafond ni extrapolation. Les 33 ans de l'art. 19 (جديد) sont une note
+   de lecture affichée (`detail.hypotheses`), jamais une borne.
+4. **Bornes exactes** 1, 2, 3, 4, 6, 8, 10, 13, 16, 19, 23, 27 et 30 ans : refusées (`PARAM_INVALIDE`, D6).
+5. **Dates** : avant le 2020-10-01, aucune grille : `SOURCE_MANQUANTE`. Après le 2021-06-01, la grille du
+   2021-06-01 reste servie (D6), avec l'hypothèse affichée qu'aucune grille postérieure n'est présente dans
+   les sources.
+6. **Prime de transport** (`prime_transport`, art. 20 (جديد), p.11) : même montant pour tous les agents ;
+   75.000 TND/mois à partir du 2016-06-01, 85.000 TND/mois à partir du 2017-06-01 ; avant le 2016-06-01,
+   `SOURCE_MANQUANTE`. `detail` recopie la mention du décret n° 503 du 16 mars 1982 (montant inclus) et la
+   note 11 (`note`, `note_ar`), sans calcul, et l'hypothèse qu'aucune révision postérieure au 2017-06-01
+   n'est présente dans les sources. Double lecture des montants et des dates : aucun écart.
+7. **Primes non couvertes** (`primes_non_couvertes`, `SOURCE_MANQUANTE`, refus lu dans le JSON) :
+   - 13e et 14e mois (art. 20 (جديد), p.11) : formule ;
+   - prime de production (art. 20 (جديد), p.11) : formule selon un tableau (50 % à 150 % du salaire brut de
+     décembre) ;
+   - prime fonctionnelle (art. 21 (جديد), p.11) : montant absent (fixé par chaque société) ;
+   - prime de l'art. 22 (جديد) (p.11) : montant absent (fixé par chaque société) ;
+   - aide en cas de décès (art. 44, p.17) : formule (trois mois de salaire) ;
+   - aide scolaire (art. 46, p.17) : montant absent (fixé par l'employeur) ;
+   - prime de départ à la retraite (art. 47 (جديد), p.17) : formule (quatre mois, six mois en départ anticipé).
+8. **Régime hebdomadaire** : `null` ; les tables n'indiquent aucun régime horaire.
+9. **Table des secteurs** (D30) : l'entrée `assurance` passe à `actif`, `ds5_code` `ASSURANCE`,
+   `ds5_decision_ref` D29, preuve `meme_source_file` (même fichier que `_meta.source_file`).
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- « L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne. »
+- « Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite. »
+
+#### Contrôles de lecture
+
+- Double lecture indépendante de chaque lot (200 dpi ligne par ligne, 300 dpi colonne par colonne), relecture
+  en pixels natifs des signes ambigus, vérification humaine par lot.
+- **Contrôle croisé entre les deux tables** : pour chaque ligne, l'écart « table 2 − table 1 » est le même
+  aux 14 degrés : +235 (catégorie 1, échelles 21 à 16), +200 (catégorie 2, 15 à 13), +185 (catégorie 3, 12 à
+  10), +170 (catégorie 4, 9 à 4), +160 (catégorie 5, « استثنائي », 3, 2, 1) ; aucune exception sur les 308 paires
+  (616 cellules). C'est un **contrôle de lecture** : il n'est jamais utilisé pour déduire, corriger ou
+  calculer un montant.
+
+#### Mise en œuvre
+
+- Données : `data/processed/salary_grids/assurance.json` (`_meta.decision_ref` D29, 2 tables, 616 montants,
+  1 prime, 7 primes non couvertes).
+- `calc/loaders.py` : `"regle": "ouvert"` accepté avec sa source (`source_pdf_page`, `source_article`,
+  `texte_source_ar`) et un dernier degré au libellé `"n+"`. `calc/salary.py` : population omise admise pour
+  un secteur à une seule population.
+- Schéma de requête : `population` facultative ; `docs/CONTRACT_TRACK_B.md` mis à jour.
+- Tests : `test_dernier_degre_ouvert_population_unique.py`, `test_assurance_primes.py`, et les listes de
+  secteurs des tests existants ; le golden set garde un cas « secteur non couvert » (TB-35, sur le
+  gardiennage).
+
+#### Points non tranchés par la source (hypothèses retenues)
+
+1. **Degré 14 et 33 ans** : la somme des durées de séjour des degrés 1 à 13 vaut 30, et 30 + 3 (durée du
+   degré 14) = 33. Observation de lecture seulement ; aucune règle déduite.
+2. **Ligne « استثنائي »** : catégorie 5 par position ; non reliée à une autre catégorie (décision 2).
+3. **Sous-groupes imprimés dans la grille** : aucun texte de la convention ne les définit ; non exposés.
+
+**Statut** : ✅ activée (2026-10-17) ; `pytest` complet : tous réussis.
+
+---
+
 ### D30 — Table de correspondance des secteurs DS2 ↔ DS5 (`src/shared/sectors/sectors.v0.json`)
 
 **Constat** : deux vocabulaires de secteurs coexistent sans lien écrit.
@@ -1385,6 +1663,8 @@ bloc d'ambiguïté à un seul code (`minItems` 1 au lieu de 2), forme du bloc «
 **Statut** : ⏳ v0 alignée sur D21 v0.1 (PR #15 de DS2), proposée à DS1, DS2, DS3 ;
 `pytest src/shared/tests/test_sectors_table.py` : 12 réussis, 1 ignoré sur la branche (vocabulaire D21 absent de
 main) ; 13 réussis sur une fusion à blanc avec la PR #15.
+
+Mise à jour : l'entrée assurance est passée à actif (D29).
 
 ---
 

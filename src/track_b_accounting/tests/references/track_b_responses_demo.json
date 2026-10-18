@@ -73,6 +73,8 @@
       "detail": {
         "secteur": "METALLURGIE_BATIMENT",
         "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "groupe": "cadres",
@@ -102,6 +104,8 @@
       "detail": {
         "secteur": "METALLURGIE_BATIMENT",
         "code": "prime_panier_qefa",
+        "label_fr": "Prime de panier (qefa)",
+        "label_ar": "منحة القفة",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "effective_date": null,
@@ -224,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -372,6 +376,8 @@
       "detail": {
         "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
         "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "groupe": "execution_et_gestion",
@@ -491,6 +497,191 @@
       }
     ],
     "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-19-salaire-assurance-table-2020",
+    "status": "ok",
+    "result": {
+      "montant": "2195.134",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSURANCE",
+        "population": "tous_agents",
+        "categorie": "14",
+        "degre": 7,
+        "anciennete_annees": "9",
+        "hypotheses": [
+          "L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne.",
+          "Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "ينص الفصل 19 (جديد) (الصفحة 11) على أن العون يبلغ الدرجة الرابعة عشر «في موفى 33 سنة من الخدمة الفعلية»؛ ويفتح رأس جدولي الأجور (الصفحتان 20 و21) الدرجة 14 ابتداء من 30 سنة («30+»): تُطبَّق الدرجة 14 ابتداء من 30 سنة دون سقف، ولا تمثل 33 سنة حدا.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-06-01؛ وجدول 2021-06-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "ASS_2020-10-01",
+        "effective_date": "2020-10-01",
+        "date_calcul": "2021-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/assurance.json",
+        "decision_ref": "D29"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-20-salaire-assurance-table-2021",
+    "status": "ok",
+    "result": {
+      "montant": "1935.459",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSURANCE",
+        "population": "tous_agents",
+        "categorie": "9",
+        "degre": 8,
+        "anciennete_annees": "11",
+        "hypotheses": [
+          "L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne.",
+          "Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "ينص الفصل 19 (جديد) (الصفحة 11) على أن العون يبلغ الدرجة الرابعة عشر «في موفى 33 سنة من الخدمة الفعلية»؛ ويفتح رأس جدولي الأجور (الصفحتان 20 و21) الدرجة 14 ابتداء من 30 سنة («30+»): تُطبَّق الدرجة 14 ابتداء من 30 سنة دون سقف، ولا تمثل 33 سنة حدا.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-06-01؛ وجدول 2021-06-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "ASS_2021-06-01",
+        "effective_date": "2021-06-01",
+        "date_calcul": "2022-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/assurance.json",
+        "decision_ref": "D29"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-21-salaire-assurance-dernier-degre-ouvert",
+    "status": "ok",
+    "result": {
+      "montant": "2821.764",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSURANCE",
+        "population": "tous_agents",
+        "categorie": "17",
+        "degre": 14,
+        "anciennete_annees": "40",
+        "hypotheses": [
+          "L'article 19 (جديد) (p.11) indique que l'agent atteint le degré 14 « في موفى 33 سنة من الخدمة الفعلية » ; l'en-tête des grilles (p.20 et 21) ouvre le degré 14 à 30 ans (« 30+ ») : le degré 14 est servi à partir de 30 ans, sans plafond ; les 33 ans ne sont pas une borne.",
+          "Aucune grille postérieure au 2021-06-01 n'est présente dans les sources ; la grille du 2021-06-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "ينص الفصل 19 (جديد) (الصفحة 11) على أن العون يبلغ الدرجة الرابعة عشر «في موفى 33 سنة من الخدمة الفعلية»؛ ويفتح رأس جدولي الأجور (الصفحتان 20 و21) الدرجة 14 ابتداء من 30 سنة («30+»): تُطبَّق الدرجة 14 ابتداء من 30 سنة دون سقف، ولا تمثل 33 سنة حدا.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-06-01؛ وجدول 2021-06-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "ASS_2021-06-01",
+        "effective_date": "2021-06-01",
+        "date_calcul": "2023-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/assurance.json",
+        "decision_ref": "D29"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-22-prime-transport-assurance",
+    "status": "ok",
+    "result": {
+      "montant": "85.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ASSURANCE",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2018-01-01",
+        "regles": "D6",
+        "effective_date": "2017-06-01",
+        "note": "Le montant inclut celui de la prime de transport prévue par le décret n° 503 du 16 mars 1982 (art. 20 (جديد), p.11) : mention reproduite, sans calcul. Note 11 (p.11) : la prime de transport entre dans le calcul de la prime de production et des 13e et 14e mois (avenant n° 3, puis avenants 6, 7, 10, 11, 12 et 13) : mention reproduite, sans calcul.",
+        "note_ar": "يتضمن هذا المقدار مبلغ منحة النقل المنصوص عليها بالأمر عدد 503 المؤرخ في 16 مارس 1982. وتدخل منحة النقل في احتساب منحة الإنتاج وجرايتي الشهر 13 و14 (الإحالة 11، الصفحة 11).",
+        "hypotheses": [
+          "Le texte attribue cette prime à tous les agents des sociétés d'assurance (art. 20 (جديد), p.11) : même montant pour toutes les lignes de la grille.",
+          "Aucune révision de la prime de transport postérieure au 2017-06-01 n'est présente dans les sources ; le montant du 2017-06-01 est le dernier transcrit."
+        ],
+        "hypotheses_ar": [
+          "يسند النص هذه المنحة لكافة أعوان شركات التأمين (الفصل 20 (جديد)، الصفحة 11): نفس المبلغ لكل أسطر الجدول.",
+          "لا توجد في المصادر أي مراجعة لمنحة النقل بعد 2017-06-01؛ ومبلغ 2017-06-01 هو آخر مبلغ تم نقله."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+        "page": 11,
+        "article": "20 (جديد)",
+        "data_file": "data/processed/salary_grids/assurance.json",
+        "decision_ref": "D29"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-23-refus-assurance-avant-2020-10-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille ASSURANCE/tous_agents en vigueur au 2020-09-30 (première date d'effet disponible : 2020-10-01).",
+      "message_ar": "لا يوجد جدول أجور ASSURANCE/tous_agents ساري المفعول بتاريخ 2020-09-30 (أول تاريخ نفاذ متوفر: 2020-10-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-24-refus-assurance-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 13 ans = borne commune aux degrés [8, 9] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 13 سنة تقع على الحد المشترك بين الدرجات [8, 9] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
     "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]

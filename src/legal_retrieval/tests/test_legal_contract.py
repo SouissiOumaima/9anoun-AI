@@ -18,6 +18,16 @@ from src.legal_retrieval.contract.handler import _demo, handle, validation_error
 _COMMON = Path(__file__).resolve().parents[2] / "shared" / "schemas" / "common.v0.schema.json"
 
 
+@pytest.fixture(autouse=True)
+def _mock_mode(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """These tests check the MOCK contract: point the store to an empty folder.
+
+    Without this, a machine where the corpus is ingested would answer in live
+    mode (real BM25, test_legal_search.py) and the demo assertions would not hold.
+    """
+    monkeypatch.setenv("DS2_CORPUS_DIR", str(tmp_path))
+
+
 def _request(**overrides: Any) -> dict[str, Any]:
     """Demo request with some fields overridden."""
     return {**_demo()["request"], **overrides}
