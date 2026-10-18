@@ -73,6 +73,8 @@
       "detail": {
         "secteur": "METALLURGIE_BATIMENT",
         "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "groupe": "cadres",
@@ -102,6 +104,8 @@
       "detail": {
         "secteur": "METALLURGIE_BATIMENT",
         "code": "prime_panier_qefa",
+        "label_fr": "Prime de panier (qefa)",
+        "label_ar": "منحة القفة",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "effective_date": null,
@@ -372,6 +376,8 @@
       "detail": {
         "secteur": "ASSOCIATIONS_PERSONNES_HANDICAPEES",
         "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
         "date_calcul": "2024-06-01",
         "regles": "D6",
         "groupe": "execution_et_gestion",
@@ -623,6 +629,8 @@
       "detail": {
         "secteur": "ASSURANCE",
         "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
         "date_calcul": "2018-01-01",
         "regles": "D6",
         "effective_date": "2017-06-01",

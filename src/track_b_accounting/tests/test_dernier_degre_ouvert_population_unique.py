@@ -158,11 +158,29 @@ def test_population_unique_omise_par_le_contrat(fictif):
 
 def test_multi_populations_omission_toujours_refusee():
     e = refus(Refus.PARAM_INVALIDE, salaire_base, "METALLURGIE_BATIMENT", None, "1B", 5, "2022-06-01")
-    assert e.message_fr.startswith("Population inconnue : None")
+    assert e.message_fr.startswith("Population obligatoire pour le secteur METALLURGIE_BATIMENT")
+    assert "inconnue" not in e.message_fr and "None" not in e.message_fr + e.message_ar
     rep = handle(requete({"secteur": "METALLURGIE_BATIMENT", "categorie": "1B", "anciennete_annees": 5,
                           "date": "2022-06-01"}))
     assert rep["status"] == "refus" and rep["refus"]["code"] == Refus.PARAM_INVALIDE
 
+
+
+@pytest.mark.parametrize("secteur", [s for s in loaders.secteurs_disponibles()
+                                     if len(loaders.charger_grille(s)["categories"]) > 1])
+def test_omission_population_cite_le_secteur_et_ses_populations(secteur):
+    """Secteur à plusieurs populations : l'omission est refusée (PARAM_INVALIDE) ; FR et AR citent le code du
+    secteur et toutes les populations de la grille."""
+    pops = list(loaders.charger_grille(secteur)["categories"])
+    rep = handle(requete({"secteur": secteur, "categorie": "1", "anciennete_annees": 5, "date": "2024-06-01"}))
+    assert rep["status"] == "refus" and rep["refus"]["code"] == Refus.PARAM_INVALIDE
+    for message in (rep["refus"]["message_fr"], rep["refus"]["message_ar"]):
+        assert secteur in message and ", ".join(pops) in message
+
+
+def test_population_unique_omission_toujours_acceptee():
+    rep = handle(requete({"secteur": "ASSURANCE", "categorie": "21", "anciennete_annees": 5, "date": "2021-01-01"}))
+    assert rep["status"] == "ok" and rep["result"]["detail"]["population"] == "tous_agents"
 
 # --- grille ASSURANCE activée (D29) --------------------------------------------------------------------------
 

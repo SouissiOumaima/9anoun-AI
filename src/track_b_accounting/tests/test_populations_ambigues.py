@@ -951,12 +951,12 @@ def test_aph_presence_et_specifique_hypotheses(code):
 
 # Ensemble des clés de detail de chaque prime de la métallurgie, relevé avant la modification de calc/primes.py.
 CLES_DETAIL_BM = {
-    "prime_transport": {"secteur", "code", "date_calcul", "regles", "groupe", "effective_date", "au_titre_de"},
-    "prime_presence": {"secteur", "code", "date_calcul", "regles", "effective_date"},
-    "prime_logement": {"secteur", "code", "date_calcul", "regles", "variante", "effective_date"},
-    "prime_panier_qefa": {"secteur", "code", "date_calcul", "regles", "effective_date", "note", "transport_assure"},
-    "prime_deplacement_chantier": {"secteur", "code", "date_calcul", "regles", "condition", "effective_date"},
-    "prime_travail_en_hauteur": {"secteur", "code", "date_calcul", "regles", "condition", "effective_date"},
+    "prime_transport": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "groupe", "effective_date", "au_titre_de"},
+    "prime_presence": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "effective_date"},
+    "prime_logement": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "variante", "effective_date"},
+    "prime_panier_qefa": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "effective_date", "note", "transport_assure"},
+    "prime_deplacement_chantier": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "condition", "effective_date"},
+    "prime_travail_en_hauteur": {"secteur", "code", "label_fr", "label_ar", "date_calcul", "regles", "condition", "effective_date"},
 }
 PARAMS_BM = {"prime_transport": [{"groupe": "execution_et_maitrise"}, {"groupe": "cadres"}],
              "prime_logement": [{"variante": "base"}, {"variante": "complement_si_prime_superieure"}],

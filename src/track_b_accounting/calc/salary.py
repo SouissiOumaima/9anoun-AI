@@ -43,6 +43,11 @@ def _population(grille: dict, population) -> str:
     cats = grille["categories"]
     if population is None and len(cats) == 1:
         return next(iter(cats))
+    if population is None:
+        secteur = grille["_meta"]["secteur_code"]
+        raise Refus(Refus.PARAM_INVALIDE,
+                    f"Population obligatoire pour le secteur {secteur} (disponibles : {', '.join(cats)}).",
+                    f"يجب تحديد فئة الأعوان للقطاع {secteur} (المتوفر: {', '.join(cats)}).")
     if not isinstance(population, str) or population not in cats:
         raise Refus(Refus.PARAM_INVALIDE,
                     f"Population inconnue : {population!r} (attendu : {', '.join(cats)}).",

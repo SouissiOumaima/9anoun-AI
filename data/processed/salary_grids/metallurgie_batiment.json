@@ -1290,6 +1290,7 @@
   {
    "code": "prime_transport",
    "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
    "source_article": "50 (جديد)",
    "source_pdf_page": 16,
    "unite": "TND/mois",
@@ -1317,6 +1318,7 @@
   {
    "code": "prime_presence",
    "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
    "source_article": "51 (جديد) و",
    "source_pdf_page": 16,
    "unite": "TND/mois",
@@ -1339,6 +1341,7 @@
   {
    "code": "prime_logement",
    "label_ar": "منحة السكن",
+   "label_fr": "Prime de logement",
    "source_article": "51 (جديد) هـ",
    "source_pdf_page": 16,
    "unite": "TND/mois",
@@ -1375,6 +1378,7 @@
   {
    "code": "prime_panier_qefa",
    "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier (qefa)",
    "source_article": "51 (جديد) أ",
    "source_pdf_page": 16,
    "unite": "TND/jour",
@@ -1386,6 +1390,7 @@
   {
    "code": "prime_deplacement_chantier",
    "label_ar": "منحة التنقل",
+   "label_fr": "Prime de déplacement",
    "source_article": "51 (جديد) ب",
    "source_pdf_page": 16,
    "unite": "TND/jour",
@@ -1395,6 +1400,7 @@
   {
    "code": "prime_travail_en_hauteur",
    "label_ar": "منحة العمل في الارتفاع",
+   "label_fr": "Prime de travail en hauteur",
    "source_article": "51 (جديد) ج",
    "source_pdf_page": 16,
    "unite": "TND/heure",
