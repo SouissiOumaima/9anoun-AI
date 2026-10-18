@@ -1361,6 +1361,121 @@ privé ; le corpus traité n'en est qu'une transformation, il n'augmente pas l'e
 
 ---
 
+### D26 — Recherche réelle v0 : référence d'article + BM25, sans dépendance externe
+
+**Décision** : `POST /legal/search` (et `handle()`) répond en mode **`live`** dès que le corpus
+est ingéré sur la machine (`computed_by = legal_retrieval.search.live`) ; sinon le mock reste
+servi (`mode = mock`). Ordre de la réponse :
+1. les articles dont le **numéro est demandé** (« الفصل 42 مكرر », « article 14 bis »,
+   « الفصل 46 - 3 ») → score 1.0, conventions sectorielles avant la convention cadre ;
+2. puis **BM25** (k1 = 1.5, b = 0.75) sur le texte normalisé (`text_normalized`, D13),
+   racinisation arabe légère (« ال », « بال », « لل »… ; « ات », « ين », « ه »…), mots vides
+   retirés ; score = score / meilleur score.
+
+Filtre `sector` identique au mock : un article s'applique à son secteur ou à tous
+(`sector = null` : convention cadre, SMIG). `top_k` compte des articles, chaque article
+avec toutes ses versions (D17). Aucun mot en commun avec le corpus → refus
+`SOURCE_MANQUANTE`. Le texte renvoyé reste le texte exact.
+
+`handle(request, live=False)` force le mock : le fichier d'exemples partagé avec DS1
+(`legal_retrieval_requests_demo.json`) ne change pas selon la machine.
+
+**Alternatives envisagées** :
+- Bibliothèque `rank_bm25` → rejetée pour la v0 : 60 lignes de Python suffisent, aucune
+  dépendance à faire valider, résultat déterministe (égalités départagées par identifiant).
+- Embeddings denses + fusion RRF dès maintenant → reportés : il faut un modèle validé par
+  Tradrly, et aucune donnée ne doit sortir vers un service externe (hors Gemini 3).
+
+**Limites connues (v0)** :
+- une question en **français** ne trouve rien (le corpus est en arabe) → refus ; un glossaire
+  FR → AR est la prochaine amélioration ;
+- `worker_category` est accepté mais pas encore filtré (pas de catégorie par article) ;
+- `reference_date` : version en vigueur seulement (filtre daté au sprint 5) ;
+- l'abstention hors périmètre repose sur « aucun mot en commun » : un seuil sera fixé avec le
+  golden set (Recall@10 ≥ 88 %, abstention ≥ 85 %, spec §8.4).
+
+**Statut** : ⏳ v0 ; essai sur le corpus réel :
+`python -m src.legal_retrieval.tools.try_search "منحة النقل" --sector btp`.
+
+---
+
+### D27 — Golden set de la recherche et mesure (Recall@k, abstention, seuil)
+
+**Décision** : la recherche DS2 est mesurée sur `src/legal_retrieval/evaluation/golden_set_retrieval.v0.json`
+par `python -m src.legal_retrieval.evaluation.metrics` (résultats datés dans `evaluation/results/`).
+- Types de questions : `sujet` (mots d'un travailleur, **pas** ceux de l'article), `numero`,
+  `dialecte` (tunisien), `francais`, `hors_perimetre` (DS2 doit refuser).
+- Succès = **au moins un** article attendu (`version_group`) dans les k premiers.
+- Chiffre de référence : Recall@10 sur `sujet` + `numero` (cible ≥ 88 %) ; abstention sur
+  `hors_perimetre` (cible ≥ 85 %) — spec Tradrly §8.4. Dialecte et français sont mesurés à part
+  (limites connues de la v0).
+- Les articles attendus sont choisis avec `evaluation/find_candidates.py`, recherche par mot
+  **indépendante du moteur** : on ne note pas le système avec ses propres réponses.
+- Étude de seuil : le premier résultat a toujours un score normalisé de 1.0 ; seul le score
+  BM25 **brut** peut dire « rien de pertinent ». `metrics` montre, pour chaque seuil candidat,
+  le Recall@10 conservé et l'abstention atteinte ; le seuil retenu sera fixé dans `bm25.py`.
+
+**Alternatives envisagées** :
+- Questions tirées des titres des articles → rejeté : elles reprennent les mots exacts de
+  l'article et surestiment le BM25.
+- Golden set généré par un LLM → rejeté : données confidentielles, et les questions doivent
+  venir de personnes qui connaissent le métier (DS2, DS4).
+
+**Statut** : ⏳ v0 : 43 questions (12 complètes : 4 `numero`, 8 `hors_perimetre` ; 31 à compléter).
+
+**Première mesure (2026-10-14, 12 questions complètes)** : numéros R@10 = 100 %, mais N04
+(« الفصل 39 من الاتفاقية الإطارية ») au rang 8 ; abstention **37,5 %** (cible 85 %) : 5 questions
+hors sujet partagent un mot rare avec un article (score brut 6,6 à 10, autant qu'une vraie question).
+Corrections :
+- convention nommée dans la question (mots-clés du registre) → seul son article est renvoyé ;
+- nouveau signal **couverture** (part de la question, pondérée par l'idf, trouvée dans le meilleur
+  article), étudié à côté du score brut pour fixer le seuil d'abstention ;
+- mots interrogatifs (« كم », « كيف »…) ajoutés aux mots vides ; un mot long commençant par
+  ب/ل/ك/ف donne aussi sa forme sans cette lettre (« بعطلة » → « عطل »), « بطاقة » reste « بطاق ».
+
+**Mesure 2026-10-14 (28 questions complètes)** : `sujet` + `numero` R@10 = **93,8 %** (cible 88 %),
+R@1 62,5 %, MRR 0,77 ; ratée : G06 (« توفي » ≠ « الوفاة », racines différentes) ; dialecte et
+français 0 % (limites connues). Ni le score brut ni la couverture seuls ne séparent le hors sujet :
+G03 (couv. 0,27) et G12 (0,375) sont aussi bas que H08 (0,38).
+
+**Règle d'abstention retenue** (`bm25.py`, `MIN_RAW = 8.0`, `MIN_COVERAGE = 0.5`) : sans numéro
+d'article demandé, refus si le meilleur article est **à la fois** faible (brut < 8,0) **et**
+partiel (couverture < 0,5). 8,0 est entre le hors sujet le plus fort refusable (7,45) et la
+question légitime la plus faible (9,17) ; la couverture protège les questions courtes et
+complètes (« منحة النقل »). Effet attendu sur ce jeu : abstention 37,5 % → 75 %, R@10 inchangé.
+Plafond des signaux lexicaux : H06 (vol) et H08 (change) partagent de vrais mots avec un article ;
+les 85 % demanderont un signal sémantique (embeddings) ou le tri d'intention de DS1 en amont.
+⚠️ Valeurs fixées sur 28 questions : à revérifier quand le golden set grandit.
+---
+
+### D28 — Recherche par le sens : embeddings Gemini + fusion RRF avec BM25
+
+**Décision** : quand une clé Gemini et le cache de vecteurs existent, l'ordre des résultats
+(après les numéros d'article demandés) est la **fusion RRF** (k = 60) du classement BM25 et du
+classement par similarité cosinus des embeddings Gemini (`src/legal_retrieval/search/embeddings.py`).
+- Gemini est le **seul service externe autorisé** pour les données (règle Tradrly) ; la clé est lue
+  dans `GEMINI_API_KEY` ou dans `.env` (ignoré par Git), jamais dans le code.
+- Les vecteurs des articles sont calculés **une fois** (`python -m src.legal_retrieval.search.embeddings
+  --build`) et gardés en local dans `data/processed/legal_corpus/embeddings/<modèle>.json` (ignoré par
+  Git) ; le fichier porte une empreinte SHA-256 du corpus : un cache périmé n'est jamais utilisé.
+- À la recherche, seule la **question** est envoyée à Gemini.
+- Sans clé, sans cache ou sans réseau : **BM25 seul**, sans erreur (repli automatique, testé).
+- Modèle choisi par `DS2_EMBED_MODEL` (défaut `gemini-embedding-001`, dimension 768) ; modèles
+  disponibles avec la clé du projet : `gemini-embedding-001`, `gemini-embedding-2`, `gemini-embedding-2-preview`.
+- La règle d'abstention D27 est **inchangée** ; `metrics` mesure en plus le signal cosinus.
+
+**Alternatives envisagées** :
+- Modèle d'embedding local → rejeté pour la v0 : pas de GPU, et Gemini est déjà fourni par Tradrly.
+- Remplacer BM25 par les embeddings → rejeté : BM25 trouve les termes juridiques exacts, les
+  embeddings le sens ; la fusion garde les deux.
+
+**Statut** : ⏳ code et tests prêts (faux modèle, sans réseau) ; corpus **pas encore envoyé** à Gemini :
+attente de la confirmation de Tradrly pour le modèle d'embedding. Ensuite : mesure golden set
+BM25 seul vs hybride, `gemini-embedding-001` vs `gemini-embedding-2`, puis seuil d'abstention.
+
+
+---
+
 ### D29 — Grille salariale ASSURANCE (pages 1, 9-11, 17, 20-21)
 
 **Numéro** : D29. D24 à D28 sont pris ou réservés par DS2 ; D30 est la table de correspondance des secteurs.

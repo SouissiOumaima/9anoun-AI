@@ -110,6 +110,19 @@ normalisé**), `page`, `effective_from`, `effective_to` (null = en vigueur),
 `status` (`en_vigueur` / `modifie` / `abroge` / `inconnu`), `sector` (null = tous
 secteurs), `related` (voisins dans le graphe), `score` (0–1).
 
+## Recherche réelle (D26) — modes `live` et `mock`
+
+- **`live`** : le corpus est ingéré sur la machine → vraie recherche. D'abord les articles
+  dont le numéro est demandé (« الفصل 42 مكرر » → score 1.0), puis BM25 sur le texte
+  normalisé (score relatif au meilleur résultat, entre 0 et 1).
+- **`mock`** : pas de corpus → articles de démonstration `MOCK-…`, jamais un article inventé.
+- `/health` indique le mode courant (`mode`).
+- v0 : questions en **arabe** (une question en français renvoie `SOURCE_MANQUANTE`) ;
+  `worker_category` accepté mais pas encore filtré.
+
+Essai rapide (affiche identifiants, scores et 60 caractères au plus) :
+`python -m src.legal_retrieval.tools.try_search "منحة النقل" --sector btp`
+
 ## Opération `get_article` — consulter un article par sa référence (D22)
 
 Besoin exprimé par DS4 (et DS1 pour réafficher une citation). Requête :

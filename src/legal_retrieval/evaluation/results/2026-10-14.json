@@ -1,0 +1,602 @@
+{
+ "golden_set_version": "golden_set_retrieval.v0",
+ "date": "2026-10-14",
+ "skipped_a_completer": [
+  "G13",
+  "G14",
+  "G15",
+  "G16",
+  "G17",
+  "G18",
+  "G19",
+  "G20",
+  "G21",
+  "G22",
+  "G23",
+  "G24",
+  "G26",
+  "G27"
+ ],
+ "targets": {
+  "recall_at_10": 0.88,
+  "abstention": 0.85,
+  "source": "spec Tradrly §8.4"
+ },
+ "summary": {
+  "n_questions": 29,
+  "core": {
+   "n": 17,
+   "recall@1": 0.5882352941176471,
+   "recall@5": 0.9411764705882353,
+   "recall@10": 0.9411764705882353,
+   "mrr": 0.7549019607843137
+  },
+  "per_kind_recall@10": {
+   "dialecte": 0.0,
+   "francais": 0.0,
+   "numero": 1.0,
+   "sujet": 0.9230769230769231
+  },
+  "abstention": 0.75,
+  "false_refusals": [
+   "G06",
+   "D01",
+   "D02",
+   "F01",
+   "F02"
+  ],
+  "missed@10": [
+   "G06"
+  ],
+  "threshold_study": [
+   {
+    "threshold": 0.0,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.001,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 6.672,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 6.975,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 7.449,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 9.324,
+    "recall@10": 0.8823529411764706,
+    "abstention": 0.875,
+    "core_refused": [
+     "G06",
+     "G25"
+    ]
+   },
+   {
+    "threshold": 10.007,
+    "recall@10": 0.8235294117647058,
+    "abstention": 1.0,
+    "core_refused": [
+     "G06",
+     "G07",
+     "G25"
+    ]
+   }
+  ],
+  "coverage_study": [
+   {
+    "threshold": 0.0,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.001,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.198,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.265,
+    "recall@10": 0.9411764705882353,
+    "abstention": 0.75,
+    "core_refused": [
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.313,
+    "recall@10": 0.8823529411764706,
+    "abstention": 0.75,
+    "core_refused": [
+     "G03",
+     "G06"
+    ]
+   },
+   {
+    "threshold": 0.383,
+    "recall@10": 0.7647058823529411,
+    "abstention": 0.875,
+    "core_refused": [
+     "G03",
+     "G06",
+     "G08",
+     "G12"
+    ]
+   },
+   {
+    "threshold": 0.546,
+    "recall@10": 0.5882352941176471,
+    "abstention": 1.0,
+    "core_refused": [
+     "G01",
+     "G02",
+     "G03",
+     "G05",
+     "G06",
+     "G08",
+     "G12"
+    ]
+   }
+  ]
+ },
+ "rows": [
+  {
+   "id": "G01",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BANQUES-ART-21",
+   "raw_top": 14.542,
+   "coverage": 0.445,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ]
+  },
+  {
+   "id": "G02",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BANQUES-ART-23",
+   "raw_top": 25.59,
+   "coverage": 0.43,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-23",
+    "CC-CADRE-ART-32"
+   ]
+  },
+  {
+   "id": "G03",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 2,
+   "top1": "CCS-BANQUES-ART-55",
+   "raw_top": 13.776,
+   "coverage": 0.272,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-26",
+    "CCS-BANQUES-ART-28"
+   ]
+  },
+  {
+   "id": "G04",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 2,
+   "top1": "CCS-BANQUES-ART-14",
+   "raw_top": 11.362,
+   "coverage": 0.563,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-52"
+   ]
+  },
+  {
+   "id": "G05",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BTP-ART-50",
+   "raw_top": 17.215,
+   "coverage": 0.463,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BTP-ART-52",
+    "CCS-BTP-ART-51",
+    "CCS-BTP-ART-50"
+   ]
+  },
+  {
+   "id": "G06",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 6.217,
+   "coverage": 0.194,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BTP-ART-53"
+   ]
+  },
+  {
+   "id": "G07",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 2,
+   "top1": "CC-CADRE-ART-20",
+   "raw_top": 9.796,
+   "coverage": 0.61,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BTP-ART-23"
+   ]
+  },
+  {
+   "id": "G08",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 3,
+   "top1": "CC-CADRE-ART-20",
+   "raw_top": 13.489,
+   "coverage": 0.341,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BTP-ART-21",
+    "CC-CADRE-ART-22"
+   ]
+  },
+  {
+   "id": "G09",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-GARDIENNAGE-ART-8",
+   "raw_top": 17.011,
+   "coverage": 0.696,
+   "article_number_asked": false,
+   "expected": [
+    "CC-CADRE-ART-10",
+    "CCS-BTP-ART-9",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-9",
+    "CCS-GARDIENNAGE-ART-8",
+    "CCS-ASSOCIATIONS-ART-8",
+    "CCS-BANQUES-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-11"
+   ]
+  },
+  {
+   "id": "G10",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BTP-ART-15",
+   "raw_top": 16.577,
+   "coverage": 0.757,
+   "article_number_asked": false,
+   "expected": [
+    "CC-CADRE-ART-16",
+    "CCS-BTP-ART-15",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-15",
+    "CCS-BANQUES-ART-42",
+    "CCS-ASSOCIATIONS-ART-38",
+    "CCS-GARDIENNAGE-ART-37",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-17",
+    "CCS-ASSURANCE-P3-ART-12"
+   ]
+  },
+  {
+   "id": "G11",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 2,
+   "top1": "CCS-ASSURANCE-P3-ART-26",
+   "raw_top": 14.93,
+   "coverage": 0.913,
+   "article_number_asked": false,
+   "expected": [
+    "CC-CADRE-ART-37",
+    "CC-CADRE-ART-38"
+   ]
+  },
+  {
+   "id": "G12",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 2,
+   "top1": "CCS-CONSTRUCTION-METALLIQUE-ART-12",
+   "raw_top": 10.429,
+   "coverage": 0.375,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-ASSOCIATIONS-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-14",
+    "CCS-BANQUES-ART-48",
+    "CC-CADRE-ART-13"
+   ]
+  },
+  {
+   "id": "G25",
+   "kind": "sujet",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "SMIG-GRILLE-ART-1",
+   "raw_top": 9.174,
+   "coverage": 0.669,
+   "article_number_asked": false,
+   "expected": [
+    "SMIG-GRILLE-ART-1"
+   ]
+  },
+  {
+   "id": "D01",
+   "kind": "dialecte",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 6.148,
+   "coverage": 0.097,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ]
+  },
+  {
+   "id": "D02",
+   "kind": "dialecte",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 2.853,
+   "coverage": 0.045,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BTP-ART-21",
+    "CC-CADRE-ART-22"
+   ]
+  },
+  {
+   "id": "F01",
+   "kind": "francais",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": false,
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ]
+  },
+  {
+   "id": "F02",
+   "kind": "francais",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": false,
+   "expected": [
+    "CC-CADRE-ART-10",
+    "CCS-BTP-ART-9",
+    "CCS-CONSTRUCTION-METALLIQUE-ART-9",
+    "CCS-GARDIENNAGE-ART-8",
+    "CCS-ASSOCIATIONS-ART-8",
+    "CCS-BANQUES-ART-11",
+    "CCS-ENSEIGNEMENT-PRIVE-ART-11"
+   ]
+  },
+  {
+   "id": "N01",
+   "kind": "numero",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BTP-ART-39",
+   "raw_top": 8.541,
+   "coverage": 0.502,
+   "article_number_asked": true,
+   "expected": [
+    "CCS-BTP-ART-39"
+   ]
+  },
+  {
+   "id": "N02",
+   "kind": "numero",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BANQUES-ART-21",
+   "raw_top": 8.625,
+   "coverage": 1.0,
+   "article_number_asked": true,
+   "expected": [
+    "CCS-BANQUES-ART-21"
+   ]
+  },
+  {
+   "id": "N03",
+   "kind": "numero",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CCS-BTP-ART-52",
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": true,
+   "expected": [
+    "CCS-BTP-ART-52"
+   ]
+  },
+  {
+   "id": "N04",
+   "kind": "numero",
+   "mode": "live",
+   "status": "ok",
+   "rank": 1,
+   "top1": "CC-CADRE-ART-39",
+   "raw_top": 9.254,
+   "coverage": 0.429,
+   "article_number_asked": true,
+   "expected": [
+    "CC-CADRE-ART-39"
+   ]
+  },
+  {
+   "id": "H01",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H02",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H03",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 0.0,
+   "coverage": 0.0,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H04",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 7.448,
+   "coverage": 0.197,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H05",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 6.671,
+   "coverage": 0.312,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H06",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "ok",
+   "rank": null,
+   "top1": "CCS-GARDIENNAGE-ART-15",
+   "raw_top": 9.323,
+   "coverage": 0.545,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H07",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "refus",
+   "rank": null,
+   "top1": null,
+   "raw_top": 6.974,
+   "coverage": 0.264,
+   "article_number_asked": false,
+   "expected": []
+  },
+  {
+   "id": "H08",
+   "kind": "hors_perimetre",
+   "mode": "live",
+   "status": "ok",
+   "rank": null,
+   "top1": "CCS-CONSTRUCTION-METALLIQUE-ART-12",
+   "raw_top": 10.006,
+   "coverage": 0.382,
+   "article_number_asked": false,
+   "expected": []
+  }
+ ]
+}
