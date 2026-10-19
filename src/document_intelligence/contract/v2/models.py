@@ -92,7 +92,12 @@ class RequestOptions(_Strict):
     language_hint: list[Language] = Field(default_factory=lambda: list[Language](["ar", "fr"]))
     expected_type: DocumentType | None = None
     pages: list[int] | None = Field(default=None, description="Pages à traiter (1-based).")
-    min_confidence: float = Field(default=0.80, ge=0.0, le=1.0)
+    min_confidence: float | None = Field(
+        default=None, ge=0.0, le=1.0,
+        description="Seuil de confiance souhaité par l'appelant. Indicatif : DS3 renvoie toujours la "
+        "confiance réelle de chaque champ et n'applique aucun seuil. C'est le consommateur qui tranche "
+        "(DS1 exige 0,90 avant tout calcul DS5).",
+    )
 
 
 class DS3Request(_Strict):

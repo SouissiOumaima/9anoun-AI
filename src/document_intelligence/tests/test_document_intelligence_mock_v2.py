@@ -16,7 +16,7 @@ import pytest
 
 from src.document_intelligence.contract.v2.generate_examples import DEMO_FILE, REQUESTS, build_demo
 from src.document_intelligence.contract.v2.mock import handle_request, list_operations
-from src.document_intelligence.contract.v2.models import DS3Response, ExtractedField
+from src.document_intelligence.contract.v2.models import DS3Response, ExtractedField, RequestOptions
 
 REPO = Path(__file__).resolve().parents[3]
 COMMON_V0 = REPO / "src" / "shared" / "schemas" / "common.v0.schema.json"
@@ -260,3 +260,10 @@ def test_response_matches_common_v1_draft(name: str) -> None:
 def test_refusals_without_citations_already_match_common_v0(name: str) -> None:
     jsonschema = pytest.importorskip("jsonschema")
     jsonschema.validate(_resp(name), json.loads(COMMON_V0.read_text(encoding="utf-8")))
+
+
+def test_min_confidence_has_no_default_threshold() -> None:
+    """DS3 n'impose aucun seuil : min_confidence est optionnel, sans valeur par défaut (D38)."""
+    assert RequestOptions().min_confidence is None
+    field = RequestOptions.model_fields["min_confidence"]
+    assert field.default is None and not field.is_required()

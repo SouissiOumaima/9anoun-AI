@@ -132,11 +132,19 @@
           "title": "Pages"
         },
         "min_confidence": {
-          "default": 0.8,
-          "maximum": 1.0,
-          "minimum": 0.0,
-          "title": "Min Confidence",
-          "type": "number"
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Seuil de confiance souhaité par l'appelant. Indicatif : DS3 renvoie toujours la confiance réelle de chaque champ et n'applique aucun seuil. C'est le consommateur qui tranche (DS1 exige 0,90 avant tout calcul DS5).",
+          "title": "Min Confidence"
         }
       },
       "title": "RequestOptions",

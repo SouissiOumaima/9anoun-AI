@@ -1723,6 +1723,12 @@ une confiance donnée par le modèle. Le résumé est écrit par le code à part
 **Raison** : toute valeur renvoyée par DS3 peut être retrouvée et surlignée sur le document ;
 une invention du modèle devient un `null` visible, pas une erreur silencieuse.
 
+**Limite connue** : la vérification porte sur la ligne entière, pas sur la colonne. Sur une ligne
+qui porte plusieurs nombres (« Salaire de base  208  2.388  496.704 »), une valeur juste mais
+rattachée au mauvais libellé n'est pas détectée. Amélioration prévue : associer chaque valeur à sa
+colonne (bbox horizontale). En attendant, la confiance et la citation restent à confirmer par
+l'utilisateur côté DS1.
+
 **Statut** : ⏳ proposition ; prouvée par `test_invented_value_is_rejected`,
 `test_numbers_must_appear_whole`, `test_invented_value_is_null_and_response_incomplete`,
 `test_confidence_comes_from_the_line_not_from_gemini`.
@@ -1842,3 +1848,27 @@ réponse est un refus `SOURCE_MANQUANTE`.
 
 **Statut** : ⏳ provisoire, à recalibrer avec le jeu de référence complété ; prouvée par
 `test_type_mismatch_lowers_confidence_and_warns` et le cas DS3-05.
+
+---
+
+### D38 — Le seuil de confiance appartient au consommateur
+
+**Numéro** : D38, à la suite de D31–D37 (DS3).
+
+**Décision** : DS3 n'applique **aucun** seuil de confiance. Chaque champ renvoie sa confiance réelle
+(`fields[...].confidence`), et c'est le consommateur qui décide de l'utiliser ou non. DS1 exige
+**0,90** avant tout calcul DS5 : en dessous, le champ passe « à confirmer » et n'est jamais pré-coché.
+Le champ `options.min_confidence` du contrat devient facultatif, sans valeur par défaut (il valait
+0,80, jamais utilisé) ; il reste seulement comme indication que l'appelant peut transmettre.
+
+**Alternatives envisagées** :
+- Garder le défaut 0,80 et filtrer côté DS3 → rejeté : un seuil appliqué deux fois (DS3 puis DS1) et
+  deux valeurs différentes (0,80 puis 0,90) rendraient le comportement ambigu ; retenu par Oumaima
+  (DS5) à la relecture de la PR #18.
+- Rendre `min_confidence` obligatoire → rejeté : casserait les requêtes qui ne le fournissent pas.
+
+**Raison** : un seul endroit décide du seuil (le consommateur), avec une seule valeur (0,90 pour DS5) ;
+DS3 reste neutre et transmet l'information brute.
+
+**Statut** : ⏳ proposition ; `min_confidence` est désormais `float | None = None` dans
+`contract/v2/models.py`, documenté dans `CONTRACT_DOCUMENT_INTELLIGENCE_V2.md`.
