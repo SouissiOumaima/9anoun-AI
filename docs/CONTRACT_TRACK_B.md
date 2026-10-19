@@ -117,8 +117,8 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES` ou `ASSURANCE`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
-| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. |
+| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE` ou `ENSEIGNEMENT_PRIVE`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. Associations pour personnes handicapées : la clé est le chiffre romain imprimé sur la ligne de la grille (`"I"` à `"VI"` selon la population) ; le numéro de catégorie de l'annexe est accepté comme alias (`"1"` → `"I"`, `"2"` → `"II"`…), et `detail` renvoie `categorie` (clé) et `categorie_demandee` (alias reçu). Pour `techniciens`, seuls `"I"` (alias `"1"`) et `"III+II"` existent : `"III+II"` est une clé unique, et `"II"`, `"III"`, `"2"` ou `"3"` sont refusés (`PARAM_INVALIDE`), car l'annexe 4 ne confirme pas que les catégories 2 et 3 partagent cette ligne (D23). |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
 | `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). **Plus de plafond fixe** : au-delà du dernier degré, l'article 13 de chaque convention s'applique (D10, voir §7). Métallurgie : paliers exacts 22, 24, 26… ans refusés (`PARAM_INVALIDE`). BTP `admin_tech` : 27 ans pile refusé (`PARAM_INVALIDE`) ; au-delà de la fenêtre de la case cible (29 ou 30 ans selon la catégorie) et pour la catégorie 19, refus `SOURCE_MANQUANTE`. Associations pour personnes handicapées : le degré k couvre de 2k−2 à 2k ans (lecture affichée dans `detail.hypotheses`) ; bornes 2, 4, …, 30 refusées (`PARAM_INVALIDE`) ; à partir de 32 ans, refus `SOURCE_MANQUANTE`, car la convention ne prévoit rien au-delà du degré 16 (D23). |
@@ -469,7 +469,7 @@ Draft202012Validator(schema).validate(ma_requete)
 
 ## 7. Ce qui n'est pas encore couvert
 
-- **Quatre secteurs ont des données vérifiées :**
+- **Cinq secteurs ont des données vérifiées :**
   - `METALLURGIE_BATIMENT` (D4) : 6 grilles (3 dates d'effet × 2 populations)
     et 6 primes ;
   - `BATIMENT_TRAVAUX_PUBLICS` (D9) : 6 grilles (3 dates d'effet × 2
@@ -477,7 +477,9 @@ Draft202012Validator(schema).validate(ma_requete)
   - `ASSOCIATIONS_PERSONNES_HANDICAPEES` (D23) : 15 grilles (3 dates d'effet
     × 5 populations, 864 montants) et 3 primes datées ;
   - `ASSURANCE` (D29) : 2 grilles (2 dates d'effet, une seule population,
-    616 montants) et 1 prime datée.
+    616 montants) et 1 prime datée ;
+  - `ENSEIGNEMENT_PRIVE` (D38) : 5 grilles (1 date d'effet, 5 populations,
+    368 montants) et 7 primes datées.
 
   Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
@@ -492,6 +494,9 @@ Draft202012Validator(schema).validate(ma_requete)
   - Grilles de l'assurance : à partir du 2020-10-01 ; après le 2021-06-01,
     la grille du 2021-06-01 reste appliquée, pour la même raison
     (hypothèse affichée dans `detail`).
+  - Grilles de l'enseignement privé : à partir du 2015-09-01 ; après, la
+    grille du 2015-09-01 reste appliquée, pour la même raison (hypothèse
+    affichée dans `detail`).
   - SMIG : seul le décret n°769/2022 (effet 2022-10-01) est vérifié. Le module
     ne connaît pas de SMIG postérieur.
 - **Secteur `BATIMENT_TRAVAUX_PUBLICS` : couvert pour deux populations
@@ -587,6 +592,35 @@ Draft202012Validator(schema).validate(ma_requete)
     (جديد), formule).
   - Le régime hebdomadaire n'est pas renseigné : les tables n'en indiquent
     aucun.
+- **Secteur `ENSEIGNEMENT_PRIVE` (D38).**
+  - Cinq populations, une par grille (pages 25 à 27) : `ouvriers`,
+    `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`,
+    `professeurs_primaire` ; `population` est obligatoire. TND/mois (unité
+    déduite pour les grilles 2 à 5, hypothèse affichée) ; 16 degrés ; une seule
+    date d'effet, 2015-09-01 (avant : `SOURCE_MANQUANTE`).
+  - Catégories : code de la ligne imprimée de la grille ; les rangs de
+    l'annexe qui partagent une ligne sont acceptés comme alias (ex. `commis`,
+    `surveillant_2e_rang`), ainsi que les numéros 1 à 5 de l'annexe 1 pour les
+    ouvriers ; `detail` renvoie `categorie` et `categorie_demandee`.
+  - Degrés : l'ancienneté imprimée (1, 2, 4, …, 36) marque la fin du degré ;
+    bornes exactes 1, 2, 4, …, 33 ans refusées (`PARAM_INVALIDE`) ; à partir de
+    36 ans, refus `SOURCE_MANQUANTE` (article 15 (جديد) ب, page 8, rien
+    au-delà du degré 16).
+  - Formateurs adjoints (annexe 4) : pas de ligne de grille, refusés comme
+    catégorie inconnue (`PARAM_INVALIDE`).
+  - Primes couvertes, une par article, `groupe` = rang de l'article
+    (obligatoire) : transport (`prime_transport_ouvriers`, `_administratifs`,
+    `_surveillants`, `_primaire`, `_secondaire`, articles 48 à 54, effet
+    2015-09-01) et pédagogique (`prime_pedagogique_primaire`, `_secondaire`,
+    articles 51 et 54, effets du 1er juillet 2008 au 1er juillet 2011). `detail`
+    recopie la mention des décrets (503/1982, et 691/1986 pour les articles 49
+    à 54) sans calcul.
+  - Refusées (`SOURCE_MANQUANTE`), avec le texte de refus lu dans le JSON :
+    présence des ouvriers, primes spécifiques, primes de production, direction,
+    avantages pour les enfants, compensation des primes antérieures, aide en
+    cas de décès.
+  - Le régime hebdomadaire n'est pas renseigné : plusieurs régimes dans une
+    même population (article 25 (جديد), page 11).
 - **Article 13 de la métallurgie (au-delà du degré 11, atteint à 20 ans),
   couvert sous hypothèses (D10).** Montant = degré 11 + n × (degré 11 −
   degré 10), avec n = ⌊(ancienneté − 20) / 2⌋, valeurs de la grille en

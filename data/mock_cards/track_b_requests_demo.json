@@ -185,5 +185,68 @@
     "params": {"secteur": "ASSURANCE", "population": "tous_agents", "categorie": "15", "anciennete_annees": 13,
                "date": "2022-01-01"},
     "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-25-salaire-enseignement-ouvriers",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "ouvriers", "categorie": "ouvrier_qualifie", "anciennete_annees": 7, "date": "2016-03-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-26-salaire-enseignement-administratifs-alias-rang",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "administratifs_surveillants", "categorie": "surveillant_2e_rang", "anciennete_annees": 15, "date": "2017-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-27-salaire-enseignement-instituteurs",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "instituteurs", "categorie": "instituteur_application", "anciennete_annees": 20, "date": "2018-09-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-28-salaire-enseignement-secondaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "secondaire_formateurs", "categorie": "professeur", "anciennete_annees": 3, "date": "2016-09-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-29-salaire-enseignement-professeurs-primaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "professeurs_primaire", "categorie": "professeur_ecole_primaire_2e_rang", "anciennete_annees": 31, "date": "2019-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-30-prime-transport-enseignement-secondaire",
+    "operation": "prime",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "code": "prime_transport_secondaire", "date": "2017-01-01", "groupe": "formateur_1er_rang"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-31-prime-pedagogique-enseignement-primaire",
+    "operation": "prime",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "code": "prime_pedagogique_primaire", "date": "2009-07-01", "groupe": "instituteur"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-32-refus-enseignement-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "ouvriers", "categorie": "ouvrier_specialise", "anciennete_annees": 10, "date": "2016-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-33-refus-enseignement-au-dela-36-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "secondaire_formateurs", "categorie": "professeur_principal", "anciennete_annees": 36, "date": "2016-01-01"},
+    "lang": "fr"
   }
 ]
