@@ -1,0 +1,1812 @@
+{
+ "_meta": {
+  "secteur_code": "ENSEIGNEMENT_PRIVE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للتعليم الخاص",
+  "convention_fr": "Convention collective sectorielle de l'enseignement privé",
+  "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+  "pages_sources": [
+   3,
+   8,
+   11,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "Grille transcrite (2026-10-19) : 5 tables, 23 lignes, 16 degrés, 368 cellules ; double lecture indépendante (0 écart), contrôles de lecture et vérification humaine par lot ; primes de transport (art. 48 à 54) et pédagogiques (art. 51 et 54) transcrites ; activée par la décision D38.",
+  "decision_ref": "D38",
+  "currency": "TND",
+  "note_unite": "Grille des ouvriers (p.25) titrée « العمال الخالصون بالشهر » (payés au mois) ; grilles 2 à 5 : unité mensuelle déduite (hypothèse affichée).",
+  "note_degres": "En-tête des 5 grilles (p.25 à 27) : « الدرجة » 1 à 16 (degré 1 à droite) ; « مدة البقاء بالدرجة » 1, 1, 2 (×8), 3 (×6) ; « الأقدمية الفعلية » 1, 2, 4, …, 36 (fin du degré). Libellés « 0-1 » … « 33-36 ». Bornes exactes 1, 2, 4, …, 33 refusées (D6) ; à partir de 36 ans : refus.",
+  "note_categories": "Clé de catégorie : ligne imprimée de la grille (code). Les rangs de l'annexe qui partagent une ligne sont des alias vers elle (alias_categories) ; libellés arabes des lignes non recopiés (couche texte du PDF inutilisable).",
+  "remarque_pdf": "Note sous chaque grille (p.25 à 27) : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul. Primes de transport : celles des articles 49, 50, 51 et 54 incluent la prime du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 ; celle de l'article 48, la prime du décret n° 503 seulement. L'annexe 4 (p.24) cite le rang des formateurs adjoints, absent de la grille de la page 26 (dispositions transitoires 4, p.20 : rang supprimé progressivement) : ce rang n'est pas une catégorie de la grille et sa demande est refusée comme catégorie inconnue (PARAM_INVALIDE).",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات 25 إلى 27): تتضمن الأجور المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 المؤرخ في 7 أفريل 1981، والمرفّع فيها بالأمر عدد 501 المؤرخ في 16 مارس 1982.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Art. 25 (جديد), p.11 : 40 h (ouvriers, administratifs, surveillants) mais 48 h pour les gardiens ; 18 à 32 h pour les enseignants selon le rang : non renseigné."
+ },
+ "populations": {
+  "ouvriers": {
+   "libelle_fr": "Ouvriers",
+   "libelle_ar": "العمال",
+   "libelle_ar_redige": true,
+   "annexe": 1,
+   "annexe_page": 21,
+   "table": 1,
+   "table_page": 25
+  },
+  "administratifs_surveillants": {
+   "libelle_fr": "Agents administratifs et surveillants",
+   "libelle_ar": "الأعوان الإداريون والقيمون",
+   "libelle_ar_redige": true,
+   "annexe": 2,
+   "annexe_page": 22,
+   "table": 2,
+   "table_page": 25
+  },
+  "instituteurs": {
+   "libelle_fr": "Instituteurs des écoles primaires privées",
+   "libelle_ar": "المعلمون بالمدارس الابتدائية الخاصة",
+   "libelle_ar_redige": true,
+   "annexe": 3,
+   "annexe_page": 23,
+   "table": 3,
+   "table_page": 26
+  },
+  "secondaire_formateurs": {
+   "libelle_fr": "Enseignants et formateurs du secondaire et du professionnel",
+   "libelle_ar": "أعوان التدريس والمكونون بالمدارس الإعدادية والثانوية والمهنية",
+   "libelle_ar_redige": true,
+   "annexe": 4,
+   "annexe_page": 24,
+   "table": 4,
+   "table_page": 26
+  },
+  "professeurs_primaire": {
+   "libelle_fr": "Professeurs d'école primaire privée",
+   "libelle_ar": "أساتذة المدارس الابتدائية الخاصة",
+   "libelle_ar_redige": true,
+   "annexe": 3,
+   "annexe_page": 23,
+   "table": 5,
+   "table_page": 27
+  }
+ },
+ "degres": {
+  "ouvriers": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "administratifs_surveillants": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "instituteurs": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "secondaire_formateurs": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "professeurs_primaire": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "ouvriers": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد) ب",
+   "regle_fr": "La progression se fait de degré en degré selon les grilles annexées (16 degrés, jusqu'à 36 ans). La convention ne dit rien au-delà du dernier degré.",
+   "message_fr": "Ancienneté de {a} ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "administratifs_surveillants": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد) ب",
+   "regle_fr": "La progression se fait de degré en degré selon les grilles annexées (16 degrés, jusqu'à 36 ans). La convention ne dit rien au-delà du dernier degré.",
+   "message_fr": "Ancienneté de {a} ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "instituteurs": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد) ب",
+   "regle_fr": "La progression se fait de degré en degré selon les grilles annexées (16 degrés, jusqu'à 36 ans). La convention ne dit rien au-delà du dernier degré.",
+   "message_fr": "Ancienneté de {a} ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "secondaire_formateurs": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد) ب",
+   "regle_fr": "La progression se fait de degré en degré selon les grilles annexées (16 degrés, jusqu'à 36 ans). La convention ne dit rien au-delà du dernier degré.",
+   "message_fr": "Ancienneté de {a} ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "professeurs_primaire": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد) ب",
+   "regle_fr": "La progression se fait de degré en degré selon les grilles annexées (16 degrés, jusqu'à 36 ans). La convention ne dit rien au-delà du dernier degré.",
+   "message_fr": "Ancienneté de {a} ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  }
+ },
+ "categories": {
+  "ouvriers": [
+   "ouvrier_ordinaire",
+   "ouvrier_competence_partielle",
+   "ouvrier_qualifie",
+   "ouvrier_hautement_qualifie",
+   "ouvrier_specialise"
+  ],
+  "administratifs_surveillants": [
+   "dactylographe_aide_comptable_commis",
+   "comptable_surveillant_2e_rang",
+   "dactylographe_secretaire_aide_econome",
+   "econome_3e_rang_surveillant_1er_rang",
+   "secretaire_administration",
+   "econome_2e_rang",
+   "econome_1er_rang",
+   "surveillant_general"
+  ],
+  "instituteurs": [
+   "instituteur_application",
+   "instituteur_principal",
+   "instituteur"
+  ],
+  "secondaire_formateurs": [
+   "professeur_principal",
+   "professeur",
+   "professeur_premier_cycle",
+   "formateur_1er_rang",
+   "formateur_2e_rang"
+  ],
+  "professeurs_primaire": [
+   "professeur_ecole_primaire_1er_rang",
+   "professeur_ecole_primaire_2e_rang"
+  ]
+ },
+ "alias_categories": {
+  "ouvriers": {
+   "1": "ouvrier_ordinaire",
+   "2": "ouvrier_competence_partielle",
+   "3": "ouvrier_qualifie",
+   "4": "ouvrier_hautement_qualifie",
+   "5": "ouvrier_specialise"
+  },
+  "administratifs_surveillants": {
+   "dactylographe_copiste": "dactylographe_aide_comptable_commis",
+   "commis": "dactylographe_aide_comptable_commis",
+   "aide_comptable": "dactylographe_aide_comptable_commis",
+   "comptable": "comptable_surveillant_2e_rang",
+   "surveillant_2e_rang": "comptable_surveillant_2e_rang",
+   "dactylographe_secretaire": "dactylographe_secretaire_aide_econome",
+   "aide_econome": "dactylographe_secretaire_aide_econome",
+   "econome_3e_rang": "econome_3e_rang_surveillant_1er_rang",
+   "surveillant_1er_rang": "econome_3e_rang_surveillant_1er_rang"
+  }
+ },
+ "libelles_categories": {
+  "ouvriers": {
+   "ouvrier_ordinaire": {
+    "libelle_fr": "Ouvrier ordinaire",
+    "rangs": [
+     "ouvrier_ordinaire"
+    ],
+    "categories_annexe": [
+     "1"
+    ]
+   },
+   "ouvrier_competence_partielle": {
+    "libelle_fr": "Ouvrier ayant une certaine compétence",
+    "rangs": [
+     "ouvrier_competence_partielle"
+    ],
+    "categories_annexe": [
+     "2"
+    ]
+   },
+   "ouvrier_qualifie": {
+    "libelle_fr": "Ouvrier qualifié",
+    "rangs": [
+     "ouvrier_qualifie"
+    ],
+    "categories_annexe": [
+     "3"
+    ]
+   },
+   "ouvrier_hautement_qualifie": {
+    "libelle_fr": "Ouvrier hautement qualifié",
+    "rangs": [
+     "ouvrier_hautement_qualifie"
+    ],
+    "categories_annexe": [
+     "4"
+    ]
+   },
+   "ouvrier_specialise": {
+    "libelle_fr": "Ouvrier spécialisé",
+    "rangs": [
+     "ouvrier_specialise"
+    ],
+    "categories_annexe": [
+     "5"
+    ]
+   }
+  },
+  "administratifs_surveillants": {
+   "dactylographe_aide_comptable_commis": {
+    "libelle_fr": "Dactylographe – aide-comptable – commis",
+    "rangs": [
+     "dactylographe_copiste",
+     "commis",
+     "aide_comptable"
+    ],
+    "categories_annexe": [
+     "1"
+    ]
+   },
+   "comptable_surveillant_2e_rang": {
+    "libelle_fr": "Comptable – surveillant de 2e rang",
+    "rangs": [
+     "comptable",
+     "surveillant_2e_rang"
+    ],
+    "categories_annexe": [
+     "2"
+    ]
+   },
+   "dactylographe_secretaire_aide_econome": {
+    "libelle_fr": "Dactylographe-secrétaire – aide-économe",
+    "rangs": [
+     "dactylographe_secretaire",
+     "aide_econome"
+    ],
+    "categories_annexe": [
+     "2"
+    ]
+   },
+   "econome_3e_rang_surveillant_1er_rang": {
+    "libelle_fr": "Économe de 3e rang – surveillant de 1er rang",
+    "rangs": [
+     "econome_3e_rang",
+     "surveillant_1er_rang"
+    ],
+    "categories_annexe": [
+     "3"
+    ]
+   },
+   "secretaire_administration": {
+    "libelle_fr": "Secrétaire d'administration",
+    "rangs": [
+     "secretaire_administration"
+    ],
+    "categories_annexe": [
+     "3"
+    ]
+   },
+   "econome_2e_rang": {
+    "libelle_fr": "Économe de 2e rang",
+    "rangs": [
+     "econome_2e_rang"
+    ],
+    "categories_annexe": [
+     "4"
+    ]
+   },
+   "econome_1er_rang": {
+    "libelle_fr": "Économe de 1er rang",
+    "rangs": [
+     "econome_1er_rang"
+    ],
+    "categories_annexe": [
+     "4"
+    ]
+   },
+   "surveillant_general": {
+    "libelle_fr": "Surveillant général",
+    "rangs": [
+     "surveillant_general"
+    ],
+    "categories_annexe": [
+     "5"
+    ]
+   }
+  },
+  "instituteurs": {
+   "instituteur_application": {
+    "libelle_fr": "Instituteur d'application",
+    "rangs": [
+     "instituteur_application"
+    ],
+    "categories_annexe": []
+   },
+   "instituteur_principal": {
+    "libelle_fr": "Instituteur principal",
+    "rangs": [
+     "instituteur_principal"
+    ],
+    "categories_annexe": []
+   },
+   "instituteur": {
+    "libelle_fr": "Instituteur",
+    "rangs": [
+     "instituteur"
+    ],
+    "categories_annexe": []
+   }
+  },
+  "secondaire_formateurs": {
+   "professeur_principal": {
+    "libelle_fr": "Professeur principal du secondaire ou professionnel",
+    "rangs": [
+     "professeur_principal"
+    ],
+    "categories_annexe": []
+   },
+   "professeur": {
+    "libelle_fr": "Professeur d'enseignement secondaire ou professionnel",
+    "rangs": [
+     "professeur"
+    ],
+    "categories_annexe": []
+   },
+   "professeur_premier_cycle": {
+    "libelle_fr": "Professeur du premier cycle du secondaire ou professionnel",
+    "rangs": [
+     "professeur_premier_cycle"
+    ],
+    "categories_annexe": []
+   },
+   "formateur_1er_rang": {
+    "libelle_fr": "Formateur de 1er rang",
+    "rangs": [
+     "formateur_1er_rang"
+    ],
+    "categories_annexe": []
+   },
+   "formateur_2e_rang": {
+    "libelle_fr": "Formateur de 2e rang",
+    "rangs": [
+     "formateur_2e_rang"
+    ],
+    "categories_annexe": []
+   }
+  },
+  "professeurs_primaire": {
+   "professeur_ecole_primaire_1er_rang": {
+    "libelle_fr": "Professeur d'école primaire de 1er rang",
+    "rangs": [
+     "professeur_ecole_primaire_1er_rang"
+    ],
+    "categories_annexe": []
+   },
+   "professeur_ecole_primaire_2e_rang": {
+    "libelle_fr": "Professeur d'école primaire de 2e rang",
+    "rangs": [
+     "professeur_ecole_primaire_2e_rang"
+    ],
+    "categories_annexe": []
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "ouvriers": {
+   "fr": [
+    "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+    "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite."
+   ],
+   "ar": [
+    "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله."
+   ]
+  },
+  "administratifs_surveillants": {
+   "fr": [
+    "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+    "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+    "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+   ],
+   "ar": [
+    "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+    "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+   ]
+  },
+  "instituteurs": {
+   "fr": [
+    "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+    "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+    "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+   ],
+   "ar": [
+    "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+    "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+   ]
+  },
+  "secondaire_formateurs": {
+   "fr": [
+    "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+    "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+    "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+   ],
+   "ar": [
+    "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+    "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+   ]
+  },
+  "professeurs_primaire": {
+   "fr": [
+    "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+    "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+    "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+   ],
+   "ar": [
+    "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+    "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+    "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+   ]
+  }
+ },
+ "tables_prevues": [
+  {
+   "table_id": "EP_OUVRIERS_2015-09-01",
+   "numero_imprime": 1,
+   "population": "ouvriers",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "categories": [
+    "ouvrier_ordinaire",
+    "ouvrier_competence_partielle",
+    "ouvrier_qualifie",
+    "ouvrier_hautement_qualifie",
+    "ouvrier_specialise"
+   ]
+  },
+  {
+   "table_id": "EP_ADMINISTRATIFS_SURVEILLANTS_2015-09-01",
+   "numero_imprime": 2,
+   "population": "administratifs_surveillants",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "categories": [
+    "dactylographe_aide_comptable_commis",
+    "comptable_surveillant_2e_rang",
+    "dactylographe_secretaire_aide_econome",
+    "econome_3e_rang_surveillant_1er_rang",
+    "secretaire_administration",
+    "econome_2e_rang",
+    "econome_1er_rang",
+    "surveillant_general"
+   ]
+  },
+  {
+   "table_id": "EP_INSTITUTEURS_2015-09-01",
+   "numero_imprime": 3,
+   "population": "instituteurs",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "categories": [
+    "instituteur_application",
+    "instituteur_principal",
+    "instituteur"
+   ]
+  },
+  {
+   "table_id": "EP_SECONDAIRE_FORMATEURS_2015-09-01",
+   "numero_imprime": 4,
+   "population": "secondaire_formateurs",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "categories": [
+    "professeur_principal",
+    "professeur",
+    "professeur_premier_cycle",
+    "formateur_1er_rang",
+    "formateur_2e_rang"
+   ]
+  },
+  {
+   "table_id": "EP_PROFESSEURS_PRIMAIRE_2015-09-01",
+   "numero_imprime": 5,
+   "population": "professeurs_primaire",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "categories": [
+    "professeur_ecole_primaire_1er_rang",
+    "professeur_ecole_primaire_2e_rang"
+   ]
+  }
+ ],
+ "primes": [
+  {
+   "code": "prime_transport_ouvriers",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "48 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2015-09-01",
+     "ouvrier_ordinaire": 45.500,
+     "ouvrier_competence_partielle": 48.000,
+     "ouvrier_qualifie": 50.000,
+     "ouvrier_hautement_qualifie": 54.000,
+     "ouvrier_specialise": 62.500
+    }
+   ],
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982 (art. 48 (جديد), p.15) : mention reproduite, sans calcul.",
+   "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المحددة لمنحة النقل بهذا الجدول المنحة التي جاء بها الأمر عدد 503 لسنة 1982 المؤرخ في 16 مارس 1982.",
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_administratifs",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2015-09-01",
+     "dactylographe_copiste": 57.166,
+     "commis": 57.166,
+     "aide_comptable": 57.166,
+     "dactylographe_secretaire": 62.666,
+     "aide_econome": 62.666,
+     "comptable": 66.666,
+     "secretaire_administration": 66.666,
+     "econome_3e_rang": 66.666,
+     "econome_2e_rang": 72.666,
+     "econome_1er_rang": 78.166
+    }
+   ],
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 49 (جديد), p.16) : mention reproduite, sans calcul.",
+   "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المنحة المحدثة بالأمر عدد 503 لسنة 1982 والمؤرخ في 16 مارس 1982 كما وقع تنقيحه بالأمر عدد 691 المؤرخ في 19 جويلية 1986.",
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_surveillants",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2015-09-01",
+     "surveillant_2e_rang": 62.666,
+     "surveillant_1er_rang": 66.666,
+     "surveillant_general": 81.166
+    }
+   ],
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 50 (جديد), p.16) : mention reproduite, sans calcul.",
+   "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المنحة المحدثة بالأمر عدد 503 لسنة 1982 والمؤرخ في 16 مارس 1982 كما وقع تنقيحه بالأمر عدد 691 المؤرخ في 19 جويلية 1986.",
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_primaire",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2015-09-01",
+     "professeur_ecole_primaire_1er_rang": 80.666,
+     "professeur_ecole_primaire_2e_rang": 78.666,
+     "instituteur_application": 80.666,
+     "instituteur_principal": 78.666,
+     "instituteur": 76.666
+    }
+   ],
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 51 (جديد), p.17) : mention reproduite, sans calcul.",
+   "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المنحة المحدثة بالأمر عدد 503 لسنة 1982 والمؤرخ في 16 مارس 1982 كما وقع تنقيحه بالأمر عدد 691 المؤرخ في 19 جويلية 1986.",
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_secondaire",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2015-09-01",
+     "professeur_principal": 79.166,
+     "professeur": 78.666,
+     "professeur_premier_cycle": 66.666,
+     "formateur_1er_rang": 54.166,
+     "formateur_2e_rang": 54.166
+    }
+   ],
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 54 (جديد), p.18) : mention reproduite, sans calcul.",
+   "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المنحة المحدثة بالأمر عدد 503 لسنة 1982 والمؤرخ في 16 مارس 1982 كما وقع تنقيحه بالأمر عدد 691 المؤرخ في 19 جويلية 1986.",
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_primaire",
+   "label_ar": "المنحة البيداغوجية",
+   "label_fr": "Prime pédagogique",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-07-01",
+     "professeur_ecole_primaire_1er_rang": 49.500,
+     "professeur_ecole_primaire_2e_rang": 40.000,
+     "instituteur_application": 49.500,
+     "instituteur_principal": 40.000,
+     "instituteur": 37.000
+    },
+    {
+     "effective_date": "2009-07-01",
+     "professeur_ecole_primaire_1er_rang": 51.000,
+     "professeur_ecole_primaire_2e_rang": 41.000,
+     "instituteur_application": 51.000,
+     "instituteur_principal": 41.000,
+     "instituteur": 38.000
+    },
+    {
+     "effective_date": "2010-07-01",
+     "professeur_ecole_primaire_1er_rang": 53.000,
+     "professeur_ecole_primaire_2e_rang": 42.000,
+     "instituteur_application": 53.000,
+     "instituteur_principal": 42.000,
+     "instituteur": 39.000
+    },
+    {
+     "effective_date": "2011-07-01",
+     "professeur_ecole_primaire_1er_rang": 54.666,
+     "professeur_ecole_primaire_2e_rang": 43.000,
+     "instituteur_application": 54.666,
+     "instituteur_principal": 43.000,
+     "instituteur": 40.000
+    }
+   ],
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2011-07-01 n'est présente dans les sources ; le montant du 2011-07-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2011-07-01؛ ومبلغ 2011-07-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_secondaire",
+   "label_ar": "المنحة البيداغوجية",
+   "label_fr": "Prime pédagogique",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-07-01",
+     "professeur_principal": 82.000,
+     "professeur": 78.600,
+     "professeur_premier_cycle": 56.200,
+     "formateur_1er_rang": 30.400,
+     "formateur_2e_rang": 28.200
+    },
+    {
+     "effective_date": "2009-07-01",
+     "professeur_principal": 83.000,
+     "professeur": 79.600,
+     "professeur_premier_cycle": 57.200,
+     "formateur_1er_rang": 31.400,
+     "formateur_2e_rang": 29.200
+    },
+    {
+     "effective_date": "2010-07-01",
+     "professeur_principal": 85.000,
+     "professeur": 81.600,
+     "professeur_premier_cycle": 58.200,
+     "formateur_1er_rang": 32.400,
+     "formateur_2e_rang": 30.200
+    },
+    {
+     "effective_date": "2011-07-01",
+     "professeur_principal": 86.333,
+     "professeur": 82.933,
+     "professeur_premier_cycle": 59.200,
+     "formateur_1er_rang": 33.400,
+     "formateur_2e_rang": 31.200
+    }
+   ],
+   "hypotheses": {
+    "fr": [
+     "Aucune révision de cette prime postérieure au 2011-07-01 n'est présente dans les sources ; le montant du 2011-07-01 est le dernier transcrit."
+    ],
+    "ar": [
+     "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2011-07-01؛ ومبلغ 2011-07-01 هو آخر مبلغ تم نقله."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_presence_ouvriers": {
+   "source_pdf_page": 15,
+   "source_article": "48 (جديد)",
+   "message_fr": "Prime de présence des ouvriers (article 48 (جديد), page 15) : deux montants dans la source sans lien établi entre eux (2,080 par l'article 48, page 15 ; 3,000 en plus d'une autre prime par l'article 54-5, page 19) et aucune date d'effet. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الحضور للعمال (الفصل 48 (جديد)، الصفحة 15): مبلغان مختلفان في المصدر دون بيان العلاقة بينهما (2.080 د بالفصل 48، الصفحة 15؛ 3.000 د بالفصل 54-5، الصفحة 19) ودون تاريخ نفاذ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "conflit de montants, sans date"
+  },
+  "prime_specifique_administratifs": {
+   "source_pdf_page": 16,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime spécifique des agents administratifs (article 49 (جديد), page 16) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المنحة الخصوصية للأعوان الإداريين (الفصل 49 (جديد)، الصفحة 16): مبلغ دون تاريخ نفاذ في المصدر. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  },
+  "prime_specifique_surveillants": {
+   "source_pdf_page": 16,
+   "source_article": "50 (جديد)",
+   "message_fr": "Prime spécifique des surveillants (article 50 (جديد), page 16) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المنحة الخصوصية للقيمين (الفصل 50 (جديد)، الصفحة 16): مبلغ دون تاريخ نفاذ في المصدر. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  },
+  "prime_production_ouvriers": {
+   "source_pdf_page": 15,
+   "source_article": "48 (جديد)",
+   "message_fr": "Prime de production des ouvriers (article 48 (جديد), page 15) : montant défini par une formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج للعمال (الفصل 48 (جديد)، الصفحة 15): مبلغ محدد بصيغة حسابية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_production_administratifs_surveillants": {
+   "source_pdf_page": 16,
+   "source_article": "50 (جديد)",
+   "message_fr": "Prime de production des agents administratifs et des surveillants (article 50 (جديد), page 16) : montant défini par une formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج للأعوان الإداريين والقيمين (الفصل 50 (جديد)، الصفحة 16): مبلغ محدد بصيغة حسابية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_production_primaire": {
+   "source_pdf_page": 17,
+   "source_article": "51 (جديد)",
+   "message_fr": "Prime de production des enseignants du primaire (article 51 (جديد), page 17) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج لأعوان التدريس بالمدارس الابتدائية (الفصل 51 (جديد)، الصفحة 17): مبلغ دون تاريخ نفاذ في المصدر. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  },
+  "prime_production_secondaire": {
+   "source_pdf_page": 18,
+   "source_article": "54 (جديد)",
+   "message_fr": "Prime de production des enseignants du secondaire (article 54 (جديد), page 18) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج لأعوان التدريس بالمدارس الإعدادية والثانوية والمهنية (الفصل 54 (جديد)، الصفحة 18): مبلغ دون تاريخ نفاذ في المصدر. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  },
+  "prime_direction": {
+   "source_pdf_page": 18,
+   "source_article": "54 مكرر",
+   "message_fr": "Prime des directeurs et censeurs (article 54 مكرر, page 18) : montant selon le type d'école et le nombre d'élèves, pour une fonction absente des grilles. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة المديرين والنظار (الفصل 54 مكرر، الصفحة 18): مبلغ حسب نوع المؤسسة وعدد التلاميذ، لوظيفة غير مدرجة بجداول الأجور. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "population hors grilles"
+  },
+  "avantage_scolarite_enfants": {
+   "source_pdf_page": 18,
+   "source_article": "54 ثالث (جديد)",
+   "message_fr": "Avantages en faveur des enfants des agents (article 54 ثالث (جديد), page 18) : avantage en nature, sans montant. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "امتيازات لفائدة أبناء العاملين (الفصل 54 ثالث (جديد)، الصفحة 18): امتياز عيني دون مبلغ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "avantage en nature"
+  },
+  "compensation_primes_anterieures": {
+   "source_pdf_page": 19,
+   "source_article": "55",
+   "message_fr": "Compensation des primes antérieures (article 55, page 19) : différence à calculer au cas par cas, sans montant. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "تعويض المنح السابقة (الفصل 55، الصفحة 19): فارق يُحتسب حالة بحالة دون مبلغ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "calcul au cas par cas"
+  },
+  "aide_deces": {
+   "source_pdf_page": 15,
+   "source_article": "46 مكرر",
+   "message_fr": "Aide en cas de décès (article 46 مكرر, page 15) : montant sans date d'effet dans la source. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الوفاة (الفصل 46 مكرر، الصفحة 15): مبلغ دون تاريخ نفاذ في المصدر. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "EP_OUVRIERS_2015-09-01",
+   "population": "ouvriers",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "valeurs": {
+    "ouvrier_ordinaire": [
+     465.624,
+     468.745,
+     474.891,
+     478.011,
+     481.132,
+     484.253,
+     488.600,
+     492.948,
+     497.295,
+     501.643,
+     505.990,
+     510.338,
+     514.685,
+     519.033,
+     523.381,
+     527.729
+    ],
+    "ouvrier_competence_partielle": [
+     484.611,
+     488.259,
+     491.907,
+     495.555,
+     499.203,
+     503.753,
+     508.302,
+     512.852,
+     517.402,
+     521.951,
+     526.501,
+     531.050,
+     535.600,
+     540.150,
+     544.700,
+     549.250
+    ],
+    "ouvrier_qualifie": [
+     497.834,
+     502.584,
+     507.333,
+     512.082,
+     516.831,
+     521.581,
+     526.330,
+     531.079,
+     535.828,
+     540.578,
+     548.352,
+     553.101,
+     557.850,
+     562.600,
+     567.350,
+     572.100
+    ],
+    "ouvrier_hautement_qualifie": [
+     516.444,
+     521.471,
+     526.499,
+     531.526,
+     536.554,
+     541.582,
+     546.609,
+     551.637,
+     556.664,
+     564.717,
+     569.744,
+     574.772,
+     579.799,
+     584.827,
+     589.855,
+     594.883
+    ],
+    "ouvrier_specialise": [
+     572.934,
+     578.681,
+     584.427,
+     593.198,
+     598.944,
+     604.691,
+     610.437,
+     616.183,
+     621.930,
+     627.676,
+     633.422,
+     639.168,
+     644.915,
+     650.661,
+     656.407,
+     662.153
+    ]
+   }
+  },
+  {
+   "table_id": "EP_ADMINISTRATIFS_SURVEILLANTS_2015-09-01",
+   "population": "administratifs_surveillants",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "valeurs": {
+    "dactylographe_aide_comptable_commis": [
+     500.159,
+     504.914,
+     509.669,
+     514.425,
+     519.180,
+     523.935,
+     528.691,
+     533.446,
+     541.226,
+     545.981,
+     550.737,
+     555.492,
+     560.247,
+     565.003,
+     569.759,
+     574.515
+    ],
+    "comptable_surveillant_2e_rang": [
+     524.945,
+     530.192,
+     535.440,
+     540.687,
+     545.935,
+     554.132,
+     559.380,
+     564.627,
+     569.874,
+     575.122,
+     580.369,
+     585.617,
+     590.864,
+     596.112,
+     601.360,
+     606.608
+    ],
+    "dactylographe_secretaire_aide_econome": [
+     531.022,
+     536.403,
+     541.784,
+     547.164,
+     552.545,
+     560.951,
+     566.332,
+     571.713,
+     577.094,
+     582.475,
+     587.856,
+     593.236,
+     598.617,
+     603.998,
+     609.379,
+     614.760
+    ],
+    "econome_3e_rang_surveillant_1er_rang": [
+     574.481,
+     580.155,
+     585.830,
+     594.454,
+     600.129,
+     605.804,
+     611.478,
+     617.153,
+     622.828,
+     628.502,
+     634.177,
+     639.851,
+     645.526,
+     651.201,
+     656.876,
+     662.551
+    ],
+    "secretaire_administration": [
+     580.839,
+     586.658,
+     592.476,
+     601.320,
+     607.139,
+     612.958,
+     618.777,
+     624.596,
+     630.415,
+     636.234,
+     642.053,
+     647.871,
+     653.690,
+     659.509,
+     665.328,
+     671.147
+    ],
+    "econome_2e_rang": [
+     655.480,
+     662.681,
+     669.881,
+     677.081,
+     687.232,
+     694.432,
+     701.632,
+     708.833,
+     716.033,
+     723.234,
+     733.384,
+     740.584,
+     747.785,
+     754.985,
+     762.185,
+     769.385
+    ],
+    "econome_1er_rang": [
+     675.540,
+     682.741,
+     689.941,
+     697.141,
+     707.292,
+     714.492,
+     721.692,
+     728.893,
+     736.093,
+     743.294,
+     753.444,
+     760.644,
+     767.845,
+     775.045,
+     782.245,
+     789.445
+    ],
+    "surveillant_general": [
+     825.344,
+     836.530,
+     844.767,
+     853.003,
+     861.240,
+     869.476,
+     880.662,
+     888.899,
+     897.135,
+     905.372,
+     913.608,
+     921.844,
+     930.081,
+     938.317,
+     946.553,
+     954.789
+    ]
+   }
+  },
+  {
+   "table_id": "EP_INSTITUTEURS_2015-09-01",
+   "population": "instituteurs",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "valeurs": {
+    "instituteur_application": [
+     711.920,
+     719.030,
+     719.753,
+     733.249,
+     743.308,
+     750.418,
+     757.527,
+     764.637,
+     771.746,
+     778.856,
+     788.915,
+     796.025,
+     803.134,
+     810.244,
+     817.354,
+     824.464
+    ],
+    "instituteur_principal": [
+     618.390,
+     624.345,
+     625.251,
+     639.206,
+     645.162,
+     651.117,
+     657.073,
+     663.028,
+     668.983,
+     677.889,
+     683.844,
+     689.800,
+     695.755,
+     701.711,
+     707.667,
+     713.623
+    ],
+    "instituteur": [
+     597.705,
+     603.357,
+     603.932,
+     617.612,
+     623.264,
+     628.916,
+     634.568,
+     640.220,
+     645.873,
+     651.525,
+     657.177,
+     662.829,
+     668.481,
+     674.134,
+     679.787,
+     685.540
+    ]
+   }
+  },
+  {
+   "table_id": "EP_SECONDAIRE_FORMATEURS_2015-09-01",
+   "population": "secondaire_formateurs",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "valeurs": {
+    "professeur_principal": [
+     892.315,
+     901.552,
+     910.789,
+     920.026,
+     932.213,
+     941.450,
+     950.687,
+     959.924,
+     969.162,
+     978.399,
+     987.636,
+     996.873,
+     1006.110,
+     1015.347,
+     1024.584,
+     1033.821
+    ],
+    "professeur": [
+     834.148,
+     845.302,
+     853.507,
+     861.711,
+     869.916,
+     878.120,
+     889.275,
+     897.479,
+     905.684,
+     913.888,
+     922.093,
+     930.297,
+     938.502,
+     946.707,
+     954.912,
+     963.117
+    ],
+    "professeur_premier_cycle": [
+     702.017,
+     708.702,
+     715.387,
+     722.071,
+     728.756,
+     735.440,
+     745.075,
+     751.760,
+     758.445,
+     765.130,
+     771.814,
+     778.499,
+     785.184,
+     791.868,
+     798.552,
+     805.236
+    ],
+    "formateur_1er_rang": [
+     582.359,
+     587.464,
+     592.569,
+     597.673,
+     602.778,
+     607.883,
+     615.937,
+     621.042,
+     626.147,
+     631.252,
+     636.356,
+     641.461,
+     646.566,
+     651.670,
+     656.774,
+     661.878
+    ],
+    "formateur_2e_rang": [
+     576.442,
+     581.304,
+     586.165,
+     591.027,
+     595.889,
+     600.750,
+     605.612,
+     613.423,
+     618.285,
+     623.147,
+     628.008,
+     632.870,
+     637.731,
+     642.593,
+     647.455,
+     652.317
+    ]
+   }
+  },
+  {
+   "table_id": "EP_PROFESSEURS_PRIMAIRE_2015-09-01",
+   "population": "professeurs_primaire",
+   "effective_date": "2015-09-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "valeurs": {
+    "professeur_ecole_primaire_1er_rang": [
+     716.608,
+     723.906,
+     731.204,
+     738.502,
+     745.800,
+     753.098,
+     760.396,
+     767.694,
+     774.992,
+     782.290,
+     789.588,
+     796.886,
+     804.184,
+     811.482,
+     818.780,
+     826.078
+    ],
+    "professeur_ecole_primaire_2e_rang": [
+     678.676,
+     685.361,
+     692.046,
+     698.731,
+     705.416,
+     712.101,
+     718.786,
+     725.471,
+     732.156,
+     738.841,
+     745.526,
+     752.211,
+     758.896,
+     765.581,
+     772.266,
+     778.951
+    ]
+   }
+  }
+ ]
+}
