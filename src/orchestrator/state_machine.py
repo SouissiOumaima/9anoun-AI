@@ -21,6 +21,7 @@ from .tool_contracts import ToolCall, ToolContractError, build_tool_call
 from .track_b_requests import build_track_b_request
 from .track_a_requests import build_track_a_request_from_case_card
 from .track_b_prompt import extract_track_b_prompt
+from .sector_mapping import sector_clarification_labels
 from .document_intelligence_requests import DocumentRequestError, build_document_intelligence_request
 
 
@@ -41,6 +42,11 @@ class PlanningError(ValueError):
 
 class ClarificationNeeded(PlanningError):
     """A safe route exists but mandatory structured fields are missing."""
+
+    def __init__(self, reason: str, *, message_fr: str | None = None, message_ar: str | None = None) -> None:
+        super().__init__(reason)
+        self.message_fr = message_fr
+        self.message_ar = message_ar
 
 
 ToolExecutor = Callable[[Mapping[str, Any]], Mapping[str, Any]]
@@ -69,6 +75,8 @@ class FlowResult:
     tool_response: Mapping[str, Any] | None = None
     reason: str | None = None
     attempts: int = 0
+    clarification_message_fr: str | None = None
+    clarification_message_ar: str | None = None
 
 
 class Planner:
@@ -128,8 +136,11 @@ class Planner:
         if extracted.operation is None:
             raise ClarificationNeeded("Track B requires the exact operation: SMIG, salaire de base, or prime")
         if extracted.sector_clarification:
+            choices_fr, choices_ar = sector_clarification_labels(envelope.message)
             raise ClarificationNeeded(
-                "Le secteur est ambigu : précisez BTP ou construction métallique avant le calcul"
+                "payroll sector clarification is required",
+                message_fr=f"Plusieurs secteurs sont indiqués : {' ou '.join(choices_fr)} ?",
+                message_ar=f"تم ذكر أكثر من قطاع: {' أم '.join(choices_ar)}؟",
             )
         if extracted.missing:
             fields = ", ".join(extracted.missing)
@@ -266,7 +277,8 @@ class StateMachine:
         except ClarificationNeeded as error:
             advance(FlowState.CLARIFICATION_REQUIRED)
             return self._finish(envelope, FlowResult(envelope.request_id, states[-1], tuple(states), parsed=parsed,
-                                reason=str(error)))
+                                reason=str(error), clarification_message_fr=error.message_fr,
+                                clarification_message_ar=error.message_ar))
         except (ContextResolutionError, ToolContractError, PlanningError, ValueError) as error:
             return self._finish(envelope, self._failed(envelope.request_id, states, str(error)))
 

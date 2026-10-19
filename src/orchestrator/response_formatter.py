@@ -102,6 +102,13 @@ def format_flow_result(result: Any) -> UserResponse:
             return _response("refused", code, result.request_id)
         return _response("success", UserResponseCode.SUCCESS, result.request_id)
     if state == "clarification_required":
+        message_fr = getattr(result, "clarification_message_fr", None)
+        message_ar = getattr(result, "clarification_message_ar", None)
+        if isinstance(message_fr, str) and isinstance(message_ar, str):
+            return UserResponse(
+                "clarification_required", UserResponseCode.CLARIFICATION_REQUIRED,
+                message_fr, message_ar, "provide_missing_information", result.request_id,
+            )
         return _response("clarification_required", UserResponseCode.CLARIFICATION_REQUIRED, result.request_id)
     tool_error = (result.tool_response or {}).get("error") if isinstance(getattr(result, "tool_response", None), dict) else None
     if isinstance(tool_error, dict):

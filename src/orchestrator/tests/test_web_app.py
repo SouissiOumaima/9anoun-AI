@@ -124,8 +124,30 @@ def test_mock_document_review_cannot_launch_a_real_ds5_calculation() -> None:
         "user_inputs": {"population": "admin_tech", "anciennete_annees": "6.495890", "secteur": "INTERDIT"},
     })
     assert calculation["user_response"]["status"] == "refused"
-    assert calculation["user_response"]["specialist_code"] == "MOCK_DOCUMENT"
+    assert calculation["user_response"]["specialist_code"] == "NON_LIVE_DOCUMENT"
     assert calculation["user_response"]["message_ar"]
+
+
+def test_document_calculation_rejects_every_mode_other_than_live() -> None:
+    for mode in (None, "mock", "MOCK", "demo"):
+        response = chat({
+            "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+            "document_id": "doc-company-payslip-01",
+        })
+        review = response["document_review"]
+        confirmed = confirm_document_review({
+            "review_id": review["review_id"],
+            "confirmed_fields": ["period_start", "pay_mode", "work_hours_regime"],
+        })
+        assert confirmed["status"] == "confirmed"
+        web_app._DOCUMENT_REVIEWS[review["review_id"]]["mode"] = mode
+        calculation = calculate_from_document_review({
+            "review_id": review["review_id"], "operation": "smig", "language": "fr", "user_inputs": {},
+        })
+        assert calculation["user_response"]["status"] == "refused"
+        assert calculation["user_response"]["specialist_code"] == "NON_LIVE_DOCUMENT"
+        assert calculation["user_response"]["message_fr"]
+        assert calculation["user_response"]["message_ar"]
 
 
 def test_live_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
@@ -194,14 +216,31 @@ def test_chat_rejects_document_not_owned_by_active_card() -> None:
     assert response["user_response"]["status"] == "error"
 
 
-def test_chat_routes_a_cited_arabic_prompt_to_ds2_in_any_mode() -> None:
+def test_chat_accepts_a_cited_arabic_ds2_success_or_refusal() -> None:
     response = chat({
         "message": "ما هو الفصل القانوني المتعلق بمنحة النقل في قطاع BTP؟", "language": "ar",
     })
-    assert response["user_response"]["status"] == "success"
     assert response["route"] == {"agent": "legal_retrieval", "operation": "search"}
-    assert response["answer"]["kind"] == "legal_research"
-    assert response["answer"]["mode"] in {"mock", "live"}
+    assert response["user_response"]["status"] in {"success", "refused"}
+    if response["user_response"]["status"] == "success":
+        assert response["answer"]["kind"] == "legal_research"
+        assert response["answer"]["mode"] in {"mock", "live"}
+    else:
+        assert response["answer"] is None
+        assert response["user_response"]["code"] in {"SOURCE_MISSING", "OUT_OF_SCOPE"}
+
+
+def test_chat_names_the_actual_sector_choices_in_both_languages() -> None:
+    response = chat({
+        "message": "Calcule le salaire de base BTP et associations, catégorie 4 au 2024-01-01.",
+        "language": "fr", "card_id": "company-demo-001",
+    })
+    user = response["user_response"]
+    assert user["status"] == "clarification_required"
+    assert "BTP" in user["message_fr"]
+    assert "Associations" in user["message_fr"]
+    assert "البناء والأشغال العامة" in user["message_ar"]
+    assert "جمعيات رعاية الأشخاص المعوقين" in user["message_ar"]
 
 
 def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:

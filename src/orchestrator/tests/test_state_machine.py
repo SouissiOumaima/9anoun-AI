@@ -80,7 +80,10 @@ def test_multiple_payroll_sectors_request_an_explicit_choice() -> None:
         card_type=CardType.COMPANY,
     ))
     assert result.state is FlowState.CLARIFICATION_REQUIRED
-    assert "BTP ou construction métallique" in result.reason
+    assert "BTP" in result.clarification_message_fr
+    assert "Construction métallique" in result.clarification_message_fr
+    assert "البناء المعدني" in result.clarification_message_ar
+    assert "البناء والأشغال العامة" in result.clarification_message_ar
 
 
 def test_salary_base_prompt_extracts_explicit_parameters_for_track_b() -> None:

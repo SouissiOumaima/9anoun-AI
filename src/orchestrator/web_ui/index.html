@@ -128,7 +128,7 @@
     }
     const review = data.document_review;
     if (review?.fields?.length) {
-      const mockNotice = review.mode === 'mock' ? ' Lecture simulée : tout calcul DS5 est bloqué.' : '';
+      const mockNotice = review.mode !== 'live' ? ' Lecture non réelle : tout calcul DS5 est bloqué.' : '';
       html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Source DS3 : <code>${escapeHtml(review.mode || 'inconnu')}</code> · Seuil pour calcul : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.${mockNotice}</p>`;
       html += review.fields.map(field => {
         const unavailable = field.state === 'unavailable';

@@ -11,7 +11,7 @@ from functools import lru_cache
 import json
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, Mapping
 
 
 _TABLE_PATH = Path(__file__).resolve().parents[1] / "shared" / "sectors" / "sectors.v0.json"
@@ -59,6 +59,27 @@ def needs_sector_clarification(message: str) -> bool:
     )
 
 
+def sector_clarification_labels(message: str) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Return safe FR/AR choices for a sector clarification prompt.
+
+    The labels are derived only from D30.  When a generic construction term
+    has no unique table match, D30's two documented construction choices are
+    offered; otherwise the choices are exactly the matched sectors.
+    """
+
+    matches = _matched_sectors(message.casefold())
+    if len(matches) < 2:
+        table = load_sector_table()["sectors"]
+        matches = [
+            sector for sector in table
+            if sector["ds2_code"] in {"btp", "construction_metallique"}
+        ]
+    return (
+        tuple(_choice_label_fr(sector) for sector in matches),
+        tuple(str(sector["label_ar"]) for sector in matches),
+    )
+
+
 def _matched_sectors(message: str) -> list[dict[str, Any]]:
     matches: list[dict[str, Any]] = []
     for sector in load_sector_table()["sectors"]:
@@ -69,6 +90,12 @@ def _matched_sectors(message: str) -> list[dict[str, Any]]:
         if any(_matches_term(message, term) for term in terms if term):
             matches.append(sector)
     return matches
+
+
+def _choice_label_fr(sector: Mapping[str, Any]) -> str:
+    """Keep clarification choices short while retaining D30 terminology."""
+
+    return "BTP" if sector["ds2_code"] == "btp" else str(sector["label_fr"])
 
 
 def _matches_term(message: str, term: str) -> bool:

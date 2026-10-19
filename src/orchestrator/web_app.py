@@ -292,15 +292,15 @@ def calculate_from_document_review(payload: Mapping[str, Any]) -> dict[str, Any]
         review = _DOCUMENT_REVIEWS.get(review_id)
     if review is None or not isinstance(review.get("confirmed_fields"), set):
         return {"error": "document_confirmation_required"}
-    if review.get("mode") == "mock":
+    if review.get("mode") != "live":
         refusal = UserResponse(
             status="refused",
             code=UserResponseCode.OUT_OF_SCOPE,
-            message_fr="Le calcul à partir d'une lecture simulée est une démonstration et ne peut pas être exécuté.",
-            message_ar="لا يمكن تنفيذ الحساب انطلاقًا من قراءة تجريبية؛ هذه مجرد عرض توضيحي.",
+            message_fr="Le calcul exige une lecture DS3 réelle (mode live) et ne peut pas être exécuté.",
+            message_ar="يتطلب الحساب قراءة حقيقية من DS3 في وضع live ولا يمكن تنفيذه.",
             next_action="use_a_live_document",
             request_id=review_id,
-            specialist_code="MOCK_DOCUMENT",
+            specialist_code="NON_LIVE_DOCUMENT",
         ).to_payload()
         return {
             "user_response": refusal, "result": None, "citations": [],

@@ -43,6 +43,15 @@ def test_clarification_response_has_next_step() -> None:
     assert formatted.next_action == "provide_missing_information"
 
 
+def test_clarification_response_exposes_only_safe_sector_choices() -> None:
+    custom = result("clarification_required")
+    custom.clarification_message_fr = "Plusieurs secteurs sont indiqués : BTP ou associations ?"
+    custom.clarification_message_ar = "تم ذكر أكثر من قطاع: البناء والأشغال العامة أم جمعيات رعاية الأشخاص المعوقين؟"
+    formatted = format_flow_result(custom)
+    assert formatted.message_fr == custom.clarification_message_fr
+    assert formatted.message_ar == custom.clarification_message_ar
+
+
 def test_ds3_errors_are_mapped_to_safe_specific_user_messages() -> None:
     cases = {
         "ACCESS_DENIED": UserResponseCode.ACCESS_DENIED,
