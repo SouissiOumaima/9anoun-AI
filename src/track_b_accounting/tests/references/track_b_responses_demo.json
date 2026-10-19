@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -681,6 +681,325 @@
       "code": "PARAM_INVALIDE",
       "message_fr": "Ancienneté de 13 ans = borne commune aux degrés [8, 9] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
       "message_ar": "أقدمية 13 سنة تقع على الحد المشترك بين الدرجات [8, 9] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-25-salaire-enseignement-ouvriers",
+    "status": "ok",
+    "result": {
+      "montant": "516.831",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "population": "ouvriers",
+        "categorie": "ouvrier_qualifie",
+        "degre": 5,
+        "anciennete_annees": "7",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+          "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "EP_OUVRIERS_2015-09-01",
+        "effective_date": "2015-09-01",
+        "date_calcul": "2016-03-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-26-salaire-enseignement-administratifs-alias-rang",
+    "status": "ok",
+    "result": {
+      "montant": "569.874",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "population": "administratifs_surveillants",
+        "categorie": "comptable_surveillant_2e_rang",
+        "categorie_demandee": "surveillant_2e_rang",
+        "degre": 9,
+        "anciennete_annees": "15",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+          "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+        ],
+        "table_id": "EP_ADMINISTRATIFS_SURVEILLANTS_2015-09-01",
+        "effective_date": "2015-09-01",
+        "date_calcul": "2017-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-27-salaire-enseignement-instituteurs",
+    "status": "ok",
+    "result": {
+      "montant": "788.915",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "population": "instituteurs",
+        "categorie": "instituteur_application",
+        "degre": 11,
+        "anciennete_annees": "20",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+          "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+        ],
+        "table_id": "EP_INSTITUTEURS_2015-09-01",
+        "effective_date": "2015-09-01",
+        "date_calcul": "2018-09-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 26,
+        "article": null,
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-28-salaire-enseignement-secondaire",
+    "status": "ok",
+    "result": {
+      "montant": "853.507",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "population": "secondaire_formateurs",
+        "categorie": "professeur",
+        "degre": 3,
+        "anciennete_annees": "3",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+          "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+        ],
+        "table_id": "EP_SECONDAIRE_FORMATEURS_2015-09-01",
+        "effective_date": "2015-09-01",
+        "date_calcul": "2016-09-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 26,
+        "article": null,
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-29-salaire-enseignement-professeurs-primaire",
+    "status": "ok",
+    "result": {
+      "montant": "772.266",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "population": "professeurs_primaire",
+        "categorie": "professeur_ecole_primaire_2e_rang",
+        "degre": 15,
+        "anciennete_annees": "31",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.25 à 27), le nombre « الأقدمية الفعلية » de chaque degré (1, 2, 4, …, 36) est la somme des durées « مدة البقاء بالدرجة » des degrés 1 à k ; le degré k couvre de la fin du degré précédent à ce nombre (degré 1 : de 0 à 1 an ; degré 16 : de 33 à 36 ans).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les six mois gagnés pour une note d'au moins 17/20 (art. 15 (جديد) ب, p.8) et les reclassements lors des promotions ne sont pas calculés.",
+          "Aucune grille postérieure au 2015-09-01 n'est présente dans les sources ; la grille du 2015-09-01 est la dernière transcrite.",
+          "Unité mensuelle déduite de l'ordre de grandeur des montants : le titre de cette grille ne précise pas l'unité (seule la grille des ouvriers, p.25, est titrée « payés au mois »)."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس الجداول (الصفحات 25 إلى 27)، يساوي عدد «الأقدمية الفعلية» لكل درجة (1، 2، 4، …، 36) مجموع «مدة البقاء بالدرجة» للدرجات من 1 إلى k؛ وتغطي الدرجة k الفترة من نهاية الدرجة السابقة إلى هذا العدد (الدرجة 1: من 0 إلى 1 سنة؛ الدرجة 16: من 33 إلى 36 سنة).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الأشهر الستة المكتسبة عند الحصول على عدد يساوي أو يفوق 17 من 20 (الفصل 15 (جديد) ب، الصفحة 8) ولا إعادة الترتيب عند الترقية.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2015-09-01؛ وجدول 2015-09-01 هو آخر جدول تم نقله.",
+          "الوحدة الشهرية مستنتجة من حجم المبالغ: لا يحدد عنوان هذا الجدول الوحدة (عنوان جدول العمال وحده، الصفحة 25، يذكر الخالصين بالشهر)."
+        ],
+        "table_id": "EP_PROFESSEURS_PRIMAIRE_2015-09-01",
+        "effective_date": "2015-09-01",
+        "date_calcul": "2019-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 27,
+        "article": null,
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-30-prime-transport-enseignement-secondaire",
+    "status": "ok",
+    "result": {
+      "montant": "54.166",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "code": "prime_transport_secondaire",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2017-01-01",
+        "regles": "D6",
+        "groupe": "formateur_1er_rang",
+        "effective_date": "2015-09-01",
+        "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 (art. 54 (جديد), p.18) : mention reproduite, sans calcul.",
+        "note_ar": "تدخل ضمن المبالغ المذكورة أعلاه المنحة المحدثة بالأمر عدد 503 لسنة 1982 والمؤرخ في 16 مارس 1982 كما وقع تنقيحه بالأمر عدد 691 المؤرخ في 19 جويلية 1986.",
+        "hypotheses": [
+          "Aucune révision de cette prime postérieure au 2015-09-01 n'est présente dans les sources ; le montant du 2015-09-01 est le dernier transcrit."
+        ],
+        "hypotheses_ar": [
+          "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2015-09-01؛ ومبلغ 2015-09-01 هو آخر مبلغ تم نقله."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 18,
+        "article": "54 (جديد)",
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-31-prime-pedagogique-enseignement-primaire",
+    "status": "ok",
+    "result": {
+      "montant": "38.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ENSEIGNEMENT_PRIVE",
+        "code": "prime_pedagogique_primaire",
+        "label_fr": "Prime pédagogique",
+        "label_ar": "المنحة البيداغوجية",
+        "date_calcul": "2009-07-01",
+        "regles": "D6",
+        "groupe": "instituteur",
+        "effective_date": "2009-07-01",
+        "hypotheses": [
+          "Aucune révision de cette prime postérieure au 2011-07-01 n'est présente dans les sources ; le montant du 2011-07-01 est le dernier transcrit."
+        ],
+        "hypotheses_ar": [
+          "لا توجد في المصادر أي مراجعة لهذه المنحة بعد 2011-07-01؛ ومبلغ 2011-07-01 هو آخر مبلغ تم نقله."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "page": 17,
+        "article": "51 (جديد)",
+        "data_file": "data/processed/salary_grids/enseignement_prive.json",
+        "decision_ref": "D38"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-32-refus-enseignement-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 10 ans = borne commune aux degrés [6, 7] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 10 سنة تقع على الحد المشترك بين الدرجات [6, 7] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-33-refus-enseignement-au-dela-36-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 36 ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+      "message_ar": "أقدمية 36 سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   }

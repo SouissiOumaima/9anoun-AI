@@ -110,10 +110,14 @@
         "التعليم الخاص",
         "مدرسة خاصة"
       ],
-      "ds5_code": null,
-      "ds5_status": "aucun",
-      "ds5_decision_ref": null,
-      "evidence": null
+      "ds5_code": "ENSEIGNEMENT_PRIVE",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D38",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية للتعليم الخاص"
+      }
     },
     {
       "ds2_code": "banques",

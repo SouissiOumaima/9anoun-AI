@@ -263,7 +263,7 @@ def test_refusals_without_citations_already_match_common_v0(name: str) -> None:
 
 
 def test_min_confidence_has_no_default_threshold() -> None:
-    """DS3 n'impose aucun seuil : min_confidence est optionnel, sans valeur par défaut (D38)."""
+    """DS3 n'impose aucun seuil : min_confidence est optionnel, sans valeur par défaut (D39)."""
     assert RequestOptions().min_confidence is None
     field = RequestOptions.model_fields["min_confidence"]
     assert field.default is None and not field.is_required()

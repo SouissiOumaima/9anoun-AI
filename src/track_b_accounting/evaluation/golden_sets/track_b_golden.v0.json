@@ -2560,6 +2560,590 @@
     "page": 11,
     "emplacement": "une seule population, tous les agents des sociétés d'assurance (art. 20 (جديد))"
    }
+  },
+  {
+   "id": "TB-80",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "ouvriers",
+     "categorie": "ouvrier_hautement_qualifie",
+     "date": "2016-01-01",
+     "anciennete_annees": 13
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "551.637",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 25,
+    "emplacement": "grille 1 (p.25), ligne 4 depuis le haut, col. degré 8 (ancienneté imprimée 14)",
+    "valeur_imprimee": "551.637"
+   },
+   "note": "Lecture 300 dpi (2026-10-19), colonne du degré accolée à la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-81",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "administratifs_surveillants",
+     "categorie": "econome_3e_rang",
+     "date": "2016-01-01",
+     "anciennete_annees": 25
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "645.526",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 25,
+    "emplacement": "grille 2 (p.25), ligne 4 depuis le haut, col. degré 13 (ancienneté imprimée 27)",
+    "valeur_imprimee": "645.526"
+   },
+   "note": "Lecture 300 dpi (2026-10-19), colonne du degré accolée à la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-82",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "instituteurs",
+     "categorie": "instituteur_principal",
+     "date": "2016-01-01",
+     "anciennete_annees": 0.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "618.390",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 26
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 26,
+    "emplacement": "grille 3 (p.26), ligne 2 depuis le haut, col. degré 1 (ancienneté imprimée 1)",
+    "valeur_imprimee": "618,390"
+   },
+   "note": "Lecture 300 dpi (2026-10-19), colonne du degré accolée à la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-83",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "secondaire_formateurs",
+     "categorie": "formateur_1er_rang",
+     "date": "2016-01-01",
+     "anciennete_annees": 17
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "631.252",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 26
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 26,
+    "emplacement": "grille 4 (p.26), ligne 4 depuis le haut, col. degré 10 (ancienneté imprimée 18)",
+    "valeur_imprimee": "631,252"
+   },
+   "note": "Lecture 300 dpi (2026-10-19), colonne du degré accolée à la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-84",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "professeurs_primaire",
+     "categorie": "professeur_ecole_primaire_1er_rang",
+     "date": "2016-01-01",
+     "anciennete_annees": 29
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "811.482",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 27
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 27,
+    "emplacement": "grille 5 (p.27), ligne 1 depuis le haut, col. degré 14 (ancienneté imprimée 30)",
+    "valeur_imprimee": "811,482"
+   },
+   "note": "Lecture 300 dpi (2026-10-19), colonne du degré accolée à la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-85",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_transport_ouvriers",
+     "date": "2018-01-01",
+     "groupe": "ouvrier_specialise"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "62.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 15,
+    "emplacement": "art. 48 (جديد), tableau, 5e rang, colonne « منحة النقل » (1er septembre 2015)",
+    "valeur_imprimee": "62.500"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-86",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_transport_administratifs",
+     "date": "2018-01-01",
+     "groupe": "aide_comptable"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "57.166",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 16,
+    "emplacement": "art. 49 (جديد), tableau, 3e rang (1er septembre 2015)",
+    "valeur_imprimee": "57.166"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-87",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_transport_surveillants",
+     "date": "2018-01-01",
+     "groupe": "surveillant_general"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "81.166",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 16,
+    "emplacement": "art. 50 (جديد), tableau, 3e rang, colonne « منحة النقل » (1er septembre 2015)",
+    "valeur_imprimee": "81.166"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-88",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_transport_primaire",
+     "date": "2018-01-01",
+     "groupe": "professeur_ecole_primaire_1er_rang"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "80.666",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 17,
+    "emplacement": "art. 51 (جديد), tableau de la prime de transport, 1er rang (1er septembre 2015)",
+    "valeur_imprimee": "80.666"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-89",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_transport_secondaire",
+     "date": "2018-01-01",
+     "groupe": "professeur_premier_cycle"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "66.666",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 18,
+    "emplacement": "art. 54 (جديد), tableau de la prime de transport, 3e rang (1er septembre 2015)",
+    "valeur_imprimee": "66.666"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-90",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_pedagogique_primaire",
+     "date": "2010-09-01",
+     "groupe": "instituteur_application"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "53.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 17,
+    "emplacement": "art. 51 (جديد), tableau de la prime pédagogique, 3e rang, colonne du 1er juillet 2010",
+    "valeur_imprimee": "53,000"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-91",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_pedagogique_secondaire",
+     "date": "2009-12-01",
+     "groupe": "formateur_1er_rang"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "31.400",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 18,
+    "emplacement": "art. 54 (جديد), tableau de la prime pédagogique, 4e rang, colonne du 1er juillet 2009",
+    "valeur_imprimee": "31,400"
+   },
+   "note": "Lecture sur l'image de la page (150 dpi), lot des primes vérifié."
+  },
+  {
+   "id": "TB-92",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "administratifs_surveillants",
+     "categorie": "secretaire_administration",
+     "date": "2016-01-01",
+     "anciennete_annees": 21
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 25,
+    "emplacement": "en-tête : 21 ans termine le degré 11 et commence le degré 12"
+   }
+  },
+  {
+   "id": "TB-93",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D38",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "ouvriers",
+     "categorie": "ouvrier_qualifie",
+     "date": "2016-01-01",
+     "anciennete_annees": 37
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 8,
+    "emplacement": "art. 15 (جديد) ب : progression selon les grilles ; dernier degré « 36 », rien au-delà"
+   }
+  },
+  {
+   "id": "TB-94",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "instituteurs",
+     "categorie": "instituteur",
+     "date": "2015-06-30",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 26,
+    "emplacement": "grille en vigueur à partir du 1er septembre 2015 ; aucune grille antérieure dans les sources"
+   }
+  },
+  {
+   "id": "TB-95",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D38",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "code": "prime_presence_ouvriers",
+     "date": "2016-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 15,
+    "emplacement": "art. 48 (جديد) (2,080) et art. 54-5, p.19 (3,000) : montants sans lien établi ni date"
+   }
+  },
+  {
+   "id": "TB-96",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D38",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "population": "secondaire_formateurs",
+     "categorie": "formateur_adjoint",
+     "date": "2016-01-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 24,
+    "emplacement": "annexe 4 : rang des formateurs adjoints sans ligne dans la grille de la page 26"
+   }
+  },
+  {
+   "id": "TB-97",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": "D38",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ENSEIGNEMENT_PRIVE",
+     "categorie": "ouvrier_ordinaire",
+     "date": "2016-01-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+    "page": 25,
+    "emplacement": "cinq grilles, une par population : population obligatoire"
+   }
   }
  ]
 }

@@ -53,7 +53,7 @@ réponse). Opérations : `analyze_document` (résultat `DocumentAnalysis`) et `e
 **Seuil de confiance.** `options.min_confidence` est seulement indicatif : DS3 **n'applique aucun seuil**. Il
 renvoie toujours la confiance réelle de chaque champ (`fields[...].confidence`), et c'est le **consommateur** qui
 décide quoi en faire. DS1 exige **0,90** avant tout calcul DS5 ; en dessous, le champ passe « à confirmer » et
-n'est jamais pré-coché. Le champ n'a donc pas de valeur par défaut (voir D38).
+n'est jamais pré-coché. Le champ n'a donc pas de valeur par défaut (voir D39).
 
 ## Réponse : que faire selon le statut
 

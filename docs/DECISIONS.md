@@ -1665,6 +1665,7 @@ bloc d'ambiguïté à un seul code (`minItems` 1 au lieu de 2), forme du bloc «
 main) ; 13 réussis sur une fusion à blanc avec la PR #15.
 
 Mise à jour : l'entrée assurance est passée à actif (D29).
+Mise à jour : l'entrée enseignement_prive est passée à actif (D38).
 
 ---
 
@@ -1851,9 +1852,99 @@ réponse est un refus `SOURCE_MANQUANTE`.
 
 ---
 
-### D38 — Le seuil de confiance appartient au consommateur
+### D38 — Grille salariale ENSEIGNEMENT_PRIVE (pages 3, 8, 11, 15-27)
 
-**Numéro** : D38, à la suite de D31–D37 (DS3).
+**Numéro** : D38. `origin/main` s'arrête à D30 ; D31 à D37 sont réservés à DS3 (vérifié avec `git fetch origin` le
+2026-10-19 : aucune de ces décisions n'est sur main).
+
+**Source** : `data/raw/pdf/الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf` (27 pages). Couche texte : chiffres lisibles, arabe illisible (glyphes privés) ; pages 25
+à 27 sans couche texte (scans tournés à 270°). Tous les textes ont été lus sur les images. Pages utilisées : p.3
+(avenant n° 12), art. 15 (جديد) (p.8, progression), art. 25 (جديد) (p.11, horaires), art. 46 مكرر à 55 (p.15 à 19,
+primes), dispositions transitoires (p.20), annexes 1 à 4 (p.21 à 24, classification), grilles (p.25 à 27).
+
+**Constat** :
+- Cinq grilles « جدول الأجور عدد 1 » à « عدد 5 », toutes en vigueur à partir du 1er septembre 2015 (avenant n° 12,
+  p.3 : signé le 27 avril 2016, effet au 1er septembre 2015, révision des salaires et des articles 48 à 51 et 54).
+  Ouvriers (p.25, 5 lignes), administratifs et surveillants (p.25, 8 lignes), instituteurs (p.26, 3 lignes),
+  secondaire et formateurs (p.26, 5 lignes), professeurs d'école primaire (p.27, 2 lignes) : 23 lignes × 16 degrés,
+  soit 368 montants.
+- En-tête : degrés 1 à 16 (degré 1 à droite) ; durées de séjour 1, 1, 2 (×8), 3 (×6) ; ancienneté effective
+  imprimée en un seul nombre par degré, 1, 2, 4, …, 36, égal à la somme des durées des degrés 1 à k : il marque la
+  fin du degré k.
+- Art. 15 (جديد) ب (p.8) : progression continue de degré en degré selon les grilles annexées ; six mois
+  d'ancienneté gagnés pour une note d'au moins 17/20. Aucun texte au-delà du degré 16.
+- Unité : la grille des ouvriers est titrée « payés au mois » ; les autres ne précisent pas l'unité.
+- Annexe 2 (p.22) : 13 rangs pour 8 lignes de grille (des lignes regroupent 2 ou 3 rangs). Annexe 3 (p.23) : 5 rangs,
+  répartis sur les grilles 3 (3 lignes) et 5 (2 lignes). Annexe 4 (p.24) : 6 rangs pour 5 lignes ; le rang des
+  formateurs adjoints n'a pas de ligne (dispositions transitoires 4, p.20 : rang supprimé progressivement).
+- Note sous chaque grille : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril
+  1981, relevée par le décret n° 501 du 16 mars 1982) ; `_meta.remarque_pdf`, mention reproduite sans calcul.
+
+#### Décisions (validées par DS5)
+
+1. **Cinq populations, une par grille** (comme D23) : `ouvriers`, `administratifs_surveillants`, `instituteurs`,
+   `secondaire_formateurs`, `professeurs_primaire` ; chaque grille cite sa propre page (25, 25, 26, 26, 27).
+   `population` est obligatoire (secteur à plusieurs populations).
+2. **Clé de catégorie** : ligne imprimée de la grille (code), avec la liste des rangs qu'elle couvre
+   (`libelles_categories`). Les rangs de l'annexe 2 qui partagent une ligne sont des alias vers elle
+   (`alias_categories`), ainsi que les numéros de catégorie 1 à 5 de l'annexe 1 pour les ouvriers.
+3. **Formateurs adjoints** : pas de ligne de grille ; la demande est refusée comme catégorie inconnue
+   (`PARAM_INVALIDE`). Mention dans `_meta.remarque_pdf`.
+4. **Degrés** : libellés « 0-1 » … « 33-36 » ; bornes exactes 1, 2, 4, …, 33 ans refusées (`PARAM_INVALIDE`, D6) ;
+   à partir de 36 ans, refus `SOURCE_MANQUANTE` qui cite l'art. 15 (جديد) ب (p.8).
+5. **Dates** : avant le 2015-09-01, aucune grille : `SOURCE_MANQUANTE`. Après, la grille du 2015-09-01 reste servie
+   (D6), avec l'hypothèse affichée qu'aucune grille postérieure n'est présente dans les sources.
+6. **Unité** : TND/mois ; hypothèse affichée pour les grilles 2 à 5 (unité déduite de l'ordre de grandeur).
+7. **Ancienneté** : l'ancienneté reçue est l'ancienneté de progression déjà établie ; les six mois de bonification
+   et les reclassements lors des promotions ne sont pas calculés (hypothèse affichée).
+8. **Primes couvertes** (une par article, groupes = rangs de l'article, groupe obligatoire) :
+   - transport, montants au 2015-09-01 : `prime_transport_ouvriers` (art. 48 (جديد), p.15),
+     `prime_transport_administratifs` (art. 49 (جديد), p.16), `prime_transport_surveillants` (art. 50 (جديد), p.16),
+     `prime_transport_primaire` (art. 51 (جديد), p.17), `prime_transport_secondaire` (art. 54 (جديد), p.18). Note :
+     montant du décret n° 503 du 16 mars 1982 inclus (art. 48), et du décret n° 503 modifié par le décret n° 691 du
+     19 juillet 1986 (art. 49 à 54) ; hypothèse : aucune révision postérieure au 2015-09-01 dans les sources ;
+   - pédagogique, 4 dates (1er juillet 2008, 2009, 2010, 2011) : `prime_pedagogique_primaire` (art. 51 (جديد),
+     p.17), `prime_pedagogique_secondaire` (art. 54 (جديد), p.18) ; hypothèse : aucune révision postérieure au
+     2011-07-01 dans les sources.
+   - Un format de prime ne porte qu'une page et un article : une prime par article.
+9. **Primes non couvertes** (`primes_non_couvertes`, `SOURCE_MANQUANTE`, refus lu dans le JSON) : présence des
+   ouvriers (2,080 à l'art. 48 et 3,000 à l'art. 54-5, sans lien établi ni date), spécifiques des administratifs et
+   des surveillants (sans date), production des ouvriers et des administratifs et surveillants (formules),
+   production du primaire et du secondaire (montants fixes sans date), direction (art. 54 مكرر, fonction absente des
+   grilles), avantages pour les enfants (art. 54 ثالث, en nature), compensation des primes antérieures (art. 55),
+   aide en cas de décès (art. 46 مكرر, sans date).
+10. **Régime hebdomadaire** : `null` (art. 25 (جديد), p.11 : plusieurs régimes dans une même population).
+11. **Table des secteurs** (D30) : l'entrée `enseignement_prive` passe à `actif`, `ds5_code` `ENSEIGNEMENT_PRIVE`,
+    `ds5_decision_ref` D38, preuve `meme_source_file`.
+
+#### Textes arabes
+
+La couche texte du PDF est inutilisable : aucun texte arabe n'est cité (`texte_source_ar` absent). Les libellés et
+messages arabes du fichier sont rédigés à la main (`libelle_ar_redige` pour les populations) ; libellés arabes des
+lignes de grille non recopiés.
+
+#### Contrôles de lecture
+
+- Double lecture indépendante des 368 cellules (200 dpi ligne par ligne, 300 dpi colonne par colonne avec l'en-tête
+  et la colonne des rangs) : 0 écart ; relecture en pixels natifs (600 dpi) des zones à risque ; vérification
+  humaine de tous les lots, sans correction.
+- Contrôles (jamais utilisés pour corriger) : lignes strictement croissantes ; 39 incréments hors du rythme de leur
+  ligne signalés et confirmés à l'image (dont la grille 3 au degré 3, motif identique sur ses 3 lignes) ; aucune
+  cellule sous le SMIG vérifié (D2).
+
+#### Mise en œuvre
+
+- Données : `data/processed/salary_grids/enseignement_prive.json` (`_meta.decision_ref` D38, 5 tables, 368
+  montants, 7 primes, 11 primes non couvertes). Aucune modification de `calc/` ni de schéma.
+- Tests : `test_enseignement_prive.py` ; listes de secteurs actifs des tests existants ; démos et jeu de référence.
+
+**Statut** : ✅ activée (2026-10-19) ; `pytest` complet : tous réussis.
+
+---
+
+### D39 — Le seuil de confiance appartient au consommateur
+
+**Numéro** : D39, à la suite de D31–D37 (DS3) ; D38 est prise par DS5 (enseignement privé, PR #21).
 
 **Décision** : DS3 n'applique **aucun** seuil de confiance. Chaque champ renvoie sa confiance réelle
 (`fields[...].confidence`), et c'est le consommateur qui décide de l'utiliser ou non. DS1 exige

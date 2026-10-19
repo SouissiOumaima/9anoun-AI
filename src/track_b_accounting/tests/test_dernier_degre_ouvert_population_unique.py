@@ -26,6 +26,7 @@ SECTEURS = {
     "BATIMENT_TRAVAUX_PUBLICS": "data/processed/salary_grids/batiment_travaux_publics.json",
     "ASSOCIATIONS_PERSONNES_HANDICAPEES": "data/processed/salary_grids/associations_personnes_handicapees.json",
     "ASSURANCE": "data/processed/salary_grids/assurance.json",
+    "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
@@ -130,6 +131,7 @@ def test_assurance_seul_secteur_enregistre_avec_la_regle_ouvert():
     ouverts = [s for s, chemin in SECTEURS.items()
                if "ouvert" in {b.get("regle", "refus") for b in lire_json(chemin)["au_dela_dernier_degre"].values()}]
     assert ouverts == ["ASSURANCE"]
+    assert {b["regle"] for b in lire_json(SECTEURS["ENSEIGNEMENT_PRIVE"])["au_dela_dernier_degre"].values()} == {"refus"}
 
 
 # --- population unique ------------------------------------------------------------------------------------

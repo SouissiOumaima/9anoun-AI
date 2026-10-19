@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'GARDIENNAGE_SECURITE_TRANSPORT_FONDS' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'GARDIENNAGE_SECURITE_TRANSPORT_FONDS' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -2443,128 +2443,674 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "551.637",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-80",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 25,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "551.637",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "645.526",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-81",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 25,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "645.526",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 26,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "618.390",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-82",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 26,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "618.390",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 26,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "631.252",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-83",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 26,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "631.252",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 27,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "811.482",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-84",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 27,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "811.482",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "62.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-85",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 15,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "62.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "57.166",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-86",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 16,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "57.166",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "81.166",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-87",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 16,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "81.166",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "80.666",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-88",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 17,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "80.666",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "66.666",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-89",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 18,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "66.666",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "53.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-90",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 17,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "53.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "31.400",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-91",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D38",
+      "page": 18,
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf"
+     }
+    ],
+    "montant": "31.400",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-92",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 21 ans = borne commune aux degrés [11, 12] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D38",
+   "id": "TB-93",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 37 ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-94",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille ENSEIGNEMENT_PRIVE/instituteurs en vigueur au 2015-06-30 (première date d'effet disponible : 2015-09-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D38",
+   "id": "TB-95",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de présence des ouvriers (article 48 (جديد), page 15) : deux montants dans la source sans lien établi entre eux (2,080 par l'article 48, page 15 ; 3,000 en plus d'une autre prime par l'article 54-5, page 19) et aucune date d'effet. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D38",
+   "id": "TB-96",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Catégorie inconnue : 'formateur_adjoint' pour secondaire_formateurs (attendu : professeur_principal, professeur, professeur_premier_cycle, formateur_1er_rang, formateur_2e_rang).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D38",
+   "id": "TB-97",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Population obligatoire pour le secteur ENSEIGNEMENT_PRIVE (disponibles : ouvriers, administratifs_surveillants, instituteurs, secondaire_formateurs, professeurs_primaire).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
- "date": "2026-10-14",
+ "date": "2026-10-19",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 79,
-  "cas_verifies_par_ds5": 69,
+  "cas": 97,
+  "cas_verifies_par_ds5": 87,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "34c958e5c35147d6e2f00794468c97c3a2f84e64ba153a62f8db413879a3b270",
+  "sha256": "ef63d4a22d93f856b6051267494380d7a2470612c6ed62201f5cbcdb54f65eea",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 69,
+   "cas": 87,
    "citations_valides": {
-    "n": 52,
-    "sur": 52,
+    "n": 64,
+    "sur": 64,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 17,
+    "sur": 23,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 69,
-    "sur": 69,
+    "n": 87,
+    "sur": 87,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 69,
-    "sur": 69,
+    "n": 87,
+    "sur": 87,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 52,
-    "sur": 52,
+    "n": 64,
+    "sur": 64,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 52,
+    "sur": 64,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 17,
+    "sur": 23,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 17,
+    "sur": 23,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 17,
-    "sur": 17,
+    "n": 23,
+    "sur": 23,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 52,
+    "sur": 64,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 79,
+   "cas": 97,
    "citations_valides": {
-    "n": 52,
-    "sur": 52,
+    "n": 64,
+    "sur": 64,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 27,
+    "sur": 33,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 79,
-    "sur": 79,
+    "n": 97,
+    "sur": 97,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 79,
-    "sur": 79,
+    "n": 97,
+    "sur": 97,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 52,
-    "sur": 52,
+    "n": 64,
+    "sur": 64,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 52,
+    "sur": 64,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 27,
+    "sur": 33,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 27,
+    "sur": 33,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 27,
-    "sur": 27,
+    "n": 33,
+    "sur": 33,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 52,
+    "sur": 64,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -2627,10 +3173,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 46,
+    "cas": 58,
     "citations_valides": {
-     "n": 46,
-     "sur": 46,
+     "n": 58,
+     "sur": 58,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -2639,24 +3185,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 46,
-     "sur": 46,
+     "n": 58,
+     "sur": 58,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 46,
-     "sur": 46,
+     "n": 58,
+     "sur": 58,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 46,
-     "sur": 46,
+     "n": 58,
+     "sur": 58,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 46,
+     "sur": 58,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -2677,7 +3223,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 46,
+     "sur": 58,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -2739,7 +3285,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 21,
+    "cas": 27,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -2747,17 +3293,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 21,
+     "sur": 27,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 21,
-     "sur": 21,
+     "n": 27,
+     "sur": 27,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 21,
-     "sur": 21,
+     "n": 27,
+     "sur": 27,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -2774,17 +3320,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 21,
+     "sur": 27,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 21,
+     "sur": 27,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 21,
-     "sur": 21,
+     "n": 27,
+     "sur": 27,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -2853,7 +3399,7 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 20,
+    "cas": 24,
     "citations_valides": {
      "n": 6,
      "sur": 6,
@@ -2861,17 +3407,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 14,
+     "sur": 18,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 20,
-     "sur": 20,
+     "n": 24,
+     "sur": 24,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 20,
-     "sur": 20,
+     "n": 24,
+     "sur": 24,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -2888,17 +3434,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 14,
+     "sur": 18,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 14,
+     "sur": 18,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 14,
-     "sur": 14,
+     "n": 18,
+     "sur": 18,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -2909,57 +3455,57 @@
     "statut_erreur": 0
    },
    "L": {
-    "cas": 56,
+    "cas": 70,
     "citations_valides": {
-     "n": 43,
-     "sur": 43,
+     "n": 55,
+     "sur": 55,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 13,
+     "sur": 15,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 56,
-     "sur": 56,
+     "n": 70,
+     "sur": 70,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 56,
-     "sur": 56,
+     "n": 70,
+     "sur": 70,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 43,
-     "sur": 43,
+     "n": 55,
+     "sur": 55,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 43,
+     "sur": 55,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 13,
+     "sur": 15,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 13,
+     "sur": 15,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 13,
-     "sur": 13,
+     "n": 15,
+     "sur": 15,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 43,
+     "sur": 55,
      "taux": 0.0
     },
     "statut_erreur": 0
