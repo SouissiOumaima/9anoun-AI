@@ -25,7 +25,10 @@ class TrackBPromptExtraction:
 
 
 _DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
-_CATEGORY_RE = re.compile(r"\bcat(?:é|e)gorie\s*(?:n[°o.]?\s*)?([0-9]+[a-zA-Z]?)\b", re.IGNORECASE)
+_CATEGORY_RE = re.compile(
+    r"\bcat(?:é|e)gorie\s*(?:n[°o.]?\s*)?([a-zA-Z][a-zA-Z0-9_-]*|[0-9]+[a-zA-Z]?)\b",
+    re.IGNORECASE,
+)
 _SENIORITY_RE = re.compile(r"\b(\d+(?:[.,]\d+)?)\s*ans?\s*(?:d(?:['’]\s*|\s+))?anciennet(?:é|e)\b", re.IGNORECASE)
 _SUBCATEGORY_RE = re.compile(r"\bsous[ -]cat(?:é|e)gorie\s*(?:n[°o.]?\s*)?([0-9a-zA-Z_-]+)\b", re.IGNORECASE)
 

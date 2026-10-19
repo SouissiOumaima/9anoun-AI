@@ -62,6 +62,18 @@ def test_prompt_extractor_supports_newly_active_assurance_sector() -> None:
     assert extracted.missing == ("anciennete_annees",)
 
 
+def test_prompt_extractor_accepts_textual_category_codes_for_private_education() -> None:
+    extracted = extract_track_b_prompt(
+        "Calcule le salaire de base dans l'enseignement privé, population: instituteurs, "
+        "catégorie instituteur_principal, 3 ans d'ancienneté au 2024-01-01."
+    )
+    assert extracted.missing == ()
+    assert extracted.params == {
+        "secteur": "ENSEIGNEMENT_PRIVE", "population": "instituteurs",
+        "categorie": "instituteur_principal", "anciennete_annees": 3, "date": "2024-01-01",
+    }
+
+
 def test_prompt_extractor_marks_multiple_active_sectors_for_clarification() -> None:
     extracted = extract_track_b_prompt(
         "Calcule le salaire de base BTP et construction métallique, catégorie 4 au 2024-01-01."
