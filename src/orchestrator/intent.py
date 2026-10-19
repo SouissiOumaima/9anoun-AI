@@ -65,10 +65,11 @@ def parse_message(message: str) -> ParsedRequest:
     if not matched:
         return ParsedRequest(Intent.CLARIFICATION_REQUIRED, language, extract_entities(message), 0.0, True)
 
-    top_intent, top_words = matched[0]
-    has_conflict = len(matched) > 1 and len(top_words) == len(matched[1][1])
-    if has_conflict:
+    strongest_count = max(len(words) for _, words in matched)
+    strongest = [(intent, words) for intent, words in matched if len(words) == strongest_count]
+    if len(strongest) != 1:
         return ParsedRequest(Intent.CLARIFICATION_REQUIRED, language, extract_entities(message), 0.4, True)
+    top_intent, top_words = strongest[0]
 
     confidence = min(0.9, 0.6 + 0.1 * len(top_words))
     return ParsedRequest(top_intent, language, extract_entities(message), confidence, False)

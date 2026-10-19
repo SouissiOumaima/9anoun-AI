@@ -56,9 +56,10 @@ def test_prompt_extractor_never_maps_ambiguous_building_or_metallurgy() -> None:
     assert "secteur" in metallurgy.missing
 
 
-def test_prompt_extractor_does_not_call_ds5_for_preparation_sector() -> None:
+def test_prompt_extractor_supports_newly_active_assurance_sector() -> None:
     extracted = extract_track_b_prompt("Calcule le salaire de base assurance, catégorie 4 au 2024-01-01.")
-    assert "secteur" in extracted.missing
+    assert extracted.params["secteur"] == "ASSURANCE"
+    assert extracted.missing == ("anciennete_annees",)
 
 
 def test_prompt_extractor_marks_multiple_active_sectors_for_clarification() -> None:
