@@ -21,7 +21,7 @@ from .tool_contracts import ToolCall, ToolContractError, build_tool_call
 from .track_b_requests import build_track_b_request
 from .track_a_requests import build_track_a_request_from_case_card
 from .track_b_prompt import extract_track_b_prompt
-from .sector_mapping import sector_clarification_labels
+from .sector_mapping import sector_clarification_messages
 from .document_intelligence_requests import DocumentRequestError, build_document_intelligence_request
 
 
@@ -136,11 +136,11 @@ class Planner:
         if extracted.operation is None:
             raise ClarificationNeeded("Track B requires the exact operation: SMIG, salaire de base, or prime")
         if extracted.sector_clarification:
-            choices_fr, choices_ar = sector_clarification_labels(envelope.message)
+            message_fr, message_ar = sector_clarification_messages(envelope.message)
             raise ClarificationNeeded(
                 "payroll sector clarification is required",
-                message_fr=f"Plusieurs secteurs sont indiqués : {' ou '.join(choices_fr)} ?",
-                message_ar=f"تم ذكر أكثر من قطاع: {' أم '.join(choices_ar)}؟",
+                message_fr=message_fr,
+                message_ar=message_ar,
             )
         if extracted.missing:
             fields = ", ".join(extracted.missing)

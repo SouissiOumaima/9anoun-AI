@@ -15,7 +15,7 @@ from .models import ActiveContext, CardType, UserIdentity
 
 
 class ToolContractError(ValueError):
-    """The planned call violates the DS1 tool contract."""
+    """A specialist call or response violates the DS1 tool contract."""
 
 
 @dataclass(frozen=True, slots=True)

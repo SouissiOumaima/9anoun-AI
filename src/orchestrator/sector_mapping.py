@@ -67,17 +67,60 @@ def sector_clarification_labels(message: str) -> tuple[tuple[str, ...], tuple[st
     offered; otherwise the choices are exactly the matched sectors.
     """
 
-    matches = _matched_sectors(message.casefold())
-    if len(matches) < 2:
-        table = load_sector_table()["sectors"]
-        matches = [
-            sector for sector in table
-            if sector["ds2_code"] in {"btp", "construction_metallique"}
-        ]
+    matches = _clarification_sectors(message.casefold())
     return (
         tuple(_choice_label_fr(sector) for sector in matches),
         tuple(str(sector["label_ar"]) for sector in matches),
     )
+
+
+def sector_clarification_messages(message: str) -> tuple[str, str]:
+    """Return user-facing FR/AR wording that reflects the exact ambiguity.
+
+    D30 has two different ambiguity rules.  A generic building term can name
+    BTP or construction métallique, whereas *métallurgie* alone can only be
+    clarified to construction métallique (or remains outside the DS5 corpus).
+    The UI must not claim that several sectors were mentioned when the user
+    supplied one ambiguous word.
+    """
+
+    lowered = message.casefold()
+    matches = _matched_sectors(lowered)
+    choices_fr, choices_ar = sector_clarification_labels(message)
+    if len(matches) > 1:
+        return (
+            f"Plusieurs secteurs sont indiqués : {' ou '.join(choices_fr)} ?",
+            f"تم ذكر أكثر من قطاع: {' أم '.join(choices_ar)}؟",
+        )
+    if _has_metallurgy_term(lowered):
+        choice_fr, choice_ar = choices_fr[0], choices_ar[0]
+        return (
+            "Le terme « métallurgie » ne permet pas d'identifier automatiquement "
+            f"un secteur DS5. Précisez s'il s'agit de {choice_fr}.",
+            "مصطلح « المعادن » لا يحدد تلقائيا قطاعا لدى DS5. "
+            f"يرجى توضيح ما إذا كان المقصود هو {choice_ar}.",
+        )
+    return (
+        f"Ce terme peut correspondre à plusieurs secteurs : {' ou '.join(choices_fr)}. "
+        "Précisez le secteur concerné.",
+        f"قد يشير هذا المصطلح إلى عدة قطاعات: {' أم '.join(choices_ar)}. "
+        "يرجى تحديد القطاع المعني.",
+    )
+
+
+def _clarification_sectors(message: str) -> list[dict[str, Any]]:
+    """Get only the D30 choices applicable to the wording in ``message``."""
+
+    matches = _matched_sectors(message)
+    if len(matches) >= 2:
+        return matches
+    table = load_sector_table()["sectors"]
+    if _has_metallurgy_term(message):
+        return [sector for sector in table if sector["ds2_code"] == "construction_metallique"]
+    return [
+        sector for sector in table
+        if sector["ds2_code"] in {"btp", "construction_metallique"}
+    ]
 
 
 def _matched_sectors(message: str) -> list[dict[str, Any]]:
@@ -109,6 +152,10 @@ def _matches_term(message: str, term: str) -> bool:
 
 def _has_ambiguous_term(message: str) -> bool:
     return any(term in message for term in ("bâtiment", "batiment", "البناء", "construction", "métallurgie", "metallurgie", "المعادن"))
+
+
+def _has_metallurgy_term(message: str) -> bool:
+    return any(term in message for term in ("métallurgie", "metallurgie", "المعادن"))
 
 
 def _has_unambiguous_sector_term(message: str) -> bool:

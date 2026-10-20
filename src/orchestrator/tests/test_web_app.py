@@ -151,17 +151,31 @@ def test_document_calculation_rejects_every_mode_other_than_live() -> None:
 
 
 def test_live_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
-    response = chat({
-        "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
-        "document_id": "doc-company-payslip-01",
-    })
-    review = response["document_review"]
+    review = web_app._create_document_review(
+        data={"mode": "live", "result": {"fields": {
+            "period_start": {"value": "2024-01-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-period"},
+            "pay_mode": {"value": "mensuel", "value_type": "texte", "confidence": 0.95, "citation_id": "c-mode"},
+            "work_hours_regime": {"value": 48, "value_type": "nombre", "confidence": 0.95, "citation_id": "c-hours"},
+            "hire_date": {"value": "2017-07-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-hire"},
+            "category": {"value": "4", "value_type": "texte", "confidence": 0.95, "citation_id": "c-category"},
+            "base_salary": {"value": "500.000", "value_type": "montant", "confidence": 0.95, "citation_id": "c-salary"},
+        }}},
+        citations=[
+            {"citation_id": citation_id, "document_id": "doc-company-payslip-01", "page": 1, "excerpt": citation_id}
+            for citation_id in ("c-period", "c-mode", "c-hours", "c-hire", "c-category", "c-salary")
+        ],
+        context=ActiveContext(
+            "org-demo", "company-demo-001", CardType.COMPANY,
+            {"document_id": "doc-company-payslip-01"},
+        ),
+    )
+    assert review is not None
+    assert review["mode"] == "live"
     confirmed = confirm_document_review({
         "review_id": review["review_id"],
         "confirmed_fields": ["period_start", "pay_mode", "work_hours_regime", "hire_date", "category", "base_salary"],
     })
     assert confirmed["status"] == "confirmed"
-    web_app._DOCUMENT_REVIEWS[review["review_id"]]["mode"] = "live"
     calculation = calculate_from_document_review({
         "review_id": review["review_id"], "operation": "salaire_base", "language": "fr",
         "user_inputs": {"population": "admin_tech", "anciennete_annees": "6.495890", "secteur": "INTERDIT"},
@@ -216,7 +230,7 @@ def test_chat_rejects_document_not_owned_by_active_card() -> None:
     assert response["user_response"]["status"] == "error"
 
 
-def test_chat_accepts_a_cited_arabic_ds2_success_or_refusal() -> None:
+def test_chat_handles_a_cited_arabic_ds2_success_or_reasoned_refusal() -> None:
     response = chat({
         "message": "ما هو الفصل القانوني المتعلق بمنحة النقل في قطاع BTP؟", "language": "ar",
     })
@@ -225,9 +239,12 @@ def test_chat_accepts_a_cited_arabic_ds2_success_or_refusal() -> None:
     if response["user_response"]["status"] == "success":
         assert response["answer"]["kind"] == "legal_research"
         assert response["answer"]["mode"] in {"mock", "live"}
+        assert response["citations"]
     else:
         assert response["answer"] is None
         assert response["user_response"]["code"] in {"SOURCE_MISSING", "OUT_OF_SCOPE"}
+        assert response["user_response"]["message_fr"]
+        assert response["user_response"]["message_ar"]
 
 
 def test_chat_names_the_actual_sector_choices_in_both_languages() -> None:
@@ -241,6 +258,32 @@ def test_chat_names_the_actual_sector_choices_in_both_languages() -> None:
     assert "Associations" in user["message_fr"]
     assert "البناء والأشغال العامة" in user["message_ar"]
     assert "جمعيات رعاية الأشخاص المعوقين" in user["message_ar"]
+
+
+def test_chat_explains_a_single_ambiguous_building_term_without_claiming_multiple_sectors() -> None:
+    response = chat({
+        "message": "Calcule le salaire de base bâtiment, catégorie 4 au 2024-01-01.",
+        "language": "fr", "card_id": "company-demo-001",
+    })
+    user = response["user_response"]
+    assert user["status"] == "clarification_required"
+    assert "Ce terme peut correspondre" in user["message_fr"]
+    assert "BTP" in user["message_fr"]
+    assert "Construction métallique" in user["message_fr"]
+    assert "قد يشير هذا المصطلح" in user["message_ar"]
+
+
+def test_chat_limits_a_metallurgy_clarification_to_the_d30_choice() -> None:
+    response = chat({
+        "message": "Calcule le salaire de base métallurgie, catégorie 4 au 2024-01-01.",
+        "language": "fr", "card_id": "company-demo-001",
+    })
+    user = response["user_response"]
+    assert user["status"] == "clarification_required"
+    assert "métallurgie" in user["message_fr"]
+    assert "Construction métallique" in user["message_fr"]
+    assert "BTP" not in user["message_fr"]
+    assert "البناء المعدني" in user["message_ar"]
 
 
 def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:
