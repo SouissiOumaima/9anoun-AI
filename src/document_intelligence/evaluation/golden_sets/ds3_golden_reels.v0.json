@@ -16,7 +16,7 @@
       "categorie": "piege",
       "certitude": "L",
       "decision": null,
-      "verification_humaine": false,
+      "verification_humaine": true,
       "doc_id": "REEL-01A",
       "requete": {
         "operation": "analyze_document",
@@ -53,7 +53,7 @@
       "categorie": "ok",
       "certitude": "L",
       "decision": null,
-      "verification_humaine": false,
+      "verification_humaine": true,
       "doc_id": "REEL-01B",
       "requete": {
         "operation": "analyze_document",
@@ -92,7 +92,7 @@
       "categorie": "piege",
       "certitude": "L",
       "decision": "D33",
-      "verification_humaine": false,
+      "verification_humaine": true,
       "doc_id": "REEL-02",
       "requete": {
         "operation": "analyze_document",
@@ -129,7 +129,7 @@
       "categorie": "partiel",
       "certitude": "L",
       "decision": "D34",
-      "verification_humaine": false,
+      "verification_humaine": true,
       "doc_id": "REEL-03",
       "requete": {
         "operation": "analyze_document",
