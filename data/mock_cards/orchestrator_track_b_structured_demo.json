@@ -1,0 +1,16 @@
+[
+  {
+    "request_id": "orchestrator-track-b-salary-001",
+    "message": "Calcule le salaire de base de cet employé.",
+    "card_type": "company",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4", "anciennete_annees": 15, "date": "2022-06-01"}
+  },
+  {
+    "request_id": "orchestrator-track-b-prime-001",
+    "message": "Calcule la prime de transport.",
+    "card_type": "company",
+    "operation": "prime",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"}
+  }
+]

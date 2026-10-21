@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>9anoun DS1 · Assistant juridique</title>
+  <style>
+    :root { font-family: Inter, system-ui, sans-serif; color: #172033; background: #f5f7fb; }
+    body { margin: 0; padding: 36px 16px; } main { max-width: 850px; margin: auto; }
+    header { margin-bottom: 24px; } h1 { margin: 0; color: #0b4d53; } .note { color: #526077; }
+    .card { background: #fff; border: 1px solid #dce2ee; border-radius: 14px; padding: 22px; box-shadow: 0 8px 22px #23314a10; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    label { display: grid; gap: 6px; font-size: .9rem; font-weight: 600; color: #35425a; }
+    input, textarea, select, button { font: inherit; padding: 10px; border-radius: 8px; border: 1px solid #bbc5d6; }
+    textarea { resize: vertical; min-height: 54px; }
+    button { background: #0b6e69; color: #fff; border: 0; cursor: pointer; margin-top: 18px; font-weight: 700; }
+    button:hover { background: #075954; }
+    .result-card { border-left: 5px solid #0b6e69; background: #ecfaf7; padding: 16px; border-radius: 8px; }
+    .error { border-left-color: #b42318; background: #fff0ef; } code { background: #e9edf5; padding: 2px 5px; border-radius: 4px; }
+    ul { padding-left: 20px; } .citation { font-size: .9rem; color: #435169; }
+    #history { margin-top: 22px; } .history-row { border-top: 1px solid #e2e8f0; padding: 10px 0; font-size: .9rem; }
+    .small-button { margin: 10px 6px 0 0; padding: 8px 11px; font-size: .9rem; }
+    .reject { background: #9f2d24; }
+    .review { margin-top: 16px; padding: 14px; border: 1px solid #b8d8d2; border-radius: 8px; background: #f4fffc; }
+    .review-row { padding: 9px 0; border-top: 1px solid #d9e9e5; }
+    .review-row:first-of-type { border-top: 0; }
+    .review-required { color: #9a6700; } .review-unavailable { color: #9f2d24; }
+    .ds5-form { margin-top: 14px; padding-top: 12px; border-top: 1px solid #b8d8d2; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>9anoun · Assistant DS1</h1>
+    <p class="note">Interface locale de démonstration. Écrivez votre question : DS1 valide le contexte, choisit le spécialiste et trace la demande. Les identités et les cartes sont fictives.</p>
+  </header>
+  <section class="card" id="chat">
+    <h2>Poser une question</h2>
+    <p class="note">DS1 détecte l’intention, choisit le spécialiste, demande une précision si nécessaire et gère les validations humaines par conversation.</p>
+    <form id="chatForm" novalidate>
+    <div class="grid">
+      <label>Votre question
+        <textarea id="chat_message" name="message" rows="3" required placeholder="Ex. Calcule le SMIG mensuel 48h au 2024-01-01"></textarea>
+      </label>
+      <label>Contexte facultatif
+        <select id="chat_card_id" name="card_id"><option value="">Sans carte — recherche juridique générale</option></select>
+      </label>
+      <label>Document de la carte
+        <select id="chat_document_id" name="document_id" disabled><option value="">Sélectionnez d’abord une carte</option></select>
+      </label>
+      <label>Langue
+        <select id="chat_language" name="language"><option value="fr">Français</option><option value="ar">العربية</option></select>
+      </label>
+    </div>
+    <button id="sendChat" type="submit">Envoyer à DS1</button>
+    </form>
+    <section id="chatResult" aria-live="polite"></section>
+  </section>
+  <section id="history" class="card" aria-live="polite">
+    <h2>Historique d’audit local</h2>
+    <p class="note">Métadonnées uniquement : aucun paramètre, message ou montant n’est conservé ici.</p>
+    <div id="historyEvents">Aucun calcul enregistré.</div>
+  </section>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  let cards = [];
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  async function loadCards() {
+    const response = await fetch('/api/cards');
+    cards = (await response.json()).cards || [];
+    $('chat_card_id').innerHTML = '<option value="">Sans carte — recherche juridique générale</option>' + cards.map(card => `<option value="${escapeHtml(card.card_id)}">${escapeHtml(card.label)} — ${escapeHtml(card.card_type)}</option>`).join('');
+    updateDocuments();
+  }
+  function updateDocuments() {
+    const documentSelect = $('chat_document_id');
+    const card = cards.find(item => item.card_id === $('chat_card_id').value);
+    const documents = card?.documents || [];
+    documentSelect.disabled = !card || !documents.length;
+    documentSelect.innerHTML = documents.length
+      ? '<option value="">Aucun document sélectionné</option>' + documents.map(document => `<option value="${escapeHtml(document.document_id)}">${escapeHtml(document.label)}</option>`).join('')
+      : '<option value="">Aucun document disponible</option>';
+  }
+  async function refreshHistory() {
+    const response = await fetch('/api/audit');
+    const events = (await response.json()).events || [];
+    $('historyEvents').innerHTML = events.length ? events.map(event => `<div class="history-row"><strong>${escapeHtml(event.operation || 'calcul')}</strong> · ${escapeHtml(event.state || 'unknown')}<br><code>${escapeHtml(event.request_id)}</code> · ${escapeHtml(event.card_id || 'sans carte')} · ${escapeHtml(event.occurred_at)}</div>`).join('') : 'Aucun calcul enregistré.';
+  }
+  function renderDs5Form(reviewId, prefill) {
+    const candidates = prefill?.candidates || [];
+    if (!candidates.length) return '<p class="review-required">Aucun calcul ne peut être préparé avec les champs confirmés.</p>';
+    const options = candidates.map(candidate => `<option value="${escapeHtml(candidate.operation)}">${escapeHtml(candidate.operation)}${candidate.ready ? ' — prêt' : ' — informations à compléter'}</option>`).join('');
+    const salaryCandidate = candidates.find(candidate => candidate.operation === 'salaire_base');
+    const proposedSeniority = salaryCandidate?.proposed_values?.anciennete_annees || '';
+    return `<section class="ds5-form"><h4>Calcul DS5 après confirmation</h4>
+      <p class="note">Les valeurs lues dans le document ne peuvent pas être modifiées ici. Les champs ci-dessous sont des choix utilisateur obligatoires selon le calcul.</p>
+      <div class="grid">
+        <label>Calcul <select id="ds5_operation">${options}</select></label>
+        <label>Population <input id="ds5_population" placeholder="Ex. admin_tech"></label>
+        <label>Ancienneté proposée à confirmer <input id="ds5_anciennete" value="${escapeHtml(proposedSeniority)}" placeholder="Ex. 6.495890"></label>
+        <label>Sous-catégorie <input id="ds5_sous_categorie" placeholder="Si le secteur l’exige"></label>
+        <label>Code de prime <input id="ds5_code" placeholder="Ex. prime_transport"></label>
+        <label>Groupe <input id="ds5_groupe" placeholder="Ex. cadres"></label>
+        <label>Transport assuré <select id="ds5_transport_assure"><option value="">Non applicable</option><option value="true">Oui</option><option value="false">Non</option></select></label>
+      </div>
+      <button class="small-button" data-review-calculation="${escapeHtml(reviewId)}">Calculer avec DS5</button>
+      <p id="ds5Status" class="note"></p></section>`;
+  }
+  loadCards();
+  refreshHistory();
+  function renderChatAnswer(data) {
+    const user = data.user_response;
+    let html = `<div class="result-card ${user.status === 'success' ? '' : 'error'}"><strong>${escapeHtml(user.message_fr)}</strong><br><span dir="rtl">${escapeHtml(user.message_ar)}</span>`;
+    if (data.route.agent) html += `<p>Route DS1 : <code>${escapeHtml(data.route.agent)}.${escapeHtml(data.route.operation)}</code></p>`;
+    const answer = data.answer;
+    if (answer?.kind === 'calculation') {
+      html += `<p><strong>${escapeHtml(answer.amount)} ${escapeHtml(answer.unit)}</strong></p>`;
+      if (answer.hypotheses?.length) html += `<p><strong>${escapeHtml(answer.hypotheses_label)} :</strong></p><ul>${answer.hypotheses.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+    }
+    if (answer?.text) html += `<p>${escapeHtml(answer.text)}</p>`;
+    if (answer?.kind === 'legal_research' && answer.mode) html += `<p>Source DS2 : <code>${escapeHtml(answer.mode)}</code></p>`;
+    if (answer?.notices?.length) html += `<p><strong>Information juridique :</strong></p><ul>${answer.notices.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+    if (answer?.kind === 'case') html += `<p>Faits : ${escapeHtml(answer.facts.join('; ') || '—')}</p><p>Risques : ${escapeHtml(answer.risks.join('; ') || '—')}</p>`;
+    if (answer?.kind === 'document') {
+      if (answer.document_type) html += `<p>Type détecté : <code>${escapeHtml(answer.document_type)}</code></p>`;
+      if (answer.fields) html += '<h3>Champs extraits</h3><ul>' + Object.entries(answer.fields).map(([name, field]) => `<li><strong>${escapeHtml(name)}</strong> : ${escapeHtml(field.value ?? 'Illisible / non extrait')} <span class="citation">(${escapeHtml(Math.round((field.confidence || 0) * 100))}%)</span></li>`).join('') + '</ul>';
+      if (answer.warnings?.length) html += '<p><strong>Avertissements :</strong></p><ul>' + answer.warnings.map(item => `<li>${escapeHtml(item)}</li>`).join('') + '</ul>';
+    }
+    const review = data.document_review;
+    if (review?.fields?.length) {
+      const mockNotice = review.mode !== 'live' ? ' Lecture non réelle : tout calcul DS5 est bloqué.' : '';
+      html += `<section class="review"><h3>Validation des données extraites</h3><p class="note">Source DS3 : <code>${escapeHtml(review.mode || 'inconnu')}</code> · Seuil pour calcul : ${escapeHtml(Math.round(review.threshold * 100))}%. Cette étape ne lance aucun calcul.${mockNotice}</p>`;
+      html += review.fields.map(field => {
+        const unavailable = field.state === 'unavailable';
+        const checked = field.state === 'verified' ? ' checked' : '';
+        const disabled = field.state !== 'verified' ? ' disabled' : '';
+        const className = unavailable ? 'review-unavailable' : field.state === 'review_required' ? 'review-required' : '';
+        const state = unavailable ? `Non utilisable : ${field.reason || 'valeur ou citation manquante'}` : field.state === 'review_required' ? `Visible, non sélectionnable : ${field.reason || 'confiance sous le seuil'}` : 'Vérifié';
+        return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(Math.round((field.confidence || 0) * 100))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
+      }).join('');
+      html += `<button class="small-button" data-document-review-id="${escapeHtml(review.review_id)}">Confirmer les champs sélectionnés</button><div id="reviewStatus" class="note"></div></section>`;
+    }
+    if (answer?.kind === 'wage_grid') html += `<p>${escapeHtml(answer.text || 'Grille salariale')} · effet : ${escapeHtml(answer.effective_date || '—')} · ${answer.complete ? 'complète' : 'partielle'}</p>`;
+    if (answer?.kind === 'approval') {
+      html += `<p>Validation humaine : <code>${escapeHtml(answer.status)}</code> · <code>${escapeHtml(answer.approval_id)}</code></p>`;
+      if (answer.status === 'pending_approval') html += `<button class="small-button" data-approval-decision="approve" data-approval-id="${escapeHtml(answer.approval_id)}">Approuver</button><button class="small-button reject" data-approval-decision="reject" data-approval-id="${escapeHtml(answer.approval_id)}">Refuser</button>`;
+      if (answer.status === 'approved') html += `<button class="small-button" data-approval-decision="execute" data-approval-id="${escapeHtml(answer.approval_id)}">Exécuter la démo</button>`;
+    }
+    if (data.citations?.length) html += '<h3>Citations</h3><ul>' + data.citations.map(c => `<li class="citation">${escapeHtml(c.source_file || c.document_id || 'document')} — p. ${escapeHtml(c.page ?? c.position?.page ?? '?')}${c.article ? ' — ' + escapeHtml(c.article) : ''}${c.excerpt ? ' — « ' + escapeHtml(c.excerpt) + ' »' : ''}</li>`).join('') + '</ul>';
+    $('chatResult').innerHTML = html + '</div>';
+  }
+  $('chatForm').addEventListener('submit', async event => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const message = String(form.get('message') || '').trim();
+    if (!message) { $('chatResult').textContent = 'Veuillez écrire votre question.'; return; }
+    $('sendChat').disabled = true;
+    $('chatResult').textContent = 'Envoi de la demande à DS1…';
+    try {
+      const response = await fetch('/api/chat', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ message, card_id: form.get('card_id'), document_id: form.get('document_id'), language: form.get('language') }) });
+      renderChatAnswer(await response.json());
+      refreshHistory();
+    } catch (_) {
+      $('chatResult').textContent = 'La demande n’a pas pu être envoyée. Vérifiez que le serveur local est démarré.';
+    } finally {
+      $('sendChat').disabled = false;
+    }
+  });
+  $('chat_card_id').addEventListener('change', updateDocuments);
+  $('chatResult').addEventListener('click', async event => {
+    const reviewButton = event.target.closest('button[data-document-review-id]');
+    if (reviewButton) {
+      reviewButton.disabled = true;
+      const confirmedFields = [...$('chatResult').querySelectorAll('[data-review-field]:checked')].map(input => input.dataset.reviewField);
+      try {
+        const response = await fetch('/api/document-reviews/confirm', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({review_id: reviewButton.dataset.documentReviewId, confirmed_fields: confirmedFields}),
+        });
+        const data = await response.json();
+        if (data.status === 'confirmed') {
+          $('reviewStatus').innerHTML = `Champs confirmés : ${escapeHtml((data.confirmed_fields || []).join(', ') || 'aucun')}.` + renderDs5Form(data.review_id, data.ds5_prefill);
+        } else {
+          $('reviewStatus').textContent = 'La confirmation a été refusée : vérifiez les champs sélectionnés.';
+        }
+      } catch (_) {
+        $('reviewStatus').textContent = 'La confirmation n’a pas pu être envoyée.';
+      } finally {
+        reviewButton.disabled = false;
+      }
+      return;
+    }
+    const calculationButton = event.target.closest('button[data-review-calculation]');
+    if (calculationButton) {
+      calculationButton.disabled = true;
+      const transport = $('ds5_transport_assure').value;
+      const userInputs = {
+        population: $('ds5_population').value.trim(), sous_categorie: $('ds5_sous_categorie').value.trim(),
+        anciennete_annees: $('ds5_anciennete').value.trim(), code: $('ds5_code').value.trim(), groupe: $('ds5_groupe').value.trim(),
+      };
+      if (transport) userInputs.transport_assure = transport === 'true';
+      try {
+        const response = await fetch('/api/document-reviews/calculate', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({review_id: calculationButton.dataset.reviewCalculation, operation: $('ds5_operation').value, user_inputs: userInputs, language: $('chat_language').value}),
+        });
+        const data = await response.json();
+        if (data.user_response?.status === 'success' && data.result) {
+          let message = `Résultat DS5 : ${data.result.montant} ${data.result.unite}.`;
+          if (data.salary_comparison_warning?.message) message += ` ${data.salary_comparison_warning.message}`;
+          message += ` Citations document : ${(data.document_citations || []).length}; citations corpus DS5 : ${(data.payroll_citations || []).length}.`;
+          $('ds5Status').textContent = message;
+          refreshHistory();
+        } else {
+          const code = data.user_response?.specialist_code ? ` (${data.user_response.specialist_code})` : '';
+          const fr = data.user_response?.message_fr || 'Le calcul a été refusé.';
+          const ar = data.user_response?.message_ar || '';
+          $('ds5Status').innerHTML = `${escapeHtml(fr)}${escapeHtml(code)}${ar ? `<br><span dir="rtl">${escapeHtml(ar)}</span>` : ''}`;
+        }
+      } catch (_) {
+        $('ds5Status').textContent = 'Le calcul DS5 n’a pas pu être envoyé.';
+      } finally {
+        calculationButton.disabled = false;
+      }
+      return;
+    }
+    const button = event.target.closest('button[data-approval-decision]');
+    if (!button) return;
+    button.disabled = true;
+    try {
+      const response = await fetch(`/api/approvals/${encodeURIComponent(button.dataset.approvalId)}`, {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({decision: button.dataset.approvalDecision}),
+      });
+      const data = await response.json();
+      const action = data.action;
+      if (!action) { $('chatResult').textContent = 'La transition de validation a été refusée.'; return; }
+      const messages = {
+        approved: 'Action approuvée. Vous pouvez maintenant exécuter la démo.',
+        rejected: 'Action refusée.',
+        executed: 'Action exécutée dans la démo.',
+      };
+      renderChatAnswer({
+        user_response: {status: 'success', message_fr: messages[action.status] || 'Action mise à jour.', message_ar: 'تم تحديث الإجراء.'},
+        route: {agent: 'orchestrator', operation: 'human_approval'},
+        answer: {kind: 'approval', approval_id: action.approval_id, status: action.status}, citations: [],
+      });
+      refreshHistory();
+    } catch (_) {
+      $('chatResult').textContent = 'La validation n’a pas pu être envoyée. Vérifiez que le serveur local est démarré.';
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orchestrator_tool_request.v0.schema.json",
+  "title": "Appel d'outil orchestrateur — v0",
+  "description": "v0 — proposition DS1, à valider. Une requête DS1 vers DS2/DS3/DS4/DS5. Les autorisations complètes restent vérifiées par le backend destinataire.",
+  "type": "object",
+  "required": ["contract_version", "tool_call_id", "request_id", "agent", "operation", "read_only", "context", "params"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "orchestrator.tool.v0"},
+    "tool_call_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "agent": {"enum": ["legal_retrieval", "document_intelligence", "track_a_legal", "track_b_accounting"]},
+    "operation": {"enum": ["search", "extract", "analyze_case", "compute"]},
+    "read_only": {"const": true},
+    "context": {
+      "type": "object",
+      "required": ["organization_id"],
+      "additionalProperties": false,
+      "properties": {
+        "organization_id": {"type": "string", "minLength": 1},
+        "card_id": {"type": "string", "minLength": 1},
+        "card_type": {"enum": ["company", "client", "case"]},
+        "entity_ids": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "params": {"type": "object"}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orchestrator_tool_response.v0.schema.json",
+  "title": "Réponse d'outil orchestrateur — v0",
+  "description": "v0 — proposition DS1, à valider. Le spécialiste répond avec son résultat ou un refus explicite; la validation finale reste une responsabilité partagée.",
+  "type": "object",
+  "required": ["contract_version", "tool_call_id", "status", "data", "citations", "error"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "orchestrator.tool.v0"},
+    "tool_call_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["success", "refused", "error"]},
+    "data": {"type": ["object", "null"]},
+    "citations": {"type": "array", "items": {"type": "object"}},
+    "error": {"type": ["object", "null"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "success"}}}, "then": {"properties": {"error": {"type": "null"}}}},
+    {"if": {"properties": {"status": {"enum": ["refused", "error"]}}}, "then": {"properties": {"data": {"type": "null"}}}}
+  ]
+}
