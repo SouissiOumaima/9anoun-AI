@@ -1,17 +1,20 @@
-"""Évalue l'extracteur DS3 (avec le vrai Gemini) sur le jeu de référence des documents fictifs.
+r"""Évalue l'extracteur DS3 (avec le vrai Gemini) sur un jeu de référence.
 
 Lancer depuis la racine du dépôt (la clé GEMINI_API_KEY doit être dans le fichier .env) :
     python -m src.document_intelligence.evaluation.run_gemini_eval
     python -m src.document_intelligence.evaluation.run_gemini_eval --cases DS3-01 DS3-04
+    python -m src.document_intelligence.evaluation.run_gemini_eval --reels Z:\ds3_documents_reels
 
-Seuls des documents FICTIFS sont envoyés à Gemini. Ne jamais lancer ce script sur des documents
-Tradrly réels sans l'accord de l'encadrant (NDA).
+Par défaut : documents fictifs du dépôt. Avec --reels : fiches réelles PSEUDONYMISÉES, rangées hors
+du dépôt, et ds3_golden_reels.v0.json. Ne jamais envoyer à Gemini un document non pseudonymisé, ni un
+document Tradrly sans l'accord de l'encadrant (NDA).
 
 Pour chaque champ, le résultat est classé ainsi :
 - correct   : la valeur obtenue est la valeur attendue (ou null attendu et null obtenu) ;
 - faux      : une valeur est obtenue, mais pas la bonne ;
 - silence   : null obtenu alors qu'une valeur était attendue (prudent, mais à améliorer) ;
 - invention : une valeur obtenue alors que null était attendu (le plus grave : « citation ou silence »).
+Les champs listés dans attendu.ignorer (document ambigu) ne sont pas notés.
 Les réponses complètes sont enregistrées dans evaluation/results/ (ignoré par Git).
 """
 
@@ -26,12 +29,13 @@ from pathlib import Path
 from typing import Any, Literal
 
 from src.document_intelligence.contract.v2.models import DS3Request
-from src.document_intelligence.evaluation.fictive_documents import DOCS_DIR, GOLDEN_FILE
+from src.document_intelligence.evaluation.fictive_documents import DOCS_DIR, GOLDEN_DIR, GOLDEN_FILE
 from src.document_intelligence.extraction.assemble import PAYSLIP_FIELDS
 
 Outcome = Literal["correct", "faux", "silence", "invention"]
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 NEEDS_OCR = {"DS3-03"}  # page scannée : attend l'OCR de la partie A
+REAL_GOLDEN_FILE = GOLDEN_DIR / "ds3_golden_reels.v0.json"
 
 
 @dataclass
@@ -54,7 +58,10 @@ def score_case(case: dict[str, Any], response: dict[str, Any]) -> CaseScore:
     expected_fields: dict[str, str | None] = attendu.get("fields", {})
     got_fields = (response.get("result") or {}).get("fields", {})
     score = CaseScore(case["id"], status_ok)
+    ignored = set(attendu.get("ignorer", []))
     for name in PAYSLIP_FIELDS:
+        if name in ignored:
+            continue
         expected = expected_fields.get(name)
         got = (got_fields.get(name) or {}).get("value")
         outcome: Outcome
@@ -97,7 +104,13 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Évalue l'extracteur DS3 avec Gemini.")
     parser.add_argument("--cases", nargs="*", help="Cas à lancer (par défaut : tous sauf ceux qui attendent l'OCR).")
     parser.add_argument("--model", help="Modèle Gemini (par défaut : GEMINI_MODEL du .env).")
+    parser.add_argument("--reels", type=Path, metavar="DOSSIER",
+                        help="Fiches réelles pseudonymisées (hors dépôt) : utilise ds3_golden_reels.v0.json.")
     args = parser.parse_args(argv)
+    golden_file, docs_dir = (REAL_GOLDEN_FILE, args.reels) if args.reels else (GOLDEN_FILE, DOCS_DIR)
+    if not docs_dir.is_dir():
+        print(f"Dossier introuvable : {docs_dir}")
+        return 2
 
     try:
         from dotenv import load_dotenv
@@ -108,13 +121,17 @@ def main(argv: list[str] | None = None) -> int:
 
     from src.document_intelligence.extraction.pipeline import analyze_payslip_pdf
 
-    golden = json.loads(GOLDEN_FILE.read_text(encoding="utf-8"))
+    golden = json.loads(golden_file.read_text(encoding="utf-8"))
     cases = [c for c in golden["cases"] if (c["id"] in args.cases if args.cases else c["id"] not in NEEDS_OCR)]
+    missing = [c["requete"]["file_name"] for c in cases if not (docs_dir / c["requete"]["file_name"]).is_file()]
+    if missing:
+        print(f"Documents absents de {docs_dir} : {', '.join(missing)}")
+        return 2
     totals: Counter[str] = Counter()
     statuses = 0
     saved: list[dict[str, Any]] = []
     for case in cases:
-        response = analyze_payslip_pdf(DOCS_DIR / case["requete"]["file_name"], request_for(case), model=args.model)
+        response = analyze_payslip_pdf(docs_dir / case["requete"]["file_name"], request_for(case), model=args.model)
         score = score_case(case, response)
         _print_case(score, response)
         totals += score.count()
@@ -128,7 +145,7 @@ def main(argv: list[str] | None = None) -> int:
     for outcome in ("correct", "faux", "silence", "invention"):
         print(f"  {outcome:10} {totals[outcome]:3}  ({100 * totals[outcome] / max(n, 1):.0f} %)")
     RESULTS_DIR.mkdir(exist_ok=True)
-    out = RESULTS_DIR / f"gemini_{time.strftime('%Y%m%d_%H%M%S')}.json"
+    out = RESULTS_DIR / f"gemini_{golden_file.stem}_{time.strftime('%Y%m%d_%H%M%S')}.json"
     out.write_text(json.dumps(saved, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\nRéponses complètes : {out}")
     return 0 if totals["invention"] == 0 and statuses == len(cases) else 1

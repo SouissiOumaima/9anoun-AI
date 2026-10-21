@@ -6,6 +6,7 @@ Aucun appel réseau, aucune clé : le faux client renvoie un JSON préparé à l
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
@@ -145,3 +146,33 @@ def test_score_detects_an_invention_and_a_wrong_value() -> None:
     assert outcomes["employment_status"] == "invention"
     assert outcomes["grade"] == "faux"
     assert outcomes["base_salary"] == "silence"
+
+
+# ------------------------------------------------------------ jeu de référence des fiches réelles
+
+REAL_GOLDEN = Path(__file__).resolve().parents[1] / "evaluation" / "golden_sets"
+
+
+def test_real_golden_set_is_consistent() -> None:
+    from src.document_intelligence.evaluation import check_golden
+
+    assert check_golden.main([
+        "--golden", str(REAL_GOLDEN / "ds3_golden_reels.v0.json"),
+        "--sources", str(REAL_GOLDEN / "sources_documents_reels.csv"),
+    ]) == 0
+
+
+def test_ignored_fields_are_not_scored() -> None:
+    case = {"id": "X", "attendu": {"issue": "ok", "fields": {"gross_salary": "1.000"}, "ignorer": ["base_salary"]}}
+    response = {"status": "ok", "result": {"fields": {"gross_salary": {"value": "1.000"},
+                                                       "base_salary": {"value": "999.000"}}}}
+    score = score_case(case, response)
+    assert "base_salary" not in score.fields
+    assert score.count()["invention"] == 0
+
+
+def test_missing_real_documents_folder_stops_before_calling_gemini(tmp_path: Any) -> None:
+    from src.document_intelligence.evaluation.run_gemini_eval import main
+
+    assert main(["--reels", str(tmp_path / "absent")]) == 2
+    assert main(["--reels", str(tmp_path)]) == 2  # dossier vide : documents absents, aucun appel
