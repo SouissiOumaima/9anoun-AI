@@ -488,7 +488,7 @@
             }
           ],
           "default": null,
-          "description": "Code de secteur du vocabulaire D21 ; null tant que la table n'est pas fixée.",
+          "description": "Code DS2 du secteur (table src/shared/sectors, D30), seulement si le libellé arabe ou le titre de la convention correspond exactement ; sinon null (jamais déduit d'un alias).",
           "title": "Sector Code"
         },
         "effective_date": {

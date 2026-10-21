@@ -1,0 +1,298 @@
+{
+  "version": "ds3_golden.v0",
+  "description": "Jeu de référence DS3 (Document Intelligence), sur le modèle de track_b_golden.v0. Documents fictifs générés par fictive_documents.py : les valeurs attendues sont connues exactement. verification_humaine passe à true quand une deuxième personne a ouvert le PDF et vérifié le cas.",
+  "conventions": {
+    "doc_id": "identifiant du document dans sources_documents.csv",
+    "issue": "ok | partiel (au moins une valeur présente mais illisible, attendue à null) | refus",
+    "fields": "valeurs attendues dans la réponse ds3.v2 ; un champ non listé est attendu absent (null, absent_du_document)",
+    "texte_imprime": "texte tel qu'il est imprimé : ce que Gemini doit recopier (null si caché)",
+    "montant": "chaîne à 3 décimales, ex. \"512.027\"",
+    "date": "AAAA-MM-JJ",
+    "page": "numérotée à partir de 1"
+  },
+  "cases": [
+    {
+      "id": "DS3-01",
+      "categorie": "ok",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": false,
+      "doc_id": "FICTIF-01",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_fictive_01_fr.pdf"
+      },
+      "attendu": {
+        "issue": "ok",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "Ahmed Ben Salah",
+          "period_start": "2026-03-01",
+          "period_end": "2026-03-31",
+          "hire_date": "2019-09-01",
+          "seniority_years_printed": "6 ans 6 mois",
+          "category": "3",
+          "grade": "2",
+          "job_qualification": "Agent administratif",
+          "employment_status": "permanent",
+          "pay_mode": "mensuel",
+          "work_hours_regime": "48",
+          "base_salary": "424.100",
+          "gross_salary": "516.100",
+          "cnss_employee": "47.378"
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000"
+          },
+          {
+            "label": "Prime de présence",
+            "amount": "36.000"
+          }
+        ]
+      },
+      "texte_imprime": {
+        "employee_name": "Ahmed Ben Salah",
+        "period_start": "Mars 2026",
+        "period_end": "Mars 2026",
+        "hire_date": "01/09/2019",
+        "seniority_years_printed": "6 ans 6 mois",
+        "category": "3",
+        "grade": "2",
+        "job_qualification": "Agent administratif",
+        "employment_status": "Permanent",
+        "pay_mode": "Mensuel",
+        "work_hours_regime": "208 h",
+        "base_salary": "424,100",
+        "gross_salary": "516,100",
+        "cnss_employee": "47,378"
+      },
+      "justification": {
+        "document": "paie_fictive_01_fr.pdf",
+        "page": 1,
+        "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
+      },
+      "note": "Cas de base : fiche complète en français, PDF natif, libellés et montants en deux colonnes."
+    },
+    {
+      "id": "DS3-02",
+      "categorie": "partiel",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": false,
+      "doc_id": "FICTIF-02",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_fictive_02_tampon.pdf"
+      },
+      "attendu": {
+        "issue": "partiel",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "Mouna Ben Ali",
+          "period_start": "2026-04-01",
+          "period_end": "2026-04-30",
+          "hire_date": "2015-02-15",
+          "category": "4",
+          "grade": "5",
+          "job_qualification": "Technicien",
+          "employment_status": "permanent",
+          "pay_mode": "mensuel",
+          "work_hours_regime": "40",
+          "base_salary": "612.450",
+          "gross_salary": "748.450",
+          "cnss_employee": null
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000"
+          },
+          {
+            "label": "Prime de rendement",
+            "amount": "80.000"
+          }
+        ],
+        "unreadable": {
+          "cnss_employee": "zone_illisible"
+        }
+      },
+      "texte_imprime": {
+        "employee_name": "Mouna Ben Ali",
+        "period_start": "01/04/2026",
+        "period_end": "30/04/2026",
+        "hire_date": "15/02/2015",
+        "category": "4",
+        "grade": "5",
+        "job_qualification": "Technicien",
+        "employment_status": "Permanent",
+        "pay_mode": "Mensuel",
+        "work_hours_regime": "173,33 h",
+        "base_salary": "612,450",
+        "gross_salary": "748,450",
+        "cnss_employee": null
+      },
+      "justification": {
+        "document": "paie_fictive_02_tampon.pdf",
+        "page": 1,
+        "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
+      },
+      "note": "Montant CNSS caché par un tampon (image) : null attendu, jamais une valeur devinée."
+    },
+    {
+      "id": "DS3-03",
+      "categorie": "ok",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": false,
+      "doc_id": "FICTIF-03",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "ar",
+        "file_name": "paie_fictive_03_ar_scan.pdf"
+      },
+      "attendu": {
+        "issue": "ok",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "سامي بن عمر",
+          "period_start": "2026-05-01",
+          "period_end": "2026-05-31",
+          "hire_date": "2021-03-01",
+          "category": "1B",
+          "grade": "3",
+          "job_qualification": "عون تنفيذ",
+          "employment_status": "permanent",
+          "pay_mode": "mensuel",
+          "work_hours_regime": "40",
+          "base_salary": "398.250",
+          "gross_salary": "454.250",
+          "cnss_employee": "41.700"
+        },
+        "pay_lines": [
+          {
+            "label": "منحة النقل",
+            "amount": "56.000"
+          }
+        ]
+      },
+      "texte_imprime": {
+        "employee_name": "سامي بن عمر",
+        "period_start": "ماي 2026",
+        "period_end": "ماي 2026",
+        "hire_date": "01/03/2021",
+        "category": "1 ب",
+        "grade": "3",
+        "job_qualification": "عون تنفيذ",
+        "employment_status": "قار",
+        "pay_mode": "شهري",
+        "work_hours_regime": "173,33 س",
+        "base_salary": "398,250",
+        "gross_salary": "454,250",
+        "cnss_employee": "41,700"
+      },
+      "justification": {
+        "document": "paie_fictive_03_ar_scan.pdf",
+        "page": 1,
+        "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
+      },
+      "note": "Fiche en arabe, page en image (scan) : passe par l'OCR de la partie A. Catégorie « 1 ب » -> 1B."
+    },
+    {
+      "id": "DS3-04",
+      "categorie": "piege",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": false,
+      "doc_id": "FICTIF-04",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_fictive_04_pieges.pdf"
+      },
+      "attendu": {
+        "issue": "partiel",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "Karim Haddad",
+          "period_start": "2024-02-01",
+          "period_end": "2024-02-29",
+          "hire_date": null,
+          "category": "2B",
+          "grade": "7",
+          "job_qualification": "Ouvrier qualifié",
+          "employment_status": null,
+          "pay_mode": "mensuel",
+          "work_hours_regime": null,
+          "base_salary": "1275.000",
+          "gross_salary": "1331.000",
+          "cnss_employee": "122.186"
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000"
+          }
+        ],
+        "unreadable": {
+          "hire_date": "valeur_incoherente",
+          "employment_status": "valeur_incoherente",
+          "work_hours_regime": "valeur_incoherente"
+        }
+      },
+      "texte_imprime": {
+        "employee_name": "Karim Haddad",
+        "period_start": "Février 2024",
+        "period_end": "Février 2024",
+        "hire_date": "01/09/19",
+        "category": "2 b",
+        "grade": "7",
+        "job_qualification": "Ouvrier qualifié",
+        "employment_status": "CDD",
+        "pay_mode": "Mensuel",
+        "work_hours_regime": "195 h",
+        "base_salary": "1.275,000",
+        "gross_salary": "1.331,000",
+        "cnss_employee": "122,186"
+      },
+      "justification": {
+        "document": "paie_fictive_04_pieges.pdf",
+        "page": 1,
+        "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
+      },
+      "note": "Pièges : année sur 2 chiffres, « CDD » (interprétation interdite), 195 h (aucune conversion fixe), séparateur des milliers, février d'une année bissextile, catégorie « 2 b »."
+    },
+    {
+      "id": "DS3-05",
+      "categorie": "refus",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": false,
+      "doc_id": "FICTIF-05",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "facture_fictive_05.pdf"
+      },
+      "attendu": {
+        "issue": "refus",
+        "code_v2": "SOURCE_MANQUANTE"
+      },
+      "texte_imprime": {},
+      "justification": {
+        "document": "facture_fictive_05.pdf",
+        "page": 1,
+        "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
+      },
+      "note": "Une facture envoyée comme fiche de paie : aucun champ de paie à extraire. Piège : ne pas prendre la date de facture pour une période, ni le total pour un salaire."
+    }
+  ]
+}

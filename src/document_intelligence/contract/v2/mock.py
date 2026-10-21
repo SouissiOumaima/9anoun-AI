@@ -282,7 +282,7 @@ def _wage_grid(req: DS3Request, env: dict[str, Any]) -> dict[str, Any]:
     grid = WageGrid(
         title="جدول الأجور عدد 2",
         sector_ar="أعوان مؤسسات الحراسة والسلامة ونقل العملة",
-        sector_code=None,
+        sector_code="gardiennage_securite_transport_fonds",  # table des secteurs (D30), libellé arabe identique
         effective_date="2010-05-01",
         unit="TND/mois",
         legal_basis="الفصل 43",
@@ -306,7 +306,6 @@ def _wage_grid(req: DS3Request, env: dict[str, Any]) -> dict[str, Any]:
         result=grid,
         warnings=[
             "Mock : seules les catégories 1 et 15 sont fournies (complete = false).",
-            "sector_code = null : le code de secteur sera fixé avec la table des secteurs (D21).",
             "Grille en vigueur à partir de 2010 : vérifier auprès de DS2 si elle a été remplacée.",
         ],
     ).to_json()

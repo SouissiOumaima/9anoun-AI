@@ -10,7 +10,8 @@
 
 # --- DS3 : Document Intelligence ---
 # (à compléter par DS3)
-
+google-genai==2.31.0
+python-dotenv==1.2.3
 # --- DS4 : Lawyer Track (Track A) ---
 # (à compléter par DS4)
 

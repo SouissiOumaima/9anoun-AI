@@ -1669,6 +1669,189 @@ Mise à jour : l'entrée enseignement_prive est passée à actif (D38).
 
 ---
 
+### D31 — Contrat DS3 `ds3.v2` aligné sur l'enveloppe commune `common.v0`
+
+**Numéro** : D31 à D37 réservés pour DS3 le 2026-10-15. Vérifié avec `git fetch origin` :
+D20–D22 et D24–D28 sont pris par DS2, D29 par DS5 (assurance), D30 par la table des secteurs
+(PR #14).
+
+**Décision** : la réponse DS3 suit `src/shared/schemas/common.v0.schema.json`
+(`$defs/response_envelope`) : `status` `ok` / `refus` / `erreur`, `refus {code, message_fr,
+message_ar}`, `erreur {type, message_fr, message_ar}`, `computed_by` obligatoire
+(`document_intelligence.mock` / `document_intelligence.service`), `result` toujours présent
+(`null` si refus ou erreur). DS3 y ajoute `mode` (`mock` / `live`) à la racine, `ds3_code`
+(code DS3 détaillé, pour le diagnostic) et `retryable` (seulement si `erreur`). Un résultat
+partiel est un `ok` avec `result.complete = false`. Correspondances avec `ds3.v1` :
+`INVALID_REQUEST`, `UNSUPPORTED_OPERATION`, `FILE_EMPTY_OR_CORRUPTED`, `FILE_TOO_LARGE` →
+`PARAM_INVALIDE` ; `UNSUPPORTED_FORMAT` → `HORS_SCOPE` ; `ACCESS_DENIED` → `ACCES_REFUSE`
+(nouveau code, message neutre, `document_id` non renvoyé) ; `UNREADABLE_DOCUMENT`,
+`NO_TABLE_FOUND` → `SOURCE_MANQUANTE` ; `TIMEOUT`, `INTERNAL_ERROR` → `erreur`.
+Les citations sont des citations de document `{citation_id, document_id, page, bbox, excerpt}`.
+
+**Alternatives envisagées** :
+- Garder les statuts `success` / `partial` / `error` de `ds3.v1` → rejeté : DS1 devrait gérer
+  un format de statut de plus.
+- Utiliser la citation du corpus de `common.v0` → impossible : un document de carte n'a ni
+  `data_file` dans `data/processed/`, ni `decision_ref`. Proposition d'ajouter
+  `document_citation` et `ACCES_REFUSE` dans `common.v1`.
+
+**Raison** : un seul format de statut et de refus pour toute l'équipe ; un document d'une autre
+carte est refusé sans révéler son existence.
+
+**Statut** : ⏳ v2 livrée (PR #12) ; `common.v1` à venir. Conformité prouvée par
+`test_response_matches_common_v1_draft` (common.v0 + les deux ajouts) et
+`test_refusals_without_citations_already_match_common_v0`.
+
+---
+
+### D32 — Extraction DS3 : Gemini localise, le code vérifie (« Citation ou Silence »)
+
+**Décision** : pour chaque champ, Gemini renvoie seulement le texte recopié tel qu'il est imprimé
+(`raw`) et l'identifiant de la ligne lue (`line_id`), au format JSON imposé, température 0. Le
+code vérifie ensuite que la ligne existe, qu'elle est lisible et que la valeur y figure **en
+entier** (un nombre n'est pas accepté s'il n'est qu'un morceau d'un autre nombre : « 3 » dans
+« 2023 », « 275,000 » dans « 1.275,000 »). Sinon la valeur est rejetée (`null`,
+`valeur_incoherente`, avec un avertissement). La citation est la ligne du document (page, bbox,
+texte exact). La confiance est celle de la ligne (1.0 en natif, valeur de l'OCR sinon), jamais
+une confiance donnée par le modèle. Le résumé est écrit par le code à partir des valeurs retenues.
+
+**Alternatives envisagées** :
+- Laisser Gemini renvoyer directement les valeurs normalisées et sa confiance → rejeté : une
+  valeur inventée ou « corrigée » ne serait pas détectable, et la confiance déclarée par un
+  modèle n'est pas mesurée.
+- Accepter une valeur sans ligne citée → rejeté : contraire à « Citation ou Silence ».
+
+**Raison** : toute valeur renvoyée par DS3 peut être retrouvée et surlignée sur le document ;
+une invention du modèle devient un `null` visible, pas une erreur silencieuse.
+
+**Limite connue** : la vérification porte sur la ligne entière, pas sur la colonne. Sur une ligne
+qui porte plusieurs nombres (« Salaire de base  208  2.388  496.704 »), une valeur juste mais
+rattachée au mauvais libellé n'est pas détectée. Amélioration prévue : associer chaque valeur à sa
+colonne (bbox horizontale). En attendant, la confiance et la citation restent à confirmer par
+l'utilisateur côté DS1.
+
+**Statut** : ⏳ proposition ; prouvée par `test_invented_value_is_rejected`,
+`test_numbers_must_appear_whole`, `test_invented_value_is_null_and_response_incomplete`,
+`test_confidence_comes_from_the_line_not_from_gemini`.
+
+---
+
+### D33 — Normalisation des valeurs lues par règles fixes
+
+**Décision** : la conversion au format du contrat est faite par du code, jamais par le modèle.
+Montants : chaîne à 3 décimales ; avec un seul séparateur (« , » ou « . »), c'est le séparateur
+décimal (les fiches de paie tunisiennes impriment les millimes) ; deux séparateurs différents :
+le dernier est décimal ; même séparateur répété (« 1.275.000 ») ou plus de 3 décimales → `null`.
+Dates : JJ/MM/AAAA (usage tunisien) ou AAAA-MM-JJ ; année sur 2 chiffres ou date impossible →
+`null`. Mois de paie (« Mars 2026 », « مارس 2026 ») → premier et dernier jour du mois.
+Catégorie : lettres arabes → latines (« 1 ب » → `1B`, « 1 أ » → `1A`). Régime horaire :
+208 h/mois → 48 ; 173,33 h/mois → 40 ; 40 ou 48 repris tels quels ; toute autre valeur → `null`.
+Chiffres arabes orientaux (٠-٩) convertis. Toute valeur non convertible → `null` avec
+`valeur_incoherente`, en gardant sa citation pour que DS1 montre où elle est imprimée.
+
+**Alternatives envisagées** :
+- Interpréter « 1.275 » comme 1 275 dinars → rejeté : ambigu ; la règle du séparateur unique
+  suit l'usage des fiches de paie.
+- Deviner le siècle d'une année sur 2 chiffres → rejeté : on ne devine pas.
+
+**Raison** : des règles écrites et testées donnent toujours le même résultat ; les cas ambigus
+sont signalés au lieu d'être devinés.
+
+**Statut** : ⏳ proposition ; prouvée par `test_document_intelligence_normalize.py` (48 cas) et le
+cas piège DS3-04 du jeu de référence.
+
+---
+
+### D34 — Aucune interprétation dans DS3
+
+**Décision** : DS3 lit et cite ; il ne déduit pas. Les mots imprimés ne sont traduits que s'ils
+figurent dans un vocabulaire fixe (`permanent` / `titulaire` / `قار` → `permanent`, etc.).
+« CDD » et « CDI » ne sont pas traduits en `temporaire` / `permanent` : le champ vaut `null`
+(`valeur_incoherente`) et le mot imprimé reste visible dans la citation. La `population`, le
+`groupe`, le `code` de prime DS5 et l'ancienneté sont déduits par DS1 / DS5 et confirmés par
+l'utilisateur. `sector_code` reçoit le code DS2 de la table des secteurs (D30) seulement si le
+libellé arabe ou le titre exact de la convention lu sur le document correspond ; jamais à partir
+d'un alias, faits pour les questions et trompeurs sur un document (« sécurité » dans « Caisse
+nationale de sécurité sociale », « banque » dans un virement) ; sinon `null`.
+
+**Alternatives envisagées** :
+- Traduire CDD → `temporaire` et CDI → `permanent` → reporté : c'est une interprétation
+  juridique ; à ajouter au vocabulaire seulement si DS2 et DS5 la valident.
+
+**Raison** : une erreur d'interprétation dans DS3 serait invisible pour DS1 et DS5.
+
+**Statut** : ⏳ proposition, question ouverte pour DS2 / DS5 (CDD / CDI) ; prouvée par
+`test_enums_only_accept_printed_words`, `test_wage_grid_sector_code_comes_from_the_shared_table`
+et le cas DS3-04.
+
+---
+
+### D35 — Lecteur de PDF natif : lignes visuelles, arabe et texte illisible
+
+**Décision** : le lecteur `reading/pdf_natif.py` (v0.3) regroupe les morceaux de texte posés sur
+la même ligne visuelle (recouvrement vertical ≥ 50 %), de gauche à droite, ou de droite à gauche
+si la ligne a plus de morceaux arabes que français : « Salaire de base » et « 424,100 » dans deux
+colonnes donnent une seule ligne. Les formes de présentation arabes (U+FB50–U+FDFF,
+U+FE70–U+FEFF) sont ramenées aux lettres normales (NFKC). Les lignes cassées (caractères
+« Private Use », U+FFFD, glyphes sans code, ≥ 20 % des caractères) deviennent des zones à passer
+à l'OCR ; si au moins la moitié des lignes d'une page sont cassées, toute la page part à l'OCR.
+
+**Alternatives envisagées** :
+- Garder les morceaux séparés → rejeté : la citation d'un montant ne montrerait pas son libellé.
+- Réparer le texte « Private Use » → rejeté (voir D16) : la couche texte arabe du corpus n'est
+  pas réparable.
+
+**Raison** : chaque citation montre le libellé avec la valeur ; le texte arabe devient lisible
+par le modèle et comparable par la vérification (D32).
+
+**Statut** : ⏳ proposition ; prouvée par `test_label_and_amount_in_two_columns_become_one_line`,
+`test_merge_rows_reads_arabic_rows_right_to_left`,
+`test_arabic_presentation_forms_are_turned_into_normal_letters`,
+`test_unreadable_line_goes_to_ocr`.
+
+---
+
+### D36 — Jeu de référence DS3 sur documents fictifs
+
+**Décision** : Tradrly ne fournit pas de documents de carte ; DS3 génère ses documents de test
+(`evaluation/fictive_documents.py`) : fiches de paie et facture fictives (mention « DOCUMENT
+FICTIF », aucune donnée personnelle), en français et en arabe, natives et scannées, avec cas
+pièges. Les valeurs attendues sont écrites une seule fois et reprises dans les PDF,
+`ds3_golden.v0.json` et `sources_documents.csv`. Seuls ces documents fictifs (et des documents
+publics anonymisés) sont envoyés à Gemini ; aucun document Tradrly réel sans l'accord de
+l'encadrant (NDA). Score : `correct` / `faux` / `silence` / `invention` par champ ; objectif
+0 invention.
+
+**Alternatives envisagées** :
+- Uniquement des fiches publiques trouvées en ligne → insuffisant : valeurs attendues
+  incertaines, données personnelles à masquer ; elles viendront en complément.
+
+**Raison** : valeurs attendues exactes, cas pièges choisis, aucun risque de confidentialité.
+
+**Statut** : ⏳ v0 (5 documents) ; première évaluation avec Gemini le 2026-10-15 : 4 cas,
+60 champs, 100 % corrects, 0 invention (documents faciles, à compléter par des fiches réelles et
+des scans via l'OCR). Chaîne prouvée par `test_pipeline_gives_the_expected_answer` et
+`test_perfect_gemini_scores_100_percent`.
+
+---
+
+### D37 — Confiance du type de document (règle provisoire)
+
+**Décision** : `document_type_confidence` = 0,95 si le type lu correspond au type attendu par DS1
+(`options.expected_type`), 0,80 si DS1 n'indique pas de type attendu, 0,50 avec un avertissement
+s'ils diffèrent. Si aucun champ n'est vérifié (ex. une facture envoyée comme fiche de paie), la
+réponse est un refus `SOURCE_MANQUANTE`.
+
+**Alternatives envisagées** :
+- Utiliser une confiance donnée par le modèle → rejeté (voir D32).
+
+**Raison** : règle simple et explicable en attendant des mesures sur de vrais documents.
+
+**Statut** : ⏳ provisoire, à recalibrer avec le jeu de référence complété ; prouvée par
+`test_type_mismatch_lowers_confidence_and_warns` et le cas DS3-05.
+
+---
+
 ### D38 — Grille salariale ENSEIGNEMENT_PRIVE (pages 3, 8, 11, 15-27)
 
 **Numéro** : D38. `origin/main` s'arrête à D30 ; D31 à D37 sont réservés à DS3 (vérifié avec `git fetch origin` le
@@ -1756,3 +1939,27 @@ lignes de grille non recopiés.
 - Tests : `test_enseignement_prive.py` ; listes de secteurs actifs des tests existants ; démos et jeu de référence.
 
 **Statut** : ✅ activée (2026-10-19) ; `pytest` complet : tous réussis.
+
+---
+
+### D39 — Le seuil de confiance appartient au consommateur
+
+**Numéro** : D39, à la suite de D31–D37 (DS3) ; D38 est prise par DS5 (enseignement privé, PR #21).
+
+**Décision** : DS3 n'applique **aucun** seuil de confiance. Chaque champ renvoie sa confiance réelle
+(`fields[...].confidence`), et c'est le consommateur qui décide de l'utiliser ou non. DS1 exige
+**0,90** avant tout calcul DS5 : en dessous, le champ passe « à confirmer » et n'est jamais pré-coché.
+Le champ `options.min_confidence` du contrat devient facultatif, sans valeur par défaut (il valait
+0,80, jamais utilisé) ; il reste seulement comme indication que l'appelant peut transmettre.
+
+**Alternatives envisagées** :
+- Garder le défaut 0,80 et filtrer côté DS3 → rejeté : un seuil appliqué deux fois (DS3 puis DS1) et
+  deux valeurs différentes (0,80 puis 0,90) rendraient le comportement ambigu ; retenu par Oumaima
+  (DS5) à la relecture de la PR #18.
+- Rendre `min_confidence` obligatoire → rejeté : casserait les requêtes qui ne le fournissent pas.
+
+**Raison** : un seul endroit décide du seuil (le consommateur), avec une seule valeur (0,90 pour DS5) ;
+DS3 reste neutre et transmet l'information brute.
+
+**Statut** : ⏳ proposition ; `min_confidence` est désormais `float | None = None` dans
+`contract/v2/models.py`, documenté dans `CONTRACT_DOCUMENT_INTELLIGENCE_V2.md`.

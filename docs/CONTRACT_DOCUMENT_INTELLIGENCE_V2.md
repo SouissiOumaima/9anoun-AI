@@ -50,6 +50,11 @@ Régénérer après une modification : `python -m src.document_intelligence.cont
 Nouveau par rapport à la v1 : `lang` (`fr` / `ar`, **obligatoire**) et `case_id` (facultatif, repris dans la
 réponse). Opérations : `analyze_document` (résultat `DocumentAnalysis`) et `extract_wage_grid` (résultat `WageGrid`).
 
+**Seuil de confiance.** `options.min_confidence` est seulement indicatif : DS3 **n'applique aucun seuil**. Il
+renvoie toujours la confiance réelle de chaque champ (`fields[...].confidence`), et c'est le **consommateur** qui
+décide quoi en faire. DS1 exige **0,90** avant tout calcul DS5 ; en dessous, le champ passe « à confirmer » et
+n'est jamais pré-coché. Le champ n'a donc pas de valeur par défaut (voir D39).
+
 ## Réponse : que faire selon le statut
 
 | `status` | Contenu | Ce que fait DS1 |
@@ -84,6 +89,12 @@ seulement s'il a été envoyé (règles de `common.v0`).
 `bbox` = `[x0, y0, x1, y1]` en points PDF, origine en haut à gauche, ou `null` si la position n'est pas connue.
 Chaque `citation_id` d'un champ, d'une ligne de paie ou d'une grille renvoie à une citation de la liste.
 
+**Portée de la vérification.** DS3 vérifie que la valeur figure bien dans la **ligne citée**, pas en face du bon
+libellé. Sur une ligne qui porte plusieurs nombres (« Salaire de base  208  2.388  496.704 »), une valeur juste
+mais rattachée au mauvais libellé n'est pas détectée. La confiance et la citation restent donc à vérifier par
+l'utilisateur (écran de revue DS1). Renforcer ce contrôle (associer chaque valeur à sa colonne) est une amélioration
+prévue, notée dans D32.
+
 ## Champs de la fiche de paie
 
 Chaque champ : `{value, value_type, confidence, citation_id, unreadable_reason, currency}`. Les 15 champs sont
@@ -116,8 +127,11 @@ Le modèle Pydantic refuse toute valeur qui ne respecte pas son `value_type`.
 
 ## Grille de salaires (`extract_wage_grid`)
 
-Inchangée depuis la v1, sauf `sector_code` (code de secteur du vocabulaire D21), à `null` tant que la table des
-secteurs n'est pas fixée ; `sector_ar` reste fourni. La citation est une citation de document (page 21, `bbox = null`).
+Inchangée depuis la v1, sauf `sector_code` : le code DS2 du secteur, pris dans la table commune
+`src/shared/sectors/sectors.v0.json` (D30), seulement si le libellé arabe ou le titre exact de la convention
+correspond (jamais à partir d'un alias, trompeur sur un document : « sécurité sociale », « virement bancaire ») ;
+sinon `null`. Le mock renvoie `gardiennage_securite_transport_fonds`.
+`sector_ar` reste fourni. La citation est une citation de document (page 21, `bbox = null`).
 
 ## Comportement du mock
 
