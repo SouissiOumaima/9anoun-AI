@@ -150,6 +150,44 @@ sinon `null`. Le mock renvoie `gardiennage_securite_transport_fonds`.
 
 Le résumé (`summary`) suit la langue demandée (`lang`). Toutes les données de fiche de paie sont fictives.
 
+## Service réel (mode live)
+
+```python
+from src.document_intelligence.service import handle_request   # au lieu de ...contract.v2.mock
+response = handle_request(request)                              # même contrat ds3.v2, mode = "live"
+```
+
+Même entrée et même sortie que le mock : seules les valeurs changent (`mode = "live"`,
+`computed_by = "document_intelligence.service"`). Le service ne lève jamais d'exception.
+
+**Disponible en live aujourd'hui :** `analyze_document` sur une **fiche de paie en PDF** (texte natif).
+Le reste donne un refus clair, en français et en arabe :
+
+| Demande | Réponse live |
+|---|---|
+| `extract_wage_grid` | `refus` `PARAM_INVALIDE` (`ds3_code` `UNSUPPORTED_OPERATION`) : utiliser le mock v2 |
+| fichier autre que PDF | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
+| `expected_type` autre que `fiche_de_paie` | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
+| page scannée sans texte | `refus` `SOURCE_MANQUANTE` (en attente de l'OCR de la partie A) |
+| Gemini indisponible | `erreur` `INTERNAL_ERROR`, `retryable = true` |
+
+**Stockage (provisoire, D40).** Le fichier est lu dans un dossier racine, donné par la variable d'environnement
+`DS3_STORAGE_ROOT` (ou `storage_root_dir=`). Formes de `storage_ref` acceptées :
+- `tradrly://cards/<card_id>/documents/<document_id>` → `<racine>/cards/<card_id>/documents/<document_id>/<file_name>`
+  (ou `<racine>/cards/<card_id>/documents/<file_name>`) ;
+- `local://<chemin relatif>` → `<racine>/<chemin relatif>`, pour les tests et les démonstrations.
+
+Refusé sans lire le fichier (`ACCES_REFUSE`) : un document d'une autre carte, un `storage_ref` d'une autre carte,
+un chemin qui sort du dossier racine. Un `file_name` contenant un dossier est refusé (`PARAM_INVALIDE`).
+Fichier introuvable ou vide : `PARAM_INVALIDE` ; plus de 20 Mo : `FILE_TOO_LARGE`. Stockage non configuré :
+`erreur` `INTERNAL_ERROR`. L'accès au stockage réel de Tradrly reste à définir avec DS1 et le backend.
+
+**Démonstration** (clé Gemini dans `.env`, document fictif) :
+
+```bash
+python -m src.document_intelligence.service src/document_intelligence/evaluation/demo_live/requete_fiche_01.json --root src/document_intelligence/evaluation/golden_sets/documents
+```
+
 ## Conformité au schéma commun
 
 Les tests valident chaque réponse d'exemple contre `common.v0` complété des deux ajouts acceptés pour
