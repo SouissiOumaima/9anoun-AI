@@ -120,3 +120,36 @@ def test_canon() -> None:
 )
 def test_numbers_must_appear_whole(line: str, raw: str, expected: bool) -> None:
     assert contains_value(line, raw) is expected
+
+
+@pytest.mark.parametrize(
+    ("line", "raw", "expected"),
+    [
+        # Lignes de vraies fiches (évaluation du 21/10) : plusieurs nombres séparés par des espaces.
+        ("Retenue CNSS  1329.988  9.18  122.093", "122.093", True),
+        ("Total Brut  2549,307  2549,307", "2549,307", True),
+        ("2001  Salaire de base Horaire  4,903  97,203  476,586", "476,586", True),
+        ("Prime de présence  1  11.571  11.571", "11.571", True),
+        ("Heures supplémentaires  16  6.578  200  210.496", "210.496", True),
+        ("CONGEE ANNUEL  0  48.901  0", "0", True),
+        # Espace des milliers : le nombre entier est accepté, avec ou sans l'espace...
+        ("4550  SALAIRE BRUT  1 156,013", "1 156,013", True),
+        ("4550  SALAIRE BRUT  1 156,013", "1156,013", True),
+        ("Mois  1 156,013  111,902  1 044,111", "111,902", True),
+        # ... mais pas un morceau.
+        ("4550  SALAIRE BRUT  1 156,013", "156,013", False),
+        ("4550  SALAIRE BRUT  1 156,013", "1", False),
+        ("Salaire 1 156", "156", False),
+        # Deux nombres voisins ne sont jamais collés en un seul.
+        ("Retenue CNSS  1329.988  9.18  122.093", "9.18122.093", False),
+        ("Heures  200 210.496", "200210.496", False),
+        ("Heures  200 210.496", "210.496", True),  # après un point décimal : deux nombres distincts
+        ("Base  10 20", "1020", False),
+        # Les règles d'avant restent vraies.
+        ("Période : Mars 2023", "3", False),
+        ("Salaire de base  1424,100", "424,100", False),
+        ("Salaire de base  ١٢٧٥٫٠٠٠", "1275,000", True),
+    ],
+)
+def test_numbers_separated_by_spaces(line: str, raw: str, expected: bool) -> None:
+    assert contains_value(line, raw) is expected
