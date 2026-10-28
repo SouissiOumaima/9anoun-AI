@@ -258,6 +258,12 @@ def valider_grille(data: dict, chemin: str) -> dict:
         for t in data["grilles"]:
             for k in ("table_id", "effective_date", "source_pdf_page", "unite", "valeurs"):
                 _exiger(k in t, f"{t.get('table_id', '?')} : clé {k} manquante")
+            if "valide_jusqu_au" in t:
+                # Dernier jour de validité de la table (ex. grille révisée par un avenant absent des sources).
+                fin = t["valide_jusqu_au"]
+                _exiger(isinstance(fin, dict) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(fin.get("date", "")))
+                        and fin["date"] >= t["effective_date"], f"{t['table_id']} : valide_jusqu_au.date invalide")
+                _exiger_refus_declare(fin, f"{t['table_id']}.valide_jusqu_au")
             pop = population_de_table(data, t)
             _exiger(pop is not None, f"{t['table_id']} : population absente, inconnue ou ambiguë "
                                      "(champ population obligatoire si plusieurs populations ont ces catégories)")

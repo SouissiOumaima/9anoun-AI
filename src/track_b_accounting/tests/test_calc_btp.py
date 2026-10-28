@@ -45,7 +45,7 @@ def test_btp_enregistre_avec_tables():
 
 
 def test_secteurs_disponibles():
-    assert loaders.secteurs_disponibles() == [BM_S, BTP, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE", "ENSEIGNEMENT_PRIVE", "BANQUES"]
+    assert loaders.secteurs_disponibles() == [BM_S, BTP, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE", "ENSEIGNEMENT_PRIVE", "BANQUES", "GARDIENNAGE_SECURITE_TRANSPORT_FONDS"]
 
 
 def test_secteur_non_transcrit_absent_des_disponibles(monkeypatch):
@@ -128,7 +128,7 @@ def test_cle_technique_ou_categorie_absente_refusee(cat):
 
 def test_secteur_inconnu_liste_les_secteurs():
     e = refus(Refus.SOURCE_MANQUANTE, salaire_base, "SECTEUR_FICTIF_NON_SUPPORTE", "admin_tech", "4", 5, "2024-01-01")
-    assert e.message_fr.endswith(f"(disponibles : {BM_S}, {BTP}, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES).")
+    assert e.message_fr.endswith(f"(disponibles : {BM_S}, {BTP}, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
 
 
 # --- ancienneté : obligatoire avec degrés, interdite sans --------------------------------------------

@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -1140,6 +1140,182 @@
       "code": "SOURCE_MANQUANTE",
       "message_fr": "Ancienneté de 33 ans : les grilles de la convention des banques s'arrêtent au degré 19 (33 ans) ; l'article 47 (page 19) prévoit que le plus haut degré est atteint en 33 ans au plus et ne précise pas ce qui s'applique au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 33 ans).",
       "message_ar": "أقدمية 33 سنة: ينتهي جدولا أجور اتفاقية البنوك عند الدرجة 19 (33 سنة)؛ وينص الفصل 47 (الصفحة 19) على بلوغ أعلى درجة في مدة أقصاها 33 سنة دون تحديد ما ينطبق بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 33 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-40-salaire-gardiennage",
+    "status": "ok",
+    "result": {
+      "montant": "510.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+        "population": "tous_agents",
+        "categorie": "5",
+        "degre": 5,
+        "anciennete_annees": "7",
+        "hypotheses": [
+          "Degré 14 : l'en-tête de la grille (p.21) imprime seulement « 24 » ; sa durée de séjour imprimée est de 2 ans et l'article 44 (p.14) répartit le système d'ancienneté sur 26 ans : le degré 14 est lu de 24 à 26 ans.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les degrés supplémentaires de la promotion (article 16 ب, p.8) et du reclassement (article 51, p.15) ne sont pas calculés.",
+          "Une même grille vaut pour plusieurs régimes horaires (48, 54 ou 60 heures par semaine, article 17 (جديد), p.9) : aucun recalcul selon les heures n'est fait."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 14: لا يذكر رأس جدول الأجور (الصفحة 21) إلا العدد «24»؛ ومدة البقاء المطبوعة بهذه الدرجة سنتان، ويوزع الفصل 44 (الصفحة 14) نظام الأقدمية على مدى 26 سنة: تُعتبر الدرجة 14 من 24 إلى 26 سنة.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الدرجة الإضافية عند الترقية (الفصل 16 ب، الصفحة 8) ولا الدرجات الإضافية عند إعادة الترتيب (الفصل 51، الصفحة 15).",
+          "يُطبَّق جدول الأجور نفسه على عدة أنظمة توقيت (48 أو 54 أو 60 ساعة في الأسبوع، الفصل 17 (جديد)، الصفحة 9): لا يقع أي احتساب حسب عدد الساعات."
+        ],
+        "table_id": "GS_TOUS_AGENTS_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2010-10-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/gardiennage.json",
+        "decision_ref": "D47"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-41-salaire-gardiennage-population-omise",
+    "status": "ok",
+    "result": {
+      "montant": "430.200",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+        "population": "tous_agents",
+        "categorie": "2",
+        "degre": 14,
+        "anciennete_annees": "25",
+        "hypotheses": [
+          "Degré 14 : l'en-tête de la grille (p.21) imprime seulement « 24 » ; sa durée de séjour imprimée est de 2 ans et l'article 44 (p.14) répartit le système d'ancienneté sur 26 ans : le degré 14 est lu de 24 à 26 ans.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les degrés supplémentaires de la promotion (article 16 ب, p.8) et du reclassement (article 51, p.15) ne sont pas calculés.",
+          "Une même grille vaut pour plusieurs régimes horaires (48, 54 ou 60 heures par semaine, article 17 (جديد), p.9) : aucun recalcul selon les heures n'est fait."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 14: لا يذكر رأس جدول الأجور (الصفحة 21) إلا العدد «24»؛ ومدة البقاء المطبوعة بهذه الدرجة سنتان، ويوزع الفصل 44 (الصفحة 14) نظام الأقدمية على مدى 26 سنة: تُعتبر الدرجة 14 من 24 إلى 26 سنة.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الدرجة الإضافية عند الترقية (الفصل 16 ب، الصفحة 8) ولا الدرجات الإضافية عند إعادة الترتيب (الفصل 51، الصفحة 15).",
+          "يُطبَّق جدول الأجور نفسه على عدة أنظمة توقيت (48 أو 54 أو 60 ساعة في الأسبوع، الفصل 17 (جديد)، الصفحة 9): لا يقع أي احتساب حسب عدد الساعات."
+        ],
+        "table_id": "GS_TOUS_AGENTS_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2011-03-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/gardiennage.json",
+        "decision_ref": "D47"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-42-prime-transport-gardiennage-cadres",
+    "status": "ok",
+    "result": {
+      "montant": "25.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2012-06-01",
+        "regles": "D6",
+        "groupe": "cadres",
+        "groupe_libelle": "Cadres",
+        "groupe_libelle_ar": "الإطارات",
+        "effective_date": "2012-05-01",
+        "note": "Montant total : il comprend le montant fixé par le décret n° 503 du 16 mars 1982 (article 46 (جديد), p.14) ; aucune addition n'est faite.",
+        "note_ar": "مبلغ جملي: تشتمل منحة النقل على المقدار المضبوط بالأمر عدد 503 لسنة 1982 المؤرخ في 16 مارس 1982 (الفصل 46 (جديد)، الصفحة 14)؛ ولا يقع إضافة أي مبلغ.",
+        "hypotheses": [
+          "Les catégories qui forment chaque groupe (exécution et gestion, cadres) ne sont pas définies par la classification : le groupe est choisi par l'appelant."
+        ],
+        "hypotheses_ar": [
+          "لا يحدد التصنيف المهني الأصناف المكونة لكل مجموعة (أعوان التنفيذ والتسيير، الإطارات): يختار الطالب المجموعة."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+        "page": 14,
+        "article": "46 (جديد)",
+        "data_file": "data/processed/salary_grids/gardiennage.json",
+        "decision_ref": "D47"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-43-refus-gardiennage-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 24 ans = borne commune aux degrés [13, 14] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 24 سنة تقع على الحد المشترك بين الدرجات [13, 14] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-44-refus-gardiennage-avant-2010-05-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille GARDIENNAGE_SECURITE_TRANSPORT_FONDS/tous_agents en vigueur au 2010-04-30 (première date d'effet disponible : 2010-05-01).",
+      "message_ar": "لا يوجد جدول أجور GARDIENNAGE_SECURITE_TRANSPORT_FONDS/tous_agents ساري المفعول بتاريخ 2010-04-30 (أول تاريخ نفاذ متوفر: 2010-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-45-refus-gardiennage-prime-risque-sans-date",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de risque exceptionnel (article 46 مكرر, page 14) : 20 dinars par mois sans date d'effet dans la source ; article ajouté par l'avenant n° 4, l'article 46 ensuite modifié par les avenants n° 5 et n° 7 (p.2). Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة خطر استثنائية (الفصل 46 مكرر، الصفحة 14): 20 دينارا شهريا دون تاريخ نفاذ في المصدر؛ أضيف هذا الفصل بالملحق التعديلي عدد 4 ثم نُقّح الفصل 46 بالملحقين التعديليين عدد 5 وعدد 7 (الصفحة 2). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-46-refus-gardiennage-grille-revisee-avenant-7",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille vérifiée après le 2011-04-30 : l'avenant n° 7 (page 2, effet au 1er mai 2011) a révisé les salaires et sa grille n'est pas dans la source ; le barème n° 2 (page 21, en vigueur à partir du 1er mai 2010) ne vaut que jusqu'au 2011-04-30. Aucun montant n'est renvoyé.",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه بعد 2011-04-30: راجع الملحق التعديلي عدد 7 (الصفحة 2، تاريخ المفعول غرة ماي 2011) الأجور وجدوله غير موجود في المصدر؛ ولا ينطبق جدول الأجور عدد 2 (الصفحة 21، يقع العمل به بداية من 1 ماي 2010) إلا إلى غاية 2011-04-30. لا يُرجَع أي مبلغ."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   }

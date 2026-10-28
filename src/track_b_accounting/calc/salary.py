@@ -203,7 +203,8 @@ def _tables_population(grille: dict, population: str) -> list[dict]:
 
 
 def table_applicable(secteur, population, date) -> dict:
-    """Table de la population dont effective_date est la plus récente ≤ date."""
+    """Table de la population dont effective_date est la plus récente ≤ date ; au-delà de valide_jusqu_au.date,
+    refus lu dans le JSON."""
     jour = parse_date(date)
     grille = charger_grille(secteur)
     pop = _population(grille, population)
@@ -217,6 +218,10 @@ def table_applicable(secteur, population, date) -> dict:
                     f"(première date d'effet disponible : {premiere}).",
                     f"لا يوجد جدول أجور {secteur}/{pop} ساري المفعول بتاريخ {jour.isoformat()} "
                     f"(أول تاريخ نفاذ متوفر: {premiere}).")
+    fin = table.get("valide_jusqu_au")
+    if fin is not None and jour.isoformat() > fin["date"]:
+        # Table remplacée par une grille absente des sources : refus lu dans le JSON (Citation ou Silence).
+        raise Refus(Refus.SOURCE_MANQUANTE, fin["message_fr"], fin["message_ar"])
     return table
 
 

@@ -1120,7 +1120,7 @@
    "requete": {
     "operation": "salaire_base",
     "params": {
-     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "secteur": "SECTEUR_FICTIF_NON_SUPPORTE",
      "population": "admin_tech",
      "categorie": "4",
      "date": "2024-06-01",
@@ -1135,7 +1135,7 @@
    "justification": {
     "pdf": null,
     "page": null,
-    "emplacement": "convention du gardiennage, de la sécurité et du transport de fonds présente dans data/raw/pdf/ mais non transcrite"
+    "emplacement": "code de secteur fictif, absent du registre DS5 (aucun fichier de grille) : refus « secteur non couvert »"
    }
   },
   {
@@ -3585,6 +3585,444 @@
     "pdf": "البنوك.pdf",
     "page": 22,
     "emplacement": "une seule grille par date pour les 34 postes : population unique tous_agents"
+   }
+  },
+  {
+   "id": "TB-112",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "population": "tous_agents",
+     "categorie": "1",
+     "date": "2010-05-01",
+     "anciennete_annees": 0.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "344.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "barème n° 2 (p.21, en vigueur à partir du 1er mai 2010), ligne 1 depuis le haut (catégorie 1), col. degré 1 depuis la droite (ancienneté imprimée « 0-1 »)",
+    "valeur_imprimee": "344.500"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des catégories ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-113",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "population": "tous_agents",
+     "categorie": "4",
+     "date": "2010-11-01",
+     "anciennete_annees": 19
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "534.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "barème n° 2 (p.21, en vigueur à partir du 1er mai 2010), ligne 4 depuis le haut (catégorie 4), col. degré 11 depuis la droite (ancienneté imprimée « 18-20 »)",
+    "valeur_imprimee": "534.500"
+   },
+   "note": "Saut isolé imprimé (relu à 500 dpi, D47) ; Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des catégories ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-114",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "categorie": "7",
+     "date": "2011-01-15",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "637.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "barème n° 2 (p.21, en vigueur à partir du 1er mai 2010), ligne 7 depuis le haut (catégorie 7), col. degré 4 depuis la droite (ancienneté imprimée « 4-6 »)",
+    "valeur_imprimee": "637.500"
+   },
+   "note": "Saut isolé imprimé (relu à 500 dpi, D47) ; Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des catégories ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-115",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "population": "tous_agents",
+     "categorie": "11",
+     "date": "2011-04-30",
+     "anciennete_annees": 13
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1028.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "barème n° 2 (p.21, en vigueur à partir du 1er mai 2010), ligne 11 depuis le haut (catégorie 11), col. degré 8 depuis la droite (ancienneté imprimée « 12-14 »)",
+    "valeur_imprimee": "1,028.000"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des catégories ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-116",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D47",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "population": "tous_agents",
+     "categorie": "15",
+     "date": "2010-06-01",
+     "anciennete_annees": 25
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1503.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "barème n° 2 (p.21, en vigueur à partir du 1er mai 2010), ligne 15 depuis le haut (catégorie 15), col. degré 14 depuis la droite (ancienneté imprimée « 24 »)",
+    "valeur_imprimee": "1,503.000"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des catégories ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-117",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "code": "prime_transport",
+     "date": "2013-01-01",
+     "groupe": "execution_gestion"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "20.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 46 (جديد), agents d'exécution et de gestion, 20 dinars par mois à partir du 1er mai 2012",
+    "valeur_imprimee": "20.000"
+   },
+   "note": "Lecture sur l'image de la p.14 (200 dpi) et couche texte des chiffres, lot des primes vérifié."
+  },
+  {
+   "id": "TB-118",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "code": "prime_presence",
+     "date": "2008-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.120",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 46-3, 3,120 d (120 millimes par jour de présence) à partir du 1er mai 2006",
+    "valeur_imprimee": "3.120"
+   },
+   "note": "Lecture sur l'image de la p.14 (200 dpi) et couche texte des chiffres, lot des primes vérifié."
+  },
+  {
+   "id": "TB-119",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "code": "prime_panier",
+     "date": "2008-01-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "5.200",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 46-4, 5,200 d par mois (200 millimes par jour de travail effectif) à partir du 1er mai 2006",
+    "valeur_imprimee": "5.200"
+   },
+   "note": "Lecture sur l'image de la p.14 (200 dpi) et couche texte des chiffres, lot des primes vérifié."
+  },
+  {
+   "id": "TB-120",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "categorie": "6",
+     "date": "2010-06-01",
+     "anciennete_annees": 24
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "en-tête : 24 termine la tranche « 22-24 » du degré 13 et commence le degré 14 (« 24 »)"
+   }
+  },
+  {
+   "id": "TB-121",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D47",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "categorie": "6",
+     "date": "2010-06-01",
+     "anciennete_annees": 27
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 44 : système d'ancienneté réparti sur 26 ans ; rien au-delà"
+   }
+  },
+  {
+   "id": "TB-122",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "categorie": "6",
+     "date": "2010-04-30",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 21,
+    "emplacement": "titre : barème n° 2 en vigueur à partir du 1er mai 2010 ; barème n° 1 absent de la source"
+   }
+  },
+  {
+   "id": "TB-123",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D47",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "categorie": "6",
+     "date": "2012-01-01",
+     "anciennete_annees": 5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 2,
+    "emplacement": "avenant n° 7 : effet 1er mai 2011, révision des salaires ; grille absente de la source"
+   }
+  },
+  {
+   "id": "TB-124",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D47",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "code": "prime_risque_exceptionnel",
+     "date": "2012-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 46 مكرر : 20 dinars par mois, sans date d'effet"
+   }
+  },
+  {
+   "id": "TB-125",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+     "code": "prime_panier",
+     "date": "2008-01-01",
+     "condition_remplie": false
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE"
+   },
+   "justification": {
+    "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+    "page": 14,
+    "emplacement": "art. 46-4 : panier réservé au travail continu de plus de 7 h le jour du panier"
    }
   }
  ]

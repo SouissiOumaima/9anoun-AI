@@ -28,6 +28,7 @@ SECTEURS = {
     "ASSURANCE": "data/processed/salary_grids/assurance.json",
     "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
     "BANQUES": "data/processed/salary_grids/banques.json",
+    "GARDIENNAGE_SECURITE_TRANSPORT_FONDS": "data/processed/salary_grids/gardiennage.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
