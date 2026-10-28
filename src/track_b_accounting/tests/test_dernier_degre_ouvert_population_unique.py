@@ -27,6 +27,7 @@ SECTEURS = {
     "ASSOCIATIONS_PERSONNES_HANDICAPEES": "data/processed/salary_grids/associations_personnes_handicapees.json",
     "ASSURANCE": "data/processed/salary_grids/assurance.json",
     "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
+    "BANQUES": "data/processed/salary_grids/banques.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 

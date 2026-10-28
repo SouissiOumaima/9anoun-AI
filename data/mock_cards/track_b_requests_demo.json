@@ -248,5 +248,47 @@
     "operation": "salaire_base",
     "params": {"secteur": "ENSEIGNEMENT_PRIVE", "population": "secondaire_formateurs", "categorie": "professeur_principal", "anciennete_annees": 36, "date": "2016-01-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-34-salaire-banques-table-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "population": "tous_agents", "categorie": "redacteur_2", "anciennete_annees": 10, "date": "2020-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-35-salaire-banques-table-2-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "agent_bureau_4", "anciennete_annees": 0.5, "date": "2022-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-36-refus-banques-prime-transport-sans-date",
+    "operation": "prime",
+    "params": {"secteur": "BANQUES", "code": "prime_transport", "date": "2022-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-37-refus-banques-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "commis_1", "anciennete_annees": 5, "date": "2022-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-38-refus-banques-avant-2020-09-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "commis_1", "anciennete_annees": 6, "date": "2020-08-31"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-39-refus-banques-anciennete-33-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "directeur_1", "anciennete_annees": 33, "date": "2022-01-01"},
+    "lang": "fr"
   }
 ]
