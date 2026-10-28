@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -1000,6 +1000,146 @@
       "code": "SOURCE_MANQUANTE",
       "message_fr": "Ancienneté de 36 ans : les grilles de la convention de l'enseignement privé s'arrêtent au degré 16 (36 ans), et l'article 15 (جديد) ب (page 8) ne prévoit aucune règle au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
       "message_ar": "أقدمية 36 سنة: تنتهي جداول أجور اتفاقية التعليم الخاص عند الدرجة 16 (36 سنة)، ولا ينص الفصل 15 (جديد) ب (الصفحة 8) على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-34-salaire-banques-table-1",
+    "status": "ok",
+    "result": {
+      "montant": "2289.026",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BANQUES",
+        "population": "tous_agents",
+        "categorie": "redacteur_2",
+        "degre": 8,
+        "anciennete_annees": "10",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.22 et 23), le nombre de la ligne « ancienneté effective » de chaque colonne (1, 2, 3, 4, 5, 7, …, 33) est la somme des durées de séjour jusqu'à cette colonne, le stage comptant pour 1 an ; la colonne k couvre de la fin de la colonne précédente à ce nombre (stage : de 0 à 1 an ; degré 19 : de 31 à 33 ans).",
+          "Colonne « stage » (colonne 1 des grilles) servie pour une ancienneté de 0 à 1 an : l'article 11 (p.8) fixe la période de stage ou d'essai à un an, renouvelable une fois ; la grille n'indique pas ce qui vaut pendant le renouvellement ; la situation de stage de l'agent n'est pas vérifiée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les règles de l'article 13 (جديد) أ et de la fin de l'article 13 (p.10 et 11) (départ au premier du mois selon la règle des 15 jours, absences non payées exclues, service national et services antérieurs reconnus) ne sont pas calculées.",
+          "Aucune grille postérieure au 2021-05-01 n'est présente dans les sources ; la grille du 2021-05-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس جدولي الأجور (الصفحتان 22 و23)، يساوي عدد «الأقدمية الفعلية» لكل عمود (1، 2، 3، 4، 5، 7، …، 33) مجموع مدد البقاء إلى هذا العمود، مع احتساب التربص بسنة واحدة؛ ويغطي العمود k الفترة من نهاية العمود السابق إلى هذا العدد (التربص: من 0 إلى سنة واحدة؛ الدرجة 19: من 31 إلى 33 سنة).",
+          "يُطبَّق عمود «التربص» (العمود الأول من الجدولين) على أقدمية من 0 إلى سنة واحدة: يحدد الفصل 11 (الصفحة 8) فترة التربص أو التجربة بسنة واحدة قابلة للتجديد مرة واحدة؛ ولا يبيّن الجدول ما ينطبق خلال فترة التجديد؛ ولا يقع التثبت من أن العون في فترة تربص.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب أحكام الفصل 13 (جديد) أ وآخر الفصل 13 (الصفحتان 10 و11) (بداية الاحتساب من أول الشهر حسب قاعدة الخمسة عشر يوما، واستثناء فترات التغيب بدون أجر، واحتساب الخدمة الوطنية والخدمات السابقة المعترف بها).",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-05-01؛ وجدول 2021-05-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "BQ_TOUS_AGENTS_2020-09-01",
+        "effective_date": "2020-09-01",
+        "date_calcul": "2020-12-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/البنوك.pdf",
+        "page": 22,
+        "article": null,
+        "data_file": "data/processed/salary_grids/banques.json",
+        "decision_ref": "D46"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-35-salaire-banques-table-2-population-omise",
+    "status": "ok",
+    "result": {
+      "montant": "1957.446",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BANQUES",
+        "population": "tous_agents",
+        "categorie": "agent_bureau_4",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.22 et 23), le nombre de la ligne « ancienneté effective » de chaque colonne (1, 2, 3, 4, 5, 7, …, 33) est la somme des durées de séjour jusqu'à cette colonne, le stage comptant pour 1 an ; la colonne k couvre de la fin de la colonne précédente à ce nombre (stage : de 0 à 1 an ; degré 19 : de 31 à 33 ans).",
+          "Colonne « stage » (colonne 1 des grilles) servie pour une ancienneté de 0 à 1 an : l'article 11 (p.8) fixe la période de stage ou d'essai à un an, renouvelable une fois ; la grille n'indique pas ce qui vaut pendant le renouvellement ; la situation de stage de l'agent n'est pas vérifiée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les règles de l'article 13 (جديد) أ et de la fin de l'article 13 (p.10 et 11) (départ au premier du mois selon la règle des 15 jours, absences non payées exclues, service national et services antérieurs reconnus) ne sont pas calculées.",
+          "Aucune grille postérieure au 2021-05-01 n'est présente dans les sources ; la grille du 2021-05-01 est la dernière transcrite."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس جدولي الأجور (الصفحتان 22 و23)، يساوي عدد «الأقدمية الفعلية» لكل عمود (1، 2، 3، 4، 5، 7، …، 33) مجموع مدد البقاء إلى هذا العمود، مع احتساب التربص بسنة واحدة؛ ويغطي العمود k الفترة من نهاية العمود السابق إلى هذا العدد (التربص: من 0 إلى سنة واحدة؛ الدرجة 19: من 31 إلى 33 سنة).",
+          "يُطبَّق عمود «التربص» (العمود الأول من الجدولين) على أقدمية من 0 إلى سنة واحدة: يحدد الفصل 11 (الصفحة 8) فترة التربص أو التجربة بسنة واحدة قابلة للتجديد مرة واحدة؛ ولا يبيّن الجدول ما ينطبق خلال فترة التجديد؛ ولا يقع التثبت من أن العون في فترة تربص.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب أحكام الفصل 13 (جديد) أ وآخر الفصل 13 (الصفحتان 10 و11) (بداية الاحتساب من أول الشهر حسب قاعدة الخمسة عشر يوما، واستثناء فترات التغيب بدون أجر، واحتساب الخدمة الوطنية والخدمات السابقة المعترف بها).",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-05-01؛ وجدول 2021-05-01 هو آخر جدول تم نقله."
+        ],
+        "table_id": "BQ_TOUS_AGENTS_2021-05-01",
+        "effective_date": "2021-05-01",
+        "date_calcul": "2022-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/البنوك.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/banques.json",
+        "decision_ref": "D46"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-36-refus-banques-prime-transport-sans-date",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de transport (article 49, page 20) : montants par grade sans date d'effet dans la source, et aucun avenant ne révise cet article (p.3). Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة النقل (الفصل 49، الصفحة 20): مقادير حسب الرتبة دون تاريخ نفاذ في المصدر، ولم يقع تنقيح هذا الفصل بأي ملحق تعديلي (الصفحة 3). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-37-refus-banques-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 5 ans = borne commune aux degrés [5, 6] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 5 سنة تقع على الحد المشترك بين الدرجات [5, 6] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-38-refus-banques-avant-2020-09-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille BANQUES/tous_agents en vigueur au 2020-08-31 (première date d'effet disponible : 2020-09-01).",
+      "message_ar": "لا يوجد جدول أجور BANQUES/tous_agents ساري المفعول بتاريخ 2020-08-31 (أول تاريخ نفاذ متوفر: 2020-09-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-39-refus-banques-anciennete-33-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 33 ans : les grilles de la convention des banques s'arrêtent au degré 19 (33 ans) ; l'article 47 (page 19) prévoit que le plus haut degré est atteint en 33 ans au plus et ne précise pas ce qui s'applique au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 33 ans).",
+      "message_ar": "أقدمية 33 سنة: ينتهي جدولا أجور اتفاقية البنوك عند الدرجة 19 (33 سنة)؛ وينص الفصل 47 (الصفحة 19) على بلوغ أعلى درجة في مدة أقصاها 33 سنة دون تحديد ما ينطبق بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 33 سنة)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   }

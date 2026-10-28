@@ -3144,6 +3144,448 @@
     "page": 25,
     "emplacement": "cinq grilles, une par population : population obligatoire"
    }
+  },
+  {
+   "id": "TB-98",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "agent_services_3",
+     "date": "2020-09-01",
+     "anciennete_annees": 0.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1523.106",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 22,
+    "emplacement": "grille n° 01 (p.22, en vigueur à partir du 1er septembre 2020), ligne 1 depuis le haut, colonne 1 (stage) depuis la droite (ancienneté imprimée 1)",
+    "valeur_imprimee": "1523,106"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-99",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "commis_3",
+     "date": "2021-04-30",
+     "anciennete_annees": 14
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1862.796",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 22,
+    "emplacement": "grille n° 01 (p.22, en vigueur à partir du 1er septembre 2020), ligne 13 depuis le haut, colonne 10 (degré 10) depuis la droite (ancienneté imprimée 15)",
+    "valeur_imprimee": "1862,796"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-100",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "sous_chef_service_2",
+     "date": "2020-12-31",
+     "anciennete_annees": 24
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2679.026",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 22,
+    "emplacement": "grille n° 01 (p.22, en vigueur à partir du 1er septembre 2020), ligne 25 depuis le haut, colonne 15 (degré 15) depuis la droite (ancienneté imprimée 25)",
+    "valeur_imprimee": "2679,026"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-101",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "chef_section_hors_classe",
+     "date": "2021-05-01",
+     "anciennete_annees": 2.5
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2451.146",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "grille n° 02 (p.23, en vigueur à partir du 1er mai 2021), ligne 20 depuis le haut, colonne 3 (degré 3) depuis la droite (ancienneté imprimée 3)",
+    "valeur_imprimee": "2451,146"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-102",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "sous_directeur",
+     "date": "2023-01-01",
+     "anciennete_annees": 18
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3432.376",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "grille n° 02 (p.23, en vigueur à partir du 1er mai 2021), ligne 30 depuis le haut, colonne 12 (degré 12) depuis la droite (ancienneté imprimée 19)",
+    "valeur_imprimee": "3432,376"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-103",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "agent_suivi_principal",
+     "date": "2024-01-01",
+     "anciennete_annees": 32
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1803.576",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "grille n° 02 (p.23, en vigueur à partir du 1er mai 2021), ligne 8 depuis le haut, colonne 19 (degré 19) depuis la droite (ancienneté imprimée 33)",
+    "valeur_imprimee": "1803,576"
+   },
+   "note": "Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-104",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "tous_agents",
+     "categorie": "commis_principal_1",
+     "date": "2022-01-01",
+     "anciennete_annees": 18
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2110.596",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "grille n° 02 (p.23, en vigueur à partir du 1er mai 2021), ligne 18 depuis le haut, colonne 12 (degré 12) depuis la droite (ancienneté imprimée 19)",
+    "valeur_imprimee": "2110,596"
+   },
+   "note": "Anomalie imprimée conservée (même anomalie dans les deux grilles, D46) ; Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-105",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "categorie": "agent_services_principal",
+     "date": "2022-01-01",
+     "anciennete_annees": 6
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1634.216",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "البنوك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "grille n° 02 (p.23, en vigueur à partir du 1er mai 2021), ligne 4 depuis le haut, colonne 6 (degré 6) depuis la droite (ancienneté imprimée 7)",
+    "valeur_imprimee": "1634,216"
+   },
+   "note": "Anomalie imprimée conservée (même anomalie dans les deux grilles, D46) ; Lecture 300 dpi (2026-10-28), colonne par colonne avec la colonne des rangs ; cellule d'un lot vérifié."
+  },
+  {
+   "id": "TB-106",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "categorie": "redacteur_1",
+     "date": "2022-01-01",
+     "anciennete_annees": 31
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 23,
+    "emplacement": "en-tête : 31 ans termine la colonne 18 et commence la colonne 19"
+   }
+  },
+  {
+   "id": "TB-107",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D46",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "categorie": "directeur_1",
+     "date": "2022-01-01",
+     "anciennete_annees": 34
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 19,
+    "emplacement": "art. 47 : plus haut degré atteint en 33 ans au plus ; rien au-delà (dernière colonne « 33 », p.23)"
+   }
+  },
+  {
+   "id": "TB-108",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "categorie": "commis_1",
+     "date": "2020-08-31",
+     "anciennete_annees": 6
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 22,
+    "emplacement": "grille en vigueur à partir du 1er septembre 2020 ; aucune grille antérieure dans les sources"
+   }
+  },
+  {
+   "id": "TB-109",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D46",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "BANQUES",
+     "code": "prime_representation",
+     "date": "2022-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 20,
+    "emplacement": "art. 50 : montants par grade sans date d'effet ; article non révisé par les avenants (p.3)"
+   }
+  },
+  {
+   "id": "TB-110",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D46",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "BANQUES",
+     "code": "prime_travail_sous_terre",
+     "date": "2022-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 13,
+    "emplacement": "art. 21, l'alinéa sur les agents qui travaillent sous terre : prime fixée par décision de l'employeur, sans montant"
+   }
+  },
+  {
+   "id": "TB-111",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": "D46",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BANQUES",
+     "population": "cadres",
+     "categorie": "commis_1",
+     "date": "2022-01-01",
+     "anciennete_annees": 6
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "البنوك.pdf",
+    "page": 22,
+    "emplacement": "une seule grille par date pour les 34 postes : population unique tous_agents"
+   }
   }
  ]
 }
