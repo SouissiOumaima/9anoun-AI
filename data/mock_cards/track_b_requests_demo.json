@@ -290,5 +290,54 @@
     "operation": "salaire_base",
     "params": {"secteur": "BANQUES", "categorie": "directeur_1", "anciennete_annees": 33, "date": "2022-01-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-40-salaire-gardiennage",
+    "operation": "salaire_base",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "population": "tous_agents", "categorie": "5", "anciennete_annees": 7, "date": "2010-10-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-41-salaire-gardiennage-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "2", "anciennete_annees": 25, "date": "2011-03-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-42-prime-transport-gardiennage-cadres",
+    "operation": "prime",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "code": "prime_transport", "date": "2012-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-43-refus-gardiennage-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "8", "anciennete_annees": 24, "date": "2010-10-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-44-refus-gardiennage-avant-2010-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "8", "anciennete_annees": 5, "date": "2010-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-45-refus-gardiennage-prime-risque-sans-date",
+    "operation": "prime",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "code": "prime_risque_exceptionnel", "date": "2012-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-46-refus-gardiennage-grille-revisee-avenant-7",
+    "operation": "salaire_base",
+    "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "8", "anciennete_annees": 5, "date": "2011-05-01"},
+    "lang": "fr"
   }
 ]

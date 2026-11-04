@@ -117,8 +117,8 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE` ou `BANQUES`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
-| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE` et `BANQUES`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. |
+| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES` ou `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`, `BANQUES` et `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. Gardiennage, sécurité et transport de fonds : une seule population, `tous_agents` (أعوان مؤسسات الحراسة والسلامة ونقل العملة), qui peut être omise ; la catégorie est le numéro « 1 » à « 15 » de la classification (pages 16 à 20 de la convention), sans alias par métier. |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. Associations pour personnes handicapées : la clé est le chiffre romain imprimé sur la ligne de la grille (`"I"` à `"VI"` selon la population) ; le numéro de catégorie de l'annexe est accepté comme alias (`"1"` → `"I"`, `"2"` → `"II"`…), et `detail` renvoie `categorie` (clé) et `categorie_demandee` (alias reçu). Pour `techniciens`, seuls `"I"` (alias `"1"`) et `"III+II"` existent : `"III+II"` est une clé unique, et `"II"`, `"III"`, `"2"` ou `"3"` sont refusés (`PARAM_INVALIDE`), car l'annexe 4 ne confirme pas que les catégories 2 et 3 partagent cette ligne (D23). |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
 | `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). **Plus de plafond fixe** : au-delà du dernier degré, l'article 13 de chaque convention s'applique (D10, voir §7). Métallurgie : paliers exacts 22, 24, 26… ans refusés (`PARAM_INVALIDE`). BTP `admin_tech` : 27 ans pile refusé (`PARAM_INVALIDE`) ; au-delà de la fenêtre de la case cible (29 ou 30 ans selon la catégorie) et pour la catégorie 19, refus `SOURCE_MANQUANTE`. Associations pour personnes handicapées : le degré k couvre de 2k−2 à 2k ans (lecture affichée dans `detail.hypotheses`) ; bornes 2, 4, …, 30 refusées (`PARAM_INVALIDE`) ; à partir de 32 ans, refus `SOURCE_MANQUANTE`, car la convention ne prévoit rien au-delà du degré 16 (D23). |
@@ -469,7 +469,7 @@ Draft202012Validator(schema).validate(ma_requete)
 
 ## 7. Ce qui n'est pas encore couvert
 
-- **Six secteurs ont des données vérifiées :**
+- **Sept secteurs ont des données vérifiées :**
   - `METALLURGIE_BATIMENT` (D4) : 6 grilles (3 dates d'effet × 2 populations)
     et 6 primes ;
   - `BATIMENT_TRAVAUX_PUBLICS` (D9) : 6 grilles (3 dates d'effet × 2
@@ -481,7 +481,10 @@ Draft202012Validator(schema).validate(ma_requete)
   - `ENSEIGNEMENT_PRIVE` (D38) : 5 grilles (1 date d'effet, 5 populations,
     368 montants) et 7 primes datées ;
   - `BANQUES` (D46) : 2 grilles (2 dates d'effet, une seule population,
-    1 292 montants), aucune prime couverte.
+    1 292 montants), aucune prime couverte ;
+  - `GARDIENNAGE_SECURITE_TRANSPORT_FONDS` (D47) : 1 grille (1 date d'effet,
+    une seule population, 210 montants, valable jusqu'au 2011-04-30) et
+    3 primes datées.
 
   Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
@@ -502,6 +505,9 @@ Draft202012Validator(schema).validate(ma_requete)
   - Grilles des banques : à partir du 2020-09-01 ; après le 2021-05-01, la
     grille du 2021-05-01 reste appliquée, pour la même raison (hypothèse
     affichée dans `detail`).
+  - Grille du gardiennage : du 2010-05-01 au 2011-04-30 seulement ; avant
+    et après, refus `SOURCE_MANQUANTE` (barème n° 1 absent ; l'avenant n° 7,
+    effet 2011-05-01, a révisé les salaires et sa grille est absente).
   - SMIG : seul le décret n°769/2022 (effet 2022-10-01) est vérifié. Le module
     ne connaît pas de SMIG postérieur.
 - **Secteur `BATIMENT_TRAVAUX_PUBLICS` : couvert pour deux populations
@@ -655,6 +661,36 @@ Draft202012Validator(schema).validate(ma_requete)
   - Anomalies imprimées conservées sans correction (même anomalie dans les
     deux grilles, listées dans le JSON et dans D46).
   - Le régime hebdomadaire n'est pas renseigné (article 17, page 12).
+- **Secteur `GARDIENNAGE_SECURITE_TRANSPORT_FONDS` (D47).**
+  - Une seule population, `tous_agents` (une grille pour les 15
+    catégories, page 21), qui peut être omise. TND/mois (article 43
+    (جديد), page 14) ; 14 degrés.
+  - Catégories : numéro « 1 » à « 15 » imprimé dans la grille, le même que
+    dans la classification (pages 16 à 20) ; le numéro est requis, aucun
+    alias par métier.
+  - Dates : barème n° 2, du 2010-05-01 au 2011-04-30. Avant, refus
+    `SOURCE_MANQUANTE` (barème n° 1 absent) ; à partir du 2011-05-01,
+    refus `SOURCE_MANQUANTE` lu dans le fichier (champ `valide_jusqu_au` de
+    la table : avenant n° 7, page 2, salaires révisés, grille absente).
+  - Degrés : tranches imprimées « 0-1 », « 1-2 », « 2-4 », …, « 22-24 » ;
+    degré 14 lu « 24-26 » (hypothèse affichée) ; bornes exactes 1, 2, 4,
+    …, 24 ans refusées (`PARAM_INVALIDE`) ; à partir de 26 ans, refus
+    `SOURCE_MANQUANTE` (article 44, page 14).
+  - Régimes horaires (48, 54 ou 60 heures, article 17 (جديد), page 9) :
+    une même grille, aucun recalcul d'heures ; régime non renseigné.
+  - Primes couvertes : `prime_transport` (article 46 (جديد), à partir du
+    2012-05-01 ; `groupe` obligatoire : `execution_gestion` ou `cadres` ;
+    montant total, décret n° 503/1982 compris), `prime_presence` (article
+    46-3, à partir du 2006-05-01) et `prime_panier` (article 46-4, à partir
+    du 2006-05-01 ; `condition_remplie` obligatoire : agent de gardiennage
+    permanent ou contractuel, travail continu de plus de 7 h le jour du
+    panier). Présence et panier : montant mensuel imprimé, sans recalcul
+    selon les jours.
+  - Refusés (`SOURCE_MANQUANTE`), avec le texte de refus lu dans le JSON :
+    `prime_risque_exceptionnel` (sans date), `prime_production`,
+    `prime_affectation_categorie_superieure`, `indemnite_fin_service`
+    (formules) et `indemnite_complementaire_provisoire` (incluse dans la
+    grille, sans montant).
 - **Article 13 de la métallurgie (au-delà du degré 11, atteint à 20 ans),
   couvert sous hypothèses (D10).** Montant = degré 11 + n × (degré 11 −
   degré 10), avec n = ⌊(ancienneté − 20) / 2⌋, valeurs de la grille en

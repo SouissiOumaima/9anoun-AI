@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'GARDIENNAGE_SECURITE_TRANSPORT_FONDS' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -3395,6 +3395,412 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "344.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-112",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "344.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "534.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-113",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "534.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "637.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-114",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "637.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "1028.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-115",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "1028.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "1503.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D47",
+   "id": "TB-116",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 21,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "1503.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-117",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "3.120",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-118",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "3.120",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "5.200",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-119",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D47",
+      "page": 14,
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf"
+     }
+    ],
+    "montant": "5.200",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-120",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 24 ans = borne commune aux degrés [13, 14] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D47",
+   "id": "TB-121",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 27 ans : la grille de la convention du gardiennage s'arrête au degré 14 (24 à 26 ans) ; l'article 44 (page 14) répartit le système d'ancienneté sur 26 ans et ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 26 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-122",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille GARDIENNAGE_SECURITE_TRANSPORT_FONDS/tous_agents en vigueur au 2010-04-30 (première date d'effet disponible : 2010-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D47",
+   "id": "TB-123",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille vérifiée après le 2011-04-30 : l'avenant n° 7 (page 2, effet au 1er mai 2011) a révisé les salaires et sa grille n'est pas dans la source ; le barème n° 2 (page 21, en vigueur à partir du 1er mai 2010) ne vaut que jusqu'au 2011-04-30. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D47",
+   "id": "TB-124",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de risque exceptionnel (article 46 مكرر, page 14) : 20 dinars par mois sans date d'effet dans la source ; article ajouté par l'avenant n° 4, l'article 46 ensuite modifié par les avenants n° 5 et n° 7 (p.2). Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "HORS_SCOPE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-125",
+   "obtenu": {
+    "code": "HORS_SCOPE",
+    "message_fr": "prime_panier : condition d'octroi non remplie (agent de gardiennage permanent ou contractuel, en travail continu et sans interruption de plus de 7 h le jour du panier (article 46-4, p.14)) ; la source ne prévoit aucun montant dans ce cas.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
  "date": "2026-10-28",
@@ -3402,121 +3808,121 @@
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 111,
-  "cas_verifies_par_ds5": 101,
+  "cas": 125,
+  "cas_verifies_par_ds5": 115,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "0be1c960ea0d3199be2548d8e56e2efb25a01b45c832d6118bc0c785f3f130ae",
+  "sha256": "f80dfc3b59ecc2dc7c9269b920ebb99ce5666a26940984c860422fce46b4210d",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 101,
+   "cas": 115,
    "citations_valides": {
-    "n": 72,
-    "sur": 72,
+    "n": 80,
+    "sur": 80,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 29,
+    "sur": 35,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 101,
-    "sur": 101,
+    "n": 115,
+    "sur": 115,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 101,
-    "sur": 101,
+    "n": 115,
+    "sur": 115,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 72,
-    "sur": 72,
+    "n": 80,
+    "sur": 80,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 72,
+    "sur": 80,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 29,
+    "sur": 35,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 29,
+    "sur": 35,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 29,
-    "sur": 29,
+    "n": 35,
+    "sur": 35,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 72,
+    "sur": 80,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 111,
+   "cas": 125,
    "citations_valides": {
-    "n": 72,
-    "sur": 72,
+    "n": 80,
+    "sur": 80,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 39,
+    "sur": 45,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 111,
-    "sur": 111,
+    "n": 125,
+    "sur": 125,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 111,
-    "sur": 111,
+    "n": 125,
+    "sur": 125,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 72,
-    "sur": 72,
+    "n": 80,
+    "sur": 80,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 72,
+    "sur": 80,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 39,
+    "sur": 45,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 39,
+    "sur": 45,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 39,
-    "sur": 39,
+    "n": 45,
+    "sur": 45,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 72,
+    "sur": 80,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -3579,10 +3985,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 66,
+    "cas": 74,
     "citations_valides": {
-     "n": 66,
-     "sur": 66,
+     "n": 74,
+     "sur": 74,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -3591,24 +3997,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 66,
-     "sur": 66,
+     "n": 74,
+     "sur": 74,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 66,
-     "sur": 66,
+     "n": 74,
+     "sur": 74,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 66,
-     "sur": 66,
+     "n": 74,
+     "sur": 74,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 66,
+     "sur": 74,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -3629,7 +4035,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 66,
+     "sur": 74,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -3691,7 +4097,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 33,
+    "cas": 39,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -3699,17 +4105,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 33,
+     "sur": 39,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 33,
-     "sur": 33,
+     "n": 39,
+     "sur": 39,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 33,
-     "sur": 33,
+     "n": 39,
+     "sur": 39,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -3726,17 +4132,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 33,
+     "sur": 39,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 33,
+     "sur": 39,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 33,
-     "sur": 33,
+     "n": 39,
+     "sur": 39,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -3805,113 +4211,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 28,
+    "cas": 33,
     "citations_valides": {
-     "n": 6,
-     "sur": 6,
+     "n": 7,
+     "sur": 7,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 22,
+     "sur": 26,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 28,
-     "sur": 28,
+     "n": 33,
+     "sur": 33,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 28,
-     "sur": 28,
+     "n": 33,
+     "sur": 33,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 6,
-     "sur": 6,
+     "n": 7,
+     "sur": 7,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 6,
+     "sur": 7,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 22,
+     "sur": 26,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 22,
+     "sur": 26,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 22,
-     "sur": 22,
+     "n": 26,
+     "sur": 26,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 6,
+     "sur": 7,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 80,
+    "cas": 89,
     "citations_valides": {
-     "n": 63,
-     "sur": 63,
+     "n": 70,
+     "sur": 70,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 17,
+     "sur": 19,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 80,
-     "sur": 80,
+     "n": 89,
+     "sur": 89,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 80,
-     "sur": 80,
+     "n": 89,
+     "sur": 89,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 63,
-     "sur": 63,
+     "n": 70,
+     "sur": 70,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 63,
+     "sur": 70,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 17,
+     "sur": 19,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 17,
+     "sur": 19,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 17,
-     "sur": 17,
+     "n": 19,
+     "sur": 19,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 63,
+     "sur": 70,
      "taux": 0.0
     },
     "statut_erreur": 0

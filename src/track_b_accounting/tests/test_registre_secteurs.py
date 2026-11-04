@@ -40,8 +40,9 @@ def test_registre_actuel_identique():
         "ASSURANCE": "data/processed/salary_grids/assurance.json",
         "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
         "BANQUES": "data/processed/salary_grids/banques.json",
+        "GARDIENNAGE_SECURITE_TRANSPORT_FONDS": "data/processed/salary_grids/gardiennage.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46
+    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -68,7 +69,7 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         salaire_base("SANS_REF", "admin_tech", "4", 15, "2022-06-01")
     assert e.value.code == Refus.SOURCE_MANQUANTE
     assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
-                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES).")
+                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):

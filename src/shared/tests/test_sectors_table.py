@@ -53,8 +53,9 @@ def test_codes_uniques():
 @pytest.mark.parametrize("statut", ["actif", "en_preparation", "aucun"])
 def test_schema_lie_statut_et_champs_ds5(statut):
     """actif ⇒ ds5_code, ds5_decision_ref et evidence renseignés ; en_preparation / aucun ⇒ les trois à null."""
-    actif, vide = copy.deepcopy(ACTIFS[0]), copy.deepcopy(TABLE["sectors"][0])
-    assert vide["ds5_status"] != "actif"
+    actif = copy.deepcopy(ACTIFS[0])
+    vide = {**actif, "ds5_status": "aucun", "ds5_code": None, "ds5_decision_ref": None, "evidence": None}
+    assert erreurs({**TABLE, "sectors": [vide]}) == []
     for champ in ("ds5_code", "ds5_decision_ref", "evidence"):
         if statut == "actif":
             entree = {**actif, champ: None}

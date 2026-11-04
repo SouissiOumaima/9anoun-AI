@@ -17,10 +17,14 @@
         "حراسة",
         "نقل العملة"
       ],
-      "ds5_code": null,
-      "ds5_status": "aucun",
-      "ds5_decision_ref": null,
-      "evidence": null
+      "ds5_code": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D47",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية لأعوان مؤسسات الحراسة والسلامة ونقل العملة"
+      }
     },
     {
       "ds2_code": "construction_metallique",

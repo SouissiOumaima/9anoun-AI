@@ -1,0 +1,666 @@
+{
+ "_meta": {
+  "secteur_code": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لأعوان مؤسسات الحراسة والسلامة ونقل العملة",
+  "convention_fr": "Convention collective sectorielle des agents des entreprises de gardiennage, de sécurité et de transport de fonds",
+  "source_file": "data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+  "pages_sources": [
+   2,
+   8,
+   9,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "Barème n° 2 (p.21) : 210 cellules lues par une double lecture indépendante (0 écart), puis relues contre l'image par une relecture indépendante (aucun écart) ; montants des primes (p.14) relus contre l'image (aucun écart) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image.",
+  "decision_ref": "D47",
+  "currency": "TND",
+  "note_unite": "Art. 43 (جديد) (p.14) : le salaire mensuel est fixé par la grille annexée : TND/mois, sans hypothèse.",
+  "note_degres": "En-tête de la grille (p.21) : degrés 1 à 14 (degré 1 à droite) ; durée de séjour 1, 1, puis 2 ; ancienneté imprimée en tranches « 0-1 », « 1-2 », « 2-4 », …, « 22-24 », et « 24 » pour le degré 14, lu « 24-26 » (durée imprimée et art. 44, hypothèse affichée). Bornes exactes 1, 2, 4, …, 24 refusées (D6) ; à partir de 26 ans : refus (art. 44, p.14).",
+  "note_categories": "Clé de catégorie : numéro imprimé dans la colonne des catégories de la grille (1 à 15), le même que dans le tableau de classification (p.16 à 20) ; aucun alias par métier : le numéro de catégorie est requis.",
+  "note_dates": "Barème n° 2 en vigueur à partir du 2010-05-01 ; le barème n° 1 n'est pas dans la source (refus avant cette date). L'avenant n° 7 (p.2, effet 2011-05-01) révise les salaires et sa grille est absente : refus à partir du 2011-05-01 (valide_jusqu_au).",
+  "remarque_pdf": "Note sous la grille (p.21) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul (aucun montant ni date d'effet).",
+  "remarque_pdf_ar": "ملاحظة تحت جدول الأجور (الصفحة 21): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Art. 17 (جديد) (p.9) : 48 h ; 60 h à partir du 1er mai 2008 pour les agents de gardiennage, premiers agents, maîtres-chiens, chefs d'équipe, de poste et de brigade ; 54 h pour les chauffeurs et convoyeurs de fonds. Une même grille : aucun recalcul d'heures."
+ },
+ "populations": {
+  "tous_agents": {
+   "libelle_fr": "Agents des entreprises de gardiennage, de sécurité et de transport de fonds",
+   "libelle_ar": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 21,
+   "note": "Population unique : une seule grille pour les 15 catégories (p.21) ; la requête peut l'omettre."
+  }
+ },
+ "degres": {
+  "tous_agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "0-1"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "1-2"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2-4"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4-6"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6-8"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8-10"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10-12"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12-14"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14-16"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16-18"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18-20"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20-22"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22-24"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "tous_agents": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 26,
+   "source_pdf_page": 14,
+   "source_article": "44",
+   "regle_fr": "L'article 44 (p.14) répartit le système d'ancienneté sur 26 ans ; la convention ne dit rien au-delà.",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention du gardiennage s'arrête au degré 14 (24 à 26 ans) ; l'article 44 (page 14) répartit le système d'ancienneté sur 26 ans et ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 26 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الحراسة عند الدرجة 14 (من 24 إلى 26 سنة)؛ ويوزع الفصل 44 (الصفحة 14) نظام الأقدمية على مدى 26 سنة ولا ينص على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 26 سنة)."
+  }
+ },
+ "categories": {
+  "tous_agents": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15"
+  ]
+ },
+ "libelles_categories": {
+  "tous_agents": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true,
+    "classification_pages": "16-20"
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "tous_agents": {
+   "fr": [
+    "Degré 14 : l'en-tête de la grille (p.21) imprime seulement « 24 » ; sa durée de séjour imprimée est de 2 ans et l'article 44 (p.14) répartit le système d'ancienneté sur 26 ans : le degré 14 est lu de 24 à 26 ans.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les degrés supplémentaires de la promotion (article 16 ب, p.8) et du reclassement (article 51, p.15) ne sont pas calculés.",
+    "Une même grille vaut pour plusieurs régimes horaires (48, 54 ou 60 heures par semaine, article 17 (جديد), p.9) : aucun recalcul selon les heures n'est fait."
+   ],
+   "ar": [
+    "الدرجة 14: لا يذكر رأس جدول الأجور (الصفحة 21) إلا العدد «24»؛ ومدة البقاء المطبوعة بهذه الدرجة سنتان، ويوزع الفصل 44 (الصفحة 14) نظام الأقدمية على مدى 26 سنة: تُعتبر الدرجة 14 من 24 إلى 26 سنة.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الدرجة الإضافية عند الترقية (الفصل 16 ب، الصفحة 8) ولا الدرجات الإضافية عند إعادة الترتيب (الفصل 51، الصفحة 15).",
+    "يُطبَّق جدول الأجور نفسه على عدة أنظمة توقيت (48 أو 54 أو 60 ساعة في الأسبوع، الفصل 17 (جديد)، الصفحة 9): لا يقع أي احتساب حسب عدد الساعات."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "46 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2012-05-01",
+     "execution_gestion": 20.000,
+     "cadres": 25.000
+    }
+   ],
+   "libelles_groupes": {
+    "execution_gestion": {
+     "fr": "Agents d'exécution et de gestion",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "note": "Montant total : il comprend le montant fixé par le décret n° 503 du 16 mars 1982 (article 46 (جديد), p.14) ; aucune addition n'est faite.",
+   "note_ar": "مبلغ جملي: تشتمل منحة النقل على المقدار المضبوط بالأمر عدد 503 لسنة 1982 المؤرخ في 16 مارس 1982 (الفصل 46 (جديد)، الصفحة 14)؛ ولا يقع إضافة أي مبلغ.",
+   "hypotheses": {
+    "fr": [
+     "Les catégories qui forment chaque groupe (exécution et gestion, cadres) ne sont pas définies par la classification : le groupe est choisi par l'appelant."
+    ],
+    "ar": [
+     "لا يحدد التصنيف المهني الأصناف المكونة لكل مجموعة (أعوان التنفيذ والتسيير، الإطارات): يختار الطالب المجموعة."
+    ]
+   }
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "46-3",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2006-05-01",
+     "montant": 3.120
+    }
+   ],
+   "note": "Montant total mensuel imprimé : 3,120 d, à raison de 120 millimes par jour de présence (article 46-3, p.14).",
+   "note_ar": "المقدار الجملي المطبوع: 3,120 د، بحساب 120 مليما عن كل يوم حضور (الفصل 46-3، الصفحة 14).",
+   "hypotheses": {
+    "fr": [
+     "Montant mensuel imprimé servi tel quel : aucun recalcul n'est fait selon le nombre de jours."
+    ],
+    "ar": [
+     "يُرجَع المبلغ الشهري المطبوع كما هو: لا يقع أي احتساب حسب عدد الأيام."
+    ]
+   }
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة السلة",
+   "label_fr": "Prime de panier",
+   "source_article": "46-4",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2006-05-01",
+     "montant": 5.200
+    }
+   ],
+   "condition": "agent de gardiennage permanent ou contractuel, en travail continu et sans interruption de plus de 7 h le jour du panier (article 46-4, p.14)",
+   "note": "Montant mensuel imprimé : 5,200 d, à raison de 200 millimes par jour de travail effectif (article 46-4, p.14).",
+   "note_ar": "المقدار المطبوع: 5,200 د في الشهر، بحساب 200 مليم عن كل يوم عمل فعلي (الفصل 46-4، الصفحة 14).",
+   "hypotheses": {
+    "fr": [
+     "Montant mensuel imprimé servi tel quel : aucun recalcul n'est fait selon le nombre de jours."
+    ],
+    "ar": [
+     "يُرجَع المبلغ الشهري المطبوع كما هو: لا يقع أي احتساب حسب عدد الأيام."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_risque_exceptionnel": {
+   "source_pdf_page": 14,
+   "source_article": "46 مكرر",
+   "message_fr": "Prime de risque exceptionnel (article 46 مكرر, page 14) : 20 dinars par mois sans date d'effet dans la source ; article ajouté par l'avenant n° 4, l'article 46 ensuite modifié par les avenants n° 5 et n° 7 (p.2). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة خطر استثنائية (الفصل 46 مكرر، الصفحة 14): 20 دينارا شهريا دون تاريخ نفاذ في المصدر؛ أضيف هذا الفصل بالملحق التعديلي عدد 4 ثم نُقّح الفصل 46 بالملحقين التعديليين عدد 5 وعدد 7 (الصفحة 2). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans date"
+  },
+  "prime_production": {
+   "source_pdf_page": 14,
+   "source_article": "47",
+   "message_fr": "Prime de production (article 47, page 14) : formule (salaire de base × note / 20, au plus un mois) pour les 48 heures, et 5 dinars par mois sans date d'effet pour les 54 et 60 heures. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 47، الصفحة 14): صيغة حسابية (أجر شهر أساسي × العدد / 20، دون تجاوز أجر شهر) بالنسبة لـ 48 ساعة، و5 دنانير شهريا دون تاريخ نفاذ بالنسبة لـ 54 و60 ساعة. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule, sans date"
+  },
+  "prime_affectation_categorie_superieure": {
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Prime d'affectation à une catégorie supérieure (article 13, page 8) : formule (différence entre le salaire de la catégorie d'origine et celui de la catégorie supérieure, trois mois au plus), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة القيام بعمل من صنف أعلى (الفصل 13، الصفحة 8): صيغة حسابية (الفارق بين أجر الصنف الأصلي وأجر الصنف الأعلى، لمدة لا تتجاوز ثلاثة أشهر)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 13,
+   "source_article": "39 (جديد)",
+   "message_fr": "Indemnité de fin de service (article 39 (جديد), page 13) : formule (un jour de salaire par mois de service, au plus quatre mois de salaire), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 39 (جديد)، الصفحة 13): صيغة حسابية (أجر يوم عن كل شهر عمل، دون تجاوز أجر أربعة أشهر)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_complementaire_provisoire": {
+   "source_pdf_page": 21,
+   "source_article": "ملاحظة",
+   "message_fr": "Indemnité complémentaire provisoire (article ملاحظة, page 21) : la note sous la grille indique que les salaires l'incluent (décrets n° 437 du 7 avril 1981 et n° 501 du 16 mars 1982), sans montant ni date d'effet. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المنحة التكميلية المؤقتة (الفصل ملاحظة، الصفحة 21): تذكر الملاحظة تحت جدول الأجور أن الأجور تتضمنها (الأمر عدد 437 المؤرخ في 7 أفريل 1981 والأمر عدد 501 المؤرخ في 16 مارس 1982)، دون مبلغ ولا تاريخ نفاذ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "incluse dans la grille, sans montant"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "GS_TOUS_AGENTS_2010-05-01",
+   "numero_imprime": 2,
+   "population": "tous_agents",
+   "effective_date": "2010-05-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "valide_jusqu_au": {
+    "date": "2011-04-30",
+    "source_pdf_page": 2,
+    "source_article": "الملحق التعديلي عدد 7",
+    "message_fr": "Aucune grille vérifiée après le 2011-04-30 : l'avenant n° 7 (page 2, effet au 1er mai 2011) a révisé les salaires et sa grille n'est pas dans la source ; le barème n° 2 (page 21, en vigueur à partir du 1er mai 2010) ne vaut que jusqu'au 2011-04-30. Aucun montant n'est renvoyé.",
+    "message_ar": "لا يوجد جدول أجور مُتحقَّق منه بعد 2011-04-30: راجع الملحق التعديلي عدد 7 (الصفحة 2، تاريخ المفعول غرة ماي 2011) الأجور وجدوله غير موجود في المصدر؛ ولا ينطبق جدول الأجور عدد 2 (الصفحة 21، يقع العمل به بداية من 1 ماي 2010) إلا إلى غاية 2011-04-30. لا يُرجَع أي مبلغ."
+   },
+   "valeurs": {
+    "1": [
+     344.500,
+     346.700,
+     348.900,
+     351.100,
+     353.300,
+     355.500,
+     357.700,
+     359.900,
+     362.100,
+     364.300,
+     366.500,
+     371.200,
+     373.400,
+     375.600
+    ],
+    "2": [
+     383.500,
+     386.900,
+     390.300,
+     393.700,
+     397.100,
+     400.500,
+     403.900,
+     409.800,
+     413.200,
+     416.600,
+     420.000,
+     423.400,
+     426.800,
+     430.200
+    ],
+    "3": [
+     419.500,
+     424.100,
+     428.700,
+     433.300,
+     440.400,
+     445.000,
+     449.600,
+     454.200,
+     458.800,
+     463.400,
+     468.000,
+     472.600,
+     479.700,
+     484.300
+    ],
+    "4": [
+     474.500,
+     480.000,
+     488.000,
+     493.500,
+     499.000,
+     504.500,
+     510.000,
+     515.500,
+     521.000,
+     526.500,
+     534.500,
+     540.000,
+     545.500,
+     551.000
+    ],
+    "5": [
+     490.000,
+     495.000,
+     500.000,
+     505.000,
+     510.000,
+     515.000,
+     520.000,
+     525.000,
+     532.500,
+     537.500,
+     544.500,
+     551.500,
+     558.500,
+     564.500
+    ],
+    "6": [
+     581.000,
+     587.000,
+     593.000,
+     599.000,
+     604.000,
+     612.500,
+     619.500,
+     626.500,
+     633.500,
+     640.500,
+     646.500,
+     655.000,
+     661.000,
+     667.000
+    ],
+    "7": [
+     604.000,
+     613.500,
+     620.500,
+     637.500,
+     644.500,
+     651.500,
+     661.000,
+     668.000,
+     675.000,
+     682.000,
+     687.000,
+     692.000,
+     697.000,
+     702.000
+    ],
+    "8": [
+     716.500,
+     724.500,
+     732.500,
+     740.500,
+     751.000,
+     759.000,
+     767.000,
+     775.000,
+     783.000,
+     791.000,
+     801.000,
+     811.000,
+     817.000,
+     824.000
+    ],
+    "9": [
+     792.500,
+     804.000,
+     813.000,
+     822.000,
+     831.000,
+     840.000,
+     849.000,
+     858.000,
+     867.000,
+     879.000,
+     891.000,
+     903.000,
+     909.000,
+     915.000
+    ],
+    "10": [
+     915.000,
+     925.000,
+     935.000,
+     945.000,
+     955.000,
+     965.000,
+     975.000,
+     985.000,
+     995.000,
+     1005.000,
+     1015.000,
+     1030.000,
+     1045.000,
+     1053.000
+    ],
+    "11": [
+     951.000,
+     962.000,
+     973.000,
+     984.000,
+     995.000,
+     1006.000,
+     1017.000,
+     1028.000,
+     1039.000,
+     1050.000,
+     1061.000,
+     1076.000,
+     1091.000,
+     1107.000
+    ],
+    "12": [
+     1050.000,
+     1065.000,
+     1080.000,
+     1095.000,
+     1110.000,
+     1125.000,
+     1140.000,
+     1155.000,
+     1170.000,
+     1185.000,
+     1200.000,
+     1215.000,
+     1220.000,
+     1224.000
+    ],
+    "13": [
+     1086.000,
+     1101.000,
+     1116.000,
+     1131.000,
+     1146.000,
+     1161.000,
+     1176.000,
+     1191.000,
+     1206.000,
+     1221.000,
+     1236.000,
+     1251.000,
+     1266.000,
+     1278.000
+    ],
+    "14": [
+     1185.000,
+     1200.000,
+     1215.000,
+     1230.000,
+     1245.000,
+     1260.000,
+     1275.000,
+     1290.000,
+     1305.000,
+     1320.000,
+     1335.000,
+     1355.000,
+     1375.000,
+     1395.000
+    ],
+    "15": [
+     1275.000,
+     1291.000,
+     1307.000,
+     1323.000,
+     1339.000,
+     1355.000,
+     1371.000,
+     1387.000,
+     1403.000,
+     1423.000,
+     1443.000,
+     1463.000,
+     1483.000,
+     1503.000
+    ]
+   }
+  }
+ ]
+}

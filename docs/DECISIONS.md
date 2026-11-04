@@ -1667,6 +1667,7 @@ main) ; 13 réussis sur une fusion à blanc avec la PR #15.
 Mise à jour : l'entrée assurance est passée à actif (D29).
 Mise à jour : l'entrée enseignement_prive est passée à actif (D38).
 Mise à jour : l'entrée banques est passée à actif (D46).
+Mise à jour : l'entrée gardiennage_securite_transport_fonds est passée à actif (D47).
 
 ---
 
@@ -2111,3 +2112,116 @@ La couche texte du PDF est inutilisable : aucun texte arabe n'est cité (`texte_
 - Tests : `test_banques.py` ; listes de secteurs actifs des tests existants ; démos 34 à 39 et jeu de référence.
 
 **Statut** : ✅ activée (2026-10-28) ; `pytest` complet : tous réussis.
+
+---
+
+### D47 — Grille salariale GARDIENNAGE_SECURITE_TRANSPORT_FONDS (pages 2, 8-9, 13-21)
+
+**Numéro** : D47, à la suite de D46 ; `origin/main` s'arrête à D46 et aucune branche distante ne réserve D47 (vérifié
+avec `git fetch origin` le 2026-10-28).
+
+**Source** : `data/raw/pdf/أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf` (21 pages). Couche texte des pages 1 à 20 :
+chiffres lisibles, arabe illisible (glyphes privés) ; page 21 sans couche texte (scan en basse résolution, environ
+100 dpi). Tous les textes ont été lus sur les images ; les chiffres de la couche texte (p.14) servent de seconde
+source. Pages utilisées : p.2 (avenants 1 à 7), art. 13 et 16 (p.8), art. 17 (جديد) (p.9), art. 39 (جديد) (p.13),
+art. 43 (جديد) à 47 (p.14), art. 50 et 51 (p.15), classification (p.16 à 20), grille (p.21).
+
+**Constat** :
+- Une seule grille, « barème n° 2 », en vigueur à partir du 1er mai 2010 (p.21) : 15 lignes (catégories 1 à 15) ×
+  14 degrés, soit 210 montants. Le barème n° 1 n'est pas dans la source.
+- Avenant n° 7 (p.2) : signé le 17 avril 2013, effet au 1er mai 2011, révise l'art. 46 et les salaires ; sa grille n'est
+  pas dans la source.
+- En-tête : degrés 1 à 14 (degré 1 à droite) ; durée de séjour 1, 1, puis 2 ; ancienneté imprimée en tranches « 0-1 »,
+  « 1-2 », « 2-4 », …, « 22-24 », et « 24 » seul pour le degré 14. Art. 44 (p.14) : système d'ancienneté réparti sur
+  26 ans (somme des durées imprimées : 26).
+- Art. 43 (جديد) (p.14) : salaire **mensuel** fixé par la grille annexée.
+- Art. 17 (جديد) (p.9) : 48 h ; 60 h à partir du 1er mai 2008 pour les agents de gardiennage et leurs chefs ; 54 h pour
+  les chauffeurs et convoyeurs de fonds. Une même grille pour tous ces régimes.
+- Classification (p.16 à 20) : 15 catégories numérotées, décrites par métiers (liste ouverte) ; la grille reprend les
+  mêmes numéros.
+- Note sous la grille (p.21) : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril
+  1981, relevée par le décret n° 501 du 16 mars 1982), sans montant ni date ; `_meta.remarque_pdf`.
+
+#### Décisions (validées par DS5)
+
+1. **Population unique** `tous_agents`, facultative dans la requête (D29) ; donnée, elle doit être `tous_agents`.
+2. **Clés de catégorie** : numéros imprimés « 1 » à « 15 », sans alias par métier ; le numéro de catégorie est requis
+   (classification p.16 à 20).
+3. **Degrés** : libellés imprimés « 0-1 » … « 22-24 » ; degré 14 lu **« 24-26 »** (durée imprimée de 2 ans et art. 44),
+   hypothèse affichée ; bornes exactes 1, 2, 4, …, 22, **24** refusées (`PARAM_INVALIDE`, D6) ; à partir de 26 ans,
+   refus `SOURCE_MANQUANTE` qui cite l'art. 44 (p.14).
+4. **Dates** : avant le 2010-05-01, `SOURCE_MANQUANTE` (barème n° 1 absent) ; du 2010-05-01 au 2011-04-30, barème
+   n° 2 ; **à partir du 2011-05-01, `SOURCE_MANQUANTE`** (avenant n° 7, p.2 : salaires révisés, grille absente). Champ
+   facultatif `valide_jusqu_au` de la table (voir « Mise en œuvre »).
+5. **Unité** : TND/mois, écrite dans l'art. 43 : aucune hypothèse d'unité.
+6. **Régimes horaires** (art. 17) : **aucun recalcul d'heures** ; `regime_hebdomadaire` null ; hypothèse affichée.
+7. **Ancienneté** : ancienneté de progression déjà établie ; degrés supplémentaires de la promotion (art. 16 ب) et
+   du reclassement (art. 51) non calculés (hypothèse affichée).
+8. **Primes couvertes** :
+   - `prime_transport` (art. 46 (جديد), p.14), à partir du 2012-05-01 : 20,000 (`execution_gestion`, agents
+     d'exécution et de gestion) et 25,000 (`cadres`) TND/mois ; le montant **comprend** celui du décret n° 503 du
+     16 mars 1982 (total, aucune addition) ; groupe choisi par l'appelant (la classification ne rattache pas les
+     catégories aux groupes) ;
+   - `prime_presence` (art. 46-3, p.14), à partir du 2006-05-01 : 3,120 TND/mois (120 millimes par jour de présence) ;
+   - `prime_panier` (art. 46-4, p.14), à partir du 2006-05-01 : 5,200 TND/mois (200 millimes par jour de travail
+     effectif), condition : agent de gardiennage permanent ou contractuel, en travail continu de plus de 7 h le jour du
+     panier (`condition_remplie`) ;
+   - présence et panier : montants mensuels imprimés servis tels quels, sans recalcul selon les jours (hypothèse
+     affichée).
+9. **Non couverts** (`primes_non_couvertes`, `SOURCE_MANQUANTE`, refus lu dans le JSON), selon la consigne de
+   travailler avec les données telles qu'elles sont :
+   - `prime_risque_exceptionnel` (art. 46 مكرر, p.14) : 20 dinars par mois sans date d'effet ; article ajouté par
+     l'avenant n° 4, l'art. 46 ensuite modifié par les avenants n° 5 et n° 7 ;
+   - `prime_production` (art. 47, p.14) : formule pour les 48 h ; 5 dinars par mois sans date pour les 54 et 60 h ;
+   - `prime_affectation_categorie_superieure` (art. 13, p.8) et `indemnite_fin_service` (art. 39 (جديد), p.13) :
+     formules ;
+   - `indemnite_complementaire_provisoire` (note sous la grille, p.21) : incluse dans les salaires, sans montant ni
+     date d'effet.
+10. **Table des secteurs** (D30) : l'entrée `gardiennage_securite_transport_fonds` passe à `actif`, `ds5_code`
+    `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `ds5_decision_ref` D47, preuve `meme_source_file`.
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- Degré 14 lu de 24 à 26 ans (durée imprimée de 2 ans, art. 44 : 26 ans).
+- Ancienneté reçue = ancienneté de progression déjà établie (art. 16 ب et 51 non calculés).
+- Une même grille pour plusieurs régimes horaires (art. 17) : aucun recalcul d'heures.
+- Primes de présence et de panier : montant mensuel imprimé, aucun recalcul selon les jours.
+- Prime de transport : groupe choisi par l'appelant.
+
+#### Anomalies et contrôles de lecture
+
+- Aucune baisse dans la grille : chaque ligne croît de degré en degré et chaque catégorie dépasse celle du dessus.
+- 53 changements de pas d'un degré à l'autre, conservés tels qu'imprimés (aucune correction) ; sauts isolés relus à
+  500 dpi (valeurs telles qu'imprimées) : ligne 1 degré 12 (371.200), ligne 2 degré 8 (409.800), ligne 3 degrés 5
+  et 13 (440.400 ; 479.700), ligne 4 degrés 3 et 11 (488.000 ; 534.500), ligne 7 degré 4 (637.500), ligne 12
+  degrés 13 et 14 (1,220.000 ; 1,224.000), ligne 13 degré 14 (1,278.000).
+- 37 cellules (lignes 1 à 3) sont sous le SMIG vérifié de 2022 (D2) : information seulement ; la grille n'est pas
+  servie après le 2011-04-30.
+- **Statut de vérification** : barème n° 2 (p.21) : 210 cellules lues par une double lecture indépendante (0 écart),
+  puis relues contre l'image par une relecture indépendante (aucun écart) ; montants des primes (p.14) relus contre
+  l'image (aucun écart) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image.
+
+#### Textes arabes
+
+La couche texte du PDF est inutilisable : aucun texte arabe n'est cité (`texte_source_ar` absent). Les titres des
+primes (p.14) et de la convention (p.21) sont saisis depuis l'image ; les libellés de population et de catégorie, les
+messages et les hypothèses sont rédigés (`libelle_ar_redige`).
+
+#### Mise en œuvre
+
+- Données : `data/processed/salary_grids/gardiennage.json` (`_meta.decision_ref` D47, 1 table, 210 montants, 3 primes,
+  5 versements non couverts).
+- **Changement de calc/ (accordé à l'arrêt 3)** : champ facultatif `valide_jusqu_au` sur une table de `grilles`
+  (`date`, `source_pdf_page`, `source_article`, `message_fr`, `message_ar`). `calc/loaders.py` (`valider_grille`) contrôle
+  la date (format, pas avant `effective_date`) et le refus déclaré ; `calc/salary.py` (`table_applicable`) refuse
+  (`SOURCE_MANQUANTE`, texte lu dans le JSON) toute date postérieure. Aucune autre grille ne porte ce champ : les
+  autres secteurs, les démos existantes et la baseline sont inchangés. Aucun schéma modifié.
+- Tests : `test_gardiennage.py` (règles, primes, `valide_jusqu_au` et son validateur) ; listes de secteurs actifs des
+  tests existants ; démos 40 à 46 et jeu de référence (TB-112 à TB-125). `test_sectors_table.py` fabrique désormais son
+  exemple d'entrée inactive (les sept secteurs sont actifs) ; TB-35 (« secteur non couvert ») porte un code fictif.
+- **Effet sur DS1** : l'alias « sécurité » de l'entrée (vocabulaire D21) fait correspondre « sécurité sociale » au
+  secteur désormais actif ; le test DS1 `test_sector_detection_does_not_match_unrelated_substrings` échoue jusqu'à la
+  correction de la correspondance par DS1 (le message sur la sécurité sociale doit rester sans secteur).
+
+**Statut** : ✅ activée (2026-10-28) ; `pytest` complet : tous réussis sauf le test DS1 cité ci-dessus (échec
+attendu, correction demandée à DS1) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image.
