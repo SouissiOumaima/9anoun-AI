@@ -130,10 +130,14 @@
         "البنوك",
         "بنك"
       ],
-      "ds5_code": null,
-      "ds5_status": "aucun",
-      "ds5_decision_ref": null,
-      "evidence": null
+      "ds5_code": "BANQUES",
+      "ds5_status": "actif",
+      "ds5_decision_ref": "D46",
+      "evidence": {
+        "type": "meme_source_file",
+        "source_file": "data/raw/pdf/البنوك.pdf",
+        "convention_ar": "الاتفاقية المشتركة القطاعية لأعوان البنوك والمؤسسات المالية"
+      }
     }
   ],
   "sector_ambiguities": [

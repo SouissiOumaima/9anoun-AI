@@ -1666,6 +1666,7 @@ main) ; 13 réussis sur une fusion à blanc avec la PR #15.
 
 Mise à jour : l'entrée assurance est passée à actif (D29).
 Mise à jour : l'entrée enseignement_prive est passée à actif (D38).
+Mise à jour : l'entrée banques est passée à actif (D46).
 
 ---
 
@@ -1968,7 +1969,7 @@ DS3 reste neutre et transmet l'information brute.
 
 ### D40 — Service DS3 live : même interface que le mock, périmètre et stockage provisoires
 
-**Numéro** : D40 (bloc D39–D45 réservé pour DS3).
+**Numéro** : D40. Les numéros D41 à D45 restent réservés à DS3 pour ses prochaines décisions (aucune PR ne les utilise à ce jour) ; une décision d'un autre DS ne les prend pas.
 
 **Décision** : `src/document_intelligence/service.py` expose `handle_request(request)`, avec exactement la même
 entrée et la même sortie que le mock v2 ; seules les valeurs `mode = "live"` et
@@ -1991,3 +1992,122 @@ est vérifiée avant de lire le moindre fichier.
 **Statut** : ⏳ provisoire (stockage à définir avec DS1 et le backend) ; prouvée par
 `test_document_intelligence_service.py` (cas nominal, même interface que le mock, accès refusés sans appel à
 Gemini, fichier absent, vide ou trop grand, opérations et formats hors périmètre, Gemini indisponible).
+
+---
+
+### D46 — Grille salariale BANQUES (pages 2-3, 8-13, 19-23)
+
+**Numéro** : D46. D31 à D45 sont réservés à DS3 ; `origin/main` s'arrête à D39 (vérifié avec `git fetch origin` le
+2026-10-28).
+
+**Source** : `data/raw/pdf/البنوك.pdf` (23 pages). Couche texte des pages 1 à 21 : chiffres lisibles, arabe illisible
+(glyphes privés) ; pages 22 et 23 sans couche texte (scans tournés à 270°). Tous les textes ont été lus sur les images ;
+les chiffres de la couche texte (p.19 et 20) servent de seconde source. Pages utilisées : p.2-3 (révisions et avenants),
+art. 10 à 13 (p.8-11, recrutement, stage, classification, progression), art. 16 (p.12), art. 17 (p.12), art. 21 (p.13),
+art. 47 (p.19, salaire), art. 49 à 54 (جديد) (p.20-21, primes), art. 57 (p.21), grilles (p.22-23).
+
+**Constat** :
+- Convention révisée signée le 29 novembre 2013, en vigueur au 1er mai 2012 (art. 57, p.21) ; avenants 1 à 5 (p.3), le
+  5e signé le 22 août 2022 avec effet au 1er septembre 2020 (art. 54 et salaires).
+- Deux grilles « barème n° 01 », en vigueur à partir du 1er septembre 2020 (p.22), et « barème n° 02 », à partir du
+  1er mai 2021 (p.23) : 34 lignes × 19 colonnes chacune, soit 1 292 montants. Les grilles des avenants 1 à 4 ne
+  figurent pas dans la source.
+- Chaque ligne imprime son grade et son échelon ; les 34 lignes sont les 34 postes de l'art. 12 (p.8-9), répartis en
+  trois catégories (exécution et services, lignes 1-8 ; réalisation, 9-20 ; gestion administrative et encadrement,
+  21-34).
+- En-tête : colonne 1 (à droite) « stage », colonnes 2 à 19 = degrés 2 à 19 ; durée de séjour vide (stage), 1 (degrés 2
+  à 5), 2 (degrés 6 à 19) ; ancienneté effective 1, 2, 3, 4, 5, 7, …, 33, égale à la somme des durées jusqu'à la colonne
+  (stage compté pour 1 an).
+- Art. 47 (p.19) : le salaire **mensuel** est fixé par la grille annexée selon le grade, l'échelon et le degré ; le plus
+  haut degré est atteint en **33 ans au plus**. L'article ne précise pas ce qui s'applique au-delà.
+- Art. 11 (p.8) : stage ou essai d'un an, renouvelable une fois ; la grille n'indique pas ce qui vaut pendant le
+  renouvellement. Art. 13 (جديد) أ (p.10) : progression automatique et continue selon la
+  grille (règle des 15 jours, absences non payées exclues ; service national et services antérieurs reconnus, p.11).
+- Écarts entre l'art. 12 et les grilles : nom de la 3e catégorie, ordre des agents de suivi et des agents de services,
+  échelons en lettres (art. 12) ou en chiffres (grilles), « principal » imprimé dans la colonne des échelons (lignes 4
+  et 8) ; les libellés suivent les grilles.
+- Note sous chaque grille : les salaires incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981,
+  relevée par le décret n° 501 du 16 mars 1982) et sa hausse de 15 dinars (avenant n° 1 de la convention nationale du
+  9 mars 1989) ; `_meta.remarque_pdf`, mention reproduite sans calcul.
+
+#### Décisions (validées par DS5)
+
+1. **Population unique** `tous_agents` (une grille par date pour les 34 postes) : facultative dans la requête (D29) ;
+   donnée, elle doit être `tous_agents` (sinon `PARAM_INVALIDE`).
+2. **34 clés plates** (grade et échelon imprimés), sans alias : `agent_services_3/2/1`, `agent_services_principal`,
+   `agent_suivi_3/2/1`, `agent_suivi_principal`, `agent_bureau_4/3/2/1`, `commis_3/2/1`, `commis_principal_3/2/1`,
+   `chef_section`, `chef_section_hors_classe`, `redacteur_3/2/1`, `redacteur_principal`, `sous_chef_service_2/1`,
+   `chef_service`, `chef_service_principal`, `fonde_pouvoir`, `sous_directeur`, `directeur_adjoint`, `directeur_3/2/1`.
+3. **Degrés** : libellés « 0-1 » (stage), « 1-2 », …, « 5-7 », …, « 31-33 » (le nombre imprimé marque la fin de la
+   colonne, comme D38) ; bornes exactes 1, 2, 3, 4, 5, 7, …, 31 refusées (`PARAM_INVALIDE`, D6). Colonne « stage »
+   servie de 0 à 1 an (art. 11, p.8 : un an, renouvelable une fois ; la grille n'indique pas ce qui vaut pendant le
+   renouvellement), hypothèse affichée.
+4. **Au-delà du dernier degré** : à partir de 33 ans, refus `SOURCE_MANQUANTE` qui cite l'art. 47 (p.19) ; la règle
+   « ouvert » n'est pas retenue.
+5. **Dates** : avant le 2020-09-01, `SOURCE_MANQUANTE` ; du 2020-09-01 au 2021-04-30, grille n° 01 ; à partir du
+   2021-05-01, grille n° 02, avec l'hypothèse affichée qu'aucune grille postérieure n'est présente dans les sources.
+6. **Unité** : TND/mois, écrite dans l'art. 47 : aucune hypothèse d'unité.
+7. **Ancienneté** : l'ancienneté reçue est l'ancienneté de progression déjà établie ; les règles de l'art. 13 ne sont
+   pas calculées (hypothèse affichée).
+8. **Aucune prime couverte.** Primes non couvertes (`primes_non_couvertes`, `SOURCE_MANQUANTE`, refus lu dans le JSON),
+   selon la consigne de travailler avec les données telles qu'elles sont :
+   - `prime_transport` (art. 49, p.20) et `prime_representation` (art. 50, p.20) : montants par grade sans date
+     d'effet, et aucun avenant ne révise ces articles (p.3) ; tableaux recopiés pour mémoire dans la note de lecture ;
+   - `prime_13e_mois` (art. 51, p.20), `prime_production` (art. 52, p.20, 0 à 250 % du salaire), `prime_bilan`
+     (art. 53, p.20, jusqu'à 200 %), `prime_depart_retraite` (art. 54 (جديد), p.21, douze mois de salaire à partir du
+     31 mai 2021), `prime_fonction_superieure` (art. 16, p.12, différence de salaire entre grades) : formules ;
+   - `prime_travail_sous_terre` (art. 21, p.13, l'alinéa sur les agents qui travaillent sous terre) : prime fixée par
+     décision de l'employeur pour les agents en travail continu sous terre, sans montant.
+9. **Régime hebdomadaire** : `null` (art. 17, p.12 : durée du travail selon la législation, sans nombre d'heures).
+10. **Table des secteurs** (D30) : l'entrée `banques` passe à `actif`, `ds5_code` `BANQUES`, `ds5_decision_ref` D46,
+    preuve `meme_source_file`.
+
+#### Anomalies imprimées conservées
+
+Valeurs imprimées conservées telles quelles, **aucune correction** ; chacune est la **même anomalie dans les deux
+tables** et a été relue à 600 dpi (`anomalies_imprimees` de chaque table, `_meta.remarque_anomalies`). Lignes de haut
+en bas, colonnes depuis la droite (colonne 1 = stage).
+
+| Ligne | Colonne | Table 1 (p.22) | Voisines (col. −1 / +1) | Table 2 (p.23) | Voisines (col. −1 / +1) |
+|---|---|---|---|---|---|
+| 4 et 5 | toutes | lignes identiques (agent de services principal et agent de suivi, échelon 3) | — | lignes identiques | — |
+| 4 | 6 | 1470,216 | 1558,506 / 1567,926 | 1634,216 | 1722,506 / 1731,926 |
+| 5 | 6 | 1470,216 | 1558,506 / 1567,926 | 1634,216 | 1722,506 / 1731,926 |
+| 10 | 5 | 1807,346 | 1806,566 / 1818,126 | 1983,346 | 1982,566 / 1994,126 |
+| 16 | 16 | 1928,226 | 1921,446 / 1935,146 | 2104,226 | 2097,446 / 2111,146 |
+| 18 | 6 | 1871,896 | 1865,646 / 1879,346 | 2047,896 | 2041,646 / 2055,346 |
+| 18 | 12 | 1934,596 | 1906,746 / 1920,446 | 2110,596 | 2082,746 / 2096,446 |
+
+#### Hypothèses affichées (`detail.hypotheses`, `detail.hypotheses_ar`)
+
+- Lecture des degrés : le nombre « ancienneté effective » marque la fin de la colonne (stage : de 0 à 1 an ; degré 19 :
+  de 31 à 33 ans).
+- Colonne « stage » servie de 0 à 1 an (art. 11, p.8 : un an, renouvelable une fois ; la grille n'indique pas ce qui
+  vaut pendant le renouvellement) ; la situation de stage n'est pas vérifiée.
+- Ancienneté reçue = ancienneté de progression déjà établie (art. 13, p.10-11, non calculé).
+- Aucune grille postérieure au 2021-05-01 dans les sources.
+
+#### Textes arabes
+
+La couche texte du PDF est inutilisable : aucun texte arabe n'est cité (`texte_source_ar` absent). Les libellés arabes
+(population, catégories, lignes) reprennent le mot imprimé sur les grilles, saisi à la main depuis l'image
+(`libelle_ar_redige`) ; les messages et hypothèses arabes sont rédigés.
+
+#### Contrôles de lecture
+
+- Double lecture indépendante des 1 292 cellules (200 dpi ligne par ligne, 300 dpi colonne par colonne) : 1 écart
+  (table 1, ligne 28, colonne 7), tranché à 600 dpi (2659,326 ; erreur de saisie de la première lecture).
+- Contrôles (jamais utilisés pour corriger ni remplir une cellule) : l'écart table 2 − table 1 est constant sur chaque
+  ligne, sans exception (+164 lignes 1-8, +176 lignes 9-18, +208 lignes 19-23, +239 lignes 24-28, +298 lignes 29-34) ;
+  anomalies ci-dessus signalées et confirmées à l'image ; aucune cellule sous le SMIG vérifié (D2).
+- **Statut de vérification** : Les tables 1 et 2 ont été relues cellule par cellule sur l'image (1 292 cellules) par
+  une seconde lecture indépendante de la double lecture initiale ; l'écart entre la table 2 et la table 1 est constant
+  sur chaque ligne ; contrôle humain des extrémités de chaque ligne et des cellules signalées.
+
+#### Mise en œuvre
+
+- Données : `data/processed/salary_grids/banques.json` (`_meta.decision_ref` D46, 2 tables, 1 292 montants, aucune
+  prime, 8 primes non couvertes). Aucune modification de `calc/` ni de schéma.
+- Tests : `test_banques.py` ; listes de secteurs actifs des tests existants ; démos 34 à 39 et jeu de référence.
+
+**Statut** : ✅ activée (2026-10-28) ; `pytest` complet : tous réussis.

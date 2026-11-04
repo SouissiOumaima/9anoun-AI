@@ -379,7 +379,7 @@ def test_b1_cellules_de_base_verifiees():
 
 def test_b1_secteur_charge():
     assert loaders.decouvrir_grilles().keys() == {"METALLURGIE_BATIMENT", "BATIMENT_TRAVAUX_PUBLICS",
-                                                  "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE", "ENSEIGNEMENT_PRIVE"}
+                                                  "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE", "ENSEIGNEMENT_PRIVE", "BANQUES"}
 
 
 # --- lot B2 (p.22, tables 3 et 4 de 2021) : contrôles de lecture --------------------------------------------------
