@@ -1,0 +1,169 @@
+{
+  "version": "ds3_golden_reels.v0",
+  "description": "Jeu de référence DS3 sur des fiches de paie RÉELLES (publiques, Scribd, usage interne autorisé par l'encadrant), pseudonymisées avant tout usage : noms, CIN, n° CNSS, adresses, comptes et identité de l'employeur remplacés par des valeurs fictives (redaction PyMuPDF : le texte d'origine est supprimé, pas seulement recouvert). Les PDF pseudonymisés restent HORS du dépôt (dossier local, voir sources_documents_reels.csv) ; seul ce fichier est versionné. Valeurs attendues relevées à la main ; verification_humaine passe à true après relecture d'une deuxième personne sur le PDF.",
+  "conventions": {
+    "doc_id": "identifiant du document dans sources_documents_reels.csv",
+    "issue": "ok | partiel (au moins une valeur présente mais non convertible ou illisible, attendue à null) | refus",
+    "fields": "valeurs attendues dans la réponse ds3.v2, selon les règles du contrat (D33, D34) ; un champ non listé est attendu absent (null)",
+    "ignorer": "champs non notés : le document est ambigu (deux valeurs imprimées contradictoires, ou information seulement implicite) ; la raison est dans note",
+    "montant": "chaîne à 3 décimales, ex. \"512.027\"",
+    "date": "AAAA-MM-JJ",
+    "principe": "valeur attendue = la réponse qu'un DS3 idéal doit donner selon le contrat ds3.v2 et ses décisions : ce qu'un lecteur attentif lit sur le document, sauf quand une règle du contrat impose volontairement null (ex. année sur 2 chiffres, D33 ; mot à interpréter comme « CDD », D34). Une valeur lisible que DS3 ne trouve pas encore (ex. mois et année sur deux lignes) reste attendue : c'est une limite à améliorer, pas une raison de baisser l'attente."
+  },
+  "cases": [
+    {
+      "id": "DS3-R01A",
+      "categorie": "piege",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": true,
+      "doc_id": "REEL-01A",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_scribd_01a.pdf"
+      },
+      "attendu": {
+        "issue": "ok",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "SALARIE TEST 01",
+          "period_start": "2015-03-01",
+          "period_end": "2015-03-31",
+          "category": "1",
+          "grade": "2",
+          "job_qualification": "Technicien régleur",
+          "gross_salary": "1329.988",
+          "cnss_employee": "122.093"
+        },
+        "ignorer": [
+          "base_salary"
+        ]
+      },
+      "justification": {
+        "document": "paie_scribd_01a.pdf",
+        "page": 1,
+        "emplacement": "bloc salarié (catégorie, échelon) ; tableau : Total Brut, Retenue CNSS"
+      },
+      "note": "Modèle Excel tunisien (bulletin de gauche). Pièges : le mois (« Mars ») et l'année (« 2015 ») sont sur deux lignes différentes ; le salaire de base est contradictoire (944.954 dans le bloc salarié, 1010.971 dans la rubrique) : non noté, le bon comportement serait de le signaler."
+    },
+    {
+      "id": "DS3-R01B",
+      "categorie": "ok",
+      "certitude": "L",
+      "decision": null,
+      "verification_humaine": true,
+      "doc_id": "REEL-01B",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_scribd_01b.pdf"
+      },
+      "attendu": {
+        "issue": "ok",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "SALARIE TEST 01",
+          "period_start": "2015-03-01",
+          "period_end": "2015-03-31",
+          "category": "5",
+          "grade": "3",
+          "job_qualification": "Technicien régleur",
+          "base_salary": "496.704",
+          "gross_salary": "1648.368",
+          "cnss_employee": "151.320"
+        },
+        "ignorer": [
+          "work_hours_regime",
+          "pay_mode"
+        ]
+      },
+      "justification": {
+        "document": "paie_scribd_01b.pdf",
+        "page": 1,
+        "emplacement": "bloc salarié ; tableau : Salaire de base (208 × 2.388), Total Brut, Retenue CNSS"
+      },
+      "note": "Modèle Excel tunisien (bulletin de droite). Mois et année sur deux lignes. 208 (heures) et le taux horaire sont imprimés sans libellé de régime ni de mode de paiement : work_hours_regime et pay_mode non notés."
+    },
+    {
+      "id": "DS3-R02",
+      "categorie": "piege",
+      "certitude": "L",
+      "decision": "D33",
+      "verification_humaine": true,
+      "doc_id": "REEL-02",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_scribd_02.pdf"
+      },
+      "attendu": {
+        "issue": "partiel",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "SALARIE TEST 02",
+          "period_start": null,
+          "period_end": null,
+          "job_qualification": "Gérant",
+          "base_salary": "2485.227",
+          "gross_salary": "2549.307",
+          "cnss_employee": "0.000"
+        },
+        "unreadable": {
+          "period_start": "valeur_incoherente",
+          "period_end": "valeur_incoherente"
+        }
+      },
+      "justification": {
+        "document": "paie_scribd_02.pdf",
+        "page": 1,
+        "emplacement": "« Mois: janvier-22 » ; « Sal de Base : 2485,227 » ; ligne 351 CNSS ; Total Brut"
+      },
+      "note": "Agence de voyages, page 1 seulement (le PDF d'origine contient 4 mois du même salarié). Pièges : « janvier-22 » (année sur 2 chiffres : null selon D33) ; CNSS au taux de 9,18 % mais montant retenu 0,000 ; salaire de base 2485,227 et montant payé 2393,182 (26 jours) sur la même ligne."
+    },
+    {
+      "id": "DS3-R03",
+      "categorie": "partiel",
+      "certitude": "L",
+      "decision": "D34",
+      "verification_humaine": true,
+      "doc_id": "REEL-03",
+      "requete": {
+        "operation": "analyze_document",
+        "expected_type": "fiche_de_paie",
+        "lang": "fr",
+        "file_name": "paie_scribd_03.pdf"
+      },
+      "attendu": {
+        "issue": "partiel",
+        "document_type": "fiche_de_paie",
+        "fields": {
+          "employee_name": "SALARIE TEST 03",
+          "period_start": "2025-01-06",
+          "period_end": "2025-01-19",
+          "category": "6",
+          "job_qualification": "TECHNICIEN",
+          "employment_status": null,
+          "base_salary": "476.586",
+          "gross_salary": "1156.013"
+        },
+        "unreadable": {
+          "employment_status": "valeur_incoherente"
+        },
+        "ignorer": [
+          "cnss_employee",
+          "pay_mode"
+        ]
+      },
+      "justification": {
+        "document": "paie_scribd_03.pdf",
+        "page": 1,
+        "emplacement": "« Période du 06/01/2025 au 19/01/2025 » ; « Statut : CDD » ; rubriques 2001, 4550, 4600"
+      },
+      "note": "Industrie (convention métallurgie), paie sur deux semaines, salaire horaire. Pièges : « Statut : CDD » (interprétation interdite, D34) ; milliers séparés par une espace (« 1 156,013 ») ; CNSS imprimée -111,902 dans le tableau et 111,902 dans le récapitulatif (signe à trancher : non noté) ; « Horaire » n'apparaît que dans le libellé « Salaire de base Horaire » (pay_mode non noté) ; échelon vide."
+    }
+  ]
+}

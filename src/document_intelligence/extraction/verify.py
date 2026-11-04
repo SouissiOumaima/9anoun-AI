@@ -14,9 +14,7 @@ Si un contrôle échoue, la valeur est rejetée (null) : « citation ou silence 
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
-from typing import Final
 
 from pydantic import BaseModel, ConfigDict
 
@@ -28,8 +26,6 @@ from src.document_intelligence.intermediate import (
     TextLine,
     is_unreadable_line,
 )
-
-_SPACES: Final = re.compile(r"[\s  ]+")
 
 
 class RawField(BaseModel):
@@ -55,12 +51,30 @@ class VerifiedField:
     warnings: list[str] = field(default_factory=list)
 
 
+def _is_space(ch: str) -> bool:
+    return ch.isspace() or ch in "\u00a0\u202f"
+
+
+def _canon_with_positions(text: str) -> tuple[str, list[int]]:
+    """Forme canonique (voir canon) et, pour chacun de ses caractères, sa position dans le texte d'origine."""
+    latin = to_latin_digits(text)
+    chars: list[str] = []
+    positions: list[int] = []
+    for i, ch in enumerate(latin):
+        if _is_space(ch) or ch == "ـ":
+            continue
+        for folded in ch.casefold():
+            chars.append(folded)
+            positions.append(i)
+    return "".join(chars), positions
+
+
 def canon(text: str) -> str:
     """Forme comparable d'un texte : chiffres latins, sans espaces, sans tatweel, en minuscules.
 
     « Salaire de base 424,100 » et « salaire  de base ٤٢٤٫١٠٠ » donnent la même chose.
     """
-    return _SPACES.sub("", to_latin_digits(text)).replace("ـ", "").casefold()
+    return _canon_with_positions(text)[0]
 
 
 def _inside_number(text: str, i: int, step: int) -> bool:
@@ -76,21 +90,92 @@ def _inside_number(text: str, i: int, step: int) -> bool:
     return text[i] in ".," and 0 <= j < len(text) and text[j].isdigit()
 
 
+def _digit_run_left(text: str, end: int) -> int:
+    """Début de la suite de chiffres qui se termine juste avant la position end."""
+    start = end
+    while start > 0 and text[start - 1].isdigit():
+        start -= 1
+    return start
+
+
+def _is_integer_group(text: str, start: int, end: int) -> bool:
+    """text[start:end] est-il un groupe de 1 à 3 chiffres qui peut commencer un nombre écrit « 1 156,013 » ?
+
+    Non si c'est la partie décimale d'un nombre (« 9.18 ») ou un morceau d'un nombre plus long.
+    """
+    if not 1 <= end - start <= 3 or not text[start:end].isdigit():
+        return False
+    return not _inside_number(text, start - 1, -1)
+
+
+def _is_thousands_group(text: str, start: int) -> bool:
+    """text[start:] commence-t-il par exactement 3 chiffres qui peuvent suivre un espace des milliers ?
+
+    Convention des fiches tunisiennes : « 1 156,013 » (espace des milliers, virgule décimale) ou « 1 156 ».
+    Après un point (« 200 210.496 »), l'espace sépare deux nombres : ce n'est pas un groupe des milliers.
+    """
+    group = text[start:start + 3]
+    if len(group) != 3 or not group.isdigit():
+        return False
+    after = start + 3
+    if after < len(text) and text[after].isdigit():
+        return False
+    return not (text[after:after + 1] == "." and _inside_number(text, after, 1))
+
+
+def _thousands_space(text: str, i: int) -> bool:
+    """L'espace simple à la position i peut-il être un séparateur des milliers (« 1 156,013 ») ?"""
+    if not (0 < i < len(text) - 1 and _is_space(text[i])):
+        return False
+    if _is_space(text[i - 1]) or _is_space(text[i + 1]):
+        return False  # deux espaces ou plus : séparation entre colonnes
+    return _is_integer_group(text, _digit_run_left(text, i), i) and _is_thousands_group(text, i + 1)
+
+
+def _whole_number_span(text: str, start: int, end: int) -> bool:
+    """Le passage text[start:end] du texte d'origine est-il pris en entier, sans couper un nombre ?
+
+    Les frontières sont vérifiées sur le texte d'origine, avec ses espaces : dans « 9.18 122.093 »,
+    l'espace sépare deux nombres et « 122.093 » est accepté. Un espace qui peut être un séparateur
+    des milliers (« 1 156,013 ») compte comme l'intérieur d'un nombre : « 156,013 » n'y est pas accepté.
+    """
+    first, last = text[start], text[end - 1]
+    if first.isdigit() and (_inside_number(text, start - 1, -1) or _thousands_space(text, start - 1)):
+        return False
+    if last.isdigit() and (_inside_number(text, end, 1) or _thousands_space(text, end)):
+        return False
+    # À l'intérieur du passage, un espace entre deux chiffres doit être un séparateur des milliers :
+    # sinon le passage colle deux nombres différents (« 200 210.496 »).
+    i = start + 1
+    while i < end - 1:
+        if not _is_space(text[i]):
+            i += 1
+            continue
+        gap_end = i
+        while gap_end < end and _is_space(text[gap_end]):
+            gap_end += 1
+        between_digits = text[i - 1].isdigit() and gap_end < end and text[gap_end].isdigit()
+        if between_digits and not (gap_end == i + 1 and _thousands_space(text, i)):
+            return False
+        i = gap_end
+    return True
+
+
 def contains_value(line_text: str, raw: str) -> bool:
     """La valeur recopiée figure-t-elle dans la ligne, en entier ?
 
-    Comparaison sur les formes canoniques. Un nombre doit apparaître entier : « 3 » n'est pas trouvé
-    dans « 2023 », ni « 275,000 » dans « 1.275,000 ».
+    Comparaison sur les formes canoniques (espaces, chiffres arabes et majuscules ignorés), puis contrôle
+    des frontières sur le texte d'origine. Un nombre doit apparaître entier : « 3 » n'est pas trouvé
+    dans « 2023 », ni « 275,000 » dans « 1.275,000 » ou dans « 1 275,000 ».
     """
-    hay, needle = canon(line_text), canon(raw)
+    needle = canon(raw)
     if not needle:
         return False
+    latin = to_latin_digits(line_text)
+    hay, positions = _canon_with_positions(line_text)
     start = hay.find(needle)
     while start != -1:
-        end = start + len(needle)
-        cut_before = needle[0].isdigit() and _inside_number(hay, start - 1, -1)
-        cut_after = needle[-1].isdigit() and _inside_number(hay, end, 1)
-        if not cut_before and not cut_after:
+        if _whole_number_span(latin, positions[start], positions[start + len(needle) - 1] + 1):
             return True
         start = hay.find(needle, start + 1)
     return False
