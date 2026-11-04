@@ -1967,6 +1967,34 @@ DS3 reste neutre et transmet l'information brute.
 
 ---
 
+### D40 — Service DS3 live : même interface que le mock, périmètre et stockage provisoires
+
+**Numéro** : D40. Les numéros D41 à D45 restent réservés à DS3 pour ses prochaines décisions (aucune PR ne les utilise à ce jour) ; une décision d'un autre DS ne les prend pas.
+
+**Décision** : `src/document_intelligence/service.py` expose `handle_request(request)`, avec exactement la même
+entrée et la même sortie que le mock v2 ; seules les valeurs `mode = "live"` et
+`computed_by = "document_intelligence.service"` changent, et DS1 ne modifie qu'une ligne d'import. Le service
+ne lève jamais d'exception. Périmètre live actuel : `analyze_document` sur une fiche de paie en PDF (texte natif) ;
+le reste donne un refus explicite en français et en arabe (`extract_wage_grid` : `PARAM_INVALIDE` ; autre format
+ou autre type de document : `HORS_SCOPE` ; page scannée : `SOURCE_MANQUANTE` en attendant l'OCR). Stockage
+provisoire : dossier racine `DS3_STORAGE_ROOT`, `storage_ref` en `tradrly://cards/<carte>/documents/<document>`
+ou `local://<chemin>`. Contrôles avant toute lecture : carte du document et carte du `storage_ref` égales à la
+carte active, chemin dans le dossier racine, `file_name` sans dossier, taille ≤ 20 Mo.
+
+**Alternatives envisagées** :
+- Faire passer à DS1 un chemin de fichier → rejeté : le contrat ne transmet que `storage_ref`, jamais le contenu.
+- Attendre l'accès au stockage Tradrly avant de livrer → rejeté : DS1 a besoin d'un service live pour tester
+  l'intégration ; seule la résolution de `storage_ref` changera.
+
+**Raison** : DS1 peut tester un scénario réel dès maintenant, sans changer de contrat ; l'isolation des cartes
+est vérifiée avant de lire le moindre fichier.
+
+**Statut** : ⏳ provisoire (stockage à définir avec DS1 et le backend) ; prouvée par
+`test_document_intelligence_service.py` (cas nominal, même interface que le mock, accès refusés sans appel à
+Gemini, fichier absent, vide ou trop grand, opérations et formats hors périmètre, Gemini indisponible).
+
+---
+
 ### D46 — Grille salariale BANQUES (pages 2-3, 8-13, 19-23)
 
 **Numéro** : D46. D31 à D45 sont réservés à DS3 ; `origin/main` s'arrête à D39 (vérifié avec `git fetch origin` le
