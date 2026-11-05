@@ -2,19 +2,31 @@
 
 from __future__ import annotations
 
+import os
 from typing import Any, Mapping
 
 from .document_intelligence_response import normalize_ds3_response
 from .tool_contracts import ToolContractError
 
 DS3Handler = Any
+DS3_HANDLER_MODE_ENV = "DS3_HANDLER_MODE"
+_HANDLER_MODES = frozenset({"mock", "live"})
 
 
 class DocumentIntelligenceAdapter:
-    """Invoke DS3 only with a request bound to DS1's already-scoped context."""
+    """Invoke DS3 only with a request bound to DS1's already-scoped context.
 
-    def __init__(self, handler: DS3Handler | None = None) -> None:
+    DS3 v2 stays on the deterministic mock unless the backend explicitly sets
+    ``DS3_HANDLER_MODE=live`` (or passes ``handler_mode="live"``).  The live
+    service itself resolves the trusted ``storage_ref`` through
+    ``DS3_STORAGE_ROOT``; DS1 never supplies a filesystem path.
+    """
+
+    def __init__(self, handler: DS3Handler | None = None, *, handler_mode: str | None = None) -> None:
         self._handler = handler
+        self._handler_mode = handler_mode or os.getenv(DS3_HANDLER_MODE_ENV, "mock")
+        if self._handler_mode not in _HANDLER_MODES:
+            raise ValueError(f"{DS3_HANDLER_MODE_ENV} must be one of: {', '.join(sorted(_HANDLER_MODES))}")
 
     def __call__(self, payload: Mapping[str, Any]) -> Mapping[str, Any]:
         if payload.get("agent") != "document_intelligence":
@@ -47,6 +59,9 @@ class DocumentIntelligenceAdapter:
             return self._handler
         try:
             if version == "ds3.v2":
+                if self._handler_mode == "live":
+                    from src.document_intelligence.service import handle_request
+                    return handle_request
                 from src.document_intelligence.contract.v2.mock import handle_request
                 return handle_request
             from src.document_intelligence.contract.mock import handle_request

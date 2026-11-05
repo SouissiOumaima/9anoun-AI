@@ -99,7 +99,14 @@ ne constitue une réponse juridique ou comptable réelle.
 
 `hybrid_dispatcher.py` envoie maintenant toute route
 `track_b_accounting.compute` vers le vrai `TrackBAdapter` et le handler DS5.
-DS2, DS3 et DS4 restent sur les mocks jusqu'à livraison de leurs adaptateurs.
+DS2 et DS4 restent sur les mocks jusqu'à livraison de leurs adaptateurs. DS3
+v2 utilise le mock par défaut, mais peut appeler le service réel livré par DS3
+en configurant explicitement le backend avec `DS3_HANDLER_MODE=live`. Dans ce
+mode, `DocumentIntelligenceAdapter` appelle
+`src.document_intelligence.service.handle_request` avec la même requête
+`ds3.v2`; DS3 résout seul le `storage_ref` sous `DS3_STORAGE_ROOT`. DS1 ne
+transmet jamais de chemin local ni de contenu de fichier. Sans cette
+configuration explicite, la démo locale garde le mock et reste reproductible.
 La démo locale utilise ce dispatcher : une demande SMIG complète retourne donc
 un vrai montant et une vraie citation DS5, pas une réponse simulée.
 
