@@ -1,3 +1,4 @@
+from src.orchestrator import sector_mapping
 from src.orchestrator.sector_mapping import needs_sector_clarification, resolve_active_ds5_sector
 from src.orchestrator.track_b_prompt import extract_track_b_prompt
 
@@ -86,3 +87,16 @@ def test_sector_detection_does_not_match_unrelated_substrings() -> None:
     message = "Je veux comprendre mes cotisations de sécurité sociale."
     assert resolve_active_ds5_sector(message) is None
     assert needs_sector_clarification(message) is False
+    assert sector_mapping._matched_sectors(message.casefold()) == []
+
+
+def test_sector_detection_keeps_specific_gardiennage_expressions() -> None:
+    assert [sector["ds2_code"] for sector in sector_mapping._matched_sectors("contrat de gardiennage")] == [
+        "gardiennage_securite_transport_fonds",
+    ]
+    assert [sector["ds2_code"] for sector in sector_mapping._matched_sectors("transport de fonds")] == [
+        "gardiennage_securite_transport_fonds",
+    ]
+    assert [sector["ds2_code"] for sector in sector_mapping._matched_sectors("agent de sécurité")] == [
+        "gardiennage_securite_transport_fonds",
+    ]

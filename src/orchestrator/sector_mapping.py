@@ -130,6 +130,13 @@ def _matched_sectors(message: str) -> list[dict[str, Any]]:
             sector["ds2_code"], sector["label_fr"], sector["label_ar"],
             sector.get("ds5_code") or "", *sector.get("aliases", ()),
         )
+        # D21 keeps the one-word alias "sécurité" for legal-retrieval
+        # vocabulary, but it is too broad for DS1 payroll routing: it also
+        # occurs in ordinary phrases such as "sécurité sociale".  Require a
+        # specific gardiennage expression instead (for example "gardiennage",
+        # "transport de fonds", or the existing "agent de sécurité" alias).
+        if sector["ds2_code"] == "gardiennage_securite_transport_fonds":
+            terms = tuple(term for term in terms if term.casefold() != "sécurité")
         if any(_matches_term(message, term) for term in terms if term):
             matches.append(sector)
     return matches
