@@ -104,8 +104,11 @@ v2 utilise le mock par défaut, mais peut appeler le service réel livré par DS
 en configurant explicitement le backend avec `DS3_HANDLER_MODE=live`. Dans ce
 mode, `DocumentIntelligenceAdapter` appelle
 `src.document_intelligence.service.handle_request` avec la même requête
-`ds3.v2`; DS3 résout seul le `storage_ref` sous `DS3_STORAGE_ROOT`. DS1 ne
-transmet jamais de chemin local ni de contenu de fichier. Sans cette
+`ds3.v2`; DS3 résout seul le `storage_ref` sous `DS3_STORAGE_ROOT`. En mode
+live, DS1 n'accepte que la référence exacte
+`tradrly://cards/<carte-active>/documents/<document-sélectionné>` : jamais un
+chemin local, une autre carte, un autre document ou du contenu de fichier.
+Sans cette
 configuration explicite, la démo locale garde le mock et reste reproductible.
 La démo locale utilise ce dispatcher : une demande SMIG complète retourne donc
 un vrai montant et une vraie citation DS5, pas une réponse simulée.

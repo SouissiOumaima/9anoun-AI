@@ -24,7 +24,9 @@ class DocumentIntelligenceAdapter:
 
     def __init__(self, handler: DS3Handler | None = None, *, handler_mode: str | None = None) -> None:
         self._handler = handler
-        self._handler_mode = handler_mode or os.getenv(DS3_HANDLER_MODE_ENV, "mock")
+        # An empty value is common in local .env files.  It must retain the
+        # safe default rather than making every dispatcher construction fail.
+        self._handler_mode = handler_mode or os.getenv(DS3_HANDLER_MODE_ENV) or "mock"
         if self._handler_mode not in _HANDLER_MODES:
             raise ValueError(f"{DS3_HANDLER_MODE_ENV} must be one of: {', '.join(sorted(_HANDLER_MODES))}")
 
@@ -49,10 +51,26 @@ class DocumentIntelligenceAdapter:
         for key in ("organization_id", "card_id", "card_type"):
             if request_context.get(key) != payload_context.get(key):
                 raise ToolContractError("DS3 context must match the DS1 active context")
+        if request.get("contract_version") == "ds3.v2" and self._handler_mode == "live":
+            self._validate_live_storage_ref(request)
         response = self._resolve_handler(str(request["contract_version"]))(request)
         if not isinstance(response, Mapping):
             raise ToolContractError("DS3 handler must return an object")
         return normalize_ds3_response(response)
+
+    @staticmethod
+    def _validate_live_storage_ref(request: Mapping[str, Any]) -> None:
+        """Allow live DS3 only for the exact backend-authorized card document."""
+
+        context = request["context"]
+        document = request.get("document")
+        if not isinstance(document, Mapping):
+            raise ToolContractError("DS3 live requires a document reference")
+        card_id = context.get("card_id")
+        document_id = document.get("document_id")
+        expected = f"tradrly://cards/{card_id}/documents/{document_id}"
+        if document.get("storage_ref") != expected:
+            raise ToolContractError("DS3 live requires the active card's authorized storage_ref")
 
     def _resolve_handler(self, version: str) -> DS3Handler:
         if self._handler is not None:

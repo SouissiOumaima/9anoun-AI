@@ -154,6 +154,14 @@ def test_document_calculation_rejects_every_mode_other_than_live() -> None:
 
 
 def test_live_ds3_service_can_launch_explicit_ds5_calculation_with_separate_citations(monkeypatch) -> None:
+    cards = web_app._demo_cards()
+    document = cards[0]["data"]["documents"][0]
+    document.update({
+        "label": "Fiche de paie fictive — PDF",
+        "file_name": "paie_fictive_01_fr.pdf",
+        "mime_type": "application/pdf",
+    })
+    monkeypatch.setattr(web_app, "_demo_cards", lambda: cards)
     fields = {
         "period_start": {"value": "2024-01-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-period"},
         "pay_mode": {"value": "mensuel", "value_type": "texte", "confidence": 0.95, "citation_id": "c-mode"},
@@ -168,7 +176,11 @@ def test_live_ds3_service_can_launch_explicit_ds5_calculation_with_separate_cita
     ]
 
     def live_handler(request):
-        assert request["document"]["storage_ref"].startswith("tradrly://cards/company-demo-001/")
+        assert request["document"]["file_name"] == "paie_fictive_01_fr.pdf"
+        assert request["document"]["mime_type"] == "application/pdf"
+        assert request["document"]["storage_ref"] == (
+            "tradrly://cards/company-demo-001/documents/doc-company-payslip-01"
+        )
         return {
             "contract_version": "ds3.v2", "request_id": request["request_id"],
             "operation": request["operation"], "status": "ok", "refus": None,
