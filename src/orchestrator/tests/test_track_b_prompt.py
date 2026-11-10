@@ -86,12 +86,19 @@ def test_prompt_extractor_marks_multiple_active_sectors_for_clarification() -> N
 def test_sector_detection_does_not_match_unrelated_substrings() -> None:
     for message in (
         "Je veux comprendre mes cotisations de sécurité sociale.",
+        "Je veux comprendre mes cotisations de sécurité-sociale.",
         "Calcule le salaire de base agent de sécurité sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base agent de sécurité-sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
         "Calcule le salaire de base assurance sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance-sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
         "Calcule le salaire de base assurance maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance-maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "احسب الأجر الأساسي للتأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي للتأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
     ):
         assert resolve_active_ds5_sector(message) is None
         assert sector_mapping._matched_sectors(message.casefold()) == []
+        assert needs_sector_clarification(message) is False
 
 
 def test_social_protection_wording_cannot_hide_a_building_clarification() -> None:

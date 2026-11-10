@@ -21,7 +21,12 @@ _TABLE_PATH = Path(__file__).resolve().parents[1] / "shared" / "sectors" / "sect
 # sociale" contains the valid but unrelated alias "agent de sécurité", and
 # "assurance sociale" contains the sector name "assurance".
 _NON_SECTOR_SOCIAL_EXPRESSIONS = re.compile(
-    r"\b(?:s[ée]curit[ée]\s+sociale|assurance\s+(?:sociale|maladie))\b",
+    r"\b(?:"
+    r"s[ée]curit[ée][\s-]+sociale|"
+    r"assurance[\s-]+(?:sociale|maladie)|"
+    r"التأمين[\s-]+على[\s-]+المرض|"
+    r"التأمين[\s-]+الاجتماعي"
+    r")\b",
     re.IGNORECASE,
 )
 
