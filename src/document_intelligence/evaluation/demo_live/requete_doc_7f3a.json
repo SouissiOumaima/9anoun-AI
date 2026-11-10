@@ -1,0 +1,23 @@
+{
+  "contract_version": "ds3.v2",
+  "request_id": "integration-doc_7f3a",
+  "lang": "fr",
+  "operation": "analyze_document",
+  "context": {
+    "organization_id": "org_demo",
+    "user_id": "user_comptable_01",
+    "role": "accountant",
+    "card_id": "company_042",
+    "card_type": "company"
+  },
+  "document": {
+    "document_id": "doc_7f3a",
+    "card_id": "company_042",
+    "file_name": "paie_fictive_01_fr.pdf",
+    "mime_type": "application/pdf",
+    "storage_ref": "tradrly://cards/company_042/documents/doc_7f3a"
+  },
+  "options": {
+    "expected_type": "fiche_de_paie"
+  }
+}
