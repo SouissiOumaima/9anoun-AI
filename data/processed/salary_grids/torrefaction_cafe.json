@@ -1,0 +1,655 @@
+{
+ "_meta": {
+  "secteur_code": "TORREFACTION_CAFE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لقلي القهوة",
+  "convention_fr": "Convention collective sectorielle de la torréfaction du café",
+  "source_file": "data/raw/pdf/قلي القهوة.pdf",
+  "pages_sources": [
+   2,
+   3,
+   8,
+   10,
+   14,
+   15,
+   16,
+   17,
+   18
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "195 cellules lues par une double lecture indépendante (rendus à 200 et 280 dpi), comparées par script ; 0 écart, 0 cellule douteuse ; lots de vérification relus contre l'image par DS5 (« LOTS VALIDÉS », aucune correction) ; montants des primes lus deux fois (90 et 170 dpi) et relus contre l'image par DS5.",
+  "decision_ref": "D49",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur les tableaux de salaires (p.17-18). Montants de 2,961 à 4,862 : TND/heure retenu en hypothèse affichée ; l'art. 16 (p.8) distingue les ouvriers payés à l'heure et au mois.",
+  "note_degres": "En-tête des 3 tableaux (p.17-18) : degrés 1 à 13 (degré 1 à droite), durée de séjour imprimée 2 pour chaque degré ; libellés « 0-2 » … « 24-26 » ; bornes exactes 2, 4, …, 24 refusées (D6) ; à partir de 26 ans : refus (art. 52 (جديد), p.15, système d'ancienneté réparti sur 26 ans).",
+  "note_categories": "Clé de catégorie : numéro imprimé « 1 » à « 5 » dans la colonne des catégories (classification, annexe 1, p.16).",
+  "note_dates": "Tableaux n° 1 (2021-12-01, p.17), n° 2 (2023-01-01, p.17) et n° 3 (2024-01-01, p.18) ; refus avant le 2021-12-01.",
+  "remarque_pdf": "Note sous chaque tableau (p.17-18) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحتان 17 و18): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Régime non imprimé sur les tableaux ; l'art. 27 (p.10) majore les heures au-delà de 48 h : aucun recalcul d'heures."
+ },
+ "populations": {
+  "ouvriers_horaires": {
+   "libelle_fr": "Ouvriers payés à l'heure",
+   "libelle_ar": "العمال الخالصون بالساعة",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 17,
+   "note": "Population unique couverte : la requête peut l'omettre."
+  }
+ },
+ "populations_non_couvertes": {
+  "employes_mensuels": {
+   "source_pdf_page": 16,
+   "source_article": "الملحق عدد 1",
+   "message_fr": "Employés payés au mois (classification, annexe 1, page 16, catégories 3 à 5 ; article 16, page 8) : la convention de la torréfaction du café n'imprime aucun tableau de salaires mensuels (tableaux p.17-18 seulement). Aucun montant n'est renvoyé.",
+   "message_ar": "الأعوان الخالصون بالشهر (التصنيف المهني، الملحق عدد 1، الصفحة 16، الأصناف من 3 إلى 5؛ الفصل 16، الصفحة 8): لا تتضمن اتفاقية قلي القهوة أي جدول للأجور الشهرية (الجداول بالصفحتين 17 و18 فقط). لا يُرجَع أي مبلغ."
+  }
+ },
+ "degres": {
+  "ouvriers_horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "ouvriers_horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 26,
+   "source_pdf_page": 15,
+   "source_article": "52 (جديد)",
+   "regle_fr": "L'art. 52 (جديد) (p.15) répartit le système d'ancienneté sur 26 ans ; la convention ne dit rien au-delà.",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de la torréfaction du café s'arrête au degré 13 (24 à 26 ans) ; l'article 52 (جديد) (page 15) répartit le système d'ancienneté sur 26 ans et ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 26 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية قلي القهوة عند الدرجة 13 (من 24 إلى 26 سنة)؛ ويوزع الفصل 52 (جديد) (الصفحة 15) نظام الأقدمية على مدى 26 سنة ولا ينص على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 26 سنة)."
+  }
+ },
+ "categories": {
+  "ouvriers_horaires": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ]
+ },
+ "libelles_categories": {
+  "ouvriers_horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "ouvriers_horaires": {
+   "fr": [
+    "Unité : les tableaux (p.17-18) n'impriment ni « par heure » ni « par mois » ; les montants (2,961 à 4,862) sont lus comme des salaires horaires (TND/heure). Les employés payés au mois n'ont pas de tableau.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les degrés supplémentaires du reclassement (article 52 (جديد), p.15) ne sont pas calculés.",
+    "Le régime horaire n'est pas imprimé sur les tableaux : aucun recalcul selon les heures n'est fait."
+   ],
+   "ar": [
+    "الوحدة: لا تذكر الجداول (الصفحتان 17 و18) «بالساعة» ولا «بالشهر»؛ تُعتبر المبالغ (من 2,961 إلى 4,862) أجورا بالساعة (دينار/ساعة). ولا يوجد جدول للأعوان الخالصين بالشهر.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الدرجات الإضافية عند إعادة الترتيب (الفصل 52 (جديد)، الصفحة 15).",
+    "لا يذكر جدول الأجور نظام التوقيت: لا يقع أي احتساب حسب عدد الساعات."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "49 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 9.364
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 9.996
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 10.671
+    }
+   ],
+   "note": "Prime versée une fois par mois ; montant de chaque date « au titre de » l'année imprimée (art. 49 مكرر (جديد), p.14).",
+   "note_ar": "تسند منحة الحضور مرة في الشهر؛ ولكل تاريخ مبلغ بعنوان السنة المذكورة (الفصل 49 مكرر (جديد)، الصفحة 14)."
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 56.777
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 60.610
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 64.701
+    }
+   ],
+   "note": "Prime globale de transport (منحة جملية) : montant total, aucune addition (art. 50 (جديد), p.14).",
+   "note_ar": "منحة جملية للنقل: مبلغ جملي، ولا يقع إضافة أي مبلغ (الفصل 50 (جديد)، الصفحة 14)."
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "50 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/jour",
+   "montant": 0.533,
+   "effective_date": null,
+   "note": "533 millimes par jour, payés selon la législation en vigueur (art. 50 مكرر (جديد), p.14).",
+   "note_ar": "533 مليما في اليوم تدفع وفقا للتشريع الجاري به العمل (الفصل 50 مكرر (جديد)، الصفحة 14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant journalier imprimé servi tel quel : aucun calcul selon le nombre de jours n'est fait."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ اليومي المطبوع كما هو: لا يقع أي احتساب حسب عدد الأيام."
+    ]
+   }
+  },
+  {
+   "code": "prime_chaleur_salete_poussiere_groupe_a",
+   "label_ar": "منحة الحرارة و الأوساخ والغبرة",
+   "label_fr": "Prime de chaleur, de saleté et de poussière (torréfacteur, meunier, conducteur de la machine d'emballage, agent de maintenance, déchargeur des sacs de café vert)",
+   "source_article": "51 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 8.333,
+   "effective_date": null,
+   "condition": "poste de torréfacteur (قلاي), de meunier (رحاي), de conducteur de la machine d'emballage, d'agent de maintenance ou d'ouvrier chargé de décharger les sacs de café vert (art. 51 مكرر (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_chaleur_salete_poussiere_groupe_b",
+   "label_ar": "منحة الحرارة و الأوساخ والغبرة",
+   "label_fr": "Prime de chaleur, de saleté et de poussière (aide-torréfacteur, aide-meunier)",
+   "source_article": "51 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 6.333,
+   "effective_date": null,
+   "condition": "poste d'aide-torréfacteur (مساعد القلاي) ou d'aide-meunier (مساعد الرحاي) (art. 51 مكرر (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_enseignement_base",
+   "label_ar": "المنحة المدرسية والجامعية",
+   "label_fr": "Prime scolaire et universitaire (enseignement de base)",
+   "source_article": "51-3 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 21.666,
+   "effective_date": null,
+   "condition": "enfant inscrit dans l'enseignement de base ; versée au début de chaque année scolaire (art. 51-3 (جديد), p.15)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_enseignement_secondaire",
+   "label_ar": "المنحة المدرسية والجامعية",
+   "label_fr": "Prime scolaire et universitaire (enseignement secondaire)",
+   "source_article": "51-3 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 26.666,
+   "effective_date": null,
+   "condition": "enfant inscrit dans l'enseignement secondaire ; versée au début de chaque année scolaire (art. 51-3 (جديد), p.15)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_enseignement_superieur",
+   "label_ar": "المنحة المدرسية والجامعية",
+   "label_fr": "Prime scolaire et universitaire (enseignement supérieur)",
+   "source_article": "51-3 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 31.666,
+   "effective_date": null,
+   "condition": "enfant inscrit dans l'enseignement supérieur ; versée au début de chaque année universitaire (art. 51-3 (جديد), p.15)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_deces",
+   "label_ar": "منحة الوفاة",
+   "label_fr": "Prime de décès",
+   "source_article": "51-4",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 110.000,
+   "effective_date": null,
+   "condition": "décès du travailleur en activité dans l'entreprise ; versée à sa veuve ou à ses ayants droit (art. 51-4, p.15)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_depart_retraite": {
+   "source_pdf_page": 14,
+   "source_article": "48 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 48 (جديد), page 14) : montant en mois de salaire (1 à 4 mois selon l'ancienneté), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة خاصة عند الإحالة على التقاعد (الفصل 48 (جديد)، الصفحة 14): مقدار بحساب أجرة شهر إلى أربعة أشهر حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_production": {
+   "source_pdf_page": 14,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime de production et de fin d'année (article 49 (جديد), page 14) : pourcentage du salaire de base brut (3,4 % à 8,5 % selon la note), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج وآخر السنة (الفصل 49 (جديد)، الصفحة 14): نسبة من الأجر الأساسي الخام (من 3.4 % إلى 8.5 % حسب العدد)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CAFE_OUVRIERS_HORAIRES_2021-12-01",
+   "numero_imprime": 1,
+   "population": "ouvriers_horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 17,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     2.961,
+     3.013,
+     3.019,
+     3.024,
+     3.029,
+     3.034,
+     3.039,
+     3.044,
+     3.049,
+     3.054,
+     3.059,
+     3.064,
+     3.069
+    ],
+    "2": [
+     3.285,
+     3.292,
+     3.299,
+     3.306,
+     3.313,
+     3.320,
+     3.327,
+     3.334,
+     3.341,
+     3.348,
+     3.355,
+     3.362,
+     3.369
+    ],
+    "3": [
+     3.560,
+     3.568,
+     3.576,
+     3.584,
+     3.592,
+     3.600,
+     3.608,
+     3.616,
+     3.624,
+     3.632,
+     3.640,
+     3.648,
+     3.656
+    ],
+    "4": [
+     3.831,
+     3.841,
+     3.851,
+     3.861,
+     3.871,
+     3.881,
+     3.891,
+     3.901,
+     3.911,
+     3.921,
+     3.931,
+     3.944,
+     3.954
+    ],
+    "5": [
+     4.125,
+     4.137,
+     4.150,
+     4.162,
+     4.174,
+     4.187,
+     4.199,
+     4.224,
+     4.236,
+     4.248,
+     4.261,
+     4.273,
+     4.286
+    ]
+   }
+  },
+  {
+   "table_id": "CAFE_OUVRIERS_HORAIRES_2023-01-01",
+   "numero_imprime": 2,
+   "population": "ouvriers_horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 17,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     3.161,
+     3.213,
+     3.219,
+     3.224,
+     3.229,
+     3.234,
+     3.239,
+     3.244,
+     3.249,
+     3.254,
+     3.259,
+     3.264,
+     3.269
+    ],
+    "2": [
+     3.507,
+     3.514,
+     3.521,
+     3.528,
+     3.535,
+     3.542,
+     3.549,
+     3.556,
+     3.563,
+     3.570,
+     3.577,
+     3.584,
+     3.591
+    ],
+    "3": [
+     3.800,
+     3.808,
+     3.816,
+     3.824,
+     3.832,
+     3.840,
+     3.848,
+     3.856,
+     3.864,
+     3.872,
+     3.880,
+     3.888,
+     3.896
+    ],
+    "4": [
+     4.089,
+     4.099,
+     4.109,
+     4.119,
+     4.129,
+     4.139,
+     4.149,
+     4.159,
+     4.169,
+     4.179,
+     4.189,
+     4.202,
+     4.212
+    ],
+    "5": [
+     4.404,
+     4.416,
+     4.429,
+     4.441,
+     4.453,
+     4.466,
+     4.478,
+     4.503,
+     4.515,
+     4.527,
+     4.540,
+     4.552,
+     4.565
+    ]
+   }
+  },
+  {
+   "table_id": "CAFE_OUVRIERS_HORAIRES_2024-01-01",
+   "numero_imprime": 3,
+   "population": "ouvriers_horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 18,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     3.374,
+     3.426,
+     3.432,
+     3.437,
+     3.442,
+     3.447,
+     3.452,
+     3.457,
+     3.462,
+     3.467,
+     3.472,
+     3.477,
+     3.482
+    ],
+    "2": [
+     3.744,
+     3.751,
+     3.758,
+     3.765,
+     3.772,
+     3.779,
+     3.786,
+     3.793,
+     3.800,
+     3.807,
+     3.814,
+     3.821,
+     3.828
+    ],
+    "3": [
+     4.057,
+     4.065,
+     4.073,
+     4.081,
+     4.089,
+     4.097,
+     4.105,
+     4.113,
+     4.121,
+     4.129,
+     4.137,
+     4.145,
+     4.153
+    ],
+    "4": [
+     4.365,
+     4.375,
+     4.385,
+     4.395,
+     4.405,
+     4.415,
+     4.425,
+     4.435,
+     4.445,
+     4.455,
+     4.465,
+     4.478,
+     4.488
+    ],
+    "5": [
+     4.701,
+     4.713,
+     4.726,
+     4.738,
+     4.750,
+     4.763,
+     4.775,
+     4.800,
+     4.812,
+     4.824,
+     4.837,
+     4.849,
+     4.862
+    ]
+   }
+  }
+ ]
+}

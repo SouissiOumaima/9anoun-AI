@@ -112,9 +112,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_28_ok_18_refus():
+def test_bilan_demo_44_ok_39_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 28 and list(statuts.values()).count("refus") == 18
+    assert list(statuts.values()).count("ok") == 44 and list(statuts.values()).count("refus") == 39
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -135,6 +135,27 @@ def test_bilan_demo_28_ok_18_refus():
         "demo-44-refus-gardiennage-avant-2010-05-01": "SOURCE_MANQUANTE",
         "demo-45-refus-gardiennage-prime-risque-sans-date": "SOURCE_MANQUANTE",
         "demo-46-refus-gardiennage-grille-revisee-avenant-7": "SOURCE_MANQUANTE",
+        "demo-49-refus-cafe-borne-exacte": "PARAM_INVALIDE",
+        "demo-50-refus-cafe-avant-2021-12-01": "SOURCE_MANQUANTE",
+        "demo-51-refus-cafe-prime-production": "SOURCE_MANQUANTE",
+        "demo-52-refus-cafe-employes-mensuels": "SOURCE_MANQUANTE",
+        "demo-55-refus-voyages-borne-exacte": "PARAM_INVALIDE",
+        "demo-56-refus-voyages-avant-2022-05-01": "SOURCE_MANQUANTE",
+        "demo-57-refus-voyages-prime-repas-periode": "SOURCE_MANQUANTE",
+        "demo-60-refus-hotels-5-etoiles": "SOURCE_MANQUANTE",
+        "demo-61-refus-hotels-anciennete-30-ans": "SOURCE_MANQUANTE",
+        "demo-62-refus-hotels-avant-2022-05-01": "SOURCE_MANQUANTE",
+        "demo-66-refus-confiserie-population-omise": "PARAM_INVALIDE",
+        "demo-67-refus-confiserie-art-53-4-a-5-ans": "SOURCE_MANQUANTE",
+        "demo-68-refus-confiserie-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-69-refus-confiserie-ecart-negatif": "SOURCE_MANQUANTE",
+        "demo-73-refus-pates-sous-categorie-manquante": "PARAM_INVALIDE",
+        "demo-74-refus-pates-palier-art-14": "PARAM_INVALIDE",
+        "demo-76-refus-pates-transport-niveau-smig": "SOURCE_MANQUANTE",
+        "demo-79-refus-cosmetiques-categorie-1-apres-un-an": "SOURCE_MANQUANTE",
+        "demo-80-refus-cosmetiques-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-81-refus-cosmetiques-transport-cadres": "SOURCE_MANQUANTE",
+        "demo-83-refus-cosmetiques-avant-2021-12-01": "SOURCE_MANQUANTE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -145,7 +166,8 @@ def test_demo_10_secteur_fictif():
     """Depuis D9, BATIMENT_TRAVAUX_PUBLICS est couvert : demo-10 garde un refus « secteur inconnu » avec un code fictif."""
     rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
     assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
-                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
+                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+                                          "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS).")
 
 
 def test_montants_demo_identiques_a_calc():
@@ -254,7 +276,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 46 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 83 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -293,9 +315,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_46_echanges():
+def test_demo_affiche_83_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 46 and "Bilan : 28 ok, 18 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 83 and "Bilan : 44 ok, 39 refus, 0 erreur(s)." in texte

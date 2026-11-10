@@ -129,6 +129,11 @@ def degre_from_anciennete(annees, secteur=None, population=None) -> int:
         raise Refus(Refus.PARAM_INVALIDE, f"La grille {secteur}/{pop} n'a pas de degré d'ancienneté.",
                     f"جدول الأجور {secteur}/{pop} لا يتضمن درجات أقدمية.")
     a = _annees(annees)
+    # Anciennetés refusées au milieu de la grille (texte de la convention contraire à l'en-tête) : refus lu dans le JSON.
+    for r in grille.get("anciennetes_refusees", {}).get(pop, []):
+        if r["au_dela_de"] < a <= r["jusqu_a_inclus"]:
+            raise Refus(Refus.SOURCE_MANQUANTE, r["message_fr"].replace("{a}", str(a)),
+                        r["message_ar"].replace("{a}", str(a)))
     au_dela = grille["au_dela_dernier_degre"][pop]
     if au_dela.get("regle", "refus") == "refus" and a >= au_dela["anciennete_max_couverte_annees"]:
         raise Refus(Refus.SOURCE_MANQUANTE, au_dela["message_fr"].replace("{a}", str(a)),
@@ -249,6 +254,12 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
                     f"anciennete_annees non prévue : la grille {secteur}/{pop} n'a pas de degré d'ancienneté.",
                     f"anciennete_annees غير متوقع: جدول الأجور {secteur}/{pop} لا يتضمن درجات أقدمية.")
     table = table_applicable(secteur, pop, date)
+    if art13 is not None and art13["regle"] == "ecart_cumule_biennal":
+        # Case exclue de l'écart cumulé (ex. écart imprimé négatif) : refus lu dans le JSON, case seule servie avant.
+        for r in art13["bloc"].get("cases_refusees", []):
+            if (r["table_id"], r["categorie"]) == (table["table_id"], cle):
+                raise Refus(Refus.SOURCE_MANQUANTE, _texte_art13(r["message_fr"], a=_annees(anciennete_annees)),
+                            _texte_art13(r["message_ar"], a=_annees(anciennete_annees)))
     if unite_souhaitee is not None and unite_souhaitee != table["unite"]:
         raise Refus(Refus.HORS_SCOPE,
                     f"La grille donne un montant en {table['unite']} ; la conversion en {unite_souhaitee} "
@@ -256,7 +267,7 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
                     f"يعطي الجدول المبلغ بوحدة {table['unite']}؛ التحويل إلى {unite_souhaitee} "
                     "غير منصوص عليه في أي مصدر مُتحقَّق منه.")
     ref = decision_ref(grille, secteur)
-    valeur = table["valeurs"][cle] if degre is None else table["valeurs"][cle][degre - 1]
+    valeur = table["valeurs"][cle] if degre is None else montant_case(table, cle, degre)
     detail = {"secteur": secteur, "population": pop, "categorie": cat, **info_sous}
     if degre is not None:
         detail.update(degre=degre, anciennete_annees=_annees(anciennete_annees))
@@ -286,18 +297,29 @@ def salaire_base(secteur=None, population=None, categorie=None, anciennete_annee
     return Result(montant=arrondi_millime(valeur), unite=table["unite"], detail=detail, citations=citations)
 
 
+def montant_case(table: dict, cle: str, degre: int) -> Decimal:
+    """Montant imprimé d'une case ; case illisible déclarée dans cellules_source_manquante (valeur null) → refus
+    SOURCE_MANQUANTE lu dans le JSON (page et raison)."""
+    valeur = table["valeurs"][cle][degre - 1]
+    if valeur is None:
+        r = next(c for c in table["cellules_source_manquante"] if (c["categorie"], c["degre"]) == (cle, degre))
+        raise Refus(Refus.SOURCE_MANQUANTE, r["message_fr"], r["message_ar"])
+    return valeur
+
+
 def _appliquer_art13(art13: dict, table: dict, cle: str, valeur_dernier_degre: Decimal) -> tuple[Decimal, dict]:
     """Montant et détail de la règle de l'article 13 (D10). Les hypothèses sont renvoyées pour être affichées."""
     bloc = art13["bloc"]
     info = {"regle_art13": art13["regle"]}
     if art13["regle"] == "ecart_cumule_biennal":
-        d10, d11 = table["valeurs"][cle][-2], table["valeurs"][cle][-1]
+        n_degres = len(table["valeurs"][cle])
+        d10, d11 = montant_case(table, cle, n_degres - 1), montant_case(table, cle, n_degres)
         ecart = d11 - d10
         valeur = d11 + art13["n"] * ecart
         info.update(n_paliers=art13["n"], ecart=ecart, montant_dernier_degre=d11)
     else:
         cible = art13["cible"]
-        valeur = table["valeurs"][cible["categorie"]][cible["degre"] - 1]
+        valeur = montant_case(table, cible["categorie"], cible["degre"])
         info.update(case_cible=cible["case_imprimee"], degre_cible=cible["degre"], categorie_cible=cible["categorie"],
                     montant_dernier_degre=valeur_dernier_degre, ecart=valeur - valeur_dernier_degre,
                     fenetre_debut_annees=art13["debut"], fenetre_fin_annees=art13["fin"])
