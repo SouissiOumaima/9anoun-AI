@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -1316,6 +1316,941 @@
       "code": "SOURCE_MANQUANTE",
       "message_fr": "Aucune grille vérifiée après le 2011-04-30 : l'avenant n° 7 (page 2, effet au 1er mai 2011) a révisé les salaires et sa grille n'est pas dans la source ; le barème n° 2 (page 21, en vigueur à partir du 1er mai 2010) ne vaut que jusqu'au 2011-04-30. Aucun montant n'est renvoyé.",
       "message_ar": "لا يوجد جدول أجور مُتحقَّق منه بعد 2011-04-30: راجع الملحق التعديلي عدد 7 (الصفحة 2، تاريخ المفعول غرة ماي 2011) الأجور وجدوله غير موجود في المصدر؛ ولا ينطبق جدول الأجور عدد 2 (الصفحة 21، يقع العمل به بداية من 1 ماي 2010) إلا إلى غاية 2011-04-30. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-47-salaire-cafe-ouvriers",
+    "status": "ok",
+    "result": {
+      "montant": "4.073",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "TORREFACTION_CAFE",
+        "population": "ouvriers_horaires",
+        "categorie": "3",
+        "degre": 3,
+        "anciennete_annees": "5",
+        "hypotheses": [
+          "Unité : les tableaux (p.17-18) n'impriment ni « par heure » ni « par mois » ; les montants (2,961 à 4,862) sont lus comme des salaires horaires (TND/heure). Les employés payés au mois n'ont pas de tableau.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les degrés supplémentaires du reclassement (article 52 (جديد), p.15) ne sont pas calculés.",
+          "Le régime horaire n'est pas imprimé sur les tableaux : aucun recalcul selon les heures n'est fait."
+        ],
+        "hypotheses_ar": [
+          "الوحدة: لا تذكر الجداول (الصفحتان 17 و18) «بالساعة» ولا «بالشهر»؛ تُعتبر المبالغ (من 2,961 إلى 4,862) أجورا بالساعة (دينار/ساعة). ولا يوجد جدول للأعوان الخالصين بالشهر.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الدرجات الإضافية عند إعادة الترتيب (الفصل 52 (جديد)، الصفحة 15).",
+          "لا يذكر جدول الأجور نظام التوقيت: لا يقع أي احتساب حسب عدد الساعات."
+        ],
+        "table_id": "CAFE_OUVRIERS_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/قلي القهوة.pdf",
+        "page": 18,
+        "article": null,
+        "data_file": "data/processed/salary_grids/torrefaction_cafe.json",
+        "decision_ref": "D49"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-48-prime-transport-cafe",
+    "status": "ok",
+    "result": {
+      "montant": "60.610",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TORREFACTION_CAFE",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2023-06-01",
+        "regles": "D6",
+        "effective_date": "2023-01-01",
+        "au_titre_de": "2023",
+        "note": "Prime globale de transport (منحة جملية) : montant total, aucune addition (art. 50 (جديد), p.14).",
+        "note_ar": "منحة جملية للنقل: مبلغ جملي، ولا يقع إضافة أي مبلغ (الفصل 50 (جديد)، الصفحة 14)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/قلي القهوة.pdf",
+        "page": 14,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/torrefaction_cafe.json",
+        "decision_ref": "D49"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-49-refus-cafe-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 4 ans = borne commune aux degrés [2, 3] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 4 سنة تقع على الحد المشترك بين الدرجات [2, 3] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-50-refus-cafe-avant-2021-12-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille TORREFACTION_CAFE/ouvriers_horaires en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+      "message_ar": "لا يوجد جدول أجور TORREFACTION_CAFE/ouvriers_horaires ساري المفعول بتاريخ 2021-11-30 (أول تاريخ نفاذ متوفر: 2021-12-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-51-refus-cafe-prime-production",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de production et de fin d'année (article 49 (جديد), page 14) : pourcentage du salaire de base brut (3,4 % à 8,5 % selon la note), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة الإنتاج وآخر السنة (الفصل 49 (جديد)، الصفحة 14): نسبة من الأجر الأساسي الخام (من 3.4 % إلى 8.5 % حسب العدد)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-52-refus-cafe-employes-mensuels",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Employés payés au mois (classification, annexe 1, page 16, catégories 3 à 5 ; article 16, page 8) : la convention de la torréfaction du café n'imprime aucun tableau de salaires mensuels (tableaux p.17-18 seulement). Aucun montant n'est renvoyé.",
+      "message_ar": "الأعوان الخالصون بالشهر (التصنيف المهني، الملحق عدد 1، الصفحة 16، الأصناف من 3 إلى 5؛ الفصل 16، الصفحة 8): لا تتضمن اتفاقية قلي القهوة أي جدول للأجور الشهرية (الجداول بالصفحتين 17 و18 فقط). لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-53-salaire-voyages-degre-13-ouvert",
+    "status": "ok",
+    "result": {
+      "montant": "1046.082",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "AGENCES_VOYAGES",
+        "population": "tous_agents",
+        "categorie": "6",
+        "degre": 13,
+        "anciennete_annees": "30",
+        "hypotheses": [
+          "Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16)."
+        ],
+        "table_id": "VOY_TOUS_AGENTS_2023-05-01",
+        "effective_date": "2023-05-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-54-prime-presence-par-jour-voyages",
+    "status": "ok",
+    "result": {
+      "montant": "0.481",
+      "unite": "TND/jour",
+      "detail": {
+        "secteur": "AGENCES_VOYAGES",
+        "code": "prime_presence_par_jour",
+        "label_fr": "Prime de présence (part par jour de travail effectif)",
+        "label_ar": "منحة الحضور",
+        "date_calcul": "2023-06-01",
+        "regles": "D6",
+        "effective_date": "2023-05-01",
+        "note": "Première composante de la prime de présence mensuelle : 452 puis 481 millimes par jour de travail effectif ; la seconde composante est la prime prime_presence_mensuelle (art. 46 (جديد), p.15).",
+        "note_ar": "الجزء الأول من منحة الحضور الشهرية: 452 ثم 481 مليما عن كل يوم عمل فعلي؛ والجزء الثاني هو المبلغ الشهري prime_presence_mensuelle (الفصل 46 (جديد)، الصفحة 15).",
+        "hypotheses": [
+          "Montant journalier imprimé servi tel quel : aucun calcul selon le nombre de jours n'est fait."
+        ],
+        "hypotheses_ar": [
+          "يُرجَع المبلغ اليومي المطبوع كما هو: لا يقع أي احتساب حسب عدد الأيام."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "46 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-55-refus-voyages-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 3 ans = borne commune aux degrés [2, 3] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 3 سنة تقع على الحد المشترك بين الدرجات [2, 3] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-56-refus-voyages-avant-2022-05-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille AGENCES_VOYAGES/tous_agents en vigueur au 2022-04-30 (première date d'effet disponible : 2022-05-01).",
+      "message_ar": "لا يوجد جدول أجور AGENCES_VOYAGES/tous_agents ساري المفعول بتاريخ 2022-04-30 (أول تاريخ نفاذ متوفر: 2022-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-57-refus-voyages-prime-repas-periode",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de repas (article 47 (جديد), page 16) : montant de 5,500 dinars imprimé sans la période à laquelle il s'applique (par repas, par jour ou par mois). Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة الأكل (الفصل 47 (جديد)، الصفحة 16): مبلغ 5.500 د دون ذكر الفترة التي يتعلق بها (عن كل أكلة أو يوم أو شهر). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-58-salaire-hotels-alias-cadre",
+    "status": "ok",
+    "result": {
+      "montant": "1319.652",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "HOTELS_TOURISTIQUES",
+        "population": "tous_agents",
+        "categorie": "direction_1",
+        "categorie_demandee": "cadre_1",
+        "degre": 6,
+        "anciennete_annees": "10",
+        "hypotheses": [
+          "Le tableau imprime « الإدارة 1/2 » là où la classification (p.42) et l'article 51 (جديد) emploient « إطار 1/2 » : les deux désignations visent la même ligne (alias cadre_1, cadre_2).",
+          "Les sections (أ) et (ب) de chaque catégorie de la classification (p.42) ont le même salaire : la section n'est pas demandée.",
+          "Hôtels non classés 5 étoiles : salaires du tableau sans la majoration de 10 % de la note 2 (p.43-44).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15 et 27 ans (article 15 (جديد), p.8) ne sont pas calculées."
+        ],
+        "hypotheses_ar": [
+          "يذكر الجدول «الإدارة 1/2» في حين يذكر التصنيف المهني (الصفحة 42) والفصل 51 (جديد) «إطار 1/2»: تُعتبر التسميتان للسطر نفسه.",
+          "للقسمين (أ) و(ب) من كل صنف في التصنيف المهني (الصفحة 42) الأجر نفسه: لا يُطلب القسم.",
+          "النزل غير المرتبة 5 نجوم: أجور الجدول دون زيادة 10 بالمائة الواردة بالملاحظة 2 (الصفحتان 43 و44).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيتان الآليتان بعد 15 و27 سنة (الفصل 15 (جديد)، الصفحة 8)."
+        ],
+        "table_id": "HOT_TOUS_AGENTS_2023-05-01",
+        "effective_date": "2023-05-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النزل السياحية والمؤسسات المشابهة لها2.pdf",
+        "page": 44,
+        "article": null,
+        "data_file": "data/processed/salary_grids/hotels_touristiques.json",
+        "decision_ref": "D51"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-59-prime-transport-hotels",
+    "status": "ok",
+    "result": {
+      "montant": "93.290",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "HOTELS_TOURISTIQUES",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2023-06-01",
+        "regles": "D6",
+        "condition": "l'employeur n'assure pas le transport de l'agent non logé et lui rembourse ses frais de transport (art. 51 (جديد), p.16)",
+        "groupe": "superieur_1_et_cadres",
+        "groupe_libelle": "Catégories « supérieur 1 », « cadre 1 » et « cadre 2 »",
+        "groupe_libelle_ar": "الأصناف «أعلى 1» و«إطار 1» و«إطار 2»",
+        "effective_date": "2023-05-01",
+        "note": "Montant total : il comprend la prime de transport du décret n° 503 du 16 mars 1982 ; payée à la fin de chaque mois (art. 51 (جديد), p.16).",
+        "note_ar": "تتضمن هذه المنحة المنحة المحدثة بالأمر عدد 503 المؤرخ في 16 مارس 1982، وتدفع في نهاية كل شهر (الفصل 51 (جديد)، الصفحة 16).",
+        "hypotheses": [
+          "Groupe choisi par l'appelant selon la catégorie : de « services » à « supérieur 2 », ou « supérieur 1 », « cadre 1 » et « cadre 2 » (art. 51 (جديد), p.16)."
+        ],
+        "hypotheses_ar": [
+          "يختار الطالب المجموعة حسب الصنف: من «خدمات» إلى «أعلى 2»، أو «أعلى 1» و«إطار 1» و«إطار 2» (الفصل 51 (جديد)، الصفحة 16)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النزل السياحية والمؤسسات المشابهة لها2.pdf",
+        "page": 16,
+        "article": "51 (جديد)",
+        "data_file": "data/processed/salary_grids/hotels_touristiques.json",
+        "decision_ref": "D51"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-60-refus-hotels-5-etoiles",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Hôtels classés 5 étoiles : la note 2 sous les tableaux (pages 43 et 44) prévoit les salaires du tableau majorés de 10 % ; cette majoration n'est pas calculée. Aucun montant n'est renvoyé.",
+      "message_ar": "النزل المرتبة 5 نجوم: تنص الملاحظة 2 تحت الجدولين (الصفحتان 43 و44) على تطبيق الأجور الواردة بالجدول مضافا إليها 10 بالمائة؛ لا تُحتسب هذه الزيادة. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-61-refus-hotels-anciennete-30-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 30 ans : la grille de la convention des hôtels touristiques s'arrête au degré 13 (27 à 30 ans) ; l'article 15 مكرر (جديد) (page 8) répartit les degrés jusqu'au degré 13 (30 ans d'ancienneté effective) et ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+      "message_ar": "أقدمية 30 سنة: ينتهي جدول أجور اتفاقية النزل السياحية عند الدرجة 13 (من 27 إلى 30 سنة)؛ ويوزع الفصل 15 مكرر (جديد) (الصفحة 8) الدرجات إلى غاية الدرجة 13 (30 سنة أقدمية فعلية) ولا ينص على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-62-refus-hotels-avant-2022-05-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille HOTELS_TOURISTIQUES/tous_agents en vigueur au 2022-04-30 (première date d'effet disponible : 2022-05-01).",
+      "message_ar": "لا يوجد جدول أجور HOTELS_TOURISTIQUES/tous_agents ساري المفعول بتاريخ 2022-04-30 (أول تاريخ نفاذ متوفر: 2022-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-63-salaire-confiserie-art-14-ecart",
+    "status": "ok",
+    "result": {
+      "montant": "922.919",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+        "population": "mensuels",
+        "categorie": "4",
+        "degre": 15,
+        "anciennete_annees": "31",
+        "regle_art13": "ecart_cumule_biennal",
+        "n_paliers": 2,
+        "ecart": "2.601",
+        "montant_dernier_degre": "917.717",
+        "hypotheses": [
+          "Degrés : l'en-tête « الأقدمية بالدرجة » (p.21-23) est vide pour le degré 1, puis 1, puis 2 (degrés 3 à 15) ; il est lu comme la durée de séjour, degré 1 d'un an : 0-1, 1-2, 2-4, …, 24-26, puis degré 15 à partir de 26 ans (lecture A).",
+          "Article 53 (p.14) : de 4 ans exclus à 5 ans inclus, l'article (degré 3) et l'en-tête (degré 4) se contredisent : aucun montant. Les degrés supplémentaires des points a) et b) de l'article 53 (plus de 5 ans dans la même catégorie) ne sont pas calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion automatique après 20 ans (article 14 (جديد) ب, p.7) n'est pas calculée.",
+          "Les salaires des tableaux incluent la prime de présence de 112 millimes par jour (note sous chaque tableau) : elle n'est pas ajoutée ; la prime de présence mensuelle de l'article 51 (جديد) est une autre prime (prime_presence).",
+          "Article 14 (جديد) أ (p.7) : au degré 15, l'écart entre les degrés 15 et 14 s'ajoute tous les 2 ans ; le degré 15 est atteint à 26 ans (lecture de l'en-tête) ; n = nombre de périodes de 2 ans révolues depuis 26 ans ; écart cumulé (règle D10, période 2)."
+        ],
+        "hypotheses_ar": [
+          "الدرجات: خانة «الأقدمية بالدرجة» في رأس الجداول (الصفحات من 21 إلى 23) فارغة للدرجة 1، ثم 1، ثم 2 (من الدرجة 3 إلى الدرجة 15)؛ تُعتبر مدة بقاء بالدرجة، والدرجة 1 سنة واحدة: 0-1، 1-2، 2-4، ...، 24-26، ثم الدرجة 15 بداية من 26 سنة.",
+          "الفصل 53 (الصفحة 14): من أكثر من 4 سنوات إلى 5 سنوات يتعارض الفصل (الدرجة 3) ورأس الجدول (الدرجة 4): لا يُرجَع أي مبلغ. ولا تُحتسب الدرجات الإضافية الواردة بالنقطتين أ) وب) من الفصل 53 (أكثر من 5 سنوات في نفس الصنف).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية الآلية عند بلوغ 20 سنة أقدمية (الفصل 14 (جديد) ب، الصفحة 7).",
+          "تتضمن أجور الجداول منحة الحضور المضبوطة بـ 112 مليما يوميا (ملاحظة تحت كل جدول): لا تُضاف؛ ومنحة الحضور الجملية الشهرية الواردة بالفصل 51 (جديد) منحة أخرى (prime_presence).",
+          "الفصل 14 (جديد) أ (الصفحة 7): عند بلوغ الدرجة 15 يضاف الفارق بين الدرجتين 15 و14 كل سنتين؛ تُبلغ الدرجة 15 عند 26 سنة (حسب رأس الجدول)؛ عدد الفترات هو عدد السنتين المنقضيتين منذ 26 سنة؛ يُجمع الفارق (القاعدة D10، فترة سنتين)."
+        ],
+        "table_id": "CONF_MENSUELS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "decision_ref": "D52"
+      },
+      {
+        "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+        "page": 7,
+        "article": "14 (جديد) أ",
+        "data_file": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "decision_ref": "D52"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-64-salaire-confiserie-horaires",
+    "status": "ok",
+    "result": {
+      "montant": "3.417",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+        "population": "horaires",
+        "categorie": "2",
+        "degre": 7,
+        "anciennete_annees": "11",
+        "hypotheses": [
+          "Degrés : l'en-tête « الأقدمية بالدرجة » (p.21-23) est vide pour le degré 1, puis 1, puis 2 (degrés 3 à 15) ; il est lu comme la durée de séjour, degré 1 d'un an : 0-1, 1-2, 2-4, …, 24-26, puis degré 15 à partir de 26 ans (lecture A).",
+          "Article 53 (p.14) : de 4 ans exclus à 5 ans inclus, l'article (degré 3) et l'en-tête (degré 4) se contredisent : aucun montant. Les degrés supplémentaires des points a) et b) de l'article 53 (plus de 5 ans dans la même catégorie) ne sont pas calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion automatique après 20 ans (article 14 (جديد) ب, p.7) n'est pas calculée.",
+          "Les salaires des tableaux incluent la prime de présence de 112 millimes par jour (note sous chaque tableau) : elle n'est pas ajoutée ; la prime de présence mensuelle de l'article 51 (جديد) est une autre prime (prime_presence)."
+        ],
+        "hypotheses_ar": [
+          "الدرجات: خانة «الأقدمية بالدرجة» في رأس الجداول (الصفحات من 21 إلى 23) فارغة للدرجة 1، ثم 1، ثم 2 (من الدرجة 3 إلى الدرجة 15)؛ تُعتبر مدة بقاء بالدرجة، والدرجة 1 سنة واحدة: 0-1، 1-2، 2-4، ...، 24-26، ثم الدرجة 15 بداية من 26 سنة.",
+          "الفصل 53 (الصفحة 14): من أكثر من 4 سنوات إلى 5 سنوات يتعارض الفصل (الدرجة 3) ورأس الجدول (الدرجة 4): لا يُرجَع أي مبلغ. ولا تُحتسب الدرجات الإضافية الواردة بالنقطتين أ) وب) من الفصل 53 (أكثر من 5 سنوات في نفس الصنف).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية الآلية عند بلوغ 20 سنة أقدمية (الفصل 14 (جديد) ب، الصفحة 7).",
+          "تتضمن أجور الجداول منحة الحضور المضبوطة بـ 112 مليما يوميا (ملاحظة تحت كل جدول): لا تُضاف؛ ومنحة الحضور الجملية الشهرية الواردة بالفصل 51 (جديد) منحة أخرى (prime_presence)."
+        ],
+        "table_id": "CONF_HORAIRES_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+        "page": 22,
+        "article": null,
+        "data_file": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "decision_ref": "D52"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-65-salaire-confiserie-degre-15-imprime",
+    "status": "ok",
+    "result": {
+      "montant": "590.535",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+        "population": "mensuels",
+        "categorie": "2",
+        "degre": 15,
+        "anciennete_annees": "27",
+        "hypotheses": [
+          "Degrés : l'en-tête « الأقدمية بالدرجة » (p.21-23) est vide pour le degré 1, puis 1, puis 2 (degrés 3 à 15) ; il est lu comme la durée de séjour, degré 1 d'un an : 0-1, 1-2, 2-4, …, 24-26, puis degré 15 à partir de 26 ans (lecture A).",
+          "Article 53 (p.14) : de 4 ans exclus à 5 ans inclus, l'article (degré 3) et l'en-tête (degré 4) se contredisent : aucun montant. Les degrés supplémentaires des points a) et b) de l'article 53 (plus de 5 ans dans la même catégorie) ne sont pas calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion automatique après 20 ans (article 14 (جديد) ب, p.7) n'est pas calculée.",
+          "Les salaires des tableaux incluent la prime de présence de 112 millimes par jour (note sous chaque tableau) : elle n'est pas ajoutée ; la prime de présence mensuelle de l'article 51 (جديد) est une autre prime (prime_presence)."
+        ],
+        "hypotheses_ar": [
+          "الدرجات: خانة «الأقدمية بالدرجة» في رأس الجداول (الصفحات من 21 إلى 23) فارغة للدرجة 1، ثم 1، ثم 2 (من الدرجة 3 إلى الدرجة 15)؛ تُعتبر مدة بقاء بالدرجة، والدرجة 1 سنة واحدة: 0-1، 1-2، 2-4، ...، 24-26، ثم الدرجة 15 بداية من 26 سنة.",
+          "الفصل 53 (الصفحة 14): من أكثر من 4 سنوات إلى 5 سنوات يتعارض الفصل (الدرجة 3) ورأس الجدول (الدرجة 4): لا يُرجَع أي مبلغ. ولا تُحتسب الدرجات الإضافية الواردة بالنقطتين أ) وب) من الفصل 53 (أكثر من 5 سنوات في نفس الصنف).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية الآلية عند بلوغ 20 سنة أقدمية (الفصل 14 (جديد) ب، الصفحة 7).",
+          "تتضمن أجور الجداول منحة الحضور المضبوطة بـ 112 مليما يوميا (ملاحظة تحت كل جدول): لا تُضاف؛ ومنحة الحضور الجملية الشهرية الواردة بالفصل 51 (جديد) منحة أخرى (prime_presence)."
+        ],
+        "table_id": "CONF_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "decision_ref": "D52"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-66-refus-confiserie-population-omise",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Population obligatoire pour le secteur CONFISERIE_BISCUITERIE_CHOCOLATERIE (disponibles : mensuels, horaires).",
+      "message_ar": "يجب تحديد فئة الأعوان للقطاع CONFISERIE_BISCUITERIE_CHOCOLATERIE (المتوفر: mensuels, horaires)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-67-refus-confiserie-art-53-4-a-5-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 4.5 ans : l'en-tête des tableaux de salaires (pages 21 à 23) place cette ancienneté au degré 4 (de 4 à 6 ans), alors que l'article 53 (page 14) range les travailleurs de la troisième à la cinquième année au degré 3. Les deux textes se contredisent de 4 ans exclus à 5 ans inclus. Aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 4.5 سنة: يضع رأس جداول الأجور (الصفحات من 21 إلى 23) هذه الأقدمية في الدرجة 4 (من 4 إلى 6 سنوات)، في حين يرتب الفصل 53 (الصفحة 14) العمال من السنة الثالثة إلى السنة الخامسة في الدرجة 3. يتعارض النصان من أكثر من 4 سنوات إلى 5 سنوات. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-68-refus-confiserie-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents payés au mois, catégorie 2, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-69-refus-confiserie-ecart-negatif",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 29 ans, agents payés au mois, catégorie 2 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : le degré 15 est imprimé à 590,535, plus bas que le degré 14 (688,217) ; l'écart de l'article 14 (جديد) أ (page 7) serait négatif. Le degré 15 est servi tel qu'imprimé jusqu'à 28 ans ; au-delà, aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 29 سنة، الأعوان الخالصون بالشهر، الصنف 2 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): طُبعت الدرجة 15 بمبلغ 590.535 وهو أقل من الدرجة 14 (688.217)؛ فيكون فارق الفصل 14 (جديد) أ (الصفحة 7) سالبا. تُعتمد الدرجة 15 كما هي مطبوعة إلى غاية 28 سنة؛ وبعد ذلك لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-70-prime-presence-confiserie",
+    "status": "ok",
+    "result": {
+      "montant": "4.639",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+        "code": "prime_presence",
+        "label_fr": "Prime de présence (forfait mensuel)",
+        "label_ar": "منحة الحضور",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "note": "Prime de présence globale mensuelle (art. 51 (جديد), p.14), distincte des 112 millimes par jour déjà inclus dans les tableaux de salaires.",
+        "note_ar": "منحة حضور جملية شهرية (الفصل 51 (جديد)، الصفحة 14)، غير منحة الحضور المضبوطة بـ 112 مليم يوميا المتضمنة في جداول الأجور."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+        "page": 14,
+        "article": "51 (جديد)",
+        "data_file": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "decision_ref": "D52"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-71-salaire-pates-horaires",
+    "status": "ok",
+    "result": {
+      "montant": "4.715",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+        "population": "horaires",
+        "categorie": "III",
+        "sous_categorie": "2",
+        "libelle_fr": "Catégorie III, sous-catégorie 2",
+        "libelle_ar": "الصنف III، 2",
+        "degre": 4,
+        "anciennete_annees": "6",
+        "hypotheses": [
+          "Degré 12 : sa durée de séjour imprimée est de 3 ans ; l'article 14 (جديد) أ (p.8) prolonge la progression jusqu'à la fin de la carrière : le degré 12 est ouvert à partir de 22 ans, avec l'écart tous les 3 ans.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion (article 14 (جديد) ب, p.8) et son degré supplémentaire ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 12: مدة البقاء المطبوعة بها 3 سنوات؛ ويمدد الفصل 14 (جديد) أ (الصفحة 8) التدرج إلى نهاية الحياة المهنية: تبقى الدرجة 12 مفتوحة بداية من 22 سنة مع إضافة الفارق كل ثلاث سنوات.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية (الفصل 14 (جديد) ب، الصفحة 8) ولا الدرجة الإضافية المرتبطة بها."
+        ],
+        "table_id": "PATES_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/العجين الغذائي و الكسكسي.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/pates_alimentaires.json",
+        "decision_ref": "D53"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-72-salaire-pates-art-14-ecart",
+    "status": "ok",
+    "result": {
+      "montant": "1057.025",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+        "population": "mensuels",
+        "categorie": "V",
+        "sous_categorie": "III",
+        "libelle_fr": "Catégorie V, sous-catégorie III",
+        "libelle_ar": "الصنف V، III",
+        "degre": 12,
+        "anciennete_annees": "28.5",
+        "regle_art13": "ecart_cumule_biennal",
+        "n_paliers": 2,
+        "ecart": "3.600",
+        "montant_dernier_degre": "1049.825",
+        "hypotheses": [
+          "Degré 12 : sa durée de séjour imprimée est de 3 ans ; l'article 14 (جديد) أ (p.8) prolonge la progression jusqu'à la fin de la carrière : le degré 12 est ouvert à partir de 22 ans, avec l'écart tous les 3 ans.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion (article 14 (جديد) ب, p.8) et son degré supplémentaire ne sont pas calculés.",
+          "Article 14 (جديد) أ (p.8) : au degré 12, l'écart entre les degrés 12 et 11 s'ajoute tous les 3 ans jusqu'à la fin de la carrière ; le degré 12 est atteint à 22 ans (durées imprimées) ; n = nombre de périodes de 3 ans révolues depuis 22 ans ; écart cumulé (règle D10, période 3)."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 12: مدة البقاء المطبوعة بها 3 سنوات؛ ويمدد الفصل 14 (جديد) أ (الصفحة 8) التدرج إلى نهاية الحياة المهنية: تبقى الدرجة 12 مفتوحة بداية من 22 سنة مع إضافة الفارق كل ثلاث سنوات.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية (الفصل 14 (جديد) ب، الصفحة 8) ولا الدرجة الإضافية المرتبطة بها.",
+          "الفصل 14 (جديد) أ (الصفحة 8): عند بلوغ الدرجة 12 يضاف الفارق بين الدرجتين 12 و11 كل ثلاث سنوات إلى نهاية الحياة المهنية؛ تُبلغ الدرجة 12 عند 22 سنة (حسب المدد المطبوعة)؛ عدد الفترات هو عدد الثلاث سنوات المنقضية منذ 22 سنة؛ يُجمع الفارق (القاعدة D10، فترة ثلاث سنوات)."
+        ],
+        "table_id": "PATES_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/العجين الغذائي و الكسكسي.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/pates_alimentaires.json",
+        "decision_ref": "D53"
+      },
+      {
+        "source_file": "data/raw/pdf/العجين الغذائي و الكسكسي.pdf",
+        "page": 8,
+        "article": "14 (جديد) أ",
+        "data_file": "data/processed/salary_grids/pates_alimentaires.json",
+        "decision_ref": "D53"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-73-refus-pates-sous-categorie-manquante",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "La catégorie IV (mensuels) comporte des sous-catégories : sous_categorie obligatoire (valeurs possibles : I, II).",
+      "message_ar": "الصنف IV (mensuels) يتضمن أصنافًا فرعية: يجب تحديد sous_categorie (القيم الممكنة: I, II)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-74-refus-pates-palier-art-14",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 25 ans = palier de l'article 14 (جديد) أ (page 8 : 25, 28, 31… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. 25 ans et 1 jour).",
+      "message_ar": "أقدمية 25 سنة تقع على حد فترة من فترات الفصل 14 (جديد) أ (الصفحة 8: 25 و28 و31 سنة...) ولا يحدد المصدر إن كان الفارق مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-75-prime-logement-pates",
+    "status": "ok",
+    "result": {
+      "montant": "26.084",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+        "code": "prime_logement",
+        "label_fr": "Prime de logement",
+        "label_ar": "منحة السكن",
+        "date_calcul": "2023-06-01",
+        "regles": "D6",
+        "groupe": "categorie_3",
+        "groupe_libelle": "Catégorie 3",
+        "groupe_libelle_ar": "الصنف 3",
+        "effective_date": "2023-01-01",
+        "au_titre_de": "2023",
+        "hypotheses": [
+          "Groupe choisi par l'appelant : la source numérote les groupes « catégorie 1 » à « catégorie 5 » sans les rattacher aux lignes I à V des tableaux de salaires ; le groupe « niveau du salaire minimum » est refusé (code séparé, source manquante)."
+        ],
+        "hypotheses_ar": [
+          "يختار الطالب المجموعة: يرقم المصدر المجموعات من «الصنف 1» إلى «الصنف 5» دون ربطها بأسطر جداول الأجور من I إلى V؛ أما مجموعة «مستوى الأجر الأدنى» فهي مرفوضة (رمز مستقل، مصدر غير متوفر)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/العجين الغذائي و الكسكسي.pdf",
+        "page": 16,
+        "article": "54 مكرر (جديد)",
+        "data_file": "data/processed/salary_grids/pates_alimentaires.json",
+        "decision_ref": "D53"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-76-refus-pates-transport-niveau-smig",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de transport, groupe « niveau du salaire minimum » (article 54 (جديد), page 16) : le texte fixe un montant pour le groupe « niveau du salaire minimum », mais ne dit pas quels agents en relèvent (aucune catégorie des tableaux de salaires ne porte ce nom). Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة النقل، مستوى الأجر الأدنى (الفصل 54 (جديد)، الصفحة 16): يحدد النص مبلغا لمجموعة «مستوى الأجر الأدنى» دون أن يبين الأعوان المعنيين بها (لا يحمل أي صنف من أصناف جداول الأجور هذا الاسم). هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-77-salaire-cosmetiques-degre-12-ouvert",
+    "status": "ok",
+    "result": {
+      "montant": "1216.807",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COSMETIQUES_PARFUMS",
+        "population": "administratifs",
+        "categorie": "9",
+        "degre": 12,
+        "anciennete_annees": "30",
+        "hypotheses": [
+          "Degré 12 : l'en-tête imprime « +26 » (p.21-23) ; il est servi au-delà de 26 ans. L'article 49 (p.15) fixe à 3 ans la durée de séjour des degrés 7 à 12 et ne dit rien au-delà du degré 12.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : le classement à l'entrée en vigueur de la convention (article 50, p.15) n'est pas calculé."
+        ],
+        "hypotheses_ar": [
+          "الدرجة 12: يذكر رأس الجدول «+26» (الصفحات من 21 إلى 23)؛ تُعتمد بعد 26 سنة. ويحدد الفصل 49 (الصفحة 15) مدة البقاء بثلاث سنوات من الدرجة السابعة إلى الدرجة الثانية عشر ولا ينص على شيء بعد الدرجة 12.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا يُحتسب ترتيب العمال عند دخول الاتفاقية حيز التطبيق (الفصل 50، الصفحة 15)."
+        ],
+        "table_id": "COSM_ADMINISTRATIFS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة مواد التجميل والعطورات.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "decision_ref": "D54"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-78-salaire-cosmetiques-production-categorie-1",
+    "status": "ok",
+    "result": {
+      "montant": "539.336",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COSMETIQUES_PARFUMS",
+        "population": "production_categorie_1",
+        "categorie": "1",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Catégorie 1 de la production (« شغال عادي ») : un seul degré (« درجة وحيدة », p.21-23), servi pendant la première année ; après un an, l'article 49 (p.15) classe l'ouvrier au degré 1 de la catégorie 2 : ce passage n'est pas calculé."
+        ],
+        "hypotheses_ar": [
+          "الصنف الأول من أعوان الإنتاج («شغال عادي»): درجة واحدة («درجة وحيدة»، الصفحات من 21 إلى 23) تُعتمد خلال السنة الأولى؛ وبعد سنة يرتب الفصل 49 (الصفحة 15) العامل في الدرجة الأولى من الصنف الثاني: لا يُحتسب هذا الانتقال."
+        ],
+        "table_id": "COSM_PRODUCTION_CAT1_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة مواد التجميل والعطورات.pdf",
+        "page": 22,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "decision_ref": "D54"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-79-refus-cosmetiques-categorie-1-apres-un-an",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 2 ans, production, catégorie 1 : la catégorie n'a qu'un degré (« degré unique », pages 21 à 23) ; l'article 49 (page 15) classe l'ouvrier au degré 1 de la catégorie 2 après un an de travail effectif. Ce passage n'est pas calculé : aucun montant n'est renvoyé (ancienneté couverte : moins d'un an).",
+      "message_ar": "أقدمية 2 سنة، أعوان الإنتاج، الصنف 1: لا يحتوي هذا الصنف إلا على درجة واحدة («درجة وحيدة»، الصفحات من 21 إلى 23)؛ ويرتب الفصل 49 (الصفحة 15) العامل في الدرجة الأولى من الصنف الثاني بعد قضاء سنة من العمل الفعلي. لا يُحتسب هذا الانتقال: لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-80-refus-cosmetiques-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents administratifs, des services et des cadres, catégorie 6, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : un chiffre manque dans l'impression ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان الإداريين والخدمات والإطارات، الصنف 6، الدرجة 8 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): ينقص رقم في الطباعة؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-81-refus-cosmetiques-transport-cadres",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de transport, groupe « cadres » (article 53 (جديد), page 15) : le texte fixe un montant pour les cadres, mais aucune catégorie des tableaux de salaires n'est désignée comme cadre. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة النقل، الإطارات (الفصل 53 (جديد)، الصفحة 15): يحدد النص مبلغا للإطارات دون أن يُعيَّن أي صنف من أصناف جداول الأجور كإطار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-82-prime-presence-cosmetiques",
+    "status": "ok",
+    "result": {
+      "montant": "11.600",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COSMETIQUES_PARFUMS",
+        "code": "prime_presence",
+        "label_fr": "Prime de présence",
+        "label_ar": "منحة الحضور",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "note": "Montant de 2024 lu « 11.600 » à 170 et 300 dpi (« 1.600 » à 90 dpi), vérifié à l'image.",
+        "note_ar": "مبلغ سنة 2024: 11.600 د."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة مواد التجميل والعطورات.pdf",
+        "page": 16,
+        "article": "55 (جديد)",
+        "data_file": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "decision_ref": "D54"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-83-refus-cosmetiques-avant-2021-12-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille COSMETIQUES_PARFUMS/production en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+      "message_ar": "لا يوجد جدول أجور COSMETIQUES_PARFUMS/production ساري المفعول بتاريخ 2021-11-30 (أول تاريخ نفاذ متوفر: 2021-12-01)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   }

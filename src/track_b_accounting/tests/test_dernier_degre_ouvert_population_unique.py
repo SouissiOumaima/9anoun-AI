@@ -29,6 +29,12 @@ SECTEURS = {
     "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
     "BANQUES": "data/processed/salary_grids/banques.json",
     "GARDIENNAGE_SECURITE_TRANSPORT_FONDS": "data/processed/salary_grids/gardiennage.json",
+    "TORREFACTION_CAFE": "data/processed/salary_grids/torrefaction_cafe.json",
+    "AGENCES_VOYAGES": "data/processed/salary_grids/agences_voyages.json",
+    "HOTELS_TOURISTIQUES": "data/processed/salary_grids/hotels_touristiques.json",
+    "CONFISERIE_BISCUITERIE_CHOCOLATERIE": "data/processed/salary_grids/confiserie_biscuiterie.json",
+    "PATES_ALIMENTAIRES_COUSCOUS": "data/processed/salary_grids/pates_alimentaires.json",
+    "COSMETIQUES_PARFUMS": "data/processed/salary_grids/cosmetiques_parfums.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
@@ -128,11 +134,11 @@ def test_dates_et_hypotheses_affichees_pour_toutes_les_dates(fictif):
         assert r.detail["hypotheses"] == HYP["fr"] and r.detail["hypotheses_ar"] == HYP["ar"]
 
 
-def test_assurance_seul_secteur_enregistre_avec_la_regle_ouvert():
+def test_secteurs_enregistres_avec_la_regle_ouvert():
     assert loaders.GRILLES == SECTEURS
     ouverts = [s for s, chemin in SECTEURS.items()
                if "ouvert" in {b.get("regle", "refus") for b in lire_json(chemin)["au_dela_dernier_degre"].values()}]
-    assert ouverts == ["ASSURANCE"]
+    assert ouverts == ["ASSURANCE", "AGENCES_VOYAGES", "COSMETIQUES_PARFUMS"]
     assert {b["regle"] for b in lire_json(SECTEURS["ENSEIGNEMENT_PRIVE"])["au_dela_dernier_degre"].values()} == {"refus"}
 
 
