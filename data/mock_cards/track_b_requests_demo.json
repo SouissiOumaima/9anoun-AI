@@ -339,5 +339,264 @@
     "operation": "salaire_base",
     "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "8", "anciennete_annees": 5, "date": "2011-05-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-47-salaire-cafe-ouvriers",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "population": "ouvriers_horaires", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-48-prime-transport-cafe",
+    "operation": "prime",
+    "params": {"secteur": "TORREFACTION_CAFE", "code": "prime_transport", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-49-refus-cafe-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "categorie": "3", "anciennete_annees": 4, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-50-refus-cafe-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "categorie": "3", "anciennete_annees": 5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-51-refus-cafe-prime-production",
+    "operation": "prime",
+    "params": {"secteur": "TORREFACTION_CAFE", "code": "prime_production", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-52-refus-cafe-employes-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "population": "employes_mensuels", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-53-salaire-voyages-degre-13-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "6", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-54-prime-presence-par-jour-voyages",
+    "operation": "prime",
+    "params": {"secteur": "AGENCES_VOYAGES", "code": "prime_presence_par_jour", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-55-refus-voyages-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "2", "anciennete_annees": 3, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-56-refus-voyages-avant-2022-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "2", "anciennete_annees": 2, "date": "2022-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-57-refus-voyages-prime-repas-periode",
+    "operation": "prime",
+    "params": {"secteur": "AGENCES_VOYAGES", "code": "prime_repas", "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-58-salaire-hotels-alias-cadre",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "cadre_1", "anciennete_annees": 10, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-59-prime-transport-hotels",
+    "operation": "prime",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "code": "prime_transport", "date": "2023-06-01", "groupe": "superieur_1_et_cadres", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-60-refus-hotels-5-etoiles",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "population": "hotels_5_etoiles", "categorie": "services", "anciennete_annees": 2, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-61-refus-hotels-anciennete-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "services", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-62-refus-hotels-avant-2022-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "services", "anciennete_annees": 2, "date": "2022-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-63-salaire-confiserie-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "4", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-64-salaire-confiserie-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "horaires", "categorie": "2", "anciennete_annees": 11, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-65-salaire-confiserie-degre-15-imprime",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 27, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-66-refus-confiserie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "categorie": "2", "anciennete_annees": 11, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-67-refus-confiserie-art-53-4-a-5-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "1", "anciennete_annees": 4.5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-68-refus-confiserie-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 13, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-69-refus-confiserie-ecart-negatif",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 29, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-70-prime-presence-confiserie",
+    "operation": "prime",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "code": "prime_presence", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-71-salaire-pates-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "horaires", "categorie": "III", "sous_categorie": "2", "anciennete_annees": 6, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-72-salaire-pates-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "mensuels", "categorie": "V", "sous_categorie": "III", "anciennete_annees": 28.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-73-refus-pates-sous-categorie-manquante",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "mensuels", "categorie": "IV", "anciennete_annees": 6, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-74-refus-pates-palier-art-14",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "horaires", "categorie": "I", "sous_categorie": "1", "anciennete_annees": 25, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-75-prime-logement-pates",
+    "operation": "prime",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "code": "prime_logement", "date": "2023-06-01", "groupe": "categorie_3"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-76-refus-pates-transport-niveau-smig",
+    "operation": "prime",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "code": "prime_transport_niveau_salaire_minimum", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-77-salaire-cosmetiques-degre-12-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "administratifs", "categorie": "9", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-78-salaire-cosmetiques-production-categorie-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production_categorie_1", "categorie": "1", "anciennete_annees": 0.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-79-refus-cosmetiques-categorie-1-apres-un-an",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production_categorie_1", "categorie": "1", "anciennete_annees": 2, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-80-refus-cosmetiques-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "administratifs", "categorie": "6", "anciennete_annees": 15, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-81-refus-cosmetiques-transport-cadres",
+    "operation": "prime",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "code": "prime_transport_cadres", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-82-prime-presence-cosmetiques",
+    "operation": "prime",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "code": "prime_presence", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-83-refus-cosmetiques-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production", "categorie": "3", "anciennete_annees": 6, "date": "2021-11-30"},
+    "lang": "fr"
   }
 ]

@@ -4024,6 +4024,1126 @@
     "page": 14,
     "emplacement": "art. 46-4 : panier réservé au travail continu de plus de 7 h le jour du panier"
    }
+  },
+  {
+   "id": "TB-126",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D49",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "population": "ouvriers_horaires",
+     "categorie": "3",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.073",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "قلي القهوة.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 18,
+    "emplacement": "tableau n° 3 (p.18, 2024-01-01), ligne 3 depuis le haut (catégorie 3), col. degré 3 depuis la droite (4 à 6 ans)",
+    "valeur_imprimee": "4.073"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-127",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "code": "prime_transport",
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "60.610",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قلي القهوة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : 60.610 d par mois à partir du 1er janvier 2023",
+    "valeur_imprimee": "60.610"
+   }
+  },
+  {
+   "id": "TB-128",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "categorie": "3",
+     "anciennete_annees": 4,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 18,
+    "emplacement": "en-tête : 4 ans = fin du degré 2 et début du degré 3 (durée 2 ans chacun)"
+   }
+  },
+  {
+   "id": "TB-129",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "categorie": "3",
+     "anciennete_annees": 5,
+     "date": "2021-11-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 17,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er décembre 2021"
+   }
+  },
+  {
+   "id": "TB-130",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "code": "prime_production",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 14,
+    "emplacement": "art. 49 (جديد) : pourcentage du salaire (3,4 % à 8,5 %), aucun montant fixe"
+   }
+  },
+  {
+   "id": "TB-131",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TORREFACTION_CAFE",
+     "population": "employes_mensuels",
+     "categorie": "3",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "قلي القهوة.pdf",
+    "page": 16,
+    "emplacement": "annexe 1 : employés des catégories 3 à 5 ; aucun tableau mensuel aux p.17-18"
+   }
+  },
+  {
+   "id": "TB-132",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D50",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "6",
+     "anciennete_annees": 30,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1046.082",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكالات الاسفار.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكالات الاسفار.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 2 (p.19, 2023-05-01), ligne 6 depuis le haut (catégorie 6), col. degré 13 depuis la droite (durée « - »)",
+    "valeur_imprimee": "1046.082"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-133",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "code": "prime_presence_par_jour",
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.481",
+    "unite": "TND/jour",
+    "citations": [
+     {
+      "pdf": "وكالات الاسفار.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكالات الاسفار.pdf",
+    "page": 15,
+    "emplacement": "art. 46 (جديد) : 481 millimes par jour de travail effectif à partir du 1er mai 2023",
+    "valeur_imprimee": "0.481"
+   }
+  },
+  {
+   "id": "TB-134",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "2",
+     "anciennete_annees": 3,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "وكالات الاسفار.pdf",
+    "page": 19,
+    "emplacement": "en-tête : durées 1 puis 2 : 3 ans = fin du degré 2 et début du degré 3"
+   }
+  },
+  {
+   "id": "TB-135",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "2",
+     "anciennete_annees": 2,
+     "date": "2022-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "وكالات الاسفار.pdf",
+    "page": 18,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er mai 2022"
+   }
+  },
+  {
+   "id": "TB-136",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "code": "prime_repas",
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "وكالات الاسفار.pdf",
+    "page": 16,
+    "emplacement": "art. 47 (جديد) : 5.500 d sans période (repas, jour ou mois)"
+   }
+  },
+  {
+   "id": "TB-137",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D51",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "HOTELS_TOURISTIQUES",
+     "categorie": "cadre_1",
+     "anciennete_annees": 10,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1319.652",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+      "page": 44
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+    "page": 44,
+    "emplacement": "tableau n° 2 (p.44, 2023-05-01), ligne 1 depuis le haut (« الإدارة 1 »), col. degré 6 depuis la droite (9 à 11 ans)",
+    "valeur_imprimee": "1319.652"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-138",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "HOTELS_TOURISTIQUES",
+     "code": "prime_transport",
+     "date": "2023-06-01",
+     "groupe": "superieur_1_et_cadres",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "93.290",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+    "page": 16,
+    "emplacement": "art. 51 (جديد) : « أعلى 1 », « إطار 1 » et « إطار 2 », 93.290 d à partir du 1er mai 2023",
+    "valeur_imprimee": "93.290"
+   }
+  },
+  {
+   "id": "TB-139",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D51",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "HOTELS_TOURISTIQUES",
+     "population": "hotels_5_etoiles",
+     "categorie": "services",
+     "anciennete_annees": 2,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+    "page": 43,
+    "emplacement": "note 2 sous les tableaux (p.43-44) : +10 % pour les hôtels 5 étoiles, majoration non calculée"
+   }
+  },
+  {
+   "id": "TB-140",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D51",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "HOTELS_TOURISTIQUES",
+     "categorie": "services",
+     "anciennete_annees": 30,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+    "page": 8,
+    "emplacement": "art. 15 مكرر (جديد) et en-tête : dernier degré à 30 ans d'ancienneté effective, rien au-delà"
+   }
+  },
+  {
+   "id": "TB-141",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "HOTELS_TOURISTIQUES",
+     "categorie": "services",
+     "anciennete_annees": 2,
+     "date": "2022-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+    "page": 43,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er mai 2022"
+   }
+  },
+  {
+   "id": "TB-142",
+   "categorie": "ok",
+   "certitude": "C",
+   "decision": "D52",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "mensuels",
+     "categorie": "4",
+     "anciennete_annees": 31,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "922.919",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "page": 23
+     },
+     {
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "page": 7
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 23,
+    "emplacement": "tableau n° 5 (p.23, 2024-01-01), ligne 4 (catégorie 4) : degré 15 (917.717) + 2 × (degré 15 − degré 14 915.116), art. 14 (جديد) أ p.7, 31 ans = 26 + 2 périodes de 2 ans"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-143",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D52",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "horaires",
+     "categorie": "2",
+     "anciennete_annees": 11,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.417",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 4 (p.22, 2023-01-01), ligne 2 (catégorie 2), col. degré 7 depuis la droite (10 à 12 ans)",
+    "valeur_imprimee": "3.417"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-144",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D52",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "mensuels",
+     "categorie": "2",
+     "anciennete_annees": 27,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "590.535",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 1 (p.21, 2021-12-01), ligne 2 (catégorie 2), col. degré 15 : anomalie imprimée conservée (590.535)",
+    "valeur_imprimee": "590.535"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-145",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "categorie": "2",
+     "anciennete_annees": 11,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 21,
+    "emplacement": "deux populations (mensuels, horaires) avec les catégories 1 à 4 : population obligatoire"
+   }
+  },
+  {
+   "id": "TB-146",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D52",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "mensuels",
+     "categorie": "1",
+     "anciennete_annees": 4.5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 14,
+    "emplacement": "art. 53 (p.14) : 3e à 5e année au degré 3 ; en-tête (p.23) : degré 4 de 4 à 6 ans"
+   }
+  },
+  {
+   "id": "TB-147",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "mensuels",
+     "categorie": "2",
+     "anciennete_annees": 13,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 1 (p.21), ligne 2, col. degré 8 (12 à 14 ans) : dernier chiffre abîmé (671.78?)"
+   }
+  },
+  {
+   "id": "TB-148",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D52",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "population": "mensuels",
+     "categorie": "2",
+     "anciennete_annees": 29,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 1 (p.21), ligne 2 : degré 15 (590.535) < degré 14 (688.217), écart de l'art. 14 négatif"
+   }
+  },
+  {
+   "id": "TB-149",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+     "code": "prime_presence",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.639",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+    "page": 14,
+    "emplacement": "art. 51 (جديد), prime de présence : 4.639 d par mois à partir du 1er janvier 2024",
+    "valeur_imprimee": "4.639"
+   }
+  },
+  {
+   "id": "TB-150",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D53",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "population": "horaires",
+     "categorie": "III",
+     "sous_categorie": "2",
+     "anciennete_annees": 6,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.715",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "العجين الغذائي و الكسكسي.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 5 (p.21, 2024-01-01), ligne 6 (III, 2), col. degré 4 depuis la droite (5 à 7 ans)",
+    "valeur_imprimee": "4.715"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-151",
+   "categorie": "ok",
+   "certitude": "C",
+   "decision": "D53",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "population": "mensuels",
+     "categorie": "V",
+     "sous_categorie": "III",
+     "anciennete_annees": 28.5,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1057.025",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "العجين الغذائي و الكسكسي.pdf",
+      "page": 20
+     },
+     {
+      "pdf": "العجين الغذائي و الكسكسي.pdf",
+      "page": 8
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 4 (p.20, 2023-01-01), ligne 8 (V, III) : degré 12 (1049.825) + 2 × (degré 12 − degré 11 1046.225), art. 14 (جديد) أ p.8, 28,5 ans = 22 + 2 périodes de 3 ans"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-152",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "population": "mensuels",
+     "categorie": "IV",
+     "anciennete_annees": 6,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 20,
+    "emplacement": "catégorie IV imprimée en deux lignes I et II : sous-catégorie obligatoire"
+   }
+  },
+  {
+   "id": "TB-153",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D10",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "population": "horaires",
+     "categorie": "I",
+     "sous_categorie": "1",
+     "anciennete_annees": 25,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 8,
+    "emplacement": "art. 14 (جديد) أ : 25 ans = palier de 3 ans après le degré 12 (22 ans)"
+   }
+  },
+  {
+   "id": "TB-154",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "code": "prime_logement",
+     "date": "2023-06-01",
+     "groupe": "categorie_3"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "26.084",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "العجين الغذائي و الكسكسي.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 16,
+    "emplacement": "art. 54 مكرر (جديد), tableau : ligne « الصنف 3 », colonne 2023-01-01 (26.084)",
+    "valeur_imprimee": "26.084"
+   }
+  },
+  {
+   "id": "TB-155",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D53",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PATES_ALIMENTAIRES_COUSCOUS",
+     "code": "prime_transport_niveau_salaire_minimum",
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "العجين الغذائي و الكسكسي.pdf",
+    "page": 16,
+    "emplacement": "art. 54 (جديد) : groupe « مستوى الأجر الأدنى » sans définition des agents concernés"
+   }
+  },
+  {
+   "id": "TB-156",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D54",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "population": "administratifs",
+     "categorie": "9",
+     "anciennete_annees": 30,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1216.807",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة مواد التجميل والعطورات.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 23,
+    "emplacement": "tableau n° 5 (p.23, 2024-01-01), ligne 9 (catégorie 9), col. degré 12 depuis la droite (« +26 »)",
+    "valeur_imprimee": "1216.807"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-157",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "population": "production_categorie_1",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "539.336",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة مواد التجميل والعطورات.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 4 (p.22, 2023-01-01), ligne 1 (catégorie 1, « درجة وحيدة »), cellule unique",
+    "valeur_imprimee": "539.336"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-10) ; position ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-158",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D54",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "population": "production_categorie_1",
+     "categorie": "1",
+     "anciennete_annees": 2,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 15,
+    "emplacement": "art. 49 : catégorie 1 à degré unique ; passage en catégorie 2 après un an"
+   }
+  },
+  {
+   "id": "TB-159",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "population": "administratifs",
+     "categorie": "6",
+     "anciennete_annees": 15,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 1 (p.21), ligne 6, col. degré 8 (14 à 17 ans) : « 787.:77 », un chiffre manque"
+   }
+  },
+  {
+   "id": "TB-160",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D54",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "code": "prime_transport_cadres",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 15,
+    "emplacement": "art. 53 (جديد) : montant « للإطارات », aucune catégorie désignée comme cadre"
+   }
+  },
+  {
+   "id": "TB-161",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "code": "prime_presence",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "11.600",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة مواد التجميل والعطورات.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 16,
+    "emplacement": "art. 55 (جديد) : 11.600 d à partir du 1er janvier 2024 (lu à 170 et 300 dpi)",
+    "valeur_imprimee": "11.600"
+   }
+  },
+  {
+   "id": "TB-162",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COSMETIQUES_PARFUMS",
+     "population": "production",
+     "categorie": "3",
+     "anciennete_annees": 6,
+     "date": "2021-11-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة مواد التجميل والعطورات.pdf",
+    "page": 21,
+    "emplacement": "titre du tableau n° 2 : en vigueur à partir du 1er décembre 2021"
+   }
   }
  ]
 }

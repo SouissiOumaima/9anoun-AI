@@ -2225,3 +2225,241 @@ messages et les hypothèses sont rédigés (`libelle_ar_redige`).
 
 **Statut** : ✅ activée (2026-10-28) ; `pytest` complet : tous réussis sauf le test DS1 cité ci-dessus (échec
 attendu, correction demandée à DS1) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image.
+
+---
+
+### D48 — Grilles : case illisible, ancienneté refusée au milieu de la grille, case exclue de l'écart cumulé
+
+**Numéro** : D48, à la suite de D47 ; `origin/main` s'arrête à D47 et aucune branche distante n'utilise D48 à D59
+(vérifié avec `git fetch origin` le 2026-11-10).
+
+**Décision** : trois champs facultatifs dans les fichiers de grilles. Absents, ils n'ont aucun effet ; présents, ils
+produisent un refus `SOURCE_MANQUANTE` dont le texte est lu dans le fichier (page et raison), jamais un montant.
+1. `cellules_source_manquante` (sur une table de `grilles`) : liste `{categorie, degre, source_pdf_page,
+   source_article, raison, message_fr, message_ar}` ; la case vaut `null` dans `valeurs`. Une case lue `null` est
+   refusée, y compris quand l'écart cumulé (D10) ou une table de correspondance l'utilise.
+2. `anciennetes_refusees` (au niveau de la grille, par population à degrés) : liste `{au_dela_de, jusqu_a_inclus,
+   source_pdf_page, source_article, message_fr, message_ar}` ; toute ancienneté `a` avec `au_dela_de < a ≤
+   jusqu_a_inclus` est refusée ; les bornes imprimées restent refusées en `PARAM_INVALIDE` (D6).
+3. `cases_refusees` (dans un bloc `au_dela_dernier_degre` de règle `ecart_cumule_biennal`) : liste `{table_id,
+   categorie, source_pdf_page, source_article, message_fr, message_ar}` ; au-delà du premier palier (n ≥ 1), la case
+   de cette table et de cette catégorie est refusée ; avant (n = 0), le dernier degré est servi tel qu'imprimé.
+
+**Alternatives** : retirer les tables qui ont une case illisible (perte de toutes les autres cases) ; refuser l'écart
+cumulé pour toute une population ; ne pas tenir compte d'un article contraire à l'en-tête de la grille. Toutes
+écartées (accord à l'arrêt 3 du 2026-11-10).
+
+**Raison** : consigne « Citation ou Silence » : ce que la source ne permet pas de lire ou ne tranche pas est déclaré,
+avec sa page, au lieu d'être rempli ou choisi.
+
+**Mise en œuvre** : `calc/loaders.py` (`valider_grille`, `_cellules_manquantes`, `_valider_anciennetes_refusees`,
+`_valider_cases_refusees` : case existante, `null` seulement pour une case déclarée et toute case déclarée à `null`,
+bornes entières croissantes, refus déclaré complet) ; `calc/salary.py` (`degre_from_anciennete`, `salaire_base`,
+`montant_case`, `_appliquer_art13`). Aucun schéma JSON modifié. Les 7 grilles déjà actives ne portent aucun de ces
+champs : baseline (125 cas) et 46 démos identiques à l'octet près avant et après le changement.
+
+**Utilisé par** : D52 (confiserie : les trois champs) et D54 (cosmétiques : `cellules_source_manquante`).
+
+**Tests** : `test_champs_optionnels_grille.py` (données fictives : champ présent, absent, valeur refusée, borne
+exacte, validateur).
+
+**Statut** : ✅ mis en œuvre (2026-11-10) ; tests réussis.
+
+---
+
+### D49 — Grille salariale TORREFACTION_CAFE (pages 2-3, 8, 10, 14-18)
+
+**Source** : `data/raw/pdf/قلي القهوة.pdf` (18 pages). Tableaux de salaires sans couche texte (scans) ; tous les textes
+lus sur les images. Pages : p.2-3 (avenants), art. 16 (p.8), art. 27 (p.10), art. 48 à 51-4 (p.14-15), art. 52 (جديد)
+(p.15), classification (annexe 1, p.16), tableaux n° 1 à 3 (p.17-18).
+
+**Lecture** : 3 tableaux (2021-12-01, 2023-01-01 p.17 ; 2024-01-01 p.18), 5 catégories × 13 degrés = 195 montants ;
+durée de séjour imprimée 2 pour chaque degré ; libellés « 0-2 » … « 24-26 ».
+
+#### Décisions (validées par DS5)
+
+1. Population unique `ouvriers_horaires`, facultative ; `employes_mensuels` (annexe 1, catégories 3 à 5 ; art. 16)
+   refusée (`populations_non_couvertes`, aucun tableau mensuel).
+2. **Unité TND/heure en hypothèse affichée** : non imprimée ; montants de 2,961 à 4,862.
+3. Bornes exactes 2, 4, …, 24 refusées (D6) ; à partir de 26 ans, refus (art. 52 (جديد), p.15 : système réparti sur
+   26 ans).
+4. Dates : refus avant le 2021-12-01 ; la table de 2024 reste appliquée ensuite (aucun avenant ultérieur, p.2-3).
+5. Primes couvertes : `prime_presence` (art. 49 مكرر (جديد), 3 dates), `prime_transport` (art. 50 (جديد), 3 dates),
+   `prime_panier` (art. 50 مكرر (جديد), 0,533 par jour, sans date, comme D4), `prime_chaleur_salete_poussiere_groupe_a`
+   et `_groupe_b` (art. 51 مكرر (جديد), 8,333 et 6,333, condition de poste), `prime_scolaire_enseignement_base`,
+   `_secondaire`, `_superieur` (art. 51-3 (جديد), par enfant), `prime_deces` (art. 51-4, 110 dinars, condition).
+   Montants sans date : un code par montant, servis tels qu'imprimés (hypothèse affichée).
+6. `SOURCE_MANQUANTE` : `prime_depart_retraite` (art. 48 (جديد), mois de salaire), `prime_production` (art. 49 (جديد),
+   pourcentage).
+7. Hypothèses affichées : unité ; ancienneté de progression (reclassement de l'art. 52 non calculé) ; régime horaire
+   non imprimé.
+
+**Mise en œuvre** : `data/processed/salary_grids/torrefaction_cafe.json` ; tests `test_vague1.py` ; démos 47 à 52 ;
+jeu de référence TB-126 à TB-131.
+
+**Statut de vérification** : 195 cellules en double lecture indépendante (0 écart), lots relus contre l'image par DS5
+(« LOTS VALIDÉS », 2026-11-10) ; primes lues deux fois et relues par DS5. Cas du jeu de référence : en attente de
+vérification humaine.
+
+---
+
+### D50 — Grille salariale AGENCES_VOYAGES (pages 2-3, 8, 15-19)
+
+**Source** : `data/raw/pdf/وكالات الاسفار.pdf` (19 pages). Pages : p.2-3, art. 13 (جديد) (p.8), art. 43 à 48-2 (p.15-16),
+art. 49 et 50 (p.16), classification (p.17), tableaux n° 1 et 2 (p.18-19).
+
+**Lecture** : 2 tableaux (2022-05-01 p.18, 2023-05-01 p.19), régime de 48 h imprimé ; 10 catégories (exécution 1-5,
+gestion 6-8, cadres 9-10) × 13 degrés = 260 montants ; durées 1, 2 (×6), 3 (×5), « - ».
+
+#### Décisions (validées par DS5)
+
+1. Population unique `tous_agents`, facultative ; catégories « 1 » à « 10 » ; TND/mois ; régime 48 h.
+2. Libellés « 0-1 », « 1-3 », …, « 25-28 », **« 28+ »** : degré 13 ouvert (règle « ouvert », D29), texte de l'art. 13
+   (جديد) saisi depuis l'image. Le passage à la catégorie supérieure au terme du degré 13 et les promotions automatiques
+   (15, 20, 25, 30 ans) ne sont pas calculés (hypothèses affichées).
+3. Bornes exactes refusées (D6) ; refus avant le 2022-05-01.
+4. Primes couvertes : `prime_transport` (art. 45 (جديد), `execution_gestion` / `cadres`, 2 dates, décret 503/1982
+   compris), `prime_presence_par_jour` (TND/jour) et `prime_presence_mensuelle` (art. 46 (جديد), les deux composantes,
+   2 dates), `prime_entretien` (art. 48, 15 dinars, condition), `prime_risque` (art. 48-1, 15 dinars, condition).
+5. `SOURCE_MANQUANTE` : `prime_repas` (art. 47 (جديد), période non indiquée), `prime_scolaire` (art. 48 مكرر, montant
+   fixé par l'entreprise), `aide_deces` (art. 48-2), `prime_production` (art. 44 (جديد)), `prime_depart_retraite`
+   (art. 43 (جديد)).
+6. Remarque : l'art. 49 (p.16) cite encore les tableaux de 1996 à 1998 (texte non mis à jour).
+
+**Mise en œuvre** : `agences_voyages.json` ; `test_vague1.py` ; démos 53 à 57 ; TB-132 à TB-136.
+
+**Statut de vérification** : 260 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D51 — Grille salariale HOTELS_TOURISTIQUES (pages 2-3, 8-9, 15-18, 42-44)
+
+**Source** : `data/raw/pdf/النزل السياحية والمؤسسات المشابهة لها2.pdf` (44 pages). Pages : p.2-3, art. 15 et 15 مكرر
+(جديد) (p.8), art. 49 à 53 (جديد) (p.15-17), classification (p.42), tableaux n° 1 et 2 (p.43-44).
+
+**Lecture** : 2 tableaux (2022-05-01 p.43, 2023-05-01 p.44) ; 10 lignes × 13 degrés = 260 montants, virgule décimale et
+espace de milliers ; ancienneté effective imprimée 1, 3, …, 27, 30.
+
+#### Décisions (validées par DS5)
+
+1. Population unique `tous_agents` ; clés `direction_1`, `direction_2`, `superieur_1`, `superieur_2`, `premier_1`,
+   `premier_2`, `execution_1` à `execution_3`, `services` (lignes imprimées) ; alias `cadre_1`, `cadre_2` (« إطار »
+   de la classification et de l'art. 51) ; sections (أ)/(ب) au même salaire, non demandées.
+2. **Hôtels 5 étoiles** : population `hotels_5_etoiles` refusée, citant la note 2 (p.43-44, +10 %), sans calcul.
+3. Libellés « 0-1 » … « 27-30 » ; bornes exactes refusées ; à partir de 30 ans, refus (art. 15 مكرر (جديد), p.8) ;
+   promotions automatiques de l'art. 15 (15 et 27 ans) non calculées. Refus avant le 2022-05-01.
+4. Primes couvertes : `prime_transport` (art. 51 (جديد), groupes `services_a_superieur_2` et
+   `superieur_1_et_cadres`, 2 dates, condition : l'employeur n'assure pas le transport), `prime_presence` (art. 51
+   مكرر (جديد), 2 dates), `prime_caisse_premiers_caissiers` et `prime_caisse_caissiers` (art. 53 (جديد), 21,666 et
+   16,666, conditions).
+5. `SOURCE_MANQUANTE` : `prime_production` (art. 50 (جديد)), `avantage_nourriture_logement` (art. 52 (جديد), en
+   nature), `prime_depart_retraite` (art. 49 (جديد)).
+
+**Mise en œuvre** : `hotels_touristiques.json` ; `test_vague1.py` ; démos 58 à 62 ; TB-137 à TB-141.
+
+**Statut de vérification** : 260 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D52 — Grille salariale CONFISERIE_BISCUITERIE_CHOCOLATERIE (pages 2-3, 7-8, 13-18, 21-23)
+
+**Source** : `data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf` (23 pages). Pages : p.2-3, art. 14 (جديد)
+(p.7), art. 48 à 53 (p.13-14), annexes 1 et 3 (p.16, 18), tableaux n° 1 à 6 (p.21-23).
+
+**Lecture** : 6 tableaux, 3 dates (2021-12-01, 2023-01-01, 2024-01-01) × 2 populations : mensuels 6 × 15, horaires
+4 × 15 = 450 montants. En-tête « الأقدمية بالدرجة » : vide, 1, puis 2.
+
+#### Décisions (validées par DS5)
+
+1. Populations `mensuels` et `horaires` (titres imprimés), obligatoires ; catégories « 1 » à « 6 » et « 1 » à « 4 ».
+2. **Lecture A** de l'en-tête : « 0-1 », « 1-2 », « 2-4 », …, « 24-26 », degré 15 à partir de 26 ans ; art. 14 (جديد)
+   أ (p.7) : écart cumulé tous les 2 ans au-delà (règle D10, période 2) ; paliers 28, 30… refusés (`PARAM_INVALIDE`).
+3. **Art. 53 (p.14)** : de 4 ans exclus à 5 ans inclus, l'article (degré 3) contredit l'en-tête (degré 4) :
+   `SOURCE_MANQUANTE` (`anciennetes_refusees`, D48), pour les deux populations et les trois dates ; 4 ans pile reste
+   une borne (`PARAM_INVALIDE`). Les degrés supplémentaires des points a) et b) de l'art. 53 et la promotion
+   automatique de l'art. 14 ب ne sont pas calculés (hypothèses affichées).
+4. **Anomalie imprimée** : tableau n° 1 (p.21), ligne 2, degré 15 = 590,535 (< degré 14 : 688,217), conservée ; servie
+   de 26 à 28 ans ; au-delà, écart de l'art. 14 refusé pour cette seule case (`cases_refusees`, D48).
+5. **Cases illisibles** (`cellules_source_manquante`, D48), colonne 8 : tableau n° 1 (p.21), lignes 2, 3, 5 (dernier
+   chiffre abîmé) ; tableau n° 5 (p.23), lignes 2, 3 (dernier chiffre) et 6 (avant-dernier chiffre).
+6. Note des tableaux : salaires incluant la présence de 112 millimes par jour, non ajoutée ; `prime_presence` de
+   l'art. 51 est le forfait mensuel distinct.
+7. Primes couvertes (art. 51 et 52 (جديد), p.14) : `prime_panier` (0,200 par jour), `prime_deplacement_plus_12h`
+   (1,800) et `prime_deplacement_plus_18h` (4,000), `prime_caisse` (7 dinars), `prime_presence` (3 dates),
+   `prime_transport` (3 dates). `SOURCE_MANQUANTE` : `prime_production` (art. 49), `prime_depart_retraite` (art. 48).
+
+**Mise en œuvre** : `confiserie_biscuiterie.json` ; `test_vague1.py` ; démos 63 à 70 ; TB-142 à TB-149.
+
+**Statut de vérification** : 450 cellules en double lecture (1 écart tranché à l'image, 7 cases non tranchées dont 6 ici,
+déclarées illisibles), lots validés par DS5 (2026-11-10). Cas du jeu de référence : en attente de vérification humaine.
+
+---
+
+### D53 — Grille salariale PATES_ALIMENTAIRES_COUSCOUS (pages 2-3, 8-9, 15-21)
+
+**Source** : `data/raw/pdf/العجين الغذائي و الكسكسي.pdf` (21 pages). Pages : p.2-3, art. 14 (جديد) (p.8), art. 48 à 54
+مكرر (جديد) (p.15-16), annexe 1 (p.18), tableaux n° 1 à 6 (p.19-21).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations : horaires 6 lignes (I, II, III × 1, 2), mensuels 8 lignes (III أ, ب,
+ج ; IV I, II ; V I, II, III) × 12 degrés = 504 montants ; durées 1, 2 (×9), 3, 3.
+
+#### Décisions (validées par DS5)
+
+1. Populations `horaires` et `mensuels`, obligatoires (catégorie III dans les deux) ; catégorie et `sous_categorie`
+   obligatoires.
+2. Libellés « 0-1 », « 1-3 », …, « 19-22 », « 22+ » ; art. 14 (جديد) أ (p.8) : écart cumulé tous les 3 ans au-delà de
+   22 ans, sans plafond ; paliers 25, 28… refusés. Promotion de l'art. 14 ب non calculée.
+3. Primes couvertes : `prime_deplacement_repas`, `prime_deplacement_deux_repas`, `prime_deplacement_nuitee` (art. 53
+   (جديد), condition), `prime_panier` (art. 53 مكرر (جديد), 0,280 par jour depuis le 2005-05-01), `prime_presence`
+   (art. 53-3 (جديد), 3 dates), `prime_transport` et `prime_logement` (art. 54 et 54 مكرر (جديد), groupes
+   `categorie_1` à `categorie_5`, 3 dates, groupe choisi par l'appelant).
+4. `SOURCE_MANQUANTE` : `prime_transport_niveau_salaire_minimum` et `prime_logement_niveau_salaire_minimum` (groupe
+   « مستوى الأجر الأدنى » non défini), `prime_vente` (art. 52, montant imprimé incohérent), `prime_productivite`
+   (art. 49 (جديد), en nature), `prime_production` (art. 51 (جديد)), `prime_depart_retraite` (art. 48 (جديد)).
+
+**Mise en œuvre** : `pates_alimentaires.json` ; `test_vague1.py` ; démos 71 à 76 ; TB-150 à TB-155.
+
+**Statut de vérification** : 504 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D54 — Grille salariale COSMETIQUES_PARFUMS (pages 2-3, 8-9, 15-23)
+
+**Source** : `data/raw/pdf/صناعة مواد التجميل والعطورات.pdf` (23 pages). Pages : p.2-3, art. 49 à 59 (p.15-16),
+classification (p.18-20), tableaux n° 1 à 6 (p.21-23).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : administratifs, services et cadres 9 × 12 ; production :
+catégorie 1 « درجة وحيدة » (une cellule) et catégories 2 à 6 × 12 ; 507 montants ; ancienneté imprimée « 1-0 » …
+« 26-23 », « +26 ».
+
+#### Décisions (validées par DS5)
+
+1. Populations `administratifs`, `production` (catégories 2 à 6) et `production_categorie_1` (catégorie 1, un degré
+   « 0-1 ») ; population obligatoire. TND/mois (art. 49).
+2. Libellés « 0-1 » … « 23-26 », « 26+ » (règle « ouvert ») ; texte de l'art. 49 saisi depuis l'image (durée de 3 ans
+   jusqu'au degré 12, rien au-delà : hypothèse affichée). Classement de l'art. 50 non calculé.
+3. Catégorie 1 de la production : servie de 0 à 1 an ; à partir d'1 an, refus (art. 49 : passage au degré 1 de la
+   catégorie 2, non calculé).
+4. Case illisible (`cellules_source_manquante`, D48) : tableau n° 1 (p.21), ligne 6, colonne 8 (« 787.:77 »).
+5. Primes couvertes : `prime_transport` (art. 53 (جديد), seul groupe `execution_gestion`, 3 dates), `prime_panier`
+   (art. 54 (جديد), 0,875 par jour, condition), `prime_deplacement_retour_20h` (2 dinars) et
+   `prime_deplacement_avec_nuitee` (7 dinars), `prime_scolaire` (art. 54 مكرر (جديد)), `prime_risque` (54-3),
+   `prime_salete` (54-4), `prime_presence` (art. 55 (جديد), 3 dates ; 2024 : 11,600 lu à 170 et 300 dpi),
+   `prime_caisse_caissier` et `prime_caisse_aide_caissier` (art. 56 (جديد)).
+6. `SOURCE_MANQUANTE` : `prime_transport_cadres` (aucune catégorie désignée comme cadre),
+   `prime_deplacement_promoteurs_livreurs` (accord d'entreprise), `avantage_lait` (54-5, en nature),
+   `prime_production` (57), `aide_deces` (58, montant mixte), `prime_depart_retraite` (59).
+
+**Mise en œuvre** : `cosmetiques_parfums.json` ; `test_vague1.py` ; démos 77 à 83 ; TB-156 à TB-162.
+
+**Statut de vérification** : 507 cellules en double lecture (0 écart, 1 case non tranchée déclarée illisible), lots
+validés par DS5 (2026-11-10). Cas du jeu de référence : en attente de vérification humaine.
+
+**Communs à D49 à D54** : les 6 secteurs sont activés dans le registre DS5 sans entrée dans la table des secteurs, en
+attente de validation DS2 (noms, codes et alias) ; seule exemption du test `test_chaque_secteur_ds5_disponible_figure_une_fois`
+(liste `EN_ATTENTE_DS2`, qui exige aussi leur absence de la table) ; table des secteurs et D30 non modifiés ; textes arabes des libellés de primes et de populations saisis depuis l'image, libellés de catégorie,
+messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux (décrets 437/1981 et 501/1982) reprise en
+remarque, sans calcul.
