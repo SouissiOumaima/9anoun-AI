@@ -41,8 +41,14 @@ def test_registre_actuel_identique():
         "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
         "BANQUES": "data/processed/salary_grids/banques.json",
         "GARDIENNAGE_SECURITE_TRANSPORT_FONDS": "data/processed/salary_grids/gardiennage.json",
+        "TORREFACTION_CAFE": "data/processed/salary_grids/torrefaction_cafe.json",
+        "AGENCES_VOYAGES": "data/processed/salary_grids/agences_voyages.json",
+        "HOTELS_TOURISTIQUES": "data/processed/salary_grids/hotels_touristiques.json",
+        "CONFISERIE_BISCUITERIE_CHOCOLATERIE": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "PATES_ALIMENTAIRES_COUSCOUS": "data/processed/salary_grids/pates_alimentaires.json",
+        "COSMETIQUES_PARFUMS": "data/processed/salary_grids/cosmetiques_parfums.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47
+    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -69,7 +75,8 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         salaire_base("SANS_REF", "admin_tech", "4", 15, "2022-06-01")
     assert e.value.code == Refus.SOURCE_MANQUANTE
     assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
-                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
+                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+                                  "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS).")
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):

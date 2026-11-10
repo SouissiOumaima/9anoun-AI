@@ -223,6 +223,52 @@ def _valider_textes_prime(p: dict) -> None:
         _exiger(bool(p.get("montants")), f"{objet} : libelles_groupes sans montants datés")
 
 
+def _cellules_manquantes(table: dict, n_degres: int) -> set[tuple[str, int]]:
+    """Cases illisibles d'une table (champ optionnel cellules_source_manquante) : {(catégorie, degré)}.
+    Chaque case : catégorie de la table, degré existant, page, article, raison et messages FR/AR ; pas de doublon."""
+    cases = table.get("cellules_source_manquante", [])
+    _exiger(isinstance(cases, list), f"{table['table_id']} : cellules_source_manquante doit être une liste")
+    out = set()
+    for c in cases:
+        objet = f"{table['table_id']}.cellules_source_manquante"
+        _exiger(n_degres > 0 and c["categorie"] in table["valeurs"] and isinstance(c["degre"], int)
+                and not isinstance(c["degre"], bool) and 1 <= c["degre"] <= n_degres, f"{objet} : case inconnue")
+        _exiger(_texte(c["raison"]), f"{objet} : raison attendue")
+        _exiger_refus_declare(c, objet)
+        _exiger((c["categorie"], c["degre"]) not in out, f"{objet} : case en double")
+        out.add((c["categorie"], c["degre"]))
+    return out
+
+
+def _entier_positif_ou_nul(v) -> bool:
+    return isinstance(v, int) and not isinstance(v, bool) and v >= 0
+
+
+def _valider_anciennetes_refusees(data: dict, degres: dict) -> None:
+    """Champ optionnel anciennetes_refusees : {population à degrés: [{au_dela_de, jusqu_a_inclus, refus déclaré}]}."""
+    for pop, liste in data.get("anciennetes_refusees", {}).items():
+        objet = f"anciennetes_refusees[{pop}]"
+        _exiger(bool(degres.get(pop)) and isinstance(liste, list) and liste, f"{objet} : population à degrés attendue")
+        for r in liste:
+            _exiger(_entier_positif_ou_nul(r["au_dela_de"]) and _entier_positif_ou_nul(r["jusqu_a_inclus"])
+                    and r["au_dela_de"] < r["jusqu_a_inclus"], f"{objet} : bornes entières croissantes attendues")
+            _exiger_refus_declare(r, objet, avec_anciennete=True)
+
+
+def _valider_cases_refusees(data: dict, au_dela: dict) -> None:
+    """Champ optionnel cases_refusees d'un bloc ecart_cumule_biennal : [{table_id, categorie, refus déclaré}]."""
+    for pop, bloc in au_dela.items():
+        if "cases_refusees" not in bloc:
+            continue
+        objet = f"au_dela_dernier_degre[{pop}].cases_refusees"
+        _exiger(bloc.get("regle") == "ecart_cumule_biennal" and isinstance(bloc["cases_refusees"], list)
+                and bloc["cases_refusees"], f"{objet} : liste non vide, règle ecart_cumule_biennal attendue")
+        tables = {t["table_id"] for t in data["grilles"] if population_de_table(data, t) == pop}
+        for r in bloc["cases_refusees"]:
+            _exiger(r["table_id"] in tables and r["categorie"] in data["categories"][pop], f"{objet} : case inconnue")
+            _exiger_refus_declare(r, objet)
+
+
 def valider_grille(data: dict, chemin: str) -> dict:
     """Validation minimale du schéma d'une grille sectorielle (degrés et refus déclarés par population)."""
     try:
@@ -267,13 +313,18 @@ def valider_grille(data: dict, chemin: str) -> dict:
             pop = population_de_table(data, t)
             _exiger(pop is not None, f"{t['table_id']} : population absente, inconnue ou ambiguë "
                                      "(champ population obligatoire si plusieurs populations ont ces catégories)")
+            manquantes = _cellules_manquantes(t, len(degres[pop]))
             for cat, vals in t["valeurs"].items():
                 if degres[pop]:
                     _exiger(isinstance(vals, list) and len(vals) == len(degres[pop]),
                             f"{t['table_id']} cat. {cat} : {len(vals)} degrés")
-                    _exiger(all(isinstance(v, Decimal) for v in vals), f"{t['table_id']} cat. {cat} : montant non décimal")
+                    # null seulement pour une case déclarée illisible, et toute case déclarée vaut null.
+                    _exiger(all(isinstance(v, Decimal) if (cat, i) not in manquantes else v is None
+                                for i, v in enumerate(vals, 1)), f"{t['table_id']} cat. {cat} : montant non décimal")
                 else:
                     _exiger(isinstance(vals, Decimal), f"{t['table_id']} cat. {cat} : montant unique décimal attendu")
+        _valider_anciennetes_refusees(data, degres)
+        _valider_cases_refusees(data, au_dela)
         for p in data.get("primes", []):
             for k in ("code", "source_article", "source_pdf_page", "unite"):
                 _exiger(k in p, f"prime {p.get('code', '?')} : clé {k} manquante")
