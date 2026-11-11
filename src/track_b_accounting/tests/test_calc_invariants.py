@@ -1,6 +1,7 @@
 """Invariants transverses du module calc : aucun float dans les Result, fonctions pures.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_invariants.py
 """
+
 import re
 from decimal import Decimal
 from pathlib import Path
@@ -43,8 +44,7 @@ def test_aucun_montant_float_dans_les_result():
 
 def test_modules_calc_purs():
     """Pas d'aléatoire, pas d'heure système ; seul loaders.py lit des fichiers."""
-    interdits = [r"\bimport random\b", r"\bfrom random\b", r"\.today\(", r"\.now\(", r"\btime\.time\(",
-                 r"\bfloat\("]
+    interdits = [r"\bimport random\b", r"\bfrom random\b", r"\.today\(", r"\.now\(", r"\btime\.time\(", r"\bfloat\("]
     for f in CALC.glob("*.py"):
         src = f.read_text(encoding="utf-8")
         for motif in interdits:

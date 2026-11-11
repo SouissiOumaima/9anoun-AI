@@ -5,6 +5,7 @@ Les tests de règles lisent une copie en mémoire (référence de test « D99 »
 temps du test) ; le fichier réel, activé par D46, est vérifié à part.
 Les valeurs attendues viennent de la double lecture des pages 22 et 23.
 """
+
 import copy
 from decimal import Decimal
 
@@ -17,9 +18,11 @@ S = "BANQUES"
 FICHIER = "data/processed/salary_grids/banques.json"
 REEL = lire_json(FICHIER)
 BORNES = [1, 2, 3, 4, 5] + list(range(7, 32, 2))
-STATUT = ("Les tables 1 et 2 ont été relues cellule par cellule sur l'image (1 292 cellules) par une seconde lecture "
-          "indépendante de la double lecture initiale ; l'écart entre la table 2 et la table 1 est constant sur chaque "
-          "ligne ; contrôle humain des extrémités de chaque ligne et des cellules signalées.")
+STATUT = (
+    "Les tables 1 et 2 ont été relues cellule par cellule sur l'image (1 292 cellules) par une seconde lecture "
+    "indépendante de la double lecture initiale ; l'écart entre la table 2 et la table 1 est constant sur chaque "
+    "ligne ; contrôle humain des extrémités de chaque ligne et des cellules signalées."
+)
 
 
 @pytest.fixture
@@ -42,6 +45,7 @@ def refus(code, f, *a, **k):
 
 # --- fichier réel : structure et activation ------------------------------------------------------------------
 
+
 def test_fichier_reel_active_d46_et_dans_le_registre():
     assert REEL["_meta"]["decision_ref"] == "D46" and REEL["_meta"]["secteur_code"] == S
     assert REEL["_meta"]["statut_verification"] == STATUT
@@ -54,12 +58,22 @@ def test_fichier_reel_active_d46_et_dans_le_registre():
 def test_structure_deux_tables_1292_cellules():
     assert list(REEL["populations"]) == ["tous_agents"] and len(REEL["categories"]["tous_agents"]) == 34
     assert [(t["effective_date"], t["source_pdf_page"], t["unite"]) for t in REEL["grilles"]] == [
-        ("2020-09-01", 22, "TND/mois"), ("2021-05-01", 23, "TND/mois")]
+        ("2020-09-01", 22, "TND/mois"),
+        ("2021-05-01", 23, "TND/mois"),
+    ]
     for t in REEL["grilles"]:
         assert list(t["valeurs"]) == REEL["categories"]["tous_agents"]
         assert all(len(v) == 19 and all(isinstance(x, Decimal) for x in v) for v in t["valeurs"].values())
     assert sum(len(v) for t in REEL["grilles"] for v in t["valeurs"].values()) == 1292
-    assert [d["anciennete_label"] for d in REEL["degres"]["tous_agents"]][:7] == ["0-1", "1-2", "2-3", "3-4", "4-5", "5-7", "7-9"]
+    assert [d["anciennete_label"] for d in REEL["degres"]["tous_agents"]][:7] == [
+        "0-1",
+        "1-2",
+        "2-3",
+        "3-4",
+        "4-5",
+        "5-7",
+        "7-9",
+    ]
     assert REEL["degres"]["tous_agents"][-1]["anciennete_label"] == "31-33"
 
 
@@ -71,20 +85,25 @@ def test_ecart_table_2_moins_table_1_constant_par_ligne():
         assert {b - a for a, b in zip(t1[cle], t2[cle])} == {Decimal(e)}, cle
 
 
-@pytest.mark.parametrize("cle,colonne,v1,v2", [
-    ("agent_services_principal", 6, "1470.216", "1634.216"),
-    ("agent_suivi_3", 6, "1470.216", "1634.216"),
-    ("agent_bureau_3", 5, "1807.346", "1983.346"),
-    ("commis_principal_3", 16, "1928.226", "2104.226"),
-    ("commis_principal_1", 6, "1871.896", "2047.896"),
-    ("commis_principal_1", 12, "1934.596", "2110.596"),
-])
+@pytest.mark.parametrize(
+    "cle,colonne,v1,v2",
+    [
+        ("agent_services_principal", 6, "1470.216", "1634.216"),
+        ("agent_suivi_3", 6, "1470.216", "1634.216"),
+        ("agent_bureau_3", 5, "1807.346", "1983.346"),
+        ("commis_principal_3", 16, "1928.226", "2104.226"),
+        ("commis_principal_1", 6, "1871.896", "2047.896"),
+        ("commis_principal_1", 12, "1934.596", "2110.596"),
+    ],
+)
 def test_anomalies_imprimees_conservees(cle, colonne, v1, v2):
     t1, t2 = REEL["grilles"]
     assert (t1["valeurs"][cle][colonne - 1], t2["valeurs"][cle][colonne - 1]) == (Decimal(v1), Decimal(v2))
     for t in (t1, t2):
         (a,) = [a for a in t["anomalies_imprimees"] if (a["categorie"], a["colonne"]) == (cle, colonne)]
-        assert a["valeur_imprimee"] == t["valeurs"][cle][colonne - 1] and a["meme_anomalie_dans_les_deux_tables"] is True
+        assert (
+            a["valeur_imprimee"] == t["valeurs"][cle][colonne - 1] and a["meme_anomalie_dans_les_deux_tables"] is True
+        )
 
 
 def test_lignes_4_et_5_identiques_et_signalees():
@@ -96,15 +115,25 @@ def test_lignes_4_et_5_identiques_et_signalees():
 
 # --- salaire de base -----------------------------------------------------------------------------------------
 
-@pytest.mark.parametrize("cat,anc,date,attendu,page", [
-    ("agent_services_3", 0.5, "2020-10-01", "1523.106", 22),        # table 1, ligne 1, colonne 1 (stage)
-    ("redacteur_2", 10, "2020-12-01", "2289.026", 22),              # table 1, ligne 22, colonne 8 (9-11 ans)
-    ("chef_service_principal", 8, "2021-01-01", "2659.326", 22),    # table 1, ligne 28, colonne 7 (écart tranché à 600 dpi)
-    ("agent_services_principal", 6, "2021-04-30", "1470.216", 22),  # anomalie imprimée, veille de la table 2
-    ("agent_bureau_4", 0.5, "2022-01-01", "1957.446", 23),          # table 2, ligne 9, colonne 1
-    ("commis_principal_1", 18, "2021-05-01", "2110.596", 23),       # anomalie imprimée, colonne 12 (17-19 ans)
-    ("directeur_1", 32, "2024-06-01", "3537.826", 23),              # table 2, ligne 34, colonne 19 (31-33 ans)
-])
+
+@pytest.mark.parametrize(
+    "cat,anc,date,attendu,page",
+    [
+        ("agent_services_3", 0.5, "2020-10-01", "1523.106", 22),  # table 1, ligne 1, colonne 1 (stage)
+        ("redacteur_2", 10, "2020-12-01", "2289.026", 22),  # table 1, ligne 22, colonne 8 (9-11 ans)
+        (
+            "chef_service_principal",
+            8,
+            "2021-01-01",
+            "2659.326",
+            22,
+        ),  # table 1, ligne 28, colonne 7 (écart tranché à 600 dpi)
+        ("agent_services_principal", 6, "2021-04-30", "1470.216", 22),  # anomalie imprimée, veille de la table 2
+        ("agent_bureau_4", 0.5, "2022-01-01", "1957.446", 23),  # table 2, ligne 9, colonne 1
+        ("commis_principal_1", 18, "2021-05-01", "2110.596", 23),  # anomalie imprimée, colonne 12 (17-19 ans)
+        ("directeur_1", 32, "2024-06-01", "3537.826", 23),  # table 2, ligne 34, colonne 19 (31-33 ans)
+    ],
+)
 def test_montants_lus(bq, ok, cat, anc, date, attendu, page):
     r = ok(salaire_base(S, None, cat, anc, date))
     assert r.montant == Decimal(attendu) and r.unite == "TND/mois" and r.citations[0].page == page
@@ -156,6 +185,7 @@ def test_categorie_inconnue(bq):
 
 # --- primes : toutes non couvertes ---------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("code", sorted(REEL["primes_non_couvertes"]))
 def test_prime_non_couverte_refusee_avec_raison(bq, code):
     bloc = REEL["primes_non_couvertes"][code]
@@ -166,9 +196,15 @@ def test_prime_non_couverte_refusee_avec_raison(bq, code):
 def test_liste_des_primes_non_couvertes():
     assert REEL["primes"] == []
     assert {c: (b["source_article"], b["source_pdf_page"]) for c, b in REEL["primes_non_couvertes"].items()} == {
-        "prime_transport": ("49", 20), "prime_representation": ("50", 20), "prime_13e_mois": ("51", 20),
-        "prime_production": ("52", 20), "prime_bilan": ("53", 20), "prime_depart_retraite": ("54 (جديد)", 21),
-        "prime_fonction_superieure": ("16", 12), "prime_travail_sous_terre": ("21", 13)}
+        "prime_transport": ("49", 20),
+        "prime_representation": ("50", 20),
+        "prime_13e_mois": ("51", 20),
+        "prime_production": ("52", 20),
+        "prime_bilan": ("53", 20),
+        "prime_depart_retraite": ("54 (جديد)", 21),
+        "prime_fonction_superieure": ("16", 12),
+        "prime_travail_sous_terre": ("21", 13),
+    }
     m = REEL["primes_non_couvertes"]["prime_travail_sous_terre"]["message_fr"]
     assert "travail continu sous terre" in m and "prime fixée par décision de l'employeur" in m
     assert "l'alinéa sur les agents qui travaillent sous terre" in m and "alinéa 8" not in m and "9e" not in m

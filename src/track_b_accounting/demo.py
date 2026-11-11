@@ -2,6 +2,7 @@
 
 Depuis la racine du dépôt :  python -m src.track_b_accounting.demo
 """
+
 from __future__ import annotations
 
 import io
@@ -28,8 +29,10 @@ def main(out: TextIO | None = None) -> int:
         print("Réponse  :", json.dumps(rep, ensure_ascii=False), file=out)
         print("Track A  :", track_a.formuler(req, rep), file=out)
     statuts = [rep["status"] for _, rep in echanges]
-    print(f"\nBilan : {statuts.count('ok')} ok, {statuts.count('refus')} refus, "
-          f"{statuts.count('erreur')} erreur(s).", file=out)
+    print(
+        f"\nBilan : {statuts.count('ok')} ok, {statuts.count('refus')} refus, {statuts.count('erreur')} erreur(s).",
+        file=out,
+    )
     return 0
 
 

@@ -5,6 +5,7 @@ Les tests de règles lisent une copie en mémoire (référence de test « D99 »
 temps du test) ; le fichier réel, activé par D38, est vérifié à part.
 Les valeurs attendues viennent de la double lecture des pages 15 à 18 et 25 à 27.
 """
+
 import copy
 from decimal import Decimal
 
@@ -16,8 +17,13 @@ from track_b_accounting.calc import Refus, loaders, prime, salaire_base
 S = "ENSEIGNEMENT_PRIVE"
 FICHIER = "data/processed/salary_grids/enseignement_prive.json"
 REEL = lire_json(FICHIER)
-POPS = {"ouvriers": (25, 5), "administratifs_surveillants": (25, 8), "instituteurs": (26, 3),
-        "secondaire_formateurs": (26, 5), "professeurs_primaire": (27, 2)}
+POPS = {
+    "ouvriers": (25, 5),
+    "administratifs_surveillants": (25, 8),
+    "instituteurs": (26, 3),
+    "secondaire_formateurs": (26, 5),
+    "professeurs_primaire": (27, 2),
+}
 BORNES = [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 21, 24, 27, 30, 33]
 
 
@@ -40,6 +46,7 @@ def refus(code, f, *a, **k):
 
 
 # --- fichier réel : structure et non-activation --------------------------------------------------------------
+
 
 def test_fichier_reel_active_d38_et_dans_le_registre():
     assert REEL["_meta"]["decision_ref"] == "D38" and REEL["_meta"]["secteur_code"] == S
@@ -69,15 +76,19 @@ def test_lignes_strictement_croissantes():
 
 # --- salaire de base -----------------------------------------------------------------------------------------
 
-@pytest.mark.parametrize("pop,cat,anc,attendu,page", [
-    ("ouvriers", "ouvrier_ordinaire", 0.5, "465.624", 25),           # table 1, ligne 1, degré 1
-    ("ouvriers", "5", 35, "662.153", 25),                             # alias annexe 1 → ligne 5, degré 16
-    ("administratifs_surveillants", "commis", 9, "523.935", 25),      # rang → ligne 1, degré 6 (8-10 ans)
-    ("administratifs_surveillants", "surveillant_general", 19, "913.608", 25),
-    ("instituteurs", "instituteur", 3, "603.932", 26),                # table 3, ligne 3, degré 3
-    ("secondaire_formateurs", "professeur_principal", 34, "1033.821", 26),   # espace de milliers imprimé
-    ("professeurs_primaire", "professeur_ecole_primaire_2e_rang", 11, "718.786", 27),   # degré 7 (10-12 ans)
-])
+
+@pytest.mark.parametrize(
+    "pop,cat,anc,attendu,page",
+    [
+        ("ouvriers", "ouvrier_ordinaire", 0.5, "465.624", 25),  # table 1, ligne 1, degré 1
+        ("ouvriers", "5", 35, "662.153", 25),  # alias annexe 1 → ligne 5, degré 16
+        ("administratifs_surveillants", "commis", 9, "523.935", 25),  # rang → ligne 1, degré 6 (8-10 ans)
+        ("administratifs_surveillants", "surveillant_general", 19, "913.608", 25),
+        ("instituteurs", "instituteur", 3, "603.932", 26),  # table 3, ligne 3, degré 3
+        ("secondaire_formateurs", "professeur_principal", 34, "1033.821", 26),  # espace de milliers imprimé
+        ("professeurs_primaire", "professeur_ecole_primaire_2e_rang", 11, "718.786", 27),  # degré 7 (10-12 ans)
+    ],
+)
 def test_montants_lus(ep, ok, pop, cat, anc, attendu, page):
     r = ok(salaire_base(S, pop, cat, anc, "2016-01-01"))
     assert r.montant == Decimal(attendu) and r.unite == "TND/mois" and r.citations[0].page == page
@@ -85,7 +96,10 @@ def test_montants_lus(ep, ok, pop, cat, anc, attendu, page):
 
 def test_rang_alias_vers_la_ligne(ep):
     r = salaire_base(S, "administratifs_surveillants", "surveillant_2e_rang", 5, "2016-01-01")
-    assert r.detail["categorie"] == "comptable_surveillant_2e_rang" and r.detail["categorie_demandee"] == "surveillant_2e_rang"
+    assert (
+        r.detail["categorie"] == "comptable_surveillant_2e_rang"
+        and r.detail["categorie_demandee"] == "surveillant_2e_rang"
+    )
     assert r.montant == salaire_base(S, "administratifs_surveillants", "comptable", 5, "2016-01-01").montant
 
 
@@ -111,7 +125,9 @@ def test_avant_le_2015_09_01_refuse(ep):
 def test_apres_2015_grille_2015_et_hypothese(ep):
     r = salaire_base(S, "ouvriers", "ouvrier_ordinaire", 5, "2025-01-01")
     assert r.detail["table_id"] == "EP_OUVRIERS_2015-09-01"
-    assert any("2015-09-01" in h for h in r.detail["hypotheses"]) and len(r.detail["hypotheses"]) == len(r.detail["hypotheses_ar"])
+    assert any("2015-09-01" in h for h in r.detail["hypotheses"]) and len(r.detail["hypotheses"]) == len(
+        r.detail["hypotheses_ar"]
+    )
 
 
 @pytest.mark.parametrize("pop", list(POPS))
@@ -149,10 +165,13 @@ def test_prime_transport_par_rang(ep, ok, code, page, art, rang, attendu, avec_6
     refus(Refus.SOURCE_MANQUANTE, prime, S, code, "2015-08-31", groupe=rang)
 
 
-@pytest.mark.parametrize("code,rang,attendus", [
-    ("prime_pedagogique_primaire", "instituteur", ["37.000", "38.000", "39.000", "40.000"]),
-    ("prime_pedagogique_secondaire", "professeur_principal", ["82.000", "83.000", "85.000", "86.333"]),
-])
+@pytest.mark.parametrize(
+    "code,rang,attendus",
+    [
+        ("prime_pedagogique_primaire", "instituteur", ["37.000", "38.000", "39.000", "40.000"]),
+        ("prime_pedagogique_secondaire", "professeur_principal", ["82.000", "83.000", "85.000", "86.333"]),
+    ],
+)
 def test_prime_pedagogique_quatre_dates(ep, code, rang, attendus):
     for annee, attendu in zip((2008, 2009, 2010, 2011), attendus):
         assert prime(S, code, f"{annee}-07-01", groupe=rang).montant == Decimal(attendu)
@@ -162,10 +181,18 @@ def test_prime_pedagogique_quatre_dates(ep, code, rang, attendus):
 
 def test_prime_sans_rang_ou_rang_inconnu_refusee(ep):
     refus(Refus.PARAM_INVALIDE, prime, S, "prime_transport_administratifs", "2016-01-01")
-    refus(Refus.PARAM_INVALIDE, prime, S, "prime_transport_administratifs", "2016-01-01", groupe="dactylographe_aide_comptable_commis")
+    refus(
+        Refus.PARAM_INVALIDE,
+        prime,
+        S,
+        "prime_transport_administratifs",
+        "2016-01-01",
+        groupe="dactylographe_aide_comptable_commis",
+    )
 
 
 # --- primes non couvertes ------------------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("code", sorted(REEL["primes_non_couvertes"]))
 def test_prime_non_couverte_refusee_avec_raison(ep, code):
@@ -176,7 +203,13 @@ def test_prime_non_couverte_refusee_avec_raison(ep, code):
 
 def test_liste_des_primes():
     assert [p["code"] for p in REEL["primes"]] == [
-        "prime_transport_ouvriers", "prime_transport_administratifs", "prime_transport_surveillants",
-        "prime_transport_primaire", "prime_transport_secondaire", "prime_pedagogique_primaire", "prime_pedagogique_secondaire"]
+        "prime_transport_ouvriers",
+        "prime_transport_administratifs",
+        "prime_transport_surveillants",
+        "prime_transport_primaire",
+        "prime_transport_secondaire",
+        "prime_pedagogique_primaire",
+        "prime_pedagogique_secondaire",
+    ]
     assert all(p["label_fr"] and p["label_ar"] for p in REEL["primes"])
     assert len(REEL["primes_non_couvertes"]) == 11

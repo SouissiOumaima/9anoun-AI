@@ -1,6 +1,7 @@
 """SMIG non agricole (décret n°769/2022, effet 2022-10-01) — D2, D3.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_smig.py
 """
+
 import copy
 from decimal import Decimal
 
@@ -21,21 +22,26 @@ def refus(code, *a):
     return e.value
 
 
-@pytest.mark.parametrize("ligne", BAREME, ids=lambda ligne: f"{ligne['mode_remuneration']}-{ligne['regime_hebdomadaire_heures']}h")
+@pytest.mark.parametrize(
+    "ligne", BAREME, ids=lambda ligne: f"{ligne['mode_remuneration']}-{ligne['regime_hebdomadaire_heures']}h"
+)
 def test_quatre_lignes_egales_au_json(ligne, ok):
     r = ok(smig(ligne["mode_remuneration"], ligne["regime_hebdomadaire_heures"], "2023-01-01"))
     assert r.montant == ligne["montant"]
     c = r.citations[0]
-    assert c.page == SMIG["smig_non_agricole"]["source_pdf_page"] == 2       # page lue en D2
+    assert c.page == SMIG["smig_non_agricole"]["source_pdf_page"] == 2  # page lue en D2
     assert c.decision_ref == "D2" and "769" in c.article
 
 
-@pytest.mark.parametrize("mode,regime,montant,unite", [
-    ("mensuel", 48, "459.264", "TND/mois"),
-    ("mensuel", 40, "390.692", "TND/mois"),
-    ("horaire", 48, "2.208", "TND/heure"),
-    ("horaire", 40, "2.254", "TND/heure"),
-])
+@pytest.mark.parametrize(
+    "mode,regime,montant,unite",
+    [
+        ("mensuel", 48, "459.264", "TND/mois"),
+        ("mensuel", 40, "390.692", "TND/mois"),
+        ("horaire", 48, "2.208", "TND/heure"),
+        ("horaire", 40, "2.254", "TND/heure"),
+    ],
+)
 def test_valeurs_codees_en_dur_d2(mode, regime, montant, unite, ok):
     r = ok(smig(mode, regime, "2022-10-01"))
     assert r.montant == Decimal(montant) and r.unite == unite
@@ -81,14 +87,17 @@ def test_date_invalide():
     refus(Refus.PARAM_INVALIDE, "mensuel", 48, "1er octobre 2022")
 
 
-@pytest.mark.parametrize("mutation", [
-    lambda d: d["_meta"].pop("source_file"),
-    lambda d: d["smig_non_agricole"]["decree"].pop("effective_date"),
-    lambda d: d["smig_non_agricole"].__setitem__("bareme", []),
-    lambda d: d["smig_non_agricole"]["bareme"][0].pop("regime_hebdomadaire_heures"),
-    lambda d: d["smig_non_agricole"]["bareme"][0].__setitem__("montant", 459.264),
-    lambda d: d.pop("smig_non_agricole"),
-])
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda d: d["_meta"].pop("source_file"),
+        lambda d: d["smig_non_agricole"]["decree"].pop("effective_date"),
+        lambda d: d["smig_non_agricole"].__setitem__("bareme", []),
+        lambda d: d["smig_non_agricole"]["bareme"][0].pop("regime_hebdomadaire_heures"),
+        lambda d: d["smig_non_agricole"]["bareme"][0].__setitem__("montant", 459.264),
+        lambda d: d.pop("smig_non_agricole"),
+    ],
+)
 def test_valider_smig_rejette(mutation):
     d = copy.deepcopy(SMIG)
     mutation(d)
@@ -99,10 +108,11 @@ def test_valider_smig_rejette(mutation):
 
 # --- référence de vérification (smig_non_agricole.decision_ref) --------------------------------------
 
+
 def test_decision_ref_lue_dans_le_json(ok):
     r = ok(smig("mensuel", 48, "2023-01-01"))
     assert r.citations[0].decision_ref == SMIG["smig_non_agricole"]["decision_ref"] == "D2"
-    assert SMIG["_meta"]["decision_log"] == "docs/DECISIONS.md (D1, D2)"     # champ libre conservé
+    assert SMIG["_meta"]["decision_log"] == "docs/DECISIONS.md (D1, D2)"  # champ libre conservé
 
 
 def test_decision_ref_pas_en_dur(monkeypatch, ok):

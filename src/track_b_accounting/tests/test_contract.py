@@ -1,6 +1,7 @@
 """Contrat JSON Track B v0 (D7) : schémas, handler, CLI, démo.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_contract.py
 """
+
 import copy
 import io
 import json
@@ -32,6 +33,7 @@ def valide(rep: dict) -> dict:
 
 # --- schémas ------------------------------------------------------------------------------------
 
+
 def test_schemas_bien_formes_et_marques_v0():
     for s in (REQ_SCHEMA, REP_SCHEMA):
         Draft202012Validator.check_schema(s)
@@ -46,9 +48,10 @@ def test_requetes_demo_toutes_conformes_au_schema(req):
 
 # --- refus métier (schéma valide) vs refus de contrat (schéma invalide) ------------------------------
 
+
 def test_cnss_valide_au_schema_puis_refus_metier_hors_scope():
     req = next(r for r in DEMO if r["operation"] == "cotisation_cnss")
-    assert REQ_V.is_valid(req)                                  # la requête n'est pas un bug appelant
+    assert REQ_V.is_valid(req)  # la requête n'est pas un bug appelant
     rep = valide(handle(req))
     assert rep["status"] == "refus" and rep["refus"]["code"] == "HORS_SCOPE"
     assert rep["refus"]["message_fr"].startswith("Opération 'cotisation_cnss' hors du périmètre Track B v0")
@@ -79,16 +82,19 @@ def test_schema_reponse_impose_citation_si_ok():
     assert not REP_V.is_valid(sans_citation)
 
 
-@pytest.mark.parametrize("alteration", [
-    lambda r: r["result"].__setitem__("montant", 593.873),          # nombre JSON interdit
-    lambda r: r["result"].__setitem__("montant", "593.87"),         # 3 décimales exigées
-    lambda r: r["result"]["detail"].__setitem__("x", 1.5),          # float dans detail
-    lambda r: r.__setitem__("refus", {"code": "HORS_SCOPE", "message_fr": "x", "message_ar": "x"}),
-    lambda r: r.__setitem__("status", "refus"),                     # refus avec montant
-    lambda r: r.__setitem__("status", "erreur"),
-    lambda r: r["citations"][0].__setitem__("data_file", "data/raw/pdf/x.pdf"),
-    lambda r: r.__setitem__("contract_version", "track_b.v1"),
-])
+@pytest.mark.parametrize(
+    "alteration",
+    [
+        lambda r: r["result"].__setitem__("montant", 593.873),  # nombre JSON interdit
+        lambda r: r["result"].__setitem__("montant", "593.87"),  # 3 décimales exigées
+        lambda r: r["result"]["detail"].__setitem__("x", 1.5),  # float dans detail
+        lambda r: r.__setitem__("refus", {"code": "HORS_SCOPE", "message_fr": "x", "message_ar": "x"}),
+        lambda r: r.__setitem__("status", "refus"),  # refus avec montant
+        lambda r: r.__setitem__("status", "erreur"),
+        lambda r: r["citations"][0].__setitem__("data_file", "data/raw/pdf/x.pdf"),
+        lambda r: r.__setitem__("contract_version", "track_b.v1"),
+    ],
+)
 def test_schema_reponse_rejette(alteration):
     rep = copy.deepcopy(handle(REQ_OK))
     alteration(rep)
@@ -96,6 +102,7 @@ def test_schema_reponse_rejette(alteration):
 
 
 # --- les 10 échanges de démo -----------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("req", DEMO, ids=lambda r: r["request_id"])
 def test_chaque_requete_demo_donne_une_reponse_valide(req):
@@ -186,10 +193,12 @@ def test_bilan_demo_62_ok_60_refus():
 def test_demo_10_secteur_fictif():
     """Depuis D9, BATIMENT_TRAVAUX_PUBLICS est couvert : demo-10 garde un refus « secteur inconnu » avec un code fictif."""
     rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
-    assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
-                                          "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
-                                          "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
-                                 "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES).")
+    assert rep["refus"]["message_fr"] == (
+        "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
+        "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+        "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES)."
+    )
 
 
 def test_montants_demo_identiques_a_calc():
@@ -217,29 +226,33 @@ def test_deterministe():
 
 # --- requêtes invalides ---------------------------------------------------------------------------
 
+
 def _alterer(f):
     r = copy.deepcopy(REQ_OK)
     f(r)
     return r
 
 
-@pytest.mark.parametrize("req,rid", [
-    (None, None),
-    ([REQ_OK], None),
-    ("texte", None),
-    ({}, None),
-    (_alterer(lambda r: r.pop("request_id")), None),
-    (_alterer(lambda r: r.__setitem__("request_id", 42)), None),
-    (_alterer(lambda r: r.__setitem__("contract_version", "track_b.v1")), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r.__setitem__("lang", "en")), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r.__setitem__("extra", 1)), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r["params"].pop("date")), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r["params"].__setitem__("date", "01/06/2022")), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r["params"].__setitem__("anciennete_annees", "15")), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r["params"].__setitem__("brut", True)), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r.__setitem__("params", [])), "demo-01-salaire-admin-2022"),
-    (_alterer(lambda r: r.__setitem__("operation", 3)), "demo-01-salaire-admin-2022"),
-])
+@pytest.mark.parametrize(
+    "req,rid",
+    [
+        (None, None),
+        ([REQ_OK], None),
+        ("texte", None),
+        ({}, None),
+        (_alterer(lambda r: r.pop("request_id")), None),
+        (_alterer(lambda r: r.__setitem__("request_id", 42)), None),
+        (_alterer(lambda r: r.__setitem__("contract_version", "track_b.v1")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r.__setitem__("lang", "en")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r.__setitem__("extra", 1)), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r["params"].pop("date")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r["params"].__setitem__("date", "01/06/2022")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r["params"].__setitem__("anciennete_annees", "15")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r["params"].__setitem__("brut", True)), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r.__setitem__("params", [])), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r.__setitem__("operation", 3)), "demo-01-salaire-admin-2022"),
+    ],
+)
 def test_requete_invalide_donne_refus_valide(req, rid):
     rep = valide(handle(req))
     assert rep["status"] == "refus" and rep["refus"]["code"] == "PARAM_INVALIDE"
@@ -256,9 +269,14 @@ def test_anciennete_25_ans_article_13_deux_citations_et_hypotheses():
     """Au-delà du dernier degré (art. 13, p.9, D10) : montant, deux citations et hypothèses à afficher."""
     rep = valide(handle(_alterer(lambda r: r["params"].__setitem__("anciennete_annees", 25))))
     assert rep["status"] == "ok" and rep["result"]["detail"]["regle_art13"] == "ecart_cumule_biennal"
-    assert [(c["page"], c["article"], c["decision_ref"]) for c in rep["citations"]] == [(30, None, "D4"), (9, "13 (جديد) ب", "D10")]
-    assert isinstance(rep["result"]["detail"]["hypotheses"], list) and len(rep["result"]["detail"]["hypotheses_ar"]) == 4
-    assert re.fullmatch(r"\d+\.\d{3}", rep["result"]["detail"]["ecart"])            # Decimal → chaîne, jamais float
+    assert [(c["page"], c["article"], c["decision_ref"]) for c in rep["citations"]] == [
+        (30, None, "D4"),
+        (9, "13 (جديد) ب", "D10"),
+    ]
+    assert (
+        isinstance(rep["result"]["detail"]["hypotheses"], list) and len(rep["result"]["detail"]["hypotheses_ar"]) == 4
+    )
+    assert re.fullmatch(r"\d+\.\d{3}", rep["result"]["detail"]["ecart"])  # Decimal → chaîne, jamais float
 
 
 def test_schema_reponse_rejette_hypotheses_mal_formees():
@@ -279,6 +297,7 @@ def test_parametre_prime_inconnu_refuse_par_calc():
 def test_exception_inattendue_donne_erreur_sans_montant(monkeypatch):
     def boom(**_):
         raise RuntimeError("panne")
+
     monkeypatch.setitem(H.OPERATIONS, "smig", boom)
     rep = valide(handle(DEMO[4]))
     assert rep["status"] == "erreur" and rep["result"] is None and rep["citations"] == []
@@ -294,12 +313,13 @@ def test_reponse_non_conforme_remplacee_par_erreur(monkeypatch):
 
 # --- CLI -----------------------------------------------------------------------------------------
 
+
 def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
     assert len(reps) == len(DEMO) == 122 and all(REP_V.is_valid(r) for r in reps)
-    assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
+    assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()  # ensure_ascii=False
 
 
 def test_cli_stdin_objet():
@@ -316,6 +336,7 @@ def test_cli_entree_illisible(argv, stdin):
 
 
 # --- mocks et démo ---------------------------------------------------------------------------------
+
 
 def test_mock_track_a_recopie_sans_calculer():
     a = MockTrackA()
@@ -339,6 +360,7 @@ def test_mock_track_a_erreur(monkeypatch):
 
 def test_demo_affiche_122_echanges():
     from track_b_accounting.demo import main
+
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()

@@ -1,6 +1,7 @@
 """Contrôles automatiques de la grille BATIMENT_TRAVAUX_PUBLICS (D9) : anti-erreur de saisie + calcul de bout en bout.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_grid_btp.py
 """
+
 import json
 from decimal import Decimal as D
 from pathlib import Path
@@ -20,7 +21,7 @@ DATES = ["2021-12-01", "2023-01-01", "2024-01-01"]
 PAGES = {"2021-12-01": 23, "2023-01-01": 24, "2024-01-01": 25}
 BTP, OCC = "BATIMENT_TRAVAUX_PUBLICS", "ouvriers_occasionnels"
 CLES_OCC = ["1", "2", "3", "4", "5", "6_I", "6_II", "7_1", "7_2", "7_3"]
-R = D("1.0675")                                   # revalorisation constatée entre deux dates (+6,75 %)
+R = D("1.0675")  # revalorisation constatée entre deux dates (+6,75 %)
 
 
 def test_racine_du_depot():
@@ -95,6 +96,7 @@ def test_occasionnels_30_cellules_relues(date):
 
 # --- règle entre années ----------------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("d0,d1", list(zip(DATES, DATES[1:])))
 def test_admin_revalorisation_degre1_ajoutee_a_tous_les_degres(d0, d1):
     """Chaque catégorie reçoit (degré 1 de l'année précédente) × 6,75 %, ajouté tel quel à ses 11 degrés.
@@ -119,6 +121,7 @@ def test_occasionnels_ratio_1_0675(d0, d1):
 
 # --- monotonie -------------------------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("date", DATES)
 def test_monotonie(date):
     at = TABLES[f"BTP_AT_{date}"]["valeurs"]
@@ -133,6 +136,7 @@ def test_monotonie(date):
 
 # --- calcul de bout en bout ------------------------------------------------------------------------------
 
+
 def _citation(r, page):
     c = r.citations[0]
     assert c.page == page and c.data_file == DATA_FILE
@@ -140,12 +144,15 @@ def _citation(r, page):
     assert c.source_file == GRID["_meta"]["source_file"]
 
 
-@pytest.mark.parametrize("annees,date,degre,attendu,page", [
-    (0, "2022-01-01", 1, "605.979", 23),             # 2021-12-01 : cat. 4, degré 1
-    (13, "2024-03-01", 7, "699.751", 25),            # 12-15 ans -> degré 7
-    (D("23.9"), "2023-06-30", 10, "662.413", 24),
-    (26.99, "2024-01-01", 11, "710.687", 25),        # dernier jour au degré 11 avant l'article 13 (27 ans)
-])
+@pytest.mark.parametrize(
+    "annees,date,degre,attendu,page",
+    [
+        (0, "2022-01-01", 1, "605.979", 23),  # 2021-12-01 : cat. 4, degré 1
+        (13, "2024-03-01", 7, "699.751", 25),  # 12-15 ans -> degré 7
+        (D("23.9"), "2023-06-30", 10, "662.413", 24),
+        (26.99, "2024-01-01", 11, "710.687", 25),  # dernier jour au degré 11 avant l'article 13 (27 ans)
+    ],
+)
 def test_admin_tech_bout_en_bout(annees, date, degre, attendu, page, ok):
     r = ok(salaire_base(BTP, "admin_tech", "4", annees, date))
     assert r.montant == D(attendu) and r.unite == "TND/mois" and r.detail["degre"] == degre
@@ -154,17 +161,20 @@ def test_admin_tech_bout_en_bout(annees, date, degre, attendu, page, ok):
 
 
 def test_admin_tech_anomalie_servie_telle_qu_imprimee(ok):
-    r = ok(salaire_base(BTP, "admin_tech", 6, 5, "2022-02-01"))          # cat. 6, degré 3 (4-6 ans)
+    r = ok(salaire_base(BTP, "admin_tech", 6, 5, "2022-02-01"))  # cat. 6, degré 3 (4-6 ans)
     assert r.montant == D("678.440")
 
 
-@pytest.mark.parametrize("cat,sous,date,attendu,page,libelle", [
-    (1, None, "2021-12-01", "2.567", 23, None),
-    ("6", "I", "2023-01-01", "3.502", 24, "عامل ذو كفاءة عالية I"),
-    (6, "II", "2022-12-31", "3.516", 23, "عامل ذو كفاءة عالية II"),
-    ("7", "1", "2024-05-01", "4.292", 25, "رئيس فريق درجة أولى"),
-    (7, "3", "2023-12-31", "4.633", 24, "رئيس فريق درجة ثالثة"),
-])
+@pytest.mark.parametrize(
+    "cat,sous,date,attendu,page,libelle",
+    [
+        (1, None, "2021-12-01", "2.567", 23, None),
+        ("6", "I", "2023-01-01", "3.502", 24, "عامل ذو كفاءة عالية I"),
+        (6, "II", "2022-12-31", "3.516", 23, "عامل ذو كفاءة عالية II"),
+        ("7", "1", "2024-05-01", "4.292", 25, "رئيس فريق درجة أولى"),
+        (7, "3", "2023-12-31", "4.633", 24, "رئيس فريق درجة ثالثة"),
+    ],
+)
 def test_occasionnels_bout_en_bout(cat, sous, date, attendu, page, libelle, ok):
     r = ok(salaire_base(BTP, OCC, cat, date=date, sous_categorie=sous))
     assert r.montant == D(attendu) and r.unite == "TND/heure"
@@ -173,7 +183,9 @@ def test_occasionnels_bout_en_bout(cat, sous, date, attendu, page, libelle, ok):
     _citation(r, page)
 
 
-@pytest.mark.parametrize("annees,code", [(27, Refus.PARAM_INVALIDE), (28, Refus.SOURCE_MANQUANTE), (D("40"), Refus.SOURCE_MANQUANTE)])
+@pytest.mark.parametrize(
+    "annees,code", [(27, Refus.PARAM_INVALIDE), (28, Refus.SOURCE_MANQUANTE), (D("40"), Refus.SOURCE_MANQUANTE)]
+)
 def test_categorie_19_jamais_servie_apres_27_ans(annees, code):
     """Catégorie 19 : « 950 دينارا » (p.8) périmé → refus ; 27 ans pile reste une borne (D10)."""
     with pytest.raises(Refus) as e:
@@ -198,12 +210,47 @@ def test_avant_premiere_date():
 
 ART13 = GRID["au_dela_dernier_degre"]["admin_tech"]
 # Les 18 paires relues sur la page 8 (double lecture, validées sur le PDF) : catégorie -> « degré/catégorie ».
-PAIRES_P8 = {"1": "2/2", "2": "2/3", "3": "5/4", "4": "5/5", "5": "5/6", "6": "1/7", "7": "6/8", "8": "7/9",
-             "9": "11/10", "10": "11/11", "11": "10/13", "12": "11/13", "13": "2/14", "14": "4/15", "15": "10/16",
-             "16": "6/17", "17": "8/18", "18": "3/19"}
+PAIRES_P8 = {
+    "1": "2/2",
+    "2": "2/3",
+    "3": "5/4",
+    "4": "5/5",
+    "5": "5/6",
+    "6": "1/7",
+    "7": "6/8",
+    "8": "7/9",
+    "9": "11/10",
+    "10": "11/11",
+    "11": "10/13",
+    "12": "11/13",
+    "13": "2/14",
+    "14": "4/15",
+    "15": "10/16",
+    "16": "6/17",
+    "17": "8/18",
+    "18": "3/19",
+}
 # Fenêtre = durée de la tranche du degré cible (en-tête p.23) ; degré cible 11 : 3 ans (catégories 9, 10, 12).
-FENETRES = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2, "7": 2, "8": 3, "9": 3, "10": 3, "11": 3, "12": 3,
-            "13": 2, "14": 2, "15": 3, "16": 2, "17": 3, "18": 2}
+FENETRES = {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 3,
+    "10": 3,
+    "11": 3,
+    "12": 3,
+    "13": 2,
+    "14": 2,
+    "15": 3,
+    "16": 2,
+    "17": 3,
+    "18": 2,
+}
 
 
 def test_table_correspondance_18_paires_page_8():
@@ -211,7 +258,10 @@ def test_table_correspondance_18_paires_page_8():
     assert {c: e["case_imprimee"] for c, e in ART13["table_correspondance"].items()} == PAIRES_P8
     for c, e in ART13["table_correspondance"].items():
         assert f"{e['degre']}/{e['categorie']}" == PAIRES_P8[c] and e["fenetre_annees"] == FENETRES[c]
-    assert list(ART13["categories_refusees"]) == ["19"] and ART13["categories_refusees"]["19"]["case_imprimee"] == "950 دينارا"
+    assert (
+        list(ART13["categories_refusees"]) == ["19"]
+        and ART13["categories_refusees"]["19"]["case_imprimee"] == "950 دينارا"
+    )
 
 
 @pytest.mark.parametrize("date", DATES)
@@ -220,7 +270,7 @@ def test_case_cible_superieure_au_degre_11(date):
     for c, case in PAIRES_P8.items():
         deg, cat = case.split("/")
         assert v[cat][int(deg) - 1] > v[c][10], (date, c, case)
-    assert v["19"][10] > D("950")               # le montant fixe de la catégorie 19 est inférieur au degré 11
+    assert v["19"][10] > D("950")  # le montant fixe de la catégorie 19 est inférieur au degré 11
 
 
 def _attendu(cat):
@@ -262,5 +312,5 @@ def test_avant_27_ans_degre_11_sans_article_13(cat, ok):
 
 
 def test_art13_grille_en_vigueur_a_la_date(ok):
-    r = ok(salaire_base(BTP, "admin_tech", "4", 28, "2022-06-01"))         # table 2021, case 5/5
+    r = ok(salaire_base(BTP, "admin_tech", "4", 28, "2022-06-01"))  # table 2021, case 5/5
     assert r.montant == D("644.070") and r.citations[0].page == 23

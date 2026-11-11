@@ -1,4 +1,5 @@
 """Types de retour des calculs : un montant n'existe jamais sans au moins une Citation."""
+
 from __future__ import annotations
 
 import datetime as dt
@@ -18,11 +19,11 @@ def arrondi_millime(x: Decimal) -> Decimal:
 
 @dataclass(frozen=True)
 class Citation:
-    source_file: str              # PDF source (data/raw/pdf/...) — cité, jamais lu par les calculs
+    source_file: str  # PDF source (data/raw/pdf/...) — cité, jamais lu par les calculs
     page: int | None
     article: str | None
-    data_file: str                # fichier vérifié réellement lu (data/processed/...)
-    decision_ref: str             # entrée de docs/DECISIONS.md qui documente la vérification
+    data_file: str  # fichier vérifié réellement lu (data/processed/...)
+    decision_ref: str  # entrée de docs/DECISIONS.md qui documente la vérification
 
 
 @dataclass(frozen=True)
@@ -59,8 +60,11 @@ class Refus(Exception):
 def parse_date(date: object) -> dt.date:
     """Accepte un datetime.date (pas un datetime) ou une chaîne ISO AAAA-MM-JJ."""
     if isinstance(date, dt.datetime):
-        raise Refus(Refus.PARAM_INVALIDE, "La date doit être un jour (AAAA-MM-JJ), sans heure.",
-                    "يجب أن يكون التاريخ يومًا (سنة-شهر-يوم) دون توقيت.")
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            "La date doit être un jour (AAAA-MM-JJ), sans heure.",
+            "يجب أن يكون التاريخ يومًا (سنة-شهر-يوم) دون توقيت.",
+        )
     if isinstance(date, dt.date):
         return date
     if isinstance(date, str):
@@ -68,12 +72,16 @@ def parse_date(date: object) -> dt.date:
             return dt.date.fromisoformat(date)
         except ValueError:
             pass
-    raise Refus(Refus.PARAM_INVALIDE, f"Date invalide : {date!r} (format attendu AAAA-MM-JJ).",
-                f"تاريخ غير صالح: {date!r} (الصيغة المطلوبة سنة-شهر-يوم).")
+    raise Refus(
+        Refus.PARAM_INVALIDE,
+        f"Date invalide : {date!r} (format attendu AAAA-MM-JJ).",
+        f"تاريخ غير صالح: {date!r} (الصيغة المطلوبة سنة-شهر-يوم).",
+    )
 
 
-def plus_recent_avant(items: Iterable[dict], date: dt.date,
-                      cle: Callable[[dict], str] = lambda x: x["effective_date"]) -> dict | None:
+def plus_recent_avant(
+    items: Iterable[dict], date: dt.date, cle: Callable[[dict], str] = lambda x: x["effective_date"]
+) -> dict | None:
     """Élément dont la date d'effet est la plus récente ≤ date ; None si la date précède tout."""
     candidats = [i for i in items if dt.date.fromisoformat(cle(i)) <= date]
     return max(candidats, key=lambda i: dt.date.fromisoformat(cle(i)), default=None)

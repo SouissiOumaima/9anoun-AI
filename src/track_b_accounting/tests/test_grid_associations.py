@@ -7,6 +7,7 @@ jamais de règles de calcul. Elles ne détectent pas toute erreur de 0,001 ou 0,
 vérification visuelle restent les vrais contrôles.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_grid_associations.py
 """
+
 import json
 from decimal import ROUND_HALF_UP, Decimal as D
 from pathlib import Path
@@ -24,12 +25,20 @@ TABLES = {t["table_id"]: t for t in GRID["grilles"]}
 PREVUES = {t["table_id"]: t for t in GRID["tables_prevues"]}
 APH = "ASSOCIATIONS_PERSONNES_HANDICAPEES"
 DATES = ["2021-12-01", "2023-01-01", "2024-01-01"]
-POPS = {"EDUCATION_SPECIALISEE": "education_specialisee", "SPORT": "sport",
-        "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "ouvriers_administratifs_surveillants", "TECHNICIENS": "techniciens",
-        "FORMATEURS_PROFESSIONNELS": "formateurs_professionnels"}
-LIGNES = {"education_specialisee": ["I", "II", "III"], "sport": ["I", "II", "III"],
-          "ouvriers_administratifs_surveillants": ["I", "II", "III", "IV", "V", "VI"],
-          "techniciens": ["I", "III+II"], "formateurs_professionnels": ["I", "II", "III", "IV"]}
+POPS = {
+    "EDUCATION_SPECIALISEE": "education_specialisee",
+    "SPORT": "sport",
+    "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "ouvriers_administratifs_surveillants",
+    "TECHNICIENS": "techniciens",
+    "FORMATEURS_PROFESSIONNELS": "formateurs_professionnels",
+}
+LIGNES = {
+    "education_specialisee": ["I", "II", "III"],
+    "sport": ["I", "II", "III"],
+    "ouvriers_administratifs_surveillants": ["I", "II", "III", "IV", "V", "VI"],
+    "techniciens": ["I", "III+II"],
+    "formateurs_professionnels": ["I", "II", "III", "IV"],
+}
 PAGES = {"2021-12-01": (21, 21, 22, 22, 23), "2023-01-01": (24, 24, 25, 25, 26), "2024-01-01": (27, 27, 28, 28, 29)}
 MILLIME = D("0.001")
 
@@ -40,6 +49,7 @@ def tid(pop, date):
 
 # --- structure : 5 populations, 15 tables, 18 lignes, 16 degrés, 864 cellules ----------------------------------
 
+
 def test_structure_et_864_cellules():
     assert GRID["_meta"]["tables_transcrites"] is True and GRID["_meta"]["decision_ref"] == "D23"
     assert GRID["categories"] == LIGNES and sum(len(v) for v in LIGNES.values()) == 18
@@ -49,7 +59,12 @@ def test_structure_et_864_cellules():
     for d in DATES:
         for (p, pop), page in zip(POPS.items(), PAGES[d]):
             t = TABLES[tid(p, d)]
-            assert (t["population"], t["effective_date"], t["source_pdf_page"], t["unite"]) == (pop, d, page, "TND/mois")
+            assert (t["population"], t["effective_date"], t["source_pdf_page"], t["unite"]) == (
+                pop,
+                d,
+                page,
+                "TND/mois",
+            )
             assert list(t["valeurs"]) == LIGNES[pop] == PREVUES[tid(p, d)]["categories"]
             n += sum(len(v) for v in t["valeurs"].values())
     assert n == 864
@@ -60,22 +75,36 @@ def test_aucune_cellule_vide():
     for t in TABLES.values():
         for lig, v in t["valeurs"].items():
             assert len(v) == 16 and all(isinstance(x, D) and x > 0 and x.as_tuple().exponent == -3 for x in v), (
-                t["table_id"], lig)
+                t["table_id"],
+                lig,
+            )
 
 
 # --- cellules relues sur le PDF ---------------------------------------------------------------------------------
 
 # Degré 1 de chaque ligne des 15 tables (base non contrôlée par la régularité de 2 %).
 DEGRE_1 = {
-    "2021-12-01": {"EDUCATION_SPECIALISEE": "814.351 950.077 1085.802", "SPORT": "529.328 950.077 1085.802",
-                   "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "407.176 529.328 556.473 590.405 678.626 950.077",
-                   "TECHNICIENS": "950.077 1072.229", "FORMATEURS_PROFESSIONNELS": "529.328 787.206 922.931 1058.657"},
-    "2023-01-01": {"EDUCATION_SPECIALISEE": "869.320 1014.207 1159.093", "SPORT": "565.058 1014.207 1159.093",
-                   "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "434.660 565.058 594.035 630.257 724.433 1014.207",
-                   "TECHNICIENS": "1014.207 1144.605", "FORMATEURS_PROFESSIONNELS": "565.058 840.343 985.229 1130.116"},
-    "2024-01-01": {"EDUCATION_SPECIALISEE": "927.999 1082.666 1237.332", "SPORT": "603.199 1082.666 1237.332",
-                   "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "464.000 603.199 634.133 672.799 773.333 1082.666",
-                   "TECHNICIENS": "1082.666 1221.866", "FORMATEURS_PROFESSIONNELS": "603.199 897.066 1051.732 1206.399"},
+    "2021-12-01": {
+        "EDUCATION_SPECIALISEE": "814.351 950.077 1085.802",
+        "SPORT": "529.328 950.077 1085.802",
+        "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "407.176 529.328 556.473 590.405 678.626 950.077",
+        "TECHNICIENS": "950.077 1072.229",
+        "FORMATEURS_PROFESSIONNELS": "529.328 787.206 922.931 1058.657",
+    },
+    "2023-01-01": {
+        "EDUCATION_SPECIALISEE": "869.320 1014.207 1159.093",
+        "SPORT": "565.058 1014.207 1159.093",
+        "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "434.660 565.058 594.035 630.257 724.433 1014.207",
+        "TECHNICIENS": "1014.207 1144.605",
+        "FORMATEURS_PROFESSIONNELS": "565.058 840.343 985.229 1130.116",
+    },
+    "2024-01-01": {
+        "EDUCATION_SPECIALISEE": "927.999 1082.666 1237.332",
+        "SPORT": "603.199 1082.666 1237.332",
+        "OUVRIERS_ADMINISTRATIFS_SURVEILLANTS": "464.000 603.199 634.133 672.799 773.333 1082.666",
+        "TECHNICIENS": "1082.666 1221.866",
+        "FORMATEURS_PROFESSIONNELS": "603.199 897.066 1051.732 1206.399",
+    },
 }
 
 
@@ -142,11 +171,14 @@ def test_anomalies_a_leur_valeur_imprimee_exacte(cle):
 
 
 def test_anomalies_increment_seulement_les_9():
-    trouvees = {(t["table_id"], a["categorie"], a["degre"]) for t in TABLES.values() for a in t.get("anomalies_increment", [])}
+    trouvees = {
+        (t["table_id"], a["categorie"], a["degre"]) for t in TABLES.values() for a in t.get("anomalies_increment", [])
+    }
     assert trouvees == set(ANOMALIES)
 
 
 # --- croissance et identités de lignes ----------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("table_id", sorted(TABLES))
 def test_croissance_des_lignes(table_id):
@@ -156,7 +188,12 @@ def test_croissance_des_lignes(table_id):
 
 # Lignes identiques d'une table à l'autre à la même date, chacune lue séparément sur sa page (aucune recopie).
 IDENTITES = [
-    [("EDUCATION_SPECIALISEE", "II"), ("SPORT", "II"), ("OUVRIERS_ADMINISTRATIFS_SURVEILLANTS", "VI"), ("TECHNICIENS", "I")],
+    [
+        ("EDUCATION_SPECIALISEE", "II"),
+        ("SPORT", "II"),
+        ("OUVRIERS_ADMINISTRATIFS_SURVEILLANTS", "VI"),
+        ("TECHNICIENS", "I"),
+    ],
     [("EDUCATION_SPECIALISEE", "III"), ("SPORT", "III")],
     [("SPORT", "I"), ("OUVRIERS_ADMINISTRATIFS_SURVEILLANTS", "II"), ("FORMATEURS_PROFESSIONNELS", "I")],
 ]
@@ -169,12 +206,18 @@ def test_identites_de_lignes_entre_tables(date):
         assert all(ligne == lignes[0] for ligne in lignes), (date, groupe)
     # Aucune autre paire de lignes identiques à cette date.
     toutes = [(p, lig, tuple(v)) for p in POPS for lig, v in TABLES[tid(p, date)]["valeurs"].items()]
-    paires = {frozenset([(a, la), (b, lb)]) for i, (a, la, va) in enumerate(toutes) for b, lb, vb in toutes[i + 1:] if va == vb}
-    attendues = {frozenset([x, y]) for g in IDENTITES for i, x in enumerate(g) for y in g[i + 1:]}
+    paires = {
+        frozenset([(a, la), (b, lb)])
+        for i, (a, la, va) in enumerate(toutes)
+        for b, lb, vb in toutes[i + 1 :]
+        if va == vb
+    }
+    attendues = {frozenset([x, y]) for g in IDENTITES for i, x in enumerate(g) for y in g[i + 1 :]}
     assert paires == attendues
 
 
 # --- régularités observées : contrôles de lecture SEULEMENT, jamais règles de calcul --------------------------------
+
 
 @pytest.mark.parametrize("table_id", sorted(TABLES))
 def test_controle_de_lecture_deux_pour_cent_par_degre(table_id):
@@ -206,6 +249,7 @@ def test_controle_de_lecture_entre_dates(d0, d1):
 
 # --- alias de catégories : « 1 » → « I » ; « III+II » reste une clé unique (décision 3 de D23) ----------------------
 
+
 def test_alias_declares():
     assert GRID["alias_categories"]["techniciens"] == {"1": "I"}
     for pop, lignes in LIGNES.items():
@@ -230,20 +274,41 @@ def test_techniciens_ii_et_iii_refuses(cat):
 
 
 def test_techniciens_ligne_iii_ii(ok):
-    r = ok(salaire_base(APH, "techniciens", "III+II", 15, "2023-06-01"))     # degré 8 (14-16 ans)
-    assert r.montant == TABLES[tid("TECHNICIENS", "2023-01-01")]["valeurs"]["III+II"][7] and "categorie_demandee" not in r.detail
+    r = ok(salaire_base(APH, "techniciens", "III+II", 15, "2023-06-01"))  # degré 8 (14-16 ans)
+    assert (
+        r.montant == TABLES[tid("TECHNICIENS", "2023-01-01")]["valeurs"]["III+II"][7]
+        and "categorie_demandee" not in r.detail
+    )
 
 
 # --- calcul de bout en bout ---------------------------------------------------------------------------------------
 
-@pytest.mark.parametrize("pop, cat, annees, date, attendu, page, table_id", [
-    ("sport", "2", 5, "2022-06-01", "988.460", 21, tid("SPORT", "2021-12-01")),                  # degré 3 (4-6 ans)
-    ("education_specialisee", "I", 31, "2022-12-31", "1096.010", 21, tid("EDUCATION_SPECIALISEE", "2021-12-01")),
-    ("formateurs_professionnels", "III", 23, "2023-06-01", "1225.010", 26,                        # anomalie servie
-     tid("FORMATEURS_PROFESSIONNELS", "2023-01-01")),
-    ("ouvriers_administratifs_surveillants", "4", D("30.5"), "2025-01-01", "905.500", 28,
-     tid("OUVRIERS_ADMINISTRATIFS_SURVEILLANTS", "2024-01-01")),
-])
+
+@pytest.mark.parametrize(
+    "pop, cat, annees, date, attendu, page, table_id",
+    [
+        ("sport", "2", 5, "2022-06-01", "988.460", 21, tid("SPORT", "2021-12-01")),  # degré 3 (4-6 ans)
+        ("education_specialisee", "I", 31, "2022-12-31", "1096.010", 21, tid("EDUCATION_SPECIALISEE", "2021-12-01")),
+        (
+            "formateurs_professionnels",
+            "III",
+            23,
+            "2023-06-01",
+            "1225.010",
+            26,  # anomalie servie
+            tid("FORMATEURS_PROFESSIONNELS", "2023-01-01"),
+        ),
+        (
+            "ouvriers_administratifs_surveillants",
+            "4",
+            D("30.5"),
+            "2025-01-01",
+            "905.500",
+            28,
+            tid("OUVRIERS_ADMINISTRATIFS_SURVEILLANTS", "2024-01-01"),
+        ),
+    ],
+)
 def test_bout_en_bout(pop, cat, annees, date, attendu, page, table_id, ok):
     r = ok(salaire_base(APH, pop, cat, annees, date))
     assert r.montant == D(attendu) and r.unite == "TND/mois" and r.detail["table_id"] == table_id

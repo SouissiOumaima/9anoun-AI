@@ -2,6 +2,7 @@
 
 Les nombres décimaux sont lus en Decimal (parse_float=Decimal) : aucun float n'entre dans les calculs.
 """
+
 from __future__ import annotations
 
 import json
@@ -49,9 +50,11 @@ def decouvrir_grilles(dossier: Path = SALARY_GRIDS_DIR) -> dict[str, str]:
 
 
 def _invalide(chemin: str, raison: str) -> Refus:
-    return Refus(Refus.SOURCE_MANQUANTE,
-                 f"Fichier de données {chemin} absent ou invalide : {raison}.",
-                 f"ملف البيانات {chemin} غير موجود أو غير صالح: {raison}.")
+    return Refus(
+        Refus.SOURCE_MANQUANTE,
+        f"Fichier de données {chemin} absent ou invalide : {raison}.",
+        f"ملف البيانات {chemin} غير موجود أو غير صالح: {raison}.",
+    )
 
 
 def _lire(chemin: str) -> dict:
@@ -88,11 +91,15 @@ GRILLES = decouvrir_grilles()
 
 def _exiger_refus_declare(bloc: dict, objet: str, avec_anciennete: bool = False) -> None:
     """Refus déclaré dans les données (D8, D9) : source citée + messages FR/AR complets."""
-    _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"]),
-            f"{objet} : source_pdf_page et source_article attendus")
+    _exiger(
+        _entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"]),
+        f"{objet} : source_pdf_page et source_article attendus",
+    )
     _exiger(_texte(bloc["message_fr"]) and _texte(bloc["message_ar"]), f"{objet} : message_fr et message_ar attendus")
     if avec_anciennete:
-        _exiger("{a}" in bloc["message_fr"] and "{a}" in bloc["message_ar"], f"{objet} : {{a}} attendu dans les messages")
+        _exiger(
+            "{a}" in bloc["message_fr"] and "{a}" in bloc["message_ar"], f"{objet} : {{a}} attendu dans les messages"
+        )
 
 
 _BORNES = re.compile(r"^\s*(\d+)\s*-\s*(\d+)")
@@ -114,15 +121,27 @@ def _liste_textes(v) -> bool:
 
 def _valider_art13_commun(bloc: dict, objet: str) -> None:
     """Règle au-delà du dernier degré implémentée (D10) : source, référence, hypothèses FR/AR, message de borne."""
-    _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"])
-            and _texte(bloc["texte_source_ar"]), f"{objet} : source_pdf_page, source_article et texte_source_ar attendus")
-    _exiger(isinstance(bloc["decision_ref"], str) and re.fullmatch(r"D[0-9]+", bloc["decision_ref"]),
-            f"{objet} : decision_ref attendue")
-    _exiger(_liste_textes(bloc["hypotheses_fr"]) and _liste_textes(bloc["hypotheses_ar"])
-            and len(bloc["hypotheses_fr"]) == len(bloc["hypotheses_ar"]), f"{objet} : hypotheses_fr/ar attendues")
-    _exiger(all(_texte(bloc[k]) and "{a}" in bloc[k] for k in ("message_borne_fr", "message_borne_ar")),
-            f"{objet} : message_borne_fr/ar avec {{a}} attendus")
-    _exiger(_entier_positif(bloc["dernier_degre_atteint_a_annees"]), f"{objet} : dernier_degre_atteint_a_annees attendu")
+    _exiger(
+        _entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"]) and _texte(bloc["texte_source_ar"]),
+        f"{objet} : source_pdf_page, source_article et texte_source_ar attendus",
+    )
+    _exiger(
+        isinstance(bloc["decision_ref"], str) and re.fullmatch(r"D[0-9]+", bloc["decision_ref"]),
+        f"{objet} : decision_ref attendue",
+    )
+    _exiger(
+        _liste_textes(bloc["hypotheses_fr"])
+        and _liste_textes(bloc["hypotheses_ar"])
+        and len(bloc["hypotheses_fr"]) == len(bloc["hypotheses_ar"]),
+        f"{objet} : hypotheses_fr/ar attendues",
+    )
+    _exiger(
+        all(_texte(bloc[k]) and "{a}" in bloc[k] for k in ("message_borne_fr", "message_borne_ar")),
+        f"{objet} : message_borne_fr/ar avec {{a}} attendus",
+    )
+    _exiger(
+        _entier_positif(bloc["dernier_degre_atteint_a_annees"]), f"{objet} : dernier_degre_atteint_a_annees attendu"
+    )
 
 
 def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
@@ -131,45 +150,72 @@ def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
     objet = f"au_dela_dernier_degre[{pop}]"
     regle = bloc.get("regle", "refus")
     if regle == "refus":
-        _exiger(_entier_positif(bloc["anciennete_max_couverte_annees"]),
-                f"{objet} : anciennete_max_couverte_annees entier > 0 attendu")
+        _exiger(
+            _entier_positif(bloc["anciennete_max_couverte_annees"]),
+            f"{objet} : anciennete_max_couverte_annees entier > 0 attendu",
+        )
         _exiger_refus_declare(bloc, objet, avec_anciennete=True)
         return
     if regle == "ouvert":
         # Dernier degré ouvert (« 30+ ») servi tel quel : ni plafond ni extrapolation, texte de la source cité.
-        _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"])
-                and _texte(bloc["texte_source_ar"]), f"{objet} : source_pdf_page, source_article et texte_source_ar attendus")
+        _exiger(
+            _entier_positif(bloc["source_pdf_page"])
+            and _texte(bloc["source_article"])
+            and _texte(bloc["texte_source_ar"]),
+            f"{objet} : source_pdf_page, source_article et texte_source_ar attendus",
+        )
         lues = [bornes_degre(d["anciennete_label"]) for d in degres]
         bornes = [b for b in lues if b is not None]
-        _exiger(bool(degres) and all(lues) and bornes[-1][1] is None,
-                f"{objet} : dernier degré ouvert (« n+ ») attendu")
+        _exiger(
+            bool(degres) and all(lues) and bornes[-1][1] is None, f"{objet} : dernier degré ouvert (« n+ ») attendu"
+        )
         return
     _exiger(regle in ("ecart_cumule_biennal", "table_correspondance"), f"{objet} : règle inconnue {regle!r}")
     _valider_art13_commun(bloc, objet)
     lues = [bornes_degre(d["anciennete_label"]) for d in degres]
     bornes = [b for b in lues if b is not None]
-    _exiger(len(degres) >= 2 and all(lues) and bornes[-1][1] is None
-            and bornes[-1][0] == bloc["dernier_degre_atteint_a_annees"],
-            f"{objet} : dernier degré ouvert atteint à {bloc['dernier_degre_atteint_a_annees']} ans attendu")
+    _exiger(
+        len(degres) >= 2
+        and all(lues)
+        and bornes[-1][1] is None
+        and bornes[-1][0] == bloc["dernier_degre_atteint_a_annees"],
+        f"{objet} : dernier degré ouvert atteint à {bloc['dernier_degre_atteint_a_annees']} ans attendu",
+    )
     if regle == "ecart_cumule_biennal":
         _exiger(_entier_positif(bloc["periode_annees"]), f"{objet} : periode_annees attendu")
         return
     # table_correspondance : chaque catégorie renvoie à une case de la grille, ou est refusée avec son texte.
     _exiger(_entier_positif(bloc["duree_au_dernier_degre_annees"]), f"{objet} : duree_au_dernier_degre_annees attendu")
-    _exiger(all(_texte(bloc[k]) and "{a}" in bloc[k] and "{fin}" in bloc[k]
-                for k in ("message_hors_fenetre_fr", "message_hors_fenetre_ar")),
-            f"{objet} : message_hors_fenetre_fr/ar avec {{a}} et {{fin}} attendus")
+    _exiger(
+        all(
+            _texte(bloc[k]) and "{a}" in bloc[k] and "{fin}" in bloc[k]
+            for k in ("message_hors_fenetre_fr", "message_hors_fenetre_ar")
+        ),
+        f"{objet} : message_hors_fenetre_fr/ar avec {{a}} et {{fin}} attendus",
+    )
     table, refusees = bloc["table_correspondance"], bloc["categories_refusees"]
-    _exiger(not set(table) & set(refusees) and set(table) | set(refusees) == set(cats),
-            f"{objet} : chaque catégorie doit avoir une case cible ou un refus")
+    _exiger(
+        not set(table) & set(refusees) and set(table) | set(refusees) == set(cats),
+        f"{objet} : chaque catégorie doit avoir une case cible ou un refus",
+    )
     for cat, e in table.items():
-        _exiger(isinstance(e["degre"], int) and 1 <= e["degre"] <= len(degres) and e["categorie"] in cats
-                and e["case_imprimee"] == f"{e['degre']}/{e['categorie']}", f"{objet}[{cat}] : case cible invalide")
+        _exiger(
+            isinstance(e["degre"], int)
+            and 1 <= e["degre"] <= len(degres)
+            and e["categorie"] in cats
+            and e["case_imprimee"] == f"{e['degre']}/{e['categorie']}",
+            f"{objet}[{cat}] : case cible invalide",
+        )
         bas, haut = bornes[e["degre"] - 1]
         duree = bloc["duree_au_dernier_degre_annees"] if haut is None else haut - bas
-        _exiger(e["fenetre_annees"] == duree, f"{objet}[{cat}] : fenêtre {e['fenetre_annees']} ≠ tranche du degré cible ({duree})")
+        _exiger(
+            e["fenetre_annees"] == duree,
+            f"{objet}[{cat}] : fenêtre {e['fenetre_annees']} ≠ tranche du degré cible ({duree})",
+        )
     for cat, r in refusees.items():
-        _exiger(_texte(r["message_fr"]) and _texte(r["message_ar"]), f"{objet} : refus de la catégorie {cat} sans texte")
+        _exiger(
+            _texte(r["message_fr"]) and _texte(r["message_ar"]), f"{objet} : refus de la catégorie {cat} sans texte"
+        )
 
 
 def population_de_table(data: dict, table: dict) -> str | None:
@@ -190,12 +236,18 @@ def _valider_alias_et_hypotheses(data: dict, cats: dict) -> None:
         _exiger(pop in cats and isinstance(alias, dict), f"alias_categories[{pop}] : population inconnue")
         parents = set(data.get("sous_categories", {}).get(pop, {}).get("par_categorie", {}))
         for a, cle in alias.items():
-            _exiger(_texte(a) and a not in cats[pop] and a not in parents,
-                    f"alias_categories[{pop}][{a!r}] : alias vide ou déjà utilisé comme catégorie")
+            _exiger(
+                _texte(a) and a not in cats[pop] and a not in parents,
+                f"alias_categories[{pop}][{a!r}] : alias vide ou déjà utilisé comme catégorie",
+            )
             _exiger(cle in cats[pop], f"alias_categories[{pop}][{a!r}] : catégorie cible {cle!r} inconnue")
+
     def _hyp(h, objet):
-        _exiger(_liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
-                f"{objet} : listes fr et ar non vides et de même longueur attendues")
+        _exiger(
+            _liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
+            f"{objet} : listes fr et ar non vides et de même longueur attendues",
+        )
+
     for pop, h in data.get("hypotheses_grille", {}).items():
         _exiger(pop in cats, f"hypotheses_grille[{pop}] : population inconnue")
         _hyp(h, f"hypotheses_grille[{pop}]")
@@ -214,15 +266,21 @@ def _valider_textes_prime(p: dict) -> None:
         _exiger(_texte(p["note_ar"]), f"{objet} : note_ar non vide attendue")
     if "hypotheses" in p:
         h = p["hypotheses"]
-        _exiger(_liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
-                f"{objet} : hypotheses fr et ar non vides et de même longueur attendues")
+        _exiger(
+            _liste_textes(h["fr"]) and _liste_textes(h["ar"]) and len(h["fr"]) == len(h["ar"]),
+            f"{objet} : hypotheses fr et ar non vides et de même longueur attendues",
+        )
     if "libelles_groupes" in p:
         libelles = p["libelles_groupes"]
-        _exiger(isinstance(libelles, dict) and all(_texte(lib["fr"]) and _texte(lib["ar"]) for lib in libelles.values()),
-                f"{objet} : libelles_groupes fr et ar attendus")
+        _exiger(
+            isinstance(libelles, dict) and all(_texte(lib["fr"]) and _texte(lib["ar"]) for lib in libelles.values()),
+            f"{objet} : libelles_groupes fr et ar attendus",
+        )
         for ligne in p.get("montants", []):
-            _exiger(set(libelles) == set(ligne) - {"effective_date", "au_titre_de"},
-                    f"{objet} : libelles_groupes différents des colonnes de montants ({ligne['effective_date']})")
+            _exiger(
+                set(libelles) == set(ligne) - {"effective_date", "au_titre_de"},
+                f"{objet} : libelles_groupes différents des colonnes de montants ({ligne['effective_date']})",
+            )
         _exiger(bool(p.get("montants")), f"{objet} : libelles_groupes sans montants datés")
 
 
@@ -234,8 +292,14 @@ def _cellules_manquantes(table: dict, n_degres: int) -> set[tuple[str, int]]:
     out = set()
     for c in cases:
         objet = f"{table['table_id']}.cellules_source_manquante"
-        _exiger(n_degres > 0 and c["categorie"] in table["valeurs"] and isinstance(c["degre"], int)
-                and not isinstance(c["degre"], bool) and 1 <= c["degre"] <= n_degres, f"{objet} : case inconnue")
+        _exiger(
+            n_degres > 0
+            and c["categorie"] in table["valeurs"]
+            and isinstance(c["degre"], int)
+            and not isinstance(c["degre"], bool)
+            and 1 <= c["degre"] <= n_degres,
+            f"{objet} : case inconnue",
+        )
         _exiger(_texte(c["raison"]), f"{objet} : raison attendue")
         _exiger_refus_declare(c, objet)
         _exiger((c["categorie"], c["degre"]) not in out, f"{objet} : case en double")
@@ -253,8 +317,12 @@ def _valider_anciennetes_refusees(data: dict, degres: dict) -> None:
         objet = f"anciennetes_refusees[{pop}]"
         _exiger(bool(degres.get(pop)) and isinstance(liste, list) and liste, f"{objet} : population à degrés attendue")
         for r in liste:
-            _exiger(_entier_positif_ou_nul(r["au_dela_de"]) and _entier_positif_ou_nul(r["jusqu_a_inclus"])
-                    and r["au_dela_de"] < r["jusqu_a_inclus"], f"{objet} : bornes entières croissantes attendues")
+            _exiger(
+                _entier_positif_ou_nul(r["au_dela_de"])
+                and _entier_positif_ou_nul(r["jusqu_a_inclus"])
+                and r["au_dela_de"] < r["jusqu_a_inclus"],
+                f"{objet} : bornes entières croissantes attendues",
+            )
             _exiger_refus_declare(r, objet, avec_anciennete=True)
 
 
@@ -264,8 +332,12 @@ def _valider_cases_refusees(data: dict, au_dela: dict) -> None:
         if "cases_refusees" not in bloc:
             continue
         objet = f"au_dela_dernier_degre[{pop}].cases_refusees"
-        _exiger(bloc.get("regle") == "ecart_cumule_biennal" and isinstance(bloc["cases_refusees"], list)
-                and bloc["cases_refusees"], f"{objet} : liste non vide, règle ecart_cumule_biennal attendue")
+        _exiger(
+            bloc.get("regle") == "ecart_cumule_biennal"
+            and isinstance(bloc["cases_refusees"], list)
+            and bloc["cases_refusees"],
+            f"{objet} : liste non vide, règle ecart_cumule_biennal attendue",
+        )
         tables = {t["table_id"] for t in data["grilles"] if population_de_table(data, t) == pop}
         for r in bloc["cases_refusees"]:
             _exiger(r["table_id"] in tables and r["categorie"] in data["categories"][pop], f"{objet} : case inconnue")
@@ -282,12 +354,16 @@ def valider_grille(data: dict, chemin: str) -> dict:
         degres = data["degres"]
         _exiger(isinstance(degres, dict) and set(degres) == set(cats), "degres : une liste par population attendue")
         for pop, liste in degres.items():
-            _exiger(isinstance(liste, list) and all("degre" in d and "anciennete_label" in d for d in liste),
-                    f"degres[{pop}] : liste de degrés attendue")
+            _exiger(
+                isinstance(liste, list) and all("degre" in d and "anciennete_label" in d for d in liste),
+                f"degres[{pop}] : liste de degrés attendue",
+            )
         # Ce que dit la source au-delà du dernier degré (D8, D10) : obligatoire pour toute population à degrés.
         au_dela = data["au_dela_dernier_degre"]
-        _exiger(isinstance(au_dela, dict) and set(au_dela) == {p for p, liste in degres.items() if liste},
-                "au_dela_dernier_degre : un bloc par population à degrés attendu")
+        _exiger(
+            isinstance(au_dela, dict) and set(au_dela) == {p for p, liste in degres.items() if liste},
+            "au_dela_dernier_degre : un bloc par population à degrés attendu",
+        )
         for pop, bloc in au_dela.items():
             _valider_au_dela(bloc, pop, degres[pop], cats[pop])
         for pop, sc in data.get("sous_categories", {}).items():
@@ -295,8 +371,10 @@ def valider_grille(data: dict, chemin: str) -> dict:
             for cat, sous in sc["par_categorie"].items():
                 _exiger(cat not in cats[pop] and sous, f"sous_categories[{pop}][{cat}] invalide")
                 for s in sous.values():
-                    _exiger(s["cle"] in cats[pop] and _texte(s["libelle_fr"]) and _texte(s["libelle_ar"]),
-                            f"sous_categories[{pop}][{cat}] : cle, libelle_fr et libelle_ar attendus")
+                    _exiger(
+                        s["cle"] in cats[pop] and _texte(s["libelle_fr"]) and _texte(s["libelle_ar"]),
+                        f"sous_categories[{pop}][{cat}] : cle, libelle_fr et libelle_ar attendus",
+                    )
         _valider_alias_et_hypotheses(data, cats)
         for pop, bloc in data.get("populations_non_couvertes", {}).items():
             _exiger(pop not in cats, f"population {pop} à la fois couverte et non couverte")
@@ -310,20 +388,34 @@ def valider_grille(data: dict, chemin: str) -> dict:
             if "valide_jusqu_au" in t:
                 # Dernier jour de validité de la table (ex. grille révisée par un avenant absent des sources).
                 fin = t["valide_jusqu_au"]
-                _exiger(isinstance(fin, dict) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(fin.get("date", "")))
-                        and fin["date"] >= t["effective_date"], f"{t['table_id']} : valide_jusqu_au.date invalide")
+                _exiger(
+                    isinstance(fin, dict)
+                    and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(fin.get("date", "")))
+                    and fin["date"] >= t["effective_date"],
+                    f"{t['table_id']} : valide_jusqu_au.date invalide",
+                )
                 _exiger_refus_declare(fin, f"{t['table_id']}.valide_jusqu_au")
             pop = population_de_table(data, t)
-            _exiger(pop is not None, f"{t['table_id']} : population absente, inconnue ou ambiguë "
-                                     "(champ population obligatoire si plusieurs populations ont ces catégories)")
+            _exiger(
+                pop is not None,
+                f"{t['table_id']} : population absente, inconnue ou ambiguë "
+                "(champ population obligatoire si plusieurs populations ont ces catégories)",
+            )
             manquantes = _cellules_manquantes(t, len(degres[pop]))
             for cat, vals in t["valeurs"].items():
                 if degres[pop]:
-                    _exiger(isinstance(vals, list) and len(vals) == len(degres[pop]),
-                            f"{t['table_id']} cat. {cat} : {len(vals)} degrés")
+                    _exiger(
+                        isinstance(vals, list) and len(vals) == len(degres[pop]),
+                        f"{t['table_id']} cat. {cat} : {len(vals)} degrés",
+                    )
                     # null seulement pour une case déclarée illisible, et toute case déclarée vaut null.
-                    _exiger(all(isinstance(v, Decimal) if (cat, i) not in manquantes else v is None
-                                for i, v in enumerate(vals, 1)), f"{t['table_id']} cat. {cat} : montant non décimal")
+                    _exiger(
+                        all(
+                            isinstance(v, Decimal) if (cat, i) not in manquantes else v is None
+                            for i, v in enumerate(vals, 1)
+                        ),
+                        f"{t['table_id']} cat. {cat} : montant non décimal",
+                    )
                 else:
                     _exiger(isinstance(vals, Decimal), f"{t['table_id']} cat. {cat} : montant unique décimal attendu")
         _valider_anciennetes_refusees(data, degres)
@@ -333,7 +425,9 @@ def valider_grille(data: dict, chemin: str) -> dict:
                 _exiger(k in p, f"prime {p.get('code', '?')} : clé {k} manquante")
             _valider_textes_prime(p)
         for code, bloc in data.get("primes_non_couvertes", {}).items():
-            _exiger(code not in {p["code"] for p in data.get("primes", [])}, f"prime {code} à la fois servie et refusée")
+            _exiger(
+                code not in {p["code"] for p in data.get("primes", [])}, f"prime {code} à la fois servie et refusée"
+            )
             _exiger_refus_declare(bloc, f"primes_non_couvertes[{code}]")
     except (_SchemaInvalide, KeyError, TypeError, AttributeError) as e:
         raise _invalide(chemin, str(e) or "schéma inattendu") from e
@@ -360,10 +454,11 @@ def _exiger_ref(ref, champ: str, objet: str) -> str:
     Absente ou mal formée → Refus SOURCE_MANQUANTE : jamais de citation avec une référence inventée.
     """
     if not isinstance(ref, str) or not re.fullmatch(r"D[0-9]+", ref):
-        raise Refus(Refus.SOURCE_MANQUANTE,
-                    f"Référence de vérification ({champ}) absente ou invalide pour {objet} ({ref!r}) : "
-                    "montant non citable.",
-                    f"مرجع التحقق ({champ}) غير موجود أو غير صالح لـ {objet}: لا يمكن الاستشهاد بالمبلغ.")
+        raise Refus(
+            Refus.SOURCE_MANQUANTE,
+            f"Référence de vérification ({champ}) absente ou invalide pour {objet} ({ref!r}) : montant non citable.",
+            f"مرجع التحقق ({champ}) غير موجود أو غير صالح لـ {objet}: لا يمكن الاستشهاد بالمبلغ.",
+        )
     return ref
 
 
@@ -393,9 +488,11 @@ def charger_grille(secteur: Any) -> dict:
     """Grille vérifiée du secteur. Secteur absent → PARAM_INVALIDE ; inconnu → SOURCE_MANQUANTE."""
     if not _texte(secteur):
         dispo = ", ".join(secteurs_disponibles())
-        raise Refus(Refus.PARAM_INVALIDE,
-                    f"Secteur absent ou invalide : {secteur!r} (disponibles : {dispo}).",
-                    f"القطاع غير موجود أو غير صالح: {secteur!r} (المتوفر: {dispo}).")
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            f"Secteur absent ou invalide : {secteur!r} (disponibles : {dispo}).",
+            f"القطاع غير موجود أو غير صالح: {secteur!r} (المتوفر: {dispo}).",
+        )
     if secteur not in GRILLES:
         raise _refus_sans_grille(secteur)
     return _charger_grille(secteur)
@@ -403,9 +500,11 @@ def charger_grille(secteur: Any) -> dict:
 
 def _refus_sans_grille(secteur: str) -> Refus:
     dispo = ", ".join(secteurs_disponibles())
-    return Refus(Refus.SOURCE_MANQUANTE,
-                 f"Aucune grille vérifiée pour le secteur {secteur!r} (disponibles : {dispo}).",
-                 f"لا يوجد جدول أجور مُتحقَّق منه للقطاع {secteur!r} (المتوفر: {dispo}).")
+    return Refus(
+        Refus.SOURCE_MANQUANTE,
+        f"Aucune grille vérifiée pour le secteur {secteur!r} (disponibles : {dispo}).",
+        f"لا يوجد جدول أجور مُتحقَّق منه للقطاع {secteur!r} (المتوفر: {dispo}).",
+    )
 
 
 def exiger_tables_transcrites(grille: dict, secteur: str) -> None:

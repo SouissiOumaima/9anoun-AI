@@ -3,6 +3,7 @@
 Aucune logique de calcul ici : validation de la requête (JSON Schema), appel de calc/,
 conversion Result/Refus en réponse. Toute exception inattendue → status "erreur", sans montant.
 """
+
 from __future__ import annotations
 
 import json
@@ -51,16 +52,28 @@ def _jsonable(v):
 
 
 def _base(request_id, status: str, computed_by: str) -> dict:
-    return {"contract_version": CONTRACT_VERSION, "request_id": request_id, "status": status,
-            "result": None, "citations": [], "refus": None, "computed_by": computed_by}
+    return {
+        "contract_version": CONTRACT_VERSION,
+        "request_id": request_id,
+        "status": status,
+        "result": None,
+        "citations": [],
+        "refus": None,
+        "computed_by": computed_by,
+    }
 
 
 def reponse_ok(request_id: str | None, r: Result, computed_by: str) -> dict:
     rep = _base(request_id, "ok", computed_by)
     rep["result"] = {"montant": str(r.montant), "unite": r.unite, "detail": _jsonable(r.detail)}
     rep["citations"] = [
-        {"source_file": c.source_file, "page": c.page, "article": c.article,
-         "data_file": c.data_file, "decision_ref": c.decision_ref}
+        {
+            "source_file": c.source_file,
+            "page": c.page,
+            "article": c.article,
+            "data_file": c.data_file,
+            "decision_ref": c.decision_ref,
+        }
         for c in r.citations
     ]
     return rep
@@ -96,18 +109,22 @@ def _traiter(request) -> dict:
     erreur = best_match(validator("request").iter_errors(request))
     if erreur is not None:
         chemin = "/".join(str(p) for p in erreur.absolute_path) or "(racine)"
-        raise _RefusContrat(Refus.PARAM_INVALIDE,
-                    f"Requête non conforme au contrat {CONTRACT_VERSION} ({chemin}) : {erreur.message}",
-                    f"الطلب غير مطابق للعقد {CONTRACT_VERSION} ({chemin}): {erreur.message}")
+        raise _RefusContrat(
+            Refus.PARAM_INVALIDE,
+            f"Requête non conforme au contrat {CONTRACT_VERSION} ({chemin}) : {erreur.message}",
+            f"الطلب غير مطابق للعقد {CONTRACT_VERSION} ({chemin}): {erreur.message}",
+        )
 
     # 2. Refus métier : requête valide, opération connue du contrat mais hors périmètre Track B.
     op = request["operation"]
     if op in OPERATIONS_HORS_PERIMETRE:
-        raise _RefusContrat(Refus.HORS_SCOPE,
-                    f"Opération {op!r} hors du périmètre Track B v0 (disponibles : {', '.join(OPERATIONS)}). "
-                    "CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
-                    f"العملية {op!r} خارج نطاق المسار B (المتوفر: {', '.join(OPERATIONS)}). "
-                    "الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه.")
+        raise _RefusContrat(
+            Refus.HORS_SCOPE,
+            f"Opération {op!r} hors du périmètre Track B v0 (disponibles : {', '.join(OPERATIONS)}). "
+            "CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
+            f"العملية {op!r} خارج نطاق المسار B (المتوفر: {', '.join(OPERATIONS)}). "
+            "الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه.",
+        )
 
     # 3. Calcul (refus éventuels émis par calc/).
     r = OPERATIONS[op](**request["params"])

@@ -1,4 +1,5 @@
 """Rend le package track_b_accounting importable (src/ dans sys.path) et fournit les contrôles communs."""
+
 import json
 import sys
 from decimal import Decimal

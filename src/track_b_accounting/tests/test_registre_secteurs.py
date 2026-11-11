@@ -1,6 +1,7 @@
 """Registre des secteurs découvert dans data/processed/salary_grids/ (calc/loaders.py, decouvrir_grilles).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_registre_secteurs.py
 """
+
 import json
 from decimal import Decimal
 
@@ -54,7 +55,9 @@ def test_registre_actuel_identique():
         "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
         "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60
+    assert (
+        list(loaders.GRILLES) == loaders.secteurs_disponibles()
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -80,10 +83,12 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
     with pytest.raises(Refus) as e:
         salaire_base("SANS_REF", "admin_tech", "4", 15, "2022-06-01")
     assert e.value.code == Refus.SOURCE_MANQUANTE
-    assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
-                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
-                                  "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
-                                 "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES).")
+    assert e.value.message_fr == (
+        "Aucune grille vérifiée pour le secteur 'SANS_REF' "
+        "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+        "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES)."
+    )
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):
@@ -91,7 +96,7 @@ def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):
     (tmp_path / "liste.json").write_text("[]", encoding="utf-8")
     (tmp_path / "sans_code.json").write_text(json.dumps({"_meta": {"decision_ref": "D4"}}), encoding="utf-8")
     _ecrire(tmp_path, "a.json", "DOUBLON", ref="D4")
-    _ecrire(tmp_path, "b.json", "DOUBLON", ref="D5")              # même code dans deux fichiers : ambigu
+    _ecrire(tmp_path, "b.json", "DOUBLON", ref="D5")  # même code dans deux fichiers : ambigu
     _ecrire(tmp_path, "c.json", "UNIQUE", ref="D7")
     assert loaders.decouvrir_grilles(tmp_path) == {"UNIQUE": (tmp_path / "c.json").resolve().as_posix()}
 

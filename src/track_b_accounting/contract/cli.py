@@ -4,6 +4,7 @@ Depuis la racine du dépôt :
     python -m src.track_b_accounting.contract.cli data/mock_cards/track_b_requests_demo.json
     echo '{...}' | python -m src.track_b_accounting.contract.cli
 """
+
 from __future__ import annotations
 
 import io
@@ -20,7 +21,7 @@ def main(argv: list[str] | None = None, stdin: TextIO | None = None, stdout: Tex
         cast(io.TextIOWrapper, sys.stdin).reconfigure(encoding="utf-8")
         stdin = sys.stdin
     if stdout is None:  # pragma: no cover
-        cast(io.TextIOWrapper, sys.stdout).reconfigure(encoding="utf-8")   # arabe lisible même sous une console cp1252
+        cast(io.TextIOWrapper, sys.stdout).reconfigure(encoding="utf-8")  # arabe lisible même sous une console cp1252
         stdout = sys.stdout
     reponse: dict | list[dict]
     try:

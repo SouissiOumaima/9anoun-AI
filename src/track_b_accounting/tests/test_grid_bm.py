@@ -1,6 +1,7 @@
 """Contrôles automatiques de la grille METALLURGIE_BATIMENT (anti-erreur de saisie).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_grid_bm.py
 """
+
 import json
 import statistics as S
 from pathlib import Path

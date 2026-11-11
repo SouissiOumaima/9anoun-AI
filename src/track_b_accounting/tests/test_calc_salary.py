@@ -1,6 +1,7 @@
 """Salaire de base METALLURGIE_BATIMENT, degrés, choix de table, loaders et modèles.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_salary.py
 """
+
 import copy
 import datetime as dt
 from decimal import Decimal
@@ -26,9 +27,19 @@ def refus(code, f, *a, **k):
 
 # --- degré d'ancienneté -------------------------------------------------------------------------
 
-@pytest.mark.parametrize("annees,degre", [
-    (0, 1), (1.9, 1), (Decimal("2.01"), 2), (7, 4), (19.9, 10), (Decimal("20.5"), 11), (21.99, 11),
-])
+
+@pytest.mark.parametrize(
+    "annees,degre",
+    [
+        (0, 1),
+        (1.9, 1),
+        (Decimal("2.01"), 2),
+        (7, 4),
+        (19.9, 10),
+        (Decimal("20.5"), 11),
+        (21.99, 11),
+    ],
+)
 def test_degre(annees, degre):
     assert degre_from_anciennete(annees, S, "admin_tech") == degre
 
@@ -46,6 +57,7 @@ def test_degre_invalide(val):
 
 # --- au-delà du dernier degré : art. 13 (جديد) ب, p.9, écart cumulé tous les deux ans (D10) ---------------
 
+
 @pytest.mark.parametrize("pop,cat", [("admin_tech", "4"), ("execution", "7")])
 @pytest.mark.parametrize("annees", [21, 21.99, Decimal("21.999")])
 def test_dernier_degre_avant_22_ans(pop, cat, annees, ok):
@@ -56,20 +68,25 @@ def test_dernier_degre_avant_22_ans(pop, cat, annees, ok):
 
 # Calculés à la main (tables 2024, p.34 et 35) : d11 + n × (d11 − d10), n = ⌊(a − 20) / 2⌋.
 #   admin_tech cat. 4 : d11 = 680.334, d10 = 678.186, écart 2.148 ; execution cat. 7 : d11 = 4.620, d10 = 4.604, écart 0.016.
-@pytest.mark.parametrize("pop,cat,annees,n,ecart,attendu,page", [
-    ("admin_tech", "4", Decimal("22.5"), 1, "2.148", "682.482", 34),   # 680.334 + 1 × 2.148
-    ("admin_tech", "4", Decimal("24.5"), 2, "2.148", "684.630", 34),   # 680.334 + 2 × 2.148
-    ("admin_tech", "4", Decimal("30.5"), 5, "2.148", "691.074", 34),   # 680.334 + 5 × 2.148
-    ("execution", "7", Decimal("22.5"), 1, "0.016", "4.636", 35),      # 4.620 + 1 × 0.016
-    ("execution", "7", Decimal("24.5"), 2, "0.016", "4.652", 35),      # 4.620 + 2 × 0.016
-    ("execution", "7", Decimal("30.5"), 5, "0.016", "4.700", 35),      # 4.620 + 5 × 0.016
-])
+@pytest.mark.parametrize(
+    "pop,cat,annees,n,ecart,attendu,page",
+    [
+        ("admin_tech", "4", Decimal("22.5"), 1, "2.148", "682.482", 34),  # 680.334 + 1 × 2.148
+        ("admin_tech", "4", Decimal("24.5"), 2, "2.148", "684.630", 34),  # 680.334 + 2 × 2.148
+        ("admin_tech", "4", Decimal("30.5"), 5, "2.148", "691.074", 34),  # 680.334 + 5 × 2.148
+        ("execution", "7", Decimal("22.5"), 1, "0.016", "4.636", 35),  # 4.620 + 1 × 0.016
+        ("execution", "7", Decimal("24.5"), 2, "0.016", "4.652", 35),  # 4.620 + 2 × 0.016
+        ("execution", "7", Decimal("30.5"), 5, "0.016", "4.700", 35),  # 4.620 + 5 × 0.016
+    ],
+)
 def test_art13_exemples_calcules_a_la_main(pop, cat, annees, n, ecart, attendu, page, ok):
     r = ok(salaire_base(S, pop, cat, annees, "2024-06-01"))
     assert r.montant == Decimal(attendu)
     assert r.detail["degre"] == 11 and r.detail["regle_art13"] == "ecart_cumule_biennal"
     assert r.detail["n_paliers"] == n and r.detail["ecart"] == Decimal(ecart)
-    assert r.detail["hypotheses"] == BM["au_dela_dernier_degre"][pop]["hypotheses_fr"] and len(r.detail["hypotheses"]) == 4
+    assert (
+        r.detail["hypotheses"] == BM["au_dela_dernier_degre"][pop]["hypotheses_fr"] and len(r.detail["hypotheses"]) == 4
+    )
     assert r.detail["hypotheses_ar"] == BM["au_dela_dernier_degre"][pop]["hypotheses_ar"]
     grille, art13 = r.citations
     assert (grille.page, grille.article, grille.decision_ref) == (page, None, "D4")
@@ -105,8 +122,13 @@ def test_regle_refus_toujours_supportee(monkeypatch):
     """Un bloc de simple refus (D8) reste accepté pour un futur secteur : plafond lu dans le JSON."""
     grille = copy.deepcopy(BM)
     grille["au_dela_dernier_degre"]["admin_tech"] = {
-        "regle": "refus", "anciennete_max_couverte_annees": 30, "source_pdf_page": 9, "source_article": "13",
-        "message_fr": "FR {a}", "message_ar": "AR {a}"}
+        "regle": "refus",
+        "anciennete_max_couverte_annees": 30,
+        "source_pdf_page": 9,
+        "source_article": "13",
+        "message_fr": "FR {a}",
+        "message_ar": "AR {a}",
+    }
     grille = loaders.valider_grille(grille, "x.json")
     monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
     assert degre_from_anciennete(25, S, "admin_tech") == 11
@@ -132,22 +154,26 @@ def test_degre_libelle_illisible(monkeypatch):
 
 def test_degre_trou_dans_les_libelles(monkeypatch):
     grille = copy.deepcopy(BM)
-    grille["degres"]["admin_tech"][1]["anciennete_label"] = "3-4"            # trou entre 2 et 3 ans
+    grille["degres"]["admin_tech"][1]["anciennete_label"] = "3-4"  # trou entre 2 et 3 ans
     monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: grille)
     refus(Refus.SOURCE_MANQUANTE, degre_from_anciennete, 2.5, S, "admin_tech")
 
 
 # --- choix de la table par date ------------------------------------------------------------------
 
-@pytest.mark.parametrize("date,table_id", [
-    ("2021-12-01", "BM_T_2021-12-01"),
-    ("2022-06-01", "BM_T_2021-12-01"),
-    ("2022-12-31", "BM_T_2021-12-01"),
-    ("2023-01-01", "BM_T_2023-01-01"),
-    (dt.date(2023, 12, 31), "BM_T_2023-01-01"),
-    ("2024-01-01", "BM_T_2024-01-01"),
-    ("2025-05-01", "BM_T_2024-01-01"),
-])
+
+@pytest.mark.parametrize(
+    "date,table_id",
+    [
+        ("2021-12-01", "BM_T_2021-12-01"),
+        ("2022-06-01", "BM_T_2021-12-01"),
+        ("2022-12-31", "BM_T_2021-12-01"),
+        ("2023-01-01", "BM_T_2023-01-01"),
+        (dt.date(2023, 12, 31), "BM_T_2023-01-01"),
+        ("2024-01-01", "BM_T_2024-01-01"),
+        ("2025-05-01", "BM_T_2024-01-01"),
+    ],
+)
 def test_table_applicable(date, table_id):
     assert table_applicable(S, "admin_tech", date)["table_id"] == table_id
 
@@ -168,15 +194,16 @@ def test_date_invalide(date):
 
 # --- salaire de base -----------------------------------------------------------------------------
 
+
 def test_valeurs_codees_en_dur_verifiees_d4(ok):
     """Cellules relues sur le PDF en D4 (p.30, 32, 34, 35), dont les 2 corrections de BM_T_2021-12-01."""
     cas = [
-        (("admin_tech", "1B", 1, "2022-06-01"), "512.027", "TND/mois", 30),   # cat. fixe, degré 1
+        (("admin_tech", "1B", 1, "2022-06-01"), "512.027", "TND/mois", 30),  # cat. fixe, degré 1
         (("admin_tech", "18", 11, "2023-06-01"), "1231.060", "TND/mois", 32),  # cat. fixe, degré 6
         (("admin_tech", "18", 21, "2024-03-01"), "1359.212", "TND/mois", 34),  # cat. fixe, degré 11
-        (("admin_tech", "4", 15, "2022-01-15"), "593.873", "TND/mois", 30),    # correction D4
+        (("admin_tech", "4", 15, "2022-01-15"), "593.873", "TND/mois", 30),  # correction D4
         (("admin_tech", "15", 19, "2022-01-15"), "1007.111", "TND/mois", 30),  # correction D4
-        (("execution", "7", 21, "2024-01-01"), "4.620", "TND/heure", 35),     # cat. fixe, degré 11
+        (("execution", "7", 21, "2024-01-01"), "4.620", "TND/heure", 35),  # cat. fixe, degré 11
     ]
     for (pop, cat, anc, date), montant, unite, page in cas:
         r = ok(salaire_base(S, pop, cat, anc, date))
@@ -191,7 +218,7 @@ def test_toutes_cellules_egales_au_json(tid, ok):
     pop = "admin_tech" if set(t["valeurs"]) == set(BM["categories"]["admin_tech"]) else "execution"
     for cat, vals in t["valeurs"].items():
         for k, attendu in enumerate(vals):
-            anc = 2 * k + 1                                    # milieu de l'intervalle du degré k+1
+            anc = 2 * k + 1  # milieu de l'intervalle du degré k+1
             r = ok(salaire_base(S, pop, cat, anc, t["effective_date"]))
             assert r.montant == attendu and r.unite == t["unite"]
             assert r.detail["degre"] == k + 1 and r.detail["table_id"] == tid
@@ -238,6 +265,7 @@ def test_deterministe():
 
 # --- loaders -------------------------------------------------------------------------------------
 
+
 def test_loaders_ne_lisent_que_data_processed():
     assert all(p.startswith("data/processed/") for p in loaders.GRILLES.values())
     assert loaders.SMIG_FILE.startswith("data/processed/")
@@ -252,29 +280,32 @@ def test_loader_nombres_en_decimal():
     assert type(g["grilles"][0]["valeurs"]["1A"][0]) is Decimal
 
 
-@pytest.mark.parametrize("mutation", [
-    lambda g: g["_meta"].pop("source_file"),
-    lambda g: g.__setitem__("degres", []),
-    lambda g: g.pop("au_dela_dernier_degre"),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("regle", "inconnue"),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("periode_annees", 0),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].pop("source_pdf_page"),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("source_article", ""),
-    lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_borne_ar", ""),
-    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("message_borne_fr", "sans ancienneté"),
-    lambda g: g["au_dela_dernier_degre"]["execution"]["hypotheses_ar"].pop(),
-    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("decision_ref", "D-10"),
-    lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("dernier_degre_atteint_a_annees", 18),
-    lambda g: g["au_dela_dernier_degre"].pop("execution"),
-    lambda g: g["degres"].pop("execution"),
-    lambda g: g["_meta"].__setitem__("tables_transcrites", False),
-    lambda g: g["categories"].__setitem__("execution", []),
-    lambda g: g.__setitem__("grilles", []),
-    lambda g: g["grilles"][0].pop("source_pdf_page"),
-    lambda g: g["grilles"][0]["valeurs"]["1A"].pop(),
-    lambda g: g["grilles"][0]["valeurs"]["1A"].__setitem__(0, 497.324),
-    lambda g: g["primes"][0].pop("source_article"),
-])
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda g: g["_meta"].pop("source_file"),
+        lambda g: g.__setitem__("degres", []),
+        lambda g: g.pop("au_dela_dernier_degre"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("regle", "inconnue"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("periode_annees", 0),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].pop("source_pdf_page"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("source_article", ""),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_borne_ar", ""),
+        lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("message_borne_fr", "sans ancienneté"),
+        lambda g: g["au_dela_dernier_degre"]["execution"]["hypotheses_ar"].pop(),
+        lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("decision_ref", "D-10"),
+        lambda g: g["au_dela_dernier_degre"]["execution"].__setitem__("dernier_degre_atteint_a_annees", 18),
+        lambda g: g["au_dela_dernier_degre"].pop("execution"),
+        lambda g: g["degres"].pop("execution"),
+        lambda g: g["_meta"].__setitem__("tables_transcrites", False),
+        lambda g: g["categories"].__setitem__("execution", []),
+        lambda g: g.__setitem__("grilles", []),
+        lambda g: g["grilles"][0].pop("source_pdf_page"),
+        lambda g: g["grilles"][0]["valeurs"]["1A"].pop(),
+        lambda g: g["grilles"][0]["valeurs"]["1A"].__setitem__(0, 497.324),
+        lambda g: g["primes"][0].pop("source_article"),
+    ],
+)
 def test_valider_grille_rejette(mutation):
     g = copy.deepcopy(BM)
     mutation(g)
@@ -311,9 +342,16 @@ def test_refus_code_inconnu():
         Refus("AUTRE", "x", "x")
 
 
-@pytest.mark.parametrize("x,attendu", [
-    ("1.0005", "1.001"), ("1.0004", "1.000"), ("2.2085", "2.209"), ("0.56", "0.560"), ("-1.0005", "-1.001"),
-])
+@pytest.mark.parametrize(
+    "x,attendu",
+    [
+        ("1.0005", "1.001"),
+        ("1.0004", "1.000"),
+        ("2.2085", "2.209"),
+        ("0.56", "0.560"),
+        ("-1.0005", "-1.001"),
+    ],
+)
 def test_arrondi_millime_half_up(x, attendu):
     assert str(arrondi_millime(Decimal(x))) == attendu
 
@@ -329,6 +367,7 @@ def test_parse_date():
 
 
 # --- référence de vérification (_meta.decision_ref) -------------------------------------------------
+
 
 def test_decision_ref_lue_dans_le_json(ok):
     r = ok(salaire_base(S, "admin_tech", "4", 15, "2022-06-01"))
