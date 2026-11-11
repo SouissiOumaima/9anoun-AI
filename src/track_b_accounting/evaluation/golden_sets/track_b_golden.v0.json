@@ -5144,6 +5144,1195 @@
     "page": 21,
     "emplacement": "titre du tableau n° 2 : en vigueur à partir du 1er décembre 2021"
    }
+  },
+  {
+   "id": "TB-163",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D55",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "population": "horaires",
+     "categorie": "V_bis",
+     "anciennete_annees": 4,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.873",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 3 (p.22, 2024-01-01), ligne 6 (« V مكرر »), col. degré 4 depuis la droite (3 à 5 ans)",
+    "valeur_imprimee": "4.873"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-164",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D55",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "population": "mensuels",
+     "categorie": "XII",
+     "anciennete_annees": 20,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1747.713",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 2 (p.21, 2023-01-01), ligne 13 (XII), col. degré 12 depuis la droite (19 à 21 ans)",
+    "valeur_imprimee": "1747.713"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-165",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "code": "prime_transport",
+     "date": "2024-06-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "123.113",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 13,
+    "emplacement": "art. 32 (جديد) : cadres, 123.113 d à partir du 1er janvier 2024",
+    "valeur_imprimee": "123.113"
+   }
+  },
+  {
+   "id": "TB-166",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "population": "horaires",
+     "categorie": "I",
+     "anciennete_annees": 3,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 12,
+    "emplacement": "art. 28 (جديد) : 3 ans = fin du degré 3 et début du degré 4"
+   }
+  },
+  {
+   "id": "TB-167",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D55",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "population": "mensuels",
+     "categorie": "VI",
+     "anciennete_annees": 21,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 12,
+    "emplacement": "art. 28 (جديد) : 12 degrés, sommet à 21 ans ; passage à l'échelle suivante non calculé"
+   }
+  },
+  {
+   "id": "TB-168",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "code": "prime_panier",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 15,
+    "emplacement": "art. 37 مكرر : hausses d'un dinar seulement, montant de base absent"
+   }
+  },
+  {
+   "id": "TB-169",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+     "categorie": "VI",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+    "page": 20,
+    "emplacement": "un tableau à deux unités : population (horaires ou mensuels) obligatoire"
+   }
+  },
+  {
+   "id": "TB-170",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D56",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "categorie": "5",
+     "sous_categorie": "4",
+     "anciennete_annees": 0.5,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3013.173",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 1 (p.19, 2021-12-01), ligne 14 (catégorie 5, 4e rang), colonne « - » (1re depuis la droite)",
+    "valeur_imprimee": "3013.173"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-171",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D56",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "categorie": "1",
+     "sous_categorie": "2",
+     "anciennete_annees": 31,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1569.669",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 3 (p.20 bas, 2024-01-01), ligne 2 (catégorie 1, 2e rang), degré 13 (14e colonne depuis la droite, 29 à 32 ans)",
+    "valeur_imprimee": "1569.669"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-172",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "code": "prime_scolaire_superieur",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "52.000",
+    "unite": "TND/enfant",
+    "citations": [
+     {
+      "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 16,
+    "emplacement": "art. 44-7 : 52 dinars, enseignement supérieur",
+    "valeur_imprimee": "52.000"
+   }
+  },
+  {
+   "id": "TB-173",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D56",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "categorie": "1",
+     "sous_categorie": "1",
+     "anciennete_annees": 33,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 19,
+    "emplacement": "en-tête : durées 1+1+6×2+6×3 = 32 ans ; art. 13 (جديد) : rien au-delà"
+   }
+  },
+  {
+   "id": "TB-174",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D56",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "code": "prime_responsabilite",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 16,
+    "emplacement": "art. 44-6 : hausses et minimums, montant de départ non imprimé"
+   }
+  },
+  {
+   "id": "TB-175",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "categorie": "3",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 19,
+    "emplacement": "catégorie 3 imprimée en deux rangs : sous-catégorie obligatoire"
+   }
+  },
+  {
+   "id": "TB-176",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_DISTRIBUTION_PETROLE",
+     "categorie": "3",
+     "sous_categorie": "1",
+     "anciennete_annees": 5,
+     "date": "2021-11-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+    "page": 19,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er décembre 2021"
+   }
+  },
+  {
+   "id": "TB-177",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D57",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "population": "employes_maitrise",
+     "categorie": "8",
+     "anciennete_annees": 31,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1234.048",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة وتحويل البلاستيك.pdf",
+      "page": 24
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 24,
+    "emplacement": "tableau n° 5 (p.24, 2024-01-01), ligne 8 (catégorie 8), col. degré 16 depuis la droite (30 à 32 ans)",
+    "valeur_imprimee": "1234.048"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-178",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D57",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "population": "ouvriers_horaires",
+     "categorie": "1",
+     "anciennete_annees": 1,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.746",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "صناعة وتحويل البلاستيك.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 23,
+    "emplacement": "tableau n° 4 (p.23, 2023-01-01), ligne 1 (catégorie 1), col. degré 1 depuis la droite (0 à 2 ans)",
+    "valeur_imprimee": "2.746"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-179",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "code": "prime_presence_complement_sans_panier",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة وتحويل البلاستيك.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 14,
+    "emplacement": "art. 48-1 : deux dinars par mois sans prime de panier (en toutes lettres)",
+    "valeur_imprimee": "2.000"
+   }
+  },
+  {
+   "id": "TB-180",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D57",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "population": "ouvriers_horaires",
+     "categorie": "3",
+     "anciennete_annees": 32.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 8,
+    "emplacement": "en-tête : 16 degrés de 2 ans ; art. 13 (جديد) أ : passage à l'échelle suivante non calculé"
+   }
+  },
+  {
+   "id": "TB-181",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "categorie": "3",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 22,
+    "emplacement": "deux populations avec les catégories 1 à 6 : population obligatoire"
+   }
+  },
+  {
+   "id": "TB-182",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PLASTURGIE",
+     "code": "prime_production",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة وتحويل البلاستيك.pdf",
+    "page": 15,
+    "emplacement": "art. 49 (جديد) : 17 à 30 jours de salaire, sans montant fixe"
+   }
+  },
+  {
+   "id": "TB-183",
+   "categorie": "ok",
+   "certitude": "C",
+   "decision": "D58",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "MINOTERIES",
+     "population": "horaires",
+     "categorie": "V",
+     "anciennete_annees": 30,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "5.495",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مطاحن.pdf",
+      "page": 22
+     },
+     {
+      "pdf": "مطاحن.pdf",
+      "page": 8
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 5 (p.22, 2024-01-01), ligne 5 (V) : degré 13 (5.469) + 2 × (degré 13 − degré 12 5.456), art. 14 (جديد) أ p.8, 30 ans = 25 + 2 périodes de 2 ans"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-184",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D58",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "MINOTERIES",
+     "population": "mensuels",
+     "categorie": "11",
+     "anciennete_annees": 0.5,
+     "date": "2022-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1156.011",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مطاحن.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 2 (p.20, 2021-12-01), ligne 11 (catégorie 11), degré 0 (1re colonne depuis la droite)",
+    "valeur_imprimee": "1156.011"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-185",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D58",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "MINOTERIES",
+     "population": "horaires",
+     "categorie": "I",
+     "anciennete_annees": 28,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 8,
+    "emplacement": "art. 14 (جديد) أ : écart réservé aux catégories V et 11 ; promotion des autres non calculée"
+   }
+  },
+  {
+   "id": "TB-186",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D10",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "MINOTERIES",
+     "population": "mensuels",
+     "categorie": "11",
+     "anciennete_annees": 27,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 8,
+    "emplacement": "art. 14 (جديد) أ : 27 ans = premier palier de 2 ans après le degré 13 (25 ans)"
+   }
+  },
+  {
+   "id": "TB-187",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "MINOTERIES",
+     "code": "prime_panier",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.387",
+    "unite": "TND/jour",
+    "citations": [
+     {
+      "pdf": "مطاحن.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 15,
+    "emplacement": "art. 54 ب : 387 millimes par jour à partir du 1er janvier 2024",
+    "valeur_imprimee": "0.387"
+   }
+  },
+  {
+   "id": "TB-188",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "MINOTERIES",
+     "code": "prime_caisse",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مطاحن.pdf",
+    "page": 16,
+    "emplacement": "art. 56 : renvoi à la législation, aucun montant"
+   }
+  },
+  {
+   "id": "TB-189",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D59",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "population": "execution",
+     "categorie": "6",
+     "anciennete_annees": 40,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.595",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مصابغ ومعامل التنظيف.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 5 (p.22, 2024-01-01), ligne 6 (catégorie 6), col. degré 14 depuis la droite (« 23 + »)",
+    "valeur_imprimee": "3.595"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-190",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D59",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "population": "administratifs_techniciens",
+     "categorie": "10",
+     "anciennete_annees": 2.5,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "888.497",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصابغ ومعامل التنظيف.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 4 (p.21, 2023-01-01), ligne 10 (catégorie 10), col. degré 3 depuis la droite (« 3-2 »)",
+    "valeur_imprimee": "888.497"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-191",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "code": "prime_etudes_jardin_enfants",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "20.000",
+    "unite": "TND/enfant",
+    "citations": [
+     {
+      "pdf": "مصابغ ومعامل التنظيف.pdf",
+      "page": 10
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 10,
+    "emplacement": "art. 24 (جديد) : 20 dinars par enfant en jardin d'enfants",
+    "valeur_imprimee": "20.000"
+   }
+  },
+  {
+   "id": "TB-192",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "population": "execution",
+     "categorie": "2",
+     "anciennete_annees": 23,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 22,
+    "emplacement": "en-tête : 23 ans = fin de « 23-21 » et début de « 23 + »"
+   }
+  },
+  {
+   "id": "TB-193",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "population": "execution",
+     "categorie": "2",
+     "anciennete_annees": 5.5,
+     "date": "2021-11-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 20,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er décembre 2021"
+   }
+  },
+  {
+   "id": "TB-194",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "code": "prime_lait_salete",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 10,
+    "emplacement": "art. 23 مكرر : renvoi à la commission, aucun montant"
+   }
+  },
+  {
+   "id": "TB-195",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D60",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "population": "horaires",
+     "categorie": "6",
+     "anciennete_annees": 28,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "5.069",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 5 (p.22, 2024-01-01), ligne 6 (catégorie 6), col. degré 15 depuis la droite (27 à 30 ans)",
+    "valeur_imprimee": "5.069"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-196",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D60",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "population": "mensuels",
+     "categorie": "9",
+     "anciennete_annees": 1.5,
+     "date": "2022-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1251.990",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 2 (p.20, 2021-12-01), ligne 9 (catégorie 9), col. degré 2 depuis la droite (1 à 2 ans)",
+    "valeur_imprimee": "1251.990"
+   },
+   "note": "Cellule d'un lot vérifié par DS5 (« LOTS VALIDÉS », 2026-11-11) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-197",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "population": "horaires",
+     "categorie": "5",
+     "anciennete_annees": 13,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 1 (p.20), ligne 5, col. degré 8 (12 à 14 ans) : « 4.22: », chiffre cassé"
+   }
+  },
+  {
+   "id": "TB-198",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D60",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "population": "mensuels",
+     "categorie": "1",
+     "anciennete_annees": 30.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 8,
+    "emplacement": "art. 14 (جديد) : 15 degrés, durées totalisant 30 ans, rien au-delà"
+   }
+  },
+  {
+   "id": "TB-199",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "code": "prime_panier",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 16,
+    "emplacement": "art. 51 مكرر (جديد) : 0.367 d sans période"
+   }
+  },
+  {
+   "id": "TB-200",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "code": "prime_froid",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.000",
+    "unite": "TND/semaine",
+    "citations": [
+     {
+      "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 16,
+    "emplacement": "art. 51-3 : 2 dinars par semaine en chambre froide",
+    "valeur_imprimee": "2.000"
+   }
+  },
+  {
+   "id": "TB-201",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOISSONS_GAZEUSES",
+     "categorie": "2",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+    "page": 20,
+    "emplacement": "deux populations avec les catégories 1 à 6 : population obligatoire"
+   }
   }
  ]
 }

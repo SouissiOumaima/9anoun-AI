@@ -78,10 +78,11 @@ def test_codes_ds5_dans_le_registre_et_meta_identique():
         assert s["evidence"]["convention_ar"] == meta["convention_ar"]
 
 
-# Seule exemption : grilles de la vague 1 (D49 à D54), activées dans le registre DS5 sans entrée dans la table, en
+# Seule exemption : grilles des vagues 1 et 2 (D49 à D60), activées dans le registre DS5 sans entrée dans la table, en
 # attente de validation DS2 (noms, codes et alias). Vider cette liste quand l'équipe les inscrit dans la table.
 EN_ATTENTE_DS2 = ["TORREFACTION_CAFE", "AGENCES_VOYAGES", "HOTELS_TOURISTIQUES", "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
-                  "PATES_ALIMENTAIRES_COUSCOUS", "COSMETIQUES_PARFUMS"]
+                  "PATES_ALIMENTAIRES_COUSCOUS", "COSMETIQUES_PARFUMS",
+                  "SAVONNERIE_RAFFINAGE_GRIGNONS", "COMMERCE_DISTRIBUTION_PETROLE", "PLASTURGIE", "MINOTERIES", "TEINTURERIES_PRESSINGS", "BOISSONS_GAZEUSES"]
 
 
 def test_chaque_secteur_ds5_disponible_figure_une_fois():

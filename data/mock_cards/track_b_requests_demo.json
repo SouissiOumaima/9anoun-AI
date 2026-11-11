@@ -598,5 +598,278 @@
     "operation": "salaire_base",
     "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production", "categorie": "3", "anciennete_annees": 6, "date": "2021-11-30"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-84-salaire-savonnerie-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "horaires", "categorie": "V_bis", "anciennete_annees": 4, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-85-salaire-savonnerie-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "mensuels", "categorie": "XII", "anciennete_annees": 20, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-86-prime-transport-savonnerie-cadres",
+    "operation": "prime",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-87-refus-savonnerie-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "horaires", "categorie": "I", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-88-refus-savonnerie-21-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "mensuels", "categorie": "VI", "anciennete_annees": 21, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-89-refus-savonnerie-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-90-refus-savonnerie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "categorie": "VI", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-91-salaire-petrole-colonne-entree",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "5", "sous_categorie": "4", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-92-salaire-petrole-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "1", "sous_categorie": "2", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-93-prime-scolaire-petrole-superieur",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "code": "prime_scolaire_superieur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-94-refus-petrole-32-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "1", "sous_categorie": "1", "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-95-refus-petrole-prime-responsabilite",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "code": "prime_responsabilite", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-96-refus-petrole-sous-categorie-manquante",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-97-refus-petrole-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "3", "sous_categorie": "1", "anciennete_annees": 5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-98-salaire-plasturgie-employes",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "employes_maitrise", "categorie": "8", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-99-salaire-plasturgie-ouvriers",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "ouvriers_horaires", "categorie": "1", "anciennete_annees": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-100-prime-plasturgie-complement-presence",
+    "operation": "prime",
+    "params": {"secteur": "PLASTURGIE", "code": "prime_presence_complement_sans_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-101-refus-plasturgie-32-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "ouvriers_horaires", "categorie": "3", "anciennete_annees": 32.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-102-refus-plasturgie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-103-refus-plasturgie-prime-production",
+    "operation": "prime",
+    "params": {"secteur": "PLASTURGIE", "code": "prime_production", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-104-salaire-minoteries-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "horaires", "categorie": "V", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-105-salaire-minoteries-mensuels-degre-0",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "mensuels", "categorie": "11", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-106-refus-minoteries-promotion-non-calculee",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "horaires", "categorie": "I", "anciennete_annees": 28, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-107-refus-minoteries-palier-27",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "mensuels", "categorie": "11", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-108-prime-panier-minoteries",
+    "operation": "prime",
+    "params": {"secteur": "MINOTERIES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-109-refus-minoteries-prime-caisse",
+    "operation": "prime",
+    "params": {"secteur": "MINOTERIES", "code": "prime_caisse", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-110-salaire-teintureries-dernier-degre-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "6", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-111-salaire-teintureries-administratifs",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "administratifs_techniciens", "categorie": "10", "anciennete_annees": 2.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-112-prime-etudes-teintureries-jardin",
+    "operation": "prime",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "code": "prime_etudes_jardin_enfants", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-113-refus-teintureries-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "2", "anciennete_annees": 23, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-114-refus-teintureries-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "2", "anciennete_annees": 5.5, "date": "2021-11-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-115-refus-teintureries-prime-lait-salete",
+    "operation": "prime",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "code": "prime_lait_salete", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-116-salaire-boissons-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "horaires", "categorie": "6", "anciennete_annees": 28, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-117-salaire-boissons-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "mensuels", "categorie": "9", "anciennete_annees": 1.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-118-refus-boissons-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "horaires", "categorie": "5", "anciennete_annees": 13, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-119-refus-boissons-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "mensuels", "categorie": "1", "anciennete_annees": 30.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-120-refus-boissons-prime-panier-periode",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-121-prime-froid-boissons",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "code": "prime_froid", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-122-refus-boissons-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "categorie": "2", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]

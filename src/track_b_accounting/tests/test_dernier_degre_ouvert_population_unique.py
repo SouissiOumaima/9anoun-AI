@@ -35,6 +35,12 @@ SECTEURS = {
     "CONFISERIE_BISCUITERIE_CHOCOLATERIE": "data/processed/salary_grids/confiserie_biscuiterie.json",
     "PATES_ALIMENTAIRES_COUSCOUS": "data/processed/salary_grids/pates_alimentaires.json",
     "COSMETIQUES_PARFUMS": "data/processed/salary_grids/cosmetiques_parfums.json",
+    "SAVONNERIE_RAFFINAGE_GRIGNONS": "data/processed/salary_grids/savonnerie_raffinage.json",
+    "COMMERCE_DISTRIBUTION_PETROLE": "data/processed/salary_grids/distribution_petrole.json",
+    "PLASTURGIE": "data/processed/salary_grids/plasturgie.json",
+    "MINOTERIES": "data/processed/salary_grids/minoteries.json",
+    "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
+    "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
@@ -138,7 +144,7 @@ def test_secteurs_enregistres_avec_la_regle_ouvert():
     assert loaders.GRILLES == SECTEURS
     ouverts = [s for s, chemin in SECTEURS.items()
                if "ouvert" in {b.get("regle", "refus") for b in lire_json(chemin)["au_dela_dernier_degre"].values()}]
-    assert ouverts == ["ASSURANCE", "AGENCES_VOYAGES", "COSMETIQUES_PARFUMS"]
+    assert ouverts == ["ASSURANCE", "AGENCES_VOYAGES", "COSMETIQUES_PARFUMS", "TEINTURERIES_PRESSINGS"]
     assert {b["regle"] for b in lire_json(SECTEURS["ENSEIGNEMENT_PRIVE"])["au_dela_dernier_degre"].values()} == {"refus"}
 
 
