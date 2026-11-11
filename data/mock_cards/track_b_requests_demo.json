@@ -871,5 +871,306 @@
     "operation": "salaire_base",
     "params": {"secteur": "BOISSONS_GAZEUSES", "categorie": "2", "anciennete_annees": 5, "date": "2024-06-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-123-salaire-mecanique-execution",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "1", "anciennete_annees": 1, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-124-salaire-mecanique-cadres",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "population": "tous_agents", "categorie": "16", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-125-prime-transport-mecanique-cadres",
+    "operation": "prime",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-126-prime-fonction-mecanique-sous-directeur",
+    "operation": "prime",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "code": "prime_fonction_sous_directeur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-127-refus-mecanique-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "16", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-128-refus-mecanique-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "5", "anciennete_annees": 2, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-129-refus-mecanique-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "1", "anciennete_annees": 1, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-130-salaire-alcool-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "mensuels", "categorie": "X", "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-131-salaire-alcool-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "horaires", "categorie": "aide_ouvrier", "anciennete_annees": 6, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-132-prime-logement-alcool-gestion-moyenne",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_logement", "date": "2023-06-01", "groupe": "gestion_moyenne"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-133-refus-alcool-34-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "mensuels", "categorie": "X", "anciennete_annees": 34, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-134-refus-alcool-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-135-refus-alcool-transport-niveau-smig",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_transport_niveau_salaire_minimum", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-136-refus-alcool-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "categorie": "I", "anciennete_annees": 5.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-137-salaire-bois-mensuels-degre-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "14", "anciennete_annees": 26.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-138-salaire-bois-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "horaires", "categorie": "7", "anciennete_annees": 8, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-139-prime-presence-bois",
+    "operation": "prime",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "code": "prime_presence", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-140-refus-bois-palier-27",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "1", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-141-refus-bois-au-dela-27-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "horaires", "categorie": "1", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-142-refus-bois-aide-deces",
+    "operation": "prime",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "code": "aide_deces", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-143-refus-bois-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "1", "anciennete_annees": 0.5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-144-salaire-dechets-2020",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "1", "anciennete_annees": 1, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-145-salaire-dechets-2024",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "population": "tous_agents", "categorie": "19", "anciennete_annees": 25, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-146-salaire-dechets-ligne-8-degre-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "8", "anciennete_annees": 5, "date": "2022-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-147-prime-transport-dechets-2020",
+    "operation": "prime",
+    "params": {"secteur": "GESTION_DECHETS", "code": "prime_transport", "date": "2021-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-148-refus-dechets-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "11", "anciennete_annees": 19, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-149-refus-dechets-palier-26",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "19", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-150-refus-dechets-prime-lait",
+    "operation": "prime",
+    "params": {"secteur": "GESTION_DECHETS", "code": "prime_lait", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-151-refus-dechets-avant-2020-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "1", "anciennete_annees": 1, "date": "2020-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-152-salaire-habillement-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "horaires", "categorie": "I", "anciennete_annees": 0.5, "date": "2021-09-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-153-salaire-habillement-mensuels-1b",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "anciennete_annees": 16, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-154-prime-transport-habillement-cadres",
+    "operation": "prime",
+    "params": {"secteur": "HABILLEMENT", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-155-refus-habillement-33-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "horaires", "categorie": "VI", "anciennete_annees": 33, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-156-refus-habillement-prime-assiduite",
+    "operation": "prime",
+    "params": {"secteur": "HABILLEMENT", "code": "prime_assiduite", "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-157-refus-habillement-avant-2021-09-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "mensuels", "categorie": "2", "anciennete_annees": 0.5, "date": "2021-08-31"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-158-salaire-commerce-ligne-horaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "ouvrier_horaire_ligne_imprimee", "anciennete_annees": 1, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-159-salaire-commerce-chefs",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "chefs_rayon_gerants", "categorie": "17", "sous_categorie": "e", "anciennete_annees": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-160-salaire-commerce-categorie-21-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "21", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-161-prime-caisse-commerce-plus-10-ans",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "code": "prime_caisse_plus_10_ans", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-162-refus-commerce-promotion-non-calculee",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "20", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-163-refus-commerce-palier-26",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "21", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-164-refus-commerce-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "categorie": "16", "anciennete_annees": 1, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-165-refus-commerce-prime-fin-annee",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "code": "prime_fin_annee", "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]
