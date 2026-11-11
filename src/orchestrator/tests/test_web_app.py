@@ -1,4 +1,7 @@
 import src.orchestrator.web_app as web_app
+from src.document_intelligence import service as ds3_service
+from src.orchestrator.document_intelligence_adapter import DocumentIntelligenceAdapter
+from src.orchestrator.hybrid_dispatcher import HybridSpecialistDispatcher
 from src.orchestrator.models import ActiveContext, CardType
 from src.orchestrator.document_to_track_b import build_payroll_prefill
 
@@ -150,27 +153,55 @@ def test_document_calculation_rejects_every_mode_other_than_live() -> None:
         assert calculation["user_response"]["message_ar"]
 
 
-def test_live_ds3_facts_can_launch_explicit_ds5_calculation_with_separate_citations() -> None:
-    review = web_app._create_document_review(
-        data={"mode": "live", "result": {"fields": {
-            "period_start": {"value": "2024-01-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-period"},
-            "pay_mode": {"value": "mensuel", "value_type": "texte", "confidence": 0.95, "citation_id": "c-mode"},
-            "work_hours_regime": {"value": 48, "value_type": "nombre", "confidence": 0.95, "citation_id": "c-hours"},
-            "hire_date": {"value": "2017-07-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-hire"},
-            "category": {"value": "4", "value_type": "texte", "confidence": 0.95, "citation_id": "c-category"},
-            "base_salary": {"value": "500.000", "value_type": "montant", "confidence": 0.95, "citation_id": "c-salary"},
-        }}},
-        citations=[
-            {"citation_id": citation_id, "document_id": "doc-company-payslip-01", "page": 1, "excerpt": citation_id}
-            for citation_id in ("c-period", "c-mode", "c-hours", "c-hire", "c-category", "c-salary")
-        ],
-        context=ActiveContext(
-            "org-demo", "company-demo-001", CardType.COMPANY,
-            {"document_id": "doc-company-payslip-01"},
+def test_live_ds3_service_can_launch_explicit_ds5_calculation_with_separate_citations(monkeypatch) -> None:
+    cards = web_app._demo_cards()
+    document = cards[0]["data"]["documents"][0]
+    document.update({
+        "label": "Fiche de paie fictive — PDF",
+        "file_name": "paie_fictive_01_fr.pdf",
+        "mime_type": "application/pdf",
+    })
+    monkeypatch.setattr(web_app, "_demo_cards", lambda: cards)
+    fields = {
+        "period_start": {"value": "2024-01-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-period"},
+        "pay_mode": {"value": "mensuel", "value_type": "texte", "confidence": 0.95, "citation_id": "c-mode"},
+        "work_hours_regime": {"value": "48", "value_type": "entier", "confidence": 0.95, "citation_id": "c-hours"},
+        "hire_date": {"value": "2017-07-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-hire"},
+        "category": {"value": "4", "value_type": "texte", "confidence": 0.95, "citation_id": "c-category"},
+        "base_salary": {"value": "500.000", "value_type": "montant", "confidence": 0.95, "citation_id": "c-salary"},
+    }
+    citations = [
+        {"citation_id": citation_id, "document_id": "doc-company-payslip-01", "page": 1, "excerpt": citation_id}
+        for citation_id in ("c-period", "c-mode", "c-hours", "c-hire", "c-category", "c-salary")
+    ]
+
+    def live_handler(request):
+        assert request["document"]["file_name"] == "paie_fictive_01_fr.pdf"
+        assert request["document"]["mime_type"] == "application/pdf"
+        assert request["document"]["storage_ref"] == (
+            "tradrly://cards/company-demo-001/documents/doc-company-payslip-01"
+        )
+        return {
+            "contract_version": "ds3.v2", "request_id": request["request_id"],
+            "operation": request["operation"], "status": "ok", "refus": None,
+            "computed_by": "document_intelligence.service", "mode": "live",
+            "result": {"complete": True, "document_type": "fiche_de_paie", "fields": fields},
+            "citations": citations, "warnings": [], "ds3_code": None,
+        }
+
+    monkeypatch.setattr(ds3_service, "handle_request", live_handler)
+    response = chat(
+        {
+            "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+            "document_id": "doc-company-payslip-01",
+        },
+        dispatcher=HybridSpecialistDispatcher(
+            document_intelligence_adapter=DocumentIntelligenceAdapter(handler_mode="live"),
         ),
     )
-    assert review is not None
+    review = response["document_review"]
     assert review["mode"] == "live"
+    assert response["citations"] == citations
     confirmed = confirm_document_review({
         "review_id": review["review_id"],
         "confirmed_fields": ["period_start", "pay_mode", "work_hours_regime", "hire_date", "category", "base_salary"],

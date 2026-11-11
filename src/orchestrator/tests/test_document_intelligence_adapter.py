@@ -8,14 +8,15 @@ from src.orchestrator.models import ActiveContext, CardType, UserIdentity
 from src.orchestrator.models import RequestEnvelope
 from src.orchestrator.seniority import SeniorityError, calculate_seniority_years
 from src.orchestrator.state_machine import FlowState, StateMachine
-from src.orchestrator.tool_contracts import build_tool_call
+from src.orchestrator.tool_contracts import ToolContractError, build_tool_call
 
 
 def _request() -> tuple[dict, dict]:
     actor = UserIdentity("org-demo", "user-1", "comptable", frozenset({"company-1"}))
     context = ActiveContext("org-demo", "company-1", CardType.COMPANY, {
         "document_id": "doc-1", "document_file_name": "paie_illisible.pdf",
-        "document_mime_type": "application/pdf", "document_storage_ref": "tradrly://company-1/doc-1",
+        "document_mime_type": "application/pdf",
+        "document_storage_ref": "tradrly://cards/company-1/documents/doc-1",
     })
     request = build_document_intelligence_request(
         request_id="ds3-1", actor=actor, context=context, language="fr",
@@ -50,7 +51,8 @@ def test_ds1_completes_a_partial_ds3_mock_response() -> None:
     actor = UserIdentity("org-demo", "user-1", "comptable", frozenset({"company-1"}))
     context = ActiveContext("org-demo", "company-1", CardType.COMPANY, {
         "document_id": "doc-1", "document_file_name": "paie_illisible.pdf",
-        "document_mime_type": "application/pdf", "document_storage_ref": "tradrly://company-1/doc-1",
+        "document_mime_type": "application/pdf",
+        "document_storage_ref": "tradrly://cards/company-1/documents/doc-1",
     })
     result = StateMachine(HybridSpecialistDispatcher()).run(RequestEnvelope(
         request_id="ds3-flow", message="Analyse ce document PDF", language="fr", actor=actor, context=context,
@@ -72,6 +74,29 @@ def test_ds3_v2_complete_false_normalizes_to_partial() -> None:
     })(payload)
     assert response["status"] == "partial"
     assert response["data"]["complete"] is False
+
+
+def test_empty_ds3_handler_mode_defaults_to_mock(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DS3_HANDLER_MODE", "")
+    _, payload = _request()
+    response = DocumentIntelligenceAdapter()(payload)
+    assert response["data"]["mode"] == "mock"
+
+
+@pytest.mark.parametrize("storage_ref", [
+    "local://C:/payrolls/doc-1.pdf",
+    "tradrly://cards/other-card/documents/doc-1",
+    "tradrly://cards/company-1/documents/other-document",
+    "tradrly://cards/company-1/documents/../doc-1",
+])
+def test_live_ds3_rejects_storage_ref_not_bound_to_active_document(storage_ref: str) -> None:
+    request, payload = _request()
+    request["contract_version"] = "ds3.v2"
+    request["lang"] = "fr"
+    request["document"]["storage_ref"] = storage_ref
+    payload["params"]["ds3_request"] = request
+    with pytest.raises(ToolContractError, match="authorized storage_ref"):
+        DocumentIntelligenceAdapter(lambda _: {}, handler_mode="live")(payload)
 
 
 def test_ds1_assessment_rejects_null_low_confidence_or_uncited_fields() -> None:
