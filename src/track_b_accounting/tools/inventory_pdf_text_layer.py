@@ -139,7 +139,9 @@ def render_markdown(results: list) -> str:
         "|---|---|---|---|",
     ]
     for i, r in enumerate(with_scans, 1):
-        lines.append(f"| {i} | {r['file']} | {_fmt(r['pages_scan_hors_couverture'])} | {len(r['pages_scan_hors_couverture'])} |")
+        lines.append(
+            f"| {i} | {r['file']} | {_fmt(r['pages_scan_hors_couverture'])} | {len(r['pages_scan_hors_couverture'])} |"
+        )
     if without:
         lines += ["", "Sans page scannée hors couverture : " + ", ".join(r["file"] for r in without) + "."]
     return "\n".join(lines) + "\n"

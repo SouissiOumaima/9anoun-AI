@@ -4,6 +4,7 @@ MockOrchestrator : envoie des requêtes à un handler (callable dict → dict).
 MockTrackA       : met en forme une réponse en phrase citée FR/AR. Aucun calcul : le montant,
                    l'unité et les sources sont recopiés tels quels depuis la réponse.
 """
+
 from __future__ import annotations
 
 import json
@@ -39,7 +40,9 @@ class MockTrackA:
         nom = Path(c["source_file"]).name
         page = f"p. {c['page']}" if lang == "fr" else f"ص {c['page']}"
         art = f", {c['article']}" if c.get("article") else ""
-        return f"{nom}, {page}{art} ; {c['decision_ref']}" if lang == "fr" else f"{nom}، {page}{art}؛ {c['decision_ref']}"
+        return (
+            f"{nom}, {page}{art} ; {c['decision_ref']}" if lang == "fr" else f"{nom}، {page}{art}؛ {c['decision_ref']}"
+        )
 
     def formuler(self, requete: dict, reponse: dict) -> str:
         lang = requete.get("lang", "fr")
