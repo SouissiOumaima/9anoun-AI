@@ -93,8 +93,10 @@ def test_sector_detection_does_not_match_unrelated_substrings() -> None:
         "Calcule le salaire de base assurance-sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
         "Calcule le salaire de base assurance maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
         "Calcule le salaire de base assurance-maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
-        "احسب الأجر الأساسي للتأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
-        "احسب الأجر الأساسي للتأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي في التأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي في التأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي والتأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي بالتأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
     ):
         assert resolve_active_ds5_sector(message) is None
         assert sector_mapping._matched_sectors(message.casefold()) == []
