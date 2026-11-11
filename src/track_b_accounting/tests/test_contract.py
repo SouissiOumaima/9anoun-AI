@@ -112,9 +112,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_44_ok_39_refus():
+def test_bilan_demo_62_ok_60_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 44 and list(statuts.values()).count("refus") == 39
+    assert list(statuts.values()).count("ok") == 62 and list(statuts.values()).count("refus") == 60
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -156,6 +156,27 @@ def test_bilan_demo_44_ok_39_refus():
         "demo-80-refus-cosmetiques-cellule-illisible": "SOURCE_MANQUANTE",
         "demo-81-refus-cosmetiques-transport-cadres": "SOURCE_MANQUANTE",
         "demo-83-refus-cosmetiques-avant-2021-12-01": "SOURCE_MANQUANTE",
+        "demo-87-refus-savonnerie-borne-exacte": "PARAM_INVALIDE",
+        "demo-88-refus-savonnerie-21-ans": "SOURCE_MANQUANTE",
+        "demo-89-refus-savonnerie-prime-panier": "SOURCE_MANQUANTE",
+        "demo-90-refus-savonnerie-population-omise": "PARAM_INVALIDE",
+        "demo-94-refus-petrole-32-ans": "SOURCE_MANQUANTE",
+        "demo-95-refus-petrole-prime-responsabilite": "SOURCE_MANQUANTE",
+        "demo-96-refus-petrole-sous-categorie-manquante": "PARAM_INVALIDE",
+        "demo-97-refus-petrole-avant-2021-12-01": "SOURCE_MANQUANTE",
+        "demo-101-refus-plasturgie-32-ans": "SOURCE_MANQUANTE",
+        "demo-102-refus-plasturgie-population-omise": "PARAM_INVALIDE",
+        "demo-103-refus-plasturgie-prime-production": "SOURCE_MANQUANTE",
+        "demo-106-refus-minoteries-promotion-non-calculee": "SOURCE_MANQUANTE",
+        "demo-107-refus-minoteries-palier-27": "PARAM_INVALIDE",
+        "demo-109-refus-minoteries-prime-caisse": "SOURCE_MANQUANTE",
+        "demo-113-refus-teintureries-borne-exacte": "PARAM_INVALIDE",
+        "demo-114-refus-teintureries-avant-2021-12-01": "SOURCE_MANQUANTE",
+        "demo-115-refus-teintureries-prime-lait-salete": "SOURCE_MANQUANTE",
+        "demo-118-refus-boissons-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-119-refus-boissons-30-ans": "SOURCE_MANQUANTE",
+        "demo-120-refus-boissons-prime-panier-periode": "SOURCE_MANQUANTE",
+        "demo-122-refus-boissons-population-omise": "PARAM_INVALIDE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -167,7 +188,8 @@ def test_demo_10_secteur_fictif():
     rep = handle(next(r for r in DEMO if r["request_id"] == "demo-10-refus-secteur-non-couvert"))
     assert rep["refus"]["message_fr"] == ("Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' "
                                           "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
-                                          "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS).")
+                                          "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+                                 "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES).")
 
 
 def test_montants_demo_identiques_a_calc():
@@ -276,7 +298,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 83 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 122 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()     # ensure_ascii=False
 
 
@@ -315,9 +337,9 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_83_echanges():
+def test_demo_affiche_122_echanges():
     from track_b_accounting.demo import main
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 83 and "Bilan : 44 ok, 39 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 122 and "Bilan : 62 ok, 60 refus, 0 erreur(s)." in texte

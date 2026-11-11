@@ -47,8 +47,14 @@ def test_registre_actuel_identique():
         "CONFISERIE_BISCUITERIE_CHOCOLATERIE": "data/processed/salary_grids/confiserie_biscuiterie.json",
         "PATES_ALIMENTAIRES_COUSCOUS": "data/processed/salary_grids/pates_alimentaires.json",
         "COSMETIQUES_PARFUMS": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "SAVONNERIE_RAFFINAGE_GRIGNONS": "data/processed/salary_grids/savonnerie_raffinage.json",
+        "COMMERCE_DISTRIBUTION_PETROLE": "data/processed/salary_grids/distribution_petrole.json",
+        "PLASTURGIE": "data/processed/salary_grids/plasturgie.json",
+        "MINOTERIES": "data/processed/salary_grids/minoteries.json",
+        "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
+        "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54
+    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -76,7 +82,8 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
     assert e.value.code == Refus.SOURCE_MANQUANTE
     assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
                                   "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
-                                  "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS).")
+                                  "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+                                 "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES).")
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):

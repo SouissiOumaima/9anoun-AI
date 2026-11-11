@@ -2463,3 +2463,195 @@ attente de validation DS2 (noms, codes et alias) ; seule exemption du test `test
 (liste `EN_ATTENTE_DS2`, qui exige aussi leur absence de la table) ; table des secteurs et D30 non modifiés ; textes arabes des libellés de primes et de populations saisis depuis l'image, libellés de catégorie,
 messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux (décrets 437/1981 et 501/1982) reprise en
 remarque, sans calcul.
+
+---
+
+### D55 — Grille salariale SAVONNERIE_RAFFINAGE_GRIGNONS (pages 2-3, 12-22)
+
+**Numéro** : D55, à la suite de D54 ; `origin/main` (8f9d345) s'arrête à D54 et aucune branche distante n'utilise D55 à
+D69 (vérifié avec `git fetch origin` le 2026-11-11). D55 à D60 forment la vague 2, dans l'ordre du triage.
+
+**Source** : `data/raw/pdf/صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf` (22 pages). Grilles sans couche texte
+(scans pivotés) ; textes lus sur les images, chiffres des articles confirmés par la couche texte. Pages : p.2-3, art. 24
+à 39-4 (p.12-16), classification (p.17-19), tableaux n° 1 à 3 (p.20-22).
+
+**Lecture** : un tableau par date (2021-12-01, 2023-01-01, 2024-01-01), 13 lignes imprimées (I à V, V مكرر, VI à XII) ×
+12 degrés = 468 montants ; lignes I à V مكرر en montants horaires, lignes VI à XII en montants mensuels.
+
+#### Décisions (validées par DS5)
+
+1. Deux populations découpées dans le même tableau imprimé : `horaires` (I à V_bis, TND/heure) et `mensuels` (VI à XII,
+   TND/mois), population obligatoire. L'art. 26 (p.12) dit seulement que l'échelle fixe les salaires « horaires ou
+   mensuels » selon la catégorie et le degré : l'unité est celle de la ligne imprimée ; le rattachement des fonctions
+   des annexes (p.17-19) aux lignes n'est pas modélisé (hypothèse affichée).
+2. Degrés (art. 28 (جديد), p.12) : 1 an aux degrés 1 à 3, 2 ans ensuite ; libellés « 0-1 » … « 19-21 » ; bornes exactes
+   refusées (D6) ; **à partir de 21 ans, refus** : le passage dans l'échelle de la catégorie suivante et le degré
+   supplémentaire avant la retraite ne sont pas calculés.
+3. Primes couvertes : `prime_transport` (art. 32 (جديد), `execution_gestion` / `cadres`, 3 dates), `prime_presence`
+   (art. 32 مكرر (جديد), 3 dates), `prime_salete` (art. 35 (جديد), 0,022 par heure, condition de poste), `prime_caisse`
+   (art. 35 مكرر (جديد), 48,333), `prime_risque` (art. 38 (جديد), 10 dinars, condition de poste),
+   `prime_scolaire_enseignement_base`, `_secondaire`, `prime_scolaire_etudiant` (art. 39-3 (جديد)),
+   `prime_aid_el_fitr` et `prime_aid_el_adha` (art. 39-4 (جديد)). Montants sans date servis tels qu'imprimés (comme D4).
+4. `SOURCE_MANQUANTE` : `prime_panier` (art. 37 مكرر, montant de base absent), `prime_anciennete` (art. 30, comprise dans
+   la grille), `prime_travail_nuit` (art. 31, 35 %), `prime_production` (art. 34), `avantage_lait` (art. 36),
+   `avantage_savon` (art. 37), `prime_depart_retraite` (art. 39 مكرر (1)), `aide_deces` (art. 39 مكرر (2)).
+5. Remarque : fonds social de l'art. 39 (7 + 7 dinars par mois), cotisation, ni salaire ni prime.
+
+**Mise en œuvre** : `savonnerie_raffinage.json` ; `test_vague2.py` ; démos 84 à 90 ; TB-163 à TB-169.
+
+**Statut de vérification** : 468 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D56 — Grille salariale COMMERCE_DISTRIBUTION_PETROLE (pages 2-3, 7-10, 15-17, 19-20)
+
+**Source** : `data/raw/pdf/تجارة و توزيع النفط و جميع مشتقاته.pdf` (20 pages). Pages : p.2-3, art. 8 (p.7), art. 13
+(جديد) (p.9), art. 17 (جديد) (p.10), art. 43 et 44 (جديد) (p.15-17), tableaux n° 1 à 3 (p.19-20).
+
+**Lecture** : 3 tableaux (2021-12-01 p.19 ; 2023-01-01 et 2024-01-01 p.20), 14 lignes (catégories 1 à 5 divisées en
+rangs) × 14 colonnes (« - » puis degrés 1 à 13) = 588 montants, imprimés « 1 285,125 ».
+
+#### Décisions (validées par DS5)
+
+1. Population unique `tous_agents` ; clé = catégorie et rang imprimé (`sous_categorie` 1 à 4, de haut en bas),
+   sous-catégorie obligatoire. **Unité TND/mois en hypothèse affichée** (non imprimée).
+2. Colonne « - » (durée imprimée 1) lue comme l'année d'entrée (0-1 an), puis degré 1 de 1 à 2 ans (hypothèse
+   affichée) ; durées 1, 1, 2 (×6), 3 (×6) : libellés « 0-1 » … « 29-32 » ; **à partir de 32 ans, refus** (art. 13 (جديد),
+   p.9, rien au-delà). Progression exceptionnelle (note ≥ 18/20) non calculée.
+3. Primes couvertes : `prime_transport` (art. 43 (جديد), 3 dates), `prime_presence` (art. 44-12, 3 dates),
+   `prime_caisse_chauffeurs` (10 d) et `prime_caisse_caissiers` (20 d, en toutes lettres) (art. 44-2),
+   `prime_scolaire_base_1_6`, `_base_7_9`, `_secondaire`, `_superieur` (art. 44-7 : 32, 37, 42, 52 d), `prime_risque`
+   (art. 44-10, 15 d), `prime_standard_telephonique` (art. 44-11, 10 d).
+4. `SOURCE_MANQUANTE` : `prime_responsabilite` (art. 44-6, montant de départ absent), `prime_productivite` (art. 8),
+   `prime_13e_mois`, `aide_deces`, `avantage_proprete`, `avance_maladie`, `prime_depart_retraite`, `prime_production`
+   (art. 44).
+
+**Mise en œuvre** : `distribution_petrole.json` ; `test_vague2.py` ; démos 91 à 97 ; TB-170 à TB-176.
+
+**Statut de vérification** : 588 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D57 — Grille salariale PLASTURGIE (pages 2-3, 8-10, 14-16, 22-24)
+
+**Source** : `data/raw/pdf/صناعة وتحويل البلاستيك.pdf` (24 pages). Pages : p.2-3, art. 13 (جديد) (p.8), art. 17 (p.9),
+art. 46 à 51 (p.14-16), tableaux n° 1 à 6 (p.22-24).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : employés et cadres de maîtrise 8 × 16, ouvriers payés à
+l'heure 6 × 16 = 672 montants, imprimés à la virgule.
+
+#### Décisions (validées par DS5)
+
+1. Populations `employes_maitrise` (TND/mois) et `ouvriers_horaires` (TND/heure), obligatoires.
+2. Degrés : 16 de 2 ans (« 0-2 » … « 30-32 ») ; **à partir de 32 ans, refus** ; le passage dans l'échelle suivante
+   (art. 13 (جديد) أ) n'est pas calculé. Remarque : l'art. 47 (p.14) annonce 14 degrés ; les tableaux, qui en impriment
+   16, sont servis tels qu'imprimés.
+3. Primes couvertes (art. 48 (جديد), p.14-15) : `prime_presence` (3 dates), `prime_presence_complement_sans_panier`
+   (2 d, en toutes lettres, condition), `prime_panier` (13,086 par mois, condition), `prime_caisse` (22 d),
+   `prime_transport` (`execution_gestion` / `cadres`, 3 dates), `prime_deplacement_dejeuner`, `_diner` (5,466) et
+   `_logement` (5,600) (condition : plus de 50 km), `prime_scolaire` (10 d par élève).
+4. `SOURCE_MANQUANTE` : `prime_production` (art. 49), `prime_depart_retraite` (art. 51), `indemnite_fin_service`
+   (art. 17).
+
+**Mise en œuvre** : `plasturgie.json` ; `test_vague2.py` ; démos 98 à 103 ; TB-177 à TB-182.
+
+**Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D58 — Grille salariale MINOTERIES (pages 2-3, 8-9, 15-22)
+
+**Source** : `data/raw/pdf/مطاحن.pdf` (22 pages). Pages : p.2-3, art. 14 (جديد) (p.8-9), art. 49 à 58 (p.15-16),
+classification (p.17-19), tableaux n° 1 à 6 (p.20-22).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : agents payés à l'heure (I à V) et au mois (1 à 11), degrés
+imprimés 0 à 13 = 672 montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `horaires` (TND/heure) et `mensuels` (TND/mois), obligatoires.
+2. Degrés : durée 1 au degré 0, puis 2 ; libellés « 0-1 » … « 23-25 », « 25+ » (degré 13 atteint à 25 ans).
+3. **Art. 14 (جديد) أ (p.8)** : seules les catégories V (horaires) et 11 (mensuels) reçoivent tous les 2 ans l'écart
+   entre les degrés 13 et 12 (règle D10, période 2) ; paliers 27, 29… refusés (`PARAM_INVALIDE`). Les 14 autres
+   catégories passent à la catégorie supérieure (promotion non calculée) : `cases_refusees` (D48, 42 cases) ; le degré
+   13 est servi de 25 à 27 ans pour toutes, puis refusé (`SOURCE_MANQUANTE`) pour elles. Correction de l'ARRÊT 1 (Q9) :
+   le premier écart vient à 27 ans (2 ans après le degré 13), et non à 29 ans.
+4. Primes couvertes : `prime_productivite` (art. 49 (جديد), 10 d par semestre, en toutes lettres), `prime_production`
+   (art. 53 (جديد), 10 d par mois), `prime_presence` et `prime_panier` (art. 54 (جديد), 3 dates), `prime_transport`
+   (art. 55 (جديد), 3 dates), `prime_logement` (art. 56 مكرر (جديد), 3 dates).
+5. `SOURCE_MANQUANTE` : `prime_caisse` (art. 56, renvoi à la législation), `prime_depart_retraite` et `aide_deces`
+   (art. 50), `avantages_nature` (art. 51), `prime_fin_annee` (art. 52).
+
+**Mise en œuvre** : `minoteries.json` ; `test_vague2.py` ; démos 104 à 109 ; TB-183 à TB-188.
+
+**Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D59 — Grille salariale TEINTURERIES_PRESSINGS (pages 2-3, 9-12, 14, 17, 19-22)
+
+**Source** : `data/raw/pdf/مصابغ ومعامل التنظيف.pdf` (22 pages). Pages : p.2-3, art. 16 à 30 (p.9-12), art. 39 (p.14),
+art. 57 (p.17), classification (p.19), tableaux n° 1 à 6 (p.20-22).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : agents d'exécution (6 catégories, horaires) et agents
+administratifs et techniciens (10 catégories, mensuels) × 14 degrés = 672 montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `execution` (TND/heure) et `administratifs_techniciens` (TND/mois), obligatoires.
+2. Ancienneté effective imprimée « 1-0 » … « 23-21 », « 23 + » : libellés « 0-1 » … « 21-23 », « 23+ » (dernier degré
+   ouvert, D29) ; promotion automatique au dernier degré (art. 30 (جديد) ب) non calculée.
+3. Primes couvertes : `prime_transport` (art. 20 (جديد), `execution_gestion` / `cadres`, 3 dates), `prime_panier`
+   (art. 21 (جديد), 700 millimes par jour, en toutes lettres, condition), `prime_caisse` (art. 22 (جديد), 22 d ; phrase
+   sur le minimum de 21,666 en note), `prime_presence` (art. 23 (جديد), 3 dates), `prime_etudes_jardin_enfants`,
+   `_enseignement_base`, `_enseignement_secondaire`, `_enseignement_superieur` (art. 24 (جديد) ; plafond de 93,333 en
+   note, non calculé).
+4. `SOURCE_MANQUANTE` : `prime_lait_salete` (art. 23 مكرر), `prime_assiduite` (art. 25), `prime_production` (art. 26),
+   `aide_deces` (art. 27), `prime_depart_retraite` (art. 28), `indemnite_licenciement` (art. 57).
+
+**Mise en œuvre** : `teintureries_pressings.json` ; `test_vague2.py` ; démos 110 à 115 ; TB-189 à TB-194.
+
+**Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
+référence : en attente de vérification humaine.
+
+---
+
+### D60 — Grille salariale BOISSONS_GAZEUSES (pages 2-3, 8, 14-22)
+
+**Source** : `data/raw/pdf/معامل المشروبات الغازية غير الكحولية.pdf` (22 pages, scan moyen). Pages : p.2-3, art. 14
+(جديد) (p.8), art. 45 à 51-8 (p.14-17), classification (p.18-19), tableaux n° 1 à 6 (p.20-22).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : ouvriers payés à l'heure (6 catégories) et au mois (9) ×
+15 degrés = 675 montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `horaires` (TND/heure) et `mensuels` (TND/mois), obligatoires.
+2. Degrés (art. 14 (جديد), p.8, et en-tête) : 1 an aux degrés 1-2, 2 ans aux degrés 3-13, 3 ans aux degrés 14-15 ;
+   libellés « 0-1 » … « 27-30 » ; **à partir de 30 ans, refus**. Remarque : les art. 46 (p.14) et 48 (p.16) annoncent
+   11 et 14 degrés ; les tableaux, qui en impriment 15, sont servis tels qu'imprimés.
+3. **Cases illisibles** (`cellules_source_manquante`, D48), colonne 8, chiffre cassé à l'impression, relues à 400 dpi :
+   tableau n° 1 (p.20) ligne 5 ; tableau n° 3 (p.21) ligne 2 ; tableau n° 4 (p.21) ligne 1 ; tableau n° 5 (p.22)
+   ligne 5 ; tableau n° 6 (p.22) lignes 4 et 7.
+4. Primes couvertes : `prime_dix_ans_entreprise` (art. 14 (جديد), dernier alinéa, 15 d par mois, condition ; libellé
+   arabe rédigé), `prime_transport` (art. 51 (جديد), `execution_gestion` / `cadres`, 3 dates), `prime_froid` (art. 51-3,
+   2 d par semaine ; plafond de 8 d par mois en note), `prime_scolaire_enseignement_base` et
+   `prime_scolaire_secondaire_superieur` (art. 51-4 (جديد)), `prime_presence` (art. 51-8, 3 dates).
+5. `SOURCE_MANQUANTE` : `prime_panier` (art. 51 مكرر, 0,367 sans période), `prime_risque` (art. 51-2, 5 %),
+   `prime_production` (art. 45, 10 %), `prime_productivite` (art. 51-5), `prime_fin_annee` (art. 51-6, 4 %),
+   `prime_depart_retraite` (art. 49).
+
+**Mise en œuvre** : `boissons_gazeuses.json` ; `test_vague2.py` ; démos 116 à 122 ; TB-195 à TB-201.
+
+**Statut de vérification** : 675 cellules en double lecture (0 écart, 6 cases non tranchées déclarées illisibles), lots
+validés par DS5 (2026-11-11). Cas du jeu de référence : en attente de vérification humaine.
+
+**Communs à D55 à D60** : aucun changement de `calc/` ni de schéma (champs de D48 seulement) ; les 6 secteurs sont
+activés dans le registre DS5 sans entrée dans la table des secteurs, en attente de validation DS2 (liste
+`EN_ATTENTE_DS2` du test `test_chaque_secteur_ds5_disponible_figure_une_fois`) ; titres des conventions repris des pages
+de titre (p.1) ; libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux
+(décrets 437/1981 et 501/1982) reprise en remarque, sans calcul.
