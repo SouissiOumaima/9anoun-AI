@@ -2655,3 +2655,212 @@ activés dans le registre DS5 sans entrée dans la table des secteurs, en attent
 `EN_ATTENTE_DS2` du test `test_chaque_secteur_ds5_disponible_figure_une_fois`) ; titres des conventions repris des pages
 de titre (p.1) ; libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux
 (décrets 437/1981 et 501/1982) reprise en remarque, sans calcul.
+
+---
+
+### D61 — Grille salariale MECANIQUE_STATIONS_SERVICE (pages 3, 8-9, 11, 16-17, 22-24)
+
+**Numéro** : D61, à la suite de D60 ; `origin/main` (a4294a0) s'arrête à D60 et aucune branche distante n'utilise D61 à
+D69 (vérifié avec `git fetch origin` le 2026-11-11). D61 à D66 forment la vague 3, dans l'ordre du triage.
+
+**Source** : `data/raw/pdf/ميكانيك العام و محطات بيع الوقود.pdf` (24 pages). Grilles sans couche texte (scans
+pivotés) ; textes lus sur les images, chiffres des articles confirmés par la couche texte. Pages : avenant n° 10 (p.3,
+effet au 2021-12-01), art. 12-13 (p.8), art. 17 (جديد) (p.9), art. 27 (جديد) (p.11), art. 48 à 54 مكرر (p.16-17),
+tableaux n° 1 à 3 (p.22-24).
+
+**Lecture** : 3 tableaux (2021-12-01, 2023-01-01, 2024-01-01) × 16 catégories × 15 degrés = 720 montants.
+
+#### Décisions (validées par DS5)
+
+1. Population unique `tous_agents`, catégories `1` à `16` (exécution 1-7, gestion 8-11, cadres 12-16).
+2. **Unité non imprimée : TND/heure en hypothèse affichée**, pour toutes les catégories, cadres compris (montants de
+   2,737 à 11,096 ; Q2, comme le café).
+3. Degrés (art. 17 (جديد) أ et en-tête) : 15 degrés de 2 ans, libellés « 0-2 » … « 28-30 » ; **à partir de 30 ans,
+   refus** (`SOURCE_MANQUANTE`, art. 17 p.9 : passage au barème de la catégorie suivante, non calculé).
+4. Primes couvertes : `prime_transport` et `prime_presence` (art. 51 et 52 (جديد), `execution_gestion` / `cadres`, 3
+   dates), `prime_fonction_*` (art. 50 : 50, 40, 35 et 25 d, un code par montant, Q3), `prime_continuite_travail`
+   (art. 54 (جديد), 0,500 d par jour, condition), `prime_specifique` (art. 54 مكرر, 4 d par mois, condition).
+5. `SOURCE_MANQUANTE` : `prime_productivite` (art. 13), `prime_fin_annee` (art. 48, formule), `prime_gestion_fonds`
+   (art. 49) et `prime_courtage` (art. 53), fixées par l'employeur.
+
+**Mise en œuvre** : `mecanique_stations_service.json` ; `test_vague3.py` ; démos 123 à 129 ; TB-202 à TB-208.
+
+**Statut de vérification** : 720 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 720 cellules comparables : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte.
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+---
+
+### D62 — Grille salariale BOISSONS_ALCOOLISEES (pages 3, 8, 14-15, 21-23)
+
+**Source** : `data/raw/pdf/صناعة وتجارة المشروبات الكحولية.pdf` (23 pages). Pages : avenants (p.3), art. 15 (جديد)
+(p.8), art. 49 à 53 ثالثا (p.14-15), tableaux n° 1 à 6 (p.21-23).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : travailleurs payés au mois (catégories I à X) et à l'heure
+(6 rangs nommés) × 15 degrés = 720 montants (le triage annonçait 765 : 16 lignes par date, et non 17).
+
+#### Décisions (validées par DS5)
+
+1. Populations `mensuels` (TND/mois, `I` à `X`) et `horaires` (TND/heure, six rangs, clés en français, libellés arabes
+   imprimés), obligatoires.
+2. Degrés : durées imprimées 1, 2 (×9), 3 (×5), soit 34 ans ; libellés « 0-1 », « 1-3 » … « 31-34 » ; **à partir de 34
+   ans, refus** (Q4 : l'art. 52 (جديد) ne dit rien au-delà de « la fin de 31 ans »).
+3. Primes couvertes : `prime_presence` (art. 53-1, 3 dates), `prime_transport` (art. 53-2) et `prime_logement` (art. 53
+   مكرر), cinq groupes chacune (`execution`, `gestion_moyenne`, `gestion_superieure`, `cadres_moyens`,
+   `cadres_superieurs`, 3 dates), `prime_rentree_scolaire_*` (art. 49 مكرر, 20 / 30 / 30 d, montants en toutes
+   lettres), `prime_responsabilite` (art. 53 ثالثا, 50 d), `prime_haute_specialisation` (art. 15 (جديد), 15 d).
+4. `SOURCE_MANQUANTE` : `prime_transport_niveau_salaire_minimum` et `prime_logement_niveau_salaire_minimum` (groupe non
+   défini, comme les pâtes, Q5) ; **`prime_panier`** (art. 53-3 : « 416.666 م » par jour, montant à plus de trois
+   décimales, non arrondi, Q6) ; `prime_production_fin_annee` (art. 50, pourcentages) ; `prime_fin_carriere` (art. 49).
+
+**Mise en œuvre** : `boissons_alcoolisees.json` ; `test_vague3.py` ; démos 130 à 136 ; TB-209 à TB-215.
+
+**Statut de vérification** : 720 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 720 cellules comparables : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte (montants écrits en toutes lettres : lus sur l'image seulement).
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+---
+
+### D63 — Grille salariale BOIS_AMEUBLEMENT_LIEGE (pages 3, 9, 16-18, 24-26)
+
+**Source** : `data/raw/pdf/صناعة الخشب والموبيليا والخفاف.pdf` (26 pages). Pages : avenants (p.3), art. 14 (جديد)
+(p.9), art. 50 à 62 (p.16-18), tableaux n° 1 à 6 (p.24-26).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations imprimées : mensuels (catégories 1 à 14, régime de 40 h imprimé) et
+horaires (7 rangs nommés) × 13 degrés = 819 montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `mensuels` (TND/mois, `1` à `14`) et `horaires` (TND/heure, `1` à `7`, l'art. 14 parlant du « صنف
+   السابع » des horaires), obligatoires.
+2. Degrés : ancienneté effective imprimée « 1-0 » … « 26-23 », « 26 + » ; durées 1, 1, 1, 2 (×4), 3 (×5), 1.
+3. **Degré 13 (Q7, règle de la confiserie)** : l'en-tête imprime « 26 + », l'art. 50 (جديد) (p.16) limite le séjour au
+   degré 13 à un an et l'art. 14 (جديد) أ (p.9) fait passer l'agent dans l'échelle suivante. Le degré 13 est servi de 26
+   à 27 ans ; **27 ans pile : `PARAM_INVALIDE`** ; au-delà, refus `SOURCE_MANQUANTE` citant les pp. 9, 16 et 24-26.
+   Représentation : règle `table_correspondance` sans case cible, toutes les catégories refusées (comme la catégorie 19
+   du BTP, D10). `anciennetes_refusees` (D48) n'est pas utilisé : il servirait le palier exact au lieu de le refuser.
+4. Primes couvertes : `prime_transport` (art. 54, 3 dates), `prime_presence` (art. 58, 3 dates, condition),
+   `prime_panier` (art. 55, 0,650 d par jour), primes de déplacement de l'art. 57 (transport 1 ou 2 d selon le rayon de
+   40 km, petit-déjeuner 1 d, dîner 3 d, nuitée 9 d ; chauffeurs : petit-déjeuner 1 d, dîner 3 d, nuitée 7 d),
+   `prime_caisse_degre_1` et `_2` (art. 59, 6 et 10 d), `prime_risque` (art. 61 مكرر, 11 d).
+5. `SOURCE_MANQUANTE` : **`aide_deces`** (art. 61 : « 466.6666 د », montant à plus de trois décimales, non arrondi, Q6) ;
+   `avantage_lait` (art. 56, nature) ; `prime_production_fin_annee` (art. 60, pourcentages) ; `prime_depart_retraite`
+   (art. 62).
+
+**Mise en œuvre** : `bois_ameublement_liege.json` ; `test_vague3.py` ; démos 137 à 143 ; TB-216 à TB-222.
+
+**Statut de vérification** : 819 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 819 cellules comparables : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte (montants écrits en toutes lettres : lus sur l'image seulement).
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+---
+
+### D64 — Grille salariale GESTION_DECHETS (pages 2, 6, 12-13, 16-19)
+
+**Source** : `data/raw/pdf/التصرف في النفايات الصلبة.pdf` (19 pages). Pages : avenants (p.2), art. 12 (جديد) (p.6),
+art. 38 et 39 (p.12-13), tableaux n° 1 à 4 (p.16-19).
+
+**Lecture** : 4 tableaux (du 2020-05-01 au 2021-11-30, puis 2021-12-01, 2023-01-01, 2024-01-01) × 19 catégories × 11
+degrés = 836 montants, imprimés au format « 1,018.107 ».
+
+#### Décisions (validées par DS5)
+
+1. Population unique `tous_agents`, catégories `1` à `19` (art. 39 : exécution 1-6, gestion 7-12, cadres 13-19).
+2. **Unité non imprimée : TND/mois en hypothèse affichée** (montants de 628,015 à 2 027,015).
+3. Dates : refus avant le 2020-05-01 (la grille de l'avenant n° 3, effet au 2018-06-01, n'est pas dans la source). La
+   date de fin imprimée du tableau n° 1 est suivie le lendemain par le tableau n° 2 : aucun `valide_jusqu_au`.
+4. Degrés : ancienneté imprimée « 2-0 » … « 24-21 », « +24 ». **Dernier degré (Q8, Q-A)** : l'art. 12 (جديد) (p.6) fait
+   continuer la progression « pendant une durée correspondant à deux degrés », sans montant, et fixe des séjours de 2 ou
+   3 ans. Degré 11 servi de 24 à 26 ans ; **26 ans pile : `PARAM_INVALIDE`** ; au-delà, refus `SOURCE_MANQUANTE` citant
+   la p.6 et l'en-tête. Même représentation que D63.
+5. **Cases illisibles** (`cellules_source_manquante`, D48), toutes au degré 9, chiffre cassé à l'impression, relues à
+   400 dpi : tableau n° 1 (p.16) lignes 10 et 11 ; n° 2 (p.17) lignes 13, 14 et 16 ; n° 3 (p.18) lignes 3, 11, 13 et
+   14 ; n° 4 (p.19) lignes 8, 13, 16 et 18. Ligne 8, degré 3 : montant supérieur aux degrés 2 et 4 sur les quatre
+   tableaux, imprimé net, servi tel quel.
+6. Primes couvertes : `prime_presence` et `prime_transport` (art. 38, 4 dates), `prime_panier` (25 d par mois),
+   `prime_risque` (50 d), `prime_proprete_savon` (70 d), avec condition.
+7. `SOURCE_MANQUANTE` : **`prime_lait`** (35 d, entrée en vigueur liée à la « parution » de l'avenant n° 3, qui porte
+   plusieurs dates, Q9) ; `prime_productivite` (formule) ; `prime_13e_mois` (un mois de salaire).
+
+**Mise en œuvre** : `gestion_dechets.json` ; `test_vague3.py` ; démos 144 à 151 ; TB-223 à TB-230.
+
+**Statut de vérification** : 836 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 0 écart ; 15 cellules douteuses du degré 9 relues au zoom à 400 dpi, 2 tranchées et 13 non tranchées déclarées illisibles ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 815 cellules comparables (8 cellules n'ont pour voisine qu'une cellule illisible) : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte.
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+---
+
+### D65 — Grille salariale HABILLEMENT (pages 3, 8, 15-16, 26-29)
+
+**Source** : `data/raw/pdf/صناعة الملابس المنسوجة و الجاهزة.pdf` (29 pages). Pages : avenants (p.3, n° 17 : effet au
+2021-09-01), art. 12 (جديد) (p.8), art. 45 à 50-4 (p.15-16), tableaux n° 1 à 4 (p.26-29).
+
+**Lecture** : 4 tableaux, 2 dates (2021-09-01, 2022-05-01) × 2 populations imprimées : horaires (I à VI) et mensuels
+(1 أ, 1 ب, 2 à 17) × 18 degrés = 864 montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `horaires` (TND/heure) et `mensuels` (TND/mois), obligatoires ; mensuels : catégorie `1` avec
+   `sous_categorie` `a` (1 أ) ou `b` (1 ب), puis `2` à `17`.
+2. Degrés : durées 1, 1, 1 puis 2 ; ancienneté effective 1, 2, 3, 5 … 33 ; libellés « 0-1 » … « 31-33 » ; **à partir de
+   33 ans, refus** (art. 12 : promotion automatique non calculée). Aucune grille après le 2022-05-01 : la table de 2022
+   reste appliquée.
+3. Primes couvertes : `prime_presence` (art. 49-1, 2 dates), `prime_transport` (art. 49-2, `execution_gestion` /
+   `cadres`, 2 dates).
+4. `SOURCE_MANQUANTE` : **`prime_assiduite`** (art. 49, points 3 et 4 : imprimée deux fois avec des montants
+   différents, Q10) ; `prime_production_fin_annee` (art. 46) ; `prime_depart_retraite` et `aide_deces` (art. 50 et 50-4,
+   un mois de salaire).
+
+**Mise en œuvre** : `habillement.json` ; `test_vague3.py` ; démos 152 à 157 ; TB-231 à TB-236.
+
+**Statut de vérification** : 864 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 1 écart, tranché au zoom à 400 dpi, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (pourcentage fixe par ligne) sur 864 cellules comparables : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte.
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+---
+
+### D66 — Grille salariale COMMERCE_GROS_DETAIL (pages 3, 8, 14-15, 22-27)
+
+**Source** : `data/raw/pdf/تجارة الجملة ونصف الجملة و التفصيل.pdf` (27 pages). Pages : avenants (p.3), art. 12 (جديد)
+(p.8), art. 45 à 49 مكرر (p.14-15), tableaux n° 1 à 6 (p.22-27).
+
+**Lecture** : 6 tableaux, 3 dates × 2 tableaux imprimés : agents (ligne horaire et catégories 10 à 21, 13 lignes) et
+sous-chefs de rayon, chefs de rayon et gérants (catégories 16 et 17 × sous-niveaux أ à هـ, 10 lignes) × 13 degrés = 897
+montants.
+
+#### Décisions (validées par DS5)
+
+1. Populations `agents` et `chefs_rayon_gerants`, obligatoires (les numéros 16 et 17 existent dans les deux tableaux).
+   Chefs : catégorie `16` ou `17` avec `sous_categorie` `a` à `e` (أ à هـ, imprimés en ordre décroissant).
+2. **Unité non imprimée : TND/mois en hypothèse affichée.** Ligne « شغال بالساعة » (Q11) : servie telle qu'imprimée
+   (clé `ouvrier_horaire_ligne_imprimee`), l'hypothèse affichée rappelle que l'unité n'est pas imprimée et que la case
+   porte la mention « (شهريا) » ; elle n'est pas affirmée mensuelle.
+3. Degrés : 13 degrés de 2 ans, ancienneté effective 2 … 26 ; libellés « 0-2 » … « 22-24 », « 24+ ». **Art. 12 (جديد) أ
+   (Q12, comme les minoteries)** : catégorie 21, écart entre les degrés 13 et 12 tous les 2 ans à partir de 26 ans
+   (écart cumulé, D10, période 2) ; le chiffre imprimé (16,686 d) est égal à l'écart des trois tableaux ; paliers exacts
+   (26, 28… ans) : `PARAM_INVALIDE` ; autres catégories des deux tableaux refusées au-delà de 26 ans (`cases_refusees`).
+4. Primes couvertes : `prime_transport` (art. 48, `execution_gestion` / `cadres`, 3 dates), `prime_presence` (art. 48
+   مكرر, 3 dates), `prime_caisse_*` (art. 47 : 5, 10 et 15 d selon l'ancienneté), `prime_scolaire_*` (art. 47 مكرر :
+   20, 30 et 40 d), `prime_deces_travailleur` (150 d) et `prime_deces_pere_mere` (100 d, art. 45-3).
+5. `SOURCE_MANQUANTE` : `prime_depart_retraite` (art. 45 مكرر, 4 mois), `prime_productivite` (art. 49, pourcentages),
+   `prime_fin_annee` (art. 49 مكرر, demi-mois).
+
+**Mise en œuvre** : `commerce_gros_detail.json` ; `test_vague3.py` ; démos 158 à 165 ; TB-237 à TB-244.
+
+**Statut de vérification** : 897 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées
+par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 897 cellules comparables : aucun
+écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte.
+Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.
+
+**Communs à D61 à D66** : contrôle de hausse sur 4 835 des 4 843 cellules lisibles, aucun écart au-delà de 1 millime ;
+aucun changement de `calc/` ni de schéma (champs de D48 et règles D10 existantes) ; les 6
+secteurs sont activés dans le registre DS5 sans entrée dans la table des secteurs, en attente de validation DS2 (liste
+`EN_ATTENTE_DS2`) ; primes à montant fixe imprimé seulement, un code par montant sans date ; promotions, reclassements
+et passages d'échelle non calculés, affichés en hypothèse ; libellés de catégorie, messages et hypothèses rédigés
+(`libelle_ar_redige`), libellés des rangs repris de l'image ; note des tableaux (décrets 437/1981 et 501/1982) reprise
+en remarque, sans calcul.

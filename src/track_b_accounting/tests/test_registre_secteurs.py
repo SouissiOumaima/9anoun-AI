@@ -54,10 +54,16 @@ def test_registre_actuel_identique():
         "MINOTERIES": "data/processed/salary_grids/minoteries.json",
         "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
         "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
+        "MECANIQUE_STATIONS_SERVICE": "data/processed/salary_grids/mecanique_stations_service.json",
+        "BOISSONS_ALCOOLISEES": "data/processed/salary_grids/boissons_alcoolisees.json",
+        "BOIS_AMEUBLEMENT_LIEGE": "data/processed/salary_grids/bois_ameublement_liege.json",
+        "GESTION_DECHETS": "data/processed/salary_grids/gestion_dechets.json",
+        "HABILLEMENT": "data/processed/salary_grids/habillement.json",
+        "COMMERCE_GROS_DETAIL": "data/processed/salary_grids/commerce_gros_detail.json",
     }
     assert (
         list(loaders.GRILLES) == loaders.secteurs_disponibles()
-    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -87,7 +93,8 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         "Aucune grille vérifiée pour le secteur 'SANS_REF' "
         "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
         "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
-        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES)."
+        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
+        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL)."
     )
 
 

@@ -468,6 +468,12 @@ def test_b1_secteur_charge():
         "MINOTERIES",
         "TEINTURERIES_PRESSINGS",
         "BOISSONS_GAZEUSES",
+        "MECANIQUE_STATIONS_SERVICE",
+        "BOISSONS_ALCOOLISEES",
+        "BOIS_AMEUBLEMENT_LIEGE",
+        "GESTION_DECHETS",
+        "HABILLEMENT",
+        "COMMERCE_GROS_DETAIL",
     }
 
 

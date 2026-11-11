@@ -1,0 +1,1899 @@
+{
+ "_meta": {
+  "secteur_code": "BOIS_AMEUBLEMENT_LIEGE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لصناعة الخشب والموبيليا والخفاف",
+  "convention_fr": "Convention collective sectorielle de l'industrie du bois, de l'ameublement et du liège",
+  "source_file": "data/raw/pdf/صناعة الخشب والموبيليا والخفاف.pdf",
+  "pages_sources": [
+   3,
+   9,
+   16,
+   17,
+   18,
+   24,
+   25,
+   26
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "819 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 819 cellules comparables : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte ; montants écrits en toutes lettres : lus sur l'image seulement. Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.",
+  "decision_ref": "D63",
+  "currency": "TND",
+  "note_unite": "Tableaux n° 1, 3, 5 : travailleurs payés au mois (TND/mois, régime de 40 h imprimé) ; n° 2, 4, 6 : travailleurs payés à l'heure (TND/heure).",
+  "note_degres": "En-tête (p.24-26) : 13 degrés, durées 1, 1, 1, 2 (×4), 3 (×5), 1 ; ancienneté effective « 1-0 » … « 26-23 », « 26 + » ; libellés « 0-1 » … « 23-26 », « 26+ » ; degré 13 servi de 26 à 27 ans ; 27 ans pile : PARAM_INVALIDE ; au-delà, refus (art. 50 et 14, Q7).",
+  "note_categories": "Clés : 1 à 14 (mensuels) ; 1 à 7 (horaires, rangs nommés, l'art. 14 parle du « صنف السابع » des horaires) ; population obligatoire.",
+  "note_dates": "Tableaux de 2021-12-01 (p.24), 2023-01-01 (p.25), 2024-01-01 (p.26) ; refus avant le 2021-12-01.",
+  "regime_hebdomadaire": 40,
+  "note_regime_hebdomadaire": "Titre des tableaux : « نظام العمل 40 ساعة في الأسبوع ».",
+  "remarque_pdf": "Note sous chaque tableau (p.24-26) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 24 إلى 26): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "mensuels": {
+   "libelle_fr": "Travailleurs payés au mois",
+   "libelle_ar": "العمال الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 24,
+   "note": "Tableaux n° 1, 3 et 5 ; population obligatoire."
+  },
+  "horaires": {
+   "libelle_fr": "Travailleurs payés à l'heure",
+   "libelle_ar": "العمال الخالصون بالساعة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 24,
+   "note": "Tableaux n° 2, 4 et 6 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "1-0"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "2-1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "3-2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5-3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7-5"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9-7"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11-9"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "14-11"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "17-14"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "20-17"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "23-20"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "26-23"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "26+",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "26 +"
+   }
+  ],
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "1-0"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "2-1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "3-2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5-3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7-5"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9-7"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11-9"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "14-11"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "17-14"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "20-17"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "23-20"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "26-23"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "26+",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "26 +"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "mensuels": {
+   "regle": "table_correspondance",
+   "dernier_degre_atteint_a_annees": 26,
+   "duree_au_dernier_degre_annees": 1,
+   "source_pdf_page": 16,
+   "source_article": "50 (جديد)",
+   "texte_source_ar": "ضبطت الأجور الدنيا الموافقة لمختلف الخطط بسلمين للأجور (ملحق عدد 3 وملحق عدد 4). ويحتوي كل سلم على ثلاثة عشرة (13) درجة. وضبطت بسنة مدة البقاء بالدرجات الثلاثة الأولى، وبسنتين من الدرجة الرابعة إلى الدرجة السابعة، وبثلاث سنوات من الدرجة الثامنة إلى الدرجة الثانية عشرة، وبسنة بالنسبة للدرجة الثالثة عشر وذلك بالنسبة لجدولي أجور العمال الخالصين بالساعة والعمال الخالصين بالشهر. وعند بلوغ العامل الحد الأعلى للسلم، فإنه يواصل التدرج في السلم الموالي بداية من الدرجة الموافقة لأجره في الصنف الذي يفوقه مباشرة. ويتمتع علاوة على ذلك بدرجة إضافية في السلم الجديد.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D63",
+   "hypotheses_fr": [
+    "Degré 13 servi de 26 à 27 ans (en-tête et article 50 (جديد), page 16) ; au-delà de 27 ans, refus : l'article 14 (جديد) أ (page 9) fait passer l'agent dans l'échelle suivante, non calculée, et contredit l'en-tête « 26 + » (règle de la confiserie, Q7)."
+   ],
+   "hypotheses_ar": [
+    "تُعتمد الدرجة 13 من 26 إلى 27 سنة (رأس الجدول والفصل 50 (جديد)، الصفحة 16)؛ وبعد 27 سنة يقع الرفض: ينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب، ويتعارض مع «26 +» المطبوع برأس الجدول."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = fin du séjour d'un an au degré 13 (article 50 (جديد), page 16) : la source ne dit pas si le passage de l'article 14 (جديد) أ (page 9) a déjà eu lieu. Indiquer l'ancienneté exacte.",
+   "message_borne_ar": "أقدمية {a} سنة تقع على نهاية مدة البقاء بالدرجة 13 (الفصل 50 (جديد)، الصفحة 16) ولا يحدد المصدر إن كان الانتقال المنصوص عليه بالفصل 14 (جديد) أ (الصفحة 9) قد وقع. يرجى تحديد الأقدمية بدقة.",
+   "message_hors_fenetre_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé. (ancienneté de {a} ans ; limite : {fin} ans.)",
+   "message_hors_fenetre_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ. (أقدمية {a} سنة؛ الحد: {fin} سنة.)",
+   "table_correspondance": {},
+   "categories_refusees": {
+    "1": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "2": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "3": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "4": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "5": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "6": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "7": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "8": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "9": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "10": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "11": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "12": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "13": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "14": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    }
+   }
+  },
+  "horaires": {
+   "regle": "table_correspondance",
+   "dernier_degre_atteint_a_annees": 26,
+   "duree_au_dernier_degre_annees": 1,
+   "source_pdf_page": 16,
+   "source_article": "50 (جديد)",
+   "texte_source_ar": "ضبطت الأجور الدنيا الموافقة لمختلف الخطط بسلمين للأجور (ملحق عدد 3 وملحق عدد 4). ويحتوي كل سلم على ثلاثة عشرة (13) درجة. وضبطت بسنة مدة البقاء بالدرجات الثلاثة الأولى، وبسنتين من الدرجة الرابعة إلى الدرجة السابعة، وبثلاث سنوات من الدرجة الثامنة إلى الدرجة الثانية عشرة، وبسنة بالنسبة للدرجة الثالثة عشر وذلك بالنسبة لجدولي أجور العمال الخالصين بالساعة والعمال الخالصين بالشهر. وعند بلوغ العامل الحد الأعلى للسلم، فإنه يواصل التدرج في السلم الموالي بداية من الدرجة الموافقة لأجره في الصنف الذي يفوقه مباشرة. ويتمتع علاوة على ذلك بدرجة إضافية في السلم الجديد.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D63",
+   "hypotheses_fr": [
+    "Degré 13 servi de 26 à 27 ans (en-tête et article 50 (جديد), page 16) ; au-delà de 27 ans, refus : l'article 14 (جديد) أ (page 9) fait passer l'agent dans l'échelle suivante, non calculée, et contredit l'en-tête « 26 + » (règle de la confiserie, Q7)."
+   ],
+   "hypotheses_ar": [
+    "تُعتمد الدرجة 13 من 26 إلى 27 سنة (رأس الجدول والفصل 50 (جديد)، الصفحة 16)؛ وبعد 27 سنة يقع الرفض: ينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب، ويتعارض مع «26 +» المطبوع برأس الجدول."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = fin du séjour d'un an au degré 13 (article 50 (جديد), page 16) : la source ne dit pas si le passage de l'article 14 (جديد) أ (page 9) a déjà eu lieu. Indiquer l'ancienneté exacte.",
+   "message_borne_ar": "أقدمية {a} سنة تقع على نهاية مدة البقاء بالدرجة 13 (الفصل 50 (جديد)، الصفحة 16) ولا يحدد المصدر إن كان الانتقال المنصوص عليه بالفصل 14 (جديد) أ (الصفحة 9) قد وقع. يرجى تحديد الأقدمية بدقة.",
+   "message_hors_fenetre_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé. (ancienneté de {a} ans ; limite : {fin} ans.)",
+   "message_hors_fenetre_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ. (أقدمية {a} سنة؛ الحد: {fin} سنة.)",
+   "table_correspondance": {},
+   "categories_refusees": {
+    "1": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "2": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "3": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "4": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "5": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "6": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    },
+    "7": {
+     "message_fr": "Ancienneté supérieure à 27 ans : l'en-tête des tableaux (pages 24 à 26) imprime « 26 + » sous le degré 13, mais l'article 50 (جديد) (page 16) limite le séjour au degré 13 à un an (de 26 à 27 ans) et l'article 14 (جديد) أ (page 9) fait alors passer l'agent dans l'échelle suivante, ce qui n'est pas calculé. Les deux textes se contredisent au-delà de 27 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 27 سنة: يذكر رأس الجداول (الصفحات من 24 إلى 26) «26 +» تحت الدرجة 13، في حين يضبط الفصل 50 (جديد) (الصفحة 16) مدة البقاء بالدرجة 13 بسنة واحدة (من 26 إلى 27 سنة) وينص الفصل 14 (جديد) أ (الصفحة 9) على مواصلة التدرج في السلم الموالي، ولا يُحتسب ذلك. يتعارض النصان بعد 27 سنة. لا يُرجَع أي مبلغ."
+    }
+   }
+  }
+ },
+ "categories": {
+  "mensuels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14"
+  ],
+  "horaires": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ]
+ },
+ "libelles_categories": {
+  "mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true
+   }
+  },
+  "horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Ouvrier ordinaire",
+    "libelle_ar": "شغال عادي",
+    "libelle_ar_redige": false
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Ouvrier spécialisé",
+    "libelle_ar": "شغال مختص",
+    "libelle_ar_redige": false
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Travailleur du premier degré",
+    "libelle_ar": "عامل درجة أولى",
+    "libelle_ar_redige": false
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Travailleur du deuxième degré",
+    "libelle_ar": "عامل درجة ثانية",
+    "libelle_ar_redige": false
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Travailleur spécialisé",
+    "libelle_ar": "عامل مختص",
+    "libelle_ar_redige": false
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Travailleur qualifié",
+    "libelle_ar": "عامل ذو كفاءة",
+    "libelle_ar_redige": false
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Travailleur hautement qualifié",
+    "libelle_ar": "عامل ذو كفاءة عالية",
+    "libelle_ar_redige": false
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "mensuels": {
+   "fr": [
+    "Degré 13 : l'en-tête imprime « 26 + » ; il est servi de 26 à 27 ans seulement, l'article 50 (جديد) limitant ce degré à un an ; au-delà, refus.",
+    "Mensuels : salaire fixé sur la base de 40 heures par semaine (titre des tableaux) ; la formule de l'article 51 pour un horaire plus long n'est pas calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الدرجة 13: يذكر رأس الجدول «26 +»؛ تُعتمد من 26 إلى 27 سنة فقط لأن الفصل 50 (جديد) يضبط مدة البقاء بها بسنة؛ وبعد ذلك يقع الرفض.",
+    "الخالصون بالشهر: يحتسب الأجر على قاعدة 40 ساعة في الأسبوع (عنوان الجداول)؛ ولا تُحتسب صيغة الفصل 51 لمدة عمل أطول.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "horaires": {
+   "fr": [
+    "Degré 13 : l'en-tête imprime « 26 + » ; il est servi de 26 à 27 ans seulement, l'article 50 (جديد) limitant ce degré à un an ; au-delà, refus.",
+    "Mensuels : salaire fixé sur la base de 40 heures par semaine (titre des tableaux) ; la formule de l'article 51 pour un horaire plus long n'est pas calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الدرجة 13: يذكر رأس الجدول «26 +»؛ تُعتمد من 26 إلى 27 سنة فقط لأن الفصل 50 (جديد) يضبط مدة البقاء بها بسنة؛ وبعد ذلك يقع الرفض.",
+    "الخالصون بالشهر: يحتسب الأجر على قاعدة 40 ساعة في الأسبوع (عنوان الجداول)؛ ولا تُحتسب صيغة الفصل 51 لمدة عمل أطول.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 93.875
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 100.211
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 106.975
+    }
+   ]
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "55 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/jour",
+   "montant": 0.650,
+   "effective_date": null,
+   "condition": "travail continu d'au moins sept heures, coupé d'une demi-heure au plus (art. 55 (جديد), p.16)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "58 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 17.643
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 18.834
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 20.106
+    }
+   ],
+   "condition": "travailleur remplissant les conditions requises (art. 58 (جديد), p.17)",
+   "hypotheses": {
+    "fr": [
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_transport_rayon_40km",
+   "label_ar": "منحة التنقل",
+   "label_fr": "Prime de déplacement : transport (chantier dans un rayon de 40 km)",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 1.000,
+   "effective_date": null,
+   "condition": "chantier situé dans un rayon de 40 km, par jour de présence au chantier (art. 57 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_transport_au_dela_40km",
+   "label_ar": "منحة التنقل",
+   "label_fr": "Prime de déplacement : transport (chantier au-delà de 40 km)",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 2.000,
+   "effective_date": null,
+   "condition": "chantier situé au-delà de 40 km, par jour de présence au chantier (art. 57 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_petit_dejeuner",
+   "label_ar": "منحة فطور",
+   "label_fr": "Prime de déplacement : petit-déjeuner",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 1.000,
+   "effective_date": null,
+   "condition": "par jour de présence au chantier (art. 57 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_diner",
+   "label_ar": "منحة عشاء",
+   "label_fr": "Prime de déplacement : dîner",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 3.000,
+   "effective_date": null,
+   "condition": "travailleur hébergé sur le chantier (art. 57 (جديد), p.17)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_nuitee",
+   "label_ar": "منحة مبيت",
+   "label_fr": "Prime de déplacement : nuitée",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 9.000,
+   "effective_date": null,
+   "condition": "hébergement par l'employeur impossible (art. 57 (جديد), p.17)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_chauffeurs_petit_dejeuner",
+   "label_ar": "منحة فطور",
+   "label_fr": "Prime de petit-déjeuner (chauffeurs)",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 1.000,
+   "effective_date": null,
+   "condition": "chauffeur de voiture ou de camion, ou son aide, ne pouvant rentrer au siège (art. 57 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_chauffeurs_diner",
+   "label_ar": "منحة عشاء",
+   "label_fr": "Prime de dîner (chauffeurs)",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 3.000,
+   "effective_date": null,
+   "condition": "chauffeur ou son aide (art. 57 (جديد), p.17)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_chauffeurs_nuitee",
+   "label_ar": "منحة مبيت",
+   "label_fr": "Prime de nuitée (chauffeurs)",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 7.000,
+   "effective_date": null,
+   "condition": "chauffeur ou son aide ne pouvant passer la nuit chez lui (art. 57 (جديد), p.17)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse_degre_1",
+   "label_ar": "غرامة الصندوق",
+   "label_fr": "Prime de caisse (caissier du premier degré)",
+   "source_article": "59 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 6.000,
+   "effective_date": null,
+   "condition": "caissier du premier degré (art. 59 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse_degre_2",
+   "label_ar": "غرامة الصندوق",
+   "label_fr": "Prime de caisse (caissier du deuxième degré)",
+   "source_article": "59 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 10.000,
+   "effective_date": null,
+   "condition": "caissier du deuxième degré (art. 59 (جديد), p.17 ; montant écrit en toutes lettres)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_risque",
+   "label_ar": "منحة الخطر",
+   "label_fr": "Prime de risque",
+   "source_article": "61 مكرر (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 11.000,
+   "effective_date": null,
+   "condition": "travailleur de production travaillant dans les ateliers (art. 61 مكرر (جديد), p.18)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "aide_deces": {
+   "source_pdf_page": 18,
+   "source_article": "61 (جديد)",
+   "message_fr": "Aide en cas de décès (article 61 (جديد), page 18) : le montant est imprimé « 466.6666 د » : il a plus de trois décimales et le moteur arrondit au millime ; il n'est pas servi arrondi. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "نجدة الوفاة (الفصل 61 (جديد)، الصفحة 18): المبلغ مطبوع «466.6666 د» أي بأكثر من ثلاثة أرقام بعد الفاصل؛ ولا يُرجَع مدوَّرا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant à plus de trois décimales"
+  },
+  "avantage_lait": {
+   "source_pdf_page": 17,
+   "source_article": "56 (جديد)",
+   "message_fr": "Ration de lait (article 56 (جديد), page 17) : un litre de lait par jour, ou son équivalent en espèces non chiffré. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "قسط الحليب (الفصل 56 (جديد)، الصفحة 17): قسط لتر من الحليب يوميا أو ما يعادله نقدا دون تحديد المبلغ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "en nature"
+  },
+  "prime_production_fin_annee": {
+   "source_pdf_page": 17,
+   "source_article": "60 (جديد)",
+   "message_fr": "Prime de production et de fin d'année (article 60 (جديد), page 17) : pourcentages du salaire de base selon la note (pages 17-18), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج وآخر السنة (الفصل 60 (جديد)، الصفحة 17): نسب من الأجر الأساسي حسب العدد المهني (الصفحتان 17 و18)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 18,
+   "source_article": "62 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 62 (جديد), page 18) : un mois et demi ou trois mois de salaire selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 62 (جديد)، الصفحة 18): أجر شهر ونصف أو ثلاثة أشهر حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "BOIS_MENSUELS_2021-12-01",
+   "numero_imprime": 1,
+   "population": "mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 24,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     572.840,
+     575.962,
+     578.584,
+     579.025,
+     581.136,
+     583.246,
+     585.356,
+     587.466,
+     589.576,
+     591.686,
+     593.796,
+     595.906,
+     598.017
+    ],
+    "2": [
+     623.155,
+     625.595,
+     628.035,
+     630.474,
+     632.914,
+     635.354,
+     637.794,
+     640.234,
+     642.674,
+     645.113,
+     647.993,
+     652.493,
+     654.933
+    ],
+    "3": [
+     667.587,
+     670.326,
+     673.064,
+     675.802,
+     678.540,
+     681.390,
+     684.017,
+     686.755,
+     692.661,
+     694.731,
+     697.470,
+     700.208,
+     702.946
+    ],
+    "4": [
+     735.299,
+     738.273,
+     741.246,
+     744.219,
+     747.193,
+     752.666,
+     755.639,
+     758.613,
+     761.586,
+     764.559,
+     767.533,
+     770.506,
+     773.479
+    ],
+    "5": [
+     819.617,
+     823.024,
+     828.931,
+     832.338,
+     835.745,
+     839.152,
+     842.559,
+     845.966,
+     849.034,
+     852.779,
+     858.686,
+     862.093,
+     866.194
+    ],
+    "6": [
+     899.613,
+     903.639,
+     907.666,
+     911.692,
+     916.142,
+     919.745,
+     926.271,
+     930.298,
+     934.324,
+     938.350,
+     942.377,
+     946.403,
+     950.429
+    ],
+    "7": [
+     990.889,
+     995.659,
+     1000.429,
+     1007.698,
+     1012.468,
+     1017.238,
+     1022.008,
+     1026.777,
+     1031.547,
+     1038.817,
+     1043.586,
+     1048.356,
+     1053.126
+    ],
+    "8": [
+     1101.730,
+     1107.614,
+     1113.499,
+     1119.384,
+     1127.768,
+     1133.653,
+     1139.538,
+     1145.422,
+     1151.307,
+     1157.192,
+     1163.076,
+     1168.961,
+     1174.846
+    ],
+    "9": [
+     1207.456,
+     1217.080,
+     1224.203,
+     1231.327,
+     1238.450,
+     1245.574,
+     1252.697,
+     1259.821,
+     1266.944,
+     1274.068,
+     1277.952,
+     1288.315,
+     1295.439
+    ],
+    "10": [
+     1310.514,
+     1318.568,
+     1326.620,
+     1334.673,
+     1342.726,
+     1350.778,
+     1358.831,
+     1366.884,
+     1374.937,
+     1382.989,
+     1391.042,
+     1399.095,
+     1407.148
+    ],
+    "11": [
+     1394.685,
+     1403.667,
+     1412.648,
+     1421.630,
+     1430.612,
+     1439.594,
+     1448.514,
+     1457.558,
+     1466.540,
+     1475.522,
+     1484.504,
+     1493.485,
+     1502.421
+    ],
+    "12": [
+     1475.113,
+     1487.088,
+     1494.935,
+     1504.846,
+     1514.757,
+     1524.668,
+     1534.579,
+     1544.490,
+     1554.401,
+     1564.312,
+     1574.223,
+     1584.134,
+     1594.045
+    ],
+    "13": [
+     1563.884,
+     1575.034,
+     1586.184,
+     1597.334,
+     1608.484,
+     1619.634,
+     1630.784,
+     1641.934,
+     1653.084,
+     1664.233,
+     1675.383,
+     1686.533,
+     1697.683
+    ],
+    "14": [
+     1661.306,
+     1673.694,
+     1686.083,
+     1698.472,
+     1709.828,
+     1723.250,
+     1735.638,
+     1748.034,
+     1760.416,
+     1772.805,
+     1785.194,
+     1797.582,
+     1809.971
+    ]
+   }
+  },
+  {
+   "table_id": "BOIS_HORAIRES_2021-12-01",
+   "numero_imprime": 2,
+   "population": "horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 24,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     3.019,
+     3.045,
+     3.053,
+     3.061,
+     3.069,
+     3.077,
+     3.085,
+     3.093,
+     3.102,
+     3.109,
+     3.117,
+     3.125,
+     3.133
+    ],
+    "2": [
+     3.217,
+     3.226,
+     3.235,
+     3.244,
+     3.253,
+     3.262,
+     3.272,
+     3.281,
+     3.290,
+     3.299,
+     3.308,
+     3.317,
+     3.326
+    ],
+    "3": [
+     3.388,
+     3.400,
+     3.412,
+     3.423,
+     3.435,
+     3.447,
+     3.459,
+     3.470,
+     3.482,
+     3.494,
+     3.506,
+     3.517,
+     3.529
+    ],
+    "4": [
+     3.711,
+     3.724,
+     3.738,
+     3.751,
+     3.765,
+     3.778,
+     3.792,
+     3.805,
+     3.818,
+     3.832,
+     3.845,
+     3.859,
+     3.872
+    ],
+    "5": [
+     3.961,
+     3.977,
+     3.993,
+     4.009,
+     4.024,
+     4.040,
+     4.056,
+     4.072,
+     4.088,
+     4.104,
+     4.119,
+     4.141,
+     4.151
+    ],
+    "6": [
+     4.287,
+     4.304,
+     4.321,
+     4.338,
+     4.354,
+     4.371,
+     4.388,
+     4.405,
+     4.432,
+     4.449,
+     4.466,
+     4.483,
+     4.500
+    ],
+    "7": [
+     4.628,
+     4.646,
+     4.665,
+     4.683,
+     4.701,
+     4.733,
+     4.752,
+     4.771,
+     4.790,
+     4.809,
+     4.828,
+     4.847,
+     4.866
+    ]
+   }
+  },
+  {
+   "table_id": "BOIS_MENSUELS_2023-01-01",
+   "numero_imprime": 3,
+   "population": "mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     611.507,
+     614.629,
+     617.251,
+     617.692,
+     619.803,
+     621.913,
+     624.023,
+     626.133,
+     628.243,
+     630.353,
+     632.463,
+     634.573,
+     636.684
+    ],
+    "2": [
+     665.218,
+     667.658,
+     670.098,
+     672.537,
+     674.977,
+     677.417,
+     679.857,
+     682.297,
+     684.737,
+     687.176,
+     690.056,
+     694.556,
+     696.996
+    ],
+    "3": [
+     712.649,
+     715.388,
+     718.126,
+     720.864,
+     723.602,
+     726.452,
+     729.079,
+     731.817,
+     737.723,
+     739.793,
+     742.532,
+     745.270,
+     748.008
+    ],
+    "4": [
+     784.932,
+     787.906,
+     790.879,
+     793.852,
+     796.826,
+     802.299,
+     805.272,
+     808.246,
+     811.219,
+     814.192,
+     817.166,
+     820.139,
+     823.112
+    ],
+    "5": [
+     874.941,
+     878.348,
+     884.255,
+     887.662,
+     891.069,
+     894.476,
+     897.883,
+     901.290,
+     904.358,
+     908.103,
+     914.010,
+     917.417,
+     921.518
+    ],
+    "6": [
+     960.337,
+     964.363,
+     968.390,
+     972.416,
+     976.866,
+     980.469,
+     986.995,
+     991.022,
+     995.048,
+     999.074,
+     1003.101,
+     1007.127,
+     1011.153
+    ],
+    "7": [
+     1057.774,
+     1062.544,
+     1067.314,
+     1074.583,
+     1079.353,
+     1084.123,
+     1088.893,
+     1093.662,
+     1098.432,
+     1105.702,
+     1110.471,
+     1115.241,
+     1120.011
+    ],
+    "8": [
+     1176.097,
+     1181.981,
+     1187.866,
+     1193.751,
+     1202.135,
+     1208.020,
+     1213.905,
+     1219.789,
+     1225.674,
+     1231.559,
+     1237.443,
+     1243.328,
+     1249.213
+    ],
+    "9": [
+     1288.959,
+     1298.583,
+     1305.706,
+     1312.830,
+     1319.953,
+     1327.077,
+     1334.200,
+     1341.324,
+     1348.447,
+     1355.571,
+     1359.455,
+     1369.818,
+     1376.942
+    ],
+    "10": [
+     1398.974,
+     1407.028,
+     1415.080,
+     1423.133,
+     1431.186,
+     1439.238,
+     1447.291,
+     1455.344,
+     1463.397,
+     1471.449,
+     1479.502,
+     1487.555,
+     1495.608
+    ],
+    "11": [
+     1488.827,
+     1497.809,
+     1506.790,
+     1515.772,
+     1524.754,
+     1533.736,
+     1542.656,
+     1551.700,
+     1560.682,
+     1569.664,
+     1578.646,
+     1587.627,
+     1596.563
+    ],
+    "12": [
+     1574.683,
+     1586.658,
+     1594.505,
+     1604.416,
+     1614.327,
+     1624.238,
+     1634.149,
+     1644.060,
+     1653.971,
+     1663.882,
+     1673.793,
+     1683.704,
+     1693.615
+    ],
+    "13": [
+     1669.446,
+     1680.596,
+     1691.746,
+     1702.896,
+     1714.046,
+     1725.196,
+     1736.346,
+     1747.496,
+     1758.646,
+     1769.795,
+     1780.945,
+     1792.095,
+     1803.245
+    ],
+    "14": [
+     1773.444,
+     1785.832,
+     1798.221,
+     1810.610,
+     1821.966,
+     1835.388,
+     1847.776,
+     1860.172,
+     1872.554,
+     1884.943,
+     1897.332,
+     1909.720,
+     1922.109
+    ]
+   }
+  },
+  {
+   "table_id": "BOIS_HORAIRES_2023-01-01",
+   "numero_imprime": 4,
+   "population": "horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 25,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     3.222,
+     3.248,
+     3.256,
+     3.264,
+     3.272,
+     3.280,
+     3.288,
+     3.296,
+     3.305,
+     3.312,
+     3.320,
+     3.328,
+     3.336
+    ],
+    "2": [
+     3.434,
+     3.443,
+     3.452,
+     3.461,
+     3.470,
+     3.479,
+     3.489,
+     3.498,
+     3.507,
+     3.516,
+     3.525,
+     3.534,
+     3.543
+    ],
+    "3": [
+     3.617,
+     3.629,
+     3.641,
+     3.652,
+     3.664,
+     3.676,
+     3.688,
+     3.699,
+     3.711,
+     3.723,
+     3.735,
+     3.746,
+     3.758
+    ],
+    "4": [
+     3.962,
+     3.975,
+     3.989,
+     4.002,
+     4.016,
+     4.029,
+     4.043,
+     4.056,
+     4.069,
+     4.083,
+     4.096,
+     4.110,
+     4.123
+    ],
+    "5": [
+     4.228,
+     4.244,
+     4.260,
+     4.276,
+     4.291,
+     4.307,
+     4.323,
+     4.339,
+     4.355,
+     4.371,
+     4.386,
+     4.408,
+     4.418
+    ],
+    "6": [
+     4.576,
+     4.593,
+     4.610,
+     4.627,
+     4.643,
+     4.660,
+     4.677,
+     4.694,
+     4.721,
+     4.738,
+     4.755,
+     4.772,
+     4.789
+    ],
+    "7": [
+     4.940,
+     4.958,
+     4.977,
+     4.995,
+     5.013,
+     5.045,
+     5.064,
+     5.083,
+     5.102,
+     5.121,
+     5.140,
+     5.159,
+     5.178
+    ]
+   }
+  },
+  {
+   "table_id": "BOIS_MENSUELS_2024-01-01",
+   "numero_imprime": 5,
+   "population": "mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     652.783,
+     655.905,
+     658.527,
+     658.968,
+     661.079,
+     663.189,
+     665.299,
+     667.409,
+     669.519,
+     671.629,
+     673.739,
+     675.849,
+     677.960
+    ],
+    "2": [
+     710.121,
+     712.561,
+     715.001,
+     717.440,
+     719.880,
+     722.320,
+     724.760,
+     727.200,
+     729.640,
+     732.079,
+     734.959,
+     739.459,
+     741.899
+    ],
+    "3": [
+     760.753,
+     763.492,
+     766.230,
+     768.968,
+     771.706,
+     774.556,
+     777.183,
+     779.921,
+     785.827,
+     787.897,
+     790.636,
+     793.374,
+     796.112
+    ],
+    "4": [
+     837.915,
+     840.889,
+     843.862,
+     846.835,
+     849.809,
+     855.282,
+     858.255,
+     861.229,
+     864.202,
+     867.175,
+     870.149,
+     873.122,
+     876.095
+    ],
+    "5": [
+     933.999,
+     937.406,
+     943.313,
+     946.720,
+     950.127,
+     953.534,
+     956.941,
+     960.348,
+     963.416,
+     967.161,
+     973.068,
+     976.475,
+     980.576
+    ],
+    "6": [
+     1025.159,
+     1029.185,
+     1033.212,
+     1037.238,
+     1041.688,
+     1045.291,
+     1051.817,
+     1055.844,
+     1059.870,
+     1063.896,
+     1067.923,
+     1071.949,
+     1075.975
+    ],
+    "7": [
+     1129.174,
+     1133.944,
+     1138.714,
+     1145.983,
+     1150.753,
+     1155.523,
+     1160.293,
+     1165.062,
+     1169.832,
+     1177.102,
+     1181.871,
+     1186.641,
+     1191.411
+    ],
+    "8": [
+     1255.483,
+     1261.367,
+     1267.252,
+     1273.137,
+     1281.521,
+     1287.406,
+     1293.291,
+     1299.175,
+     1305.060,
+     1310.945,
+     1316.829,
+     1322.714,
+     1328.599
+    ],
+    "9": [
+     1375.964,
+     1385.588,
+     1392.711,
+     1399.835,
+     1406.958,
+     1414.082,
+     1421.205,
+     1428.329,
+     1435.452,
+     1442.576,
+     1446.460,
+     1456.823,
+     1463.947
+    ],
+    "10": [
+     1493.404,
+     1501.458,
+     1509.510,
+     1517.563,
+     1525.616,
+     1533.668,
+     1541.721,
+     1549.774,
+     1557.827,
+     1565.879,
+     1573.932,
+     1581.985,
+     1590.038
+    ],
+    "11": [
+     1589.323,
+     1598.305,
+     1607.286,
+     1616.268,
+     1625.250,
+     1634.232,
+     1643.152,
+     1652.196,
+     1661.178,
+     1670.160,
+     1679.142,
+     1688.123,
+     1697.059
+    ],
+    "12": [
+     1680.974,
+     1692.949,
+     1700.796,
+     1710.707,
+     1720.618,
+     1730.529,
+     1740.440,
+     1750.351,
+     1760.262,
+     1770.173,
+     1780.084,
+     1789.995,
+     1799.906
+    ],
+    "13": [
+     1782.134,
+     1793.284,
+     1804.434,
+     1815.584,
+     1826.734,
+     1837.884,
+     1849.034,
+     1860.184,
+     1871.334,
+     1882.483,
+     1893.633,
+     1904.783,
+     1915.933
+    ],
+    "14": [
+     1893.152,
+     1905.540,
+     1917.929,
+     1930.318,
+     1941.674,
+     1955.096,
+     1967.484,
+     1979.880,
+     1992.262,
+     2004.651,
+     2017.040,
+     2029.428,
+     2041.817
+    ]
+   }
+  },
+  {
+   "table_id": "BOIS_HORAIRES_2024-01-01",
+   "numero_imprime": 6,
+   "population": "horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 26,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     3.440,
+     3.466,
+     3.474,
+     3.482,
+     3.490,
+     3.498,
+     3.506,
+     3.514,
+     3.523,
+     3.530,
+     3.538,
+     3.546,
+     3.554
+    ],
+    "2": [
+     3.666,
+     3.675,
+     3.684,
+     3.693,
+     3.702,
+     3.711,
+     3.721,
+     3.730,
+     3.739,
+     3.748,
+     3.757,
+     3.766,
+     3.775
+    ],
+    "3": [
+     3.861,
+     3.873,
+     3.885,
+     3.896,
+     3.908,
+     3.920,
+     3.932,
+     3.943,
+     3.955,
+     3.967,
+     3.979,
+     3.990,
+     4.002
+    ],
+    "4": [
+     4.229,
+     4.242,
+     4.256,
+     4.269,
+     4.283,
+     4.296,
+     4.310,
+     4.323,
+     4.336,
+     4.350,
+     4.363,
+     4.377,
+     4.390
+    ],
+    "5": [
+     4.514,
+     4.530,
+     4.546,
+     4.562,
+     4.577,
+     4.593,
+     4.609,
+     4.625,
+     4.641,
+     4.657,
+     4.672,
+     4.694,
+     4.704
+    ],
+    "6": [
+     4.885,
+     4.902,
+     4.919,
+     4.936,
+     4.952,
+     4.969,
+     4.986,
+     5.003,
+     5.030,
+     5.047,
+     5.064,
+     5.081,
+     5.098
+    ],
+    "7": [
+     5.274,
+     5.292,
+     5.311,
+     5.329,
+     5.347,
+     5.379,
+     5.398,
+     5.417,
+     5.436,
+     5.455,
+     5.474,
+     5.493,
+     5.512
+    ]
+   }
+  }
+ ]
+}

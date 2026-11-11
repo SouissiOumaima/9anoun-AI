@@ -41,6 +41,12 @@ SECTEURS = {
     "MINOTERIES": "data/processed/salary_grids/minoteries.json",
     "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
     "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
+    "MECANIQUE_STATIONS_SERVICE": "data/processed/salary_grids/mecanique_stations_service.json",
+    "BOISSONS_ALCOOLISEES": "data/processed/salary_grids/boissons_alcoolisees.json",
+    "BOIS_AMEUBLEMENT_LIEGE": "data/processed/salary_grids/bois_ameublement_liege.json",
+    "GESTION_DECHETS": "data/processed/salary_grids/gestion_dechets.json",
+    "HABILLEMENT": "data/processed/salary_grids/habillement.json",
+    "COMMERCE_GROS_DETAIL": "data/processed/salary_grids/commerce_gros_detail.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
