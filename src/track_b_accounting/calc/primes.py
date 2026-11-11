@@ -8,6 +8,9 @@ Les paramètres exigés dépendent de ce que contient l'entrée JSON de la prime
 """
 from __future__ import annotations
 
+import datetime as dt
+from typing import Any
+
 from .loaders import GRILLES, charger_grille, decision_ref, exiger_tables_transcrites
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
@@ -45,17 +48,17 @@ def _notes(p: dict, detail: dict) -> None:
         detail["note_ar"] = p["note_ar"]
 
 
-def _ligne_datee(lignes: list[dict], jour, code: str) -> dict:
+def _ligne_datee(lignes: list[dict], jour: dt.date, code: str) -> dict:
     ligne = plus_recent_avant(lignes, jour)
     if ligne is None:
-        premiere = min(l["effective_date"] for l in lignes)
+        premiere = min(entree["effective_date"] for entree in lignes)
         raise Refus(Refus.SOURCE_MANQUANTE,
                     f"{code} : aucun montant en vigueur au {jour.isoformat()} (première date d'effet : {premiere}).",
                     f"{code}: لا يوجد مبلغ ساري المفعول بتاريخ {jour.isoformat()} (أول تاريخ نفاذ: {premiere}).")
     return ligne
 
 
-def prime(secteur: str, code: str, date, **params) -> Result:
+def prime(secteur: str, code: str, date: object, **params: Any) -> Result:
     grille = charger_grille(secteur)
     jour = parse_date(date)
     if code in grille.get("primes_non_couvertes", {}):
@@ -76,7 +79,7 @@ def prime(secteur: str, code: str, date, **params) -> Result:
                     f"(acceptés : {', '.join(sorted(_params_attendus(p))) or 'aucun'}).",
                     f"{code}: معامل غير متوقع: {', '.join(sorted(inconnus))}.")
 
-    detail = {"secteur": secteur, "code": code}
+    detail: dict[str, Any] = {"secteur": secteur, "code": code}
     # Libellé de la prime : label_ar tel qu'imprimé, label_fr traduction (pas une citation).
     for cle in ("label_fr", "label_ar"):
         if p.get(cle):

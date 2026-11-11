@@ -6,6 +6,7 @@ conversion Result/Refus en réponse. Toute exception inattendue → status "erre
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from decimal import Decimal
 from functools import lru_cache
 from pathlib import Path
@@ -18,7 +19,7 @@ from ..calc import Refus, Result
 
 CONTRACT_VERSION = "track_b.v0"
 SCHEMAS_DIR = Path(__file__).resolve().parents[3] / "data" / "mock_cards" / "schemas"
-OPERATIONS = {
+OPERATIONS: dict[str, Callable[..., Result]] = {
     "salaire_base": calc.salaire_base,
     "prime": calc.prime,
     "smig": calc.smig,
@@ -54,7 +55,7 @@ def _base(request_id, status: str, computed_by: str) -> dict:
             "result": None, "citations": [], "refus": None, "computed_by": computed_by}
 
 
-def reponse_ok(request_id, r: Result, computed_by: str) -> dict:
+def reponse_ok(request_id: str | None, r: Result, computed_by: str) -> dict:
     rep = _base(request_id, "ok", computed_by)
     rep["result"] = {"montant": str(r.montant), "unite": r.unite, "detail": _jsonable(r.detail)}
     rep["citations"] = [
@@ -65,13 +66,13 @@ def reponse_ok(request_id, r: Result, computed_by: str) -> dict:
     return rep
 
 
-def reponse_refus(request_id, e: Refus, computed_by: str) -> dict:
+def reponse_refus(request_id: str | None, e: Refus, computed_by: str) -> dict:
     rep = _base(request_id, "refus", computed_by)
     rep["refus"] = {"code": e.code, "message_fr": e.message_fr, "message_ar": e.message_ar}
     return rep
 
 
-def reponse_erreur(request_id, exc: BaseException) -> dict:
+def reponse_erreur(request_id: str | None, exc: BaseException) -> dict:
     rep = _base(request_id, "erreur", COMPUTED_BY_CONTRACT)
     rep["erreur"] = {
         "type": type(exc).__name__,
@@ -113,7 +114,7 @@ def _traiter(request) -> dict:
     return reponse_ok(rid, r, f"track_b_accounting.calc.{op}")
 
 
-def handle(request) -> dict:
+def handle(request: object) -> dict:
     """Point d'entrée unique. Renvoie toujours une réponse conforme au schéma de réponse v0."""
     rid = _request_id(request)
     op = request.get("operation") if isinstance(request, dict) else None

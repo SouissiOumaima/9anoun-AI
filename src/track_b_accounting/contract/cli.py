@@ -6,26 +6,29 @@ Depuis la racine du dépôt :
 """
 from __future__ import annotations
 
+import io
 import json
 import sys
+from typing import TextIO, cast
 
 from .handler import handle, reponse_erreur
 
 
-def main(argv=None, stdin=None, stdout=None) -> int:
+def main(argv: list[str] | None = None, stdin: TextIO | None = None, stdout: TextIO | None = None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     if stdin is None and not argv:  # pragma: no cover — flux réels de la console
-        sys.stdin.reconfigure(encoding="utf-8")
+        cast(io.TextIOWrapper, sys.stdin).reconfigure(encoding="utf-8")
         stdin = sys.stdin
     if stdout is None:  # pragma: no cover
-        sys.stdout.reconfigure(encoding="utf-8")   # arabe lisible même sous une console cp1252
+        cast(io.TextIOWrapper, sys.stdout).reconfigure(encoding="utf-8")   # arabe lisible même sous une console cp1252
         stdout = sys.stdout
+    reponse: dict | list[dict]
     try:
         if argv:
             with open(argv[0], encoding="utf-8") as f:
                 texte = f.read()
         else:
-            texte = stdin.read()
+            texte = cast(TextIO, stdin).read()  # stdin vaut sys.stdin quand aucun fichier n'est donné
         requete = json.loads(texte)
     except (OSError, json.JSONDecodeError) as exc:
         reponse, code = reponse_erreur(None, exc), 1

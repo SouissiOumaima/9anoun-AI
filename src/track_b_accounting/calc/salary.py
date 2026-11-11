@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 from decimal import Decimal
+from typing import Any
 
 from .loaders import (GRILLES, bornes_degre, charger_grille, decision_ref, exiger_tables_transcrites,
                       population_de_table)
@@ -110,7 +111,7 @@ def _cle_categorie(grille: dict, population: str, categorie, sous_categorie) -> 
     return cat, cat, info_alias
 
 
-def degre_from_anciennete(annees, secteur=None, population=None) -> int:
+def degre_from_anciennete(annees: Any, secteur: Any = None, population: Any = None) -> int:
     """Degré de la grille dont l'intervalle contient strictement l'ancienneté (degrés propres à chaque population).
 
     Les libellés du PDF (« 2/0 », « 4/2 », …, « 20+ ») font apparaître chaque borne intérieure
@@ -159,7 +160,7 @@ def _texte_art13(gabarit: str, **valeurs) -> str:
     return gabarit
 
 
-def regle_au_dela_dernier_degre(grille: dict, population: str, cle: str, annees) -> dict | None:
+def regle_au_dela_dernier_degre(grille: dict, population: str, cle: str, annees: Any) -> dict | None:
     """Règle de l'article 13 au-delà du dernier degré, ou None si elle ne s'applique pas (D10).
 
     - « ecart_cumule_biennal » (métallurgie, p.9) : n = ⌊(a − âge du dernier degré) / période⌋ paliers ;
@@ -207,7 +208,7 @@ def _tables_population(grille: dict, population: str) -> list[dict]:
     return [t for t in grille["grilles"] if population_de_table(grille, t) == population]
 
 
-def table_applicable(secteur, population, date) -> dict:
+def table_applicable(secteur: Any, population: Any, date: object) -> dict:
     """Table de la population dont effective_date est la plus récente ≤ date ; au-delà de valide_jusqu_au.date,
     refus lu dans le JSON."""
     jour = parse_date(date)
@@ -230,7 +231,8 @@ def table_applicable(secteur, population, date) -> dict:
     return table
 
 
-def salaire_base(secteur=None, population=None, categorie=None, anciennete_annees=None, date=None,
+def salaire_base(secteur: Any = None, population: Any = None, categorie: Any = None, anciennete_annees: Any = None,
+                 date: object = None,
                  unite_souhaitee: str | None = None, sous_categorie: str | None = None) -> Result:
     """Salaire de base dans l'unité de la table (TND/mois ou TND/heure), sans aucune conversion.
 

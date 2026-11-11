@@ -21,7 +21,7 @@ def refus(code, *a):
     return e.value
 
 
-@pytest.mark.parametrize("ligne", BAREME, ids=lambda l: f"{l['mode_remuneration']}-{l['regime_hebdomadaire_heures']}h")
+@pytest.mark.parametrize("ligne", BAREME, ids=lambda ligne: f"{ligne['mode_remuneration']}-{ligne['regime_hebdomadaire_heures']}h")
 def test_quatre_lignes_egales_au_json(ligne, ok):
     r = ok(smig(ligne["mode_remuneration"], ligne["regime_hebdomadaire_heures"], "2023-01-01"))
     assert r.montant == ligne["montant"]

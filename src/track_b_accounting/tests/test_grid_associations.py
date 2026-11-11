@@ -166,7 +166,7 @@ IDENTITES = [
 def test_identites_de_lignes_entre_tables(date):
     for groupe in IDENTITES:
         lignes = [TABLES[tid(p, date)]["valeurs"][lig] for p, lig in groupe]
-        assert all(l == lignes[0] for l in lignes), (date, groupe)
+        assert all(ligne == lignes[0] for ligne in lignes), (date, groupe)
     # Aucune autre paire de lignes identiques à cette date.
     toutes = [(p, lig, tuple(v)) for p in POPS for lig, v in TABLES[tid(p, date)]["valeurs"].items()]
     paires = {frozenset([(a, la), (b, lb)]) for i, (a, la, va) in enumerate(toutes) for b, lb, vb in toutes[i + 1:] if va == vb}

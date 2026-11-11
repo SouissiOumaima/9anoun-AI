@@ -803,9 +803,9 @@ DATES_PRIMES = [("2021-12-01", 2022), ("2023-01-01", 2023), ("2024-01-01", 2024)
 
 def test_primes_montants_transcrits():
     """Les 12 montants lus sur la page 14 (double lecture), avec date « بداية من » et année « بعنوان سنة »."""
-    lu = {code: [(l["effective_date"], l["au_titre_de"], {k: str(v) for k, v in l.items()
+    lu = {code: [(ligne["effective_date"], ligne["au_titre_de"], {k: str(v) for k, v in ligne.items()
                                                          if k not in ("effective_date", "au_titre_de")})
-                 for l in p["montants"]] for code, p in PRIMES.items()}
+                 for ligne in p["montants"]] for code, p in PRIMES.items()}
     assert lu == {
         "prime_transport": [(d, a, m) for (d, a), m in zip(DATES_PRIMES, (
             {"execution_et_gestion": "30.199", "cadres": "36.239"},
@@ -815,8 +815,8 @@ def test_primes_montants_transcrits():
         "prime_specifique_handicap": [(d, a, {"montant": m})
                                       for (d, a), m in zip(DATES_PRIMES, ("54.358", "58.027", "61.944"))],
     }
-    assert all(isinstance(v, Decimal) for p in PRIMES.values() for l in p["montants"]
-               for k, v in l.items() if k not in ("effective_date", "au_titre_de"))
+    assert all(isinstance(v, Decimal) for p in PRIMES.values() for ligne in p["montants"]
+               for k, v in ligne.items() if k not in ("effective_date", "au_titre_de"))
 
 
 def test_primes_meme_structure_que_la_metallurgie():
@@ -830,7 +830,7 @@ def test_primes_meme_structure_que_la_metallurgie():
 def test_primes_groupes_du_transport_fideles_au_texte():
     """« أعوان التنفيذ والتسيير » = agents d'exécution et de gestion ; « الإطارات » = cadres (art. 42 (جديد) 1, p.14)."""
     p = PRIMES["prime_transport"]
-    assert all(set(l) == {"effective_date", "execution_et_gestion", "cadres", "au_titre_de"} for l in p["montants"])
+    assert all(set(ligne) == {"effective_date", "execution_et_gestion", "cadres", "au_titre_de"} for ligne in p["montants"])
     assert p["libelles_groupes"] == {
         "execution_et_gestion": {"fr": "agents d'exécution et de gestion", "ar": "أعوان التنفيذ والتسيير"},
         "cadres": {"fr": "cadres", "ar": "الإطارات"}}

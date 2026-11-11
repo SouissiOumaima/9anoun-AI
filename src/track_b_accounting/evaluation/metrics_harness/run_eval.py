@@ -7,7 +7,14 @@ Depuis la racine du dépôt :
 Appelle le handler en Python direct (track_b_accounting.contract.handle), comme l'orchestrateur.
 Écrit results/eval_<date>.json et .md (ou results/baseline.json et .md avec --baseline).
 Sortie déterministe : même commit + même --date ⇒ fichiers identiques à l'octet près.
-Code de sortie : 1 s'il y a au moins un faux montant ou une exception inattendue, sinon 0.
+
+Sans --baseline, les métriques de l'ensemble sont comparées automatiquement à results/baseline.json :
+écart par métrique affiché et écrit dans results/eval_<date>_comparaison.json.
+
+Code de sortie :
+    1 s'il y a au moins un faux montant ou une exception inattendue ;
+    2 sinon, si au moins deux métriques baissent par rapport à la baseline (règle de régression) ;
+    0 sinon.
 """
 from __future__ import annotations
 
@@ -43,6 +50,29 @@ MESSAGE_INCORRECT = "message_refus_incorrect"   # bon code, mais message FR ou A
 ERREUR = "statut_erreur"                        # réponse status = erreur
 EXCEPTION = "exception_inattendue"              # le handler a levé une exception
 CRITIQUES = (FAUX_MONTANT, MONTANT_AU_LIEU_DE_REFUS)
+
+RESULTS_DIR = EVAL_DIR / "results"
+BASELINE = RESULTS_DIR / "baseline.json"
+
+# Sens de chaque métrique comparée à la baseline : +1 = plus haut est meilleur, -1 = plus bas est meilleur.
+# faux_montants_total n'est pas comparé : il additionne faux_montants et montants_au_lieu_de_refus.
+SENS_METRIQUES = {
+    "exactitude_montants": 1,
+    "refus_corrects": 1,
+    "citations_valides": 1,
+    "conformite_schema_track_b": 1,
+    "conformite_schema_commun": 1,
+    "faux_montants": -1,
+    "montants_au_lieu_de_refus": -1,
+    "silence_excessif": -1,
+    "codes_refus_incorrects": -1,
+    "messages_refus_incorrects": -1,
+    "statut_erreur": -1,
+    "exceptions_inattendues": -1,
+}
+SEUIL_BAISSES = 2   # nombre de métriques en baisse qui bloque le changement
+STABLE, AMELIORATION, BAISSE, NON_COMPARABLE = "stable", "amélioration", "baisse", "non comparable"
+CODE_CRITIQUE, CODE_REGRESSION = 1, 2
 
 
 def _sha256(p: Path) -> str:
@@ -229,6 +259,53 @@ def markdown(rap: dict) -> str:
     return "\n".join(lignes) + "\n"
 
 
+def _valeur(m: object) -> float | int | None:
+    """Valeur comparée d'une métrique : le taux pour un ratio, le nombre pour un compteur."""
+    if isinstance(m, dict):
+        return m.get("taux")
+    return m if isinstance(m, (int, float)) and not isinstance(m, bool) else None
+
+
+def comparer(baseline: dict, actuel: dict) -> list[dict]:
+    """Écart, métrique par métrique, entre les métriques « ensemble » de la baseline et celles de la relance."""
+    ecarts = []
+    for nom, sens in SENS_METRIQUES.items():
+        b, a = _valeur(baseline.get(nom)), _valeur(actuel.get(nom))
+        if b is None or a is None:
+            statut, ecart = NON_COMPARABLE, None
+        else:
+            ecart = round(a - b, 4)
+            statut = STABLE if ecart == 0 else AMELIORATION if ecart * sens > 0 else BAISSE
+        ecarts.append({"metrique": nom, "baseline": b, "actuel": a, "ecart": ecart, "statut": statut})
+    return ecarts
+
+
+def baisses(ecarts: list[dict]) -> list[str]:
+    return [e["metrique"] for e in ecarts if e["statut"] == BAISSE]
+
+
+def code_sortie(m: dict, ecarts: list[dict] | None) -> int:
+    """1 : faux montant ou exception ; 2 : au moins SEUIL_BAISSES métriques en baisse ; 0 sinon."""
+    if m["faux_montants_total"] or m["exceptions_inattendues"]:
+        return CODE_CRITIQUE
+    if ecarts is not None and len(baisses(ecarts)) >= SEUIL_BAISSES:
+        return CODE_REGRESSION
+    return 0
+
+
+def texte_comparaison(ecarts: list[dict], cas_baseline: object, cas_actuel: object) -> str:
+    def fmt(v: object) -> str:
+        return "—" if v is None else str(v)
+    lignes = [f"Comparaison à la baseline ({cas_baseline} cas -> {cas_actuel} cas) :"]
+    for e in ecarts:
+        lignes.append(f"  {e['metrique']:28s} {fmt(e['baseline']):>8s} -> {fmt(e['actuel']):<8s} "
+                      f"écart {fmt(e['ecart']):>8s}  {e['statut']}")
+    b = baisses(ecarts)
+    lignes.append(f"Métriques en baisse : {len(b)} ({', '.join(b) or 'aucune'}) ; "
+                  f"le changement est bloqué à partir de {SEUIL_BAISSES}.")
+    return "\n".join(lignes)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--date", required=True, help="date du rapport (AAAA-MM-JJ), écrite telle quelle : aucune horloge")
@@ -241,7 +318,7 @@ def main(argv=None) -> int:
     res = [evaluer_cas(c, refs, v_tb, v_commun) for c in golden["cases"]]
     rap = rapport(golden, res, args.date)
     nom = "baseline" if args.baseline else f"eval_{args.date}"
-    sortie = EVAL_DIR / "results"
+    sortie = RESULTS_DIR
     sortie.mkdir(exist_ok=True)
     (sortie / f"{nom}.json").write_text(json.dumps(rap, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
                                         encoding="utf-8", newline="\n")
@@ -250,7 +327,19 @@ def main(argv=None) -> int:
     print(f"{m['cas']} cas, faux montants : {m['faux_montants_total']}, exceptions : {m['exceptions_inattendues']}, "
           f"erreurs de lecture : {rap['erreurs_de_lecture'] or 'aucune'}, "
           f"désaccords d'interprétation : {rap['desaccords_interpretation'] or 'aucun'} -> results/{nom}.json, .md")
-    return 1 if m["faux_montants_total"] or m["exceptions_inattendues"] else 0
+    ecarts = None
+    if not args.baseline:
+        if BASELINE.is_file():
+            base = json.loads(BASELINE.read_text(encoding="utf-8"))["metriques"]["ensemble"]
+            ecarts = comparer(base, m)
+            (sortie / f"{nom}_comparaison.json").write_text(
+                json.dumps({"baseline": BASELINE.name, "cas_baseline": base.get("cas"), "cas": m["cas"],
+                            "ecarts": ecarts, "baisses": baisses(ecarts), "seuil_baisses": SEUIL_BAISSES},
+                           ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+            print(texte_comparaison(ecarts, base.get("cas"), m["cas"]))
+        else:
+            print(f"Aucune baseline ({BASELINE.name}) : comparaison impossible.")
+    return code_sortie(m, ecarts)
 
 
 if __name__ == "__main__":

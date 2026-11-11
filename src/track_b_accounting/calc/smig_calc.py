@@ -9,7 +9,7 @@ from .models import Citation, Refus, Result, arrondi_millime, parse_date
 UNITES = {"mensuel": "TND/mois", "horaire": "TND/heure"}
 
 
-def smig(mode: str, regime_heures: int, date) -> Result:
+def smig(mode: str, regime_heures: int, date: object) -> Result:
     data = charger_smig()
     bloc = data["smig_non_agricole"]
     decret = bloc["decree"]
@@ -23,7 +23,7 @@ def smig(mode: str, regime_heures: int, date) -> Result:
                     f"صفحة مصدر جدول الأجر الأدنى غير موجودة في {SMIG_FILE}: لا يمكن الاستشهاد بالمبلغ.")
     ref = decision_ref_smig(bloc)
 
-    modes = sorted({l["mode_remuneration"] for l in bloc["bareme"]})
+    modes = sorted({entree["mode_remuneration"] for entree in bloc["bareme"]})
     if mode not in modes:
         raise Refus(Refus.PARAM_INVALIDE, f"Mode de rémunération inconnu : {mode!r} (attendu : {', '.join(modes)}).",
                     f"طريقة تأجير غير معروفة: {mode!r} (المتوفر: {', '.join(modes)}).")
@@ -39,10 +39,10 @@ def smig(mode: str, regime_heures: int, date) -> Result:
                     f"جدول الأمر عدد {decret['number']} لسنة {decret['year']} (نافذ منذ {effet.isoformat()}) هو "
                     f"الوحيد المُتحقَّق منه؛ لا يتوفر أجر أدنى بتاريخ {jour.isoformat()}.")
 
-    ligne = next((l for l in bloc["bareme"]
-                  if l["mode_remuneration"] == mode and l["regime_hebdomadaire_heures"] == regime_heures), None)
+    ligne = next((entree for entree in bloc["bareme"]
+                  if entree["mode_remuneration"] == mode and entree["regime_hebdomadaire_heures"] == regime_heures), None)
     if ligne is None:
-        regimes = sorted({l["regime_hebdomadaire_heures"] for l in bloc["bareme"] if l["mode_remuneration"] == mode})
+        regimes = sorted({entree["regime_hebdomadaire_heures"] for entree in bloc["bareme"] if entree["mode_remuneration"] == mode})
         raise Refus(Refus.SOURCE_MANQUANTE,
                     f"Régime de {regime_heures} h absent du barème SMIG ({mode} : {regimes} h). "
                     "Aucune interpolation entre régimes n'est écrite dans la source.",

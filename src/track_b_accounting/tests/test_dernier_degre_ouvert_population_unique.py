@@ -221,7 +221,7 @@ def test_assurance_grille_activee_structure():
     assert list(SQ["populations"]) == ["tous_agents"]
     cles = SQ["categories"]["tous_agents"]
     assert cles == [str(n) for n in range(21, 3, -1)] + ["استثنائي", "3", "2", "1"]
-    assert [l["cle"] for l in SQ["lignes_grille"]["tous_agents"]] == cles
+    assert [ligne["cle"] for ligne in SQ["lignes_grille"]["tous_agents"]] == cles
     assert [d["anciennete_label"] for d in SQ["degres"]["tous_agents"]] == LABELS
     assert SQ["au_dela_dernier_degre"]["tous_agents"]["regle"] == "ouvert"
     tables = [(t["table_id"], t["effective_date"], t["source_pdf_page"], t["unite"]) for t in SQ["tables_a_transcrire"]]

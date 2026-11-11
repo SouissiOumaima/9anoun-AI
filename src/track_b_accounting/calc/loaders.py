@@ -9,6 +9,7 @@ import re
 from decimal import Decimal
 from functools import lru_cache
 from pathlib import Path
+from typing import Any
 
 from .models import Refus
 
@@ -138,14 +139,16 @@ def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
         # Dernier degré ouvert (« 30+ ») servi tel quel : ni plafond ni extrapolation, texte de la source cité.
         _exiger(_entier_positif(bloc["source_pdf_page"]) and _texte(bloc["source_article"])
                 and _texte(bloc["texte_source_ar"]), f"{objet} : source_pdf_page, source_article et texte_source_ar attendus")
-        bornes = [bornes_degre(d["anciennete_label"]) for d in degres]
-        _exiger(bool(degres) and all(bornes) and bornes[-1][1] is None,
+        lues = [bornes_degre(d["anciennete_label"]) for d in degres]
+        bornes = [b for b in lues if b is not None]
+        _exiger(bool(degres) and all(lues) and bornes[-1][1] is None,
                 f"{objet} : dernier degré ouvert (« n+ ») attendu")
         return
     _exiger(regle in ("ecart_cumule_biennal", "table_correspondance"), f"{objet} : règle inconnue {regle!r}")
     _valider_art13_commun(bloc, objet)
-    bornes = [bornes_degre(d["anciennete_label"]) for d in degres]
-    _exiger(len(degres) >= 2 and all(bornes) and bornes[-1][1] is None
+    lues = [bornes_degre(d["anciennete_label"]) for d in degres]
+    bornes = [b for b in lues if b is not None]
+    _exiger(len(degres) >= 2 and all(lues) and bornes[-1][1] is None
             and bornes[-1][0] == bloc["dernier_degre_atteint_a_annees"],
             f"{objet} : dernier degré ouvert atteint à {bloc['dernier_degre_atteint_a_annees']} ans attendu")
     if regle == "ecart_cumule_biennal":
@@ -215,7 +218,7 @@ def _valider_textes_prime(p: dict) -> None:
                 f"{objet} : hypotheses fr et ar non vides et de même longueur attendues")
     if "libelles_groupes" in p:
         libelles = p["libelles_groupes"]
-        _exiger(isinstance(libelles, dict) and all(_texte(l["fr"]) and _texte(l["ar"]) for l in libelles.values()),
+        _exiger(isinstance(libelles, dict) and all(_texte(lib["fr"]) and _texte(lib["ar"]) for lib in libelles.values()),
                 f"{objet} : libelles_groupes fr et ar attendus")
         for ligne in p.get("montants", []):
             _exiger(set(libelles) == set(ligne) - {"effective_date", "au_titre_de"},
@@ -283,7 +286,7 @@ def valider_grille(data: dict, chemin: str) -> dict:
                     f"degres[{pop}] : liste de degrés attendue")
         # Ce que dit la source au-delà du dernier degré (D8, D10) : obligatoire pour toute population à degrés.
         au_dela = data["au_dela_dernier_degre"]
-        _exiger(isinstance(au_dela, dict) and set(au_dela) == {p for p, l in degres.items() if l},
+        _exiger(isinstance(au_dela, dict) and set(au_dela) == {p for p, liste in degres.items() if liste},
                 "au_dela_dernier_degre : un bloc par population à degrés attendu")
         for pop, bloc in au_dela.items():
             _valider_au_dela(bloc, pop, degres[pop], cats[pop])
@@ -386,7 +389,7 @@ def secteurs_disponibles() -> list[str]:
     return out
 
 
-def charger_grille(secteur) -> dict:
+def charger_grille(secteur: Any) -> dict:
     """Grille vérifiée du secteur. Secteur absent → PARAM_INVALIDE ; inconnu → SOURCE_MANQUANTE."""
     if not _texte(secteur):
         dispo = ", ".join(secteurs_disponibles())
