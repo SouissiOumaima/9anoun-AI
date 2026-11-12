@@ -60,3 +60,67 @@ Une réponse DS3 avec `mode = "mock"` ne doit jamais être utilisée comme preuv
 - Transmission des citations et avertissements DS3.
 
 Aucune modification du contrat v0 avant clarification des règles v1.
+
+
+## 5. Intégration du contrat DS3 v2
+
+### 5.1 Contrat de référence
+
+Le contrat documentaire de référence est `ds3.v2`.
+
+DS4 reçoit les données documentaires via DS1, qui reste l'unique orchestrateur.
+
+La structure de référence est définie dans :
+- `data/mock_cards/schemas/document_intelligence_response.v2.schema.json`
+- `docs/CONTRACT_DOCUMENT_INTELLIGENCE_V2.md`
+
+### 5.2 Validation des réponses
+
+Avant d'exploiter une réponse DS3, vérifier :
+- La version du contrat : `ds3.v2`.
+- Le statut : `ok`, `refus` ou `erreur`.
+- Le mode : `mock` ou `live`.
+- La présence et la validité des citations utilisées.
+- Les avertissements disponibles.
+
+Une réponse `refus` ou `erreur` ne fournit pas de preuve exploitable.
+
+Le mode `mock` est réservé aux tests et ne doit jamais servir de preuve dans un dossier réel.
+
+Le mode `live` ne suffit pas, à lui seul, à établir qu'un fait est vérifié.
+
+### 5.3 Validation des champs extraits
+
+Pour chaque champ documentaire utilisé :
+- `value` contient une chaîne ou `null`.
+- `confidence` est compris entre 0 et 1.
+- `citation_id` identifie une citation ou vaut `null`.
+- `unreadable_reason` peut indiquer une information absente, illisible ou incohérente.
+
+Une valeur `null` ne doit jamais être considérée comme un fait établi.
+
+Le champ `result.complete = true` ne garantit pas que toutes les informations nécessaires à l'analyse juridique sont disponibles.
+
+### 5.4 Traçabilité des citations
+
+Une citation documentaire contient :
+- `citation_id`
+- `document_id`
+- `page`
+- `bbox`
+- `excerpt`
+
+DS4 devra vérifier que chaque `citation_id` exploité correspond à une citation présente dans la réponse.
+
+Une citation documentaire atteste la provenance d'une extraction, mais ne constitue pas automatiquement une preuve juridique suffisante.
+
+### 5.5 Règles en attente de validation
+
+Les points suivants doivent être confirmés avec DS1 / Achref :
+- Le seuil de confiance applicable à DS4.
+- La structure des confirmations utilisateur.
+- Le format de transmission des résultats DS3 vers DS4.
+- La correspondance entre les citations DS3 et les preuves DS4.
+- Le comportement exact de `track_a.v1` en cas de données insuffisantes.
+
+Aucun changement du contrat `track_a.v0` avant validation.
