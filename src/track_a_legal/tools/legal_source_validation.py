@@ -30,6 +30,22 @@ def is_usable_legal_response(response: Any) -> bool:
     if not isinstance(citations, list) or not citations:
         return False
 
-    # La réponse est admissible aux contrôles approfondis.
+    # Chaque résultat doit être un objet contenant une citation.
+    # La citation doit elle-même être un objet JSON.
+    for result in results:
+        if not isinstance(result, dict):
+            return False
+
+        if not isinstance(result.get("citation"), dict):
+            return False
+
+    # DS2 construit les citations globales dans le même ordre
+    # que les citations intégrées aux résultats.
+    expected_citations = [result["citation"] for result in results]
+
+    if citations != expected_citations:
+        return False
+
+    # La réponse a passé les contrôles préliminaires.
     # Cela ne garantit ni la validité juridique ni l'applicabilité.
     return True

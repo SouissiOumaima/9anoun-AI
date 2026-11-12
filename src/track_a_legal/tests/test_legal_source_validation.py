@@ -1,4 +1,4 @@
-﻿"""Tests des contrôles préliminaires des réponses DS2."""
+"""Tests des contrôles préliminaires des réponses DS2."""
 
 import pytest
 
@@ -16,7 +16,12 @@ def valid_response():
         "request_id": "ds4-test-001",
         "status": "ok",
         "mode": "live",
-        "results": [{"article_id": "ARTICLE-1"}],
+        "results": [
+            {
+                "article_id": "ARTICLE-1",
+                "citation": {"source_file": "source.pdf"},
+            }
+        ],
         "citations": [{"source_file": "source.pdf"}],
         "refus": None,
     }
@@ -66,3 +71,52 @@ def test_rejects_missing_required_field(valid_response):
     response.pop("mode")
 
     assert is_usable_legal_response(response) is False
+
+
+def test_rejects_result_without_citation(valid_response):
+    """Rejeter un résultat qui ne contient aucune citation."""
+
+    response = valid_response.copy()
+    response["results"] = [{"article_id": "ARTICLE-1"}]
+
+    assert is_usable_legal_response(response) is False
+
+
+def test_rejects_mismatched_citation(valid_response):
+    """Rejeter une citation globale différente de celle du résultat."""
+
+    response = valid_response.copy()
+    response["citations"] = [{"source_file": "other.pdf"}]
+
+    assert is_usable_legal_response(response) is False
+
+
+def test_rejects_wrong_citation_order(valid_response):
+    """Rejeter une liste de citations dans un ordre incorrect."""
+
+    response = valid_response.copy()
+    response["results"] = [
+        {"article_id": "ARTICLE-1", "citation": {"source_file": "a.pdf"}},
+        {"article_id": "ARTICLE-2", "citation": {"source_file": "b.pdf"}},
+    ]
+    response["citations"] = [
+        {"source_file": "b.pdf"},
+        {"source_file": "a.pdf"},
+    ]
+
+    assert is_usable_legal_response(response) is False
+
+
+def test_accepts_shared_citation(valid_response):
+    """Autoriser plusieurs résultats partageant la même citation."""
+
+    response = valid_response.copy()
+    citation = {"source_file": "source.pdf"}
+
+    response["results"] = [
+        {"article_id": "ARTICLE-1-v1", "citation": citation},
+        {"article_id": "ARTICLE-1-v2", "citation": citation},
+    ]
+    response["citations"] = [citation, citation]
+
+    assert is_usable_legal_response(response) is True
