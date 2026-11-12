@@ -173,3 +173,112 @@ def test_multiple_sources_do_not_invent_relations() -> None:
         item["relation"] in ("supports", "contradicts")
         for item in result
     )
+
+def test_duplicate_source_references_preserve_v0_behavior() -> None:
+    """
+    Vérifie le comportement actuel de v0 :
+    une référence répétée produit deux relations explicites.
+
+    Ce test caractérise l'existant sans imposer
+    une future règle de déduplication à v1.
+    """
+
+    events = [
+        {
+            "event_id": "EV-DUP-001",
+            "date": "2026-09-12",
+            "description": "Événement fictif.",
+            "source_ids": ["E1", "E1"],
+        }
+    ]
+
+    result = map_event_evidence(events, create_fake_evidence())
+
+    # Le comportement actuel conserve les deux occurrences.
+    assert len(result) == 2
+
+    # Les relations produites sont identiques.
+    assert result[0] == result[1] == {
+        "event_id": "EV-DUP-001",
+        "evidence_id": "E1",
+        "relation": "source",
+    }
+
+
+def test_shared_evidence_across_multiple_events() -> None:
+    """
+    Vérifie qu'une même preuve peut être référencée
+    explicitement par plusieurs événements distincts.
+
+    Aucune relation supplémentaire ne doit être inventée.
+    """
+
+    events = [
+        {
+            "event_id": "EV-SHARED-001",
+            "date": "2026-09-10",
+            "description": "Premier événement fictif.",
+            "source_ids": ["E1"],
+        },
+        {
+            "event_id": "EV-SHARED-002",
+            "date": "2026-09-11",
+            "description": "Deuxième événement fictif.",
+            "source_ids": ["E1"],
+        },
+    ]
+
+    result = map_event_evidence(events, create_fake_evidence())
+
+    # Chaque événement conserve sa propre association explicite.
+    assert result == [
+        {
+            "event_id": "EV-SHARED-001",
+            "evidence_id": "E1",
+            "relation": "source",
+        },
+        {
+            "event_id": "EV-SHARED-002",
+            "evidence_id": "E1",
+            "relation": "source",
+        },
+    ]
+
+
+def test_unreferenced_evidence_creates_no_mapping() -> None:
+    """
+    Vérifie qu'une preuve disponible mais non référencée
+    ne produit aucune relation avec un événement.
+
+    DS4 ne doit pas déduire une association à partir
+    du contenu ou de l'existence d'une preuve.
+    """
+
+    events = [
+        {
+            "event_id": "EV-UNREF-001",
+            "date": "2026-09-12",
+            "description": "Événement fictif.",
+            "source_ids": ["E1"],
+        }
+    ]
+
+    # E1 est référencée, tandis que E2 et E3 ne le sont pas.
+    evidence = create_fake_evidence()
+
+    result = map_event_evidence(events, evidence)
+
+    # Seule l'association explicitement déclarée est conservée.
+    assert result == [
+        {
+            "event_id": "EV-UNREF-001",
+            "evidence_id": "E1",
+            "relation": "source",
+        }
+    ]
+
+    # Les preuves non référencées ne créent aucune relation.
+    assert not any(
+        item["evidence_id"] in {"E2", "E3"}
+        for item in result
+    )
