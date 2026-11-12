@@ -293,57 +293,6 @@ def test_accepts_live_wage_grid_with_valid_citation():
     assert is_usable_document_response(response) is True
 
 
-def test_accepts_live_wage_grid_with_valid_citation():
-    """Accepter une grille DS3 live avec une citation coherente."""
-
-    # Construire une grille conforme a la structure DS3 v2.
-    response = {
-        "contract_version": "ds3.v2",
-        "status": "ok",
-        "mode": "live",
-        "computed_by": "document_intelligence.service",
-        "operation": "extract_wage_grid",
-        "document_id": "doc-grid-001",
-        "result": {
-            "title": "Grille des salaires",
-            "sector_ar": "قطاع الحراسة",
-            "sector_code": None,
-            "effective_date": "2026-01-01",
-            "unit": "TND/mois",
-            "legal_basis": "Article 43",
-            "citation_id": "c1",
-            "complete": True,
-            "grades": [
-                {
-                    "grade": 1,
-                    "duration_years": 1,
-                    "seniority": "0-1",
-                }
-            ],
-            "values": [
-                {
-                    "category": 1,
-                    "grade": 1,
-                    "amount": "424.100",
-                    "confidence": 0.97,
-                    "unreadable_reason": None,
-                }
-            ],
-        },
-        "citations": [
-            {
-                "citation_id": "c1",
-                "document_id": "doc-grid-001",
-                "page": 21,
-                "bbox": None,
-                "excerpt": "Grille des salaires applicable",
-            }
-        ],
-    }
-
-    # Une grille valide doit passer les controles preliminaires.
-    # Cela ne confirme pas son applicabilite juridique.
-    assert is_usable_document_response(response) is True
 
 
 def test_accepts_partial_document_with_unreadable_field():
