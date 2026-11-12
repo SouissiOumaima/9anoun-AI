@@ -120,3 +120,139 @@ def test_accepts_shared_citation(valid_response):
     response["citations"] = [citation, citation]
 
     assert is_usable_legal_response(response) is True
+
+
+def test_rejects_multiple_applicable_versions(valid_response):
+    """Rejeter deux versions applicables du même article."""
+
+    # Construire deux versions appartenant au même groupe juridique.
+    citation = {"source_file": "source.pdf"}
+
+    response = valid_response.copy()
+    response["results"] = [
+        {
+            "article_id": "ARTICLE-1-v1",
+            "version_group": "ARTICLE-1",
+            "version": 1,
+            "applicable_at_reference_date": True,
+            "citation": citation,
+        },
+        {
+            "article_id": "ARTICLE-1-v2",
+            "version_group": "ARTICLE-1",
+            "version": 2,
+            "applicable_at_reference_date": True,
+            "citation": citation,
+        },
+    ]
+
+    # Conserver la cohérence des citations pour isoler
+    # uniquement le problème de versionnement.
+    response["citations"] = [citation, citation]
+
+    # Deux versions du même article ne doivent pas être
+    # déclarées simultanément applicables.
+    assert is_usable_legal_response(response) is False
+
+
+def test_rejects_inverted_effective_dates(valid_response):
+    """Rejeter une période dont la fin précède le début."""
+
+    # Construire une réponse DS2 avec des dates inversées.
+    response = valid_response.copy()
+    response["results"] = [
+        {
+            "article_id": "ARTICLE-1-v1",
+            "effective_from": "2026-12-31",
+            "effective_to": "2026-01-01",
+            "citation": {"source_file": "source.pdf"},
+        }
+    ]
+
+    # Les citations restent cohérentes pour isoler le problème.
+    response["citations"] = [{"source_file": "source.pdf"}]
+
+    # Une période inversée doit être rejetée.
+    assert is_usable_legal_response(response) is False
+
+
+def test_rejects_invalid_effective_date(valid_response):
+    """Rejeter une date calendaire impossible."""
+
+    # Construire une réponse contenant une date invalide.
+    response = valid_response.copy()
+    response["results"] = [
+        {
+            "article_id": "ARTICLE-1-v1",
+            "effective_from": "2026-02-30",
+            "effective_to": "2026-12-31",
+            "citation": {"source_file": "source.pdf"},
+        }
+    ]
+
+    # Conserver des citations cohérentes.
+    response["citations"] = [{"source_file": "source.pdf"}]
+
+    # Une date impossible doit être rejetée.
+    assert is_usable_legal_response(response) is False
+
+
+@pytest.mark.parametrize(
+    "start, end",
+    [
+        (None, None),
+        (None, "2026-12-31"),
+        ("2026-01-01", None),
+    ],
+)
+def test_accepts_unknown_effective_date_boundaries(
+    valid_response, start, end
+):
+    """Accepter les bornes inconnues sans prouver l'applicabilite."""
+
+    # Construire une reponse avec une ou deux bornes inconnues.
+    response = valid_response.copy()
+    response["results"] = [
+        {
+            "article_id": "ARTICLE-1-v1",
+            "effective_from": start,
+            "effective_to": end,
+            "citation": {"source_file": "source.pdf"},
+        }
+    ]
+
+    # Conserver des citations coherentes.
+    response["citations"] = [{"source_file": "source.pdf"}]
+
+    # Les valeurs nulles sont autorisees par le contrat DS2.
+    assert is_usable_legal_response(response) is True
+
+
+@pytest.mark.parametrize(
+    "start, end",
+    [
+        ("2026-02-30", None),
+        (None, "2026-02-30"),
+    ],
+)
+def test_rejects_invalid_single_effective_boundary(
+    valid_response, start, end
+):
+    """Rejeter une date invalide meme si l'autre borne est inconnue."""
+
+    # Construire une reponse DS2 avec une seule date invalide.
+    response = valid_response.copy()
+    response["results"] = [
+        {
+            "article_id": "ARTICLE-1-v1",
+            "effective_from": start,
+            "effective_to": end,
+            "citation": {"source_file": "source.pdf"},
+        }
+    ]
+
+    # Conserver la coherence des citations.
+    response["citations"] = [{"source_file": "source.pdf"}]
+
+    # Toute date renseignee doit etre valide.
+    assert is_usable_legal_response(response) is False
