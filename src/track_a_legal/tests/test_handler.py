@@ -146,3 +146,37 @@ def test_handler_rejects_nonexistent_evidence_reference():
     # Aucune conclusion ni citation ne doit etre inventee
     assert response["result"] is None
     assert response["citations"] == []
+
+def test_handler_schema_loading_error_hides_internal_details() -> None:
+    """
+    Vérifie qu'une erreur de chargement du schéma JSON
+    ne divulgue pas d'informations techniques internes.
+    """
+
+    # Préparer une requête fictive valide.
+    request = load_demo_case()
+
+    # Simuler une erreur contenant une information sensible fictive.
+    internal_message = "SECRET_INTERNAL_SCHEMA_PATH"
+
+    with patch(
+        "src.track_a_legal.handler.load_schema",
+        side_effect=OSError(internal_message),
+    ):
+        response = handle(request)
+
+    # Le Handler doit retourner une erreur technique sécurisée.
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+
+    # Aucun résultat ni citation ne doit être inventé.
+    assert response["result"] is None
+    assert response["citations"] == []
+    assert response["refus"] is None
+
+    # Le détail interne ne doit jamais apparaître dans la réponse.
+    assert internal_message not in str(response)
+
+    # Les identifiants du dossier doivent être conservés.
+    assert response["request_id"] == request["request_id"]
+    assert response["case_id"] == request["case_id"]
