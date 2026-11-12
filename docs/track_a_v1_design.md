@@ -124,3 +124,53 @@ Les points suivants doivent être confirmés avec DS1 / Achref :
 - Le comportement exact de `track_a.v1` en cas de données insuffisantes.
 
 Aucun changement du contrat `track_a.v0` avant validation.
+
+## 6. Etat actuel de l'integration DS1
+
+### 6.1 Orchestration existante
+
+L'analyse du code de la branche DS1_Live_Integration montre que :
+
+- DS1 reste l'unique orchestrateur.
+- Le Planner selectionne actuellement un agent specialise par requete.
+- Une demande CASE_ANALYSIS est dirigee vers track_a_legal.analyze_case.
+- DS1 construit actuellement une requete track_a.v0 depuis la Case Card.
+- Aucun chainage automatique DS2 -> DS3 -> DS4 n'a ete identifie dans les modules examines.
+
+### 6.2 Validation documentaire existante
+
+L'interface DS1 implemente deja une revue humaine des champs DS3 pour DS5.
+
+Les tests couvrent notamment :
+- Le refus des champs documentaires inutilisables.
+- Le refus des champs sous le seuil de confiance DS5.
+- Le blocage des calculs DS5 si le mode documentaire n'est pas live.
+- L'obligation de confirmer les champs avant leur utilisation par DS5.
+
+Ces protections ne constituent pas encore une integration DS3 -> DS4.
+
+Le seuil 0.90 utilise par DS5 ne doit pas etre applique automatiquement a DS4.
+
+### 6.3 Integration juridique a definir
+
+Le contrat DS2 legal_retrieval.v0 fournit des articles et des citations.
+
+Le format de transmission de ces informations vers legal_sources dans
+track_a.v1 reste a definir avec DS1 et DS2.
+
+Les reponses DS2 en mode mock ne doivent pas constituer des preuves
+juridiques reelles.
+
+### 6.4 Decisions en attente
+
+Avant l'implementation de track_a.v1, confirmer avec Achref :
+
+- Le schema exact de la requete DS4 v1.
+- Le parcours de transmission DS2 et DS3 vers DS4.
+- La representation des confirmations humaines.
+- Le seuil de confiance documentaire applicable a DS4.
+- Les controles de provenance et de citations.
+- Les comportements de refus et les codes d'erreur.
+
+Aucune modification du contrat track_a.v0 sans validation.
+
