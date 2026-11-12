@@ -216,3 +216,42 @@ def test_opposite_claims_remain_unverified() -> None:
 
     # Aucune conclusion juridique inventee.
     assert result["legal_conclusion"] is None
+
+def test_partially_documented_case_does_not_invent_evidence() -> None:
+    """
+    Vérifie qu'un dossier partiellement documenté
+    conserve uniquement les associations explicites.
+
+    Une preuve liée à un événement ne valide pas
+    automatiquement les autres événements ou déclarations.
+    """
+
+    # Construire un dossier fictif valide.
+    case = create_fake_case()
+
+    # Le premier événement conserve sa preuve E2.
+    # Le second événement ne possède aucune référence.
+    case["events"][1]["source_ids"] = []
+
+    # Analyser le dossier partiellement documenté.
+    result = analyze_case(case)
+
+    # Seule la relation explicitement déclarée est conservée.
+    assert result["evidence_mapping"] == [
+        {
+            "event_id": "EV2",
+            "evidence_id": "E2",
+            "relation": "source",
+        }
+    ]
+
+    # La déclaration reste non vérifiée.
+    assert result["claims_analysis"][0]["status"] == "unverified"
+
+    # Aucune contradiction ni preuve manquante
+    # n'est automatiquement déduite par la version actuelle.
+    assert result["contradictions"] == []
+    assert result["missing_evidence"] == []
+
+    # Aucune conclusion juridique n'est inventée.
+    assert result["legal_conclusion"] is None
