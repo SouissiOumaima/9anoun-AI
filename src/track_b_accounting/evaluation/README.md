@@ -120,6 +120,7 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
 - **244 cas sur plus de 10 000 cellules transcrites** : c'est un échantillon. La couverture
   exhaustive des grilles repose sur la double lecture et les contrôles
   automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`,
-  `../tests/test_grid_associations.py`).
+  `../tests/test_grid_associations.py`), dont le contrôle de hausse entre
+  dates sur toutes les grilles à plusieurs tables (`../tests/test_controle_hausse.py`).
 - Les scans des pages 30 à 35 de la métallurgie sont bruités ; les cas dont un
   chiffre est peu net portent une `note`.

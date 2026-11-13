@@ -53,6 +53,21 @@ Toutes depuis la racine du dépôt :
 | Démo du contrat | `python -m src.track_b_accounting.demo` |
 | Une requête JSON | `python -m src.track_b_accounting.contract.cli <fichier.json>` |
 
+## Méthode de lecture des grilles
+
+1. **Double lecture indépendante** de chaque tableau, sur image, à deux résolutions et dans deux ordres différents,
+   puis comparaison des deux lectures cellule par cellule ; tout écart est tranché sur l'image à 400 dpi.
+2. **Cellule illisible** (chiffre abîmé, absent de l'impression) : déclarée `SOURCE_MANQUANTE` avec sa page et sa
+   raison (`cellules_source_manquante`, D48), jamais remplie par une valeur calculée.
+3. **Contrôle de hausse entre dates** (`tests/test_controle_hausse.py`, permanent) : pour chaque population à
+   plusieurs tables datées, la hausse de chaque cellule entre deux dates voisines est comparée à celle de sa ligne
+   (montant fixe ou pourcentage fixe, au millime près). Une cellule qui s'écarte est relue sur l'image : chiffre
+   abîmé → source manquante ; valeur bien imprimée → liste nommée `ANOMALIES_IMPRIMEES` du test. Ce contrôle a
+   trouvé des cellules mal lues alors que les deux lectures concordaient (D50, D52). Il ne couvre pas les grilles à
+   une seule table (enseignement privé, gardiennage), ni une erreur reproduite à l'identique aux deux dates.
+4. **Contrôles par grille** (lignes croissantes, comparaison au SMIG, valeurs figées dans les tests) et lots de
+   vérification relus par DS5.
+
 ## Reste à faire
 
 - **mypy strict** sur `calc/` et `contract/` : les contrôles actuels utilisent les réglages par défaut de mypy et

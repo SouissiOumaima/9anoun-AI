@@ -72,13 +72,15 @@ def test_seules_les_cases_illisibles_sont_null():
     }
     assert nulles == {
         CAFE: [],
-        VOY: [],
+        VOY: [("VOY_TOUS_AGENTS_2022-05-01", "3", 7), ("VOY_TOUS_AGENTS_2022-05-01", "8", 7)],
         HOT: [],
         PAT: [],
         CONF: [
+            ("CONF_MENSUELS_2021-12-01", "1", 8),
             ("CONF_MENSUELS_2021-12-01", "2", 8),
             ("CONF_MENSUELS_2021-12-01", "3", 8),
             ("CONF_MENSUELS_2021-12-01", "5", 8),
+            ("CONF_MENSUELS_2021-12-01", "6", 8),
             ("CONF_MENSUELS_2024-01-01", "2", 8),
             ("CONF_MENSUELS_2024-01-01", "3", 8),
             ("CONF_MENSUELS_2024-01-01", "6", 8),
