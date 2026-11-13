@@ -15,7 +15,7 @@
    19
   ],
   "tables_transcrites": true,
-  "statut_verification": "260 cellules lues par une double lecture indépendante (rendus à 200 et 280 dpi), comparées par script ; 0 écart, 0 cellule douteuse ; lots de vérification relus contre l'image par DS5 (« LOTS VALIDÉS », aucune correction) ; montants des primes lus deux fois (90 et 170 dpi) et relus contre l'image par DS5.",
+  "statut_verification": "260 cellules lues par une double lecture indépendante (rendus à 200 et 280 dpi), comparées par script ; 0 écart, 0 cellule douteuse ; lots de vérification relus contre l'image par DS5 (« LOTS VALIDÉS », aucune correction) ; montants des primes lus deux fois (90 et 170 dpi) et relus contre l'image par DS5. Mise à jour du 2026-11-13 (contrôle de hausse entre dates, D50) : 2 cellules au dernier chiffre abîmé déclarées SOURCE_MANQUANTE (tableau 2022, degré 7, lignes 3 et 8 : 3 ou 8) ; dans la même colonne, lignes 1, 6 et 7 au dernier chiffre partiellement effacé, mais lu sur l'image à 400 dpi : valeurs conservées telles qu'imprimées.",
   "decision_ref": "D50",
   "currency": "TND",
   "note_unite": "Grille des salaires mensuels, régime de 48 heures par semaine imprimé en tête des deux tableaux (p.18-19) : TND/mois.",
@@ -410,6 +410,26 @@
    "source_pdf_page": 18,
    "unite": "TND/mois",
    "regime_hebdomadaire_heures": 48,
+   "cellules_source_manquante": [
+    {
+     "categorie": "3",
+     "degre": 7,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (3 ou 8)",
+     "message_fr": "Salaire de base, catégorie 3, degré 7 (tableau n° 1, en vigueur à partir du 2022-05-01, page 18) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "الأجر، الصنف 3، الدرجة 7 (جدول الأجور الذي يقع العمل به بداية من 2022-05-01، الصفحة 18): الرقم الأخير تالف في الطباعة (3 أو 8)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "8",
+     "degre": 7,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (3 ou 8)",
+     "message_fr": "Salaire de base, catégorie 8, degré 7 (tableau n° 1, en vigueur à partir du 2022-05-01, page 18) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "الأجر، الصنف 8، الدرجة 7 (جدول الأجور الذي يقع العمل به بداية من 2022-05-01، الصفحة 18): الرقم الأخير تالف في الطباعة (3 أو 8)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
    "valeurs": {
     "1": [
      504.153,
@@ -448,7 +468,7 @@
      652.790,
      667.971,
      683.152,
-     698.333,
+     null,
      713.514,
      728.695,
      743.876,
@@ -523,7 +543,7 @@
      940.614,
      962.489,
      984.363,
-     1006.233,
+     null,
      1028.113,
      1049.988,
      1071.862,

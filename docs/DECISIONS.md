@@ -2331,6 +2331,17 @@ gestion 6-8, cadres 9-10) × 13 degrés = 260 montants ; durées 1, 2 (×6), 3 (
 **Statut de vérification** : 260 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour (2026-11-13) : le contrôle de hausse entre dates (`test_controle_hausse.py`) a signalé le tableau n° 1
+(2022-05-01, p.18), ligne 8, degré 7 : 1006,233 s'écarte de 0,006 de la hausse de 6,5 % de sa ligne. Relue à 400 dpi,
+la cellule a son dernier chiffre abîmé à l'impression (moitié gauche effacée : 3 ou 8). Toute la colonne 7 du
+tableau n° 1 a ensuite été relue à 400 dpi ; décision de DS5 :
+- lignes 3 (698,333) et 8 (1006,233) : dernier chiffre abîmé, 3 ou 8 ; déclarées `SOURCE_MANQUANTE`
+  (`cellules_source_manquante`, D48, valeur `null`), aucune valeur calculée n'est saisie ;
+- lignes 1 (579,775), 6 (868,902) et 7 (915,568) : dernier chiffre partiellement effacé, mais lu sur l'image à
+  400 dpi ; valeurs conservées telles qu'imprimées.
+
+Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules.
+
 ---
 
 ### D51 — Grille salariale HOTELS_TOURISTIQUES (pages 2-3, 8-9, 15-18, 42-44)
@@ -2394,6 +2405,15 @@ référence : en attente de vérification humaine.
 
 **Statut de vérification** : 450 cellules en double lecture (1 écart tranché à l'image, 7 cases non tranchées dont 6 ici,
 déclarées illisibles), lots validés par DS5 (2026-11-10). Cas du jeu de référence : en attente de vérification humaine.
+
+Mise à jour (2026-11-13) : le contrôle de hausse entre dates (`test_controle_hausse.py`) a signalé, dans le tableau
+n° 1 (mensuels, 2021-12-01, p.21), deux cellules du degré 8 : ligne 1 (615,413) et ligne 6 (967,863), à 0,006 et
+0,005 de la hausse fixe de leur ligne. Relues à 400 dpi, elles ont leur dernier chiffre abîmé à l'impression (3 ou 8),
+comme les trois autres cellules du degré 8 de ce tableau. Elles sont déclarées `SOURCE_MANQUANTE`
+(`cellules_source_manquante`, D48, valeur `null`), soit 8 cellules illisibles au total ; aucune valeur calculée n'est
+saisie. Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules. La cellule 590,535 (ligne 2, degré 15)
+est aussi signalée par ce contrôle, mais l'image l'imprime nettement : elle reste une anomalie imprimée (point 4) et
+figure dans la liste nommée des exceptions du test.
 
 ---
 
