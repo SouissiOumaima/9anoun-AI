@@ -12,7 +12,9 @@ def test_different_periods_are_not_divergent() -> None:
     facts = [
         {
             "fact_id": "F1",
+            "subject_id": "P1",
             "property": "monthly_salary",
+            "unit": "TND",
             "period": "2026-01",
             "value": "1200.000",
             "document_id": "DOC-001",
@@ -20,7 +22,9 @@ def test_different_periods_are_not_divergent() -> None:
         },
         {
             "fact_id": "F2",
+            "subject_id": "P1",
             "property": "monthly_salary",
+            "unit": "TND",
             "period": "2026-02",
             "value": "1500.000",
             "document_id": "DOC-002",
