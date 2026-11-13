@@ -2,15 +2,25 @@
 
 Documents **fictifs** uniquement. Aucun document réel n'est envoyé à Gemini (règle NDA).
 
+Les identifiants sont **ceux de DS1** (`data/mock_cards/orchestrator_cards_demo.json`) : carte `company-demo-001`.
+DS1 n'accepte que la référence exacte de sa propre carte, donc DS1 et ce stockage doivent rester identiques.
+
 ## Contenu
 
-| storage_ref | Fichier | Ce que DS3 renvoie |
+| storage_ref | Fichier (`file_name` à déclarer côté DS1) | Ce que DS3 renvoie |
 |---|---|---|
-| `tradrly://cards/company_042/documents/doc_7f3a` | `ds3_stockage/cards/company_042/documents/doc_7f3a/paie_fictive_01_fr.pdf` | Cas normal : tous les champs lus et cités (base 424.100, brut 516.100, CNSS 47.378). |
-| `tradrly://cards/company_042/documents/doc_8b21` | `ds3_stockage/cards/company_042/documents/doc_8b21/paie_fictive_04_pieges.pdf` | Cas avec pièges : date d'entrée « 01/09/19 », « CDD » et « 195 h » reviennent à `null` avec leur raison. Sert à tester l'étape de confirmation. |
+| `tradrly://cards/company-demo-001/documents/doc-company-payslip-01` | `ds3_stockage/cards/company-demo-001/documents/doc-company-payslip-01/paie_fictive_01_fr.pdf` | Cas normal : tous les champs lus et cités (base 424.100, brut 516.100, CNSS 47.378). |
+| `tradrly://cards/company-demo-001/documents/doc-company-payslip-02` | `ds3_stockage/cards/company-demo-001/documents/doc-company-payslip-02/paie_fictive_04_pieges.pdf` | Cas avec pièges : date d'entrée « 01/09/19 », « CDD » et « 195 h » reviennent à `null` avec leur raison. Sert à tester l'étape de confirmation. |
 
-Requêtes prêtes : `requete_doc_7f3a.json`, `requete_doc_8b21.json`. La carte active doit être `company_042` ;
-avec une autre carte, DS3 répond `ACCES_REFUSE` (voulu).
+Pour le live, la carte DS1 doit déclarer, pour chaque document : `file_name` exactement comme ci-dessus et
+`mime_type` = `application/pdf`. DS3 cherche `<dossier du document>/<file_name>`. Un fichier image (`.jpg`) est
+refusé en live (`HORS_SCOPE` : seuls les PDF le sont pour l'instant). `doc-company-payslip-02` n'existe pas
+encore dans la carte DS1 : à ajouter si on veut tester le cas avec pièges.
+
+Requêtes prêtes : `requete_doc-company-payslip-01.json`, `requete_doc-company-payslip-02.json`. Avec une autre
+carte active, DS3 répond `ACCES_REFUSE` sans lire le fichier (voulu).
+
+`requete_fiche_01.json` (en `local://`) est l'ancienne démo : elle sert seulement à tester DS3 seul, pas DS1.
 
 ## Variables d'environnement
 
@@ -23,7 +33,7 @@ $env:DS3_STORAGE_ROOT = "<racine du dépôt>\src\document_intelligence\evaluatio
 ## Vérifier DS3 seul (depuis la racine du dépôt)
 
 ```powershell
-python -m src.document_intelligence.service src\document_intelligence\evaluation\demo_live\requete_doc_7f3a.json --root src\document_intelligence\evaluation\demo_live\ds3_stockage
+python -m src.document_intelligence.service src\document_intelligence\evaluation\demo_live\requete_doc-company-payslip-01.json --root src\document_intelligence\evaluation\demo_live\ds3_stockage
 ```
 
 Résultat attendu : `"status": "ok"`, `"mode": "live"`, et les valeurs du tableau.

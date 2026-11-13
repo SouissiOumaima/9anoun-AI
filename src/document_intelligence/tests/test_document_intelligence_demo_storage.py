@@ -20,6 +20,7 @@ from src.document_intelligence.tests.test_document_intelligence_golden import CA
 
 DEMO = Path(__file__).resolve().parents[1] / "evaluation" / "demo_live"
 ROOT = DEMO / "ds3_stockage"
+CARD = "company-demo-001"  # carte de démonstration de DS1 (data/mock_cards/orchestrator_cards_demo.json)
 
 
 def _load(name: str) -> dict[str, Any]:
@@ -27,13 +28,14 @@ def _load(name: str) -> dict[str, Any]:
     return data
 
 
-@pytest.mark.parametrize(("request_file", "case_id"), [("requete_doc_7f3a.json", "DS3-01"),
-                                                      ("requete_doc_8b21.json", "DS3-04")])
+@pytest.mark.parametrize(("request_file", "case_id"), [("requete_doc-company-payslip-01.json", "DS3-01"),
+                                                      ("requete_doc-company-payslip-02.json", "DS3-04")])
 def test_demo_requests_are_answered_like_the_golden_set(request_file: str, case_id: str) -> None:
     req = _load(request_file)
     doc_meta = req["document"]
-    assert doc_meta["storage_ref"].startswith("tradrly://cards/company_042/documents/")
-    pdf = ROOT / "cards" / "company_042" / "documents" / doc_meta["document_id"] / doc_meta["file_name"]
+    assert req["context"]["card_id"] == doc_meta["card_id"] == CARD
+    assert doc_meta["storage_ref"] == f"tradrly://cards/{CARD}/documents/{doc_meta['document_id']}"
+    pdf = ROOT / "cards" / CARD / "documents" / doc_meta["document_id"] / doc_meta["file_name"]
     assert pdf.is_file()
 
     case = CASES[case_id]
@@ -47,8 +49,8 @@ def test_demo_requests_are_answered_like_the_golden_set(request_file: str, case_
 
 
 def test_demo_storage_refuses_another_card_without_reading() -> None:
-    req = _load("requete_doc_7f3a.json")
-    req["context"]["card_id"] = "company_077"
+    req = _load("requete_doc-company-payslip-01.json")
+    req["context"]["card_id"] = "client-demo-001"  # une autre carte de DS1
     client = FakeClient("{}")
     resp = handle_request(req, storage_root_dir=ROOT, client=client)
     assert resp["status"] == "refus" and resp["refus"]["code"] == "ACCES_REFUSE"
