@@ -137,3 +137,50 @@ def test_missing_case_id_requires_abstention() -> None:
         "citation_ids": [],
         "reason": "missing_case_id",
     }
+
+
+def test_invalid_case_id_requires_abstention() -> None:
+    """Refuser les identifiants vides ou de type incorrect."""
+
+    # Tester plusieurs identifiants invalides.
+    invalid_ids = ["", "   ", None, 123, [], {}]
+
+    for invalid_id in invalid_ids:
+        # Construire un dossier avec un identifiant invalide.
+        case_analysis = {
+            "case_id": invalid_id,
+            "claims_analysis": [],
+            "legal_conclusion": None,
+        }
+
+        # Construire une reponse DS2 fictive valide structurellement.
+        citation = {"citation_id": "CIT-TEST-003"}
+
+        legal_response = {
+            "contract_version": "legal_retrieval.v0",
+            "status": "ok",
+            "mode": "live",
+            "results": [
+                {
+                    "citation": citation,
+                    "effective_from": None,
+                    "effective_to": None,
+                    "version_group": "GROUP-TEST-003",
+                    "applicable_at_reference_date": True,
+                }
+            ],
+            "citations": [citation],
+        }
+
+        # Le moteur doit refuser chaque identifiant invalide.
+        result = prepare_legal_reasoning(
+            case_analysis,
+            legal_response,
+        )
+
+        assert result == {
+            "status": "invalid_case",
+            "legal_conclusion": None,
+            "citation_ids": [],
+            "reason": "missing_case_id",
+        }, f"Identifiant invalide non rejete : {invalid_id!r}"
