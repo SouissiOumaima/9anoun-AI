@@ -251,6 +251,7 @@ def test_partially_documented_case_does_not_invent_evidence() -> None:
     # Aucune contradiction ni preuve manquante
     # n'est automatiquement déduite par la version actuelle.
     assert result["contradictions"] == []
+    # Le contrat Track A v0 impose une liste vide.
     assert result["missing_evidence"] == []
 
     # Aucune conclusion juridique n'est inventée.
