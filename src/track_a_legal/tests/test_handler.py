@@ -180,3 +180,28 @@ def test_handler_schema_loading_error_hides_internal_details() -> None:
     # Les identifiants du dossier doivent être conservés.
     assert response["request_id"] == request["request_id"]
     assert response["case_id"] == request["case_id"]
+
+def test_handler_rejects_unknown_claim_party() -> None:
+    """Une partie inconnue doit produire PARAM_INVALIDE."""
+
+    # Charger un dossier fictif conforme au JSON Schema.
+    request = load_demo_case()
+
+    # Remplacer la partie d'une affirmation par un identifiant inconnu.
+    request["claims"][0]["party_id"] = "P99-UNKNOWN"
+
+    # Envoyer le dossier au Handler DS4.
+    response = handle(request)
+
+    # Une incoherence des donnees doit produire un refus,
+    # et non une erreur technique interne.
+    assert response["status"] == "refus"
+    assert response["refus"]["code"] == "PARAM_INVALIDE"
+
+    # Ne produire aucune conclusion ni citation juridique.
+    assert response["result"] is None
+    assert response["citations"] == []
+
+    # Conserver la conformite du contrat de reponse.
+    schema = load_schema(RESPONSE_SCHEMA)
+    Draft202012Validator(schema).validate(response)

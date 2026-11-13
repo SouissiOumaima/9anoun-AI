@@ -255,3 +255,18 @@ def test_partially_documented_case_does_not_invent_evidence() -> None:
 
     # Aucune conclusion juridique n'est inventée.
     assert result["legal_conclusion"] is None
+
+def test_analyze_case_rejects_unknown_party() -> None:
+    """Le Case Analysis doit refuser une partie inexistante."""
+
+    # Construire un dossier fictif.
+    case = create_fake_case()
+
+    # Introduire une reference incoherente.
+    case["claims"][0]["party_id"] = "P99"
+
+    # Verifier que le Case Analysis appelle le validateur.
+    import pytest
+
+    with pytest.raises(ValueError, match="unknown_party_id"):
+        analyze_case(case)
