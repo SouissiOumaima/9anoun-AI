@@ -39,6 +39,20 @@ def prepare_legal_reasoning(
             "reason": "legal_source_unavailable",
         }
 
+    # Verifier l'identifiant du dossier avant de poursuivre.
+    # Un identifiant absent, vide ou invalide bloque l'analyse.
+    if (
+        not isinstance(case_analysis, dict)
+        or not isinstance(case_analysis.get("case_id"), str)
+        or not case_analysis["case_id"].strip()
+    ):
+        return {
+            "status": "invalid_case",
+            "legal_conclusion": None,
+            "citation_ids": [],
+            "reason": "missing_case_id",
+        }
+
     # Les sources ont passe les controles preliminaires.
     # Les controles de pertinence et d'applicabilite restent
     # necessaires avant tout raisonnement juridique.

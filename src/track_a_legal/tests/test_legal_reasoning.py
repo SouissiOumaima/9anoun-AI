@@ -94,3 +94,46 @@ def test_usable_legal_sources_require_verification() -> None:
         "citation_ids": [],
         "reason": "additional_legal_verification_required",
     }
+
+
+def test_missing_case_id_requires_abstention() -> None:
+    """Un dossier sans identifiant ne peut pas etre analyse."""
+
+    # Dossier incomplet : case_id absent.
+    case_analysis = {
+        "claims_analysis": [],
+        "legal_conclusion": None,
+    }
+
+    # Reponse DS2 fictive passant les controles preliminaires.
+    citation = {"citation_id": "CIT-TEST-002"}
+
+    legal_response = {
+        "contract_version": "legal_retrieval.v0",
+        "status": "ok",
+        "mode": "live",
+        "results": [
+            {
+                "citation": citation,
+                "effective_from": None,
+                "effective_to": None,
+                "version_group": "GROUP-TEST-002",
+                "applicable_at_reference_date": True,
+            }
+        ],
+        "citations": [citation],
+    }
+
+    # Executer le moteur avec un dossier incomplet.
+    result = prepare_legal_reasoning(
+        case_analysis,
+        legal_response,
+    )
+
+    # Le moteur doit refuser de poursuivre les controles.
+    assert result == {
+        "status": "invalid_case",
+        "legal_conclusion": None,
+        "citation_ids": [],
+        "reason": "missing_case_id",
+    }
