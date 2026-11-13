@@ -53,6 +53,15 @@ def prepare_legal_reasoning(
             "reason": "missing_case_id",
         }
 
+    # Verifier que claims_analysis est une liste.
+    # Refuser les valeurs absentes ou de type incorrect.
+    if not isinstance(case_analysis.get("claims_analysis"), list):
+        return {
+            "status": "invalid_case",
+            "legal_conclusion": None,
+            "citation_ids": [],
+            "reason": "invalid_claims_analysis",
+        }
     # Les sources ont passe les controles preliminaires.
     # Les controles de pertinence et d'applicabilite restent
     # necessaires avant tout raisonnement juridique.

@@ -184,3 +184,46 @@ def test_invalid_case_id_requires_abstention() -> None:
             "citation_ids": [],
             "reason": "missing_case_id",
         }, f"Identifiant invalide non rejete : {invalid_id!r}"
+
+
+def test_invalid_claims_analysis_requires_abstention() -> None:
+    """Refuser un dossier dont claims_analysis n'est pas une liste."""
+
+    # Dossier avec une structure invalide.
+    case_analysis = {
+        "case_id": "CASE-TEST-002",
+        "claims_analysis": "invalid_claims",
+        "legal_conclusion": None,
+    }
+
+    # Reponse DS2 fictive, valide structurellement.
+    citation = {"citation_id": "CIT-TEST-004"}
+
+    legal_response = {
+        "contract_version": "legal_retrieval.v0",
+        "status": "ok",
+        "mode": "live",
+        "results": [
+            {
+                "citation": citation,
+                "effective_from": None,
+                "effective_to": None,
+                "version_group": "GROUP-TEST-004",
+                "applicable_at_reference_date": True,
+            }
+        ],
+        "citations": [citation],
+    }
+
+    # Le moteur doit refuser le dossier invalide.
+    result = prepare_legal_reasoning(
+        case_analysis,
+        legal_response,
+    )
+
+    assert result == {
+        "status": "invalid_case",
+        "legal_conclusion": None,
+        "citation_ids": [],
+        "reason": "invalid_claims_analysis",
+    }
