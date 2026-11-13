@@ -84,10 +84,33 @@ def test_prompt_extractor_marks_multiple_active_sectors_for_clarification() -> N
 
 
 def test_sector_detection_does_not_match_unrelated_substrings() -> None:
-    message = "Je veux comprendre mes cotisations de sécurité sociale."
-    assert resolve_active_ds5_sector(message) is None
-    assert needs_sector_clarification(message) is False
-    assert sector_mapping._matched_sectors(message.casefold()) == []
+    for message in (
+        "Je veux comprendre mes cotisations de sécurité sociale.",
+        "Je veux comprendre mes cotisations de sécurité-sociale.",
+        "Calcule le salaire de base agent de sécurité sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base agent de sécurité-sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance-sociale, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "Calcule le salaire de base assurance-maladie, catégorie 4, 5 ans d'ancienneté au 2024-01-01.",
+        "احسب الأجر الأساسي في التأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي في التأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي والتأمين على المرض، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+        "احسب الأجر الأساسي بالتأمين الاجتماعي، الصنف 4، أقدمية 5 سنوات في 2024-01-01.",
+    ):
+        assert resolve_active_ds5_sector(message) is None
+        assert sector_mapping._matched_sectors(message.casefold()) == []
+        assert needs_sector_clarification(message) is False
+
+
+def test_social_protection_wording_cannot_hide_a_building_clarification() -> None:
+    message = "Calcule le salaire de base dans le bâtiment et ma sécurité sociale, catégorie 4 au 2024-01-01."
+    assert needs_sector_clarification(message) is True
+
+
+def test_explicit_assurance_still_routes_to_its_active_sector() -> None:
+    assert resolve_active_ds5_sector("Calcule le salaire de base assurance, catégorie 4 au 2024-01-01.") == "ASSURANCE"
+    assert resolve_active_ds5_sector("Calcule le salaire de base pour une compagnie d'assurance, catégorie 4 au 2024-01-01.") == "ASSURANCE"
 
 
 def test_sector_detection_keeps_specific_gardiennage_expressions() -> None:
@@ -100,3 +123,4 @@ def test_sector_detection_keeps_specific_gardiennage_expressions() -> None:
     assert [sector["ds2_code"] for sector in sector_mapping._matched_sectors("agent de sécurité")] == [
         "gardiennage_securite_transport_fonds",
     ]
+    assert resolve_active_ds5_sector("Calcule le salaire de base pour un agent de sécurité, catégorie 4 au 2024-01-01.") == "GARDIENNAGE_SECURITE_TRANSPORT_FONDS"
