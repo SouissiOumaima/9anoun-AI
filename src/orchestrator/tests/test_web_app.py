@@ -38,6 +38,7 @@ def test_card_selector_only_exposes_authorized_minimal_data() -> None:
     assert "track_b_profile" not in cards[0]
     assert cards[0]["documents"] == [
         {"document_id": "doc-company-payslip-01", "label": "Fiche de paie fictive — PDF"},
+        {"document_id": "doc-company-payslip-02", "label": "Fiche de paie fictive — champs à confirmer"},
         {"document_id": "doc-company-wage-grid-01", "label": "Convention collective — grille des salaires"},
     ]
 
