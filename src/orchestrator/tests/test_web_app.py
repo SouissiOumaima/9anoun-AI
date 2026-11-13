@@ -37,7 +37,7 @@ def test_card_selector_only_exposes_authorized_minimal_data() -> None:
     assert cards[0]["employees"] == [{"employee_id": "employee-demo-01", "label": "Ahmed"}]
     assert "track_b_profile" not in cards[0]
     assert cards[0]["documents"] == [
-        {"document_id": "doc-company-payslip-01", "label": "Fiche de paie scannée — mars 2026"},
+        {"document_id": "doc-company-payslip-01", "label": "Fiche de paie fictive — PDF"},
         {"document_id": "doc-company-wage-grid-01", "label": "Convention collective — grille des salaires"},
     ]
 
@@ -50,7 +50,7 @@ def test_chat_routes_selected_card_document_to_ds3() -> None:
     assert response["user_response"]["status"] == "success"
     assert response["route"] == {"agent": "document_intelligence", "operation": "analyze_document"}
     assert response["answer"]["kind"] == "document"
-    assert response["answer"]["fields"]["cnss_employee"]["value"] is None
+    assert response["answer"]["fields"]["cnss_employee"]["value"] == "47.378"
     assert response["citations"][0]["document_id"] == "doc-company-payslip-01"
 
 
@@ -64,7 +64,8 @@ def test_document_review_requires_user_selection_and_never_starts_calculation() 
     assert review["mode"] == "mock"
     states = {field["name"]: field["state"] for field in review["fields"]}
     assert states["base_salary"] == "verified"
-    assert states["cnss_employee"] == "unavailable"
+    assert states["cnss_employee"] == "verified"
+    assert states["sub_category"] == "unavailable"
     confirmed = confirm_document_review({
         "review_id": review["review_id"], "confirmed_fields": ["base_salary"],
     })
@@ -79,7 +80,7 @@ def test_document_review_rejects_an_unusable_field() -> None:
         "document_id": "doc-company-payslip-01",
     })
     rejected = confirm_document_review({
-        "review_id": response["document_review"]["review_id"], "confirmed_fields": ["cnss_employee"],
+        "review_id": response["document_review"]["review_id"], "confirmed_fields": ["sub_category"],
     })
     assert rejected["error"] == "unconfirmed_or_unusable_field"
 

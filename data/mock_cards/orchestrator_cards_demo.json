@@ -22,9 +22,9 @@
       "documents": [
         {
           "document_id": "doc-company-payslip-01",
-          "label": "Fiche de paie scannée — mars 2026",
-          "file_name": "paie_mars_2026_scan_illisible.jpg",
-          "mime_type": "image/jpeg",
+          "label": "Fiche de paie fictive — PDF",
+          "file_name": "paie_fictive_01_fr.pdf",
+          "mime_type": "application/pdf",
           "storage_ref": "tradrly://cards/company-demo-001/documents/doc-company-payslip-01"
         },
         {
