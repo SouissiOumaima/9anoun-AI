@@ -130,6 +130,73 @@ def is_usable_document_response(response: Any) -> bool:
         # Validation documentaire preliminaire uniquement.
         return True
 
+    # Verifier les citations des tableaux extraits.
+    tables = result.get("tables", [])
+
+    if not isinstance(tables, list):
+        return False
+
+    for table in tables:
+        # Chaque tableau doit etre un objet JSON.
+        if not isinstance(table, dict):
+            return False
+
+        # Chaque tableau doit referencer une citation existante.
+        citation_id = table.get("citation_id")
+        if not isinstance(citation_id, str):
+            return False
+
+        if citation_id not in citation_ids:
+            return False
+
+        # La citation doit contenir un extrait documentaire lisible.
+        matching_citation = next(
+            (
+                item
+                for item in citations
+                if item["citation_id"] == citation_id
+            ),
+            None,
+        )
+
+        if (
+            matching_citation is None
+            or not matching_citation["excerpt"].strip()
+        ):
+            return False
+
+    # Verifier les citations des lignes de paie, si presentes.
+    pay_lines = result.get("pay_lines", [])
+
+    if not isinstance(pay_lines, list):
+        return False
+
+    for pay_line in pay_lines:
+        # Chaque ligne de paie doit etre un objet JSON.
+        if not isinstance(pay_line, dict):
+            return False
+
+        # Toute ligne doit referencer une citation existante.
+        citation_id = pay_line.get("citation_id")
+        if citation_id not in citation_ids:
+            return False
+
+        # La citation utilisee doit contenir un extrait lisible.
+        matching_citation = next(
+            (
+                item
+                for item in citations
+                if item["citation_id"] == citation_id
+            ),
+            None,
+        )
+
+        if (
+            matching_citation is None
+            or not matching_citation["excerpt"].strip()
+        ):
+            return False
+
     fields = result.get("fields")
     if not isinstance(fields, dict):
         return False

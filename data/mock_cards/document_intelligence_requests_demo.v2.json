@@ -1,0 +1,1929 @@
+[
+  {
+    "name": "01_ok_fiche_paie",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-101",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_7f3a",
+        "card_id": "company_042",
+        "file_name": "paie_mars_2026.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_7f3a"
+      },
+      "options": {
+        "language_hint": [
+          "fr",
+          "ar"
+        ],
+        "expected_type": "fiche_de_paie",
+        "min_confidence": 0.9
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-101",
+      "status": "ok",
+      "refus": null,
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_7f3a",
+      "citations": [
+        {
+          "citation_id": "c1",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            110.0,
+            260.0,
+            128.0
+          ],
+          "excerpt": "Nom : Ahmed Ben Salah"
+        },
+        {
+          "citation_id": "c2",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            140.0,
+            300.0,
+            158.0
+          ],
+          "excerpt": "Période : du 01/03/2026 au 31/03/2026"
+        },
+        {
+          "citation_id": "c3",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            170.0,
+            360.0,
+            188.0
+          ],
+          "excerpt": "Date d'entrée : 01/09/2019 - Ancienneté : 6 ans 6 mois"
+        },
+        {
+          "citation_id": "c4",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            200.0,
+            300.0,
+            218.0
+          ],
+          "excerpt": "Catégorie 3 - Échelon 2"
+        },
+        {
+          "citation_id": "c5",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            230.0,
+            360.0,
+            248.0
+          ],
+          "excerpt": "Emploi : Agent administratif - Permanent"
+        },
+        {
+          "citation_id": "c6",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            72.0,
+            260.0,
+            360.0,
+            278.0
+          ],
+          "excerpt": "Paiement : mensuel - Horaire : 208 h"
+        },
+        {
+          "citation_id": "c7",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            400.0,
+            300.0,
+            470.0,
+            318.0
+          ],
+          "excerpt": "Salaire de base 424.100"
+        },
+        {
+          "citation_id": "c8",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            400.0,
+            320.0,
+            470.0,
+            338.0
+          ],
+          "excerpt": "Prime de transport 56.000"
+        },
+        {
+          "citation_id": "c9",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            400.0,
+            340.0,
+            470.0,
+            358.0
+          ],
+          "excerpt": "Prime de présence 36.000"
+        },
+        {
+          "citation_id": "c10",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            400.0,
+            380.0,
+            470.0,
+            398.0
+          ],
+          "excerpt": "Salaire brut 516.100"
+        },
+        {
+          "citation_id": "c11",
+          "document_id": "doc_7f3a",
+          "page": 1,
+          "bbox": [
+            400.0,
+            420.0,
+            470.0,
+            438.0
+          ],
+          "excerpt": "Retenue CNSS 47.378"
+        }
+      ],
+      "result": {
+        "document_type": "fiche_de_paie",
+        "document_type_confidence": 0.97,
+        "languages": [
+          "fr"
+        ],
+        "page_count": 1,
+        "complete": true,
+        "summary": "Fiche de paie de mars 2026, catégorie 3, échelon 2.",
+        "fields": {
+          "employee_name": {
+            "value": "Ahmed Ben Salah",
+            "value_type": "texte",
+            "confidence": 0.97,
+            "citation_id": "c1",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_start": {
+            "value": "2026-03-01",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_end": {
+            "value": "2026-03-31",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "hire_date": {
+            "value": "2019-09-01",
+            "value_type": "date",
+            "confidence": 0.93,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "seniority_years_printed": {
+            "value": "6 ans 6 mois",
+            "value_type": "texte",
+            "confidence": 0.92,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "category": {
+            "value": "3",
+            "value_type": "texte",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "sub_category": {
+            "value": null,
+            "value_type": "texte",
+            "confidence": 0.0,
+            "citation_id": null,
+            "unreadable_reason": "absent_du_document",
+            "currency": null
+          },
+          "grade": {
+            "value": "2",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "job_qualification": {
+            "value": "Agent administratif",
+            "value_type": "texte",
+            "confidence": 0.94,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "employment_status": {
+            "value": "permanent",
+            "value_type": "enum",
+            "confidence": 0.93,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "pay_mode": {
+            "value": "mensuel",
+            "value_type": "enum",
+            "confidence": 0.96,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "work_hours_regime": {
+            "value": "48",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "base_salary": {
+            "value": "424.100",
+            "value_type": "montant",
+            "confidence": 0.96,
+            "citation_id": "c7",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "gross_salary": {
+            "value": "516.100",
+            "value_type": "montant",
+            "confidence": 0.95,
+            "citation_id": "c10",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "cnss_employee": {
+            "value": "47.378",
+            "value_type": "montant",
+            "confidence": 0.94,
+            "citation_id": "c11",
+            "unreadable_reason": null,
+            "currency": "TND"
+          }
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000",
+            "confidence": 0.95,
+            "citation_id": "c8",
+            "unreadable_reason": null
+          },
+          {
+            "label": "Prime de présence",
+            "amount": "36.000",
+            "confidence": 0.95,
+            "citation_id": "c9",
+            "unreadable_reason": null
+          }
+        ],
+        "tables": []
+      },
+      "warnings": [
+        "Données fictives (mock)."
+      ],
+      "ds3_code": null,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "02_ok_partiel_fiche_paie_illisible",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-102",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_8b21",
+        "card_id": "company_042",
+        "file_name": "paie_mars_2026_scan_illisible.jpg",
+        "mime_type": "image/jpeg",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_8b21"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-102",
+      "status": "ok",
+      "refus": null,
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_8b21",
+      "citations": [
+        {
+          "citation_id": "c1",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            110.0,
+            260.0,
+            128.0
+          ],
+          "excerpt": "Nom : Ahmed Ben Salah"
+        },
+        {
+          "citation_id": "c2",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            140.0,
+            300.0,
+            158.0
+          ],
+          "excerpt": "Période : du 01/03/2026 au 31/03/2026"
+        },
+        {
+          "citation_id": "c3",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            170.0,
+            360.0,
+            188.0
+          ],
+          "excerpt": "Date d'entrée : 01/09/2019 - Ancienneté : 6 ans 6 mois"
+        },
+        {
+          "citation_id": "c4",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            200.0,
+            300.0,
+            218.0
+          ],
+          "excerpt": "Catégorie 3 - Échelon 2"
+        },
+        {
+          "citation_id": "c5",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            230.0,
+            360.0,
+            248.0
+          ],
+          "excerpt": "Emploi : Agent administratif - Permanent"
+        },
+        {
+          "citation_id": "c6",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            72.0,
+            260.0,
+            360.0,
+            278.0
+          ],
+          "excerpt": "Paiement : mensuel - Horaire : 208 h"
+        },
+        {
+          "citation_id": "c7",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            400.0,
+            300.0,
+            470.0,
+            318.0
+          ],
+          "excerpt": "Salaire de base 424.100"
+        },
+        {
+          "citation_id": "c8",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            400.0,
+            320.0,
+            470.0,
+            338.0
+          ],
+          "excerpt": "Prime de transport 56.000"
+        },
+        {
+          "citation_id": "c9",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            400.0,
+            340.0,
+            470.0,
+            358.0
+          ],
+          "excerpt": "Prime de présence 36.000"
+        },
+        {
+          "citation_id": "c10",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            400.0,
+            380.0,
+            470.0,
+            398.0
+          ],
+          "excerpt": "Salaire brut 516.100"
+        },
+        {
+          "citation_id": "c11",
+          "document_id": "doc_8b21",
+          "page": 1,
+          "bbox": [
+            400.0,
+            420.0,
+            470.0,
+            438.0
+          ],
+          "excerpt": ""
+        }
+      ],
+      "result": {
+        "document_type": "fiche_de_paie",
+        "document_type_confidence": 0.97,
+        "languages": [
+          "fr"
+        ],
+        "page_count": 1,
+        "complete": false,
+        "summary": "Fiche de paie de mars 2026, catégorie 3, échelon 2.",
+        "fields": {
+          "employee_name": {
+            "value": "Ahmed Ben Salah",
+            "value_type": "texte",
+            "confidence": 0.97,
+            "citation_id": "c1",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_start": {
+            "value": "2026-03-01",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_end": {
+            "value": "2026-03-31",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "hire_date": {
+            "value": "2019-09-01",
+            "value_type": "date",
+            "confidence": 0.93,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "seniority_years_printed": {
+            "value": "6 ans 6 mois",
+            "value_type": "texte",
+            "confidence": 0.92,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "category": {
+            "value": "3",
+            "value_type": "texte",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "sub_category": {
+            "value": null,
+            "value_type": "texte",
+            "confidence": 0.0,
+            "citation_id": null,
+            "unreadable_reason": "absent_du_document",
+            "currency": null
+          },
+          "grade": {
+            "value": "2",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "job_qualification": {
+            "value": "Agent administratif",
+            "value_type": "texte",
+            "confidence": 0.94,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "employment_status": {
+            "value": "permanent",
+            "value_type": "enum",
+            "confidence": 0.93,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "pay_mode": {
+            "value": "mensuel",
+            "value_type": "enum",
+            "confidence": 0.96,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "work_hours_regime": {
+            "value": "48",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "base_salary": {
+            "value": "424.100",
+            "value_type": "montant",
+            "confidence": 0.96,
+            "citation_id": "c7",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "gross_salary": {
+            "value": "516.100",
+            "value_type": "montant",
+            "confidence": 0.95,
+            "citation_id": "c10",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "cnss_employee": {
+            "value": null,
+            "value_type": "montant",
+            "confidence": 0.31,
+            "citation_id": "c11",
+            "unreadable_reason": "zone_illisible",
+            "currency": "TND"
+          }
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000",
+            "confidence": 0.95,
+            "citation_id": "c8",
+            "unreadable_reason": null
+          },
+          {
+            "label": "Prime de présence",
+            "amount": "36.000",
+            "confidence": 0.95,
+            "citation_id": "c9",
+            "unreadable_reason": null
+          }
+        ],
+        "tables": []
+      },
+      "warnings": [
+        "Données fictives (mock).",
+        "Page 1 : retenue CNSS illisible, valeur non renvoyée (complete = false)."
+      ],
+      "ds3_code": null,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "03_ok_fiche_paie_arabe",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-103",
+      "lang": "ar",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_5c90",
+        "card_id": "company_042",
+        "file_name": "paie_mars_2026_arabe.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_5c90"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-103",
+      "status": "ok",
+      "refus": null,
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_5c90",
+      "citations": [
+        {
+          "citation_id": "c1",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            110.0,
+            260.0,
+            128.0
+          ],
+          "excerpt": "الاسم واللقب : أحمد بن صالح"
+        },
+        {
+          "citation_id": "c2",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            140.0,
+            300.0,
+            158.0
+          ],
+          "excerpt": "الفترة : من 01/03/2026 إلى 31/03/2026"
+        },
+        {
+          "citation_id": "c3",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            170.0,
+            360.0,
+            188.0
+          ],
+          "excerpt": "تاريخ الانتداب : 01/09/2019"
+        },
+        {
+          "citation_id": "c4",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            200.0,
+            300.0,
+            218.0
+          ],
+          "excerpt": "الصنف : 1 ب - الدرجة : 2"
+        },
+        {
+          "citation_id": "c5",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            230.0,
+            360.0,
+            248.0
+          ],
+          "excerpt": "الخطة : عون إداري - قار"
+        },
+        {
+          "citation_id": "c6",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            72.0,
+            260.0,
+            360.0,
+            278.0
+          ],
+          "excerpt": "التأجير : شهري - 173,33 س"
+        },
+        {
+          "citation_id": "c7",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            400.0,
+            300.0,
+            470.0,
+            318.0
+          ],
+          "excerpt": "الأجر الأساسي 424,100"
+        },
+        {
+          "citation_id": "c8",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            400.0,
+            320.0,
+            470.0,
+            338.0
+          ],
+          "excerpt": "منحة النقل 56,000"
+        },
+        {
+          "citation_id": "c9",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            400.0,
+            340.0,
+            470.0,
+            358.0
+          ],
+          "excerpt": "منحة الحضور 36,000"
+        },
+        {
+          "citation_id": "c10",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            400.0,
+            380.0,
+            470.0,
+            398.0
+          ],
+          "excerpt": "الأجر الخام 516,100"
+        },
+        {
+          "citation_id": "c11",
+          "document_id": "doc_5c90",
+          "page": 1,
+          "bbox": [
+            400.0,
+            420.0,
+            470.0,
+            438.0
+          ],
+          "excerpt": "الضمان الاجتماعي 47,378"
+        }
+      ],
+      "result": {
+        "document_type": "fiche_de_paie",
+        "document_type_confidence": 0.97,
+        "languages": [
+          "ar"
+        ],
+        "page_count": 1,
+        "complete": true,
+        "summary": "كشف أجر شهر مارس 2026، الصنف 1B، الدرجة 2.",
+        "fields": {
+          "employee_name": {
+            "value": "أحمد بن صالح",
+            "value_type": "texte",
+            "confidence": 0.97,
+            "citation_id": "c1",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_start": {
+            "value": "2026-03-01",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_end": {
+            "value": "2026-03-31",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "hire_date": {
+            "value": "2019-09-01",
+            "value_type": "date",
+            "confidence": 0.93,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "seniority_years_printed": {
+            "value": null,
+            "value_type": "texte",
+            "confidence": 0.0,
+            "citation_id": null,
+            "unreadable_reason": "absent_du_document",
+            "currency": null
+          },
+          "category": {
+            "value": "1B",
+            "value_type": "texte",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "sub_category": {
+            "value": null,
+            "value_type": "texte",
+            "confidence": 0.0,
+            "citation_id": null,
+            "unreadable_reason": "absent_du_document",
+            "currency": null
+          },
+          "grade": {
+            "value": "2",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "job_qualification": {
+            "value": "عون إداري",
+            "value_type": "texte",
+            "confidence": 0.94,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "employment_status": {
+            "value": "permanent",
+            "value_type": "enum",
+            "confidence": 0.93,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "pay_mode": {
+            "value": "mensuel",
+            "value_type": "enum",
+            "confidence": 0.96,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "work_hours_regime": {
+            "value": "40",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "base_salary": {
+            "value": "424.100",
+            "value_type": "montant",
+            "confidence": 0.96,
+            "citation_id": "c7",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "gross_salary": {
+            "value": "516.100",
+            "value_type": "montant",
+            "confidence": 0.95,
+            "citation_id": "c10",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "cnss_employee": {
+            "value": "47.378",
+            "value_type": "montant",
+            "confidence": 0.94,
+            "citation_id": "c11",
+            "unreadable_reason": null,
+            "currency": "TND"
+          }
+        },
+        "pay_lines": [
+          {
+            "label": "منحة النقل",
+            "amount": "56.000",
+            "confidence": 0.95,
+            "citation_id": "c8",
+            "unreadable_reason": null
+          },
+          {
+            "label": "منحة الحضور",
+            "amount": "36.000",
+            "confidence": 0.95,
+            "citation_id": "c9",
+            "unreadable_reason": null
+          }
+        ],
+        "tables": []
+      },
+      "warnings": [
+        "Données fictives (mock).",
+        "Catégorie imprimée « 1 ب », normalisée en « 1B »."
+      ],
+      "ds3_code": null,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "04_ok_fiche_paie_dossier",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-104",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "case_015",
+        "card_type": "case"
+      },
+      "document": {
+        "document_id": "doc_3d44",
+        "card_id": "case_015",
+        "file_name": "paie_mars_2026.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/case_015/documents/doc_3d44"
+      },
+      "case_id": "case_015"
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-104",
+      "case_id": "case_015",
+      "status": "ok",
+      "refus": null,
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "case_015",
+      "document_id": "doc_3d44",
+      "citations": [
+        {
+          "citation_id": "c1",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            110.0,
+            260.0,
+            128.0
+          ],
+          "excerpt": "Nom : Ahmed Ben Salah"
+        },
+        {
+          "citation_id": "c2",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            140.0,
+            300.0,
+            158.0
+          ],
+          "excerpt": "Période : du 01/03/2026 au 31/03/2026"
+        },
+        {
+          "citation_id": "c3",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            170.0,
+            360.0,
+            188.0
+          ],
+          "excerpt": "Date d'entrée : 01/09/2019 - Ancienneté : 6 ans 6 mois"
+        },
+        {
+          "citation_id": "c4",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            200.0,
+            300.0,
+            218.0
+          ],
+          "excerpt": "Catégorie 3 - Échelon 2"
+        },
+        {
+          "citation_id": "c5",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            230.0,
+            360.0,
+            248.0
+          ],
+          "excerpt": "Emploi : Agent administratif - Permanent"
+        },
+        {
+          "citation_id": "c6",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            72.0,
+            260.0,
+            360.0,
+            278.0
+          ],
+          "excerpt": "Paiement : mensuel - Horaire : 208 h"
+        },
+        {
+          "citation_id": "c7",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            400.0,
+            300.0,
+            470.0,
+            318.0
+          ],
+          "excerpt": "Salaire de base 424.100"
+        },
+        {
+          "citation_id": "c8",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            400.0,
+            320.0,
+            470.0,
+            338.0
+          ],
+          "excerpt": "Prime de transport 56.000"
+        },
+        {
+          "citation_id": "c9",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            400.0,
+            340.0,
+            470.0,
+            358.0
+          ],
+          "excerpt": "Prime de présence 36.000"
+        },
+        {
+          "citation_id": "c10",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            400.0,
+            380.0,
+            470.0,
+            398.0
+          ],
+          "excerpt": "Salaire brut 516.100"
+        },
+        {
+          "citation_id": "c11",
+          "document_id": "doc_3d44",
+          "page": 1,
+          "bbox": [
+            400.0,
+            420.0,
+            470.0,
+            438.0
+          ],
+          "excerpt": "Retenue CNSS 47.378"
+        }
+      ],
+      "result": {
+        "document_type": "fiche_de_paie",
+        "document_type_confidence": 0.97,
+        "languages": [
+          "fr"
+        ],
+        "page_count": 1,
+        "complete": true,
+        "summary": "Fiche de paie de mars 2026, catégorie 3, échelon 2.",
+        "fields": {
+          "employee_name": {
+            "value": "Ahmed Ben Salah",
+            "value_type": "texte",
+            "confidence": 0.97,
+            "citation_id": "c1",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_start": {
+            "value": "2026-03-01",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "period_end": {
+            "value": "2026-03-31",
+            "value_type": "date",
+            "confidence": 0.98,
+            "citation_id": "c2",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "hire_date": {
+            "value": "2019-09-01",
+            "value_type": "date",
+            "confidence": 0.93,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "seniority_years_printed": {
+            "value": "6 ans 6 mois",
+            "value_type": "texte",
+            "confidence": 0.92,
+            "citation_id": "c3",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "category": {
+            "value": "3",
+            "value_type": "texte",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "sub_category": {
+            "value": null,
+            "value_type": "texte",
+            "confidence": 0.0,
+            "citation_id": null,
+            "unreadable_reason": "absent_du_document",
+            "currency": null
+          },
+          "grade": {
+            "value": "2",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c4",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "job_qualification": {
+            "value": "Agent administratif",
+            "value_type": "texte",
+            "confidence": 0.94,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "employment_status": {
+            "value": "permanent",
+            "value_type": "enum",
+            "confidence": 0.93,
+            "citation_id": "c5",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "pay_mode": {
+            "value": "mensuel",
+            "value_type": "enum",
+            "confidence": 0.96,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "work_hours_regime": {
+            "value": "48",
+            "value_type": "entier",
+            "confidence": 0.95,
+            "citation_id": "c6",
+            "unreadable_reason": null,
+            "currency": null
+          },
+          "base_salary": {
+            "value": "424.100",
+            "value_type": "montant",
+            "confidence": 0.96,
+            "citation_id": "c7",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "gross_salary": {
+            "value": "516.100",
+            "value_type": "montant",
+            "confidence": 0.95,
+            "citation_id": "c10",
+            "unreadable_reason": null,
+            "currency": "TND"
+          },
+          "cnss_employee": {
+            "value": "47.378",
+            "value_type": "montant",
+            "confidence": 0.94,
+            "citation_id": "c11",
+            "unreadable_reason": null,
+            "currency": "TND"
+          }
+        },
+        "pay_lines": [
+          {
+            "label": "Prime de transport",
+            "amount": "56.000",
+            "confidence": 0.95,
+            "citation_id": "c8",
+            "unreadable_reason": null
+          },
+          {
+            "label": "Prime de présence",
+            "amount": "36.000",
+            "confidence": 0.95,
+            "citation_id": "c9",
+            "unreadable_reason": null
+          }
+        ],
+        "tables": []
+      },
+      "warnings": [
+        "Données fictives (mock)."
+      ],
+      "ds3_code": null,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "05_ok_grille_salaires",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-105",
+      "lang": "fr",
+      "operation": "extract_wage_grid",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "conv_gardiennage",
+        "card_id": "company_042",
+        "file_name": "convention_gardiennage.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/conv_gardiennage"
+      },
+      "options": {
+        "pages": [
+          21
+        ]
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-105",
+      "status": "ok",
+      "refus": null,
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "extract_wage_grid",
+      "card_id": "company_042",
+      "document_id": "conv_gardiennage",
+      "citations": [
+        {
+          "citation_id": "c1",
+          "document_id": "conv_gardiennage",
+          "page": 21,
+          "bbox": null,
+          "excerpt": "جدول الأجور عدد 2 يقع العمل به بداية من 1 ماي 2010"
+        }
+      ],
+      "result": {
+        "title": "جدول الأجور عدد 2",
+        "sector_ar": "أعوان مؤسسات الحراسة والسلامة ونقل العملة",
+        "sector_code": "gardiennage_securite_transport_fonds",
+        "effective_date": "2010-05-01",
+        "unit": "TND/mois",
+        "legal_basis": "الفصل 43",
+        "citation_id": "c1",
+        "complete": false,
+        "grades": [
+          {
+            "grade": 1,
+            "duration_years": 1,
+            "seniority": "0-1"
+          },
+          {
+            "grade": 2,
+            "duration_years": 1,
+            "seniority": "1-2"
+          },
+          {
+            "grade": 3,
+            "duration_years": 2,
+            "seniority": "2-4"
+          },
+          {
+            "grade": 4,
+            "duration_years": 2,
+            "seniority": "4-6"
+          },
+          {
+            "grade": 5,
+            "duration_years": 2,
+            "seniority": "6-8"
+          },
+          {
+            "grade": 6,
+            "duration_years": 2,
+            "seniority": "8-10"
+          },
+          {
+            "grade": 7,
+            "duration_years": 2,
+            "seniority": "10-12"
+          },
+          {
+            "grade": 8,
+            "duration_years": 2,
+            "seniority": "12-14"
+          },
+          {
+            "grade": 9,
+            "duration_years": 2,
+            "seniority": "14-16"
+          },
+          {
+            "grade": 10,
+            "duration_years": 2,
+            "seniority": "16-18"
+          },
+          {
+            "grade": 11,
+            "duration_years": 2,
+            "seniority": "18-20"
+          },
+          {
+            "grade": 12,
+            "duration_years": 2,
+            "seniority": "20-22"
+          },
+          {
+            "grade": 13,
+            "duration_years": 2,
+            "seniority": "22-24"
+          },
+          {
+            "grade": 14,
+            "duration_years": 2,
+            "seniority": "24"
+          }
+        ],
+        "values": [
+          {
+            "category": 1,
+            "grade": 1,
+            "amount": "344.500",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 2,
+            "amount": "346.700",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 3,
+            "amount": "348.900",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 4,
+            "amount": "351.100",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 5,
+            "amount": "353.300",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 6,
+            "amount": "355.500",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 7,
+            "amount": "357.700",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 8,
+            "amount": "359.900",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 9,
+            "amount": "362.100",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 10,
+            "amount": "364.300",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 11,
+            "amount": "366.500",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 12,
+            "amount": "371.200",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 13,
+            "amount": "373.400",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 1,
+            "grade": 14,
+            "amount": "375.600",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 1,
+            "amount": "1275.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 2,
+            "amount": "1291.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 3,
+            "amount": "1307.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 4,
+            "amount": "1323.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 5,
+            "amount": "1339.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 6,
+            "amount": "1355.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 7,
+            "amount": "1371.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 8,
+            "amount": "1387.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 9,
+            "amount": "1403.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 10,
+            "amount": "1423.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 11,
+            "amount": "1443.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 12,
+            "amount": "1463.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 13,
+            "amount": "1483.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          },
+          {
+            "category": 15,
+            "grade": 14,
+            "amount": "1503.000",
+            "confidence": 0.97,
+            "unreadable_reason": null
+          }
+        ],
+        "note": "Les salaires incluent la prime complémentaire provisoire (أمر عدد 437 لسنة 1981، المرفع فيها بالأمر عدد 501 لسنة 1982)."
+      },
+      "warnings": [
+        "Mock : seules les catégories 1 et 15 sont fournies (complete = false).",
+        "Grille en vigueur à partir de 2010 : vérifier auprès de DS2 si elle a été remplacée."
+      ],
+      "ds3_code": null,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "06_refus_acces_autre_carte",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-106",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_9999",
+        "card_id": "company_077",
+        "file_name": "paie_autre_client.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_077/documents/doc_9999"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-106",
+      "status": "refus",
+      "refus": {
+        "code": "ACCES_REFUSE",
+        "message_fr": "Ce document n'est pas accessible dans le contexte actuel.",
+        "message_ar": "هذه الوثيقة غير متاحة في السياق الحالي."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": null,
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "ACCESS_DENIED",
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "07_refus_format",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-107",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_1111",
+        "card_id": "company_042",
+        "file_name": "archive.zip",
+        "mime_type": "application/zip",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_1111"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-107",
+      "status": "refus",
+      "refus": {
+        "code": "HORS_SCOPE",
+        "message_fr": "Format de fichier non supporté (PDF, image, DOCX, XLSX ou CSV attendu).",
+        "message_ar": "صيغة الملف غير مدعومة."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_1111",
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "UNSUPPORTED_FORMAT",
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "08_refus_fichier_corrompu",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-108",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_0000",
+        "card_id": "company_042",
+        "file_name": "facture_corrompu.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_0000"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-108",
+      "status": "refus",
+      "refus": {
+        "code": "PARAM_INVALIDE",
+        "message_fr": "Le fichier est vide ou endommagé et ne peut pas être lu.",
+        "message_ar": "الملف فارغ أو تالف ولا يمكن قراءته."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_0000",
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "FILE_EMPTY_OR_CORRUPTED",
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "09_refus_document_blanc",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-109",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_2222",
+        "card_id": "company_042",
+        "file_name": "scan_blanc.jpg",
+        "mime_type": "image/jpeg",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_2222"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-109",
+      "status": "refus",
+      "refus": {
+        "code": "SOURCE_MANQUANTE",
+        "message_fr": "Aucune valeur lisible dans ce document : rien n'est extrait.",
+        "message_ar": "لا توجد أي قيمة مقروءة في هذه الوثيقة."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_2222",
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "UNREADABLE_DOCUMENT",
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "10_refus_requete_invalide",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-110",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_7f3a",
+        "card_id": "company_042",
+        "file_name": "paie_mars_2026.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_7f3a"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-110",
+      "status": "refus",
+      "refus": {
+        "code": "PARAM_INVALIDE",
+        "message_fr": "Requête invalide. lang : Field required",
+        "message_ar": "طلب غير صالح."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": null,
+      "document_id": null,
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "INVALID_REQUEST",
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  },
+  {
+    "name": "11_erreur_timeout",
+    "request": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-111",
+      "lang": "fr",
+      "operation": "analyze_document",
+      "context": {
+        "organization_id": "org_demo",
+        "user_id": "user_comptable_01",
+        "role": "accountant",
+        "card_id": "company_042",
+        "card_type": "company"
+      },
+      "document": {
+        "document_id": "doc_3333",
+        "card_id": "company_042",
+        "file_name": "paie_timeout.pdf",
+        "mime_type": "application/pdf",
+        "storage_ref": "tradrly://cards/company_042/documents/doc_3333"
+      }
+    },
+    "response": {
+      "contract_version": "ds3.v2",
+      "request_id": "req-111",
+      "status": "erreur",
+      "refus": null,
+      "erreur": {
+        "type": "TIMEOUT",
+        "message_fr": "L'analyse a pris trop de temps. Réessayez.",
+        "message_ar": "استغرق التحليل وقتا طويلا. أعد المحاولة."
+      },
+      "computed_by": "document_intelligence.mock",
+      "mode": "mock",
+      "operation": "analyze_document",
+      "card_id": "company_042",
+      "document_id": "doc_3333",
+      "citations": [],
+      "result": null,
+      "warnings": [],
+      "ds3_code": "TIMEOUT",
+      "retryable": true,
+      "meta": {
+        "pipeline_version": "ds3-mock-0.2.0",
+        "processing_ms": 120
+      }
+    }
+  }
+]
