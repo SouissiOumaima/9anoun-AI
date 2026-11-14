@@ -62,7 +62,9 @@ limite pas à déposer un fichier dans `data/processed/salary_grids/` :
      `au_dela_dernier_degre.<population>`, ce que dit sa source au-delà du
      dernier degré (ancienneté maximale couverte, page, article et textes de
      refus FR/AR où seul `{a}` est remplacé) ; sans ce bloc, la grille est
-     refusée (D8, D9). Avec `"regle": "ouvert"`, le dernier degré (libellé
+     refusée (D8, D9). Une ancienneté maximale couverte de 0 refuse toute
+     demande de salaire de base avec ce texte (grille sans durée de degré
+     imprimée, D68) ; les primes du secteur restent servies. Avec `"regle": "ouvert"`, le dernier degré (libellé
      `"n+"`) est servi sans plafond ni extrapolation ; le bloc cite alors sa
      source (`source_pdf_page`, `source_article`, `texte_source_ar`),
      sinon la grille est refusée (D29) ;
@@ -117,8 +119,8 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT` ou `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
-| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `COMMERCE_DISTRIBUTION_PETROLE`, `MECANIQUE_STATIONS_SERVICE` et `GESTION_DECHETS`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. Gardiennage, sécurité et transport de fonds : une seule population, `tous_agents` (أعوان مؤسسات الحراسة والسلامة ونقل العملة), qui peut être omise ; la catégorie est le numéro « 1 » à « 15 » de la classification (pages 16 à 20 de la convention), sans alias par métier. |
+| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT`, `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66), `IMPRIMERIE_EDITION_CARTONNAGE`, `VERRE_MIROIRS`, `CONCESSIONNAIRES_MATERIEL_AGRICOLE`, `BOULANGERIES`, `TEXTILE` ou `FONDERIE_METALLURGIE_MECANIQUE` (vague 4, D67 à D72) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `COMMERCE_DISTRIBUTION_PETROLE`, `MECANIQUE_STATIONS_SERVICE`, `GESTION_DECHETS` et `CONCESSIONNAIRES_MATERIEL_AGRICOLE`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. Gardiennage, sécurité et transport de fonds : une seule population, `tous_agents` (أعوان مؤسسات الحراسة والسلامة ونقل العملة), qui peut être omise ; la catégorie est le numéro « 1 » à « 15 » de la classification (pages 16 à 20 de la convention), sans alias par métier. |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. Associations pour personnes handicapées : la clé est le chiffre romain imprimé sur la ligne de la grille (`"I"` à `"VI"` selon la population) ; le numéro de catégorie de l'annexe est accepté comme alias (`"1"` → `"I"`, `"2"` → `"II"`…), et `detail` renvoie `categorie` (clé) et `categorie_demandee` (alias reçu). Pour `techniciens`, seuls `"I"` (alias `"1"`) et `"III+II"` existent : `"III+II"` est une clé unique, et `"II"`, `"III"`, `"2"` ou `"3"` sont refusés (`PARAM_INVALIDE`), car l'annexe 4 ne confirme pas que les catégories 2 et 3 partagent cette ligne (D23). |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
 | `anciennete_annees` | nombre, selon la population | **Désormais optionnel au schéma.** Obligatoire pour une population à degrés d'ancienneté (toutes, sauf BTP `ouvriers_occasionnels`), refusé pour une population sans degré (`PARAM_INVALIDE`). Une valeur exactement égale à une borne (métallurgie : 2, 4, …, 20 ; BTP : 2, …, 12, 15, 18, 21, 24) est refusée, car le PDF ne précise pas à quel degré elle appartient (D6). **Plus de plafond fixe** : au-delà du dernier degré, l'article 13 de chaque convention s'applique (D10, voir §7). Métallurgie : paliers exacts 22, 24, 26… ans refusés (`PARAM_INVALIDE`). BTP `admin_tech` : 27 ans pile refusé (`PARAM_INVALIDE`) ; au-delà de la fenêtre de la case cible (29 ou 30 ans selon la catégorie) et pour la catégorie 19, refus `SOURCE_MANQUANTE`. Associations pour personnes handicapées : le degré k couvre de 2k−2 à 2k ans (lecture affichée dans `detail.hypotheses`) ; bornes 2, 4, …, 30 refusées (`PARAM_INVALIDE`) ; à partir de 32 ans, refus `SOURCE_MANQUANTE`, car la convention ne prévoit rien au-delà du degré 16 (D23). |
@@ -469,7 +471,7 @@ Draft202012Validator(schema).validate(ma_requete)
 
 ## 7. Ce qui n'est pas encore couvert
 
-- **Vingt-cinq secteurs ont des données vérifiées :**
+- **Trente et un secteurs ont des données vérifiées :**
   - `METALLURGIE_BATIMENT` (D4) : 6 grilles (3 dates d'effet × 2 populations)
     et 6 primes ;
   - `BATIMENT_TRAVAUX_PUBLICS` (D9) : 6 grilles (3 dates d'effet × 2
@@ -494,7 +496,12 @@ Draft202012Validator(schema).validate(ma_requete)
     (6, 675, dont 6 cases illisibles refusées). Détail ci-dessous ;
   - vague 3 (D61 à D66) : `MECANIQUE_STATIONS_SERVICE` (3 tableaux, 720 montants), `BOISSONS_ALCOOLISEES` (6, 720),
     `BOIS_AMEUBLEMENT_LIEGE` (6, 819), `GESTION_DECHETS` (4, 836, dont 13 cases illisibles refusées), `HABILLEMENT`
-    (4, 864) et `COMMERCE_GROS_DETAIL` (6, 897). Détail ci-dessous.
+    (4, 864) et `COMMERCE_GROS_DETAIL` (6, 897). Détail ci-dessous ;
+  - vague 4 (D67 à D72, vérification humaine partielle, voir les décisions) : `IMPRIMERIE_EDITION_CARTONNAGE` (6 tableaux, 855
+    montants), `VERRE_MIROIRS` (6, 900, salaire de base refusé), `CONCESSIONNAIRES_MATERIEL_AGRICOLE` (3, 912, dont
+    8 cases illisibles refusées), `BOULANGERIES` (9, 1 014, dont 12 cases illisibles refusées), `TEXTILE` (4, 1 050,
+    dont 136 cellules transcrites non servies) et `FONDERIE_METALLURGIE_MECANIQUE` (6, 1 092, dont 1 case illisible
+    refusée). Détail ci-dessous.
 
   Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
@@ -755,6 +762,27 @@ Draft202012Validator(schema).validate(ma_requete)
   - `COMMERCE_GROS_DETAIL` (D66) : `agents` (`ouvrier_horaire_ligne_imprimee`, `10` à `21`) et `chefs_rayon_gerants`
     (`16` ou `17` + `sous_categorie` `a` à `e`), population obligatoire ; TND/mois en hypothèse affichée ; écart cumulé
     tous les 2 ans au-delà de 24 ans pour la catégorie `21` seulement, refus au-delà de 26 ans pour les autres.
+- **Vague 4 (D67 à D72) : particularités visibles pour DS1.** Mêmes conventions de codes de primes que les vagues 1
+  à 3. Les six secteurs ne figurent pas encore dans la table des secteurs (en attente DS2). Vérification humaine
+  partielle (cas de référence, primes sans date, zooms, échantillon), décrite dans D67 à D72.
+  - `IMPRIMERIE_EDITION_CARTONNAGE` (D67) : `administratifs_mensuels` (lignes `1`, `2`, `3-4-5-6`, `7-8-9`, `10`,
+    `11-12`, `13-14-15` ; rangs `1` à `15` en alias), `horaires` (`I` à `III` + `sous_categorie` `1` à `3`, position
+    imprimée) et `techniciens_mensuels` (`IV` + `sous_categorie` `1` à `3`, TND/mois en hypothèse) ; refus à partir
+    de 31 ans.
+  - `VERRE_MIROIRS` (D68) : `horaires` (`1` à `7`) et `mensuels` (`1` + `a` / `b`, `2` à `18`) ; **salaire de base
+    toujours refusé** (`SOURCE_MANQUANTE` : aucune durée de degré imprimée) ; primes servies, dont `prime_transport`
+    avec la variante `complement_si_prime_superieure`.
+  - `CONCESSIONNAIRES_MATERIEL_AGRICOLE` (D69) : population unique `tous_agents`, catégories `1` à `16`, **TND/mois en
+    hypothèse affichée** ; refus à partir de 40 ans ; `prime_transport` refusée (montant révisé absent).
+  - `BOULANGERIES` (D70) : `administratifs` (`1` à `8`), `traditionnelles_horaires` et `traditionnelles_mensuels`
+    (`passeur_de_plaques`, `peseur`, `petrisseur`, `chef_de_four`), `industrielles_horaires` et
+    `industrielles_mensuels` (`1` à `5`) ; refus à partir de 24 ans.
+  - `TEXTILE` (D71) : `horaires` (`I`, `II`, `III` + `1` à `3`, `IV` + `1` / `2`) et `mensuels` (`1` + `a` / `b`, `2`
+    à `17`) ; première table au 2021-09-01 ; colonne « stage » refusée ; refus à partir de 35 ans (horaires) et 36 ans
+    (mensuels) ; `prime_assiduite` refusée (dates incohérentes).
+  - `FONDERIE_METALLURGIE_MECANIQUE` (D72) : `mensuels` (`1` + `a` / `b`, `2` à `18`) et `horaires` (`1` à `7`) ;
+    degré 14 (imprimé « +32 ») servi de 32 à moins de 35 ans, refus à partir de 35 ans (note de l'art. 58 contraire à
+    l'en-tête) ; `prime_transport` à deux groupes, « au titre de » 2021, 2023, 2024 tel qu'imprimé.
 - **Trois refus lus dans les fichiers (D48), sans effet sur les autres secteurs.**
   - Case illisible (`cellules_source_manquante` d'une table, valeur `null`) : `SOURCE_MANQUANTE` avec la page et la
     raison.

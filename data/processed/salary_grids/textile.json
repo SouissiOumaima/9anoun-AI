@@ -1,0 +1,2333 @@
+{
+ "_meta": {
+  "secteur_code": "TEXTILE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للنسيج",
+  "convention_fr": "Convention collective sectorielle du textile",
+  "source_file": "data/raw/pdf/النسيج.pdf",
+  "pages_sources": [
+   3,
+   7,
+   8,
+   10,
+   15,
+   16,
+   29,
+   30,
+   31,
+   32
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "1050 cellules lues en double lecture indépendante sur image (rendus redressés à 200 et 280 dpi, saisie dans deux ordres), comparées par script : 0 écart sur les cellules lisibles ; aucune cellule douteuse ; contrôle de hausse entre deux dates voisines (pourcentage fixe par ligne) : aucun écart au-delà de 1 millime (y compris les 100 cellules des degrés 19 et 20 et les 36 de la colonne « stage », gardées en champ descriptif) ; montants des primes lus sur l'image. Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.",
+  "decision_ref": "D71",
+  "currency": "TND",
+  "note_unite": "Tableaux n° 1 et 3 : agents payés à l'heure (TND/heure) ; n° 2 et 4 : payés au mois (TND/mois), unité imprimée dans le titre.",
+  "note_degres": "En-tête (p.29-32) : ancienneté effective imprimée (début du degré). Horaires : degré 0 (titularisation) à 18, libellés « 0-1 » … « 33-35 », refus à partir de 35 ans. Mensuels : colonne « stage » (refusée, cellules_source_manquante avec valeur_imprimee), degrés 1 à 18, libellés « 0-1 » (stage) … « 34-36 », refus à partir de 36 ans. Degrés 19 et 20 : colonnes_non_servies.",
+  "note_categories": "Horaires : I, II, III (sous-catégories 1 à 3), IV (sous-catégories 1 et 2). Mensuels : 1 (« a » = 1 أ, « b » = 1 ب), 2 à 17.",
+  "note_dates": "Tableaux de 2021-09-01 (p.29-30) et 2022-05-01 (p.31-32) ; refus avant le 2021-09-01 ; aucune grille après le 2022-05-01.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Art. 22 (p.10) : renvoi à la loi ; non repris.",
+  "remarque_pdf": "Note sous chaque tableau (p.29-32) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 29 إلى 32): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "horaires": {
+   "libelle_fr": "Agents payés à l'heure",
+   "libelle_ar": "الأعوان الخالصون بالساعة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 29,
+   "note": "Tableaux n° 1 et 3 ; population obligatoire."
+  },
+  "mensuels": {
+   "libelle_fr": "Agents payés au mois",
+   "libelle_ar": "الأعوان الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 30,
+   "note": "Tableaux n° 2 et 4 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "anciennete_imprimee": "titularisation",
+    "colonne_imprimee": "0"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "anciennete_imprimee": "deuxième année à partir du début du stage",
+    "colonne_imprimee": "1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "anciennete_imprimee": "2",
+    "colonne_imprimee": "2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-5",
+    "anciennete_imprimee": "3",
+    "colonne_imprimee": "3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "5-7",
+    "anciennete_imprimee": "5",
+    "colonne_imprimee": "4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "7-9",
+    "anciennete_imprimee": "7",
+    "colonne_imprimee": "5"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "9-11",
+    "anciennete_imprimee": "9",
+    "colonne_imprimee": "6"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "11-13",
+    "anciennete_imprimee": "11",
+    "colonne_imprimee": "7"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "13-15",
+    "anciennete_imprimee": "13",
+    "colonne_imprimee": "8"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "15-17",
+    "anciennete_imprimee": "15",
+    "colonne_imprimee": "9"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "17-19",
+    "anciennete_imprimee": "17",
+    "colonne_imprimee": "10"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "19-21",
+    "anciennete_imprimee": "19",
+    "colonne_imprimee": "11"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "21-23",
+    "anciennete_imprimee": "21",
+    "colonne_imprimee": "12"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "23-25",
+    "anciennete_imprimee": "23",
+    "colonne_imprimee": "13"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "25-27",
+    "anciennete_imprimee": "25",
+    "colonne_imprimee": "14"
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "27-29",
+    "anciennete_imprimee": "27",
+    "colonne_imprimee": "15"
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "29-31",
+    "anciennete_imprimee": "29",
+    "colonne_imprimee": "16"
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "31-33",
+    "anciennete_imprimee": "31",
+    "colonne_imprimee": "17"
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "33-35",
+    "anciennete_imprimee": "33",
+    "colonne_imprimee": "18"
+   }
+  ],
+  "mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "anciennete_imprimee": "période de stage",
+    "colonne_imprimee": "stage"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "anciennete_imprimee": "1",
+    "colonne_imprimee": "1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "anciennete_imprimee": "2",
+    "colonne_imprimee": "2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "anciennete_imprimee": "4",
+    "colonne_imprimee": "3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "anciennete_imprimee": "6",
+    "colonne_imprimee": "4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "anciennete_imprimee": "8",
+    "colonne_imprimee": "5"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "anciennete_imprimee": "10",
+    "colonne_imprimee": "6"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "anciennete_imprimee": "12",
+    "colonne_imprimee": "7"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "anciennete_imprimee": "14",
+    "colonne_imprimee": "8"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "anciennete_imprimee": "16",
+    "colonne_imprimee": "9"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "anciennete_imprimee": "18",
+    "colonne_imprimee": "10"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "anciennete_imprimee": "20",
+    "colonne_imprimee": "11"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "anciennete_imprimee": "22",
+    "colonne_imprimee": "12"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-26",
+    "anciennete_imprimee": "24",
+    "colonne_imprimee": "13"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "26-28",
+    "anciennete_imprimee": "26",
+    "colonne_imprimee": "14"
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "28-30",
+    "anciennete_imprimee": "28",
+    "colonne_imprimee": "15"
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "30-32",
+    "anciennete_imprimee": "30",
+    "colonne_imprimee": "16"
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "32-34",
+    "anciennete_imprimee": "32",
+    "colonne_imprimee": "17"
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "34-36",
+    "anciennete_imprimee": "34",
+    "colonne_imprimee": "18"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 35,
+   "source_pdf_page": 8,
+   "source_article": "12 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : dans les tableaux de la convention du textile (pages 29 et 31), le degré 19 commence à 35 ans mais sa fin n'est pas imprimée, et le degré 20 n'a aucune ancienneté imprimée ; ces deux colonnes ne sont pas servies (le degré 18 couvre de 33 à 35 ans). L'article 12 (جديد) (page 8) prévoit une promotion au dernier degré, non calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 35 ans).",
+   "message_ar": "أقدمية {a} سنة: في جداول أجور اتفاقية النسيج تبدأ الدرجة 19 عند 35 سنة دون ذكر نهايتها، ولا تذكر الدرجة 20 أي أقدمية؛ لا يُعتمد هذان العمودان (تغطي الدرجة 18 الفترة من 33 إلى 35 سنة). ينص الفصل 12 (جديد) (الصفحة 8) على ترقية عند بلوغ آخر درجة، ولا تُحتسب. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 35 سنة)."
+  },
+  "mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 8,
+   "source_article": "12 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : dans les tableaux de la convention du textile (pages 30 et 32), le degré 19 commence à 36 ans mais sa fin n'est pas imprimée, et le degré 20 n'a aucune ancienneté imprimée ; ces deux colonnes ne sont pas servies (le degré 18 couvre de 34 à 36 ans). L'article 12 (جديد) (page 8) prévoit une promotion au dernier degré, non calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: في جداول أجور اتفاقية النسيج تبدأ الدرجة 19 عند 36 سنة دون ذكر نهايتها، ولا تذكر الدرجة 20 أي أقدمية؛ لا يُعتمد هذان العمودان (تغطي الدرجة 18 الفترة من 34 إلى 36 سنة). ينص الفصل 12 (جديد) (الصفحة 8) على ترقية عند بلوغ آخر درجة، ولا تُحتسب. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  }
+ },
+ "categories": {
+  "horaires": [
+   "I",
+   "II",
+   "III_1",
+   "III_2",
+   "III_3",
+   "IV_1",
+   "IV_2"
+  ],
+  "mensuels": [
+   "1a",
+   "1b",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17"
+  ]
+ },
+ "sous_categories": {
+  "horaires": {
+   "source_pdf_page": 29,
+   "par_categorie": {
+    "III": {
+     "1": {
+      "cle": "III_1",
+      "libelle_fr": "Catégorie III, sous-catégorie 1",
+      "libelle_ar": "الصنف III، الصنف الفرعي 1",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "III_2",
+      "libelle_fr": "Catégorie III, sous-catégorie 2",
+      "libelle_ar": "الصنف III، الصنف الفرعي 2",
+      "libelle_ar_redige": false
+     },
+     "3": {
+      "cle": "III_3",
+      "libelle_fr": "Catégorie III, sous-catégorie 3",
+      "libelle_ar": "الصنف III، الصنف الفرعي 3",
+      "libelle_ar_redige": false
+     }
+    },
+    "IV": {
+     "1": {
+      "cle": "IV_1",
+      "libelle_fr": "Catégorie IV, sous-catégorie 1",
+      "libelle_ar": "الصنف IV، الصنف الفرعي 1",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "IV_2",
+      "libelle_fr": "Catégorie IV, sous-catégorie 2",
+      "libelle_ar": "الصنف IV، الصنف الفرعي 2",
+      "libelle_ar_redige": false
+     }
+    }
+   }
+  },
+  "mensuels": {
+   "source_pdf_page": 30,
+   "par_categorie": {
+    "1": {
+     "a": {
+      "cle": "1a",
+      "libelle_fr": "Catégorie 1 أ",
+      "libelle_ar": "الصنف 1 أ",
+      "libelle_ar_redige": false
+     },
+     "b": {
+      "cle": "1b",
+      "libelle_fr": "Catégorie 1 ب",
+      "libelle_ar": "الصنف 1 ب",
+      "libelle_ar_redige": false
+     }
+    }
+   }
+  }
+ },
+ "libelles_categories": {
+  "horaires": {
+   "I": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie I",
+    "libelle_ar": "الصنف I",
+    "libelle_ar_redige": true
+   },
+   "II": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie II",
+    "libelle_ar": "الصنف II",
+    "libelle_ar_redige": true
+   }
+  },
+  "mensuels": {
+   "2": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 16",
+    "libelle_ar": "الصنف 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 16,
+    "libelle_fr": "Catégorie 17",
+    "libelle_ar": "الصنف 17",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "horaires": {
+   "fr": [
+    "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+    "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+    "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "mensuels": {
+   "fr": [
+    "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+    "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+    "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-09-01",
+     "montant": 6.959
+    },
+    {
+     "effective_date": "2022-05-01",
+     "montant": 7.446
+    }
+   ],
+   "note": "Elle inclut la prime de l'article 5 du décret du 8 janvier 1945 modifié le 31 décembre 1965 (art. 49-1 (جديد), p.15)."
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-09-01",
+     "execution_maitrise": 60.281,
+     "cadres": 67.123
+    },
+    {
+     "effective_date": "2022-05-01",
+     "execution_maitrise": 64.500,
+     "cadres": 71.822
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise": {
+     "fr": "Agents d'exécution et de maîtrise",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "hypotheses": {
+    "fr": [
+     "Groupe choisi par l'appelant : le rattachement de sa catégorie au groupe n'est pas vérifié ici."
+    ],
+    "ar": [
+     "يختار الطالب المجموعة: لا يقع هنا التثبت من ربط صنفه بالمجموعة."
+    ]
+   },
+   "note": "Elle inclut les montants du décret n° 503 du 16 mars 1982 (5 dinars par mois pour l'exécution et la maîtrise, 10 dinars pour les cadres ; art. 49-2 (جديد), p.15)."
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_assiduite": {
+   "source_pdf_page": 16,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime d'encouragement à l'assiduité (article 49 (جديد), page 16) : deux lignes imprimées : 12,330 d par mois à partir du 1er septembre 2021 et 13,193 d par mois à partir de mai 2021 ; la date de la seconde ligne est antérieure à celle de la première, la période de chaque montant ne peut pas être établie. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التشجيع على المواظبة (الفصل 49 (جديد)، الصفحة 16): سطران مطبوعان: 12,330 د في الشهر بداية من غرة سبتمبر 2021 و13,193 د في الشهر بداية من غرة ماي 2021؛ تاريخ السطر الثاني سابق لتاريخ الأول. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "dates incohérentes"
+  },
+  "prime_production_fin_annee": {
+   "source_pdf_page": 15,
+   "source_article": "46",
+   "message_fr": "Prime de production et de fin d'année (article 46, page 15) : fraction d'un mois de salaire selon la note annuelle, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج وآخر السنة (الفصل 46، الصفحة 15): جزء من أجر شهر حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 16,
+   "source_article": "50",
+   "message_fr": "Prime de départ à la retraite (article 50, page 16) : un mois de salaire après vingt ans, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 50، الصفحة 16): أجرة شهر عمل فعلي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_deces": {
+   "source_pdf_page": 16,
+   "source_article": "50-5 (جديد)",
+   "message_fr": "Prime de décès (article 50-5 (جديد), page 16) : un mois de salaire versé à la famille, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الوفاة (الفصل 50-5 (جديد)، الصفحة 16): أجرة شهر عمل فعلي تسند لعائلة العامل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "TEX_HORAIRES_2021-09-01",
+   "numero_imprime": 1,
+   "population": "horaires",
+   "effective_date": "2021-09-01",
+   "source_pdf_page": 29,
+   "unite": "TND/heure",
+   "colonnes_non_servies": {
+    "colonnes_imprimees": [
+     "19",
+     "20"
+    ],
+    "anciennete_imprimee": [
+     "35",
+     null
+    ],
+    "source_pdf_page": 29,
+    "raison": "degré 19 sans fin imprimée (début 35 ans), degré 20 sans ancienneté imprimée : transcrits et vérifiés par la double lecture et le contrôle de hausse, non servis (refus au-delà du degré 18).",
+    "valeurs": {
+     "I": [
+      2.599,
+      2.604
+     ],
+     "II": [
+      2.725,
+      2.729
+     ],
+     "III_1": [
+      3.168,
+      3.174
+     ],
+     "III_2": [
+      3.269,
+      3.277
+     ],
+     "III_3": [
+      3.419,
+      3.427
+     ],
+     "IV_1": [
+      3.688,
+      3.699
+     ],
+     "IV_2": [
+      3.806,
+      3.818
+     ]
+    }
+   },
+   "valeurs": {
+    "I": [
+     2.501,
+     2.540,
+     2.543,
+     2.544,
+     2.546,
+     2.547,
+     2.549,
+     2.551,
+     2.553,
+     2.555,
+     2.557,
+     2.559,
+     2.561,
+     2.564,
+     2.571,
+     2.578,
+     2.583,
+     2.588,
+     2.594
+    ],
+    "II": [
+     2.644,
+     2.648,
+     2.649,
+     2.651,
+     2.654,
+     2.656,
+     2.658,
+     2.660,
+     2.663,
+     2.665,
+     2.671,
+     2.678,
+     2.686,
+     2.693,
+     2.700,
+     2.708,
+     2.712,
+     2.716,
+     2.721
+    ],
+    "III_1": [
+     3.054,
+     3.059,
+     3.062,
+     3.065,
+     3.067,
+     3.070,
+     3.076,
+     3.082,
+     3.090,
+     3.098,
+     3.107,
+     3.115,
+     3.123,
+     3.131,
+     3.139,
+     3.147,
+     3.152,
+     3.158,
+     3.163
+    ],
+    "III_2": [
+     3.117,
+     3.122,
+     3.125,
+     3.128,
+     3.130,
+     3.141,
+     3.150,
+     3.159,
+     3.166,
+     3.176,
+     3.184,
+     3.193,
+     3.202,
+     3.211,
+     3.219,
+     3.240,
+     3.247,
+     3.254,
+     3.262
+    ],
+    "III_3": [
+     3.245,
+     3.251,
+     3.254,
+     3.264,
+     3.274,
+     3.283,
+     3.292,
+     3.301,
+     3.311,
+     3.321,
+     3.328,
+     3.338,
+     3.360,
+     3.369,
+     3.376,
+     3.385,
+     3.393,
+     3.402,
+     3.410
+    ],
+    "IV_1": [
+     3.468,
+     3.491,
+     3.503,
+     3.514,
+     3.525,
+     3.549,
+     3.559,
+     3.569,
+     3.579,
+     3.589,
+     3.598,
+     3.607,
+     3.617,
+     3.628,
+     3.637,
+     3.645,
+     3.656,
+     3.667,
+     3.677
+    ],
+    "IV_2": [
+     3.576,
+     3.612,
+     3.623,
+     3.632,
+     3.643,
+     3.654,
+     3.664,
+     3.675,
+     3.687,
+     3.697,
+     3.707,
+     3.718,
+     3.728,
+     3.738,
+     3.745,
+     3.759,
+     3.771,
+     3.783,
+     3.794
+    ]
+   }
+  },
+  {
+   "table_id": "TEX_MENSUELS_2021-09-01",
+   "numero_imprime": 2,
+   "population": "mensuels",
+   "effective_date": "2021-09-01",
+   "source_pdf_page": 30,
+   "unite": "TND/mois",
+   "colonnes_non_servies": {
+    "colonnes_imprimees": [
+     "19",
+     "20"
+    ],
+    "anciennete_imprimee": [
+     "36",
+     null
+    ],
+    "source_pdf_page": 30,
+    "raison": "degré 19 sans fin imprimée (début 36 ans), degré 20 sans ancienneté imprimée : transcrits et vérifiés par la double lecture et le contrôle de hausse, non servis (refus au-delà du degré 18).",
+    "valeurs": {
+     "1a": [
+      542.675,
+      543.738
+     ],
+     "1b": [
+      557.291,
+      558.047
+     ],
+     "2": [
+      582.953,
+      584.251
+     ],
+     "3": [
+      682.325,
+      684.283
+     ],
+     "4": [
+      723.436,
+      725.784
+     ],
+     "5": [
+      749.974,
+      752.365
+     ],
+     "6": [
+      846.197,
+      849.240
+     ],
+     "7": [
+      865.278,
+      868.587
+     ],
+     "8": [
+      893.298,
+      897.047
+     ],
+     "9": [
+      911.420,
+      915.363
+     ],
+     "10": [
+      930.514,
+      934.701
+     ],
+     "11": [
+      945.149,
+      949.389
+     ],
+     "12": [
+      967.869,
+      972.240
+     ],
+     "13": [
+      996.615,
+      1001.453
+     ],
+     "14": [
+      1039.921,
+      1045.330
+     ],
+     "15": [
+      1077.518,
+      1083.207
+     ],
+     "16": [
+      1113.910,
+      1120.000
+     ],
+     "17": [
+      1190.338,
+      1197.342
+     ]
+    }
+   },
+   "valeurs": {
+    "1a": [
+     null,
+     530.355,
+     530.722,
+     531.095,
+     531.455,
+     531.823,
+     532.190,
+     532.557,
+     532.971,
+     533.397,
+     533.822,
+     534.248,
+     534.675,
+     534.998,
+     536.950,
+     538.424,
+     539.487,
+     540.549,
+     541.612
+    ],
+    "1b": [
+     null,
+     543.331,
+     543.734,
+     544.138,
+     544.542,
+     544.945,
+     545.363,
+     545.831,
+     546.299,
+     546.767,
+     547.236,
+     547.705,
+     549.459,
+     551.078,
+     552.676,
+     554.266,
+     555.022,
+     555.778,
+     556.534
+    ],
+    "2": [
+     null,
+     558.806,
+     559.331,
+     559.934,
+     560.538,
+     561.141,
+     561.744,
+     563.056,
+     564.893,
+     566.731,
+     568.568,
+     570.405,
+     572.243,
+     574.081,
+     575.933,
+     577.760,
+     579.058,
+     580.357,
+     581.655
+    ],
+    "3": [
+     null,
+     645.889,
+     646.664,
+     647.440,
+     649.930,
+     651.868,
+     653.951,
+     656.035,
+     658.119,
+     660.202,
+     662.287,
+     664.371,
+     669.108,
+     670.905,
+     672.701,
+     674.490,
+     676.449,
+     678.407,
+     680.366
+    ],
+    "4": [
+     null,
+     682.169,
+     684.143,
+     686.476,
+     688.808,
+     691.139,
+     693.471,
+     695.804,
+     698.135,
+     702.893,
+     704.900,
+     706.730,
+     708.559,
+     710.389,
+     712.219,
+     714.047,
+     716.395,
+     718.742,
+     721.089
+    ],
+    "5": [
+     null,
+     706.990,
+     709.431,
+     711.872,
+     716.933,
+     719.057,
+     721.162,
+     723.277,
+     725.371,
+     727.475,
+     729.579,
+     731.963,
+     734.097,
+     736.202,
+     738.306,
+     740.410,
+     742.801,
+     745.192,
+     747.583
+    ],
+    "6": [
+     null,
+     791.129,
+     793.920,
+     796.926,
+     799.670,
+     802.415,
+     805.159,
+     807.904,
+     810.648,
+     816.055,
+     819.105,
+     822.178,
+     825.253,
+     828.325,
+     831.281,
+     834.026,
+     837.069,
+     840.111,
+     843.154
+    ],
+    "7": [
+     null,
+     805.728,
+     808.739,
+     811.749,
+     814.760,
+     817.770,
+     820.780,
+     826.517,
+     829.888,
+     833.263,
+     836.633,
+     840.000,
+     843.011,
+     846.022,
+     849.031,
+     852.042,
+     855.351,
+     858.660,
+     861.969
+    ],
+    "8": [
+     null,
+     825.359,
+     828.664,
+     831.957,
+     837.912,
+     841.566,
+     845.253,
+     848.942,
+     852.589,
+     855.882,
+     859.175,
+     862.469,
+     865.762,
+     869.109,
+     875.010,
+     878.303,
+     882.052,
+     885.801,
+     889.550
+    ],
+    "9": [
+     null,
+     839.991,
+     843.467,
+     849.791,
+     853.685,
+     857.579,
+     861.474,
+     865.018,
+     868.494,
+     871.971,
+     875.448,
+     878.925,
+     885.064,
+     888.541,
+     892.035,
+     895.650,
+     899.592,
+     903.535,
+     907.478
+    ],
+    "10": [
+     null,
+     857.271,
+     861.292,
+     865.315,
+     869.488,
+     873.414,
+     877.073,
+     880.731,
+     884.391,
+     888.050,
+     894.382,
+     898.031,
+     901.691,
+     905.714,
+     909.739,
+     913.763,
+     917.951,
+     922.139,
+     926.326
+    ],
+    "11": [
+     null,
+     868.905,
+     873.208,
+     877.509,
+     881.442,
+     885.328,
+     889.130,
+     892.968,
+     896.809,
+     903.313,
+     907.156,
+     911.288,
+     915.514,
+     919.739,
+     923.966,
+     928.190,
+     932.430,
+     936.670,
+     940.910
+    ],
+    "12": [
+     null,
+     889.428,
+     893.701,
+     897.819,
+     901.935,
+     906.051,
+     912.830,
+     916.947,
+     921.107,
+     925.637,
+     930.164,
+     934.693,
+     939.221,
+     943.749,
+     948.197,
+     950.386,
+     954.757,
+     959.128,
+     963.498
+    ],
+    "13": [
+     null,
+     909.100,
+     913.492,
+     917.883,
+     924.937,
+     929.329,
+     933.792,
+     938.623,
+     943.453,
+     948.284,
+     953.114,
+     957.945,
+     962.775,
+     967.606,
+     972.437,
+     977.266,
+     982.104,
+     986.941,
+     991.778
+    ],
+    "14": [
+     null,
+     941.989,
+     949.500,
+     954.383,
+     959.718,
+     965.051,
+     970.385,
+     975.718,
+     981.052,
+     986.385,
+     991.720,
+     997.054,
+     1002.387,
+     1007.721,
+     1013.054,
+     1018.284,
+     1023.693,
+     1029.103,
+     1034.512
+    ],
+    "15": [
+     null,
+     974.979,
+     980.815,
+     986.652,
+     992.490,
+     998.326,
+     1004.163,
+     1009.999,
+     1015.837,
+     1021.674,
+     1027.510,
+     1033.346,
+     1038.843,
+     1044.149,
+     1049.454,
+     1054.761,
+     1060.450,
+     1066.140,
+     1071.829
+    ],
+    "16": [
+     null,
+     1004.565,
+     1010.895,
+     1017.235,
+     1023.575,
+     1029.914,
+     1036.254,
+     1042.595,
+     1048.935,
+     1054.970,
+     1060.734,
+     1066.496,
+     1072.260,
+     1078.024,
+     1083.788,
+     1089.552,
+     1095.641,
+     1101.731,
+     1107.821
+    ],
+    "17": [
+     null,
+     1064.819,
+     1072.367,
+     1079.994,
+     1086.855,
+     1093.716,
+     1100.576,
+     1107.648,
+     1114.298,
+     1121.159,
+     1128.021,
+     1134.882,
+     1141.742,
+     1148.603,
+     1155.464,
+     1162.324,
+     1169.328,
+     1176.331,
+     1183.335
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "1a",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 522.488,
+     "message_fr": "Salaire des agents payés au mois, catégorie 1a, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1a، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "1b",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 542.927,
+     "message_fr": "Salaire des agents payés au mois, catégorie 1b, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1b، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "2",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 558.287,
+     "message_fr": "Salaire des agents payés au mois, catégorie 2, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "3",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 645.112,
+     "message_fr": "Salaire des agents payés au mois, catégorie 3, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "4",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 678.838,
+     "message_fr": "Salaire des agents payés au mois, catégorie 4, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 4، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "5",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 704.548,
+     "message_fr": "Salaire des agents payés au mois, catégorie 5, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "6",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 788.384,
+     "message_fr": "Salaire des agents payés au mois, catégorie 6, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "7",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 802.409,
+     "message_fr": "Salaire des agents payés au mois, catégorie 7, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 7، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "8",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 822.078,
+     "message_fr": "Salaire des agents payés au mois, catégorie 8, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 8، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "9",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 836.514,
+     "message_fr": "Salaire des agents payés au mois, catégorie 9, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 9، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "10",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 850.950,
+     "message_fr": "Salaire des agents payés au mois, catégorie 10, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 10، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "11",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 864.601,
+     "message_fr": "Salaire des agents payés au mois, catégorie 11, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 11، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "12",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 884.817,
+     "message_fr": "Salaire des agents payés au mois, catégorie 12, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 12، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "13",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 904.709,
+     "message_fr": "Salaire des agents payés au mois, catégorie 13, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 13، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "14",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 937.140,
+     "message_fr": "Salaire des agents payés au mois, catégorie 14, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 14، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "15",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 969.417,
+     "message_fr": "Salaire des agents payés au mois, catégorie 15, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 15، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 998.214,
+     "message_fr": "Salaire des agents payés au mois, catégorie 16, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 16، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "17",
+     "degre": 1,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 1057.273,
+     "message_fr": "Salaire des agents payés au mois, catégorie 17, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 17، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "TEX_HORAIRES_2022-05-01",
+   "numero_imprime": 3,
+   "population": "horaires",
+   "effective_date": "2022-05-01",
+   "source_pdf_page": 31,
+   "unite": "TND/heure",
+   "colonnes_non_servies": {
+    "colonnes_imprimees": [
+     "19",
+     "20"
+    ],
+    "anciennete_imprimee": [
+     "35",
+     null
+    ],
+    "source_pdf_page": 31,
+    "raison": "degré 19 sans fin imprimée (début 35 ans), degré 20 sans ancienneté imprimée : transcrits et vérifiés par la double lecture et le contrôle de hausse, non servis (refus au-delà du degré 18).",
+    "valeurs": {
+     "I": [
+      2.781,
+      2.787
+     ],
+     "II": [
+      2.916,
+      2.920
+     ],
+     "III_1": [
+      3.390,
+      3.396
+     ],
+     "III_2": [
+      3.498,
+      3.506
+     ],
+     "III_3": [
+      3.658,
+      3.667
+     ],
+     "IV_1": [
+      3.946,
+      3.957
+     ],
+     "IV_2": [
+      4.073,
+      4.085
+     ]
+    }
+   },
+   "valeurs": {
+    "I": [
+     2.676,
+     2.718,
+     2.721,
+     2.722,
+     2.724,
+     2.725,
+     2.727,
+     2.730,
+     2.732,
+     2.734,
+     2.737,
+     2.738,
+     2.740,
+     2.743,
+     2.751,
+     2.758,
+     2.764,
+     2.770,
+     2.775
+    ],
+    "II": [
+     2.829,
+     2.834,
+     2.835,
+     2.837,
+     2.839,
+     2.842,
+     2.844,
+     2.846,
+     2.850,
+     2.852,
+     2.858,
+     2.866,
+     2.874,
+     2.882,
+     2.889,
+     2.897,
+     2.902,
+     2.907,
+     2.911
+    ],
+    "III_1": [
+     3.268,
+     3.273,
+     3.276,
+     3.280,
+     3.282,
+     3.285,
+     3.291,
+     3.298,
+     3.306,
+     3.315,
+     3.324,
+     3.333,
+     3.341,
+     3.350,
+     3.358,
+     3.367,
+     3.373,
+     3.379,
+     3.384
+    ],
+    "III_2": [
+     3.335,
+     3.341,
+     3.343,
+     3.347,
+     3.349,
+     3.360,
+     3.371,
+     3.380,
+     3.388,
+     3.398,
+     3.407,
+     3.416,
+     3.426,
+     3.436,
+     3.445,
+     3.466,
+     3.474,
+     3.482,
+     3.490
+    ],
+    "III_3": [
+     3.472,
+     3.479,
+     3.481,
+     3.493,
+     3.503,
+     3.513,
+     3.522,
+     3.533,
+     3.543,
+     3.553,
+     3.561,
+     3.571,
+     3.595,
+     3.604,
+     3.612,
+     3.621,
+     3.631,
+     3.640,
+     3.649
+    ],
+    "IV_1": [
+     3.711,
+     3.735,
+     3.748,
+     3.760,
+     3.772,
+     3.798,
+     3.808,
+     3.818,
+     3.830,
+     3.840,
+     3.850,
+     3.859,
+     3.870,
+     3.882,
+     3.891,
+     3.900,
+     3.912,
+     3.923,
+     3.935
+    ],
+    "IV_2": [
+     3.826,
+     3.865,
+     3.877,
+     3.887,
+     3.898,
+     3.910,
+     3.921,
+     3.932,
+     3.945,
+     3.956,
+     3.967,
+     3.978,
+     3.989,
+     4.000,
+     4.008,
+     4.022,
+     4.035,
+     4.047,
+     4.060
+    ]
+   }
+  },
+  {
+   "table_id": "TEX_MENSUELS_2022-05-01",
+   "numero_imprime": 4,
+   "population": "mensuels",
+   "effective_date": "2022-05-01",
+   "source_pdf_page": 32,
+   "unite": "TND/mois",
+   "colonnes_non_servies": {
+    "colonnes_imprimees": [
+     "19",
+     "20"
+    ],
+    "anciennete_imprimee": [
+     "36",
+     null
+    ],
+    "source_pdf_page": 32,
+    "raison": "degré 19 sans fin imprimée (début 36 ans), degré 20 sans ancienneté imprimée : transcrits et vérifiés par la double lecture et le contrôle de hausse, non servis (refus au-delà du degré 18).",
+    "valeurs": {
+     "1a": [
+      580.662,
+      581.800
+     ],
+     "1b": [
+      596.301,
+      597.110
+     ],
+     "2": [
+      623.760,
+      625.149
+     ],
+     "3": [
+      730.087,
+      732.183
+     ],
+     "4": [
+      774.077,
+      776.589
+     ],
+     "5": [
+      802.472,
+      805.031
+     ],
+     "6": [
+      905.431,
+      908.686
+     ],
+     "7": [
+      925.847,
+      929.388
+     ],
+     "8": [
+      955.829,
+      959.841
+     ],
+     "9": [
+      975.220,
+      979.438
+     ],
+     "10": [
+      995.650,
+      1000.130
+     ],
+     "11": [
+      1011.310,
+      1015.846
+     ],
+     "12": [
+      1035.620,
+      1040.297
+     ],
+     "13": [
+      1066.378,
+      1071.554
+     ],
+     "14": [
+      1112.715,
+      1118.503
+     ],
+     "15": [
+      1152.944,
+      1159.032
+     ],
+     "16": [
+      1191.884,
+      1198.400
+     ],
+     "17": [
+      1273.662,
+      1281.156
+     ]
+    }
+   },
+   "valeurs": {
+    "1a": [
+     null,
+     567.480,
+     567.872,
+     568.272,
+     568.657,
+     569.050,
+     569.444,
+     569.836,
+     570.279,
+     570.735,
+     571.189,
+     571.645,
+     572.102,
+     572.447,
+     574.536,
+     576.113,
+     577.251,
+     578.388,
+     579.525
+    ],
+    "1b": [
+     null,
+     581.364,
+     581.796,
+     582.228,
+     582.659,
+     583.091,
+     583.538,
+     584.039,
+     584.540,
+     585.041,
+     585.542,
+     586.044,
+     587.921,
+     589.654,
+     591.363,
+     593.065,
+     593.874,
+     594.683,
+     595.492
+    ],
+    "2": [
+     null,
+     597.923,
+     598.485,
+     599.130,
+     599.776,
+     600.421,
+     601.066,
+     602.470,
+     604.435,
+     606.402,
+     608.368,
+     610.334,
+     612.300,
+     614.266,
+     616.248,
+     618.203,
+     619.592,
+     620.982,
+     622.371
+    ],
+    "3": [
+     null,
+     691.101,
+     691.931,
+     692.761,
+     695.426,
+     697.498,
+     699.727,
+     701.957,
+     704.188,
+     706.417,
+     708.647,
+     710.877,
+     715.945,
+     717.868,
+     719.790,
+     721.705,
+     723.800,
+     725.896,
+     727.992
+    ],
+    "4": [
+     null,
+     729.921,
+     732.033,
+     734.529,
+     737.025,
+     739.519,
+     742.013,
+     744.510,
+     747.005,
+     752.095,
+     754.243,
+     756.201,
+     758.159,
+     760.116,
+     762.074,
+     764.031,
+     766.542,
+     769.054,
+     771.565
+    ],
+    "5": [
+     null,
+     756.479,
+     759.091,
+     761.703,
+     767.118,
+     769.391,
+     771.643,
+     773.906,
+     776.146,
+     778.398,
+     780.650,
+     783.200,
+     785.484,
+     787.736,
+     789.987,
+     792.239,
+     794.797,
+     797.356,
+     799.914
+    ],
+    "6": [
+     null,
+     846.508,
+     849.495,
+     852.710,
+     855.647,
+     858.584,
+     861.520,
+     864.457,
+     867.394,
+     873.179,
+     876.443,
+     879.730,
+     883.020,
+     886.308,
+     889.471,
+     892.408,
+     895.664,
+     898.919,
+     902.175
+    ],
+    "7": [
+     null,
+     862.129,
+     865.351,
+     868.571,
+     871.793,
+     875.014,
+     878.235,
+     884.373,
+     887.980,
+     891.591,
+     895.197,
+     898.800,
+     902.022,
+     905.243,
+     908.463,
+     911.685,
+     915.226,
+     918.766,
+     922.307
+    ],
+    "8": [
+     null,
+     883.134,
+     886.670,
+     890.194,
+     896.566,
+     900.476,
+     904.421,
+     908.368,
+     912.270,
+     915.794,
+     919.317,
+     922.842,
+     926.365,
+     929.947,
+     936.261,
+     939.784,
+     943.796,
+     947.807,
+     951.818
+    ],
+    "9": [
+     null,
+     898.790,
+     902.509,
+     909.276,
+     913.443,
+     917.610,
+     921.777,
+     925.569,
+     929.289,
+     933.009,
+     936.729,
+     940.450,
+     947.018,
+     950.739,
+     954.477,
+     958.345,
+     962.564,
+     966.782,
+     971.001
+    ],
+    "10": [
+     null,
+     917.280,
+     921.582,
+     925.888,
+     930.352,
+     934.553,
+     938.468,
+     942.382,
+     946.298,
+     950.213,
+     956.989,
+     960.893,
+     964.809,
+     969.114,
+     973.420,
+     977.727,
+     982.207,
+     986.688,
+     991.169
+    ],
+    "11": [
+     null,
+     929.728,
+     934.332,
+     938.935,
+     943.143,
+     947.301,
+     951.370,
+     955.475,
+     959.586,
+     966.545,
+     970.656,
+     975.078,
+     979.600,
+     984.120,
+     988.643,
+     993.164,
+     997.700,
+     1002.237,
+     1006.773
+    ],
+    "12": [
+     null,
+     951.688,
+     956.261,
+     960.666,
+     965.070,
+     969.475,
+     976.728,
+     981.133,
+     985.585,
+     990.431,
+     995.275,
+     1000.122,
+     1004.966,
+     1009.811,
+     1014.571,
+     1016.913,
+     1021.590,
+     1026.267,
+     1030.943
+    ],
+    "13": [
+     null,
+     972.737,
+     977.437,
+     982.135,
+     989.682,
+     994.382,
+     999.158,
+     1004.327,
+     1009.494,
+     1014.663,
+     1019.832,
+     1025.001,
+     1030.169,
+     1035.338,
+     1040.507,
+     1045.675,
+     1050.851,
+     1056.027,
+     1061.203
+    ],
+    "14": [
+     null,
+     1007.928,
+     1015.965,
+     1021.190,
+     1026.898,
+     1032.605,
+     1038.312,
+     1044.019,
+     1049.726,
+     1055.432,
+     1061.140,
+     1066.847,
+     1072.554,
+     1078.261,
+     1083.968,
+     1089.564,
+     1095.352,
+     1101.140,
+     1106.928
+    ],
+    "15": [
+     null,
+     1043.227,
+     1049.472,
+     1055.718,
+     1061.964,
+     1068.209,
+     1074.455,
+     1080.699,
+     1086.945,
+     1093.191,
+     1099.436,
+     1105.680,
+     1111.562,
+     1117.239,
+     1122.916,
+     1128.595,
+     1134.682,
+     1140.769,
+     1146.857
+    ],
+    "16": [
+     null,
+     1074.884,
+     1081.658,
+     1088.441,
+     1095.225,
+     1102.008,
+     1108.791,
+     1115.576,
+     1122.360,
+     1128.818,
+     1134.985,
+     1141.151,
+     1147.318,
+     1153.486,
+     1159.653,
+     1165.820,
+     1172.336,
+     1178.852,
+     1185.368
+    ],
+    "17": [
+     null,
+     1139.357,
+     1147.433,
+     1155.593,
+     1162.935,
+     1170.276,
+     1177.616,
+     1185.184,
+     1192.299,
+     1199.640,
+     1206.982,
+     1214.323,
+     1221.664,
+     1229.005,
+     1236.346,
+     1243.687,
+     1251.181,
+     1258.675,
+     1266.168
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "1a",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 559.062,
+     "message_fr": "Salaire des agents payés au mois, catégorie 1a, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1a، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "1b",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 580.932,
+     "message_fr": "Salaire des agents payés au mois, catégorie 1b, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1b، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "2",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 597.367,
+     "message_fr": "Salaire des agents payés au mois, catégorie 2, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "3",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 690.270,
+     "message_fr": "Salaire des agents payés au mois, catégorie 3, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "4",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 726.357,
+     "message_fr": "Salaire des agents payés au mois, catégorie 4, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 4، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "5",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 753.866,
+     "message_fr": "Salaire des agents payés au mois, catégorie 5, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "6",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 843.571,
+     "message_fr": "Salaire des agents payés au mois, catégorie 6, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "7",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 858.577,
+     "message_fr": "Salaire des agents payés au mois, catégorie 7, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 7، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "8",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 879.623,
+     "message_fr": "Salaire des agents payés au mois, catégorie 8, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 8، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "9",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 895.070,
+     "message_fr": "Salaire des agents payés au mois, catégorie 9, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 9، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "10",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 910.516,
+     "message_fr": "Salaire des agents payés au mois, catégorie 10, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 10، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "11",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 925.123,
+     "message_fr": "Salaire des agents payés au mois, catégorie 11, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 11، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "12",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 946.754,
+     "message_fr": "Salaire des agents payés au mois, catégorie 12, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 12، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "13",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 968.039,
+     "message_fr": "Salaire des agents payés au mois, catégorie 13, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 13، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "14",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 1002.740,
+     "message_fr": "Salaire des agents payés au mois, catégorie 14, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 14، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "15",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 1037.277,
+     "message_fr": "Salaire des agents payés au mois, catégorie 15, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 15، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 1068.089,
+     "message_fr": "Salaire des agents payés au mois, catégorie 16, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 16، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "17",
+     "degre": 1,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
+     "valeur_imprimee": 1131.282,
+     "message_fr": "Salaire des agents payés au mois, catégorie 17, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 17، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    }
+   ]
+  }
+ ]
+}

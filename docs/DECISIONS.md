@@ -2884,3 +2884,244 @@ secteurs sont activés dans le registre DS5 sans entrée dans la table des secte
 et passages d'échelle non calculés, affichés en hypothèse ; libellés de catégorie, messages et hypothèses rédigés
 (`libelle_ar_redige`), libellés des rangs repris de l'image ; note des tableaux (décrets 437/1981 et 501/1982) reprise
 en remarque, sans calcul.
+
+---
+
+### D67 — Grille salariale IMPRIMERIE_EDITION_CARTONNAGE (pages 3, 8-9, 13-16, 21-27)
+
+**Source** : `data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf` (27 pages). Pages :
+avenants (p.3, n° 16 : effet au 2021-12-01), art. 11 (جديد) (p.8), art. 15 et 17 (p.9), art. 39 (p.13), art. 46 à 47-7
+(p.14-16), classification (p.21), tableaux n° 1 à 6 (p.22-27).
+
+**Lecture** : 6 tableaux, 3 dates (2021-12-01, 2023-01-01, 2024-01-01). Administratifs au mois : 7 lignes × 15 degrés.
+Ouvriers et agents techniques : catégories I à IV, 3 lignes sans libellé chacune, × 15 degrés. Au total, 855 montants.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 et 2 ; vérification humaine partielle faite, voir le statut)
+
+1. **Populations**, toutes obligatoires :
+   - `administratifs_mensuels` (TND/mois) : lignes imprimées `1`, `2`, `3-4-5-6`, `7-8-9`, `10`, `11-12`, `13-14-15` ; les rangs 3 à 15 de la classification (p.21) sont des alias de leur ligne.
+   - `horaires` (TND/heure) : catégories `I` à `III`, `sous_categorie` `1` à `3`.
+   - `techniciens_mensuels` : catégorie `IV`, `sous_categorie` `1` à `3` ; unité TND/mois en hypothèse affichée.
+2. **Sous-lignes** : numérotées par leur position imprimée, sans correspondance avec les trois postes par catégorie de la classification (p.21), qui ne l'imprime pas (hypothèse affichée).
+3. **Tableau n° 6 (p.27)** : il n'a pas de titre de population (une virgule à sa place). Il est rattaché aux ouvriers horaires et agents techniques, car ses libellés de lignes et son en-tête sont identiques à ceux des tableaux n° 2 et 4 (vérifié à 400 dpi). Hypothèse affichée, défaut cité avec la page.
+4. **Degrés** : durées de séjour 2 ans (degrés 1 à 14) puis 3 ans (degré 15) ; ancienneté effective 2 … 28, 31 ; libellés « 0-2 » … « 26-28 », « 28-31 ».
+   - **À partir de 31 ans : refus** (`SOURCE_MANQUANTE`). Le message cite l'art. 11 (جديد) 1) (p.8 : dernier écart « après chaque période de deux ans ») et l'en-tête (p.22-27 : degré 15 de 3 ans) : la première période n'est pas fixée.
+   - Promotion du manœuvre (art. 11-2) et classement à l'entrée en vigueur (art. 48) : non calculés.
+5. **Primes couvertes** :
+   - `prime_transport` (art. 47 (جديد) : 80,980 / 86,447 / 92,282, au titre de 2022 à 2024) ;
+   - `prime_presence` (art. 47-7 (جديد) : 6,894 / 7,359 / 7,856) ;
+   - `prime_aid_fitr` (20 d) et `prime_aid_adha` (40 d) (art. 47 مكرر) ;
+   - `prime_panier` (art. 47-3 : 0,350 par jour, condition) ;
+   - `prime_deces_agent` (300 d) et `prime_deces_parent` (200 d, condition) (art. 47-4) ;
+   - `prime_deplacement_repas` (3 d) et `prime_deplacement_nuitee` (5 d) (art. 47-6, condition).
+6. **`SOURCE_MANQUANTE`** : `prime_production_fin_annee` (art. 46), `prime_depart_retraite` (art. 47-5), `majoration_travail_nuit` (art. 17), `prime_licenciement` (art. 39).
+7. **Régime horaire** (information, art. 15 (جديد), p.9) : 48 h pour les tableaux n° 2, 4, 6 ; 40 h pour les n° 1, 3, 5.
+
+**Mise en œuvre** : `imprimerie_edition.json` ; `test_vague4.py` ; démos 166 à 173 ; TB-245 à TB-252.
+
+**Statut de vérification** :
+- 855 cellules lues en double lecture indépendante sur image : rendus redressés à 200 et 280 dpi, saisie dans deux ordres, comparaison par script. 0 écart, aucune cellule douteuse.
+- Contrôle de hausse entre deux dates voisines (modèle choisi par ligne) sur 570 cellules comparables : aucun écart au-delà de 1 millime.
+- Montants des primes lus sur l'image.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D68 — Grille salariale VERRE_MIROIRS (pages 3, 7-9, 13-15, 19-21) ; règle « refus » avec seuil 0
+
+**Source** : `data/raw/pdf/تحويل البلّور والمرآة.pdf` (21 pages). Pages : avenants (p.3, n° 15 : effet au 2021-12-01), art. 12 (جديد) (p.7-8), art. 14 (p.8), art. 20 (p.9), art. 40 et 43 (p.13), art. 44 à 52 (p.14), art. 53 (p.15), tableaux n° 1 à 6 (p.19-21).
+
+**Lecture** : 6 tableaux, 3 dates (2021-12-01, 2023-01-01, 2024-01-01). Horaires : catégories 1 à 7 × 13 degrés. Mensuels : 1 أ, 1 ب, 2 à 18 × 11 degrés. Au total, 900 montants. L'en-tête n'imprime que le numéro du degré.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 à 3 ; vérification humaine partielle faite, voir le statut)
+
+1. **Salaire de base refusé pour toute ancienneté** (`SOURCE_MANQUANTE`), avec un message qui cite l'art. 12 (جديد) (p.7-8) et l'art. 53 (p.15).
+   - Aucune durée de degré n'est imprimée : l'ancienneté ne permet pas de trouver le degré.
+   - Le contrat de Track B n'a pas de paramètre pour demander un degré par son numéro ; ce besoin reste ouvert.
+   - La grille est transcrite (libellés « degré 1 » …) pour le contrôle de lecture et une future demande par degré.
+2. **Changement du moteur (accord DS5, ARRÊT 3)** : `src/track_b_accounting/calc/loaders.py`, fonction `_valider_au_dela`, l. 153 à 157.
+   - Pour la règle « refus », `anciennete_max_couverte_annees` peut valoir 0 : `_entier_positif_ou_nul` remplace `_entier_positif`.
+   - Raison : sans seuil 0, une grille qui n'imprime aucune durée ne pouvait pas refuser le salaire de base avec son propre message tout en servant ses primes. `prime()` exige des tables transcrites, et `degre_from_anciennete` lit les libellés de degrés en dessous du seuil.
+   - Avec 0, `calc/salary.py` (l. 165, inchangé) refuse toute ancienneté avant de lire les libellés. Un seuil > 0 garde son comportement (D8).
+   - Tests : `test_refus_sans_anciennete_couverte.py` (grille fictive). Aucun test existant modifié.
+3. **Populations** : `horaires` (TND/heure) et `mensuels` (TND/mois, catégorie `1` avec `sous_categorie` `a` / `b`, puis `2` à `18`), obligatoires.
+4. **Hausse de 15 dinars au dernier degré** (art. 12, p.8, catégories 18 et 7) et passage à la catégorie suivante : non calculés.
+5. **Primes couvertes** :
+   - `prime_transport` (art. 45 (جديد) : 114,912 / 122,668 / 130,948 ; variante `complement_si_prime_superieure` : 7,013 / 7,757 / 8,280) ;
+   - `prime_presence` (art. 49 مكرر : 6,894 / 7,359 / 7,856) ;
+   - `prime_caisse` (art. 46 : 16,666, condition) ;
+   - `prime_douche` (art. 47 : 3 d, condition) ;
+   - `prime_aid_fitr` (51,666) et `prime_aid_adha` (83,333) (art. 48) ;
+   - `prime_panier` (art. 49 : 1,733 par jour, condition) ;
+   - `prime_risque` (art. 50 : 16,666, condition) ;
+   - `prime_lait_four` (art. 51-2 : 4 d, condition) ;
+   - `prime_deplacement_repas` (3 d) et `prime_deplacement_nuitee` (14 d) (art. 44, condition).
+6. **`SOURCE_MANQUANTE`** : `prime_production` (art. 43), `prime_lait_nature` (art. 51-1), `prime_globale_temporaire` (art. 52 : 120 d versés une fois), `aide_deces` (art. 40), `prime_licenciement` (art. 14).
+7. **Régime horaire** (information) : 40 h (art. 20 (جديد), p.9 ; 44 h par accord, en note).
+
+**Mise en œuvre** : `verre_miroirs.json` ; `calc/loaders.py` ; `test_refus_sans_anciennete_couverte.py` ; `test_vague4.py` ; démos 174 à 180 ; TB-253 à TB-259.
+
+**Statut de vérification** :
+- 900 cellules lues en double lecture indépendante sur image : rendus redressés à 200 et 280 dpi, saisie dans deux ordres, comparaison par script. 0 écart, aucune cellule douteuse.
+- Contrôle de hausse entre deux dates voisines sur 600 cellules comparables : aucun écart au-delà de 1 millime.
+- Montants des primes lus sur l'image.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D69 — Grille salariale CONCESSIONNAIRES_MATERIEL_AGRICOLE (pages 3, 8-10, 14-16, 23-25)
+
+**Source** : `data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf` (25 pages). Pages : avenants (p.3, n° 15 : effet au 2021-12-01), art. 12 (جديد) (p.8-9), art. 23 et 25 (p.10), art. 49 à 61 (p.14-16), tableaux n° 1 à 3 (p.23-25).
+
+**Lecture** : 3 tableaux, 3 dates (2021-12-01, 2023-01-01, 2024-01-01), catégories 1 à 16 × 19 degrés. Au total, 912 montants.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 et 2 ; vérification humaine partielle faite, voir le statut)
+
+1. **Population unique** `tous_agents`, catégories `1` à `16` (groupes imprimés en marge : exécution 1-7, maîtrise 8-12, cadres 13-16). **Unité non imprimée** : TND/mois en hypothèse affichée.
+2. **Degrés** : durées 1, 1, 1, puis 2 (degrés 4 à 14), puis 3 (degrés 15 à 19) ; libellés « 0-1 » … « 37-40 ». **À partir de 40 ans, refus** (art. 12 (جديد) : rien au-delà).
+3. **8 cases illisibles** déclarées `SOURCE_MANQUANTE` (`cellules_source_manquante`, D48, page et raison), sans valeur calculée :
+   - p.23 : ligne 16, degré 17 ;
+   - p.24 : ligne 11, degré 19 ;
+   - p.25, degré 8 : lignes 1, 2, 4, 6, 12 et 14.
+
+   Deux d'entre elles (p.23, ligne 16, degré 17, et p.25, ligne 12, degré 8) ont été signalées par le contrôle de hausse lors de la vérification des lots par DS5.
+4. **Primes couvertes** :
+   - `prime_fonction_*` (art. 50 : 90 / 75 / 60 / 30, condition) ;
+   - `prime_demi_journee` (art. 51 : 6,894 / 7,359 / 7,856 ; plafond en note) ;
+   - `prime_panier` (art. 52 : 1 d par jour, condition) ;
+   - `prime_caisse_premier_caissier` (25 d) et `prime_caisse_caissier` (20 d) (art. 53) ;
+   - `prime_deplacement_dejeuner`, `_diner` (5 d) et `_nuitee` (10 d) (art. 55, condition) ;
+   - `prime_aid_adha` (art. 56 : 73,333) ;
+   - `prime_scolaire_*` (art. 57 : 56,666 / 76,666 / 90 ; plafond de 4 enfants en note) ;
+   - `aide_deces` (art. 59 : 150 d).
+5. **`SOURCE_MANQUANTE`** :
+   - **`prime_transport`** (art. 49) : le message cite les montants de 2018 et 2019 tels qu'imprimés. L'article est révisé par l'avenant n° 15 (effet 2021-12-01), mais le montant révisé n'est pas dans le PDF. Une prime ne peut pas porter de date de fin : refus entier.
+   - `prime_depart_retraite` (art. 58), `prime_treizieme_mois` (art. 60), `prime_production` (art. 61), `indemnite_fin_service` (art. 23), `lait_nature` (art. 54).
+6. **Régime horaire** (information) : 40 h (art. 25, p.10).
+
+**Mise en œuvre** : `materiel_agricole.json` ; `test_vague4.py` ; démos 181 à 188 ; TB-260 à TB-267.
+
+**Statut de vérification** :
+- 912 cellules lues en double lecture indépendante sur image : 0 écart sur les cellules lisibles.
+- 8 cellules non tranchées : 6 au zoom à 400 dpi, et 2 retirées après la vérification des lots par DS5 (hausse entre dates).
+- 5 cellules douteuses tranchées au zoom à 400 dpi, vérifiées par DS5 sur l'image.
+- Contrôle de hausse sur 599 cellules comparables : aucun écart au-delà de 1 millime.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D70 — Grille salariale BOULANGERIES (pages 3, 8-10, 14-15, 18-23)
+
+**Source** : `data/raw/pdf/المخابز.pdf` (23 pages). Pages : avenants (p.3, n° 16 : effet au 2021-12-01), art. 13 (p.8-9), art. 17 (p.9), art. 23 et 25 (p.10), art. 49 à 50 مكرر (p.14-15), tableaux n° 1 à 9 (p.18-23).
+
+**Lecture** : 9 tableaux, 3 dates × 3 tableaux imprimés : administratifs (8 catégories), techniciens des boulangeries modernes et traditionnelles (4 postes, une ligne à l'heure et une ligne au mois chacun), techniciens des boulangeries industrielles (5 catégories, idem). 13 degrés. Au total, 1 014 montants.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 et 2 ; vérification humaine partielle faite, voir le statut)
+
+1. **Cinq populations**, obligatoires :
+   - `administratifs` (TND/mois en hypothèse affichée) ;
+   - `traditionnelles_horaires` et `traditionnelles_mensuels` (`passeur_de_plaques`, `peseur`, `petrisseur`, `chef_de_four`) ;
+   - `industrielles_horaires` et `industrielles_mensuels` (`1` à `5`).
+
+   L'unité des techniciens est imprimée sur chaque ligne.
+2. **Degrés** : durées 1, 1, puis 2 ; libellés « 0-1 » … « 22-24 ». **À partir de 24 ans, refus** (art. 13 : rien au-delà). Reclassement (art. 52) : non calculé.
+3. **12 cases illisibles** de la colonne du degré 2 (défaut d'impression, p.20-22), déclarées `SOURCE_MANQUANTE` (D48, page et raison), sans valeur calculée.
+4. **Primes couvertes** :
+   - `prime_transport` (art. 50 : 67,863 / 72,443 / 77,333) ;
+   - `prime_presence` (art. 50 مكرر أ : 12,894 / 13,764 / 14,693) ;
+   - `prime_panier` (art. 50 مكرر ب : 0,338 / 0,361 / 0,385 par jour).
+5. **`SOURCE_MANQUANTE`** : `prime_production_fin_annee` (art. 49), `indemnite_fin_service` (art. 17), `majoration_travail_nuit` (art. 25).
+6. **Régime horaire** (information) : 48 h (art. 23 (جديد), p.10).
+
+**Mise en œuvre** : `boulangeries.json` ; `test_vague4.py` ; démos 189 à 195 ; TB-268 à TB-274.
+
+**Statut de vérification** :
+- 1 014 cellules lues en double lecture indépendante sur image : 0 écart sur les cellules lisibles.
+- 12 cellules non tranchées au zoom à 400 dpi ; 1 cellule douteuse tranchée au zoom, vérifiées par DS5 sur l'image.
+- Contrôle de hausse sur 655 cellules comparables : aucun écart au-delà de 1 millime.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D71 — Grille salariale TEXTILE (pages 3, 7-8, 10, 15-16, 29-32)
+
+**Source** : `data/raw/pdf/النسيج.pdf` (32 pages). Pages : avenants (p.3 : dernier effet au 2021-09-01), art. 8 (p.7), art. 12 (جديد) (p.8), art. 22 (p.10), art. 45 à 50-5 (p.15-16), tableaux n° 1 à 4 (p.29-32).
+
+**Lecture** : 4 tableaux, 2 dates (2021-09-01, 2022-05-01) × 2 populations, 21 colonnes chacun :
+- horaires : I, II, III (3 sous-catégories), IV (2) ;
+- mensuels : 1 أ, 1 ب, 2 à 17.
+
+Au total, 1 050 montants.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 à 3 ; vérification humaine partielle faite, voir le statut)
+
+1. **Populations** `horaires` (TND/heure) et `mensuels` (TND/mois), obligatoires.
+2. **Degrés** : le nombre imprimé est lu comme le début du degré.
+   - Horaires : degré 0 (titularisation) de 0 à 1 an, puis 1-2, 2-3, 3-5 … 33-35 (degré 18).
+   - Mensuels : colonne « stage » 0-1, puis 1-2, 2-4 … 34-36 (degré 18).
+   - La fin imprimée du degré 18 a été vérifiée sur les quatre tableaux : le degré 19 commence à 35 ans pour les horaires et à 36 ans pour les mensuels.
+3. **Colonne « stage » refusée** (`SOURCE_MANQUANTE`) : sa durée n'est imprimée nulle part (l'art. 8, p.7, ne fixe que la période d'essai).
+   - Ses 36 cellules sont déclarées dans `cellules_source_manquante` (valeur `null`).
+   - La valeur lue est gardée dans le champ descriptif `valeur_imprimee`, que le moteur ignore.
+4. **Degrés 19 et 20 non servis** : le degré 19 n'a pas de fin imprimée et le degré 20 n'a aucune ancienneté.
+   - Refus à partir de 35 ans (horaires) et 36 ans (mensuels), avec l'art. 12 (جديد) (p.8) et l'en-tête cités.
+   - Les 100 cellules sont gardées dans le champ descriptif de table `colonnes_non_servies`.
+   - Le test de la vague applique le contrôle de hausse à ces valeurs et à celles de la colonne « stage », remises en place dans une copie de la grille.
+5. **Primes couvertes** : `prime_presence` (art. 49-1 : 6,959 / 7,446) et `prime_transport` (art. 49-2, `execution_maitrise` / `cadres` : 60,281 / 67,123 puis 64,500 / 71,822).
+6. **`SOURCE_MANQUANTE`** :
+   - **`prime_assiduite`** (art. 49-3) : le message cite les deux lignes telles qu'imprimées (12,330 d depuis septembre 2021, 13,193 d depuis mai 2021). La date de la seconde est antérieure à celle de la première.
+   - `prime_production_fin_annee` (art. 46), `prime_depart_retraite` (art. 50), `prime_deces` (art. 50-5).
+7. Aucune grille après le 2022-05-01 : la table de 2022 reste appliquée. Régime horaire non repris (art. 22, renvoi à la loi).
+
+**Mise en œuvre** : `textile.json` ; `test_vague4.py` ; démos 196 à 202 ; TB-275 à TB-281.
+
+**Statut de vérification** :
+- 1 050 cellules lues en double lecture indépendante sur image : 0 écart, aucune cellule douteuse.
+- Contrôle de hausse (pourcentage fixe par ligne) sur toutes les cellules, y compris les 136 gardées en champ descriptif : aucun écart au-delà de 1 millime.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D72 — Grille salariale FONDERIE_METALLURGIE_MECANIQUE (pages 3, 10, 15-17, 25-30)
+
+**Source** : `data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf` (30 pages). Pages : avenants (p.3, n° 16 : effet au 2021-12-01), art. 24 (p.10), art. 48 à 52 (p.15), art. 53 à 56-3 (p.16), note de l'art. 58 (p.16-17), tableaux n° 1 à 6 (p.25-30).
+
+**Lecture** : 6 tableaux, 3 dates × 2 populations :
+- mensuels : 1 أ, 1 ب, 2 à 18 ;
+- horaires : 1 à 7.
+
+14 degrés, ancienneté imprimée en intervalles. Au total, 1 092 montants.
+
+#### Décisions (DS5, réponses aux ARRÊT 1 et 2 ; vérification humaine partielle faite, voir le statut)
+
+1. **Populations** `mensuels` (TND/mois) et `horaires` (TND/heure), obligatoires.
+2. **Degrés** : « 0-2 » … « 12-14 », « 14-17 » … « 29-32 », puis « 32-35 » pour le degré 14 (imprimé « +32 »).
+   - La note de l'art. 58 (جديد) (p.17) fixe 2 ans aux degrés 1 à 7 et 3 ans aux degrés 8 à 14, sans dire ce qui suit le degré 14. L'en-tête imprime « +32 ».
+   - Règle déjà décidée : on suit l'en-tête et on refuse l'intervalle explicitement contredit, sans choisir. Le degré 14 est servi de 32 ans à moins de 35 ans.
+   - **À partir de 35 ans, refus** (règle « refus », `anciennete_max_couverte_annees` = 35, `SOURCE_MANQUANTE`), avec un message qui cite la note de l'art. 58 (p.17) et l'en-tête des grilles (pp.25-30). Bornes exactes (32 ans) : `PARAM_INVALIDE`.
+3. **1 case illisible** (mensuels 2021, p.25, ligne 4, degré 10 : deuxième chiffre lu 3 puis 5) déclarée `SOURCE_MANQUANTE` (D48).
+4. **Primes couvertes** :
+   - `prime_presence` (art. 50 : 6,894 / 7,359 / 7,856) ;
+   - `prime_transport` (art. 52, `execution_maitrise` / `cadres` : 81,435 / 88,221 ; 86,932 / 94,176 ; 92,800 / 100,533). Les dates d'effet sont celles imprimées en tête de ligne ; « au titre de » est repris tel qu'imprimé (2021, 2023, 2024), avec une remarque. La réduction pour absence n'est pas calculée.
+   - `prime_logement` (art. 56 مكرر : 20,359 / 21,733 / 23,200) ;
+   - `prime_chaleur_fumee_salete_risque` (art. 56-2 : 0,055 par heure, condition) ;
+   - `prime_chaleur_complement` (0,010 par heure depuis le 2011-07-01, condition) ;
+   - `prime_scolaire_*` (art. 56-3 : 16,666 / 26,666 / 40) ;
+   - `frais_funeraires` (art. 55 : 200 d).
+5. **`SOURCE_MANQUANTE`** : `prime_panier` (art. 51 : « 706.666 millimes », plus de trois décimales), `prime_production` (art. 48), `prime_fin_annee` (art. 49), `prime_salaire_unique` (art. 53), `avantages_en_nature` (art. 56).
+6. Régime horaire non repris (art. 24, renvoi à la loi).
+
+**Mise en œuvre** : `fonderies_mecanique.json` ; `test_vague4.py` ; démos 203 à 211 ; TB-282 à TB-290.
+
+**Statut de vérification** :
+- 1 092 cellules lues en double lecture indépendante sur image : 0 écart sur les cellules lisibles.
+- 1 cellule non tranchée au zoom à 400 dpi ; 1 cellule douteuse tranchée au zoom, vérifiées par DS5 sur l'image.
+- Contrôle de hausse sur 727 cellules comparables : aucun écart au-delà de 1 millime.
+- **Vérification humaine** : Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.
+
+**Communs à D67 à D72** :
+- Les 6 secteurs sont activés dans le registre DS5 sans entrée dans la table des secteurs, en attente de validation DS2 (liste `EN_ATTENTE_DS2`).
+- Un seul changement de `calc/` (D68, seuil 0 de la règle « refus ») ; aucun changement de schéma. Champs descriptifs ignorés par le moteur : `valeur_imprimee` et `colonnes_non_servies` (D71), comme `anomalies_imprimees` (D52).
+- Primes à montant fixe imprimé seulement, un code par montant sans date. Promotions, reclassements et passages d'échelle non calculés, affichés en hypothèse.
+- Libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`). La note des tableaux (décrets 437/1981 et 501/1982) est reprise en remarque, sans calcul.
+- **Vérification humaine partielle faite par DS5** (détail dans le statut de chaque décision) : cas de référence TB-245 à TB-290 (`verification_humaine` à `true`), primes sans date, cellules tranchées au zoom, échantillon de cellules non tranchées ; les autres cellules reposent sur la double lecture et le contrôle de hausse.
