@@ -1,0 +1,2276 @@
+{
+ "_meta": {
+  "secteur_code": "BOULANGERIES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للمخابز",
+  "convention_fr": "Convention collective sectorielle des boulangeries",
+  "source_file": "data/raw/pdf/المخابز.pdf",
+  "pages_sources": [
+   3,
+   8,
+   9,
+   10,
+   14,
+   15,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "1014 cellules lues en double lecture indépendante sur image (rendus redressés à 200 et 280 dpi, saisie dans deux ordres), comparées par script : 0 écart sur les cellules lisibles ; 12 cellules non tranchées au zoom à 400 dpi déclarées SOURCE_MANQUANTE (cellules_source_manquante) (colonne du degré 2 abîmée à l'impression, p.20-22) ; 1 cellules douteuses tranchées au zoom à 400 dpi, vérifiées par DS5 sur l'image ; contrôle de hausse entre deux dates voisines (modèle choisi par ligne : montant fixe ou pourcentage fixe) : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image. Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.",
+  "decision_ref": "D70",
+  "currency": "TND",
+  "note_unite": "Administratifs : TND/mois (hypothèse, unité non imprimée). Techniciens : unité imprimée sur chaque ligne (« à l'heure », « au mois »).",
+  "note_degres": "En-tête (p.18-23) : 13 degrés, durées 1, 1 puis 2 ; libellés « 0-1 » … « 22-24 » ; bornes exactes refusées (D6) ; à partir de 24 ans, refus.",
+  "note_categories": "Administratifs : 1 à 8. Boulangeries modernes et traditionnelles : postes imprimés (passeur de plaques, peseur, pétrisseur, chef de four). Industrielles : 1 à 5.",
+  "note_dates": "Tableaux de 2021-12-01 (p.18-19), 2023-01-01 (p.20-21) et 2024-01-01 (p.22-23) ; refus avant le 2021-12-01 ; avenant n° 16 (p.3) : effet au 1er décembre 2021.",
+  "regime_hebdomadaire": 48,
+  "note_regime_hebdomadaire": "Art. 23 (جديد) (p.10) : 48 h par semaine ; information seulement.",
+  "remarque_pdf": "Note sous chaque tableau (p.18-23) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 18 إلى 23): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "administratifs": {
+   "libelle_fr": "Agents administratifs (toutes boulangeries)",
+   "libelle_ar": "الأعوان الإداريون (جميع المخابز)",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 18,
+   "note": "Tableaux n° 1, 4, 7."
+  },
+  "traditionnelles_horaires": {
+   "libelle_fr": "Techniciens des boulangeries modernes et traditionnelles, lignes à l'heure",
+   "libelle_ar": "الأعوان الفنيون التابعون للمخابز العصرية والمخابز التقليدية ذات فرن أو فرنين (بالساعة)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 18,
+   "note": "Tableaux n° 2, 5, 8, lignes « بالساعة »."
+  },
+  "traditionnelles_mensuels": {
+   "libelle_fr": "Techniciens des boulangeries modernes et traditionnelles, lignes au mois",
+   "libelle_ar": "الأعوان الفنيون التابعون للمخابز العصرية والمخابز التقليدية ذات فرن أو فرنين (بالشهر)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 18,
+   "note": "Tableaux n° 2, 5, 8, lignes « بالشهر »."
+  },
+  "industrielles_horaires": {
+   "libelle_fr": "Techniciens des boulangeries industrielles, lignes à l'heure",
+   "libelle_ar": "الأعوان الفنيون التابعون للمخابز الصناعية (بالساعة)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 19,
+   "note": "Tableaux n° 3, 6, 9, lignes « بالساعة »."
+  },
+  "industrielles_mensuels": {
+   "libelle_fr": "Techniciens des boulangeries industrielles, lignes au mois",
+   "libelle_ar": "الأعوان الفنيون التابعون للمخابز الصناعية (بالشهر)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 19,
+   "note": "Tableaux n° 3, 6, 9, lignes « بالشهر »."
+  }
+ },
+ "degres": {
+  "administratifs": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   }
+  ],
+  "traditionnelles_horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   }
+  ],
+  "traditionnelles_mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   }
+  ],
+  "industrielles_horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   }
+  ],
+  "industrielles_mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "administratifs": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+  },
+  "traditionnelles_horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+  },
+  "traditionnelles_mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+  },
+  "industrielles_horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+  },
+  "industrielles_mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+  }
+ },
+ "categories": {
+  "administratifs": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "traditionnelles_horaires": [
+   "passeur_de_plaques",
+   "peseur",
+   "petrisseur",
+   "chef_de_four"
+  ],
+  "traditionnelles_mensuels": [
+   "passeur_de_plaques",
+   "peseur",
+   "petrisseur",
+   "chef_de_four"
+  ],
+  "industrielles_horaires": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "industrielles_mensuels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ]
+ },
+ "libelles_categories": {
+  "administratifs": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   }
+  },
+  "traditionnelles_horaires": {
+   "passeur_de_plaques": {
+    "ligne": 1,
+    "libelle_fr": "Passeur de plaques",
+    "libelle_ar": "ممرر اللوحات",
+    "libelle_ar_redige": false
+   },
+   "peseur": {
+    "ligne": 2,
+    "libelle_fr": "Peseur",
+    "libelle_ar": "الوزان",
+    "libelle_ar_redige": false
+   },
+   "petrisseur": {
+    "ligne": 3,
+    "libelle_fr": "Pétrisseur",
+    "libelle_ar": "العجان",
+    "libelle_ar_redige": false
+   },
+   "chef_de_four": {
+    "ligne": 4,
+    "libelle_fr": "Chef de four",
+    "libelle_ar": "رئيس فرن",
+    "libelle_ar_redige": false
+   }
+  },
+  "traditionnelles_mensuels": {
+   "passeur_de_plaques": {
+    "ligne": 1,
+    "libelle_fr": "Passeur de plaques",
+    "libelle_ar": "ممرر اللوحات",
+    "libelle_ar_redige": false
+   },
+   "peseur": {
+    "ligne": 2,
+    "libelle_fr": "Peseur",
+    "libelle_ar": "الوزان",
+    "libelle_ar_redige": false
+   },
+   "petrisseur": {
+    "ligne": 3,
+    "libelle_fr": "Pétrisseur",
+    "libelle_ar": "العجان",
+    "libelle_ar_redige": false
+   },
+   "chef_de_four": {
+    "ligne": 4,
+    "libelle_fr": "Chef de four",
+    "libelle_ar": "رئيس فرن",
+    "libelle_ar_redige": false
+   }
+  },
+  "industrielles_horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   }
+  },
+  "industrielles_mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "administratifs": {
+   "fr": [
+    "Unité non imprimée pour les administratifs : montants de 700 à 1 181 dinars, servis en TND/mois (hypothèse affichée).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالنسبة إلى الأعوان الإداريين: مبالغ من 700 إلى 1181 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "traditionnelles_horaires": {
+   "fr": [
+    "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "traditionnelles_mensuels": {
+   "fr": [
+    "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "industrielles_horaires": {
+   "fr": [
+    "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "industrielles_mensuels": {
+   "fr": [
+    "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 67.863
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 72.443
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 77.333
+    }
+   ],
+   "note": "Prime globale mensuelle ; elle inclut la prime du décret n° 503 du 16 mars 1982 (art. 50 (جديد), p.15)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "50 مكرر",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 12.894
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 13.764
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 14.693
+    }
+   ]
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "50 مكرر",
+   "source_pdf_page": 15,
+   "unite": "TND/jour",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 0.338
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 0.361
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 0.385
+    }
+   ],
+   "hypotheses": {
+    "fr": [
+     "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait."
+    ],
+    "ar": [
+     "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production_fin_annee": {
+   "source_pdf_page": 14,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime de production et gratification de fin d'année (article 49 (جديد), page 14) : de 12 à 26 jours de salaire selon la note annuelle, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج ومكافأة آخر السنة (الفصل 49 (جديد)، الصفحة 14): من 12 إلى 26 يوم عمل حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 9,
+   "source_article": "17",
+   "message_fr": "Indemnité de fin de service (article 17, page 9) : sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 17، الصفحة 9): دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_travail_nuit": {
+   "source_pdf_page": 10,
+   "source_article": "25 (جديد)",
+   "message_fr": "Majoration pour travail de nuit (article 25 (جديد), page 10) : majoration en pourcentage du salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "أجر العمل بالليل (الفصل 25 (جديد)، الصفحة 10): زيادة بنسبة من الأجر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "BOUL_ADMINISTRATIFS_2021-12-01",
+   "numero_imprime": 1,
+   "population": "administratifs",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     702.872,
+     710.068,
+     711.274,
+     712.480,
+     713.686,
+     714.892,
+     716.098,
+     717.304,
+     718.510,
+     719.716,
+     720.922,
+     722.128,
+     723.334
+    ],
+    "2": [
+     727.786,
+     729.069,
+     730.352,
+     731.635,
+     732.918,
+     734.201,
+     735.484,
+     736.767,
+     738.050,
+     739.333,
+     740.616,
+     741.899,
+     743.182
+    ],
+    "3": [
+     752.991,
+     754.474,
+     755.957,
+     757.440,
+     758.923,
+     760.406,
+     761.889,
+     763.372,
+     764.855,
+     766.338,
+     767.821,
+     769.304,
+     770.787
+    ],
+    "4": [
+     759.487,
+     761.007,
+     762.527,
+     764.047,
+     765.567,
+     767.087,
+     768.607,
+     770.127,
+     771.647,
+     773.167,
+     774.687,
+     776.207,
+     777.727
+    ],
+    "5": [
+     767.347,
+     768.947,
+     770.547,
+     772.147,
+     773.747,
+     775.347,
+     776.947,
+     778.547,
+     780.147,
+     781.747,
+     783.347,
+     787.447,
+     789.047
+    ],
+    "6": [
+     808.316,
+     810.436,
+     812.556,
+     817.376,
+     819.296,
+     821.416,
+     823.536,
+     825.656,
+     827.776,
+     829.896,
+     832.016,
+     834.136,
+     836.256
+    ],
+    "7": [
+     880.761,
+     883.681,
+     886.601,
+     889.521,
+     892.441,
+     897.861,
+     900.781,
+     903.701,
+     906.621,
+     909.541,
+     912.461,
+     915.381,
+     918.301
+    ],
+    "8": [
+     989.446,
+     993.646,
+     997.846,
+     1004.546,
+     1008.746,
+     1012.946,
+     1017.146,
+     1021.346,
+     1025.546,
+     1029.746,
+     1033.946,
+     1038.146,
+     1042.346
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_HORAIRES_2021-12-01",
+   "numero_imprime": 2,
+   "population": "traditionnelles_horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 18,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     3.825,
+     3.831,
+     3.837,
+     3.843,
+     3.849,
+     3.855,
+     3.861,
+     3.867,
+     3.873,
+     3.879,
+     3.885,
+     3.891,
+     3.897
+    ],
+    "peseur": [
+     3.948,
+     3.955,
+     3.962,
+     3.969,
+     3.976,
+     3.983,
+     3.990,
+     3.997,
+     4.004,
+     4.011,
+     4.018,
+     4.025,
+     4.032
+    ],
+    "petrisseur": [
+     4.052,
+     4.060,
+     4.068,
+     4.076,
+     4.084,
+     4.092,
+     4.100,
+     4.108,
+     4.116,
+     4.124,
+     4.132,
+     4.140,
+     4.148
+    ],
+    "chef_de_four": [
+     4.067,
+     4.076,
+     4.084,
+     4.093,
+     4.101,
+     4.110,
+     4.118,
+     4.127,
+     4.135,
+     4.144,
+     4.152,
+     4.161,
+     4.169
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_MENSUELS_2021-12-01",
+   "numero_imprime": 2,
+   "population": "traditionnelles_mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     795.517,
+     796.765,
+     798.013,
+     799.261,
+     800.509,
+     801.757,
+     803.005,
+     804.253,
+     805.501,
+     806.749,
+     807.997,
+     809.245,
+     810.493
+    ],
+    "peseur": [
+     821.026,
+     822.482,
+     823.938,
+     825.394,
+     826.850,
+     828.306,
+     829.762,
+     831.218,
+     832.674,
+     834.130,
+     835.586,
+     837.042,
+     838.498
+    ],
+    "petrisseur": [
+     842.786,
+     844.450,
+     846.114,
+     847.778,
+     849.442,
+     851.106,
+     852.770,
+     854.434,
+     856.098,
+     857.762,
+     859.426,
+     861.090,
+     862.754
+    ],
+    "chef_de_four": [
+     845.808,
+     847.680,
+     849.344,
+     851.216,
+     852.880,
+     854.752,
+     856.416,
+     858.288,
+     859.952,
+     861.824,
+     863.488,
+     865.360,
+     867.024
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_HORAIRES_2021-12-01",
+   "numero_imprime": 3,
+   "population": "industrielles_horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 19,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     3.288,
+     3.294,
+     3.300,
+     3.306,
+     3.312,
+     3.318,
+     3.324,
+     3.330,
+     3.336,
+     3.342,
+     3.348,
+     3.354,
+     3.360
+    ],
+    "2": [
+     3.806,
+     3.813,
+     3.820,
+     3.827,
+     3.834,
+     3.841,
+     3.848,
+     3.855,
+     3.862,
+     3.869,
+     3.876,
+     3.883,
+     3.890
+    ],
+    "3": [
+     3.884,
+     3.892,
+     3.900,
+     3.908,
+     3.916,
+     3.924,
+     3.932,
+     3.940,
+     3.948,
+     3.956,
+     3.964,
+     3.972,
+     3.980
+    ],
+    "4": [
+     3.937,
+     3.946,
+     3.955,
+     3.964,
+     3.973,
+     3.982,
+     3.991,
+     4.000,
+     4.009,
+     4.018,
+     4.027,
+     4.036,
+     4.045
+    ],
+    "5": [
+     3.990,
+     4.000,
+     4.010,
+     4.020,
+     4.030,
+     4.040,
+     4.050,
+     4.060,
+     4.070,
+     4.080,
+     4.090,
+     4.100,
+     4.110
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_MENSUELS_2021-12-01",
+   "numero_imprime": 3,
+   "population": "industrielles_mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     683.896,
+     685.144,
+     686.392,
+     687.640,
+     688.888,
+     690.136,
+     691.384,
+     692.632,
+     693.880,
+     695.128,
+     696.376,
+     697.624,
+     698.872
+    ],
+    "2": [
+     791.354,
+     792.810,
+     794.266,
+     795.722,
+     797.178,
+     798.634,
+     800.090,
+     801.546,
+     803.002,
+     804.458,
+     805.914,
+     807.370,
+     808.826
+    ],
+    "3": [
+     807.733,
+     809.397,
+     811.061,
+     812.725,
+     814.389,
+     816.053,
+     817.717,
+     819.381,
+     821.045,
+     822.709,
+     824.373,
+     826.037,
+     827.701
+    ],
+    "4": [
+     818.875,
+     820.747,
+     822.619,
+     824.491,
+     826.363,
+     828.235,
+     830.107,
+     831.979,
+     833.851,
+     835.723,
+     837.595,
+     839.467,
+     841.339
+    ],
+    "5": [
+     830.012,
+     832.092,
+     834.172,
+     836.252,
+     838.332,
+     840.412,
+     842.492,
+     844.572,
+     846.652,
+     848.732,
+     850.812,
+     852.892,
+     854.972
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_ADMINISTRATIFS_2023-01-01",
+   "numero_imprime": 4,
+   "population": "administratifs",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     750.316,
+     757.512,
+     758.718,
+     759.924,
+     761.130,
+     762.336,
+     763.542,
+     764.748,
+     765.954,
+     767.160,
+     768.366,
+     769.572,
+     770.778
+    ],
+    "2": [
+     776.912,
+     778.195,
+     779.478,
+     780.761,
+     782.044,
+     783.327,
+     784.610,
+     785.893,
+     787.176,
+     788.459,
+     789.742,
+     791.025,
+     792.308
+    ],
+    "3": [
+     803.818,
+     null,
+     806.784,
+     808.267,
+     809.750,
+     811.233,
+     812.716,
+     814.199,
+     815.682,
+     817.165,
+     818.648,
+     820.131,
+     821.614
+    ],
+    "4": [
+     810.753,
+     812.273,
+     813.793,
+     815.313,
+     816.833,
+     818.353,
+     819.873,
+     821.393,
+     822.913,
+     824.433,
+     825.953,
+     827.473,
+     828.993
+    ],
+    "5": [
+     819.143,
+     820.743,
+     822.343,
+     823.943,
+     825.543,
+     827.143,
+     828.743,
+     830.343,
+     831.943,
+     833.543,
+     835.143,
+     839.243,
+     840.843
+    ],
+    "6": [
+     862.877,
+     864.997,
+     867.117,
+     871.937,
+     873.857,
+     875.977,
+     878.097,
+     880.217,
+     882.337,
+     884.457,
+     886.577,
+     888.697,
+     890.817
+    ],
+    "7": [
+     940.212,
+     943.132,
+     946.052,
+     948.972,
+     951.892,
+     957.312,
+     960.232,
+     963.152,
+     966.072,
+     968.992,
+     971.912,
+     974.832,
+     977.752
+    ],
+    "8": [
+     1056.234,
+     1060.434,
+     1064.634,
+     1071.334,
+     1075.534,
+     1079.734,
+     1083.934,
+     1088.134,
+     1092.334,
+     1096.534,
+     1100.734,
+     1104.934,
+     1109.134
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "3",
+     "degre": 2,
+     "source_pdf_page": 20,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 805.301? », lecture 2 « 805.301? »)",
+     "message_fr": "Salaire des administratifs, catégorie 3, degré 2 (tableau n° 4, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 805.301? », lecture 2 « 805.301? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الإداريين، الصنف 3، الدرجة 2 (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_HORAIRES_2023-01-01",
+   "numero_imprime": 5,
+   "population": "traditionnelles_horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 20,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     4.083,
+     4.089,
+     4.095,
+     4.101,
+     4.107,
+     4.113,
+     4.119,
+     4.125,
+     4.131,
+     4.137,
+     4.143,
+     4.149,
+     4.155
+    ],
+    "peseur": [
+     4.214,
+     null,
+     4.228,
+     4.235,
+     4.242,
+     4.249,
+     4.256,
+     4.263,
+     4.270,
+     4.277,
+     4.284,
+     4.291,
+     4.298
+    ],
+    "petrisseur": [
+     4.325,
+     null,
+     4.341,
+     4.349,
+     4.357,
+     4.365,
+     4.373,
+     4.381,
+     4.389,
+     4.397,
+     4.405,
+     4.413,
+     4.421
+    ],
+    "chef_de_four": [
+     4.341,
+     null,
+     4.358,
+     4.367,
+     4.375,
+     4.384,
+     4.392,
+     4.401,
+     4.409,
+     4.418,
+     4.426,
+     4.435,
+     4.443
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "peseur",
+     "degre": 2,
+     "source_pdf_page": 20,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.221? », lecture 2 « 4.221 »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (à l'heure), catégorie peseur, degré 2 (tableau n° 5, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.221? », lecture 2 « 4.221 ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالساعة)، الصنف peseur، الدرجة 2 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "petrisseur",
+     "degre": 2,
+     "source_pdf_page": 20,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.333? », lecture 2 « 4.333? »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (à l'heure), catégorie petrisseur, degré 2 (tableau n° 5, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.333? », lecture 2 « 4.333? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالساعة)، الصنف petrisseur، الدرجة 2 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "chef_de_four",
+     "degre": 2,
+     "source_pdf_page": 20,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.350? », lecture 2 « 4.350? »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (à l'heure), catégorie chef_de_four, degré 2 (tableau n° 5, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.350? », lecture 2 « 4.350? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالساعة)، الصنف chef_de_four، الدرجة 2 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_MENSUELS_2023-01-01",
+   "numero_imprime": 5,
+   "population": "traditionnelles_mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     849.215,
+     850.463,
+     851.711,
+     852.959,
+     854.207,
+     855.455,
+     856.703,
+     857.951,
+     859.199,
+     860.447,
+     861.695,
+     862.943,
+     864.191
+    ],
+    "peseur": [
+     876.445,
+     877.901,
+     879.357,
+     880.813,
+     882.269,
+     883.725,
+     885.181,
+     886.637,
+     888.093,
+     889.549,
+     891.005,
+     892.461,
+     893.917
+    ],
+    "petrisseur": [
+     899.674,
+     null,
+     903.002,
+     904.666,
+     906.330,
+     907.994,
+     909.658,
+     911.322,
+     912.986,
+     914.650,
+     916.314,
+     917.978,
+     919.642
+    ],
+    "chef_de_four": [
+     902.900,
+     904.772,
+     906.436,
+     908.308,
+     909.972,
+     911.844,
+     913.508,
+     915.380,
+     917.044,
+     918.916,
+     920.580,
+     922.452,
+     924.116
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "petrisseur",
+     "degre": 2,
+     "source_pdf_page": 20,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 901.338? », lecture 2 « 901.338? »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (au mois), catégorie petrisseur, degré 2 (tableau n° 5, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 901.338? », lecture 2 « 901.338? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالشهر)، الصنف petrisseur، الدرجة 2 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_HORAIRES_2023-01-01",
+   "numero_imprime": 6,
+   "population": "industrielles_horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 21,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     3.510,
+     null,
+     3.522,
+     3.528,
+     3.534,
+     3.540,
+     3.546,
+     3.552,
+     3.558,
+     3.564,
+     3.570,
+     3.576,
+     3.582
+    ],
+    "2": [
+     4.063,
+     null,
+     4.077,
+     4.084,
+     4.091,
+     4.098,
+     4.105,
+     4.112,
+     4.119,
+     4.126,
+     4.133,
+     4.140,
+     4.147
+    ],
+    "3": [
+     4.146,
+     4.154,
+     4.162,
+     4.170,
+     4.178,
+     4.186,
+     4.194,
+     4.202,
+     4.210,
+     4.218,
+     4.226,
+     4.234,
+     4.242
+    ],
+    "4": [
+     4.202,
+     null,
+     4.220,
+     4.229,
+     4.238,
+     4.247,
+     4.256,
+     4.265,
+     4.274,
+     4.283,
+     4.292,
+     4.301,
+     4.310
+    ],
+    "5": [
+     4.259,
+     4.269,
+     4.279,
+     4.289,
+     4.299,
+     4.309,
+     4.319,
+     4.329,
+     4.339,
+     4.349,
+     4.359,
+     4.369,
+     4.379
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "1",
+     "degre": 2,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 3.516? », lecture 2 « 3.516? »)",
+     "message_fr": "Salaire des techniciens des boulangeries industrielles (à l'heure), catégorie 1, degré 2 (tableau n° 6, en vigueur à partir du 2023-01-01, page 21) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 3.516? », lecture 2 « 3.516? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين بالمخابز الصناعية (بالساعة)، الصنف 1، الدرجة 2 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 21): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "2",
+     "degre": 2,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.070? », lecture 2 « 4.070? »)",
+     "message_fr": "Salaire des techniciens des boulangeries industrielles (à l'heure), catégorie 2, degré 2 (tableau n° 6, en vigueur à partir du 2023-01-01, page 21) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.070? », lecture 2 « 4.070? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين بالمخابز الصناعية (بالساعة)، الصنف 2، الدرجة 2 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 21): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "4",
+     "degre": 2,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.211? », lecture 2 « 4.211? »)",
+     "message_fr": "Salaire des techniciens des boulangeries industrielles (à l'heure), catégorie 4, degré 2 (tableau n° 6, en vigueur à partir du 2023-01-01, page 21) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.211? », lecture 2 « 4.211? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين بالمخابز الصناعية (بالساعة)، الصنف 4، الدرجة 2 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 21): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_MENSUELS_2023-01-01",
+   "numero_imprime": 6,
+   "population": "industrielles_mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     730.059,
+     731.307,
+     732.555,
+     733.803,
+     735.051,
+     736.299,
+     737.547,
+     738.795,
+     740.043,
+     741.291,
+     742.539,
+     743.787,
+     745.035
+    ],
+    "2": [
+     844.771,
+     846.227,
+     847.683,
+     849.139,
+     850.595,
+     852.051,
+     853.507,
+     854.963,
+     856.419,
+     857.875,
+     859.331,
+     860.787,
+     862.243
+    ],
+    "3": [
+     862.255,
+     863.919,
+     865.583,
+     867.247,
+     868.911,
+     870.575,
+     872.239,
+     873.903,
+     875.567,
+     877.231,
+     878.895,
+     880.559,
+     882.223
+    ],
+    "4": [
+     874.150,
+     876.022,
+     877.894,
+     879.766,
+     881.638,
+     883.510,
+     885.382,
+     887.254,
+     889.126,
+     890.998,
+     892.870,
+     894.742,
+     896.614
+    ],
+    "5": [
+     886.038,
+     null,
+     890.198,
+     892.278,
+     894.358,
+     896.438,
+     898.518,
+     900.598,
+     902.678,
+     904.758,
+     906.838,
+     908.918,
+     910.998
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "5",
+     "degre": 2,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 888.118? », lecture 2 « 888.118? »)",
+     "message_fr": "Salaire des techniciens des boulangeries industrielles (au mois), catégorie 5, degré 2 (tableau n° 6, en vigueur à partir du 2023-01-01, page 21) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 888.118? », lecture 2 « 888.118? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين بالمخابز الصناعية (بالشهر)، الصنف 5، الدرجة 2 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 21): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_ADMINISTRATIFS_2024-01-01",
+   "numero_imprime": 7,
+   "population": "administratifs",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     800.963,
+     null,
+     809.365,
+     810.571,
+     811.777,
+     812.983,
+     814.189,
+     815.395,
+     816.601,
+     817.807,
+     819.013,
+     820.219,
+     821.425
+    ],
+    "2": [
+     829.354,
+     830.637,
+     831.920,
+     833.203,
+     834.486,
+     835.769,
+     837.052,
+     838.335,
+     839.618,
+     840.901,
+     842.184,
+     843.467,
+     844.750
+    ],
+    "3": [
+     858.075,
+     859.558,
+     861.041,
+     862.524,
+     864.007,
+     865.490,
+     866.973,
+     868.456,
+     869.939,
+     871.422,
+     872.905,
+     874.388,
+     875.871
+    ],
+    "4": [
+     865.478,
+     866.998,
+     868.518,
+     870.038,
+     871.558,
+     873.078,
+     874.598,
+     876.118,
+     877.638,
+     879.158,
+     880.678,
+     882.198,
+     883.718
+    ],
+    "5": [
+     874.435,
+     876.035,
+     877.635,
+     879.235,
+     880.835,
+     882.435,
+     884.035,
+     885.635,
+     887.235,
+     888.835,
+     890.435,
+     894.535,
+     896.135
+    ],
+    "6": [
+     921.121,
+     923.241,
+     925.361,
+     930.181,
+     932.101,
+     934.221,
+     936.341,
+     938.461,
+     940.581,
+     942.701,
+     944.821,
+     946.941,
+     949.061
+    ],
+    "7": [
+     1003.677,
+     1006.597,
+     1009.517,
+     1012.437,
+     1015.357,
+     1020.777,
+     1023.697,
+     1026.617,
+     1029.537,
+     1032.457,
+     1035.377,
+     1038.297,
+     1041.217
+    ],
+    "8": [
+     1127.530,
+     1131.730,
+     1135.930,
+     1142.630,
+     1146.830,
+     1151.030,
+     1155.230,
+     1159.430,
+     1163.630,
+     1167.830,
+     1172.030,
+     1176.230,
+     1180.430
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "1",
+     "degre": 2,
+     "source_pdf_page": 22,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 808.159? », lecture 2 « 808.159? »)",
+     "message_fr": "Salaire des administratifs, catégorie 1, degré 2 (tableau n° 7, en vigueur à partir du 2024-01-01, page 22) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 808.159? », lecture 2 « 808.159? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الإداريين، الصنف 1، الدرجة 2 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2024-01-01، الصفحة 22): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_HORAIRES_2024-01-01",
+   "numero_imprime": 8,
+   "population": "traditionnelles_horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 22,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     4.359,
+     4.365,
+     4.371,
+     4.377,
+     4.383,
+     4.389,
+     4.395,
+     4.401,
+     4.407,
+     4.413,
+     4.419,
+     4.425,
+     4.431
+    ],
+    "peseur": [
+     4.499,
+     4.506,
+     4.513,
+     4.520,
+     4.527,
+     4.534,
+     4.541,
+     4.548,
+     4.555,
+     4.562,
+     4.569,
+     4.576,
+     4.583
+    ],
+    "petrisseur": [
+     4.617,
+     4.625,
+     4.633,
+     4.641,
+     4.649,
+     4.657,
+     4.665,
+     4.673,
+     4.681,
+     4.689,
+     4.697,
+     4.705,
+     4.713
+    ],
+    "chef_de_four": [
+     4.634,
+     4.643,
+     4.651,
+     4.660,
+     4.668,
+     4.677,
+     4.685,
+     4.694,
+     4.702,
+     4.711,
+     4.719,
+     4.728,
+     4.736
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_TRADITIONNELLES_MENSUELS_2024-01-01",
+   "numero_imprime": 8,
+   "population": "traditionnelles_mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "passeur_de_plaques": [
+     906.537,
+     null,
+     909.033,
+     910.281,
+     911.529,
+     912.777,
+     914.025,
+     915.273,
+     916.521,
+     917.769,
+     919.017,
+     920.265,
+     921.513
+    ],
+    "peseur": [
+     935.606,
+     937.062,
+     938.518,
+     939.974,
+     941.430,
+     942.886,
+     944.342,
+     945.798,
+     947.254,
+     948.710,
+     950.166,
+     951.622,
+     953.078
+    ],
+    "petrisseur": [
+     960.402,
+     962.066,
+     963.730,
+     965.394,
+     967.058,
+     968.722,
+     970.386,
+     972.050,
+     973.714,
+     975.378,
+     977.042,
+     978.706,
+     980.370
+    ],
+    "chef_de_four": [
+     963.846,
+     null,
+     967.382,
+     969.254,
+     970.918,
+     972.790,
+     974.454,
+     976.326,
+     977.990,
+     979.862,
+     981.526,
+     983.398,
+     985.062
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "passeur_de_plaques",
+     "degre": 2,
+     "source_pdf_page": 22,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 907.785? », lecture 2 « 907.785? »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (au mois), catégorie passeur_de_plaques, degré 2 (tableau n° 8, en vigueur à partir du 2024-01-01, page 22) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 907.785? », lecture 2 « 907.785? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالشهر)، الصنف passeur_de_plaques، الدرجة 2 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2024-01-01، الصفحة 22): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "chef_de_four",
+     "degre": 2,
+     "source_pdf_page": 22,
+     "source_article": "جدول الأجور",
+     "raison": "illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 965.718? », lecture 2 « 965.718? »)",
+     "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (au mois), catégorie chef_de_four, degré 2 (tableau n° 8, en vigueur à partir du 2024-01-01, page 22) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 965.718? », lecture 2 « 965.718? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الفنيين (بالشهر)، الصنف chef_de_four، الدرجة 2 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2024-01-01، الصفحة 22): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_HORAIRES_2024-01-01",
+   "numero_imprime": 9,
+   "population": "industrielles_horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 23,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     3.747,
+     3.753,
+     3.759,
+     3.765,
+     3.771,
+     3.777,
+     3.783,
+     3.789,
+     3.795,
+     3.801,
+     3.807,
+     3.813,
+     3.819
+    ],
+    "2": [
+     4.338,
+     4.345,
+     4.352,
+     4.359,
+     4.366,
+     4.373,
+     4.380,
+     4.387,
+     4.394,
+     4.401,
+     4.408,
+     4.415,
+     4.422
+    ],
+    "3": [
+     4.426,
+     4.434,
+     4.442,
+     4.450,
+     4.458,
+     4.466,
+     4.474,
+     4.482,
+     4.490,
+     4.498,
+     4.506,
+     4.514,
+     4.522
+    ],
+    "4": [
+     4.486,
+     4.495,
+     4.504,
+     4.513,
+     4.522,
+     4.531,
+     4.540,
+     4.549,
+     4.558,
+     4.567,
+     4.576,
+     4.585,
+     4.594
+    ],
+    "5": [
+     4.547,
+     4.557,
+     4.567,
+     4.577,
+     4.587,
+     4.597,
+     4.607,
+     4.617,
+     4.627,
+     4.637,
+     4.647,
+     4.657,
+     4.667
+    ]
+   }
+  },
+  {
+   "table_id": "BOUL_INDUSTRIELLES_MENSUELS_2024-01-01",
+   "numero_imprime": 9,
+   "population": "industrielles_mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 23,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     779.338,
+     780.586,
+     781.834,
+     783.082,
+     784.330,
+     785.578,
+     786.826,
+     788.074,
+     789.322,
+     790.570,
+     791.818,
+     793.066,
+     794.314
+    ],
+    "2": [
+     901.793,
+     903.249,
+     904.705,
+     906.161,
+     907.617,
+     909.073,
+     910.529,
+     911.985,
+     913.441,
+     914.897,
+     916.353,
+     917.809,
+     919.265
+    ],
+    "3": [
+     920.457,
+     922.121,
+     923.785,
+     925.449,
+     927.113,
+     928.777,
+     930.441,
+     932.105,
+     933.769,
+     935.433,
+     937.097,
+     938.761,
+     940.425
+    ],
+    "4": [
+     933.155,
+     935.027,
+     936.899,
+     938.771,
+     940.643,
+     942.515,
+     944.387,
+     946.259,
+     948.131,
+     950.003,
+     951.875,
+     953.747,
+     955.619
+    ],
+    "5": [
+     945.845,
+     947.925,
+     950.005,
+     952.085,
+     954.165,
+     956.245,
+     958.325,
+     960.405,
+     962.485,
+     964.565,
+     966.645,
+     968.725,
+     970.805
+    ]
+   }
+  }
+ ]
+}

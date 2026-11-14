@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -4440,5 +4440,1286 @@
       "message_ar": "منحة آخر السنة (الفصل 49 مكرر، الصفحة 15): أجرة نصف شهر أساسي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
     },
     "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-166-salaire-imprimerie-administratif-rang-5",
+    "status": "ok",
+    "result": {
+      "montant": "851.882",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+        "population": "administratifs_mensuels",
+        "categorie": "3-4-5-6",
+        "categorie_demandee": "5",
+        "degre": 2,
+        "anciennete_annees": "3",
+        "hypotheses": [
+          "Plusieurs rangs de la classification (page 21) partagent une même ligne imprimée (« 3-4-5-6 », « 7-8-9 », « 11-12 », « 13-14-15 ») : le rang demandé renvoie à sa ligne.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "تشترك عدة رتب من التصنيف المهني (الصفحة 21) في سطر واحد من الجدول («3-4-5-6» و«7-8-9» و«11-12» و«13-14-15»): تُحال الرتبة المطلوبة على سطرها.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "IMP_ADMINISTRATIFS_MENSUELS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+        "page": 26,
+        "article": null,
+        "data_file": "data/processed/salary_grids/imprimerie_edition.json",
+        "decision_ref": "D67"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-167-salaire-imprimerie-horaires-ii-2",
+    "status": "ok",
+    "result": {
+      "montant": "4.122",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+        "population": "horaires",
+        "categorie": "II",
+        "sous_categorie": "2",
+        "libelle_fr": "Catégorie II, ligne 2 (position imprimée)",
+        "libelle_ar": "الصنف II، السطر 2",
+        "degre": 2,
+        "anciennete_annees": "3",
+        "hypotheses": [
+          "Tableau n° 6 (page 27) : le titre de population est absent (une virgule à sa place) ; il est rattaché aux ouvriers payés à l'heure et aux agents techniques et administratifs parce que ses libellés de lignes et son en-tête sont identiques à ceux des tableaux n° 2 et 4 (pages 23 et 25).",
+          "Chaque catégorie compte trois lignes sans libellé, numérotées ici 1, 2, 3 par leur position imprimée (de haut en bas) ; la classification (page 21) liste trois postes par catégorie, mais la correspondance entre ces postes et les lignes de la grille n'est pas imprimée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الجدول عدد 6 (الصفحة 27): لا يتضمن عنوان فئة الأعوان (فاصلة مكانه)؛ ويُلحق بالعمال الخالصين بالساعة والأعوان الفنيين والإداريين لتطابق أسطره ورأسه مع الجدولين عدد 2 و4 (الصفحتان 23 و25).",
+          "يتضمن كل صنف ثلاثة أسطر دون تسمية، رُقّمت هنا 1 و2 و3 حسب ترتيبها في الجدول (من الأعلى إلى الأسفل)؛ ويذكر التصنيف المهني (الصفحة 21) ثلاث خطط لكل صنف دون أن يبيّن الجدول الخطة الموافقة لكل سطر.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "IMP_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+        "page": 27,
+        "article": null,
+        "data_file": "data/processed/salary_grids/imprimerie_edition.json",
+        "decision_ref": "D67"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-168-salaire-imprimerie-techniciens-iv-3",
+    "status": "ok",
+    "result": {
+      "montant": "2065.586",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+        "population": "techniciens_mensuels",
+        "categorie": "IV",
+        "sous_categorie": "3",
+        "libelle_fr": "Catégorie IV, ligne 3 (position imprimée)",
+        "libelle_ar": "الصنف IV، السطر 3",
+        "degre": 15,
+        "anciennete_annees": "30",
+        "hypotheses": [
+          "Tableau n° 6 (page 27) : le titre de population est absent (une virgule à sa place) ; il est rattaché aux ouvriers payés à l'heure et aux agents techniques et administratifs parce que ses libellés de lignes et son en-tête sont identiques à ceux des tableaux n° 2 et 4 (pages 23 et 25).",
+          "Chaque catégorie compte trois lignes sans libellé, numérotées ici 1, 2, 3 par leur position imprimée (de haut en bas) ; la classification (page 21) liste trois postes par catégorie, mais la correspondance entre ces postes et les lignes de la grille n'est pas imprimée.",
+          "Catégorie IV : montants mensuels (de 959 à 2 205 dinars) dans un tableau intitulé « ouvriers payés à l'heure et agents techniques et administratifs » ; unité TND/mois retenue en hypothèse, non imprimée sur la ligne.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الجدول عدد 6 (الصفحة 27): لا يتضمن عنوان فئة الأعوان (فاصلة مكانه)؛ ويُلحق بالعمال الخالصين بالساعة والأعوان الفنيين والإداريين لتطابق أسطره ورأسه مع الجدولين عدد 2 و4 (الصفحتان 23 و25).",
+          "يتضمن كل صنف ثلاثة أسطر دون تسمية، رُقّمت هنا 1 و2 و3 حسب ترتيبها في الجدول (من الأعلى إلى الأسفل)؛ ويذكر التصنيف المهني (الصفحة 21) ثلاث خطط لكل صنف دون أن يبيّن الجدول الخطة الموافقة لكل سطر.",
+          "الصنف IV: مبالغ شهرية (من 959 إلى 2205 دينارا) في جدول عنوانه «العمال الخالصون بالساعة والأعوان الفنيون والإداريون»؛ تُعتمد وحدة الدينار في الشهر على سبيل الافتراض لأنها غير مطبوعة على السطر.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "IMP_TECHNICIENS_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/imprimerie_edition.json",
+        "decision_ref": "D67"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-169-prime-transport-imprimerie",
+    "status": "ok",
+    "result": {
+      "montant": "92.282",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "note": "Montant mensuel pour 26 jours de travail effectif ; il inclut les montants du décret n° 503 du 16 mars 1982 (art. 47 (جديد), p.15)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+        "page": 15,
+        "article": "47 (جديد)",
+        "data_file": "data/processed/salary_grids/imprimerie_edition.json",
+        "decision_ref": "D67"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-170-refus-imprimerie-31-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 31 ans : la grille de la convention de l'imprimerie, de la gravure, de la reliure, de l'édition, de la transformation du carton et du papier et de la photographie s'arrête au degré 15, dont l'en-tête (pages 22 à 27) imprime une durée de séjour de 3 ans (de 28 à 31 ans) ; l'article 11 (جديد) 1) (page 8) ajoute ensuite le dernier écart « après chaque période de deux ans », sans dire si la première période part de 28 ou de 31 ans. Cette règle n'est pas calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 31 ans).",
+      "message_ar": "أقدمية 31 سنة: ينتهي جدول أجور اتفاقية الطباعة والنقاشة والتسفير والنشر وتحويل الكرذونة وتحويل الورق والتصوير الشمسي عند الدرجة 15 التي يذكر رأس الجداول (الصفحات من 22 إلى 27) مدة البقاء بها 3 سنوات (من 28 إلى 31 سنة)؛ ويضيف الفصل 11 (جديد) (الصفحة 8) الفارق الأخير بعد كل فترة سنتين دون تحديد بداية الفترة الأولى. لا تُحتسب هذه القاعدة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 31 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-171-refus-imprimerie-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 28 ans = borne commune aux degrés [14, 15] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 28 سنة تقع على الحد المشترك بين الدرجات [14, 15] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-172-refus-imprimerie-avant-2021-12-01",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille IMPRIMERIE_EDITION_CARTONNAGE/administratifs_mensuels en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+      "message_ar": "لا يوجد جدول أجور IMPRIMERIE_EDITION_CARTONNAGE/administratifs_mensuels ساري المفعول بتاريخ 2021-11-30 (أول تاريخ نفاذ متوفر: 2021-12-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-173-refus-imprimerie-prime-fin-annee",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de production de fin d'année (article 46 (جديد), page 14) : barème en heures de salaire selon la note annuelle et le régime horaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة الإنتاج في آخر السنة (الفصل 46 (جديد)، الصفحة 14): سلم بساعات عمل حسب العدد المهني ونظام العمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-174-refus-verre-salaire-horaires",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 0 ans : les tableaux de la convention de la transformation du verre et des miroirs (pages 19 à 21) n'impriment que le numéro de chaque degré, sans durée de séjour ni ancienneté ; l'article 12 (جديد) (pages 7-8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et l'article 53 (page 15) ne règle que le classement à l'entrée en vigueur. L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 0 سنة: لا تذكر جداول أجور اتفاقية تحويل البلور والمرآة (الصفحات من 19 إلى 21) إلا رقم كل درجة دون مدة البقاء ولا الأقدمية؛ ويربط الفصل 12 (جديد) (الصفحتان 7 و8) الانتقال من درجة إلى أخرى بالأقدمية في الدرجة دون تحديد مدتها، ولا يتعلق الفصل 53 (الصفحة 15) إلا بالترتيب عند دخول الاتفاقية حيز التنفيذ. لا تسمح الأقدمية إذن بتحديد الدرجة. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-175-refus-verre-salaire-mensuels",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 12 ans : les tableaux de la convention de la transformation du verre et des miroirs (pages 19 à 21) n'impriment que le numéro de chaque degré, sans durée de séjour ni ancienneté ; l'article 12 (جديد) (pages 7-8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et l'article 53 (page 15) ne règle que le classement à l'entrée en vigueur. L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 12 سنة: لا تذكر جداول أجور اتفاقية تحويل البلور والمرآة (الصفحات من 19 إلى 21) إلا رقم كل درجة دون مدة البقاء ولا الأقدمية؛ ويربط الفصل 12 (جديد) (الصفحتان 7 و8) الانتقال من درجة إلى أخرى بالأقدمية في الدرجة دون تحديد مدتها، ولا يتعلق الفصل 53 (الصفحة 15) إلا بالترتيب عند دخول الاتفاقية حيز التنفيذ. لا تسمح الأقدمية إذن بتحديد الدرجة. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-176-prime-transport-verre",
+    "status": "ok",
+    "result": {
+      "montant": "130.948",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "variante": "base",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "note": "Elle inclut la prime de transport du décret n° 503 du 16 mars 1982. Variante « complement_si_prime_superieure » : hausse servie à l'agent qui touchait déjà une prime de transport supérieure au montant de base (art. 45 (جديد), p.14)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 14,
+        "article": "45 (جديد)",
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-177-prime-transport-verre-complement",
+    "status": "ok",
+    "result": {
+      "montant": "7.757",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2023-06-01",
+        "regles": "D6",
+        "variante": "complement_si_prime_superieure",
+        "effective_date": "2023-01-01",
+        "au_titre_de": "2023",
+        "note": "Elle inclut la prime de transport du décret n° 503 du 16 mars 1982. Variante « complement_si_prime_superieure » : hausse servie à l'agent qui touchait déjà une prime de transport supérieure au montant de base (art. 45 (جديد), p.14)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 14,
+        "article": "45 (جديد)",
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-178-prime-aid-adha-verre",
+    "status": "ok",
+    "result": {
+      "montant": "83.333",
+      "unite": "TND/versement",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "code": "prime_aid_adha",
+        "label_fr": "Prime de l'Aïd el-Adha",
+        "label_ar": "منحة الأعياد الدينية (عيد الأضحى)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 14,
+        "article": "48 (جديد)",
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-179-prime-risque-verre",
+    "status": "ok",
+    "result": {
+      "montant": "16.666",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "code": "prime_risque",
+        "label_fr": "Prime de risque",
+        "label_ar": "منحة الخطر",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "agent autre qu'administratif (art. 50 (جديد), p.14)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 14,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-180-refus-verre-prime-globale",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime globale temporaire (article 52, page 14) : 120 dinars versés une seule fois à l'entrée en vigueur, aux agents sans hausse de salaire en 1983 : sans objet aujourd'hui. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة جملية وقتية (الفصل 52، الصفحة 14): 120 دينارا تسند مرة واحدة عند دخول الاتفاقية حيز التنفيذ: لا موضوع لها اليوم. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-181-salaire-agricole-categorie-1",
+    "status": "ok",
+    "result": {
+      "montant": "594.410",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "population": "tous_agents",
+        "categorie": "1",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité non imprimée : montants de 594 à 1 895 dinars, servis en TND/mois (hypothèse affichée ; art. 25, page 10 : 40 heures par semaine).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة: مبالغ من 594 إلى 1895 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض (الفصل 25، الصفحة 10: 40 ساعة في الأسبوع).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "AGRI_TOUS_AGENTS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2021-12-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/materiel_agricole.json",
+        "decision_ref": "D69"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-182-salaire-agricole-cadre-16",
+    "status": "ok",
+    "result": {
+      "montant": "1894.675",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "population": "tous_agents",
+        "categorie": "16",
+        "degre": 19,
+        "anciennete_annees": "38",
+        "hypotheses": [
+          "Unité non imprimée : montants de 594 à 1 895 dinars, servis en TND/mois (hypothèse affichée ; art. 25, page 10 : 40 heures par semaine).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة: مبالغ من 594 إلى 1895 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض (الفصل 25، الصفحة 10: 40 ساعة في الأسبوع).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "AGRI_TOUS_AGENTS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/materiel_agricole.json",
+        "decision_ref": "D69"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-183-salaire-agricole-categorie-12",
+    "status": "ok",
+    "result": {
+      "montant": "1305.387",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "population": "tous_agents",
+        "categorie": "12",
+        "degre": 10,
+        "anciennete_annees": "15.5",
+        "hypotheses": [
+          "Unité non imprimée : montants de 594 à 1 895 dinars, servis en TND/mois (hypothèse affichée ; art. 25, page 10 : 40 heures par semaine).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة: مبالغ من 594 إلى 1895 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض (الفصل 25، الصفحة 10: 40 ساعة في الأسبوع).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "AGRI_TOUS_AGENTS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/materiel_agricole.json",
+        "decision_ref": "D69"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-184-refus-agricole-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents, catégorie 12, degré 8 (tableau n° 3, en vigueur à partir du 2024-01-01, page 25) : cellule illisible au zoom à 400 dpi : moitié gauche du chiffre après le point manquante, 3 ou 8, comme dans le reste de la colonne 8 (vérification humaine, p.25) (lecture 1 « 1289.318 », lecture 2 « 1289.318 ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان، الصنف 12، الدرجة 8 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2024-01-01، الصفحة 25): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-185-prime-demi-journee-agricole",
+    "status": "ok",
+    "result": {
+      "montant": "7.856",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "code": "prime_demi_journee",
+        "label_fr": "Prime de demi-journée",
+        "label_ar": "المنحة نصف اليومية",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "note": "Dite aussi prime de présence ou d'assiduité ; plafond (non calculé) : pas plus de deux fois en 24 heures (art. 51 (جديد), p.15)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf",
+        "page": 15,
+        "article": "51 (جديد)",
+        "data_file": "data/processed/salary_grids/materiel_agricole.json",
+        "decision_ref": "D69"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-186-prime-fonction-agricole-directeur",
+    "status": "ok",
+    "result": {
+      "montant": "90.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "code": "prime_fonction_directeur",
+        "label_fr": "Prime de fonction : directeur",
+        "label_ar": "المنحة الوظيفية (المدير)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "cadre responsable : directeur (art. 50 (جديد), p.14)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf",
+        "page": 14,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/materiel_agricole.json",
+        "decision_ref": "D69"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-187-refus-agricole-prime-transport",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de transport (article 49 (جديد), page 14) : les seuls montants imprimés sont 78,996 d (exécution et maîtrise) et 84,960 d (cadres) à partir du 1er juin 2018, 84,131 d et 90,483 d à partir du 1er juin 2019 ; l'avenant n° 15 (effet au 1er décembre 2021, page 3) révise cet article, mais le montant révisé n'est pas dans le PDF. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة النقل (الفصل 49 (جديد)، الصفحة 14): المبالغ الوحيدة المطبوعة تعود إلى 2018 و2019؛ ويعدّل الملحق التعديلي عدد 15 (الصفحة 3) هذا الفصل دون أن يتضمن المصدر المبلغ الجديد. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-188-refus-agricole-40-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 40 ans : la grille de la convention des concessionnaires de matériel agricole et de génie civil s'arrête au degré 19 (37 à 40 ans) ; l'en-tête imprime des durées de séjour qui totalisent 40 ans et l'article 12 (جديد) (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 40 ans).",
+      "message_ar": "أقدمية 40 سنة: ينتهي جدول أجور اتفاقية وكلاء التجهيزات الفلاحية والهندسة المدنية عند الدرجة 19 (من 37 إلى 40 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 40 سنة ولا ينص الفصل 12 (جديد) (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 40 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-189-salaire-boulangerie-administratif",
+    "status": "ok",
+    "result": {
+      "montant": "1180.430",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BOULANGERIES",
+        "population": "administratifs",
+        "categorie": "8",
+        "degre": 13,
+        "anciennete_annees": "23",
+        "hypotheses": [
+          "Unité non imprimée pour les administratifs : montants de 700 à 1 181 dinars, servis en TND/mois (hypothèse affichée).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالنسبة إلى الأعوان الإداريين: مبالغ من 700 إلى 1181 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "BOUL_ADMINISTRATIFS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المخابز.pdf",
+        "page": 22,
+        "article": null,
+        "data_file": "data/processed/salary_grids/boulangeries.json",
+        "decision_ref": "D70"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-190-salaire-boulangerie-chef-de-four-horaire",
+    "status": "ok",
+    "result": {
+      "montant": "4.067",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "BOULANGERIES",
+        "population": "traditionnelles_horaires",
+        "categorie": "chef_de_four",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "BOUL_TRADITIONNELLES_HORAIRES_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المخابز.pdf",
+        "page": 18,
+        "article": null,
+        "data_file": "data/processed/salary_grids/boulangeries.json",
+        "decision_ref": "D70"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-191-salaire-boulangerie-industrielle-mensuel",
+    "status": "ok",
+    "result": {
+      "montant": "898.518",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BOULANGERIES",
+        "population": "industrielles_mensuels",
+        "categorie": "5",
+        "degre": 7,
+        "anciennete_annees": "11",
+        "hypotheses": [
+          "Chaque poste ou catégorie a une ligne « à l'heure » et une ligne « au mois » (unité imprimée sur la ligne) : la population choisit la ligne.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "لكل اختصاص أو صنف سطر «بالساعة» وسطر «بالشهر» (الوحدة مطبوعة على السطر): تحدد فئة الأعوان السطر المعتمد.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "BOUL_INDUSTRIELLES_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المخابز.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/boulangeries.json",
+        "decision_ref": "D70"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-192-refus-boulangerie-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des techniciens des boulangeries modernes et traditionnelles (à l'heure), catégorie petrisseur, degré 2 (tableau n° 5, en vigueur à partir du 2023-01-01, page 20) : cellule illisible au zoom à 400 dpi : chiffre partiellement effacé (défaut d'impression de la colonne du degré 2) (lecture 1 « 4.333? », lecture 2 « 4.333? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان الفنيين (بالساعة)، الصنف petrisseur، الدرجة 2 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 20): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-193-prime-panier-boulangerie",
+    "status": "ok",
+    "result": {
+      "montant": "0.385",
+      "unite": "TND/jour",
+      "detail": {
+        "secteur": "BOULANGERIES",
+        "code": "prime_panier",
+        "label_fr": "Prime de panier",
+        "label_ar": "منحة القفة",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2024-01-01",
+        "au_titre_de": "2024",
+        "hypotheses": [
+          "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait."
+        ],
+        "hypotheses_ar": [
+          "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المخابز.pdf",
+        "page": 15,
+        "article": "50 مكرر",
+        "data_file": "data/processed/salary_grids/boulangeries.json",
+        "decision_ref": "D70"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-194-refus-boulangerie-24-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 24 ans : la grille de la convention des boulangeries s'arrête au degré 13 (22 à 24 ans) ; l'en-tête imprime des durées de séjour qui totalisent 24 ans et l'article 13 (pages 8-9) ne prévoit rien au-delà du dernier degré. Aucun montant n'est renvoyé (ancienneté couverte : moins de 24 ans).",
+      "message_ar": "أقدمية 24 سنة: ينتهي جدول أجور اتفاقية المخابز عند الدرجة 13 (من 22 إلى 24 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 24 سنة ولا ينص الفصل 13 (الصفحتان 8 و9) على شيء بعد آخر درجة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 24 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-195-refus-boulangerie-population-omise",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Population obligatoire pour le secteur BOULANGERIES (disponibles : administratifs, traditionnelles_horaires, traditionnelles_mensuels, industrielles_horaires, industrielles_mensuels).",
+      "message_ar": "يجب تحديد فئة الأعوان للقطاع BOULANGERIES (المتوفر: administratifs, traditionnelles_horaires, traditionnelles_mensuels, industrielles_horaires, industrielles_mensuels)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-196-salaire-textile-horaires-titularisation",
+    "status": "ok",
+    "result": {
+      "montant": "2.501",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "horaires",
+        "categorie": "I",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "TEX_HORAIRES_2021-09-01",
+        "effective_date": "2021-09-01",
+        "date_calcul": "2021-09-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 29,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-197-salaire-textile-mensuels-1b",
+    "status": "ok",
+    "result": {
+      "montant": "586.044",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "b",
+        "libelle_fr": "Catégorie 1 ب",
+        "libelle_ar": "الصنف 1 ب",
+        "degre": 12,
+        "anciennete_annees": "20.5",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "TEX_MENSUELS_2022-05-01",
+        "effective_date": "2022-05-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-198-salaire-textile-horaires-iv-2",
+    "status": "ok",
+    "result": {
+      "montant": "4.060",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "horaires",
+        "categorie": "IV",
+        "sous_categorie": "2",
+        "libelle_fr": "Catégorie IV, sous-catégorie 2",
+        "libelle_ar": "الصنف IV، الصنف الفرعي 2",
+        "degre": 19,
+        "anciennete_annees": "34",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "TEX_HORAIRES_2022-05-01",
+        "effective_date": "2022-05-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-199-refus-textile-colonne-stage",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents payés au mois, catégorie 5, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-200-refus-textile-35-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 35 ans : dans les tableaux de la convention du textile (pages 29 et 31), le degré 19 commence à 35 ans mais sa fin n'est pas imprimée, et le degré 20 n'a aucune ancienneté imprimée ; ces deux colonnes ne sont pas servies (le degré 18 couvre de 33 à 35 ans). L'article 12 (جديد) (page 8) prévoit une promotion au dernier degré, non calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 35 ans).",
+      "message_ar": "أقدمية 35 سنة: في جداول أجور اتفاقية النسيج تبدأ الدرجة 19 عند 35 سنة دون ذكر نهايتها، ولا تذكر الدرجة 20 أي أقدمية؛ لا يُعتمد هذان العمودان (تغطي الدرجة 18 الفترة من 33 إلى 35 سنة). ينص الفصل 12 (جديد) (الصفحة 8) على ترقية عند بلوغ آخر درجة، ولا تُحتسب. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 35 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-201-prime-transport-textile-cadres",
+    "status": "ok",
+    "result": {
+      "montant": "71.822",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TEXTILE",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2022-06-01",
+        "regles": "D6",
+        "groupe": "cadres",
+        "groupe_libelle": "Cadres",
+        "groupe_libelle_ar": "الإطارات",
+        "effective_date": "2022-05-01",
+        "note": "Elle inclut les montants du décret n° 503 du 16 mars 1982 (5 dinars par mois pour l'exécution et la maîtrise, 10 dinars pour les cadres ; art. 49-2 (جديد), p.15).",
+        "hypotheses": [
+          "Groupe choisi par l'appelant : le rattachement de sa catégorie au groupe n'est pas vérifié ici."
+        ],
+        "hypotheses_ar": [
+          "يختار الطالب المجموعة: لا يقع هنا التثبت من ربط صنفه بالمجموعة."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 15,
+        "article": "49 (جديد)",
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-202-refus-textile-prime-assiduite",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime d'encouragement à l'assiduité (article 49 (جديد), page 16) : deux lignes imprimées : 12,330 d par mois à partir du 1er septembre 2021 et 13,193 d par mois à partir de mai 2021 ; la date de la seconde ligne est antérieure à celle de la première, la période de chaque montant ne peut pas être établie. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة التشجيع على المواظبة (الفصل 49 (جديد)، الصفحة 16): سطران مطبوعان: 12,330 د في الشهر بداية من غرة سبتمبر 2021 و13,193 د في الشهر بداية من غرة ماي 2021؛ تاريخ السطر الثاني سابق لتاريخ الأول. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-203-salaire-fonderie-mensuels-1a",
+    "status": "ok",
+    "result": {
+      "montant": "540.491",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "a",
+        "libelle_fr": "Catégorie 1 أ",
+        "libelle_ar": "الصنف 1 أ",
+        "degre": 1,
+        "anciennete_annees": "1",
+        "hypotheses": [
+          "En-tête « +32 » (pages 25 à 30) et note de l'article 58 (جديد) (page 17 : trois ans aux degrés 8 à 14) : le degré 14 est servi de 32 ans à moins de 35 ans ; à partir de 35 ans, les deux textes se contredisent et la demande est refusée.",
+          "La même note décrit une grille de « 7 lignes et 14 colonnes » : c'est la grille horaire ; la grille mensuelle imprime 19 lignes.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "رأس الجدول «+32» (الصفحات من 25 إلى 30) والمذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17: ثلاث سنوات بالدرجات من 8 إلى 14): تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبداية من 35 سنة يتعارض النصان ويُرفض الطلب.",
+          "تصف المذكرة نفسها جدولا «ذا 7 أسطر و14 عمودا»: هو جدول الأعوان الخالصين بالساعة؛ ويتضمن جدول الأعوان الخالصين بالشهر 19 سطرا.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "FOND_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2021-12-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-204-salaire-fonderie-horaires-dernier-degre",
+    "status": "ok",
+    "result": {
+      "montant": "5.363",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "population": "horaires",
+        "categorie": "7",
+        "degre": 14,
+        "anciennete_annees": "33",
+        "hypotheses": [
+          "En-tête « +32 » (pages 25 à 30) et note de l'article 58 (جديد) (page 17 : trois ans aux degrés 8 à 14) : le degré 14 est servi de 32 ans à moins de 35 ans ; à partir de 35 ans, les deux textes se contredisent et la demande est refusée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "رأس الجدول «+32» (الصفحات من 25 إلى 30) والمذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17: ثلاث سنوات بالدرجات من 8 إلى 14): تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبداية من 35 سنة يتعارض النصان ويُرفض الطلب.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "FOND_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-205-salaire-fonderie-mensuels-18",
+    "status": "ok",
+    "result": {
+      "montant": "1592.070",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "population": "mensuels",
+        "categorie": "18",
+        "degre": 13,
+        "anciennete_annees": "30",
+        "hypotheses": [
+          "En-tête « +32 » (pages 25 à 30) et note de l'article 58 (جديد) (page 17 : trois ans aux degrés 8 à 14) : le degré 14 est servi de 32 ans à moins de 35 ans ; à partir de 35 ans, les deux textes se contredisent et la demande est refusée.",
+          "La même note décrit une grille de « 7 lignes et 14 colonnes » : c'est la grille horaire ; la grille mensuelle imprime 19 lignes.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "رأس الجدول «+32» (الصفحات من 25 إلى 30) والمذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17: ثلاث سنوات بالدرجات من 8 إلى 14): تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبداية من 35 سنة يتعارض النصان ويُرفض الطلب.",
+          "تصف المذكرة نفسها جدولا «ذا 7 أسطر و14 عمودا»: هو جدول الأعوان الخالصين بالساعة؛ ويتضمن جدول الأعوان الخالصين بالشهر 19 سطرا.",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "FOND_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 27,
+        "article": null,
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-206-refus-fonderie-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des ouvriers payés au mois, catégorie 3, degré 10 (tableau n° 1, en vigueur à partir du 2021-12-01, page 25) : cellule illisible au zoom à 400 dpi : deuxième chiffre lu 3 (lecture 1) puis 5 (lecture 2), non tranché à 400 dpi (lecture 1 « 632.002? », lecture 2 « 652.002? ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر العمال الخالصين بالشهر، الصنف 3، الدرجة 10 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 25): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-207-prime-transport-fonderie-2021",
+    "status": "ok",
+    "result": {
+      "montant": "81.435",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2022-06-01",
+        "regles": "D6",
+        "groupe": "execution_maitrise",
+        "groupe_libelle": "Agents d'exécution et de maîtrise",
+        "groupe_libelle_ar": "أعوان التنفيذ والتسيير",
+        "effective_date": "2021-12-01",
+        "au_titre_de": "2021",
+        "note": "Elle inclut la prime du décret n° 503 du 16 mars 1982. Dates d'effet imprimées en tête de ligne ; « au titre de » repris tel qu'imprimé (2021 sur la première ligne, alors que la présence et le logement portent 2022). Réduction par jour d'absence au-delà de cinq jours dans le mois : non calculée (art. 52 (جديد), p.15).",
+        "hypotheses": [
+          "Groupe choisi par l'appelant : le rattachement de sa catégorie au groupe n'est pas vérifié ici."
+        ],
+        "hypotheses_ar": [
+          "يختار الطالب المجموعة: لا يقع هنا التثبت من ربط صنفه بالمجموعة."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 15,
+        "article": "52 (جديد)",
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-208-prime-chaleur-complement-fonderie",
+    "status": "ok",
+    "result": {
+      "montant": "0.010",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "code": "prime_chaleur_complement",
+        "label_fr": "Prime de chaleur, fumée, saleté et risque : hausse de 10 millimes",
+        "label_ar": "منحة الحرارة والدخان والأوساخ والخطر (زيادة)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "agent qui touchait avant le 1er juillet 2011 une prime de chaleur, fumée, saleté et risque supérieure à 45 millimes par heure (art. 56-2 (جديد), p.16)",
+        "effective_date": "2011-07-01",
+        "note": "Hausse ajoutée à la prime que l'agent touchait déjà (art. 56-2 (جديد), p.16).",
+        "hypotheses": [
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 16,
+        "article": "56-2 (جديد)",
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-209-refus-fonderie-prime-panier",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de panier (article 51 (جديد), page 15) : imprimée « 706.666 millimes par jour » : montant à plus de trois décimales de dinar, que le moteur ne sert pas. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة السلّة (الفصل 51 (جديد)، الصفحة 15): مطبوعة «706.666 مليما في اليوم»: مبلغ بأكثر من ثلاثة أرقام عشرية من الدينار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-210-refus-fonderie-borne-exacte",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Ancienneté de 14 ans = borne commune aux degrés [7, 8] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+      "message_ar": "أقدمية 14 سنة تقع على الحد المشترك بين الدرجات [7, 8] ولا يحدد الجدول أيّها ينطبق. يرجى تحديد الأقدمية بدقة."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-211-refus-fonderie-35-ans-et-plus",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 40 ans : l'en-tête des grilles de la convention des fonderies, de la métallurgie et des constructions mécaniques (pages 25 à 30) imprime « +32 » sous le degré 14, mais la note de l'article 58 (جديد) (page 17) fixe le séjour aux degrés 8 à 14 à trois ans, sans dire ce qui suit le degré 14. Le degré 14 est servi de 32 ans à moins de 35 ans ; au-delà, les deux textes se contredisent. Aucun montant n'est renvoyé (ancienneté couverte : moins de 35 ans).",
+      "message_ar": "أقدمية 40 سنة: يذكر رأس جداول أجور اتفاقية المسابك والتعدين والبناءات الميكانيكية (الصفحات من 25 إلى 30) «+32» تحت الدرجة 14، في حين تضبط المذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17) مدة البقاء بالدرجات من 8 إلى 14 بثلاث سنوات دون ذكر ما يلي الدرجة 14. تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبعد ذلك يتعارض النصان. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 35 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]

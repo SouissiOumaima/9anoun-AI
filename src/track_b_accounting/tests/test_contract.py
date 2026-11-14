@@ -119,9 +119,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_83_ok_82_refus():
+def test_bilan_demo_109_ok_102_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 83 and list(statuts.values()).count("refus") == 82
+    assert list(statuts.values()).count("ok") == 109 and list(statuts.values()).count("refus") == 102
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -206,6 +206,26 @@ def test_bilan_demo_83_ok_82_refus():
         "demo-163-refus-commerce-palier-26": "PARAM_INVALIDE",
         "demo-164-refus-commerce-population-omise": "PARAM_INVALIDE",
         "demo-165-refus-commerce-prime-fin-annee": "SOURCE_MANQUANTE",
+        "demo-170-refus-imprimerie-31-ans": "SOURCE_MANQUANTE",
+        "demo-171-refus-imprimerie-borne-exacte": "PARAM_INVALIDE",
+        "demo-172-refus-imprimerie-avant-2021-12-01": "SOURCE_MANQUANTE",
+        "demo-173-refus-imprimerie-prime-fin-annee": "SOURCE_MANQUANTE",
+        "demo-174-refus-verre-salaire-horaires": "SOURCE_MANQUANTE",
+        "demo-175-refus-verre-salaire-mensuels": "SOURCE_MANQUANTE",
+        "demo-180-refus-verre-prime-globale": "SOURCE_MANQUANTE",
+        "demo-184-refus-agricole-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-187-refus-agricole-prime-transport": "SOURCE_MANQUANTE",
+        "demo-188-refus-agricole-40-ans": "SOURCE_MANQUANTE",
+        "demo-192-refus-boulangerie-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-194-refus-boulangerie-24-ans": "SOURCE_MANQUANTE",
+        "demo-195-refus-boulangerie-population-omise": "PARAM_INVALIDE",
+        "demo-199-refus-textile-colonne-stage": "SOURCE_MANQUANTE",
+        "demo-200-refus-textile-35-ans": "SOURCE_MANQUANTE",
+        "demo-202-refus-textile-prime-assiduite": "SOURCE_MANQUANTE",
+        "demo-206-refus-fonderie-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-209-refus-fonderie-prime-panier": "SOURCE_MANQUANTE",
+        "demo-210-refus-fonderie-borne-exacte": "PARAM_INVALIDE",
+        "demo-211-refus-fonderie-35-ans-et-plus": "SOURCE_MANQUANTE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -220,7 +240,8 @@ def test_demo_10_secteur_fictif():
         "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
         "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
         "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
-        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL)."
+        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
+        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
     )
 
 
@@ -341,7 +362,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 165 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 211 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()  # ensure_ascii=False
 
 
@@ -381,10 +402,10 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_165_echanges():
+def test_demo_affiche_211_echanges():
     from track_b_accounting.demo import main
 
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 165 and "Bilan : 83 ok, 82 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 211 and "Bilan : 109 ok, 102 refus, 0 erreur(s)." in texte

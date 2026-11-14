@@ -47,6 +47,12 @@ SECTEURS = {
     "GESTION_DECHETS": "data/processed/salary_grids/gestion_dechets.json",
     "HABILLEMENT": "data/processed/salary_grids/habillement.json",
     "COMMERCE_GROS_DETAIL": "data/processed/salary_grids/commerce_gros_detail.json",
+    "IMPRIMERIE_EDITION_CARTONNAGE": "data/processed/salary_grids/imprimerie_edition.json",
+    "VERRE_MIROIRS": "data/processed/salary_grids/verre_miroirs.json",
+    "CONCESSIONNAIRES_MATERIEL_AGRICOLE": "data/processed/salary_grids/materiel_agricole.json",
+    "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
+    "TEXTILE": "data/processed/salary_grids/textile.json",
+    "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 

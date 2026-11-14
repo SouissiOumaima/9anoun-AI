@@ -60,10 +60,16 @@ def test_registre_actuel_identique():
         "GESTION_DECHETS": "data/processed/salary_grids/gestion_dechets.json",
         "HABILLEMENT": "data/processed/salary_grids/habillement.json",
         "COMMERCE_GROS_DETAIL": "data/processed/salary_grids/commerce_gros_detail.json",
+        "IMPRIMERIE_EDITION_CARTONNAGE": "data/processed/salary_grids/imprimerie_edition.json",
+        "VERRE_MIROIRS": "data/processed/salary_grids/verre_miroirs.json",
+        "CONCESSIONNAIRES_MATERIEL_AGRICOLE": "data/processed/salary_grids/materiel_agricole.json",
+        "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
+        "TEXTILE": "data/processed/salary_grids/textile.json",
+        "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
     }
     assert (
         list(loaders.GRILLES) == loaders.secteurs_disponibles()
-    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -94,7 +100,8 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
         "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
         "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
-        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL)."
+        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
+        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
     )
 
 

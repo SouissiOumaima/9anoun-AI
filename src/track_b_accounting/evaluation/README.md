@@ -7,7 +7,7 @@ part : DS5 évalue son propre module.
 ```
 evaluation/
   README.md                                ce fichier
-  golden_sets/track_b_golden.v0.json       244 cas, valeurs attendues lues dans les PDF
+  golden_sets/track_b_golden.v0.json       290 cas, valeurs attendues lues dans les PDF
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
   results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
   results/eval_<date>.json, .md            rapports des relances (ignorés par git)
@@ -29,7 +29,7 @@ données ; cette évaluation vérifie le module contre la source.
   article et texte lu), pour vérifier le cas sur le document ;
 - `certitude` : **L** (lu directement), **C** (calculé à la main à partir de
   cellules lues), **I** (interprétation) ; `decision` donne l'entrée de
-  `docs/DECISIONS.md` (D6, D9, D10, D23, D29, D38, D46, D47, D49 à D66) qui
+  `docs/DECISIONS.md` (D6, D9, D10, D23, D29, D38, D46, D47, D49 à D72) qui
   fonde un cas I ou C ;
 - `verification_humaine` : `true` quand DS5 a vérifié le cas sur le PDF.
 
@@ -37,24 +37,25 @@ Convention des colonnes : le numéro de colonne est le degré ; le degré 1 est
 la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP, « 1 » / « 2 » dans les grilles
 des associations pour personnes handicapées).
 
-**Répartition (244 cas, dont 234 vérifiés par DS5 sur le PDF : `verification_humaine = true`).**
+**Répartition (290 cas, dont 280 vérifiés par DS5 sur le PDF : `verification_humaine = true`).**
 
 | Catégorie | Cas | Contenu |
 |---|---|---|
-| `ok` | 129 | Salaires de base (une ou plusieurs populations et dates par secteur), primes à montant fixe, SMIG |
+| `ok` | 155 | Salaires de base (une ou plusieurs populations et dates par secteur), primes à montant fixe, SMIG |
 | `art13` | 6 | Article 13 au-delà du dernier degré : métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
-| `refus` | 103 | Bornes exactes, ancienneté hors grille, catégories ou populations inconnues ou non couvertes, primes non couvertes, CNSS, conversion d'unité, secteur non transcrit |
+| `refus` | 123 | Bornes exactes, ancienneté hors grille, catégories ou populations inconnues ou non couvertes, primes non couvertes, CNSS, conversion d'unité, secteur non transcrit |
 | `piege` | 6 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel, alias non admis (messages FR et AR attendus) |
 
-Par certitude : 145 cas **L**, 7 cas **C**, 92 cas **I**. Par opération :
-177 `salaire_base`, 63 `prime`, 3 `smig`, 1 `cotisation_cnss` (refus).
+Par certitude : 167 cas **L**, 7 cas **C**, 116 cas **I**. Par opération :
+207 `salaire_base`, 79 `prime`, 3 `smig`, 1 `cotisation_cnss` (refus).
 
 Secteurs couverts (nombre de cas) : métallurgie et bâtiment 22, BTP 20,
 enseignement privé 18, associations pour personnes handicapées 16, assurance
 16, banques 14, gardiennage 14, confiserie 8, cosmétiques 7, savonnerie 7,
 commerce du pétrole 7, boissons gazeuses 7, torréfaction du café 6, pâtes 6,
 plasturgie 6, minoteries 6, teintureries 6, gestion des déchets 8, commerce de gros et de détail 8, mécanique et
-stations-service 7, boissons alcoolisées 7, bois et ameublement 7, habillement 6, agences de voyages 5, hôtels 5 ;
+stations-service 7, boissons alcoolisées 7, bois et ameublement 7, habillement 6, imprimerie 8, matériel agricole 8,
+fonderie 9, verre 7, boulangeries 7, textile 7, agences de voyages 5, hôtels 5 ;
 SMIG 4 ; secteur fictif non supporté 1.
 
 ## Métriques
@@ -117,7 +118,7 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   métriques à part.
 - **Les cas I traduisent nos décisions** (D6, D9, D10, D23), pas le texte seul :
   ils mesurent la conformité du module à ces décisions, pas leur justesse.
-- **244 cas sur plus de 10 000 cellules transcrites** : c'est un échantillon. La couverture
+- **290 cas sur plus de 10 000 cellules transcrites** : c'est un échantillon. La couverture
   exhaustive des grilles repose sur la double lecture et les contrôles
   automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`,
   `../tests/test_grid_associations.py`), dont le contrôle de hausse entre

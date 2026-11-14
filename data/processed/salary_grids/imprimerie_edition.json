@@ -1,0 +1,1894 @@
+{
+ "_meta": {
+  "secteur_code": "IMPRIMERIE_EDITION_CARTONNAGE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للطباعة والنقاشة والتسفير والنشر وتحويل الكرذونة وتحويل الورق والتصوير الشمسي",
+  "convention_fr": "Convention collective sectorielle de l'imprimerie, de la gravure, de la reliure, de l'édition, de la transformation du carton et du papier et de la photographie",
+  "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+  "pages_sources": [
+   3,
+   8,
+   9,
+   14,
+   15,
+   16,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "855 cellules lues en double lecture indépendante sur image (rendus redressés à 200 et 280 dpi, saisie dans deux ordres), comparées par script : 0 écart sur les cellules lisibles ; aucune cellule douteuse ; contrôle de hausse entre deux dates voisines (modèle choisi par ligne : montant fixe ou pourcentage fixe) : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image. Vérifié par DS5 sur les images (page de vérification de 105 points, tous conformes) : la note de l'art. 58 de la fonderie (p.17) ; les 36 montants de primes sans date (imprimerie p.15, verre p.14, matériel agricole pp.14-15, fonderie p.16), dont les 4 imprimés seulement en toutes lettres (verre 4 et 14, matériel agricole 1 et 150) ; le transport des cadres du textile (p.15) : 67,123 et 71,822 ; une ligne de prime datée par secteur, les autres montants datés étant contrôlés par la hausse (6,75 % ou 7 %), pas sur l'image ; les 7 cellules tranchées au zoom ; les 46 cas de référence TB-245 à TB-290 ; un échantillon de 7 des 21 cellules non tranchées, qui restent illisibles. Les autres cellules des lots ne sont pas vérifiées par DS5 une par une : elles reposent sur la double lecture et le contrôle de hausse.",
+  "decision_ref": "D67",
+  "currency": "TND",
+  "note_unite": "Tableaux n° 1, 3, 5 : administratifs payés au mois (TND/mois). Tableaux n° 2, 4, 6 : catégories I à III en TND/heure (titre « payés à l'heure ») ; catégorie IV en TND/mois (hypothèse affichée).",
+  "note_degres": "En-tête (p.22-27) : 15 degrés, durée de séjour 2 ans (degrés 1 à 14) puis 3 ans (degré 15) ; ancienneté effective 2, 4 … 28, 31 ; libellés « 0-2 » … « 26-28 », « 28-31 » ; bornes exactes refusées (D6) ; à partir de 31 ans, refus (art. 11 (جديد) 1), p.8, et en-tête).",
+  "note_categories": "Administratifs : lignes imprimées « 1 », « 2 », « 3-4-5-6 », « 7-8-9 », « 10 », « 11-12 », « 13-14-15 », rangs 1 à 15 en alias. Horaires : I, II, III avec sous-catégories 1 à 3 ; techniciens : IV avec sous-catégories 1 à 3 (position imprimée) ; population obligatoire.",
+  "note_dates": "Tableaux de 2021-12-01 (p.22-23), 2023-01-01 (p.24-25) et 2024-01-01 (p.26-27) ; refus avant le 2021-12-01 ; avenant n° 16 (p.3) : effet au 1er décembre 2021, aucun avenant postérieur.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Art. 15 (جديد) (p.9) : 48 h ; 40 h pour les administratifs, sauf les postes listés par l'article ; information seulement, repris par table.",
+  "remarque_pdf": "Note sous chaque tableau (p.22-27) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 22 إلى 27): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "administratifs_mensuels": {
+   "libelle_fr": "Agents administratifs payés au mois",
+   "libelle_ar": "الأعوان الإداريون الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 22,
+   "note": "Tableaux n° 1, 3, 5 ; population obligatoire."
+  },
+  "horaires": {
+   "libelle_fr": "Ouvriers payés à l'heure (catégories I à III)",
+   "libelle_ar": "العمال الخالصون بالساعة والأعوان الفنيون والإداريون (الأصناف I إلى III)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 23,
+   "note": "Lignes des catégories I à III des tableaux n° 2, 4, 6 ; population obligatoire."
+  },
+  "techniciens_mensuels": {
+   "libelle_fr": "Agents techniques et administratifs de la catégorie IV (montants mensuels)",
+   "libelle_ar": "العمال الخالصون بالساعة والأعوان الفنيون والإداريون (الصنف IV)",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 23,
+   "note": "Lignes de la catégorie IV des tableaux n° 2, 4, 6 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "administratifs_mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "26"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "28"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-31",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "31"
+   }
+  ],
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "26"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "28"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-31",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "31"
+   }
+  ],
+  "techniciens_mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "26"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "28"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-31",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "31"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "administratifs_mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 31,
+   "source_pdf_page": 8,
+   "source_article": "11 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'imprimerie, de la gravure, de la reliure, de l'édition, de la transformation du carton et du papier et de la photographie s'arrête au degré 15, dont l'en-tête (pages 22 à 27) imprime une durée de séjour de 3 ans (de 28 à 31 ans) ; l'article 11 (جديد) 1) (page 8) ajoute ensuite le dernier écart « après chaque période de deux ans », sans dire si la première période part de 28 ou de 31 ans. Cette règle n'est pas calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 31 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الطباعة والنقاشة والتسفير والنشر وتحويل الكرذونة وتحويل الورق والتصوير الشمسي عند الدرجة 15 التي يذكر رأس الجداول (الصفحات من 22 إلى 27) مدة البقاء بها 3 سنوات (من 28 إلى 31 سنة)؛ ويضيف الفصل 11 (جديد) (الصفحة 8) الفارق الأخير بعد كل فترة سنتين دون تحديد بداية الفترة الأولى. لا تُحتسب هذه القاعدة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 31 سنة)."
+  },
+  "horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 31,
+   "source_pdf_page": 8,
+   "source_article": "11 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'imprimerie, de la gravure, de la reliure, de l'édition, de la transformation du carton et du papier et de la photographie s'arrête au degré 15, dont l'en-tête (pages 22 à 27) imprime une durée de séjour de 3 ans (de 28 à 31 ans) ; l'article 11 (جديد) 1) (page 8) ajoute ensuite le dernier écart « après chaque période de deux ans », sans dire si la première période part de 28 ou de 31 ans. Cette règle n'est pas calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 31 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الطباعة والنقاشة والتسفير والنشر وتحويل الكرذونة وتحويل الورق والتصوير الشمسي عند الدرجة 15 التي يذكر رأس الجداول (الصفحات من 22 إلى 27) مدة البقاء بها 3 سنوات (من 28 إلى 31 سنة)؛ ويضيف الفصل 11 (جديد) (الصفحة 8) الفارق الأخير بعد كل فترة سنتين دون تحديد بداية الفترة الأولى. لا تُحتسب هذه القاعدة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 31 سنة)."
+  },
+  "techniciens_mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 31,
+   "source_pdf_page": 8,
+   "source_article": "11 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'imprimerie, de la gravure, de la reliure, de l'édition, de la transformation du carton et du papier et de la photographie s'arrête au degré 15, dont l'en-tête (pages 22 à 27) imprime une durée de séjour de 3 ans (de 28 à 31 ans) ; l'article 11 (جديد) 1) (page 8) ajoute ensuite le dernier écart « après chaque période de deux ans », sans dire si la première période part de 28 ou de 31 ans. Cette règle n'est pas calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 31 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الطباعة والنقاشة والتسفير والنشر وتحويل الكرذونة وتحويل الورق والتصوير الشمسي عند الدرجة 15 التي يذكر رأس الجداول (الصفحات من 22 إلى 27) مدة البقاء بها 3 سنوات (من 28 إلى 31 سنة)؛ ويضيف الفصل 11 (جديد) (الصفحة 8) الفارق الأخير بعد كل فترة سنتين دون تحديد بداية الفترة الأولى. لا تُحتسب هذه القاعدة. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 31 سنة)."
+  }
+ },
+ "categories": {
+  "administratifs_mensuels": [
+   "1",
+   "2",
+   "3-4-5-6",
+   "7-8-9",
+   "10",
+   "11-12",
+   "13-14-15"
+  ],
+  "horaires": [
+   "I_1",
+   "I_2",
+   "I_3",
+   "II_1",
+   "II_2",
+   "II_3",
+   "III_1",
+   "III_2",
+   "III_3"
+  ],
+  "techniciens_mensuels": [
+   "IV_1",
+   "IV_2",
+   "IV_3"
+  ]
+ },
+ "sous_categories": {
+  "horaires": {
+   "source_pdf_page": 23,
+   "par_categorie": {
+    "I": {
+     "1": {
+      "cle": "I_1",
+      "libelle_fr": "Catégorie I, ligne 1 (position imprimée)",
+      "libelle_ar": "الصنف I، السطر 1",
+      "libelle_ar_redige": true
+     },
+     "2": {
+      "cle": "I_2",
+      "libelle_fr": "Catégorie I, ligne 2 (position imprimée)",
+      "libelle_ar": "الصنف I، السطر 2",
+      "libelle_ar_redige": true
+     },
+     "3": {
+      "cle": "I_3",
+      "libelle_fr": "Catégorie I, ligne 3 (position imprimée)",
+      "libelle_ar": "الصنف I، السطر 3",
+      "libelle_ar_redige": true
+     }
+    },
+    "II": {
+     "1": {
+      "cle": "II_1",
+      "libelle_fr": "Catégorie II, ligne 1 (position imprimée)",
+      "libelle_ar": "الصنف II، السطر 1",
+      "libelle_ar_redige": true
+     },
+     "2": {
+      "cle": "II_2",
+      "libelle_fr": "Catégorie II, ligne 2 (position imprimée)",
+      "libelle_ar": "الصنف II، السطر 2",
+      "libelle_ar_redige": true
+     },
+     "3": {
+      "cle": "II_3",
+      "libelle_fr": "Catégorie II, ligne 3 (position imprimée)",
+      "libelle_ar": "الصنف II، السطر 3",
+      "libelle_ar_redige": true
+     }
+    },
+    "III": {
+     "1": {
+      "cle": "III_1",
+      "libelle_fr": "Catégorie III, ligne 1 (position imprimée)",
+      "libelle_ar": "الصنف III، السطر 1",
+      "libelle_ar_redige": true
+     },
+     "2": {
+      "cle": "III_2",
+      "libelle_fr": "Catégorie III, ligne 2 (position imprimée)",
+      "libelle_ar": "الصنف III، السطر 2",
+      "libelle_ar_redige": true
+     },
+     "3": {
+      "cle": "III_3",
+      "libelle_fr": "Catégorie III, ligne 3 (position imprimée)",
+      "libelle_ar": "الصنف III، السطر 3",
+      "libelle_ar_redige": true
+     }
+    }
+   }
+  },
+  "techniciens_mensuels": {
+   "source_pdf_page": 23,
+   "par_categorie": {
+    "IV": {
+     "1": {
+      "cle": "IV_1",
+      "libelle_fr": "Catégorie IV, ligne 1 (position imprimée)",
+      "libelle_ar": "الصنف IV، السطر 1",
+      "libelle_ar_redige": true
+     },
+     "2": {
+      "cle": "IV_2",
+      "libelle_fr": "Catégorie IV, ligne 2 (position imprimée)",
+      "libelle_ar": "الصنف IV، السطر 2",
+      "libelle_ar_redige": true
+     },
+     "3": {
+      "cle": "IV_3",
+      "libelle_fr": "Catégorie IV, ligne 3 (position imprimée)",
+      "libelle_ar": "الصنف IV، السطر 3",
+      "libelle_ar_redige": true
+     }
+    }
+   }
+  }
+ },
+ "alias_categories": {
+  "administratifs_mensuels": {
+   "3": "3-4-5-6",
+   "4": "3-4-5-6",
+   "5": "3-4-5-6",
+   "6": "3-4-5-6",
+   "7": "7-8-9",
+   "8": "7-8-9",
+   "9": "7-8-9",
+   "11": "11-12",
+   "12": "11-12",
+   "13": "13-14-15",
+   "14": "13-14-15",
+   "15": "13-14-15"
+  }
+ },
+ "libelles_categories": {
+  "administratifs_mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Rang(s) 1",
+    "libelle_ar": "الرتبة 1",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Rang(s) 2",
+    "libelle_ar": "الرتبة 2",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "3-4-5-6": {
+    "ligne": 3,
+    "libelle_fr": "Rang(s) 3-4-5-6",
+    "libelle_ar": "الرتبة 3-4-5-6",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "7-8-9": {
+    "ligne": 4,
+    "libelle_fr": "Rang(s) 7-8-9",
+    "libelle_ar": "الرتبة 7-8-9",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "10": {
+    "ligne": 5,
+    "libelle_fr": "Rang(s) 10",
+    "libelle_ar": "الرتبة 10",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "11-12": {
+    "ligne": 6,
+    "libelle_fr": "Rang(s) 11-12",
+    "libelle_ar": "الرتبة 11-12",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   },
+   "13-14-15": {
+    "ligne": 7,
+    "libelle_fr": "Rang(s) 13-14-15",
+    "libelle_ar": "الرتبة 13-14-15",
+    "libelle_ar_redige": true,
+    "classification_pages": [
+     21
+    ]
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "administratifs_mensuels": {
+   "fr": [
+    "Plusieurs rangs de la classification (page 21) partagent une même ligne imprimée (« 3-4-5-6 », « 7-8-9 », « 11-12 », « 13-14-15 ») : le rang demandé renvoie à sa ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "تشترك عدة رتب من التصنيف المهني (الصفحة 21) في سطر واحد من الجدول («3-4-5-6» و«7-8-9» و«11-12» و«13-14-15»): تُحال الرتبة المطلوبة على سطرها.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "horaires": {
+   "fr": [
+    "Tableau n° 6 (page 27) : le titre de population est absent (une virgule à sa place) ; il est rattaché aux ouvriers payés à l'heure et aux agents techniques et administratifs parce que ses libellés de lignes et son en-tête sont identiques à ceux des tableaux n° 2 et 4 (pages 23 et 25).",
+    "Chaque catégorie compte trois lignes sans libellé, numérotées ici 1, 2, 3 par leur position imprimée (de haut en bas) ; la classification (page 21) liste trois postes par catégorie, mais la correspondance entre ces postes et les lignes de la grille n'est pas imprimée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الجدول عدد 6 (الصفحة 27): لا يتضمن عنوان فئة الأعوان (فاصلة مكانه)؛ ويُلحق بالعمال الخالصين بالساعة والأعوان الفنيين والإداريين لتطابق أسطره ورأسه مع الجدولين عدد 2 و4 (الصفحتان 23 و25).",
+    "يتضمن كل صنف ثلاثة أسطر دون تسمية، رُقّمت هنا 1 و2 و3 حسب ترتيبها في الجدول (من الأعلى إلى الأسفل)؛ ويذكر التصنيف المهني (الصفحة 21) ثلاث خطط لكل صنف دون أن يبيّن الجدول الخطة الموافقة لكل سطر.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "techniciens_mensuels": {
+   "fr": [
+    "Tableau n° 6 (page 27) : le titre de population est absent (une virgule à sa place) ; il est rattaché aux ouvriers payés à l'heure et aux agents techniques et administratifs parce que ses libellés de lignes et son en-tête sont identiques à ceux des tableaux n° 2 et 4 (pages 23 et 25).",
+    "Chaque catégorie compte trois lignes sans libellé, numérotées ici 1, 2, 3 par leur position imprimée (de haut en bas) ; la classification (page 21) liste trois postes par catégorie, mais la correspondance entre ces postes et les lignes de la grille n'est pas imprimée.",
+    "Catégorie IV : montants mensuels (de 959 à 2 205 dinars) dans un tableau intitulé « ouvriers payés à l'heure et agents techniques et administratifs » ; unité TND/mois retenue en hypothèse, non imprimée sur la ligne.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الجدول عدد 6 (الصفحة 27): لا يتضمن عنوان فئة الأعوان (فاصلة مكانه)؛ ويُلحق بالعمال الخالصين بالساعة والأعوان الفنيين والإداريين لتطابق أسطره ورأسه مع الجدولين عدد 2 و4 (الصفحتان 23 و25).",
+    "يتضمن كل صنف ثلاثة أسطر دون تسمية، رُقّمت هنا 1 و2 و3 حسب ترتيبها في الجدول (من الأعلى إلى الأسفل)؛ ويذكر التصنيف المهني (الصفحة 21) ثلاث خطط لكل صنف دون أن يبيّن الجدول الخطة الموافقة لكل سطر.",
+    "الصنف IV: مبالغ شهرية (من 959 إلى 2205 دينارا) في جدول عنوانه «العمال الخالصون بالساعة والأعوان الفنيون والإداريون»؛ تُعتمد وحدة الدينار في الشهر على سبيل الافتراض لأنها غير مطبوعة على السطر.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 80.980
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 86.447
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 92.282
+    }
+   ],
+   "note": "Montant mensuel pour 26 jours de travail effectif ; il inclut les montants du décret n° 503 du 16 mars 1982 (art. 47 (جديد), p.15)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "47-7 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 6.894
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 7.359
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 7.856
+    }
+   ],
+   "note": "Prime journalière de demi-journée ; elle inclut la prime de l'article 5 du décret du 8 janvier 1948 modifié le 31 décembre 1965 (art. 47-7 (جديد), p.16)."
+  },
+  {
+   "code": "prime_aid_fitr",
+   "label_ar": "منحة الأعياد الدينية (عيد الفطر)",
+   "label_fr": "Prime de l'Aïd el-Fitr",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_aid_adha",
+   "label_ar": "منحة الأعياد الدينية (عيد الإضحى)",
+   "label_fr": "Prime de l'Aïd el-Adha",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "47-3 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/jour",
+   "montant": 0.350,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travail continu de plus de sept heures sans interruption d'une heure, ou travail hors de la commune du lieu de travail (art. 47-3 (جديد), p.15)"
+  },
+  {
+   "code": "prime_deces_agent",
+   "label_ar": "منحة الوفاة (وفاة العامل)",
+   "label_fr": "Prime de décès de l'agent",
+   "source_article": "47-4 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 300.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_deces_parent",
+   "label_ar": "منحة الوفاة (وفاة الأب أو الأم أو الزوجة أو أحد الأبناء)",
+   "label_fr": "Prime de décès d'un parent",
+   "source_article": "47-4 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 200.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "décès du père, de la mère, du conjoint ou d'un enfant de l'agent (art. 47-4 (جديد), p.15)"
+  },
+  {
+   "code": "prime_deplacement_repas",
+   "label_ar": "مصاريف التنقل (وجبة)",
+   "label_fr": "Frais de déplacement : repas",
+   "source_article": "47-6 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/repas",
+   "montant": 3.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur de camion ou de voiture, ou son aide, chargé d'une mission de déplacement autorisée qui l'oblige à prendre le repas hors de chez lui (art. 47-6 (جديد), p.15)"
+  },
+  {
+   "code": "prime_deplacement_nuitee",
+   "label_ar": "مصاريف التنقل (مبيت)",
+   "label_fr": "Frais de déplacement : nuitée",
+   "source_article": "47-6 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/nuitee",
+   "montant": 5.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur de camion ou de voiture, ou son aide, chargé d'une mission de déplacement autorisée qui l'oblige à passer la nuit hors de chez lui (art. 47-6 (جديد), p.15)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production_fin_annee": {
+   "source_pdf_page": 14,
+   "source_article": "46 (جديد)",
+   "message_fr": "Prime de production de fin d'année (article 46 (جديد), page 14) : barème en heures de salaire selon la note annuelle et le régime horaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج في آخر السنة (الفصل 46 (جديد)، الصفحة 14): سلم بساعات عمل حسب العدد المهني ونظام العمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 15,
+   "source_article": "47-5 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 47-5 (جديد), page 15) : deux mois de salaire de 10 à 24 ans d'ancienneté, trois mois à partir de 25 ans, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 47-5 (جديد)، الصفحة 15): أجرة شهرين أو ثلاثة أشهر حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_travail_nuit": {
+   "source_pdf_page": 9,
+   "source_article": "17 (جديد)",
+   "message_fr": "Majoration pour travail de nuit (article 17 (جديد), page 9) : majoration en pourcentage du salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "أجرة العمل بالليل (الفصل 17 (جديد)، الصفحة 9): زيادة بنسبة من الأجر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_licenciement": {
+   "source_pdf_page": 13,
+   "source_article": "39 (جديد)",
+   "message_fr": "Prime de licenciement (article 39 (جديد), page 13) : calculée selon l'ancienneté et le salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الطرد (الفصل 39 (جديد)، الصفحة 13): تُحتسب حسب الأقدمية والأجر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "IMP_ADMINISTRATIFS_MENSUELS_2021-12-01",
+   "numero_imprime": 1,
+   "population": "administratifs_mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     684.201,
+     697.060,
+     697.901,
+     698.741,
+     699.583,
+     700.549,
+     701.470,
+     702.389,
+     703.309,
+     704.229,
+     705.147,
+     706.067,
+     708.484,
+     710.772,
+     714.019
+    ],
+    "2": [
+     724.989,
+     726.351,
+     727.434,
+     728.350,
+     729.333,
+     730.322,
+     732.685,
+     735.280,
+     737.880,
+     740.476,
+     743.074,
+     745.672,
+     747.633,
+     750.865,
+     754.578
+    ],
+    "3-4-5-6": [
+     746.315,
+     747.729,
+     750.368,
+     753.321,
+     756.274,
+     759.228,
+     762.180,
+     765.133,
+     768.086,
+     771.040,
+     773.991,
+     776.945,
+     782.979,
+     786.566,
+     790.178
+    ],
+    "7-8-9": [
+     793.831,
+     797.550,
+     800.900,
+     804.248,
+     807.596,
+     811.893,
+     815.189,
+     818.488,
+     821.785,
+     824.591,
+     828.381,
+     831.680,
+     835.033,
+     838.276,
+     843.038
+    ],
+    "10": [
+     831.182,
+     835.435,
+     839.319,
+     844.959,
+     847.085,
+     848.528,
+     851.079,
+     856.173,
+     859.996,
+     863.780,
+     867.641,
+     874.547,
+     878.367,
+     882.190,
+     887.740
+    ],
+    "11-12": [
+     896.588,
+     901.931,
+     906.904,
+     914.960,
+     919.934,
+     924.906,
+     929.880,
+     934.611,
+     939.057,
+     943.501,
+     947.944,
+     952.387,
+     959.914,
+     964.358,
+     969.371
+    ],
+    "13-14-15": [
+     1008.115,
+     1014.456,
+     1023.512,
+     1029.482,
+     1035.198,
+     1041.423,
+     1047.395,
+     1053.737,
+     1060.270,
+     1066.801,
+     1073.332,
+     1079.864,
+     1086.395,
+     1092.926,
+     1119.446
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_HORAIRES_2021-12-01",
+   "numero_imprime": 2,
+   "population": "horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 23,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "I_1": [
+     2.885,
+     3.026,
+     3.036,
+     3.055,
+     3.074,
+     3.088,
+     3.099,
+     3.116,
+     3.129,
+     3.143,
+     3.153,
+     3.184,
+     3.204,
+     3.226,
+     3.250
+    ],
+    "I_2": [
+     3.096,
+     3.129,
+     3.153,
+     3.183,
+     3.210,
+     3.239,
+     3.264,
+     3.301,
+     3.332,
+     3.363,
+     3.396,
+     3.422,
+     3.457,
+     3.479,
+     3.528
+    ],
+    "I_3": [
+     3.193,
+     3.223,
+     3.246,
+     3.282,
+     3.305,
+     3.342,
+     3.371,
+     3.409,
+     3.448,
+     3.471,
+     3.512,
+     3.535,
+     3.578,
+     3.601,
+     3.651
+    ],
+    "II_1": [
+     3.262,
+     3.358,
+     3.398,
+     3.423,
+     3.464,
+     3.484,
+     3.537,
+     3.575,
+     3.613,
+     3.636,
+     3.681,
+     3.714,
+     3.770,
+     3.811,
+     3.845
+    ],
+    "II_2": [
+     3.565,
+     3.617,
+     3.669,
+     3.706,
+     3.749,
+     3.794,
+     3.835,
+     3.874,
+     3.918,
+     3.960,
+     4.003,
+     4.040,
+     4.084,
+     4.128,
+     4.192
+    ],
+    "II_3": [
+     3.796,
+     3.845,
+     3.880,
+     3.925,
+     3.968,
+     4.009,
+     4.047,
+     4.092,
+     4.134,
+     4.182,
+     4.270,
+     4.308,
+     4.356,
+     4.401,
+     4.439
+    ],
+    "III_1": [
+     4.052,
+     4.105,
+     4.160,
+     4.217,
+     4.277,
+     4.336,
+     4.392,
+     4.448,
+     4.502,
+     4.559,
+     4.615,
+     4.669,
+     4.724,
+     4.778,
+     4.840
+    ],
+    "III_2": [
+     4.252,
+     4.310,
+     4.390,
+     4.447,
+     4.499,
+     4.555,
+     4.613,
+     4.667,
+     4.720,
+     4.777,
+     4.833,
+     4.888,
+     4.944,
+     4.999,
+     5.055
+    ],
+    "III_3": [
+     4.348,
+     4.406,
+     4.517,
+     4.569,
+     4.625,
+     4.682,
+     4.739,
+     4.789,
+     4.846,
+     4.903,
+     4.959,
+     5.014,
+     5.069,
+     5.126,
+     5.196
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_TECHNICIENS_MENSUELS_2021-12-01",
+   "numero_imprime": 2,
+   "population": "techniciens_mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 23,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "IV_1": [
+     959.523,
+     973.346,
+     987.171,
+     1001.000,
+     1014.823,
+     1028.650,
+     1042.473,
+     1056.300,
+     1070.126,
+     1083.950,
+     1097.778,
+     1111.602,
+     1125.426,
+     1139.255,
+     1153.079
+    ],
+    "IV_2": [
+     1295.043,
+     1317.254,
+     1338.635,
+     1360.023,
+     1381.402,
+     1402.790,
+     1424.173,
+     1445.551,
+     1466.938,
+     1488.321,
+     1509.699,
+     1531.088,
+     1552.474,
+     1573.852,
+     1605.514
+    ],
+    "IV_3": [
+     1511.459,
+     1541.664,
+     1571.039,
+     1600.421,
+     1629.795,
+     1659.172,
+     1688.544,
+     1717.921,
+     1747.301,
+     1776.678,
+     1806.053,
+     1835.429,
+     1864.800,
+     1894.185,
+     1934.975
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_ADMINISTRATIFS_MENSUELS_2023-01-01",
+   "numero_imprime": 3,
+   "population": "administratifs_mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 24,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     730.385,
+     743.244,
+     744.085,
+     744.925,
+     745.767,
+     746.733,
+     747.654,
+     748.573,
+     749.493,
+     750.413,
+     751.331,
+     752.251,
+     754.668,
+     756.956,
+     760.203
+    ],
+    "2": [
+     773.926,
+     775.288,
+     776.371,
+     777.287,
+     778.270,
+     779.259,
+     781.622,
+     784.217,
+     786.817,
+     789.413,
+     792.011,
+     794.609,
+     796.570,
+     799.802,
+     803.515
+    ],
+    "3-4-5-6": [
+     796.691,
+     798.106,
+     800.745,
+     803.698,
+     806.650,
+     809.604,
+     812.557,
+     815.510,
+     818.462,
+     821.416,
+     824.368,
+     827.322,
+     833.355,
+     836.943,
+     840.555
+    ],
+    "7-8-9": [
+     847.414,
+     851.133,
+     854.483,
+     857.831,
+     861.179,
+     865.476,
+     868.772,
+     872.071,
+     875.368,
+     878.174,
+     881.964,
+     885.263,
+     888.616,
+     891.859,
+     896.621
+    ],
+    "10": [
+     887.286,
+     891.540,
+     895.424,
+     901.064,
+     903.190,
+     904.632,
+     907.184,
+     912.278,
+     916.101,
+     919.885,
+     923.745,
+     930.651,
+     934.472,
+     938.295,
+     943.844
+    ],
+    "11-12": [
+     957.107,
+     962.451,
+     967.424,
+     975.480,
+     980.454,
+     985.426,
+     990.400,
+     995.131,
+     999.577,
+     1004.021,
+     1008.464,
+     1012.907,
+     1020.433,
+     1024.877,
+     1029.890
+    ],
+    "13-14-15": [
+     1076.162,
+     1082.504,
+     1091.560,
+     1097.530,
+     1103.246,
+     1109.471,
+     1115.442,
+     1121.785,
+     1128.318,
+     1134.849,
+     1141.380,
+     1147.911,
+     1154.443,
+     1160.974,
+     1187.494
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_HORAIRES_2023-01-01",
+   "numero_imprime": 4,
+   "population": "horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 25,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "I_1": [
+     3.080,
+     3.231,
+     3.241,
+     3.262,
+     3.282,
+     3.297,
+     3.308,
+     3.326,
+     3.340,
+     3.355,
+     3.366,
+     3.399,
+     3.420,
+     3.444,
+     3.469
+    ],
+    "I_2": [
+     3.305,
+     3.340,
+     3.366,
+     3.397,
+     3.427,
+     3.458,
+     3.484,
+     3.524,
+     3.557,
+     3.590,
+     3.625,
+     3.653,
+     3.691,
+     3.713,
+     3.766
+    ],
+    "I_3": [
+     3.409,
+     3.441,
+     3.465,
+     3.503,
+     3.528,
+     3.568,
+     3.599,
+     3.639,
+     3.681,
+     3.705,
+     3.749,
+     3.774,
+     3.819,
+     3.844,
+     3.898
+    ],
+    "II_1": [
+     3.482,
+     3.585,
+     3.627,
+     3.654,
+     3.698,
+     3.719,
+     3.776,
+     3.816,
+     3.857,
+     3.881,
+     3.930,
+     3.965,
+     4.024,
+     4.068,
+     4.104
+    ],
+    "II_2": [
+     3.806,
+     3.861,
+     3.917,
+     3.956,
+     4.002,
+     4.050,
+     4.094,
+     4.136,
+     4.182,
+     4.228,
+     4.273,
+     4.313,
+     4.360,
+     4.406,
+     4.475
+    ],
+    "II_3": [
+     4.052,
+     4.104,
+     4.141,
+     4.189,
+     4.236,
+     4.280,
+     4.321,
+     4.368,
+     4.413,
+     4.464,
+     4.558,
+     4.599,
+     4.650,
+     4.698,
+     4.738
+    ],
+    "III_1": [
+     4.325,
+     4.382,
+     4.441,
+     4.502,
+     4.566,
+     4.628,
+     4.688,
+     4.749,
+     4.805,
+     4.866,
+     4.926,
+     4.984,
+     5.043,
+     5.100,
+     5.166
+    ],
+    "III_2": [
+     4.539,
+     4.601,
+     4.687,
+     4.747,
+     4.802,
+     4.863,
+     4.925,
+     4.982,
+     5.038,
+     5.099,
+     5.160,
+     5.218,
+     5.277,
+     5.337,
+     5.397
+    ],
+    "III_3": [
+     4.641,
+     4.703,
+     4.822,
+     4.877,
+     4.937,
+     4.998,
+     5.059,
+     5.113,
+     5.174,
+     5.234,
+     5.294,
+     5.352,
+     5.411,
+     5.472,
+     5.547
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_TECHNICIENS_MENSUELS_2023-01-01",
+   "numero_imprime": 4,
+   "population": "techniciens_mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "IV_1": [
+     1024.291,
+     1039.047,
+     1053.805,
+     1068.567,
+     1083.323,
+     1098.084,
+     1112.840,
+     1127.601,
+     1142.360,
+     1157.116,
+     1171.878,
+     1186.635,
+     1201.393,
+     1216.154,
+     1230.912
+    ],
+    "IV_2": [
+     1382.458,
+     1406.168,
+     1428.993,
+     1451.824,
+     1474.646,
+     1497.479,
+     1520.305,
+     1543.126,
+     1565.956,
+     1588.783,
+     1611.604,
+     1634.436,
+     1657.266,
+     1680.087,
+     1713.886
+    ],
+    "IV_3": [
+     1613.482,
+     1645.726,
+     1677.084,
+     1708.450,
+     1739.806,
+     1771.166,
+     1802.521,
+     1833.881,
+     1865.244,
+     1896.603,
+     1927.962,
+     1959.320,
+     1990.674,
+     2022.042,
+     2065.586
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_ADMINISTRATIFS_MENSUELS_2024-01-01",
+   "numero_imprime": 5,
+   "population": "administratifs_mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     779.686,
+     792.545,
+     793.386,
+     794.226,
+     795.068,
+     796.034,
+     796.955,
+     797.874,
+     798.794,
+     799.714,
+     800.632,
+     801.552,
+     803.969,
+     806.257,
+     809.504
+    ],
+    "2": [
+     826.166,
+     827.528,
+     828.611,
+     829.527,
+     830.510,
+     831.499,
+     833.862,
+     836.457,
+     839.057,
+     841.653,
+     844.251,
+     846.849,
+     848.810,
+     852.042,
+     855.755
+    ],
+    "3-4-5-6": [
+     850.468,
+     851.882,
+     854.521,
+     857.474,
+     860.427,
+     863.381,
+     866.333,
+     869.286,
+     872.239,
+     875.193,
+     878.144,
+     881.098,
+     887.132,
+     890.719,
+     894.331
+    ],
+    "7-8-9": [
+     904.615,
+     908.334,
+     911.684,
+     915.032,
+     918.380,
+     922.677,
+     925.973,
+     929.272,
+     932.569,
+     935.375,
+     939.165,
+     942.464,
+     945.817,
+     949.060,
+     953.822
+    ],
+    "10": [
+     947.178,
+     951.432,
+     955.316,
+     960.956,
+     963.082,
+     964.524,
+     967.076,
+     972.170,
+     975.993,
+     979.777,
+     983.637,
+     990.543,
+     994.364,
+     998.187,
+     1003.736
+    ],
+    "11-12": [
+     1021.712,
+     1027.055,
+     1032.028,
+     1040.084,
+     1045.058,
+     1050.030,
+     1055.004,
+     1059.735,
+     1064.181,
+     1068.625,
+     1073.068,
+     1077.511,
+     1085.038,
+     1089.482,
+     1094.495
+    ],
+    "13-14-15": [
+     1148.803,
+     1155.145,
+     1164.201,
+     1170.171,
+     1175.887,
+     1182.112,
+     1188.083,
+     1194.426,
+     1200.959,
+     1207.490,
+     1214.021,
+     1220.552,
+     1227.084,
+     1233.615,
+     1260.135
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_HORAIRES_2024-01-01",
+   "numero_imprime": 6,
+   "population": "horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 27,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "I_1": [
+     3.288,
+     3.449,
+     3.460,
+     3.482,
+     3.503,
+     3.519,
+     3.531,
+     3.551,
+     3.565,
+     3.582,
+     3.593,
+     3.628,
+     3.651,
+     3.677,
+     3.703
+    ],
+    "I_2": [
+     3.528,
+     3.565,
+     3.593,
+     3.627,
+     3.658,
+     3.691,
+     3.719,
+     3.762,
+     3.797,
+     3.833,
+     3.870,
+     3.899,
+     3.940,
+     3.964,
+     4.020
+    ],
+    "I_3": [
+     3.639,
+     3.673,
+     3.699,
+     3.740,
+     3.766,
+     3.808,
+     3.842,
+     3.884,
+     3.929,
+     3.955,
+     4.002,
+     4.028,
+     4.077,
+     4.103,
+     4.161
+    ],
+    "II_1": [
+     3.717,
+     3.827,
+     3.872,
+     3.901,
+     3.947,
+     3.970,
+     4.031,
+     4.074,
+     4.117,
+     4.143,
+     4.195,
+     4.233,
+     4.296,
+     4.343,
+     4.381
+    ],
+    "II_2": [
+     4.062,
+     4.122,
+     4.181,
+     4.223,
+     4.272,
+     4.324,
+     4.371,
+     4.415,
+     4.464,
+     4.513,
+     4.561,
+     4.604,
+     4.654,
+     4.704,
+     4.777
+    ],
+    "II_3": [
+     4.325,
+     4.381,
+     4.421,
+     4.472,
+     4.522,
+     4.568,
+     4.612,
+     4.663,
+     4.711,
+     4.765,
+     4.866,
+     4.909,
+     4.964,
+     5.015,
+     5.058
+    ],
+    "III_1": [
+     4.617,
+     4.678,
+     4.740,
+     4.805,
+     4.874,
+     4.941,
+     5.005,
+     5.069,
+     5.130,
+     5.195,
+     5.259,
+     5.321,
+     5.384,
+     5.445,
+     5.515
+    ],
+    "III_2": [
+     4.845,
+     4.911,
+     5.003,
+     5.068,
+     5.127,
+     5.191,
+     5.257,
+     5.318,
+     5.379,
+     5.443,
+     5.508,
+     5.571,
+     5.634,
+     5.697,
+     5.761
+    ],
+    "III_3": [
+     4.955,
+     5.021,
+     5.147,
+     5.207,
+     5.271,
+     5.335,
+     5.400,
+     5.458,
+     5.523,
+     5.588,
+     5.651,
+     5.713,
+     5.777,
+     5.841,
+     5.921
+    ]
+   }
+  },
+  {
+   "table_id": "IMP_TECHNICIENS_MENSUELS_2024-01-01",
+   "numero_imprime": 6,
+   "population": "techniciens_mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "IV_1": [
+     1093.431,
+     1109.183,
+     1124.937,
+     1140.695,
+     1156.448,
+     1172.205,
+     1187.956,
+     1203.714,
+     1219.469,
+     1235.222,
+     1250.980,
+     1266.733,
+     1282.487,
+     1298.245,
+     1313.998
+    ],
+    "IV_2": [
+     1475.774,
+     1501.085,
+     1525.450,
+     1549.822,
+     1574.185,
+     1598.559,
+     1622.926,
+     1647.287,
+     1671.658,
+     1696.026,
+     1720.387,
+     1744.761,
+     1769.131,
+     1793.492,
+     1829.573
+    ],
+    "IV_3": [
+     1722.392,
+     1756.812,
+     1790.287,
+     1823.770,
+     1857.243,
+     1890.720,
+     1924.191,
+     1957.668,
+     1991.148,
+     2024.624,
+     2058.099,
+     2091.574,
+     2125.045,
+     2158.530,
+     2205.013
+    ]
+   }
+  }
+ ]
+}

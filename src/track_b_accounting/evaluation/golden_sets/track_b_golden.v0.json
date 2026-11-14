@@ -7650,6 +7650,1447 @@
     "page": 15,
     "emplacement": "art. 49 مكرر : un demi-mois de salaire, sans montant fixe"
    }
+  },
+  {
+   "id": "TB-245",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D67",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "administratifs_mensuels",
+     "categorie": "5",
+     "anciennete_annees": 3,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "851.882",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+      "page": 26
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 26,
+    "emplacement": "tableau n° 5 (p.26, 2024-01-01), ligne 3 (« 3-4-5-6 », rang 5 en alias), col. degré 2 depuis la droite (2 à 4 ans)",
+    "valeur_imprimee": "851.882"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-246",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D67",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "horaires",
+     "categorie": "II",
+     "sous_categorie": "2",
+     "anciennete_annees": 3,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.122",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+      "page": 27
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 27,
+    "emplacement": "tableau n° 6 (p.27, 2024-01-01, titre de population absent), ligne 5 (II, 2e ligne), col. degré 2 depuis la droite (2 à 4 ans)",
+    "valeur_imprimee": "4.122"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-247",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D67",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "techniciens_mensuels",
+     "categorie": "IV",
+     "sous_categorie": "3",
+     "anciennete_annees": 30,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2065.586",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 4 (p.25, 2023-01-01), ligne 12 (IV, 3e ligne), col. degré 15 depuis la droite (28 à 31 ans) ; unité TND/mois en hypothèse",
+    "valeur_imprimee": "2065.586"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-248",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "code": "prime_transport",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "92.282",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 15,
+    "emplacement": "art. 47 (جديد) : 92.282 d à partir du 1er janvier 2024",
+    "valeur_imprimee": "92.282"
+   }
+  },
+  {
+   "id": "TB-249",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D67",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "administratifs_mensuels",
+     "categorie": "1",
+     "anciennete_annees": 31,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 8,
+    "emplacement": "art. 11 (جديد) 1) (p.8) et en-tête (p.22-27) : degré 15 de 3 ans, écart tous les 2 ans ensuite"
+   }
+  },
+  {
+   "id": "TB-250",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "horaires",
+     "categorie": "I",
+     "sous_categorie": "1",
+     "anciennete_annees": 28,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 27,
+    "emplacement": "en-tête : 28 ans = fin du degré 14 et début du degré 15"
+   }
+  },
+  {
+   "id": "TB-251",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "population": "administratifs_mensuels",
+     "categorie": "1",
+     "anciennete_annees": 1,
+     "date": "2021-11-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 22,
+    "emplacement": "titre du tableau n° 1 : en vigueur à partir du 1er décembre 2021"
+   }
+  },
+  {
+   "id": "TB-252",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "IMPRIMERIE_EDITION_CARTONNAGE",
+     "code": "prime_production_fin_annee",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+    "page": 14,
+    "emplacement": "art. 46 (جديد) : barème en heures selon la note, sans montant fixe"
+   }
+  },
+  {
+   "id": "TB-253",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D68",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "population": "horaires",
+     "categorie": "3",
+     "anciennete_annees": 0,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 7,
+    "emplacement": "en-tête (p.19-21) : numéro du degré seulement ; art. 12 (جديد) (p.7-8) et 53 (p.15) : aucune durée"
+   }
+  },
+  {
+   "id": "TB-254",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D68",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "population": "mensuels",
+     "categorie": "1",
+     "sous_categorie": "b",
+     "anciennete_annees": 12,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 7,
+    "emplacement": "même raison : aucune durée de degré imprimée"
+   }
+  },
+  {
+   "id": "TB-255",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "code": "prime_transport",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "130.948",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تحويل البلّور والمرآة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 14,
+    "emplacement": "art. 45 (جديد) : 130.948 d à partir du 1er janvier 2024",
+    "valeur_imprimee": "130.948"
+   }
+  },
+  {
+   "id": "TB-256",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "code": "prime_transport",
+     "date": "2023-06-01",
+     "variante": "complement_si_prime_superieure"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "7.757",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تحويل البلّور والمرآة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 14,
+    "emplacement": "art. 45 (جديد) : hausse de 7.757 d à partir du 1er janvier 2023",
+    "valeur_imprimee": "7.757"
+   }
+  },
+  {
+   "id": "TB-257",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "code": "prime_aid_adha",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "83.333",
+    "unite": "TND/versement",
+    "citations": [
+     {
+      "pdf": "تحويل البلّور والمرآة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 14,
+    "emplacement": "art. 48 (جديد) : 83.333 dinars pour l'Aïd el-Adha",
+    "valeur_imprimee": "83.333"
+   }
+  },
+  {
+   "id": "TB-258",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "code": "prime_risque",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "16.666",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تحويل البلّور والمرآة.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : 16.666 d par mois, sauf les administratifs",
+    "valeur_imprimee": "16.666"
+   }
+  },
+  {
+   "id": "TB-259",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "VERRE_MIROIRS",
+     "code": "prime_globale_temporaire",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تحويل البلّور والمرآة.pdf",
+    "page": 14,
+    "emplacement": "art. 52 : 120 dinars versés une seule fois à l'entrée en vigueur"
+   }
+  },
+  {
+   "id": "TB-260",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D69",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2021-12-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "594.410",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 23,
+    "emplacement": "tableau n° 1 (p.23, 2021-12-01), ligne 1, col. degré 1 depuis la droite (0 à 1 an) ; unité non imprimée",
+    "valeur_imprimee": "594.410"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-261",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D69",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "population": "tous_agents",
+     "categorie": "16",
+     "anciennete_annees": 38,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1894.675",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 3 (p.25, 2024-01-01), ligne 16, col. degré 19 depuis la droite (37 à 40 ans)",
+    "valeur_imprimee": "1894.675"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-262",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D69",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "categorie": "12",
+     "anciennete_annees": 15.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1305.387",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 3 (p.25, 2024-01-01), ligne 12, col. degré 10 depuis la droite (15 à 17 ans)",
+    "valeur_imprimee": "1305.387"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-263",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "categorie": "12",
+     "anciennete_annees": 12,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 3 (p.25), ligne 12, col. degré 8 : chiffre après le point abîmé (3 ou 8)"
+   }
+  },
+  {
+   "id": "TB-264",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "code": "prime_demi_journee",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "7.856",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 15,
+    "emplacement": "art. 51 (جديد) : 7.856 d par mois à partir du 1er janvier 2024",
+    "valeur_imprimee": "7.856"
+   }
+  },
+  {
+   "id": "TB-265",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "code": "prime_fonction_directeur",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "90.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : directeur, 90 dinars",
+    "valeur_imprimee": "90.000"
+   }
+  },
+  {
+   "id": "TB-266",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D69",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "code": "prime_transport",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 14,
+    "emplacement": "art. 49 (جديد) : montants de 2018-2019 seulement ; révisé par l'avenant 15 (p.3), montant absent"
+   }
+  },
+  {
+   "id": "TB-267",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D69",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+     "categorie": "1",
+     "anciennete_annees": 40,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+    "page": 8,
+    "emplacement": "en-tête : durées totalisant 40 ans ; art. 12 (جديد) : rien au-delà"
+   }
+  },
+  {
+   "id": "TB-268",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D70",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "population": "administratifs",
+     "categorie": "8",
+     "anciennete_annees": 23,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1180.430",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المخابز.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 22,
+    "emplacement": "tableau n° 7 (p.22, 2024-01-01), ligne 8, col. degré 13 depuis la droite (22 à 24 ans) ; unité non imprimée",
+    "valeur_imprimee": "1180.430"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-269",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "population": "traditionnelles_horaires",
+     "categorie": "chef_de_four",
+     "anciennete_annees": 0.5,
+     "date": "2022-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.067",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "المخابز.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 18,
+    "emplacement": "tableau n° 2 (p.18, 2021-12-01), ligne 7 (« رئيس فرن », بالساعة), col. degré 1 depuis la droite (0 à 1 an)",
+    "valeur_imprimee": "4.067"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-270",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "population": "industrielles_mensuels",
+     "categorie": "5",
+     "anciennete_annees": 11,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "898.518",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المخابز.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 6 (p.21, 2023-01-01), ligne 10 (5, بالشهر), col. degré 7 depuis la droite (10 à 12 ans)",
+    "valeur_imprimee": "898.518"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-271",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "population": "traditionnelles_horaires",
+     "categorie": "petrisseur",
+     "anciennete_annees": 1.5,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 5 (p.20), ligne 5 (« العجان », بالساعة), col. degré 2 : chiffre partiellement effacé"
+   }
+  },
+  {
+   "id": "TB-272",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "code": "prime_panier",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.385",
+    "unite": "TND/jour",
+    "citations": [
+     {
+      "pdf": "المخابز.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر ب : 385 millimes par jour à partir du 1er janvier 2024",
+    "valeur_imprimee": "0.385"
+   }
+  },
+  {
+   "id": "TB-273",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D70",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "population": "administratifs",
+     "categorie": "1",
+     "anciennete_annees": 24,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 8,
+    "emplacement": "en-tête : durées totalisant 24 ans ; art. 13 : rien au-delà"
+   }
+  },
+  {
+   "id": "TB-274",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BOULANGERIES",
+     "categorie": "1",
+     "anciennete_annees": 1.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "المخابز.pdf",
+    "page": 18,
+    "emplacement": "cinq populations (administratifs, deux boulangeries, lignes à l'heure et au mois) : population obligatoire"
+   }
+  },
+  {
+   "id": "TB-275",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEXTILE",
+     "population": "horaires",
+     "categorie": "I",
+     "anciennete_annees": 0.5,
+     "date": "2021-09-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.501",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "النسيج.pdf",
+      "page": 29
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 29,
+    "emplacement": "tableau n° 1 (p.29, 2021-09-01), ligne 1 (I), col. « 0 » (titularisation) depuis la droite (0 à 1 an)",
+    "valeur_imprimee": "2.501"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-276",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEXTILE",
+     "population": "mensuels",
+     "categorie": "1",
+     "sous_categorie": "b",
+     "anciennete_annees": 20.5,
+     "date": "2022-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "586.044",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "النسيج.pdf",
+      "page": 32
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 32,
+    "emplacement": "tableau n° 4 (p.32, 2022-05-01), ligne 2 (« 1 ب »), 12e colonne depuis la droite (degré 11, ancienneté 20 à 22 ans)",
+    "valeur_imprimee": "586.044"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-277",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEXTILE",
+     "population": "horaires",
+     "categorie": "IV",
+     "sous_categorie": "2",
+     "anciennete_annees": 34,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.060",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "النسيج.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 3 (p.31, 2022-05-01), ligne 7 (IV, sous-catégorie 2), 19e colonne depuis la droite (degré 18, 33 à 35 ans)",
+    "valeur_imprimee": "4.060"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-278",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEXTILE",
+     "population": "mensuels",
+     "categorie": "5",
+     "anciennete_annees": 0.5,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 32,
+    "emplacement": "colonne « période de stage » : durée du stage imprimée nulle part"
+   }
+  },
+  {
+   "id": "TB-279",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TEXTILE",
+     "population": "horaires",
+     "categorie": "I",
+     "anciennete_annees": 35,
+     "date": "2022-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 8,
+    "emplacement": "en-tête : degré 19 sans fin imprimée, degré 20 sans ancienneté"
+   }
+  },
+  {
+   "id": "TB-280",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TEXTILE",
+     "code": "prime_transport",
+     "date": "2022-06-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "71.822",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "النسيج.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 15,
+    "emplacement": "art. 49-2 (جديد) : cadres, 71,822 d à partir du 1er mai 2022",
+    "valeur_imprimee": "71.822"
+   }
+  },
+  {
+   "id": "TB-281",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D71",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TEXTILE",
+     "code": "prime_assiduite",
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "النسيج.pdf",
+    "page": 16,
+    "emplacement": "art. 49-3 : seconde ligne datée « mai 2021 », avant la première (septembre 2021)"
+   }
+  },
+  {
+   "id": "TB-282",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "mensuels",
+     "categorie": "1",
+     "sous_categorie": "a",
+     "anciennete_annees": 1,
+     "date": "2021-12-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "540.491",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 1 (p.25, 2021-12-01), ligne 1 (« 1 أ »), col. degré 1 depuis la droite (« 2-0 »)",
+    "valeur_imprimee": "540.491"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-283",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D72",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "horaires",
+     "categorie": "7",
+     "anciennete_annees": 33,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "5.363",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "page": 30
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 30,
+    "emplacement": "tableau n° 6 (p.30, 2024-01-01), ligne 7, col. degré 14 depuis la droite (« +32 », servi de 32 à moins de 35 ans)",
+    "valeur_imprimee": "5.363"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-284",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "mensuels",
+     "categorie": "18",
+     "anciennete_annees": 30,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1592.070",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "page": 27
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 27,
+    "emplacement": "tableau n° 3 (p.27, 2023-01-01), ligne 19 (18), col. degré 13 depuis la droite (« 32-29 »)",
+    "valeur_imprimee": "1592.070"
+   },
+   "note": "Cellule lue en double lecture indépendante sur image (200 et 280 dpi), comparée par script et contrôlée par la hausse entre deux dates voisines ; vérifiée par DS5 sur l'image (page de vérification, 2026-11-14) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-285",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "mensuels",
+     "categorie": "3",
+     "anciennete_annees": 21,
+     "date": "2021-12-15"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 1 (p.25), ligne 4 (3), col. degré 10 : deuxième chiffre lu 3 puis 5"
+   }
+  },
+  {
+   "id": "TB-286",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "code": "prime_transport",
+     "date": "2022-06-01",
+     "groupe": "execution_maitrise"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "81.435",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 15,
+    "emplacement": "art. 52 (جديد) : exécution et maîtrise, 81.435 d à partir du 1er décembre 2021 (« au titre de 2021 »)",
+    "valeur_imprimee": "81.435"
+   }
+  },
+  {
+   "id": "TB-287",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "code": "prime_chaleur_complement",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.010",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 16,
+    "emplacement": "art. 56-2 (جديد) : hausse de 10 millimes par heure à partir du 1er juillet 2011",
+    "valeur_imprimee": "0.010"
+   }
+  },
+  {
+   "id": "TB-288",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D72",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "code": "prime_panier",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 15,
+    "emplacement": "art. 51 (جديد) : « 706.666 millimes » par jour, plus de trois décimales"
+   }
+  },
+  {
+   "id": "TB-289",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "horaires",
+     "categorie": "1",
+     "anciennete_annees": 14,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 30,
+    "emplacement": "en-tête : 14 ans = fin du degré 7 (« 14-12 ») et début du degré 8 (« 17-14 »)"
+   }
+  },
+  {
+   "id": "TB-290",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D72",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+     "population": "horaires",
+     "categorie": "7",
+     "anciennete_annees": 40,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+    "page": 17,
+    "emplacement": "note de l'art. 58 (جديد) (p.17 : trois ans au degré 14) contre l'en-tête « +32 » (p.25-30) : refus à partir de 35 ans"
+   }
   }
  ]
 }

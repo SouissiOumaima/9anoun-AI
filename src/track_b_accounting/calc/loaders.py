@@ -150,9 +150,10 @@ def _valider_au_dela(bloc: dict, pop: str, degres: list, cats: list) -> None:
     objet = f"au_dela_dernier_degre[{pop}]"
     regle = bloc.get("regle", "refus")
     if regle == "refus":
+        # 0 : aucune ancienneté couverte, toute demande refusée avec le message du JSON (degrés sans durée imprimée, D68).
         _exiger(
-            _entier_positif(bloc["anciennete_max_couverte_annees"]),
-            f"{objet} : anciennete_max_couverte_annees entier > 0 attendu",
+            _entier_positif_ou_nul(bloc["anciennete_max_couverte_annees"]),
+            f"{objet} : anciennete_max_couverte_annees entier ≥ 0 attendu",
         )
         _exiger_refus_declare(bloc, objet, avec_anciennete=True)
         return

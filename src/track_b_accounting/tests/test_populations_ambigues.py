@@ -474,6 +474,12 @@ def test_b1_secteur_charge():
         "GESTION_DECHETS",
         "HABILLEMENT",
         "COMMERCE_GROS_DETAIL",
+        "IMPRIMERIE_EDITION_CARTONNAGE",
+        "VERRE_MIROIRS",
+        "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "BOULANGERIES",
+        "TEXTILE",
+        "FONDERIE_METALLURGIE_MECANIQUE",
     }
 
 
