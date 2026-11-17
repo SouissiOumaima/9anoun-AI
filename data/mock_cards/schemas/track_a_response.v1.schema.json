@@ -1,0 +1,603 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_a_response.v1.schema.json",
+  "title": "R?ponse Track A - Lawyer Track - v1",
+  "description": "Contrat de sortie v1 du Case-Analysis Agent DS4. Analyse pr?paratoire, tra?abilit? documentaire et gestion explicite des informations incertaines.",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "request_id",
+    "status",
+    "result",
+    "citations",
+    "refus",
+    "computed_by"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "track_a.v1"
+    },
+    "request_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "refus",
+        "erreur"
+      ]
+    },
+    "result": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "case_id",
+            "case_summary",
+            "parties",
+            "timeline",
+            "claims_analysis",
+            "evidence",
+            "evidence_mapping",
+            "contradictions",
+            "missing_evidence",
+            "legal_conclusion",
+            "analysis_status"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "case_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "case_summary": {
+              "type": "object",
+              "required": [
+                "number_of_parties",
+                "number_of_events",
+                "number_of_claims",
+                "number_of_evidence"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "number_of_parties": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "number_of_events": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "number_of_claims": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "number_of_evidence": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "parties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "party_id",
+                  "name",
+                  "role"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "party_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "role": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "timeline": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "event_id",
+                  "date",
+                  "description",
+                  "source_ids",
+                  "date_precision",
+                  "date_reason"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "event_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date"
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "source_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "date_precision": {
+                    "type": "string",
+                    "enum": [
+                      "exact",
+                      "unknown"
+                    ]
+                  },
+                  "date_reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "\\S"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "date": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "date"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "date_precision": {
+                          "const": "unknown"
+                        },
+                        "date_reason": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "date_precision": {
+                          "const": "exact"
+                        },
+                        "date_reason": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "claims_analysis": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "claim_id",
+                  "party_id",
+                  "text",
+                  "status"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "claim_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "party_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "const": "unverified"
+                  }
+                }
+              }
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "evidence_id",
+                  "type",
+                  "description",
+                  "source"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "evidence_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "source": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "evidence_mapping": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "event_id",
+                  "evidence_id",
+                  "relation"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "event_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "relation": {
+                    "const": "source"
+                  }
+                }
+              }
+            },
+            "contradictions": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "missing_evidence": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "legal_conclusion": {
+              "type": "null"
+            },
+            "analysis_status": {
+              "type": "string",
+              "enum": [
+                "preparatory",
+                "insufficient_evidence",
+                "contradictory_evidence",
+                "supported"
+              ]
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "legal_sources_used": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Identifiants des sources juridiques DS2 retenues pour l'analyse."
+            },
+            "document_facts_used": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Identifiants des faits DS3 verifies et retenus pour l'analyse."
+            },
+            "uncertain_information": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "reference_id",
+                  "reason"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "reference_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/citation"
+      }
+    },
+    "refus": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/refus"
+        }
+      ]
+    },
+    "erreur": {
+      "type": "object",
+      "required": [
+        "type",
+        "message_fr",
+        "message_ar"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "message_fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message_ar": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "computed_by": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "case_id"
+        ],
+        "properties": {
+          "result": {
+            "type": "object"
+          },
+          "citations": {},
+          "refus": {
+            "type": "null"
+          }
+        },
+        "not": {
+          "required": [
+            "erreur"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "refus"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "result": {
+            "type": "null"
+          },
+          "citations": {
+            "maxItems": 0
+          },
+          "refus": {
+            "type": "object"
+          }
+        },
+        "not": {
+          "required": [
+            "erreur"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "erreur"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "erreur"
+        ],
+        "properties": {
+          "result": {
+            "type": "null"
+          },
+          "citations": {
+            "maxItems": 0
+          },
+          "refus": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          },
+          "result": {
+            "type": "object",
+            "properties": {
+              "analysis_status": {
+                "const": "supported"
+              }
+            },
+            "required": [
+              "analysis_status"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "result"
+        ]
+      },
+      "then": {
+        "properties": {
+          "citations": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "citation": {
+      "type": "object",
+      "required": [
+        "source_file",
+        "page",
+        "article",
+        "data_file",
+        "decision_ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "article": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "data_file": {
+          "type": "string",
+          "pattern": "^data/processed/"
+        },
+        "decision_ref": {
+          "type": "string",
+          "pattern": "^D[0-9]+$"
+        }
+      }
+    },
+    "refus": {
+      "type": "object",
+      "required": [
+        "code",
+        "message_fr",
+        "message_ar"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "SOURCE_MANQUANTE",
+            "HORS_SCOPE",
+            "PARAM_INVALIDE"
+          ]
+        },
+        "message_fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message_ar": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
