@@ -493,7 +493,8 @@ def main(argv: list[str] | None = None) -> None:
     key = {k: v for k, v in vars(a).items() if k not in ("out", "worker", "fresh", "budget_min", "ft_variant")}
     tag = hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()[:10]
     state_dir = BUILD / "state" / f"seed{a.seed}_{tag}"
-    if a.fresh and state_dir.exists() and not a.worker:
+    # --fresh : on efface l'état à la première tentative seulement ; une relance après plantage doit reprendre.
+    if a.fresh and state_dir.exists() and os.environ.get("OCR_EXP_ATTEMPT", "1") == "1":
         shutil.rmtree(state_dir)
     state_dir.mkdir(parents=True, exist_ok=True)
     run_info_path = state_dir / "run.json"

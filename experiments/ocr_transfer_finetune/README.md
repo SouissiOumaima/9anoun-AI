@@ -52,8 +52,9 @@ télécharge les poids pré-entraînés (71 Mo) dans `build/`, dossier ignoré p
   depuis le dernier point de sauvegarde si Paddle plante (jusqu'à 3 fois), et ne refait jamais une étape déjà
   terminée. `--ft-variant bn_frozen` (par défaut) ou `partial` (plan B, voir `ANALYSE.md`). `--fresh` repart de
   zéro. Autres options utiles : `--n-train`, `--epochs-tl`, `--epochs-ft`,
-  `--budget-min` (arrêt propre si le budget de temps est dépassé), `--quick` (essai de 7 minutes pour
-  vérifier la chaîne, résultats dans `build/quick/`).
+  `--budget-min` (arrêt propre si le budget de temps est dépassé), `--quick` (petit essai pour
+  vérifier la chaîne, résultats dans `build/quick/` ; durée mesurée avec `--quick --fresh` : 14,6 min sur CPU,
+  dont 2 relances automatiques après plantage).
 - Sorties : `results.json`, `results.md`, `loss_curves.png` dans ce dossier ; données générées et poids
   entraînés dans `build/`.
 - Reproductible : graine fixe pour le texte, le rendu, le bruit, le découpage, l'ordre des lots et
