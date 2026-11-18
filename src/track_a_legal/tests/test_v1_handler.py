@@ -311,3 +311,40 @@ def test_handler_v1_post_analysis_error_response() -> None:
     serialized = json.dumps(response, ensure_ascii=True)
     assert "KeyError" not in serialized
     assert "reference_errors" not in serialized
+
+
+def test_handler_does_not_expose_internal_five_pillars() -> None:
+    """Keep internal S5 reasoning outside the official Response v1."""
+
+    from src.track_a_legal.v1_case_analysis import analyze_case_v1
+
+    # Build a minimal valid fictitious Request v1.
+    request = {
+        "contract_version": "track_a.v1",
+        "request_id": "REQ-S5-ISOLATION-001",
+        "case_id": "CASE-S5-ISOLATION-001",
+        "lang": "fr",
+        "parties": [],
+        "events": [],
+        "claims": [],
+        "evidence": [],
+    }
+
+    # Confirm S5 is available to the internal analysis.
+    internal = analyze_case_v1(request)
+    assert "five_pillars" in internal
+    assert internal["five_pillars"]["legal_conclusion"] is None
+
+    # Execute the official Handler.
+    response = handle_v1(request)
+
+    # Validate the unchanged official Response v1 schema.
+    RESPONSE_VALIDATOR.validate(response)
+
+    # Internal S5 data must not leak into the external response.
+    assert "five_pillars" not in response
+    assert "five_pillars" not in response["result"]
+
+    # Preserve legal safety guarantees.
+    assert response["result"]["legal_conclusion"] is None
+    assert response["citations"] == []

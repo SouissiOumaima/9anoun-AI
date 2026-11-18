@@ -130,8 +130,8 @@ def assess_legal_source_temporally(
         citation if isinstance(citation, dict) else {}
     )
 
-    effective_raw = metadata.get("effective_date")
-    validity_status = metadata.get("validity_status")
+    effective_raw = source.get("effective_date")
+    validity_status = source.get("validity_status")
 
     # V?rifier la date d'effet ind?pendamment
     # de la validit? d?clar?e par DS2.

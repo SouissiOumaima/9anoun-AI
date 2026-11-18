@@ -22,6 +22,10 @@ from src.track_a_legal.v1_temporal_consistency import (
 from src.track_a_legal.v1_reference_validation import (
     validate_v1_references,
 )
+from src.track_a_legal.v1_five_pillars import build_five_pillars
+from src.track_a_legal.v1_claim_traceability import (
+    build_claim_traceability,
+)
 from src.track_a_legal.v1_timeline import build_v1_timeline
 
 
@@ -126,8 +130,9 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         )
     )
 
-    return {
+    result = {
         "case_id": request["case_id"],
+        "claim_traceability": build_claim_traceability(request),
         "timeline": timeline,
         "reference_errors": reference_errors,
         "document_fact_assessments": document_fact_assessments,
@@ -146,3 +151,8 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
             )
         ),
     }
+
+    # S5 remains internal: the official Response v1 is unchanged.
+    result["five_pillars"] = build_five_pillars(result)
+
+    return result

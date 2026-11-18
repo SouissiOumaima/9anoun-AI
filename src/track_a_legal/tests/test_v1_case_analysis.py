@@ -315,3 +315,89 @@ def test_explicit_contradiction_takes_priority():
 
     # No legal conclusion is permitted from this unresolved case.
     assert result["legal_conclusion"] is None
+
+
+def test_case_analysis_integrates_five_pillars() -> None:
+    """Integrate S5 internally without producing legal conclusions."""
+
+    request = make_valid_request()
+
+    # Run the official Request v1 validation and internal analysis.
+    result = analyze_case_v1(request)
+
+    # The internal analysis must contain the S5 engine output.
+    assert "five_pillars" in result
+
+    pillars = result["five_pillars"]["pillars"]
+
+    # Verify all five expected pillars.
+    assert set(pillars) == {
+        "faits",
+        "declarations",
+        "regles",
+        "interpretation",
+        "strategie",
+    }
+
+    # No sources: interpretation and strategy must abstain.
+    assert pillars["interpretation"][0]["status"] == "blocked"
+    assert pillars["strategie"][0]["status"] == "blocked"
+
+    # No legal conclusion may be inferred.
+    assert result["legal_conclusion"] is None
+    assert result["five_pillars"]["legal_conclusion"] is None
+
+def test_duplicate_claim_id_is_reported_in_v1_analysis() -> None:
+    """Duplicate claim IDs must be reported without legal conclusions."""
+
+    # Start from a valid fictitious Request v1.
+    request = make_valid_request()
+
+    # Declare the party referenced by both claims.
+    request["parties"] = [
+        {
+            "party_id": "PARTY-001",
+            "name": "Personne fictive",
+            "role": "employee",
+        }
+    ]
+
+    # Intentionally duplicate the claim identifier.
+    request["claims"] = [
+        {
+            "claim_id": "CLAIM-001",
+            "party_id": "PARTY-001",
+            "text": "Première déclaration fictive.",
+        },
+        {
+            "claim_id": "CLAIM-001",
+            "party_id": "PARTY-001",
+            "text": "Deuxième déclaration fictive.",
+        },
+    ]
+
+    # Run the complete internal analysis.
+    result = analyze_case_v1(request)
+
+    # Verify the explicit duplicate-ID error.
+    assert any(
+        error["code"] == "DUPLICATE_ID"
+        and error["path"] == "claims/1/claim_id"
+        and error["reference_id"] == "CLAIM-001"
+        for error in result["reference_errors"]
+    )
+
+    # An ambiguous case cannot remain preparatory.
+    assert result["analysis_status"] == "insufficient_evidence"
+
+    # Never generate a legal conclusion.
+    assert result["legal_conclusion"] is None
+    assert result["five_pillars"]["legal_conclusion"] is None
+
+    # S5 must keep every declaration unverified.
+    declarations = result["five_pillars"]["pillars"]["declarations"]
+    assert len(declarations) == 2
+    assert all(
+        declaration["status"] == "unverified"
+        for declaration in declarations
+    )
