@@ -1,4 +1,4 @@
-﻿"""Regression tests for explicit DS4 claim traceability."""
+"""Regression tests for explicit DS4 claim traceability."""
 
 from src.track_a_legal.v1_reference_validation import (
     validate_v1_references,
@@ -130,6 +130,12 @@ def test_valid_claim_evidence_link_is_preserved() -> None:
         "event_ids": [],
         "evidence_ids": ["EVD-001"],
         "legal_source_ids": [],
+        "reference_coverage": {
+            "has_event_links": False,
+            "has_evidence_links": True,
+            "has_legal_source_links": False,
+            "missing_link_types": ["events", "legal_sources"],
+        },
     }]
 
 
@@ -218,7 +224,119 @@ def test_case_analysis_exposes_internal_claim_traceability() -> None:
         "event_ids": [],
         "evidence_ids": ["EVD-001"],
         "legal_source_ids": [],
+        "reference_coverage": {
+            "has_event_links": False,
+            "has_evidence_links": True,
+            "has_legal_source_links": False,
+            "missing_link_types": ["events", "legal_sources"],
+        },
     }]
 
     # Never infer a legal conclusion from a document link.
     assert analysis["legal_conclusion"] is None
+
+def test_claim_reference_coverage_reports_missing_links() -> None:
+    """Report explicit reference coverage without verifying the claim."""
+
+    from src.track_a_legal.v1_claim_traceability import (
+        build_claim_traceability,
+    )
+
+    # Use a fictitious claim with one valid evidence link.
+    # No event or legal-source reference is supplied.
+    request = {
+        "parties": [{"party_id": "P-001"}],
+        "events": [],
+        "claims": [{
+            "claim_id": "CL-001",
+            "party_id": "P-001",
+            "text": "Declaration fictive.",
+            "evidence_ids": ["EVD-001"],
+        }],
+        "evidence": [{"evidence_id": "EVD-001"}],
+        "legal_sources": [],
+    }
+
+    # Build internal claim traceability.
+    result = build_claim_traceability(request)
+
+    # Coverage describes references, not documentary validity.
+    assert result[0]["reference_coverage"] == {
+        "has_event_links": False,
+        "has_evidence_links": True,
+        "has_legal_source_links": False,
+        "missing_link_types": ["events", "legal_sources"],
+    }
+
+    # A referenced document never establishes the claim as true.
+    assert result[0]["status"] == "unverified"
+
+
+def test_reference_coverage_for_multiple_link_scenarios() -> None:
+    """Check coverage without interpreting the truth of claims."""
+
+    from src.track_a_legal.v1_claim_traceability import (
+        build_claim_traceability,
+    )
+
+    # Each scenario specifies references and the expected internal diagnostic.
+    scenarios = [
+        (
+            {},
+            {
+                "has_event_links": False,
+                "has_evidence_links": False,
+                "has_legal_source_links": False,
+                "missing_link_types": ["events", "evidence", "legal_sources"],
+            },
+        ),
+        (
+            {
+                "event_ids": ["EV-001"],
+                "evidence_ids": ["EVD-001"],
+                "legal_source_ids": ["SRC-001"],
+            },
+            {
+                "has_event_links": True,
+                "has_evidence_links": True,
+                "has_legal_source_links": True,
+                "missing_link_types": [],
+            },
+        ),
+        (
+            {
+                "event_ids": ["EV-UNKNOWN"],
+                "evidence_ids": ["EVD-001"],
+                "legal_source_ids": ["SRC-UNKNOWN"],
+            },
+            {
+                "has_event_links": False,
+                "has_evidence_links": True,
+                "has_legal_source_links": False,
+                "missing_link_types": ["events", "legal_sources"],
+            },
+        ),
+    ]
+
+    for references, expected_coverage in scenarios:
+        # Only existing identifiers may be retained.
+        request = {
+            "parties": [{"party_id": "P-001"}],
+            "events": [{"event_id": "EV-001"}],
+            "claims": [{
+                "claim_id": "CL-001",
+                "party_id": "P-001",
+                "text": "Declaration fictive.",
+                **references,
+            }],
+            "evidence": [{"evidence_id": "EVD-001"}],
+            "legal_sources": [{"source_id": "SRC-001"}],
+        }
+
+        result = build_claim_traceability(request)
+
+        # Coverage must reflect retained explicit links only.
+        assert result[0]["reference_coverage"] == expected_coverage
+
+        # No scenario establishes a legal claim.
+        assert result[0]["status"] == "unverified"

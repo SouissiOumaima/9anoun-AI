@@ -116,7 +116,8 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
     ]
 
     has_insufficient_evidence = bool(
-        reference_errors
+        request.get("missing_information")
+        or reference_errors
         or unqualified_facts
         or unqualified_legal_sources
         or legal_version_errors

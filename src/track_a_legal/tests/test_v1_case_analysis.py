@@ -401,3 +401,30 @@ def test_duplicate_claim_id_is_reported_in_v1_analysis() -> None:
         declaration["status"] == "unverified"
         for declaration in declarations
     )
+
+
+def test_explicit_missing_information_marks_case_insufficient():
+    """An explicitly missing item must affect analysis completeness."""
+
+    import json
+    from pathlib import Path
+
+    from src.track_a_legal.v1_case_analysis import analyze_case_v1
+
+    # Load the fictitious reference case containing missing information.
+    cards_path = Path(
+        "data/mock_cards/track_a_case_cards_v1.json"
+    )
+    cards = json.loads(cards_path.read_text(encoding="utf-8-sig"))
+
+    matches = [
+        case for case in cards
+        if case["case_id"] == "CASE-A-003"
+    ]
+    assert len(matches) == 1
+
+    # Analyze without inventing missing evidence or legal conclusions.
+    result = analyze_case_v1(matches[0])
+
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
