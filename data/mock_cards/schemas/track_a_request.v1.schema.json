@@ -1,8 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "track_a_request.v0.schema.json",
-  "title": "Requête Track A - Lawyer Track - v0",
-  "description": "Proposition v0 du contrat d'entrée de DS4. Ce message contient les informations structurées d'un dossier juridique nécessaires au Case-Analysis Agent.",
+
+"$id": "track_a_request.v1.schema.json",
+"title": "Requête Track A - Lawyer Track - v1",
+"description": "Contrat v1 d'entrée de DS4 pour l'analyse structurée d'un dossier juridique.",
   "type": "object",
   "required": [
     "contract_version",
