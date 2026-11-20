@@ -12,7 +12,7 @@
 # (à compléter par DS3)
 
 # --- DS4 : Lawyer Track (Track A) ---
-# (à compléter par DS4)
+jsonschema==4.26.0
 
 # --- DS5 : Track B Accounting ---
 -r src/track_b_accounting/requirements.txt
