@@ -4097,8 +4097,9 @@ art. 47 مكرر à 54 p.14, grille et notes p.18.
 
 **Numéro** : D75 à D80 = décisions de la partie A de DS3 (OCR). Numéros libres après D74, le plus grand numéro
 utilisé sur les branches distantes (vérifié avec `git fetch origin` le 2026-11-21 ; `origin/main` va jusqu'à D69).
-D41 à D45 restent réservés à DS3 (D41 est prévu pour le branchement de l'OCR dans le service live, voir
-`docs/PROPOSITION_INTEGRATION_OCR.md`).
+D41 à D45 restent réservés à DS3 : D41 et D42 sont prévus pour le branchement de l'OCR dans le service live
+(refus d'une image sans OCR installé ; OCR en arrière-plan avec `TIMEOUT` réessayable et cache), voir
+`docs/PROPOSITION_INTEGRATION_OCR.md`.
 
 **Décision** : l'OCR de `src/document_intelligence/reading/ocr.py` utilise PaddleOCR 3.7 (PP-OCRv5) sur CPU, avec la
 reconnaissance `arabic_PP-OCRv5_mobile_rec` (arabe, lettres latines, chiffres) et `latin_PP-OCRv5_mobile_rec`
@@ -4240,4 +4241,4 @@ lire. Un PDF entièrement natif ne coûte aucun temps d'OCR.
 
 **Statut** : ⏳ proposition (PR #40) ; prouvée par `test_document_intelligence_ocr.py` (zones lues retirées, zone
 vide gardée avec un avertissement, numérotation sans doublon, document sans zone rendu tel quel). Le branchement dans
-le service live est proposé dans `docs/PROPOSITION_INTEGRATION_OCR.md` (futur D41).
+le service live est proposé dans `docs/PROPOSITION_INTEGRATION_OCR.md` (futurs D41 et D42).
