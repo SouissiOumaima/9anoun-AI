@@ -191,14 +191,18 @@ n'applique aucun seuil (D39) ; DS1 exige 0,90. Conséquence attendue : des champ
 +    doc = None if is_image else read_pdf(path, document_id=req.document.document_id)
 +    if doc is not None and not any(page.pending_zones for page in doc.pages):
 +        return doc  # PDF entièrement natif : ni OCR ni cache
-+    try:
-+        from src.document_intelligence.reading.ocr_cache import default_backend
-+    except ImportError:
++    backend = ocr_backend
++    if backend is None:
++        try:
++            from src.document_intelligence.reading.ocr_cache import default_backend
++        except ImportError:  # dépendances de requirements-ocr.txt absentes
++            default_backend = None
++        backend = default_backend() if default_backend is not None else None
++    if backend is None:  # DS3_CACHE_DIR non défini, ou PaddleOCR non installé : lecture native seule
 +        if doc is None:
-+            raise  # image sans OCR : refusée plus tôt par le service (D41), ne devrait pas arriver
-+        doc.warnings.append("OCR non installé (requirements-ocr.txt) : les zones en attente ne sont pas lues.")
++            raise ValueError("image sans OCR")  # refusée plus tôt par le service (D41), ne devrait pas arriver
++        doc.warnings.append("OCR non disponible sur ce serveur : les zones en attente ne sont pas lues.")
 +        return doc
-+    backend = ocr_backend or default_backend()
 +    state = backend.lookup_or_start(path, card_id=req.context.card_id, document_id=req.document.document_id)
 +    if state.status == "pret":
 +        return state.document
@@ -247,8 +251,12 @@ n'applique aucun seuil (D39) ; DS1 exige 0,90. Conséquence attendue : des champ
 Remarques :
 - `ocr_backend: Any` évite d'importer le backend en tête du module (même raison que l'import paresseux). Si Hadil
   préfère un type exact : `if TYPE_CHECKING: from ...reading.ocr_cache import OcrBackend`.
-- `reading/ocr_cache.py` est un **nouveau module de Wiem** (backend, cache, processus séparé), à créer après la
-  fusion de la PR #40. Si l'équipe préfère, il peut aussi vivre dans `ocr.py`.
+- `reading/ocr_cache.py` est le **module de Wiem** (backend, cache, processus séparé), écrit sur la branche
+  `DS3_ocr_cache`. Il expose `OcrCache.lookup_or_start(...)` (états `pret`, `en_cours`, `echec`) et
+  `default_backend()`, qui renvoie **`None`** quand `DS3_CACHE_DIR` n'est pas défini ou que PaddleOCR n'est pas
+  installé. Le pipeline teste donc `if backend is None:` et garde alors la lecture native, avec un avertissement,
+  exactement comme aujourd'hui. Le `except ImportError` reste seulement pour un poste sans les dépendances de
+  `requirements-ocr.txt`.
 - Les autres erreurs (fichier corrompu, image OCR en échec) remontent au `try` existant et donnent
   `FILE_EMPTY_OR_CORRUPTED`, comme aujourd'hui.
 - Le nom `analyze_payslip_pdf` est gardé pour ne rien casser chez les appelants ; seul le docstring dit qu'il
@@ -434,8 +442,8 @@ question suivante ─► cache prêt ─► document lu (natif + OCR) ─► Gem
 
 **Cache (remarque 2).**
 - **Dossier propre à DS3**, donné par la variable d'environnement **`DS3_CACHE_DIR`**, distinct du dossier de
-  stockage des documents. Sans `DS3_CACHE_DIR`, pas de cache : l'OCR n'est pas lancé et le service répond comme si
-  l'OCR n'était pas installé (avec un avertissement dans le journal).
+  stockage des documents. Sans `DS3_CACHE_DIR`, pas de cache : `default_backend()` renvoie `None`, l'OCR n'est
+  pas lancé et le service garde la lecture native, avec un avertissement (comme si l'OCR n'était pas installé).
 - **Rangement par carte et par document** :
   `<DS3_CACHE_DIR>/cards/<card_id>/documents/<document_id>/<sha256 du fichier>__<version du lecteur>.json`
   (version du lecteur = `reader`, par ex. `pdf_natif-0.3+ocr_paddle-0.1`). Un fichier modifié ou un nouveau
@@ -497,9 +505,9 @@ def run_ocr_process(path: Path, document_id: str, final: Path, timeout_s: float)
 
 1. **Fusion de la PR #40** (`DS3_ocr`) : l'OCR et ses tests arrivent sur `main`, sans rien brancher.
 2. **Hadil applique elle-même les diffs 4.1 et 4.2** dans ses fichiers (`pipeline.py`, `service.py`), avec les tests
-   1 à 8 de la section 5, et **relit les messages arabes**. En parallèle, **Wiem** crée le backend dans `reading/`
-   (`ocr_cache.py` : cache `DS3_CACHE_DIR`, verrou, processus séparé, suppression du JSON temporaire) avec les tests
-   9 à 11 ; Hadil relit.
+   1 à 8 de la section 5, et **relit les messages arabes**. En parallèle, le backend de **Wiem**
+   (`reading/ocr_cache.py` : cache `DS3_CACHE_DIR`, verrou, processus séparé, suppression du JSON temporaire,
+   tests 9 à 11) est sur la branche `DS3_ocr_cache`, à relire par Hadil et à fusionner **avant** le pipeline.
 3. Mise à jour du contrat (4.3) et de `DECISIONS.md` (D41, D42, 4.4).
 4. Prévenir DS1 (Achref) : nouveaux formats, `TIMEOUT` réessayable pendant la lecture, champs OCR « à confirmer »
    plus fréquents, limite de la vérification sur les chiffres mal lus. Proposer ensuite `prepare_document`.
