@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Track A Lawyer Review Decisions S9 - Draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "source_dataset_version",
+    "lawyer_validated",
+    "reviews"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "track_a_lawyer_review_decisions_s9.v1"
+    },
+    "source_dataset_version": {
+      "const": "track_a_golden_set_lawyer_s9.v1"
+    },
+    "lawyer_validated": {
+      "const": false
+    },
+    "reviews": {
+      "type": "array",
+      "maxItems": 42,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "criterion_id",
+          "review_status",
+          "reviewer_id",
+          "review_date",
+          "decision",
+          "comments",
+          "supporting_references"
+        ],
+        "properties": {
+          "case_id": {
+            "enum": [
+              "CASE-A-001",
+              "CASE-A-002",
+              "CASE-A-003",
+              "CASE-A-004",
+              "CASE-A-005",
+              "CASE-A-006",
+              "CASE-A-007"
+            ]
+          },
+          "criterion_id": {
+            "enum": [
+              "S6-C02",
+              "S6-C03",
+              "S6-C04",
+              "S6-C05",
+              "S6-C06",
+              "S6-C08"
+            ]
+          },
+          "review_status": {
+            "enum": [
+              "pending",
+              "completed"
+            ]
+          },
+          "reviewer_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "review_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "decision": {
+            "enum": [
+              null,
+              "approved",
+              "issues_found",
+              "blocked"
+            ]
+          },
+          "comments": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supporting_references": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "review_status": {
+                  "const": "pending"
+                }
+              },
+              "required": [
+                "review_status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "reviewer_id": {
+                  "type": "null"
+                },
+                "review_date": {
+                  "type": "null"
+                },
+                "decision": {
+                  "type": "null"
+                },
+                "comments": {
+                  "type": "null"
+                },
+                "supporting_references": {
+                  "maxItems": 0
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "review_status": {
+                  "const": "completed"
+                }
+              },
+              "required": [
+                "review_status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "reviewer_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "review_date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "decision": {
+                  "enum": [
+                    "approved",
+                    "issues_found",
+                    "blocked"
+                  ]
+                },
+                "comments": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
