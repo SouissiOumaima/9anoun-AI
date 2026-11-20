@@ -29,6 +29,7 @@ from src.document_intelligence.reading.ocr import (
     group_rows,
     merge_by_position,
     ocr_pending_zones,
+    read_document,
     read_image,
     read_zone_boxes,
     to_pdf_bbox,
@@ -370,6 +371,32 @@ def test_read_image_empty_keeps_zone(tmp_path: Path) -> None:
 def test_read_image_rejects_other_extensions(tmp_path: Path) -> None:
     with pytest.raises(ValueError):
         read_image(tmp_path / "doc.tiff", engine=FakeEngine([]))
+
+
+def test_read_document_dispatches_pdf_and_images(mixed_pdf: Path, tmp_path: Path) -> None:
+    png = tmp_path / "scan.png"
+    Image.fromarray(np.full((100, 200, 3), 255, dtype=np.uint8)).save(png)
+    image_doc = read_document(png, lang="fr", engine=FakeEngine([[OcrBox("Total 1.000", 0.9, (0, 0, 90, 20))]]))
+    assert image_doc.reader.startswith("ocr_image") and image_doc.pages[0].lines[0].text == "Total 1.000"
+
+    pdf_doc = read_document(mixed_pdf, lang="fr", engine=FakeEngine([[OcrBox("Net 2.000", 0.9, (0, 0, 90, 20))]]))
+    assert pdf_doc.reader.endswith(READER_SUFFIX)
+    assert [line.source for line in pdf_doc.pages[0].lines] == ["natif", "natif", "ocr"]
+
+
+def test_cli_prints_text_warnings_and_writes_json(mixed_pdf: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+                                                  capsys: pytest.CaptureFixture[str]) -> None:
+    """Document FICTIF : la CLI affiche le texte lu (usage local), écrit le JSON complet et les avertissements."""
+    from src.document_intelligence.reading import ocr
+
+    monkeypatch.setattr(ocr, "default_engine", lambda: FakeEngine([[OcrBox("Prime 3.000", 0.9, (0, 0, 90, 20))]]))
+    out = tmp_path / "doc.json"
+    ocr.main([str(mixed_pdf), "--lang", "fr", "--json", str(out)])
+    printed = capsys.readouterr().out
+    assert "[p1_l3] Prime 3.000" in printed
+    assert "aucun texte lu dans les zones ['p1_z2']" in printed  # la 2e zone reste en attente, rien n'est deviné
+    doc = IntermediateDocument.model_validate_json(out.read_text(encoding="utf-8"))
+    assert [z.zone_id for z in doc.pages[0].pending_zones] == ["p1_z2"]
 
 
 # ------------------------------------------------------------ intégration PaddleOCR (modèles réels)

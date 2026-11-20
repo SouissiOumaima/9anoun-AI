@@ -12,3 +12,6 @@ opencv-python==5.0.0.93
 pillow==12.3.0
 matplotlib==3.11.2
 mypy==2.4.1
+# couverture des tests : python -m pytest --cov=src/document_intelligence/reading --cov=scripts
+pytest-cov==7.1.0
+coverage==7.17.2
