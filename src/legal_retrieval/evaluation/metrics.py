@@ -149,7 +149,8 @@ def main() -> None:
     print(f"\nquestions mesurées : {s['n_questions']}  (ignorées, a_completer : "
           f"{len(report['skipped_a_completer'])})")
     c = s["core"]
-    # R@3 added: an agent that reads only the first few articles needs the answer near the top
+    # R@3 est en tête de rapport parce que l'agent consommateur ne lit que les
+    # premiers articles : une bonne source classée 7e est une source qu'il ne voit pas.
     print(f"sujet+numero (n={c['n']}) : R@1 {_pct(c['recall@1'])}  R@3 {_pct(c['recall@3'])}  "
           f"R@5 {_pct(c['recall@5'])}  "
           f"R@10 {_pct(c['recall@10'])}  (cible 88 %)  MRR {c['mrr'] if c['mrr'] is None else round(c['mrr'], 3)}")
