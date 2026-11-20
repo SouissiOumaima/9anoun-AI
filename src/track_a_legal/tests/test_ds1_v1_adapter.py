@@ -185,3 +185,21 @@ def test_supported_analysis_requires_citations(payload):
         DS1TrackAV1Adapter(
             handler=lambda request: deepcopy(response)
         )(payload)
+def test_invalid_language_rejected_before_handler(payload):
+    """Une langue invalide doit être refusée avant le handler DS4."""
+
+    calls = []
+
+    def fake_handler(request):
+        calls.append(request)
+        return {}
+
+    # Injecter une langue non autorisée.
+    payload["params"]["track_a_request"]["lang"] = "invalid"
+
+    # Vérifier le refus par l'adaptateur.
+    with pytest.raises(DS1V1ContractError):
+        DS1TrackAV1Adapter(handler=fake_handler)(payload)
+
+    # Le handler ne doit jamais être appelé.
+    assert calls == []
