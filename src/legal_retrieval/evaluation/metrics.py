@@ -70,7 +70,7 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     kinds = sorted({r["kind"] for r in in_scope})
     summary: dict[str, Any] = {
         "n_questions": len(rows),
-        "core": {"n": len(core), **{f"recall@{k}": _recall(core, k) for k in (1, 5, 10)},
+        "core": {"n": len(core), **{f"recall@{k}": _recall(core, k) for k in (1, 3, 5, 10)},
                  "mrr": (sum(1 / r["rank"] for r in core if r["rank"]) / len(core)) if core else None},
         "per_kind_recall@10": {k: _recall([r for r in in_scope if r["kind"] == k], 10)
                                for k in kinds},
@@ -149,7 +149,10 @@ def main() -> None:
     print(f"\nquestions mesurées : {s['n_questions']}  (ignorées, a_completer : "
           f"{len(report['skipped_a_completer'])})")
     c = s["core"]
-    print(f"sujet+numero (n={c['n']}) : R@1 {_pct(c['recall@1'])}  R@5 {_pct(c['recall@5'])}  "
+    # R@3 est en tête de rapport parce que l'agent consommateur ne lit que les
+    # premiers articles : une bonne source classée 7e est une source qu'il ne voit pas.
+    print(f"sujet+numero (n={c['n']}) : R@1 {_pct(c['recall@1'])}  R@3 {_pct(c['recall@3'])}  "
+          f"R@5 {_pct(c['recall@5'])}  "
           f"R@10 {_pct(c['recall@10'])}  (cible 88 %)  MRR {c['mrr'] if c['mrr'] is None else round(c['mrr'], 3)}")
     print("R@10 par type :", {k: _pct(v) for k, v in s["per_kind_recall@10"].items()})
     print(f"abstention hors périmètre : {_pct(s['abstention'])}  (cible 85 %)")
