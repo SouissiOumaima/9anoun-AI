@@ -6,6 +6,9 @@ Aucune conclusion juridique n'est produite automatiquement.
 
 from typing import Any
 
+from src.track_a_legal.tools.ds2_to_ds4_adapter import adapt_ds2_to_ds4
+
+from src.track_a_legal.v1_ds2_adapter import validate_ds2_response
 from src.track_a_legal.tools.legal_source_validation import (
     is_usable_legal_response,
 )
@@ -30,8 +33,20 @@ def prepare_legal_reasoning(
         l'authenticite ni l'applicabilite des sources.
     """
 
-    # Rejeter les sources absentes ou structurellement invalides.
-    if not is_usable_legal_response(legal_response):
+    # V?rifier le contrat DS2 et la coh?rence temporelle.
+    # Une incoh?rence bloque le raisonnement juridique.
+    reference_date = (
+        case_analysis.get("reference_date")
+        if isinstance(case_analysis, dict)
+        else None
+    )
+
+    try:
+        adapt_ds2_to_ds4(
+            legal_response,
+            reference_date=reference_date,
+        )
+    except ValueError:
         return {
             "status": "insufficient_sources",
             "legal_conclusion": None,

@@ -146,6 +146,10 @@ def handle_v1(request: dict[str, Any]) -> dict[str, Any]:
             "contradictions": [],
             "missing_evidence": [],
             "legal_conclusion": None,
+            "legal_sources_used": [
+                source["article_id"]
+                for source in request.get("legal_sources", [])
+            ],
             "analysis_status": analysis["analysis_status"],
             "uncertain_information": [
                 {

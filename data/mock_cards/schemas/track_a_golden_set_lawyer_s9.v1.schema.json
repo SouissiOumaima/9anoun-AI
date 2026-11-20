@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Track A Lawyer Golden Set S9 - Preparation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dataset_version",
+    "validation_level",
+    "lawyer_validated",
+    "source_validation_version",
+    "criteria",
+    "cases"
+  ],
+  "properties": {
+    "dataset_version": {
+      "const": "track_a_golden_set_lawyer_s9.v1"
+    },
+    "validation_level": {
+      "const": "lawyer_review_preparation"
+    },
+    "lawyer_validated": {
+      "const": false
+    },
+    "source_validation_version": {
+      "const": "track_a_business_validation_s6.v1"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "description",
+          "verification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "verification": {
+            "enum": [
+              "automated",
+              "automated_and_lawyer_review",
+              "lawyer_only"
+            ]
+          }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "lawyer_status",
+          "lawyer_reviews"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lawyer_status": {
+            "const": "pending"
+          },
+          "lawyer_reviews": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "criterion_id",
+                "decision",
+                "comments",
+                "supporting_references"
+              ],
+              "properties": {
+                "criterion_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "decision": {
+                  "type": "null"
+                },
+                "comments": {
+                  "type": "null"
+                },
+                "supporting_references": {
+                  "type": "array",
+                  "maxItems": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

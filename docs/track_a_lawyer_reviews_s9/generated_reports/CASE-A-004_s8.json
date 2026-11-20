@@ -1,0 +1,210 @@
+{
+  "report_version": "track_a_legal_report_s8.v1",
+  "case_id": "CASE-A-004",
+  "document_status": "preparatory",
+  "lawyer_validated": false,
+  "legal_conclusion": null,
+  "sections": [
+    {
+      "section_id": "S8-01",
+      "title": "Identification du dossier",
+      "content": {
+        "case_id": "CASE-A-004",
+        "request_id": "REQ-A-V1-004",
+        "contract_version": "track_a.v1",
+        "lang": "fr"
+      }
+    },
+    {
+      "section_id": "S8-02",
+      "title": "Resume general",
+      "content": {
+        "analysis_status": "contradictory_evidence",
+        "number_of_parties": 2,
+        "number_of_events": 3,
+        "number_of_claims": 2,
+        "number_of_evidence": 3
+      }
+    },
+    {
+      "section_id": "S8-03",
+      "title": "Parties concernees",
+      "content": [
+        {
+          "party_id": "P1",
+          "name": "Ahmed Ben Ali",
+          "role": "employee"
+        },
+        {
+          "party_id": "P2",
+          "name": "Société Démo SARL",
+          "role": "employer"
+        }
+      ]
+    },
+    {
+      "section_id": "S8-04",
+      "title": "Faits et elements documentaires",
+      "content": []
+    },
+    {
+      "section_id": "S8-05",
+      "title": "Declarations et demandes",
+      "content": [
+        {
+          "reference_coverage": {
+            "has_event_links": false,
+            "has_evidence_links": false,
+            "has_legal_source_links": false,
+            "missing_link_types": [
+              "events",
+              "evidence",
+              "legal_sources"
+            ]
+          },
+          "claim_id": "C1",
+          "party_id": "P1",
+          "text": "Le salarié affirme ne pas avoir reçu de préavis.",
+          "status": "unverified",
+          "event_ids": [],
+          "evidence_ids": [],
+          "legal_source_ids": []
+        },
+        {
+          "reference_coverage": {
+            "has_event_links": false,
+            "has_evidence_links": false,
+            "has_legal_source_links": false,
+            "missing_link_types": [
+              "events",
+              "evidence",
+              "legal_sources"
+            ]
+          },
+          "claim_id": "C2",
+          "party_id": "P2",
+          "text": "L'employeur affirme que le licenciement est motivé par une faute grave.",
+          "status": "unverified",
+          "event_ids": [],
+          "evidence_ids": [],
+          "legal_source_ids": []
+        }
+      ]
+    },
+    {
+      "section_id": "S8-06",
+      "title": "Chronologie des evenements",
+      "content": [
+        {
+          "event_id": "EV1",
+          "date": "2024-01-01",
+          "description": "Début du contrat de travail.",
+          "source_ids": [
+            "E1"
+          ],
+          "date_precision": "exact",
+          "date_reason": null
+        },
+        {
+          "event_id": "EV2",
+          "date": "2026-09-05",
+          "description": "Incident allégué par l'employeur.",
+          "source_ids": [
+            "E2"
+          ],
+          "date_precision": "exact",
+          "date_reason": null
+        },
+        {
+          "event_id": "EV3",
+          "date": "2026-09-10",
+          "description": "Notification du licenciement.",
+          "source_ids": [
+            "E3"
+          ],
+          "date_precision": "exact",
+          "date_reason": null
+        }
+      ]
+    },
+    {
+      "section_id": "S8-07",
+      "title": "Preuves et tracabilite",
+      "content": {
+        "evidence": [
+          {
+            "evidence_id": "E1",
+            "type": "contract",
+            "description": "Contrat de travail fictif.",
+            "source": "mock://documents/contrat_001"
+          },
+          {
+            "evidence_id": "E2",
+            "type": "email",
+            "description": "Email fictif relatif à l'incident.",
+            "source": "mock://documents/email_001"
+          },
+          {
+            "evidence_id": "E3",
+            "type": "termination_letter",
+            "description": "Lettre fictive de licenciement.",
+            "source": "mock://documents/licenciement_001"
+          }
+        ],
+        "explicit_event_evidence_links": []
+      }
+    },
+    {
+      "section_id": "S8-08",
+      "title": "Sources et regles juridiques",
+      "content": []
+    },
+    {
+      "section_id": "S8-09",
+      "title": "Incertitudes et contradictions",
+      "content": {
+        "reference_errors": [],
+        "legal_version_errors": [],
+        "temporal_consistency_findings": [],
+        "missing_information": [],
+        "contradictions": [
+          {
+            "contradiction_id": "CONTRA-A-004-001",
+            "description": "The two fictitious parties provide conflicting accounts of the disputed termination circumstances. Neither account has been independently verified.",
+            "source_ids": [
+              "C1",
+              "C2"
+            ],
+            "related_claim_ids": [
+              "C1",
+              "C2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "S8-10",
+      "title": "Interpretation et strategie juridique",
+      "content": {
+        "interpretation": [
+          {
+            "status": "blocked",
+            "reason": "insufficient_legal_sources",
+            "legal_conclusion": null,
+            "citation_ids": []
+          }
+        ],
+        "strategy": [
+          {
+            "status": "blocked",
+            "reason": "verified_interpretation_unavailable",
+            "recommendations": [],
+            "legal_conclusion": null
+          }
+        ],
+        "legal_conclusion": null
+      }
+    }
+  ]
+}

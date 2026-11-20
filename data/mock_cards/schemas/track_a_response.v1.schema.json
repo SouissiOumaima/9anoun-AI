@@ -331,7 +331,7 @@
                 "type": "string",
                 "minLength": 1
               },
-              "description": "Identifiants des sources juridiques DS2 retenues pour l'analyse."
+              "description": "Identifiants des sources juridiques transmises par DS2 et tracees dans l'analyse preparatoire. Ne constituent pas une validation juridique de leur authenticite, pertinence ou applicabilite."
             },
             "document_facts_used": {
               "type": "array",

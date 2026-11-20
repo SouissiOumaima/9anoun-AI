@@ -1,5 +1,7 @@
 """Tests for the internal DS4 five-pillar drafting preparation."""
 
+import pytest
+
 from src.track_a_legal.v1_five_pillars import (
     build_five_pillars,
 )
@@ -376,3 +378,32 @@ def test_duplicate_document_fact_id_is_rejected() -> None:
         match="Duplicate document fact_id",
     ):
         build_five_pillars(analysis)
+
+
+@pytest.mark.parametrize(
+    "invalid_analysis",
+    [
+        None,
+        {"case_id": "", "claim_traceability": []},
+        {"case_id": "CASE-1"},
+        {"case_id": "CASE-1", "claim_traceability": [None]},
+        {"case_id": "CASE-1", "claim_traceability": [], "document_fact_assessments": None},
+        {"case_id": "CASE-1", "claim_traceability": [], "document_fact_assessments": [None]},
+        {"case_id": "CASE-1", "claim_traceability": [], "document_fact_assessments": [{"fact_id": ""}]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_source_assessments": None},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_temporal_assessments": None},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_temporal_assessments": [None]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_temporal_assessments": [{}]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_temporal_assessments": [{"source_id": "SRC-1"}, {"source_id": "SRC-1"}]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_source_assessments": [None]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_source_assessments": [{}]},
+        {"case_id": "CASE-1", "claim_traceability": [], "legal_source_assessments": [{"source_id": "SRC-1"}, {"source_id": "SRC-1"}]},
+    ],
+)
+def test_five_pillars_rejects_invalid_inputs(invalid_analysis):
+    """Reject malformed internal analysis before building legal pillars."""
+    from src.track_a_legal.v1_five_pillars import build_five_pillars
+
+    # Invalid data must not produce legal reasoning output.
+    with pytest.raises(ValueError):
+        build_five_pillars(invalid_analysis)
