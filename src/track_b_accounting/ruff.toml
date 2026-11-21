@@ -1,0 +1,11 @@
+# Contrôle et format du code de Track B (DS5).
+# Depuis la racine du dépôt :
+#   python -m ruff check src/track_b_accounting
+#   python -m ruff format --check src/track_b_accounting
+
+target-version = "py311"
+line-length = 120
+
+[lint]
+# Règles de base uniquement : erreurs de syntaxe et d'indentation (E4, E7, E9) et pyflakes (F).
+select = ["E4", "E7", "E9", "F"]

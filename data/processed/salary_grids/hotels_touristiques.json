@@ -1,0 +1,699 @@
+{
+ "_meta": {
+  "secteur_code": "HOTELS_TOURISTIQUES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للنزل السياحية والمؤسسات المشابهة لها",
+  "convention_fr": "Convention collective sectorielle des hôtels touristiques et établissements similaires",
+  "source_file": "data/raw/pdf/النزل السياحية والمؤسسات المشابهة لها2.pdf",
+  "pages_sources": [
+   2,
+   3,
+   8,
+   9,
+   15,
+   16,
+   17,
+   18,
+   42,
+   43,
+   44
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "260 cellules lues par une double lecture indépendante (rendus à 200 et 280 dpi), comparées par script ; 0 écart, 0 cellule douteuse ; lots de vérification relus contre l'image par DS5 (« LOTS VALIDÉS », aucune correction) ; montants des primes lus deux fois (90 et 170 dpi) et relus contre l'image par DS5.",
+  "decision_ref": "D51",
+  "currency": "TND",
+  "note_unite": "Grille des salaires mensuels (p.43-44) : TND/mois. Montants imprimés avec virgule décimale et espace de milliers (« 1 068,292 »), recopiés au millime.",
+  "note_degres": "En-tête (p.43-44) : degrés 1 à 13 (degré 1 à droite) ; durée de séjour 1, 2 (degrés 2 à 8), 3 (degrés 9 à 13) ; ancienneté effective imprimée 1, 3, …, 27, 30 (art. 15 مكرر (جديد), p.8) ; libellés « 0-1 » … « 27-30 » ; bornes exactes refusées (D6) ; à partir de 30 ans : refus.",
+  "note_categories": "Clés : lignes imprimées de haut en bas « الإدارة 1/2 », « أعلى 1/2 », « أول 1/2 », « تنفيذ 1/2/3 », « خدمات » ; alias cadre_1 et cadre_2 (« إطار 1/2 » de la classification p.42 et de l'art. 51) vers direction_1 et direction_2.",
+  "note_dates": "Tableaux n° 1 (2022-05-01, p.43) et n° 2 (2023-05-01, p.44) ; refus avant le 2022-05-01.",
+  "remarque_pdf": "Note 1 sous chaque tableau (p.43-44) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "الملاحظة 1 تحت كل جدول (الصفحتان 43 و44): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982.",
+  "remarque_5_etoiles": "Note 2 sous chaque tableau (p.43-44) : hôtels classés 5 étoiles, salaires du tableau majorés de 10 % : population hotels_5_etoiles refusée (majoration non calculée).",
+  "remarque_5_etoiles_ar": "الملاحظة 2: تطبق النزل المرتبة 5 نجوم الأجور الواردة بهذا الجدول يضاف إليها 10 بالمائة.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Régime non imprimé sur les tableaux : non renseigné."
+ },
+ "populations": {
+  "tous_agents": {
+   "libelle_fr": "Agents des hôtels touristiques et établissements similaires (hors hôtels classés 5 étoiles)",
+   "libelle_ar": "أعوان النزل السياحية والمؤسسات المشابهة لها",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 43,
+   "note": "Population unique servie : la requête peut l'omettre ; hôtels 5 étoiles : population hotels_5_etoiles refusée."
+  }
+ },
+ "populations_non_couvertes": {
+  "hotels_5_etoiles": {
+   "source_pdf_page": 43,
+   "source_article": "ملاحظة 2",
+   "message_fr": "Hôtels classés 5 étoiles : la note 2 sous les tableaux (pages 43 et 44) prévoit les salaires du tableau majorés de 10 % ; cette majoration n'est pas calculée. Aucun montant n'est renvoyé.",
+   "message_ar": "النزل المرتبة 5 نجوم: تنص الملاحظة 2 تحت الجدولين (الصفحتان 43 و44) على تطبيق الأجور الواردة بالجدول مضافا إليها 10 بالمائة؛ لا تُحتسب هذه الزيادة. لا يُرجَع أي مبلغ."
+  }
+ },
+ "degres": {
+  "tous_agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 3
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 5
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 7
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 9
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 11
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 13
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 15
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "tous_agents": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 8,
+   "source_article": "15 مكرر (جديد)",
+   "regle_fr": "L'art. 15 مكرر (جديد) (p.8) répartit les degrés jusqu'au degré 13 (30 ans d'ancienneté effective) ; rien n'est prévu au-delà.",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des hôtels touristiques s'arrête au degré 13 (27 à 30 ans) ; l'article 15 مكرر (جديد) (page 8) répartit les degrés jusqu'au degré 13 (30 ans d'ancienneté effective) et ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية النزل السياحية عند الدرجة 13 (من 27 إلى 30 سنة)؛ ويوزع الفصل 15 مكرر (جديد) (الصفحة 8) الدرجات إلى غاية الدرجة 13 (30 سنة أقدمية فعلية) ولا ينص على أي قاعدة بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  }
+ },
+ "categories": {
+  "tous_agents": [
+   "direction_1",
+   "direction_2",
+   "superieur_1",
+   "superieur_2",
+   "premier_1",
+   "premier_2",
+   "execution_1",
+   "execution_2",
+   "execution_3",
+   "services"
+  ]
+ },
+ "libelles_categories": {
+  "tous_agents": {
+   "direction_1": {
+    "ligne": 1,
+    "libelle_fr": "Direction 1",
+    "libelle_ar": "الإدارة 1",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "direction_2": {
+    "ligne": 2,
+    "libelle_fr": "Direction 2",
+    "libelle_ar": "الإدارة 2",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "superieur_1": {
+    "ligne": 3,
+    "libelle_fr": "Supérieur 1",
+    "libelle_ar": "أعلى 1",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "superieur_2": {
+    "ligne": 4,
+    "libelle_fr": "Supérieur 2",
+    "libelle_ar": "أعلى 2",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "premier_1": {
+    "ligne": 5,
+    "libelle_fr": "Premier 1",
+    "libelle_ar": "أول 1",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "premier_2": {
+    "ligne": 6,
+    "libelle_fr": "Premier 2",
+    "libelle_ar": "أول 2",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "execution_1": {
+    "ligne": 7,
+    "libelle_fr": "Exécution 1",
+    "libelle_ar": "تنفيذ 1",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "execution_2": {
+    "ligne": 8,
+    "libelle_fr": "Exécution 2",
+    "libelle_ar": "تنفيذ 2",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "execution_3": {
+    "ligne": 9,
+    "libelle_fr": "Exécution 3",
+    "libelle_ar": "تنفيذ 3",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   },
+   "services": {
+    "ligne": 10,
+    "libelle_fr": "Services",
+    "libelle_ar": "خدمات",
+    "libelle_ar_redige": false,
+    "source_pdf_page": 43
+   }
+  }
+ },
+ "alias_categories": {
+  "tous_agents": {
+   "cadre_1": "direction_1",
+   "cadre_2": "direction_2"
+  }
+ },
+ "hypotheses_grille": {
+  "tous_agents": {
+   "fr": [
+    "Le tableau imprime « الإدارة 1/2 » là où la classification (p.42) et l'article 51 (جديد) emploient « إطار 1/2 » : les deux désignations visent la même ligne (alias cadre_1, cadre_2).",
+    "Les sections (أ) et (ب) de chaque catégorie de la classification (p.42) ont le même salaire : la section n'est pas demandée.",
+    "Hôtels non classés 5 étoiles : salaires du tableau sans la majoration de 10 % de la note 2 (p.43-44).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15 et 27 ans (article 15 (جديد), p.8) ne sont pas calculées."
+   ],
+   "ar": [
+    "يذكر الجدول «الإدارة 1/2» في حين يذكر التصنيف المهني (الصفحة 42) والفصل 51 (جديد) «إطار 1/2»: تُعتبر التسميتان للسطر نفسه.",
+    "للقسمين (أ) و(ب) من كل صنف في التصنيف المهني (الصفحة 42) الأجر نفسه: لا يُطلب القسم.",
+    "النزل غير المرتبة 5 نجوم: أجور الجدول دون زيادة 10 بالمائة الواردة بالملاحظة 2 (الصفحتان 43 و44).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيتان الآليتان بعد 15 و27 سنة (الفصل 15 (جديد)، الصفحة 8)."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2022-05-01",
+     "services_a_superieur_2": 81.952,
+     "superieur_1_et_cadres": 87.596
+    },
+    {
+     "effective_date": "2023-05-01",
+     "services_a_superieur_2": 87.279,
+     "superieur_1_et_cadres": 93.290
+    }
+   ],
+   "libelles_groupes": {
+    "services_a_superieur_2": {
+     "fr": "Catégories « services » à « supérieur 2 »",
+     "ar": "الأصناف من «خدمات» إلى «أعلى 2»"
+    },
+    "superieur_1_et_cadres": {
+     "fr": "Catégories « supérieur 1 », « cadre 1 » et « cadre 2 »",
+     "ar": "الأصناف «أعلى 1» و«إطار 1» و«إطار 2»"
+    }
+   },
+   "condition": "l'employeur n'assure pas le transport de l'agent non logé et lui rembourse ses frais de transport (art. 51 (جديد), p.16)",
+   "note": "Montant total : il comprend la prime de transport du décret n° 503 du 16 mars 1982 ; payée à la fin de chaque mois (art. 51 (جديد), p.16).",
+   "note_ar": "تتضمن هذه المنحة المنحة المحدثة بالأمر عدد 503 المؤرخ في 16 مارس 1982، وتدفع في نهاية كل شهر (الفصل 51 (جديد)، الصفحة 16).",
+   "hypotheses": {
+    "fr": [
+     "Groupe choisi par l'appelant selon la catégorie : de « services » à « supérieur 2 », ou « supérieur 1 », « cadre 1 » et « cadre 2 » (art. 51 (جديد), p.16)."
+    ],
+    "ar": [
+     "يختار الطالب المجموعة حسب الصنف: من «خدمات» إلى «أعلى 2»، أو «أعلى 1» و«إطار 1» و«إطار 2» (الفصل 51 (جديد)، الصفحة 16)."
+    ]
+   }
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "51 مكرر (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2022-05-01",
+     "montant": 29.957
+    },
+    {
+     "effective_date": "2023-05-01",
+     "montant": 31.905
+    }
+   ]
+  },
+  {
+   "code": "prime_caisse_premiers_caissiers",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse (premiers caissiers)",
+   "source_article": "53 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 21.666,
+   "effective_date": null,
+   "condition": "premier caissier chargé de façon régulière de la gestion des fonds et de l'ensemble des points de vente (art. 53 (جديد), p.16)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse_caissiers",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse (caissiers)",
+   "source_article": "53 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 16.666,
+   "effective_date": null,
+   "condition": "caissier chargé de façon régulière de la gestion des fonds (art. 53 (جديد), p.16-17)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production": {
+   "source_pdf_page": 15,
+   "source_article": "50 (جديد)",
+   "message_fr": "Prime de production et de fin d'année (article 50 (جديد), page 15) : montant en jours de salaire selon la note annuelle (au plus 60 jours), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج وآخر السنة (الفصل 50 (جديد)، الصفحة 15): مقدار بحساب أيام من الأجر حسب العدد السنوي (60 يوما على الأقصى)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "avantage_nourriture_logement": {
+   "source_pdf_page": 16,
+   "source_article": "52 (جديد)",
+   "message_fr": "Nourriture et logement (article 52 (جديد), page 16) : avantage en nature (repas pendant le travail, logement selon accord), sans montant. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الطعام والسكن (الفصل 52 (جديد)، الصفحة 16): امتياز عيني (الطعام أثناء العمل والسكن حسب الاتفاق)، دون مبلغ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "en nature"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 15,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 49 (جديد), page 15) : montant en mois et jours de salaire selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "نظام التقاعد (الفصل 49 (جديد)، الصفحة 15): مقدار بحساب أجرة أشهر وأيام حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "HOT_TOUS_AGENTS_2022-05-01",
+   "numero_imprime": 1,
+   "population": "tous_agents",
+   "effective_date": "2022-05-01",
+   "source_pdf_page": 43,
+   "unite": "TND/mois",
+   "valeurs": {
+    "direction_1": [
+     1068.292,
+     1102.456,
+     1136.619,
+     1170.783,
+     1204.946,
+     1239.110,
+     1273.272,
+     1307.437,
+     1341.600,
+     1375.764,
+     1409.927,
+     1444.091,
+     1478.254
+    ],
+    "direction_2": [
+     1015.369,
+     1047.776,
+     1080.183,
+     1112.591,
+     1144.998,
+     1177.405,
+     1209.811,
+     1242.220,
+     1274.626,
+     1307.034,
+     1339.441,
+     1371.849,
+     1404.256
+    ],
+    "superieur_1": [
+     963.985,
+     994.629,
+     1025.273,
+     1055.916,
+     1086.560,
+     1117.203,
+     1147.847,
+     1178.491,
+     1209.135,
+     1239.777,
+     1270.423,
+     1301.066,
+     1331.710
+    ],
+    "superieur_2": [
+     888.618,
+     916.287,
+     943.957,
+     971.626,
+     999.296,
+     1026.964,
+     1054.634,
+     1082.303,
+     1109.972,
+     1137.642,
+     1165.311,
+     1192.980,
+     1220.649
+    ],
+    "premier_1": [
+     798.336,
+     823.185,
+     848.033,
+     872.881,
+     897.729,
+     922.579,
+     947.426,
+     972.274,
+     997.123,
+     1021.972,
+     1046.819,
+     1071.669,
+     1096.516
+    ],
+    "premier_2": [
+     744.394,
+     767.510,
+     790.625,
+     813.740,
+     836.855,
+     859.968,
+     883.083,
+     906.199,
+     929.314,
+     952.429,
+     975.543,
+     998.657,
+     1021.772
+    ],
+    "execution_1": [
+     697.991,
+     719.837,
+     741.682,
+     763.528,
+     785.373,
+     807.219,
+     829.063,
+     850.910,
+     872.756,
+     894.599,
+     916.446,
+     938.292,
+     960.137
+    ],
+    "execution_2": [
+     656.559,
+     677.269,
+     697.979,
+     718.687,
+     739.396,
+     760.106,
+     780.815,
+     801.524,
+     822.234,
+     842.943,
+     863.651,
+     884.361,
+     905.071
+    ],
+    "execution_3": [
+     606.599,
+     625.766,
+     644.933,
+     664.101,
+     683.267,
+     702.432,
+     721.599,
+     740.766,
+     759.933,
+     779.099,
+     798.266,
+     817.434,
+     836.600
+    ],
+    "services": [
+     500.482,
+     516.375,
+     532.270,
+     548.165,
+     564.062,
+     579.955,
+     595.851,
+     611.745,
+     627.639,
+     643.535,
+     659.430,
+     675.325,
+     691.219
+    ]
+   }
+  },
+  {
+   "table_id": "HOT_TOUS_AGENTS_2023-05-01",
+   "numero_imprime": 2,
+   "population": "tous_agents",
+   "effective_date": "2023-05-01",
+   "source_pdf_page": 44,
+   "unite": "TND/mois",
+   "valeurs": {
+    "direction_1": [
+     1137.732,
+     1174.115,
+     1210.499,
+     1246.884,
+     1283.268,
+     1319.652,
+     1356.035,
+     1392.420,
+     1428.804,
+     1465.188,
+     1501.573,
+     1537.956,
+     1574.341
+    ],
+    "direction_2": [
+     1081.368,
+     1115.882,
+     1150.395,
+     1184.909,
+     1219.423,
+     1253.937,
+     1288.449,
+     1322.964,
+     1357.476,
+     1391.991,
+     1426.505,
+     1461.019,
+     1495.532
+    ],
+    "superieur_1": [
+     1026.644,
+     1059.280,
+     1091.915,
+     1124.551,
+     1157.186,
+     1189.821,
+     1222.458,
+     1255.093,
+     1287.729,
+     1320.363,
+     1353.000,
+     1385.635,
+     1418.272
+    ],
+    "superieur_2": [
+     946.378,
+     975.846,
+     1005.314,
+     1034.782,
+     1064.250,
+     1093.717,
+     1123.185,
+     1152.653,
+     1182.120,
+     1211.589,
+     1241.056,
+     1270.524,
+     1299.991
+    ],
+    "premier_1": [
+     850.228,
+     876.692,
+     903.155,
+     929.618,
+     956.082,
+     982.547,
+     1009.009,
+     1035.472,
+     1061.936,
+     1088.400,
+     1114.863,
+     1141.327,
+     1167.790
+    ],
+    "premier_2": [
+     792.780,
+     817.398,
+     842.015,
+     866.633,
+     891.250,
+     915.866,
+     940.483,
+     965.102,
+     989.719,
+     1014.337,
+     1038.953,
+     1063.570,
+     1088.187
+    ],
+    "execution_1": [
+     743.361,
+     766.626,
+     789.891,
+     813.157,
+     836.422,
+     859.688,
+     882.953,
+     906.219,
+     929.486,
+     952.748,
+     976.015,
+     999.280,
+     1022.546
+    ],
+    "execution_2": [
+     699.236,
+     721.291,
+     743.348,
+     765.402,
+     787.457,
+     809.513,
+     831.568,
+     853.623,
+     875.679,
+     897.734,
+     919.788,
+     941.845,
+     963.900
+    ],
+    "execution_3": [
+     646.028,
+     666.441,
+     686.853,
+     707.267,
+     727.679,
+     748.090,
+     768.503,
+     788.915,
+     809.329,
+     829.740,
+     850.153,
+     870.567,
+     890.979
+    ],
+    "services": [
+     533.013,
+     549.940,
+     566.868,
+     583.796,
+     600.726,
+     617.652,
+     634.581,
+     651.509,
+     668.436,
+     685.365,
+     702.293,
+     719.221,
+     736.149
+    ]
+   }
+  }
+ ]
+}

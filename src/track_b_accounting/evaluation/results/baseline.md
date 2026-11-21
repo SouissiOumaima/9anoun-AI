@@ -1,47 +1,47 @@
-# Évaluation Track B — 2026-10-28
+# Évaluation Track B — 2026-11-14
 
-Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 125 cas, sha256 `f80dfc3b59ec…`).
-Cas vérifiés sur les PDF par DS5 : **115 / 125**.
+Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 290 cas, sha256 `edacbd1e57a3…`).
+Cas vérifiés sur les PDF par DS5 : **280 / 290**.
 
 **Faux montants : 0** (montant faux pour un ok attendu, ou montant renvoyé alors qu'un refus était attendu).
 
-## Ensemble des cas (125 cas)
+## Ensemble des cas (290 cas)
 
 | Métrique | Nombre | Taux |
 |---|---|---|
-| Faux montants (ok attendu) | 0 / 80 | 0.0 % |
-| Montant au lieu d'un refus | 0 / 45 | 0.0 % |
-| Exactitude des montants | 80 / 80 | 100.0 % |
-| Silence excessif | 0 / 80 | 0.0 % |
-| Refus corrects (même code ; même message s'il est fixé) | 45 / 45 | 100.0 % |
-| Messages de refus différents de l'attendu | 0 / 45 | 0.0 % |
-| Citations valides | 80 / 80 | 100.0 % |
-| Conformité schéma Track B | 125 / 125 | 100.0 % |
-| Conformité schéma commun | 125 / 125 | 100.0 % |
+| Faux montants (ok attendu) | 0 / 161 | 0.0 % |
+| Montant au lieu d'un refus | 0 / 129 | 0.0 % |
+| Exactitude des montants | 161 / 161 | 100.0 % |
+| Silence excessif | 0 / 161 | 0.0 % |
+| Refus corrects (même code ; même message s'il est fixé) | 129 / 129 | 100.0 % |
+| Messages de refus différents de l'attendu | 0 / 129 | 0.0 % |
+| Citations valides | 161 / 161 | 100.0 % |
+| Conformité schéma Track B | 290 / 290 | 100.0 % |
+| Conformité schéma commun | 290 / 290 | 100.0 % |
 | Statut erreur / exceptions | 0 / 0 | |
 
-## Cas vérifiés par DS5 (115 cas)
+## Cas vérifiés par DS5 (280 cas)
 
 | Métrique | Nombre | Taux |
 |---|---|---|
-| Faux montants (ok attendu) | 0 / 80 | 0.0 % |
-| Montant au lieu d'un refus | 0 / 35 | 0.0 % |
-| Exactitude des montants | 80 / 80 | 100.0 % |
-| Silence excessif | 0 / 80 | 0.0 % |
-| Refus corrects (même code ; même message s'il est fixé) | 35 / 35 | 100.0 % |
-| Messages de refus différents de l'attendu | 0 / 35 | 0.0 % |
-| Citations valides | 80 / 80 | 100.0 % |
-| Conformité schéma Track B | 115 / 115 | 100.0 % |
-| Conformité schéma commun | 115 / 115 | 100.0 % |
+| Faux montants (ok attendu) | 0 / 161 | 0.0 % |
+| Montant au lieu d'un refus | 0 / 119 | 0.0 % |
+| Exactitude des montants | 161 / 161 | 100.0 % |
+| Silence excessif | 0 / 161 | 0.0 % |
+| Refus corrects (même code ; même message s'il est fixé) | 119 / 119 | 100.0 % |
+| Messages de refus différents de l'attendu | 0 / 119 | 0.0 % |
+| Citations valides | 161 / 161 | 100.0 % |
+| Conformité schéma Track B | 280 / 280 | 100.0 % |
+| Conformité schéma commun | 280 / 280 | 100.0 % |
 | Statut erreur / exceptions | 0 / 0 | |
 
 ## Par certitude
 
 | Certitude | Cas | Exactitude montants | Refus corrects | Faux montants |
 |---|---|---|---|---|
-| L | 89 | 70 / 70 | 19 / 19 | 0 |
-| C | 3 | 3 / 3 | 0 / 0 | 0 |
-| I | 33 | 7 / 7 | 26 / 26 | 0 |
+| L | 167 | 110 / 110 | 57 / 57 | 0 |
+| C | 7 | 7 / 7 | 0 / 0 | 0 |
+| I | 116 | 44 / 44 | 72 / 72 | 0 |
 
 L = lu dans le PDF, C = calculé à la main, I = interprétation (Dn). Un échec sur un cas I est un désaccord d'interprétation, pas une erreur de lecture.
 
@@ -177,3 +177,168 @@ L = lu dans le PDF, C = calculé à la main, I = interprétation (Dn). Un échec
 | TB-123 | refus | I D47 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
 | TB-124 | refus | I D47 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
 | TB-125 | refus | L | oui | HORS_SCOPE | HORS_SCOPE | correct |
+| TB-126 | ok | I D49 | oui | 4.073 TND/heure | 4.073 TND/heure | correct |
+| TB-127 | ok | L | oui | 60.610 TND/mois | 60.610 TND/mois | correct |
+| TB-128 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-129 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-130 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-131 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-132 | ok | I D50 | oui | 1046.082 TND/mois | 1046.082 TND/mois | correct |
+| TB-133 | ok | L | oui | 0.481 TND/jour | 0.481 TND/jour | correct |
+| TB-134 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-135 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-136 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-137 | ok | I D51 | oui | 1319.652 TND/mois | 1319.652 TND/mois | correct |
+| TB-138 | ok | L | oui | 93.290 TND/mois | 93.290 TND/mois | correct |
+| TB-139 | refus | I D51 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-140 | refus | I D51 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-141 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-142 | ok | C D52 | oui | 922.919 TND/mois | 922.919 TND/mois | correct |
+| TB-143 | ok | I D52 | oui | 3.417 TND/heure | 3.417 TND/heure | correct |
+| TB-144 | ok | I D52 | oui | 590.535 TND/mois | 590.535 TND/mois | correct |
+| TB-145 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-146 | refus | I D52 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-147 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-148 | refus | I D52 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-149 | ok | L | oui | 4.639 TND/mois | 4.639 TND/mois | correct |
+| TB-150 | ok | I D53 | oui | 4.715 TND/heure | 4.715 TND/heure | correct |
+| TB-151 | ok | C D53 | oui | 1057.025 TND/mois | 1057.025 TND/mois | correct |
+| TB-152 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-153 | refus | I D10 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-154 | ok | L | oui | 26.084 TND/mois | 26.084 TND/mois | correct |
+| TB-155 | refus | I D53 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-156 | ok | I D54 | oui | 1216.807 TND/mois | 1216.807 TND/mois | correct |
+| TB-157 | ok | L | oui | 539.336 TND/mois | 539.336 TND/mois | correct |
+| TB-158 | refus | I D54 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-159 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-160 | refus | I D54 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-161 | ok | L | oui | 11.600 TND/mois | 11.600 TND/mois | correct |
+| TB-162 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-163 | ok | I D55 | oui | 4.873 TND/heure | 4.873 TND/heure | correct |
+| TB-164 | ok | I D55 | oui | 1747.713 TND/mois | 1747.713 TND/mois | correct |
+| TB-165 | ok | L | oui | 123.113 TND/mois | 123.113 TND/mois | correct |
+| TB-166 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-167 | refus | I D55 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-168 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-169 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-170 | ok | I D56 | oui | 3013.173 TND/mois | 3013.173 TND/mois | correct |
+| TB-171 | ok | I D56 | oui | 1569.669 TND/mois | 1569.669 TND/mois | correct |
+| TB-172 | ok | L | oui | 52.000 TND/enfant | 52.000 TND/enfant | correct |
+| TB-173 | refus | I D56 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-174 | refus | I D56 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-175 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-176 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-177 | ok | I D57 | oui | 1234.048 TND/mois | 1234.048 TND/mois | correct |
+| TB-178 | ok | I D57 | oui | 2.746 TND/heure | 2.746 TND/heure | correct |
+| TB-179 | ok | L | oui | 2.000 TND/mois | 2.000 TND/mois | correct |
+| TB-180 | refus | I D57 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-181 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-182 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-183 | ok | C D58 | oui | 5.495 TND/heure | 5.495 TND/heure | correct |
+| TB-184 | ok | I D58 | oui | 1156.011 TND/mois | 1156.011 TND/mois | correct |
+| TB-185 | refus | I D58 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-186 | refus | I D10 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-187 | ok | L | oui | 0.387 TND/jour | 0.387 TND/jour | correct |
+| TB-188 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-189 | ok | I D59 | oui | 3.595 TND/heure | 3.595 TND/heure | correct |
+| TB-190 | ok | I D59 | oui | 888.497 TND/mois | 888.497 TND/mois | correct |
+| TB-191 | ok | L | oui | 20.000 TND/enfant | 20.000 TND/enfant | correct |
+| TB-192 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-193 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-194 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-195 | ok | I D60 | oui | 5.069 TND/heure | 5.069 TND/heure | correct |
+| TB-196 | ok | I D60 | oui | 1251.990 TND/mois | 1251.990 TND/mois | correct |
+| TB-197 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-198 | refus | I D60 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-199 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-200 | ok | L | oui | 2.000 TND/semaine | 2.000 TND/semaine | correct |
+| TB-201 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-202 | ok | I D61 | oui | 2.737 TND/heure | 2.737 TND/heure | correct |
+| TB-203 | ok | I D61 | oui | 11.096 TND/heure | 11.096 TND/heure | correct |
+| TB-204 | ok | L | oui | 72.693 TND/mois | 72.693 TND/mois | correct |
+| TB-205 | ok | L | oui | 35.000 TND/mois | 35.000 TND/mois | correct |
+| TB-206 | refus | I D61 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-207 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-208 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-209 | ok | L | oui | 1735.548 TND/mois | 1735.548 TND/mois | correct |
+| TB-210 | ok | L | oui | 4.486 TND/heure | 4.486 TND/heure | correct |
+| TB-211 | ok | L | oui | 13.039 TND/mois | 13.039 TND/mois | correct |
+| TB-212 | refus | I D62 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-213 | refus | I D62 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-214 | refus | I D62 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-215 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-216 | ok | I D63 | oui | 2041.817 TND/mois | 2041.817 TND/mois | correct |
+| TB-217 | ok | L | oui | 5.045 TND/heure | 5.045 TND/heure | correct |
+| TB-218 | ok | L | oui | 20.106 TND/mois | 20.106 TND/mois | correct |
+| TB-219 | refus | I D63 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-220 | refus | I D63 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-221 | refus | I D63 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-222 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-223 | ok | I D64 | oui | 628.015 TND/mois | 628.015 TND/mois | correct |
+| TB-224 | ok | I D64 | oui | 2027.015 TND/mois | 2027.015 TND/mois | correct |
+| TB-225 | ok | I D64 | oui | 1005.925 TND/mois | 1005.925 TND/mois | correct |
+| TB-226 | ok | L | oui | 51.217 TND/mois | 51.217 TND/mois | correct |
+| TB-227 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-228 | refus | I D64 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-229 | refus | I D64 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-230 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-231 | ok | L | oui | 2.501 TND/heure | 2.501 TND/heure | correct |
+| TB-232 | ok | L | oui | 596.584 TND/mois | 596.584 TND/mois | correct |
+| TB-233 | ok | L | oui | 71.830 TND/mois | 71.830 TND/mois | correct |
+| TB-234 | refus | I D65 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-235 | refus | I D65 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-236 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-237 | ok | I D66 | oui | 588.841 TND/mois | 588.841 TND/mois | correct |
+| TB-238 | ok | I D66 | oui | 845.498 TND/mois | 845.498 TND/mois | correct |
+| TB-239 | ok | C D66 | oui | 1458.806 TND/mois | 1458.806 TND/mois | correct |
+| TB-240 | ok | L | oui | 15.000 TND/mois | 15.000 TND/mois | correct |
+| TB-241 | refus | I D66 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-242 | refus | I D10 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-243 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-244 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-245 | ok | I D67 | oui | 851.882 TND/mois | 851.882 TND/mois | correct |
+| TB-246 | ok | I D67 | oui | 4.122 TND/heure | 4.122 TND/heure | correct |
+| TB-247 | ok | I D67 | oui | 2065.586 TND/mois | 2065.586 TND/mois | correct |
+| TB-248 | ok | L | oui | 92.282 TND/mois | 92.282 TND/mois | correct |
+| TB-249 | refus | I D67 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-250 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-251 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-252 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-253 | refus | I D68 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-254 | refus | I D68 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-255 | ok | L | oui | 130.948 TND/mois | 130.948 TND/mois | correct |
+| TB-256 | ok | L | oui | 7.757 TND/mois | 7.757 TND/mois | correct |
+| TB-257 | ok | L | oui | 83.333 TND/versement | 83.333 TND/versement | correct |
+| TB-258 | ok | L | oui | 16.666 TND/mois | 16.666 TND/mois | correct |
+| TB-259 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-260 | ok | I D69 | oui | 594.410 TND/mois | 594.410 TND/mois | correct |
+| TB-261 | ok | I D69 | oui | 1894.675 TND/mois | 1894.675 TND/mois | correct |
+| TB-262 | ok | I D69 | oui | 1305.387 TND/mois | 1305.387 TND/mois | correct |
+| TB-263 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-264 | ok | L | oui | 7.856 TND/mois | 7.856 TND/mois | correct |
+| TB-265 | ok | L | oui | 90.000 TND/mois | 90.000 TND/mois | correct |
+| TB-266 | refus | I D69 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-267 | refus | I D69 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-268 | ok | I D70 | oui | 1180.430 TND/mois | 1180.430 TND/mois | correct |
+| TB-269 | ok | L | oui | 4.067 TND/heure | 4.067 TND/heure | correct |
+| TB-270 | ok | L | oui | 898.518 TND/mois | 898.518 TND/mois | correct |
+| TB-271 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-272 | ok | L | oui | 0.385 TND/jour | 0.385 TND/jour | correct |
+| TB-273 | refus | I D70 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-274 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-275 | ok | I D71 | oui | 2.501 TND/heure | 2.501 TND/heure | correct |
+| TB-276 | ok | I D71 | oui | 586.044 TND/mois | 586.044 TND/mois | correct |
+| TB-277 | ok | I D71 | oui | 4.060 TND/heure | 4.060 TND/heure | correct |
+| TB-278 | refus | I D71 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-279 | refus | I D71 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-280 | ok | L | oui | 71.822 TND/mois | 71.822 TND/mois | correct |
+| TB-281 | refus | I D71 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-282 | ok | L | oui | 540.491 TND/mois | 540.491 TND/mois | correct |
+| TB-283 | ok | I D72 | oui | 5.363 TND/heure | 5.363 TND/heure | correct |
+| TB-284 | ok | L | oui | 1592.070 TND/mois | 1592.070 TND/mois | correct |
+| TB-285 | refus | L | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-286 | ok | L | oui | 81.435 TND/mois | 81.435 TND/mois | correct |
+| TB-287 | ok | L | oui | 0.010 TND/heure | 0.010 TND/heure | correct |
+| TB-288 | refus | I D72 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-289 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-290 | refus | I D72 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |

@@ -339,5 +339,1160 @@
     "operation": "salaire_base",
     "params": {"secteur": "GARDIENNAGE_SECURITE_TRANSPORT_FONDS", "categorie": "8", "anciennete_annees": 5, "date": "2011-05-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-47-salaire-cafe-ouvriers",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "population": "ouvriers_horaires", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-48-prime-transport-cafe",
+    "operation": "prime",
+    "params": {"secteur": "TORREFACTION_CAFE", "code": "prime_transport", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-49-refus-cafe-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "categorie": "3", "anciennete_annees": 4, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-50-refus-cafe-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "categorie": "3", "anciennete_annees": 5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-51-refus-cafe-prime-production",
+    "operation": "prime",
+    "params": {"secteur": "TORREFACTION_CAFE", "code": "prime_production", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-52-refus-cafe-employes-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "TORREFACTION_CAFE", "population": "employes_mensuels", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-53-salaire-voyages-degre-13-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "6", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-54-prime-presence-par-jour-voyages",
+    "operation": "prime",
+    "params": {"secteur": "AGENCES_VOYAGES", "code": "prime_presence_par_jour", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-55-refus-voyages-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "2", "anciennete_annees": 3, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-56-refus-voyages-avant-2022-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "AGENCES_VOYAGES", "categorie": "2", "anciennete_annees": 2, "date": "2022-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-57-refus-voyages-prime-repas-periode",
+    "operation": "prime",
+    "params": {"secteur": "AGENCES_VOYAGES", "code": "prime_repas", "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-58-salaire-hotels-alias-cadre",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "cadre_1", "anciennete_annees": 10, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-59-prime-transport-hotels",
+    "operation": "prime",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "code": "prime_transport", "date": "2023-06-01", "groupe": "superieur_1_et_cadres", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-60-refus-hotels-5-etoiles",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "population": "hotels_5_etoiles", "categorie": "services", "anciennete_annees": 2, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-61-refus-hotels-anciennete-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "services", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-62-refus-hotels-avant-2022-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "HOTELS_TOURISTIQUES", "categorie": "services", "anciennete_annees": 2, "date": "2022-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-63-salaire-confiserie-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "4", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-64-salaire-confiserie-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "horaires", "categorie": "2", "anciennete_annees": 11, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-65-salaire-confiserie-degre-15-imprime",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 27, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-66-refus-confiserie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "categorie": "2", "anciennete_annees": 11, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-67-refus-confiserie-art-53-4-a-5-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "1", "anciennete_annees": 4.5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-68-refus-confiserie-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 13, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-69-refus-confiserie-ecart-negatif",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "2", "anciennete_annees": 29, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-70-prime-presence-confiserie",
+    "operation": "prime",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "code": "prime_presence", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-71-salaire-pates-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "horaires", "categorie": "III", "sous_categorie": "2", "anciennete_annees": 6, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-72-salaire-pates-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "mensuels", "categorie": "V", "sous_categorie": "III", "anciennete_annees": 28.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-73-refus-pates-sous-categorie-manquante",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "mensuels", "categorie": "IV", "anciennete_annees": 6, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-74-refus-pates-palier-art-14",
+    "operation": "salaire_base",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "population": "horaires", "categorie": "I", "sous_categorie": "1", "anciennete_annees": 25, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-75-prime-logement-pates",
+    "operation": "prime",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "code": "prime_logement", "date": "2023-06-01", "groupe": "categorie_3"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-76-refus-pates-transport-niveau-smig",
+    "operation": "prime",
+    "params": {"secteur": "PATES_ALIMENTAIRES_COUSCOUS", "code": "prime_transport_niveau_salaire_minimum", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-77-salaire-cosmetiques-degre-12-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "administratifs", "categorie": "9", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-78-salaire-cosmetiques-production-categorie-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production_categorie_1", "categorie": "1", "anciennete_annees": 0.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-79-refus-cosmetiques-categorie-1-apres-un-an",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production_categorie_1", "categorie": "1", "anciennete_annees": 2, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-80-refus-cosmetiques-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "administratifs", "categorie": "6", "anciennete_annees": 15, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-81-refus-cosmetiques-transport-cadres",
+    "operation": "prime",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "code": "prime_transport_cadres", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-82-prime-presence-cosmetiques",
+    "operation": "prime",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "code": "prime_presence", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-83-refus-cosmetiques-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production", "categorie": "3", "anciennete_annees": 6, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-84-salaire-savonnerie-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "horaires", "categorie": "V_bis", "anciennete_annees": 4, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-85-salaire-savonnerie-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "mensuels", "categorie": "XII", "anciennete_annees": 20, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-86-prime-transport-savonnerie-cadres",
+    "operation": "prime",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-87-refus-savonnerie-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "horaires", "categorie": "I", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-88-refus-savonnerie-21-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "population": "mensuels", "categorie": "VI", "anciennete_annees": 21, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-89-refus-savonnerie-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-90-refus-savonnerie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "SAVONNERIE_RAFFINAGE_GRIGNONS", "categorie": "VI", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-91-salaire-petrole-colonne-entree",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "5", "sous_categorie": "4", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-92-salaire-petrole-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "1", "sous_categorie": "2", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-93-prime-scolaire-petrole-superieur",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "code": "prime_scolaire_superieur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-94-refus-petrole-32-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "1", "sous_categorie": "1", "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-95-refus-petrole-prime-responsabilite",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "code": "prime_responsabilite", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-96-refus-petrole-sous-categorie-manquante",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-97-refus-petrole-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_DISTRIBUTION_PETROLE", "categorie": "3", "sous_categorie": "1", "anciennete_annees": 5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-98-salaire-plasturgie-employes",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "employes_maitrise", "categorie": "8", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-99-salaire-plasturgie-ouvriers",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "ouvriers_horaires", "categorie": "1", "anciennete_annees": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-100-prime-plasturgie-complement-presence",
+    "operation": "prime",
+    "params": {"secteur": "PLASTURGIE", "code": "prime_presence_complement_sans_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-101-refus-plasturgie-32-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "population": "ouvriers_horaires", "categorie": "3", "anciennete_annees": 32.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-102-refus-plasturgie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "PLASTURGIE", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-103-refus-plasturgie-prime-production",
+    "operation": "prime",
+    "params": {"secteur": "PLASTURGIE", "code": "prime_production", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-104-salaire-minoteries-art-14-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "horaires", "categorie": "V", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-105-salaire-minoteries-mensuels-degre-0",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "mensuels", "categorie": "11", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-106-refus-minoteries-promotion-non-calculee",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "horaires", "categorie": "I", "anciennete_annees": 28, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-107-refus-minoteries-palier-27",
+    "operation": "salaire_base",
+    "params": {"secteur": "MINOTERIES", "population": "mensuels", "categorie": "11", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-108-prime-panier-minoteries",
+    "operation": "prime",
+    "params": {"secteur": "MINOTERIES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-109-refus-minoteries-prime-caisse",
+    "operation": "prime",
+    "params": {"secteur": "MINOTERIES", "code": "prime_caisse", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-110-salaire-teintureries-dernier-degre-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "6", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-111-salaire-teintureries-administratifs",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "administratifs_techniciens", "categorie": "10", "anciennete_annees": 2.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-112-prime-etudes-teintureries-jardin",
+    "operation": "prime",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "code": "prime_etudes_jardin_enfants", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-113-refus-teintureries-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "2", "anciennete_annees": 23, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-114-refus-teintureries-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "population": "execution", "categorie": "2", "anciennete_annees": 5.5, "date": "2021-11-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-115-refus-teintureries-prime-lait-salete",
+    "operation": "prime",
+    "params": {"secteur": "TEINTURERIES_PRESSINGS", "code": "prime_lait_salete", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-116-salaire-boissons-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "horaires", "categorie": "6", "anciennete_annees": 28, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-117-salaire-boissons-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "mensuels", "categorie": "9", "anciennete_annees": 1.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-118-refus-boissons-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "horaires", "categorie": "5", "anciennete_annees": 13, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-119-refus-boissons-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "population": "mensuels", "categorie": "1", "anciennete_annees": 30.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-120-refus-boissons-prime-panier-periode",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-121-prime-froid-boissons",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "code": "prime_froid", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-122-refus-boissons-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_GAZEUSES", "categorie": "2", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-123-salaire-mecanique-execution",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "1", "anciennete_annees": 1, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-124-salaire-mecanique-cadres",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "population": "tous_agents", "categorie": "16", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-125-prime-transport-mecanique-cadres",
+    "operation": "prime",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-126-prime-fonction-mecanique-sous-directeur",
+    "operation": "prime",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "code": "prime_fonction_sous_directeur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-127-refus-mecanique-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "16", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-128-refus-mecanique-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "5", "anciennete_annees": 2, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-129-refus-mecanique-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "MECANIQUE_STATIONS_SERVICE", "categorie": "1", "anciennete_annees": 1, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-130-salaire-alcool-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "mensuels", "categorie": "X", "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-131-salaire-alcool-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "horaires", "categorie": "aide_ouvrier", "anciennete_annees": 6, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-132-prime-logement-alcool-gestion-moyenne",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_logement", "date": "2023-06-01", "groupe": "gestion_moyenne"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-133-refus-alcool-34-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "population": "mensuels", "categorie": "X", "anciennete_annees": 34, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-134-refus-alcool-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-135-refus-alcool-transport-niveau-smig",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_transport_niveau_salaire_minimum", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-136-refus-alcool-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "categorie": "I", "anciennete_annees": 5.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-137-salaire-bois-mensuels-degre-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "14", "anciennete_annees": 26.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-138-salaire-bois-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "horaires", "categorie": "7", "anciennete_annees": 8, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-139-prime-presence-bois",
+    "operation": "prime",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "code": "prime_presence", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-140-refus-bois-palier-27",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "1", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-141-refus-bois-au-dela-27-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "horaires", "categorie": "1", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-142-refus-bois-aide-deces",
+    "operation": "prime",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "code": "aide_deces", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-143-refus-bois-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "population": "mensuels", "categorie": "1", "anciennete_annees": 0.5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-144-salaire-dechets-2020",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "1", "anciennete_annees": 1, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-145-salaire-dechets-2024",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "population": "tous_agents", "categorie": "19", "anciennete_annees": 25, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-146-salaire-dechets-ligne-8-degre-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "8", "anciennete_annees": 5, "date": "2022-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-147-prime-transport-dechets-2020",
+    "operation": "prime",
+    "params": {"secteur": "GESTION_DECHETS", "code": "prime_transport", "date": "2021-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-148-refus-dechets-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "11", "anciennete_annees": 19, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-149-refus-dechets-palier-26",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "19", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-150-refus-dechets-prime-lait",
+    "operation": "prime",
+    "params": {"secteur": "GESTION_DECHETS", "code": "prime_lait", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-151-refus-dechets-avant-2020-05-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "GESTION_DECHETS", "categorie": "1", "anciennete_annees": 1, "date": "2020-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-152-salaire-habillement-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "horaires", "categorie": "I", "anciennete_annees": 0.5, "date": "2021-09-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-153-salaire-habillement-mensuels-1b",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "anciennete_annees": 16, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-154-prime-transport-habillement-cadres",
+    "operation": "prime",
+    "params": {"secteur": "HABILLEMENT", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-155-refus-habillement-33-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "horaires", "categorie": "VI", "anciennete_annees": 33, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-156-refus-habillement-prime-assiduite",
+    "operation": "prime",
+    "params": {"secteur": "HABILLEMENT", "code": "prime_assiduite", "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-157-refus-habillement-avant-2021-09-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "HABILLEMENT", "population": "mensuels", "categorie": "2", "anciennete_annees": 0.5, "date": "2021-08-31"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-158-salaire-commerce-ligne-horaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "ouvrier_horaire_ligne_imprimee", "anciennete_annees": 1, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-159-salaire-commerce-chefs",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "chefs_rayon_gerants", "categorie": "17", "sous_categorie": "e", "anciennete_annees": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-160-salaire-commerce-categorie-21-ecart",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "21", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-161-prime-caisse-commerce-plus-10-ans",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "code": "prime_caisse_plus_10_ans", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-162-refus-commerce-promotion-non-calculee",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "20", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-163-refus-commerce-palier-26",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "population": "agents", "categorie": "21", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-164-refus-commerce-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "categorie": "16", "anciennete_annees": 1, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-165-refus-commerce-prime-fin-annee",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_GROS_DETAIL", "code": "prime_fin_annee", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-166-salaire-imprimerie-administratif-rang-5",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "administratifs_mensuels", "categorie": "5", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-167-salaire-imprimerie-horaires-ii-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "horaires", "categorie": "II", "sous_categorie": "2", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-168-salaire-imprimerie-techniciens-iv-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "techniciens_mensuels", "categorie": "IV", "sous_categorie": "3", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-169-prime-transport-imprimerie",
+    "operation": "prime",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-170-refus-imprimerie-31-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "administratifs_mensuels", "categorie": "1", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-171-refus-imprimerie-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "horaires", "categorie": "I", "sous_categorie": "1", "anciennete_annees": 28, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-172-refus-imprimerie-avant-2021-12-01",
+    "operation": "salaire_base",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "population": "administratifs_mensuels", "categorie": "1", "anciennete_annees": 1, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-173-refus-imprimerie-prime-fin-annee",
+    "operation": "prime",
+    "params": {"secteur": "IMPRIMERIE_EDITION_CARTONNAGE", "code": "prime_production_fin_annee", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-174-refus-verre-salaire-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "horaires", "categorie": "3", "anciennete_annees": 0, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-175-refus-verre-salaire-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "anciennete_annees": 12, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-176-prime-transport-verre",
+    "operation": "prime",
+    "params": {"secteur": "VERRE_MIROIRS", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-177-prime-transport-verre-complement",
+    "operation": "prime",
+    "params": {"secteur": "VERRE_MIROIRS", "code": "prime_transport", "date": "2023-06-01", "variante": "complement_si_prime_superieure"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-178-prime-aid-adha-verre",
+    "operation": "prime",
+    "params": {"secteur": "VERRE_MIROIRS", "code": "prime_aid_adha", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-179-prime-risque-verre",
+    "operation": "prime",
+    "params": {"secteur": "VERRE_MIROIRS", "code": "prime_risque", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-180-refus-verre-prime-globale",
+    "operation": "prime",
+    "params": {"secteur": "VERRE_MIROIRS", "code": "prime_globale_temporaire", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-181-salaire-agricole-categorie-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "categorie": "1", "anciennete_annees": 0.5, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-182-salaire-agricole-cadre-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "population": "tous_agents", "categorie": "16", "anciennete_annees": 38, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-183-salaire-agricole-categorie-12",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "categorie": "12", "anciennete_annees": 15.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-184-refus-agricole-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "categorie": "12", "anciennete_annees": 12, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-185-prime-demi-journee-agricole",
+    "operation": "prime",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "code": "prime_demi_journee", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-186-prime-fonction-agricole-directeur",
+    "operation": "prime",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "code": "prime_fonction_directeur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-187-refus-agricole-prime-transport",
+    "operation": "prime",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-188-refus-agricole-40-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "categorie": "1", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-189-salaire-boulangerie-administratif",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "population": "administratifs", "categorie": "8", "anciennete_annees": 23, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-190-salaire-boulangerie-chef-de-four-horaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "population": "traditionnelles_horaires", "categorie": "chef_de_four", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-191-salaire-boulangerie-industrielle-mensuel",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "population": "industrielles_mensuels", "categorie": "5", "anciennete_annees": 11, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-192-refus-boulangerie-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "population": "traditionnelles_horaires", "categorie": "petrisseur", "anciennete_annees": 1.5, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-193-prime-panier-boulangerie",
+    "operation": "prime",
+    "params": {"secteur": "BOULANGERIES", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-194-refus-boulangerie-24-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "population": "administratifs", "categorie": "1", "anciennete_annees": 24, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-195-refus-boulangerie-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "BOULANGERIES", "categorie": "1", "anciennete_annees": 1.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-196-salaire-textile-horaires-titularisation",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "horaires", "categorie": "I", "anciennete_annees": 0.5, "date": "2021-09-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-197-salaire-textile-mensuels-1b",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "anciennete_annees": 20.5, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-198-salaire-textile-horaires-iv-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "horaires", "categorie": "IV", "sous_categorie": "2", "anciennete_annees": 34, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-199-refus-textile-colonne-stage",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "5", "anciennete_annees": 0.5, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-200-refus-textile-35-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "horaires", "categorie": "I", "anciennete_annees": 35, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-201-prime-transport-textile-cadres",
+    "operation": "prime",
+    "params": {"secteur": "TEXTILE", "code": "prime_transport", "date": "2022-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-202-refus-textile-prime-assiduite",
+    "operation": "prime",
+    "params": {"secteur": "TEXTILE", "code": "prime_assiduite", "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-203-salaire-fonderie-mensuels-1a",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "mensuels", "categorie": "1", "sous_categorie": "a", "anciennete_annees": 1, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-204-salaire-fonderie-horaires-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "horaires", "categorie": "7", "anciennete_annees": 33, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-205-salaire-fonderie-mensuels-18",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "mensuels", "categorie": "18", "anciennete_annees": 30, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-206-refus-fonderie-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "mensuels", "categorie": "3", "anciennete_annees": 21, "date": "2021-12-15"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-207-prime-transport-fonderie-2021",
+    "operation": "prime",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "code": "prime_transport", "date": "2022-06-01", "groupe": "execution_maitrise"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-208-prime-chaleur-complement-fonderie",
+    "operation": "prime",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "code": "prime_chaleur_complement", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-209-refus-fonderie-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-210-refus-fonderie-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "horaires", "categorie": "1", "anciennete_annees": 14, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-211-refus-fonderie-35-ans-et-plus",
+    "operation": "salaire_base",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "horaires", "categorie": "7", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]

@@ -76,10 +76,14 @@ def terms(text: str) -> list[str]:
 
 # "الفصل 42" / "بالفصل 42 مكرر" / "الفصل 46 - 3" / "article 14 bis"
 _SUFFIX_CODE = {"مكرر": "BIS", "مثلث": "TER", "مربع": "QUATER",
+                # ordinaux vus dans les conventions : "51 ثالثا", "47 رابعا"...
+                "ثالثا": "TER", "رابعا": "QUATER", "خامسا": "QUINQUIES",
+                "سادسا": "SEXIES",
                 "bis": "BIS", "ter": "TER", "quater": "QUATER"}
 _REF = re.compile(
-    r"(?:\b[وبلك]{0,2}ال)?فصل\s*(\d+)(?:\s*-\s*(\d+))?\s*(مكرر|مثلث|مربع)?"
-    r"|\bart(?:icle|\.)?\s*(\d+)(?:\s*-\s*(\d+))?\s*(bis|ter|quater)?")
+    r"(?:\b[وبلك]{0,2}ال)?فصل\s*(\d+)(?:\s*[-\u2013]\s*(\d+))?"
+    r"\s*(مكرر|مثلث|مربع|ثالثا|رابعا|خامسا|سادسا)?"
+    r"|\bart(?:icle|\.)?\s*(\d+)(?:\s*[-\u2013]\s*(\d+))?\s*(bis|ter|quater)?")
 
 
 def article_refs(question: str) -> list[tuple[str, str]]:

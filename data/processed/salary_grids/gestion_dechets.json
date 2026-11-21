@@ -1,0 +1,1675 @@
+{
+ "_meta": {
+  "secteur_code": "GESTION_DECHETS",
+  "convention_ar": "الإتفاقية المشتركة القطاعية للتصرف في النفايات الصلبة والسائلة",
+  "convention_fr": "Convention collective sectorielle de la gestion des déchets solides et liquides",
+  "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+  "pages_sources": [
+   2,
+   6,
+   12,
+   13,
+   16,
+   17,
+   18,
+   19
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "836 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées par script : 0 écart ; 15 cellules douteuses du degré 9 relues au zoom à 400 dpi : 2 tranchées, 13 illisibles (chiffre cassé à l'impression) déclarées SOURCE_MANQUANTE (cellules_source_manquante) ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 815 (8 cellules n'ont pour voisine qu'une cellule illisible) cellules comparables : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte. Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.",
+  "decision_ref": "D64",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur les tableaux (p.16-19) : TND/mois en hypothèse affichée (montants de 628,015 à 2 027,015).",
+  "note_degres": "En-tête (p.16-19) : ancienneté « 2-0 » … « 12-10 », « 15-12 » … « 24-21 », « +24 » ; libellés « 0-2 » … « 21-24 », « 24+ » ; degré 11 servi de 24 à 26 ans ; 26 ans pile : PARAM_INVALIDE ; au-delà, refus (art. 12, Q8, Q-A) ; bornes exactes refusées (D6).",
+  "note_categories": "Clés : catégories 1 à 19 (art. 39, p.13 : exécution 1-6, gestion 7-12, cadres 13-19) ; population unique.",
+  "note_dates": "Tableau n° 1 du 2020-05-01 au 2021-11-30 (dates imprimées, p.16 ; le tableau n° 2 prend la suite le lendemain, aucun valide_jusqu_au), n° 2 (2021-12-01, p.17), n° 3 (2023-01-01, p.18), n° 4 (2024-01-01, p.19) ; refus avant le 2020-05-01 (la grille de l'avenant n° 3, effet au 2018-06-01, n'est pas dans la source).",
+  "remarque_format": "Montants imprimés au format « 1,018.107 » (virgule des milliers, point décimal).",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Non repris ; une même grille.",
+  "remarque_pdf": "Note sous chaque tableau (p.16-19) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 16 إلى 19): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "tous_agents": {
+   "libelle_fr": "Agents de la gestion des déchets solides et liquides",
+   "libelle_ar": "أعوان التصرف في النفايات الصلبة والسائلة",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 16,
+   "note": "Population unique : la requête peut l'omettre."
+  }
+ },
+ "degres": {
+  "tous_agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "anciennete_imprimee": "2-0"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "anciennete_imprimee": "4-2"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "anciennete_imprimee": "6-4"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "anciennete_imprimee": "8-6"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "anciennete_imprimee": "10-8"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "anciennete_imprimee": "12-10"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15",
+    "anciennete_imprimee": "15-12"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18",
+    "anciennete_imprimee": "18-15"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21",
+    "anciennete_imprimee": "21-18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24",
+    "anciennete_imprimee": "24-21"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24+",
+    "anciennete_imprimee": "+24"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "tous_agents": {
+   "regle": "table_correspondance",
+   "dernier_degre_atteint_a_annees": 24,
+   "duree_au_dernier_degre_annees": 2,
+   "source_pdf_page": 6,
+   "source_article": "12 (جديد)",
+   "texte_source_ar": "التدرج الاعتيادي يتمثل في التنقل من درجة إلى درجة أعلى مباشرة بالنظر لأقدمية العامل في الدرجة طبقا لجدول الأجور الملحق بهذه الاتفاقية يضم كل صنف 11 درجة وتكون المدة التي يجب على كل عون أن يقضيها في كل درجة سنتين أو ثلاثة وفق جدول الأجور الملحق بهذه الاتفاقية وعندما يبلغ العامل آخر درجة في الصنف المرتب به يواصل تدرجه لمدة توافق درجتين.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D64",
+   "hypotheses_fr": [
+    "Degré 11 servi de 24 à 26 ans (en-tête « +24 », séjour d'au moins deux ans selon l'article 12 (جديد), page 6) ; au-delà de 26 ans, refus : l'article 12 fait continuer la progression pendant deux degrés, sans montant, et contredit l'en-tête (Q8, Q-A)."
+   ],
+   "hypotheses_ar": [
+    "تُعتمد الدرجة 11 من 24 إلى 26 سنة (رأس الجدول «+24» ومدة بقاء لا تقل عن سنتين حسب الفصل 12 (جديد)، الصفحة 6)؛ وبعد 26 سنة يقع الرفض: ينص الفصل 12 على مواصلة التدرج لمدة توافق درجتين دون ذكر مبلغ، ويتعارض مع رأس الجدول."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = fin du séjour minimal de deux ans au degré 11 (article 12 (جديد), page 6) : la source ne dit pas si la progression de l'article 12 a commencé. Indiquer l'ancienneté exacte.",
+   "message_borne_ar": "أقدمية {a} سنة تقع على نهاية مدة البقاء الدنيا بالدرجة 11 (الفصل 12 (جديد)، الصفحة 6) ولا يحدد المصدر إن كان التدرج المنصوص عليه بالفصل 12 قد بدأ. يرجى تحديد الأقدمية بدقة.",
+   "message_hors_fenetre_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé. (ancienneté de {a} ans ; limite : {fin} ans.)",
+   "message_hors_fenetre_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ. (أقدمية {a} سنة؛ الحد: {fin} سنة.)",
+   "table_correspondance": {},
+   "categories_refusees": {
+    "1": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "2": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "3": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "4": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "5": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "6": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "7": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "8": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "9": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "10": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "11": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "12": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "13": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "14": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "15": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "16": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "17": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "18": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    },
+    "19": {
+     "message_fr": "Ancienneté supérieure à 26 ans : l'en-tête des tableaux (pages 16 à 19) imprime « +24 » sous le degré 11, mais l'article 12 (جديد) (page 6) fait continuer la progression de l'agent arrivé au dernier degré « pendant une durée correspondant à deux degrés », sans montant ; le séjour au degré 11 est de deux ans au moins. Les deux textes se contredisent au-delà de 26 ans. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية تفوق 26 سنة: يذكر رأس الجداول (الصفحات من 16 إلى 19) «+24» تحت الدرجة 11، في حين ينص الفصل 12 (جديد) (الصفحة 6) على أن العامل الذي يبلغ آخر درجة يواصل تدرجه لمدة توافق درجتين، دون ذكر أي مبلغ؛ ومدة البقاء بالدرجة 11 سنتان على الأقل. يتعارض النصان بعد 26 سنة. لا يُرجَع أي مبلغ."
+    }
+   }
+  }
+ },
+ "categories": {
+  "tous_agents": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19"
+  ]
+ },
+ "libelles_categories": {
+  "tous_agents": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Catégorie 16",
+    "libelle_ar": "الصنف 16",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "17": {
+    "ligne": 17,
+    "libelle_fr": "Catégorie 17",
+    "libelle_ar": "الصنف 17",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "18": {
+    "ligne": 18,
+    "libelle_fr": "Catégorie 18",
+    "libelle_ar": "الصنف 18",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   },
+   "19": {
+    "ligne": 19,
+    "libelle_fr": "Catégorie 19",
+    "libelle_ar": "الصنف 19",
+    "libelle_ar_redige": true,
+    "classification_pages": "13"
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "tous_agents": {
+   "fr": [
+    "Unité : les tableaux n'impriment pas l'unité ; les montants (de 628,015 à 2 027,015) sont lus comme des salaires mensuels (TND/mois).",
+    "Degré 11 servi de 24 à 26 ans ; au-delà, refus (article 12 (جديد), page 6, contraire à l'en-tête « +24 »).",
+    "Ligne 8, degré 3 : montant imprimé supérieur aux degrés 2 et 4 sur les quatre tableaux, servi tel qu'imprimé (lu net au zoom à 400 dpi).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة: لا تذكر الجداول الوحدة؛ تُعتبر المبالغ (من 628,015 إلى 2 027,015) أجورا شهرية (دينار/شهر).",
+    "تُعتمد الدرجة 11 من 24 إلى 26 سنة؛ وبعد ذلك يقع الرفض (الفصل 12 (جديد)، الصفحة 6، المخالف لرأس الجدول «+24»).",
+    "السطر 8، الدرجة 3: المبلغ المطبوع يفوق مبلغي الدرجتين 2 و4 في الجداول الأربعة، ويُرجَع كما هو مطبوع.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "38 (جديد)",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2020-05-01",
+     "montant": 16.652
+    },
+    {
+     "effective_date": "2021-12-01",
+     "montant": 17.735
+    },
+    {
+     "effective_date": "2023-01-01",
+     "montant": 18.932
+    },
+    {
+     "effective_date": "2024-01-01",
+     "montant": 20.210
+    }
+   ],
+   "note": "Premier montant imprimé « du 1er mai 2020 à fin novembre 2021 » (art. 38 (جديد), p.12).",
+   "note_ar": "المبلغ الأول مطبوع «بداية من غرة ماي 2020 إلى موفى شهر نوفمبر 2021» (الفصل 38 (جديد)، الصفحة 12)."
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "38 (جديد)",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2020-05-01",
+     "montant": 51.217
+    },
+    {
+     "effective_date": "2021-12-01",
+     "montant": 54.546
+    },
+    {
+     "effective_date": "2023-01-01",
+     "montant": 58.228
+    },
+    {
+     "effective_date": "2024-01-01",
+     "montant": 62.158
+    }
+   ],
+   "note": "Premier montant du 1er mai 2020 à fin novembre 2021 ; les montants comprennent la prime de transport des décrets n° 503 de 1982 et n° 691 de 1986 (art. 38 (جديد), p.12-13).",
+   "note_ar": "المبلغ الأول بداية من غرة ماي 2020 إلى موفى شهر نوفمبر 2021؛ وتتضمن المقادير منحة النقل المنصوص عليها بالأمر عدد 503 لسنة 1982 والمنقح بالأمر عدد 691 لسنة 1986 (الفصل 38 (جديد)، الصفحتان 12 و13)."
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة السلة",
+   "label_fr": "Prime de panier",
+   "source_article": "38 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 25.000,
+   "effective_date": null,
+   "condition": "travailleur désigné par l'employeur pour rester sur son lieu de travail pendant une journée d'au moins sept heures consécutives (art. 38 (جديد), p.13)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_risque",
+   "label_ar": "منحة الخطر",
+   "label_fr": "Prime de risque",
+   "source_article": "38 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 50.000,
+   "effective_date": null,
+   "condition": "agent travaillant directement aux décharges, aux centres de transfert, dans les réseaux ou dans les stations de traitement des eaux usées (art. 38 (جديد), p.13)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_proprete_savon",
+   "label_ar": "منحة النظافة والصابون",
+   "label_fr": "Prime de propreté et de savon",
+   "source_article": "38 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 70.000,
+   "effective_date": null,
+   "condition": "agent travaillant directement aux décharges, aux centres de transfert, dans les réseaux ou dans les stations de traitement des eaux usées (art. 38 (جديد), p.13)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_lait": {
+   "source_pdf_page": 13,
+   "source_article": "38 (جديد)",
+   "message_fr": "Prime de lait (article 38 (جديد), page 13) : 35 dinars par mois, mais la prime « entre en vigueur à la parution de l'avenant n° 3 » sans date imprimée ; cet avenant porte plusieurs dates (signature le 3 mars 2023, approbation le 23 mars 2023, parution au JORT n° 31 du 28 mars 2023, effet au 1er juin 2018, page 2) et la phrase vise aussi un avenant entre le propriétaire et l'exploitant de l'installation : la date d'effet ne peut pas être fixée (Q9). Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الحليب (الفصل 38 (جديد)، الصفحة 13): 35 دينارا شهريا، غير أن المنحة «تدخل حيز التطبيق عند صدور الملحق التعديلي عدد 3» دون تاريخ مطبوع؛ ويحمل هذا الملحق عدة تواريخ (الإمضاء في 3 مارس 2023 والمصادقة في 23 مارس 2023 والصدور بالرائد الرسمي عدد 31 في 28 مارس 2023 وتاريخ المفعول غرة جوان 2018، الصفحة 2)؛ لا يمكن ضبط تاريخ النفاذ. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "date d'effet indéterminée"
+  },
+  "prime_productivite": {
+   "source_pdf_page": 13,
+   "source_article": "38 (جديد)",
+   "message_fr": "Prime de productivité (article 38 (جديد), page 13) : formule semestrielle (150 dinars × note × durée de travail), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاجية (الفصل 38 (جديد)، الصفحة 13): صيغة حسابية سداسية (مائة وخمسون دينارا × العدد المهني × مدة العمل)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_13e_mois": {
+   "source_pdf_page": 13,
+   "source_article": "38 (جديد)",
+   "message_fr": "Prime du treizième mois (article 38 (جديد), page 13) : un mois de salaire à la fin de chaque année, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الشهر الثالث عشر (الفصل 38 (جديد)، الصفحة 13): أجرة شهر في نهاية كل سنة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "DECH_TOUS_AGENTS_2020-05-01",
+   "numero_imprime": 1,
+   "population": "tous_agents",
+   "effective_date": "2020-05-01",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "10",
+     "degre": 9,
+     "source_pdf_page": 16,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des dixièmes cassé : moitié gauche effacée, 3 ou 8 (lu 8 deux fois))",
+     "message_fr": "Salaire des agents, catégorie 10, degré 9 (tableau n° 1, en vigueur à partir du 2020-05-01, page 16) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des dixièmes cassé : moitié gauche effacée, 3 ou 8 (lu 8 deux fois)) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 10، الدرجة 9 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2020-05-01، الصفحة 16): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "11",
+     "degre": 9,
+     "source_pdf_page": 16,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des dixièmes cassé : moitié gauche effacée, 3 ou 8 (lu 3 deux fois))",
+     "message_fr": "Salaire des agents, catégorie 11, degré 9 (tableau n° 1, en vigueur à partir du 2020-05-01, page 16) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des dixièmes cassé : moitié gauche effacée, 3 ou 8 (lu 3 deux fois)) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 11، الدرجة 9 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2020-05-01، الصفحة 16): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     628.015,
+     635.469,
+     635.901,
+     636.334,
+     636.766,
+     637.199,
+     637.631,
+     638.064,
+     638.496,
+     638.929,
+     639.378
+    ],
+    "2": [
+     653.869,
+     654.335,
+     654.800,
+     655.266,
+     655.732,
+     656.197,
+     656.663,
+     657.129,
+     657.594,
+     658.060,
+     659.677
+    ],
+    "3": [
+     675.268,
+     675.810,
+     676.353,
+     676.895,
+     677.438,
+     677.981,
+     679.741,
+     681.602,
+     683.463,
+     685.324,
+     687.184
+    ],
+    "4": [
+     692.909,
+     693.526,
+     694.143,
+     695.786,
+     697.895,
+     700.004,
+     702.113,
+     704.222,
+     706.331,
+     708.440,
+     713.049
+    ],
+    "5": [
+     715.491,
+     717.853,
+     720.215,
+     722.577,
+     724.939,
+     727.302,
+     729.664,
+     734.526,
+     736.870,
+     739.017,
+     741.165
+    ],
+    "6": [
+     746.167,
+     748.636,
+     751.075,
+     753.575,
+     758.545,
+     761.014,
+     763.484,
+     765.953,
+     768.423,
+     770.892,
+     773.362
+    ],
+    "7": [
+     837.723,
+     840.944,
+     844.165,
+     847.386,
+     850.607,
+     853.828,
+     857.050,
+     862.771,
+     865.992,
+     869.213,
+     872.434
+    ],
+    "8": [
+     880.880,
+     885.135,
+     948.668,
+     892.201,
+     895.734,
+     899.267,
+     902.800,
+     906.332,
+     909.865,
+     913.398,
+     916.931
+    ],
+    "9": [
+     921.799,
+     925.671,
+     929.543,
+     933.415,
+     937.287,
+     941.159,
+     945.031,
+     948.903,
+     952.775,
+     956.648,
+     960.520
+    ],
+    "10": [
+     936.111,
+     940.198,
+     944.285,
+     948.372,
+     952.458,
+     956.545,
+     960.632,
+     964.719,
+     null,
+     972.892,
+     979.479
+    ],
+    "11": [
+     953.954,
+     958.255,
+     962.557,
+     966.858,
+     971.160,
+     975.462,
+     979.763,
+     984.065,
+     null,
+     995.168,
+     999.469
+    ],
+    "12": [
+     970.512,
+     975.021,
+     979.531,
+     984.040,
+     988.550,
+     993.059,
+     997.569,
+     1004.578,
+     1009.088,
+     1013.597,
+     1018.107
+    ],
+    "13": [
+     1024.126,
+     1028.957,
+     1033.789,
+     1038.621,
+     1043.452,
+     1050.784,
+     1055.615,
+     1060.447,
+     1065.279,
+     1070.110,
+     1074.942
+    ],
+    "14": [
+     1155.062,
+     1160.216,
+     1165.369,
+     1170.523,
+     1178.177,
+     1183.341,
+     1188.484,
+     1193.638,
+     1198.792,
+     1203.945,
+     1209.099
+    ],
+    "15": [
+     1238.523,
+     1246.714,
+     1252.405,
+     1258.095,
+     1263.786,
+     1269.476,
+     1275.167,
+     1280.858,
+     1286.548,
+     1292.239,
+     1297.929
+    ],
+    "16": [
+     1285.228,
+     1291.456,
+     1297.683,
+     1303.910,
+     1310.138,
+     1316.365,
+     1322.593,
+     1328.820,
+     1335.048,
+     1341.275,
+     1347.503
+    ],
+    "17": [
+     1366.112,
+     1372.877,
+     1379.641,
+     1386.405,
+     1393.169,
+     1399.934,
+     1406.698,
+     1413.462,
+     1420.227,
+     1426.991,
+     1433.755
+    ],
+    "18": [
+     1427.179,
+     1435.232,
+     1443.284,
+     1451.336,
+     1459.390,
+     1467.443,
+     1475.495,
+     1483.548,
+     1491.601,
+     1499.654,
+     1507.706
+    ],
+    "19": [
+     1590.588,
+     1600.251,
+     1609.915,
+     1619.578,
+     1629.241,
+     1638.904,
+     1648.568,
+     1658.231,
+     1667.894,
+     1677.557,
+     1687.221
+    ]
+   }
+  },
+  {
+   "table_id": "DECH_TOUS_AGENTS_2021-12-01",
+   "numero_imprime": 2,
+   "population": "tous_agents",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "13",
+     "degre": 9,
+     "source_pdf_page": 17,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités réduit à un trait coupé)",
+     "message_fr": "Salaire des agents, catégorie 13, degré 9 (tableau n° 2, en vigueur à partir du 2021-12-01, page 17) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités réduit à un trait coupé) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 13، الدرجة 9 (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-12-01، الصفحة 17): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "14",
+     "degre": 9,
+     "source_pdf_page": 17,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5)",
+     "message_fr": "Salaire des agents, catégorie 14, degré 9 (tableau n° 2, en vigueur à partir du 2021-12-01, page 17) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 14، الدرجة 9 (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-12-01، الصفحة 17): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 9,
+     "source_pdf_page": 17,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 8)",
+     "message_fr": "Salaire des agents, catégorie 16, degré 9 (tableau n° 2, en vigueur à partir du 2021-12-01, page 17) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 16، الدرجة 9 (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-12-01، الصفحة 17): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     668.836,
+     676.290,
+     676.722,
+     677.155,
+     677.587,
+     678.020,
+     678.452,
+     678.885,
+     679.317,
+     679.750,
+     680.199
+    ],
+    "2": [
+     696.371,
+     696.837,
+     697.302,
+     697.768,
+     698.234,
+     698.699,
+     699.165,
+     699.631,
+     700.096,
+     700.562,
+     702.179
+    ],
+    "3": [
+     719.161,
+     719.703,
+     720.246,
+     720.788,
+     721.331,
+     721.874,
+     723.634,
+     725.495,
+     727.356,
+     729.217,
+     731.077
+    ],
+    "4": [
+     737.949,
+     738.566,
+     739.183,
+     740.826,
+     742.935,
+     745.044,
+     747.153,
+     749.262,
+     751.371,
+     753.480,
+     758.089
+    ],
+    "5": [
+     761.998,
+     764.360,
+     766.722,
+     769.084,
+     771.446,
+     773.809,
+     776.171,
+     781.033,
+     783.377,
+     785.524,
+     787.672
+    ],
+    "6": [
+     794.668,
+     797.137,
+     799.576,
+     802.076,
+     807.046,
+     809.515,
+     811.985,
+     814.454,
+     816.924,
+     819.393,
+     821.863
+    ],
+    "7": [
+     892.175,
+     895.396,
+     898.617,
+     901.838,
+     905.059,
+     908.280,
+     911.502,
+     917.223,
+     920.444,
+     923.665,
+     926.886
+    ],
+    "8": [
+     938.137,
+     942.392,
+     1005.925,
+     949.458,
+     952.991,
+     956.524,
+     960.057,
+     963.589,
+     967.122,
+     970.655,
+     974.188
+    ],
+    "9": [
+     981.716,
+     985.588,
+     989.460,
+     993.332,
+     997.204,
+     1001.076,
+     1004.948,
+     1008.820,
+     1012.692,
+     1016.565,
+     1020.437
+    ],
+    "10": [
+     996.958,
+     1001.045,
+     1005.132,
+     1009.219,
+     1013.305,
+     1017.392,
+     1021.479,
+     1025.566,
+     1029.653,
+     1033.739,
+     1040.326
+    ],
+    "11": [
+     1015.961,
+     1020.262,
+     1024.564,
+     1028.865,
+     1033.167,
+     1037.469,
+     1041.770,
+     1046.072,
+     1052.873,
+     1057.175,
+     1061.476
+    ],
+    "12": [
+     1033.595,
+     1038.104,
+     1042.614,
+     1047.123,
+     1051.633,
+     1056.142,
+     1060.652,
+     1067.661,
+     1072.171,
+     1076.680,
+     1081.190
+    ],
+    "13": [
+     1090.695,
+     1095.526,
+     1100.358,
+     1105.190,
+     1110.021,
+     1117.353,
+     1122.184,
+     1127.016,
+     null,
+     1136.679,
+     1141.511
+    ],
+    "14": [
+     1230.141,
+     1235.295,
+     1240.448,
+     1245.602,
+     1253.256,
+     1258.420,
+     1263.563,
+     1268.717,
+     null,
+     1279.024,
+     1284.178
+    ],
+    "15": [
+     1319.027,
+     1327.218,
+     1332.909,
+     1338.599,
+     1344.290,
+     1349.980,
+     1355.671,
+     1361.362,
+     1367.052,
+     1372.743,
+     1378.433
+    ],
+    "16": [
+     1368.767,
+     1374.995,
+     1381.222,
+     1387.449,
+     1393.677,
+     1399.904,
+     1406.132,
+     1412.359,
+     null,
+     1424.814,
+     1431.042
+    ],
+    "17": [
+     1454.909,
+     1461.674,
+     1468.438,
+     1475.202,
+     1481.966,
+     1488.731,
+     1495.495,
+     1502.259,
+     1509.024,
+     1515.788,
+     1522.552
+    ],
+    "18": [
+     1519.946,
+     1527.999,
+     1536.051,
+     1544.103,
+     1552.157,
+     1560.210,
+     1568.262,
+     1576.315,
+     1584.368,
+     1592.421,
+     1600.473
+    ],
+    "19": [
+     1693.977,
+     1703.640,
+     1713.304,
+     1722.967,
+     1732.630,
+     1742.293,
+     1751.957,
+     1761.620,
+     1771.283,
+     1780.946,
+     1790.610
+    ]
+   }
+  },
+  {
+   "table_id": "DECH_TOUS_AGENTS_2023-01-01",
+   "numero_imprime": 3,
+   "population": "tous_agents",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "3",
+     "degre": 9,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5)",
+     "message_fr": "Salaire des agents, catégorie 3, degré 9 (tableau n° 3, en vigueur à partir du 2023-01-01, page 18) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 3، الدرجة 9 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2023-01-01، الصفحة 18): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "11",
+     "degre": 9,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités réduit à un trait et un point)",
+     "message_fr": "Salaire des agents, catégorie 11, degré 9 (tableau n° 3, en vigueur à partir du 2023-01-01, page 18) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités réduit à un trait et un point) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 11، الدرجة 9 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2023-01-01، الصفحة 18): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "13",
+     "degre": 9,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5)",
+     "message_fr": "Salaire des agents, catégorie 13, degré 9 (tableau n° 3, en vigueur à partir du 2023-01-01, page 18) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 5) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 13، الدرجة 9 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2023-01-01، الصفحة 18): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "14",
+     "degre": 9,
+     "source_pdf_page": 18,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6 ou 8)",
+     "message_fr": "Salaire des agents, catégorie 14, degré 9 (tableau n° 3, en vigueur à partir du 2023-01-01, page 18) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 14، الدرجة 9 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2023-01-01، الصفحة 18): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     713.983,
+     721.437,
+     721.869,
+     722.302,
+     722.734,
+     723.167,
+     723.599,
+     724.032,
+     724.464,
+     724.897,
+     725.346
+    ],
+    "2": [
+     743.376,
+     743.842,
+     744.307,
+     744.773,
+     745.239,
+     745.704,
+     746.170,
+     746.636,
+     747.101,
+     747.567,
+     749.184
+    ],
+    "3": [
+     767.704,
+     768.246,
+     768.789,
+     769.331,
+     769.874,
+     770.417,
+     772.177,
+     774.038,
+     null,
+     777.760,
+     779.620
+    ],
+    "4": [
+     787.760,
+     788.377,
+     788.994,
+     790.637,
+     792.746,
+     794.855,
+     796.964,
+     799.073,
+     801.182,
+     803.291,
+     807.900
+    ],
+    "5": [
+     813.432,
+     815.794,
+     818.156,
+     820.518,
+     822.880,
+     825.243,
+     827.605,
+     832.467,
+     834.811,
+     836.958,
+     839.106
+    ],
+    "6": [
+     848.308,
+     850.777,
+     853.216,
+     855.716,
+     860.686,
+     863.155,
+     865.625,
+     868.094,
+     870.564,
+     873.033,
+     875.503
+    ],
+    "7": [
+     952.396,
+     955.617,
+     958.838,
+     962.059,
+     965.280,
+     968.501,
+     971.723,
+     977.444,
+     980.665,
+     983.886,
+     987.107
+    ],
+    "8": [
+     1001.461,
+     1005.716,
+     1069.249,
+     1012.782,
+     1016.315,
+     1019.848,
+     1023.381,
+     1026.913,
+     1030.446,
+     1033.979,
+     1037.512
+    ],
+    "9": [
+     1047.982,
+     1051.854,
+     1055.726,
+     1059.598,
+     1063.470,
+     1067.342,
+     1071.214,
+     1075.086,
+     1078.958,
+     1082.831,
+     1086.703
+    ],
+    "10": [
+     1064.253,
+     1068.340,
+     1072.427,
+     1076.514,
+     1080.600,
+     1084.687,
+     1088.774,
+     1092.861,
+     1096.948,
+     1101.034,
+     1107.621
+    ],
+    "11": [
+     1084.539,
+     1088.840,
+     1093.142,
+     1097.443,
+     1101.745,
+     1106.047,
+     1110.348,
+     1114.650,
+     null,
+     1125.753,
+     1130.054
+    ],
+    "12": [
+     1103.363,
+     1107.872,
+     1112.382,
+     1116.891,
+     1121.401,
+     1125.910,
+     1130.420,
+     1137.429,
+     1141.939,
+     1146.448,
+     1150.958
+    ],
+    "13": [
+     1164.316,
+     1169.147,
+     1173.979,
+     1178.811,
+     1183.642,
+     1190.974,
+     1195.805,
+     1200.637,
+     null,
+     1210.300,
+     1215.132
+    ],
+    "14": [
+     1313.175,
+     1318.329,
+     1323.482,
+     1328.636,
+     1336.290,
+     1341.454,
+     1346.597,
+     1351.751,
+     null,
+     1362.058,
+     1367.212
+    ],
+    "15": [
+     1408.061,
+     1416.252,
+     1421.943,
+     1427.633,
+     1433.324,
+     1439.014,
+     1444.705,
+     1450.396,
+     1456.086,
+     1461.777,
+     1467.467
+    ],
+    "16": [
+     1461.159,
+     1467.387,
+     1473.614,
+     1479.841,
+     1486.069,
+     1492.296,
+     1498.524,
+     1504.751,
+     1510.979,
+     1517.206,
+     1523.434
+    ],
+    "17": [
+     1553.116,
+     1559.881,
+     1566.645,
+     1573.409,
+     1580.173,
+     1586.938,
+     1593.702,
+     1600.466,
+     1607.231,
+     1613.995,
+     1620.759
+    ],
+    "18": [
+     1622.542,
+     1630.595,
+     1638.647,
+     1646.699,
+     1654.753,
+     1662.806,
+     1670.858,
+     1678.911,
+     1686.964,
+     1695.017,
+     1703.069
+    ],
+    "19": [
+     1808.320,
+     1817.983,
+     1827.647,
+     1837.310,
+     1846.973,
+     1856.636,
+     1866.300,
+     1875.963,
+     1885.626,
+     1895.289,
+     1904.953
+    ]
+   }
+  },
+  {
+   "table_id": "DECH_TOUS_AGENTS_2024-01-01",
+   "numero_imprime": 4,
+   "population": "tous_agents",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "8",
+     "degre": 9,
+     "source_pdf_page": 19,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 8)",
+     "message_fr": "Salaire des agents, catégorie 8, degré 9 (tableau n° 4, en vigueur à partir du 2024-01-01, page 19) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 8، الدرجة 9 (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2024-01-01، الصفحة 19): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "13",
+     "degre": 9,
+     "source_pdf_page": 19,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé (forme « < »))",
+     "message_fr": "Salaire des agents, catégorie 13, degré 9 (tableau n° 4, en vigueur à partir du 2024-01-01, page 19) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé (forme « < »)) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 13، الدرجة 9 (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2024-01-01، الصفحة 19): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 9,
+     "source_pdf_page": 19,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6, 8 ou 9)",
+     "message_fr": "Salaire des agents, catégorie 16, degré 9 (tableau n° 4, en vigueur à partir du 2024-01-01, page 19) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6, 8 ou 9) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 16، الدرجة 9 (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2024-01-01، الصفحة 19): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "18",
+     "degre": 9,
+     "source_pdf_page": 19,
+     "source_article": "جدول الأجور",
+     "raison": "chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6 ou 8)",
+     "message_fr": "Salaire des agents, catégorie 18, degré 9 (tableau n° 4, en vigueur à partir du 2024-01-01, page 19) : chiffre abîmé à l'impression, illisible au zoom à 400 dpi (chiffre des unités cassé, 6 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان، الصنف 18، الدرجة 9 (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2024-01-01، الصفحة 19): رقم تالف في الطباعة وغير مقروء؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     762.177,
+     769.631,
+     770.063,
+     770.496,
+     770.928,
+     771.361,
+     771.793,
+     772.226,
+     772.658,
+     773.091,
+     773.540
+    ],
+    "2": [
+     793.553,
+     794.019,
+     794.484,
+     794.950,
+     795.416,
+     795.881,
+     796.347,
+     796.813,
+     797.278,
+     797.744,
+     799.361
+    ],
+    "3": [
+     819.524,
+     820.066,
+     820.609,
+     821.151,
+     821.694,
+     822.237,
+     823.997,
+     825.858,
+     827.719,
+     829.580,
+     831.440
+    ],
+    "4": [
+     840.934,
+     841.551,
+     842.168,
+     843.811,
+     845.920,
+     848.029,
+     850.138,
+     852.247,
+     854.356,
+     856.465,
+     861.074
+    ],
+    "5": [
+     868.339,
+     870.701,
+     873.063,
+     875.425,
+     877.787,
+     880.150,
+     882.512,
+     887.374,
+     889.718,
+     891.865,
+     894.013
+    ],
+    "6": [
+     905.568,
+     908.037,
+     910.476,
+     912.976,
+     917.946,
+     920.415,
+     922.885,
+     925.354,
+     927.824,
+     930.293,
+     932.763
+    ],
+    "7": [
+     1016.683,
+     1019.904,
+     1023.125,
+     1026.346,
+     1029.567,
+     1032.788,
+     1036.010,
+     1041.731,
+     1044.952,
+     1048.173,
+     1051.394
+    ],
+    "8": [
+     1069.060,
+     1073.315,
+     1136.848,
+     1080.381,
+     1083.914,
+     1087.447,
+     1090.980,
+     1094.512,
+     null,
+     1101.578,
+     1105.111
+    ],
+    "9": [
+     1118.721,
+     1122.593,
+     1126.465,
+     1130.337,
+     1134.209,
+     1138.081,
+     1141.953,
+     1145.825,
+     1149.697,
+     1153.570,
+     1157.442
+    ],
+    "10": [
+     1136.090,
+     1140.177,
+     1144.264,
+     1148.351,
+     1152.437,
+     1156.524,
+     1160.611,
+     1164.698,
+     1168.785,
+     1172.871,
+     1179.458
+    ],
+    "11": [
+     1157.745,
+     1162.046,
+     1166.348,
+     1170.649,
+     1174.951,
+     1179.253,
+     1183.554,
+     1187.856,
+     1194.657,
+     1198.959,
+     1203.260
+    ],
+    "12": [
+     1177.840,
+     1182.349,
+     1186.859,
+     1191.368,
+     1195.878,
+     1200.387,
+     1204.897,
+     1211.906,
+     1216.416,
+     1220.925,
+     1225.435
+    ],
+    "13": [
+     1242.908,
+     1247.739,
+     1252.571,
+     1257.403,
+     1262.234,
+     1269.566,
+     1274.397,
+     1279.229,
+     null,
+     1288.892,
+     1293.724
+    ],
+    "14": [
+     1401.815,
+     1406.969,
+     1412.122,
+     1417.276,
+     1424.930,
+     1430.094,
+     1435.237,
+     1440.391,
+     1445.545,
+     1450.698,
+     1455.852
+    ],
+    "15": [
+     1503.105,
+     1511.296,
+     1516.987,
+     1522.677,
+     1528.368,
+     1534.058,
+     1539.749,
+     1545.440,
+     1551.130,
+     1556.821,
+     1562.511
+    ],
+    "16": [
+     1559.787,
+     1566.015,
+     1572.242,
+     1578.469,
+     1584.697,
+     1590.924,
+     1597.152,
+     1603.379,
+     null,
+     1615.834,
+     1622.062
+    ],
+    "17": [
+     1657.951,
+     1664.716,
+     1671.480,
+     1678.244,
+     1685.008,
+     1691.773,
+     1698.537,
+     1705.301,
+     1712.066,
+     1718.830,
+     1725.594
+    ],
+    "18": [
+     1732.064,
+     1740.117,
+     1748.169,
+     1756.221,
+     1764.275,
+     1772.328,
+     1780.380,
+     1788.433,
+     null,
+     1804.539,
+     1812.591
+    ],
+    "19": [
+     1930.382,
+     1940.045,
+     1949.709,
+     1959.372,
+     1969.035,
+     1978.698,
+     1988.362,
+     1998.025,
+     2007.688,
+     2017.351,
+     2027.015
+    ]
+   }
+  }
+ ]
+}

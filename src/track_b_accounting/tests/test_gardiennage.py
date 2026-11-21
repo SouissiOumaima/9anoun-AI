@@ -6,6 +6,7 @@ Les tests de règles lisent une copie en mémoire (référence de test « D99 »
 temps du test) ; le fichier réel, activé par D47, est vérifié à part.
 Les valeurs attendues viennent de la double lecture de la page 21 et de la lecture de la page 14.
 """
+
 import copy
 from decimal import Decimal
 
@@ -18,9 +19,11 @@ S = "GARDIENNAGE_SECURITE_TRANSPORT_FONDS"
 FICHIER = "data/processed/salary_grids/gardiennage.json"
 REEL = lire_json(FICHIER)
 BORNES = [1, 2] + list(range(4, 25, 2))
-STATUT = ("Barème n° 2 (p.21) : 210 cellules lues par une double lecture indépendante (0 écart), puis relues contre "
-          "l'image par une relecture indépendante (aucun écart) ; montants des primes (p.14) relus contre l'image (aucun "
-          "écart) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image.")
+STATUT = (
+    "Barème n° 2 (p.21) : 210 cellules lues par une double lecture indépendante (0 écart), puis relues contre "
+    "l'image par une relecture indépendante (aucun écart) ; montants des primes (p.14) relus contre l'image (aucun "
+    "écart) ; cas du jeu de référence TB-112 à TB-125 vérifiés à l'image."
+)
 
 
 @pytest.fixture
@@ -43,6 +46,7 @@ def refus(code, f, *a, **k):
 
 # --- fichier réel : structure et activation ------------------------------------------------------------------
 
+
 def test_fichier_reel_active_d47_et_dans_le_registre():
     assert REEL["_meta"]["decision_ref"] == "D47" and REEL["_meta"]["secteur_code"] == S
     assert REEL["_meta"]["statut_verification"] == STATUT and STATUT.endswith("TB-112 à TB-125 vérifiés à l'image.")
@@ -53,9 +57,16 @@ def test_fichier_reel_active_d47_et_dans_le_registre():
 
 
 def test_structure_une_table_210_cellules():
-    assert list(REEL["populations"]) == ["tous_agents"] and REEL["categories"]["tous_agents"] == [str(c) for c in range(1, 16)]
+    assert list(REEL["populations"]) == ["tous_agents"] and REEL["categories"]["tous_agents"] == [
+        str(c) for c in range(1, 16)
+    ]
     (t,) = REEL["grilles"]
-    assert (t["effective_date"], t["source_pdf_page"], t["unite"], t["numero_imprime"]) == ("2010-05-01", 21, "TND/mois", 2)
+    assert (t["effective_date"], t["source_pdf_page"], t["unite"], t["numero_imprime"]) == (
+        "2010-05-01",
+        21,
+        "TND/mois",
+        2,
+    )
     assert all(len(v) == 14 and all(isinstance(x, Decimal) for x in v) for v in t["valeurs"].values())
     assert sum(len(v) for v in t["valeurs"].values()) == 210
     assert [d["anciennete_label"] for d in REEL["degres"]["tous_agents"]][:4] == ["0-1", "1-2", "2-4", "4-6"]
@@ -74,21 +85,28 @@ def test_lignes_et_colonnes_strictement_croissantes():
 
 # --- salaire de base -----------------------------------------------------------------------------------------
 
-@pytest.mark.parametrize("cat,anc,date,attendu", [
-    ("1", 0.5, "2010-05-01", "344.500"),        # ligne 1, degré 1
-    ("1", 21, "2010-12-01", "371.200"),         # ligne 1, degré 12 (20-22), saut isolé imprimé
-    ("7", 5, "2011-01-01", "637.500"),          # ligne 7, degré 4 (4-6), saut isolé imprimé
-    ("10", 9, "2010-09-01", "965.000"),         # ligne 10, degré 6 (8-10)
-    ("12", 25, "2011-04-30", "1224.000"),       # ligne 12, degré 14 (24-26), veille de la fin de validité
-    ("15", 1.5, "2011-02-01", "1291.000"),      # ligne 15, degré 2 (1-2)
-])
+
+@pytest.mark.parametrize(
+    "cat,anc,date,attendu",
+    [
+        ("1", 0.5, "2010-05-01", "344.500"),  # ligne 1, degré 1
+        ("1", 21, "2010-12-01", "371.200"),  # ligne 1, degré 12 (20-22), saut isolé imprimé
+        ("7", 5, "2011-01-01", "637.500"),  # ligne 7, degré 4 (4-6), saut isolé imprimé
+        ("10", 9, "2010-09-01", "965.000"),  # ligne 10, degré 6 (8-10)
+        ("12", 25, "2011-04-30", "1224.000"),  # ligne 12, degré 14 (24-26), veille de la fin de validité
+        ("15", 1.5, "2011-02-01", "1291.000"),  # ligne 15, degré 2 (1-2)
+    ],
+)
 def test_montants_lus(gs, ok, cat, anc, date, attendu):
     r = ok(salaire_base(S, None, cat, anc, date))
     assert r.montant == Decimal(attendu) and r.unite == "TND/mois" and r.citations[0].page == 21
 
 
 def test_population_unique_facultative(gs):
-    assert salaire_base(S, None, "5", 3, "2010-06-01").montant == salaire_base(S, "tous_agents", "5", 3, "2010-06-01").montant
+    assert (
+        salaire_base(S, None, "5", 3, "2010-06-01").montant
+        == salaire_base(S, "tous_agents", "5", 3, "2010-06-01").montant
+    )
     refus(Refus.PARAM_INVALIDE, salaire_base, S, "gardiens", "5", 3, "2010-06-01")
 
 
@@ -122,6 +140,7 @@ def test_avant_le_2010_05_01_refuse(gs):
 
 # --- fin de validité de la table (valide_jusqu_au) -----------------------------------------------------------
 
+
 def test_table_servie_jusqu_au_2011_04_30(gs):
     assert table_applicable(S, None, "2011-04-30")["table_id"] == "GS_TOUS_AGENTS_2010-05-01"
 
@@ -134,12 +153,15 @@ def test_refus_apres_la_fin_de_validite(gs, date):
     assert (fin["date"], fin["source_pdf_page"]) == ("2011-04-30", 2) and "avenant n° 7" in e.message_fr
 
 
-@pytest.mark.parametrize("modif", [
-    lambda f: f.pop("message_ar"),
-    lambda f: f.update(date="30/04/2011"),
-    lambda f: f.update(date="2010-04-30"),
-    lambda f: f.update(source_pdf_page=0),
-])
+@pytest.mark.parametrize(
+    "modif",
+    [
+        lambda f: f.pop("message_ar"),
+        lambda f: f.update(date="30/04/2011"),
+        lambda f: f.update(date="2010-04-30"),
+        lambda f: f.update(source_pdf_page=0),
+    ],
+)
 def test_valide_jusqu_au_invalide_refuse_par_le_validateur(modif):
     g = copy.deepcopy(REEL)
     g["_meta"]["decision_ref"] = "D99"
@@ -156,6 +178,7 @@ def test_aucune_autre_grille_ne_porte_valide_jusqu_au():
 
 
 # --- primes couvertes ----------------------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("groupe,attendu", [("execution_gestion", "20.000"), ("cadres", "25.000")])
 def test_prime_transport(gs, ok, groupe, attendu):
@@ -177,12 +200,15 @@ def test_prime_presence(gs, ok):
 def test_prime_panier_avec_condition(gs, ok):
     r = ok(prime(S, "prime_panier", "2015-01-01", condition_remplie=True))
     assert r.montant == Decimal("5.200") and (r.citations[0].page, r.citations[0].article) == (14, "46-4")
-    assert "permanent ou contractuel" in r.detail["condition"] and "plus de 7 h le jour du panier" in r.detail["condition"]
+    assert (
+        "permanent ou contractuel" in r.detail["condition"] and "plus de 7 h le jour du panier" in r.detail["condition"]
+    )
     refus(Refus.HORS_SCOPE, prime, S, "prime_panier", "2015-01-01", condition_remplie=False)
     refus(Refus.PARAM_INVALIDE, prime, S, "prime_panier", "2015-01-01")
 
 
 # --- primes non couvertes ------------------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("code", sorted(REEL["primes_non_couvertes"]))
 def test_prime_non_couverte_refusee_avec_raison(gs, code):
@@ -195,6 +221,9 @@ def test_liste_des_primes():
     assert [p["code"] for p in REEL["primes"]] == ["prime_transport", "prime_presence", "prime_panier"]
     assert all(p["label_fr"] and p["label_ar"] for p in REEL["primes"])
     assert {c: (b["source_article"], b["source_pdf_page"]) for c, b in REEL["primes_non_couvertes"].items()} == {
-        "prime_risque_exceptionnel": ("46 مكرر", 14), "prime_production": ("47", 14),
-        "prime_affectation_categorie_superieure": ("13", 8), "indemnite_fin_service": ("39 (جديد)", 13),
-        "indemnite_complementaire_provisoire": ("ملاحظة", 21)}
+        "prime_risque_exceptionnel": ("46 مكرر", 14),
+        "prime_production": ("47", 14),
+        "prime_affectation_categorie_superieure": ("13", 8),
+        "indemnite_fin_service": ("39 (جديد)", 13),
+        "indemnite_complementaire_provisoire": ("ملاحظة", 21),
+    }

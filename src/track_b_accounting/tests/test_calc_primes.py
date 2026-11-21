@@ -1,6 +1,7 @@
 """Primes METALLURGIE_BATIMENT (p.16, art. 50/51 nouveaux).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_primes.py
 """
+
 import copy
 from decimal import Decimal
 
@@ -21,6 +22,7 @@ def refus(code, *a, **k):
 
 
 # --- montants datés -------------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("code", ["prime_presence", "prime_logement"])
 @pytest.mark.parametrize("i", [0, 1, 2])
@@ -47,9 +49,15 @@ def test_valeurs_codees_en_dur_p16(ok):
     assert ok(prime(S, "prime_logement", "2024-01-01")).montant == Decimal("26.293")
 
 
-@pytest.mark.parametrize("date,attendu", [
-    ("2022-06-01", "6.894"), ("2022-12-31", "6.894"), ("2023-01-01", "7.359"), ("2023-12-31", "7.359"),
-])
+@pytest.mark.parametrize(
+    "date,attendu",
+    [
+        ("2022-06-01", "6.894"),
+        ("2022-12-31", "6.894"),
+        ("2023-01-01", "7.359"),
+        ("2023-12-31", "7.359"),
+    ],
+)
 def test_choix_par_date(date, attendu, ok):
     assert ok(prime(S, "prime_presence", date)).montant == Decimal(attendu)
 
@@ -78,6 +86,7 @@ def test_transport_groupe_obligatoire(groupe):
 
 # --- montant unique et variante réduite ------------------------------------------------------------
 
+
 def test_panier_montant_unique(ok):
     r = ok(prime(S, "prime_panier_qefa", "2023-05-01", transport_assure=False))
     assert r.montant == Decimal("0.560") == PRIMES["prime_panier_qefa"]["montant"]
@@ -95,10 +104,13 @@ def test_panier_transport_assure_obligatoire(val):
     refus(Refus.PARAM_INVALIDE, S, "prime_panier_qefa", "2023-05-01", **kwargs)
 
 
-@pytest.mark.parametrize("code,montant,unite", [
-    ("prime_deplacement_chantier", "0.750", "TND/jour"),
-    ("prime_travail_en_hauteur", "0.015", "TND/heure"),
-])
+@pytest.mark.parametrize(
+    "code,montant,unite",
+    [
+        ("prime_deplacement_chantier", "0.750", "TND/jour"),
+        ("prime_travail_en_hauteur", "0.015", "TND/heure"),
+    ],
+)
 def test_prime_conditionnelle(code, montant, unite, ok):
     r = ok(prime(S, code, "2023-05-01", condition_remplie=True))
     assert r.montant == Decimal(montant) and r.unite == unite
@@ -109,6 +121,7 @@ def test_prime_conditionnelle(code, montant, unite, ok):
 
 
 # --- refus divers ----------------------------------------------------------------------------------
+
 
 def test_prime_inconnue():
     refus(Refus.SOURCE_MANQUANTE, S, "prime_rendement", "2023-05-01")
@@ -128,8 +141,14 @@ def test_date_invalide():
 
 
 def test_toutes_les_primes_couvertes():
-    assert set(PRIMES) == {"prime_transport", "prime_presence", "prime_logement", "prime_panier_qefa",
-                           "prime_deplacement_chantier", "prime_travail_en_hauteur"}
+    assert set(PRIMES) == {
+        "prime_transport",
+        "prime_presence",
+        "prime_logement",
+        "prime_panier_qefa",
+        "prime_deplacement_chantier",
+        "prime_travail_en_hauteur",
+    }
 
 
 # --- référence de vérification (_meta.decision_ref) -------------------------------------------------

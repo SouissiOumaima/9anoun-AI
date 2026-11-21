@@ -16,6 +16,20 @@ from typing import Any, Mapping
 
 _TABLE_PATH = Path(__file__).resolve().parents[1] / "shared" / "sectors" / "sectors.v0.json"
 
+# These are social-protection expressions, not sector designations.  They
+# must be removed before aliases are considered: otherwise "agent de sécurité
+# sociale" contains the valid but unrelated alias "agent de sécurité", and
+# "assurance sociale" contains the sector name "assurance".
+_NON_SECTOR_SOCIAL_EXPRESSIONS = re.compile(
+    r"(?:"
+    r"\b(?:s[ée]curit[ée][\s-]+sociale|"
+    r"assurance[\s-]+(?:sociale|maladie))\b|"
+    r"التأمين[\s-]+على[\s-]+المرض|"
+    r"التأمين[\s-]+الاجتماعي"
+    r")",
+    re.IGNORECASE,
+)
+
 
 @lru_cache(maxsize=1)
 def load_sector_table() -> dict[str, Any]:
@@ -124,6 +138,7 @@ def _clarification_sectors(message: str) -> list[dict[str, Any]]:
 
 
 def _matched_sectors(message: str) -> list[dict[str, Any]]:
+    message = _NON_SECTOR_SOCIAL_EXPRESSIONS.sub(" ", message)
     matches: list[dict[str, Any]] = []
     for sector in load_sector_table()["sectors"]:
         terms = (
@@ -166,11 +181,6 @@ def _has_metallurgy_term(message: str) -> bool:
 
 
 def _has_unambiguous_sector_term(message: str) -> bool:
-    table = load_sector_table()
-    for sector in table["sectors"]:
-        if sector["ds5_status"] != "actif":
-            continue
-        terms = (sector["ds2_code"], sector["label_fr"], sector["label_ar"], sector.get("ds5_code") or "", *sector.get("aliases", ()))
-        if any(term and term.casefold() in message for term in terms):
-            return True
-    return False
+    """Whether strict sector matching found one of the active DS5 sectors."""
+
+    return any(sector["ds5_status"] == "actif" for sector in _matched_sectors(message))

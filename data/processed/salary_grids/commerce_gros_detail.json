@@ -1,0 +1,2367 @@
+{
+ "_meta": {
+  "secteur_code": "COMMERCE_GROS_DETAIL",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لتجارة الجملة ونصف الجملة والتفصيل",
+  "convention_fr": "Convention collective sectorielle du commerce de gros, de demi-gros et de détail",
+  "source_file": "data/raw/pdf/تجارة الجملة ونصف الجملة و التفصيل.pdf",
+  "pages_sources": [
+   3,
+   8,
+   14,
+   15,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "897 cellules lues en double lecture indépendante sur image (rendus à 200 et 280 dpi, saisie dans deux ordres) et comparées par script : 0 écart, 0 cellule douteuse ; contrôle de hausse entre deux dates voisines (montant fixe par ligne) sur 897 cellules comparables : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image et confirmés par les chiffres de la couche texte. Vérifié par DS5 sur les images, aucune correction : les 108 montants de primes servis, dont les 9 montants en toutes lettres ; les 43 cas TB-202 à TB-244, avec la page, la ligne et la colonne de chacun ; chez les déchets, les 2 cellules retenues au zoom (1 367.052 et 1 149.697) et la cellule de la ligne 8 degré 3 sur les quatre tableaux ; la cellule de l'habillement tranchée au zoom (1 114,395) ; la première et la dernière ligne d'un lot par secteur, avec leurs libellés. Les autres cellules des grilles reposent sur la double lecture et sur le contrôle de hausse, sans relecture humaine cellule par cellule.",
+  "decision_ref": "D66",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur les tableaux (p.22-27) : TND/mois en hypothèse affichée ; la ligne « شغال بالساعة » porte la mention imprimée « (شهريا) ».",
+  "note_degres": "En-tête (p.22-27) : 13 degrés de 2 ans, ancienneté effective 2 … 26 ; libellés « 0-2 » … « 22-24 », « 24+ » ; art. 12 (جديد) أ : écart cumulé tous les 2 ans pour la catégorie 21, refus au-delà de 26 ans pour les autres (cases_refusees) ; bornes et paliers exacts refusés (D6, D10).",
+  "note_categories": "Clés : agents = ligne horaire imprimée (« ouvrier_horaire_ligne_imprimee ») et catégories 10 à 21 ; sous-chefs de rayon, chefs de rayon et gérants = catégories 16 et 17, sous-niveaux « a » à « e » (أ à هـ, imprimés en ordre décroissant) ; population obligatoire (16 et 17 existent dans les deux tableaux).",
+  "note_dates": "Tableaux de 2021-12-01 (p.22-23), 2023-01-01 (p.24-25), 2024-01-01 (p.26-27) ; refus avant le 2021-12-01.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Non repris ; une même grille.",
+  "remarque_pdf": "Note sous chaque tableau (p.22-27) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 22 إلى 27): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "agents": {
+   "libelle_fr": "Agents (tableaux n° 1, 3 et 5)",
+   "libelle_ar": "الأعوان",
+   "libelle_ar_redige": true,
+   "source_pdf_page": 22,
+   "note": "Ligne horaire et catégories 10 à 21 ; population obligatoire."
+  },
+  "chefs_rayon_gerants": {
+   "libelle_fr": "Sous-chefs de rayon, chefs de rayon et gérants de magasin",
+   "libelle_ar": "كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 23,
+   "note": "Tableaux n° 2, 4 et 6 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24+",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "26"
+   }
+  ],
+  "chefs_rayon_gerants": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "2"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "4"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "6"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "8"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "10"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "12"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "14"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "16"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "18"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "20"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "22"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "24"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24+",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "26"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "agents": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "12 (جديد) أ",
+   "texte_source_ar": "يتمتع كل سنتين الإطارات المرتبون بالسلم 21، والذين بلغوا آخر درجة في السلم (الدرجة 13) بالفارق بين القيمة المالية للدرجة 13 والقيمة المالية للدرجة 12، والمقدر بـ 16,686 د.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D66",
+   "hypotheses_fr": [
+    "Article 12 (جديد) أ (p.8) : les cadres de la catégorie 21 arrivés au degré 13 (atteint à 24 ans selon les durées imprimées) reçoivent tous les 2 ans l'écart entre les degrés 13 et 12, « évalué à 16,686 d » ; n = nombre de périodes de 2 ans révolues depuis 24 ans ; écart cumulé calculé sur la table en vigueur (règle D10, période 2) ; il vaut 16,686 sur les trois tableaux. Les autres catégories sont refusées au-delà de 26 ans (passage non calculé)."
+   ],
+   "hypotheses_ar": [
+    "الفصل 12 (جديد) أ (الصفحة 8): يتمتع كل سنتين الإطارات المرتبون بالسلم 21 عند بلوغهم الدرجة 13 (المبلوغة عند 24 سنة حسب المدد المطبوعة) بالفارق بين الدرجتين 13 و12 «المقدر بـ 16,686 د»؛ عدد الفترات هو عدد السنتين المنقضيتين منذ 24 سنة؛ يُجمع الفارق محسوبا على الجدول الساري (القاعدة D10، فترة سنتين)، وهو يساوي 16,686 في الجداول الثلاثة."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 12 (جديد) أ (page 8 : 26, 28, 30… ans) : la source ne dit pas si l'écart ou le passage de ce palier est déjà dû. Indiquer l'ancienneté exacte.",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 12 (جديد) أ (الصفحة 8: 26 و28 و30 سنة...) ولا يحدد المصدر إن كان الفارق أو الانتقال مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة.",
+   "cases_refusees": [
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "ouvrier_horaire_ligne_imprimee",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie ouvrier_horaire_ligne_imprimee : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف ouvrier_horaire_ligne_imprimee: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "10",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 10 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 10: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "11",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 11 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 11: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "12",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 12 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 12: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "13",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 13 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 13: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "14",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 14 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 14: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "15",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 15 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 15: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "16",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 16 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 16: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "17",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 17 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 17: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "18",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 18 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 18: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "19",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 19 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 19: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2021-12-01",
+     "categorie": "20",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 20 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 20: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "ouvrier_horaire_ligne_imprimee",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie ouvrier_horaire_ligne_imprimee : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف ouvrier_horaire_ligne_imprimee: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "10",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 10 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 10: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "11",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 11 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 11: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "12",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 12 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 12: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "13",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 13 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 13: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "14",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 14 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 14: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "15",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 15 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 15: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "16",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 16 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 16: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "17",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 17 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 17: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "18",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 18 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 18: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "19",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 19 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 19: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2023-01-01",
+     "categorie": "20",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 20 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 20: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "ouvrier_horaire_ligne_imprimee",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie ouvrier_horaire_ligne_imprimee : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف ouvrier_horaire_ligne_imprimee: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "10",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 10 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 10: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "11",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 11 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 11: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "12",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 12 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 12: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "13",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 13 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 13: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "14",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 14 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 14: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "15",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 15 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 15: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "16",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 16 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 16: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "17",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 17 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 17: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "18",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 18 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 18: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "19",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 19 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 19: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_AGENTS_2024-01-01",
+     "categorie": "20",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents, catégorie 20 : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان، الصنف 20: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  "chefs_rayon_gerants": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "12 (جديد) أ",
+   "texte_source_ar": "يتمتع كل سنتين الإطارات المرتبون بالسلم 21، والذين بلغوا آخر درجة في السلم (الدرجة 13) بالفارق بين القيمة المالية للدرجة 13 والقيمة المالية للدرجة 12، والمقدر بـ 16,686 د.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D66",
+   "hypotheses_fr": [
+    "Article 12 (جديد) أ (p.8) : les cadres de la catégorie 21 arrivés au degré 13 (atteint à 24 ans selon les durées imprimées) reçoivent tous les 2 ans l'écart entre les degrés 13 et 12, « évalué à 16,686 d » ; n = nombre de périodes de 2 ans révolues depuis 24 ans ; écart cumulé calculé sur la table en vigueur (règle D10, période 2) ; il vaut 16,686 sur les trois tableaux. Aucune catégorie de ce tableau n'a l'écart : toutes sont refusées au-delà de 26 ans."
+   ],
+   "hypotheses_ar": [
+    "الفصل 12 (جديد) أ (الصفحة 8): يتمتع كل سنتين الإطارات المرتبون بالسلم 21 عند بلوغهم الدرجة 13 (المبلوغة عند 24 سنة حسب المدد المطبوعة) بالفارق بين الدرجتين 13 و12 «المقدر بـ 16,686 د»؛ عدد الفترات هو عدد السنتين المنقضيتين منذ 24 سنة؛ يُجمع الفارق محسوبا على الجدول الساري (القاعدة D10، فترة سنتين)، وهو يساوي 16,686 في الجداول الثلاثة."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 12 (جديد) أ (page 8 : 26, 28, 30… ans) : la source ne dit pas si l'écart ou le passage de ce palier est déjà dû. Indiquer l'ancienneté exacte.",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 12 (جديد) أ (الصفحة 8: 26 و28 و30 سنة...) ولا يحدد المصدر إن كان الفارق أو الانتقال مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة.",
+   "cases_refusees": [
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "16_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "16_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "16_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "16_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "16_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "17_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "17_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "17_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "17_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+     "categorie": "17_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "16_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "16_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "16_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "16_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "16_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "17_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "17_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "17_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "17_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+     "categorie": "17_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "16_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "16_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "16_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "16_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "16_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 16_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 16_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "17_a",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_a : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_a: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "17_b",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_b : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_b: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "17_c",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_c : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_c: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "17_d",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_d : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_d: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    },
+    {
+     "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+     "categorie": "17_e",
+     "source_pdf_page": 8,
+     "source_article": "12 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, sous-chefs de rayon, chefs de rayon et gérants de magasin, catégorie 17_e : au-delà du degré 13 (atteint à 24 ans) et de ses deux ans de séjour, l'article 12 (جديد) أ (page 8) fait passer l'agent dans la catégorie suivante, ce qui n'est pas calculé ; l'écart de deux ans n'est prévu que pour les cadres de la catégorie 21. Aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، كواهي الرؤساء ورؤساء الأجنحة ومتصرفي المغازات، الصنف 17_e: بعد الدرجة 13 (المبلوغة عند 24 سنة) والسنتين اللتين يقضيهما بها ينص الفصل 12 (جديد) أ (الصفحة 8) على تحول العامل إلى الصنف الموالي، ولا يُحتسب ذلك؛ ولا يُسند الفارق كل سنتين إلا للإطارات المرتبين بالسلم 21. لا يُرجَع أي مبلغ."
+    }
+   ]
+  }
+ },
+ "categories": {
+  "agents": [
+   "ouvrier_horaire_ligne_imprimee",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19",
+   "20",
+   "21"
+  ],
+  "chefs_rayon_gerants": [
+   "16_a",
+   "16_b",
+   "16_c",
+   "16_d",
+   "16_e",
+   "17_a",
+   "17_b",
+   "17_c",
+   "17_d",
+   "17_e"
+  ]
+ },
+ "sous_categories": {
+  "chefs_rayon_gerants": {
+   "source_pdf_page": 23,
+   "par_categorie": {
+    "16": {
+     "a": {
+      "cle": "16_a",
+      "libelle_fr": "Catégorie 16, sous-niveau أ",
+      "libelle_ar": "أ",
+      "libelle_ar_redige": false
+     },
+     "b": {
+      "cle": "16_b",
+      "libelle_fr": "Catégorie 16, sous-niveau ب",
+      "libelle_ar": "ب",
+      "libelle_ar_redige": false
+     },
+     "c": {
+      "cle": "16_c",
+      "libelle_fr": "Catégorie 16, sous-niveau ج",
+      "libelle_ar": "ج",
+      "libelle_ar_redige": false
+     },
+     "d": {
+      "cle": "16_d",
+      "libelle_fr": "Catégorie 16, sous-niveau د",
+      "libelle_ar": "د",
+      "libelle_ar_redige": false
+     },
+     "e": {
+      "cle": "16_e",
+      "libelle_fr": "Catégorie 16, sous-niveau هـ",
+      "libelle_ar": "هـ",
+      "libelle_ar_redige": false
+     }
+    },
+    "17": {
+     "a": {
+      "cle": "17_a",
+      "libelle_fr": "Catégorie 17, sous-niveau أ",
+      "libelle_ar": "أ",
+      "libelle_ar_redige": false
+     },
+     "b": {
+      "cle": "17_b",
+      "libelle_fr": "Catégorie 17, sous-niveau ب",
+      "libelle_ar": "ب",
+      "libelle_ar_redige": false
+     },
+     "c": {
+      "cle": "17_c",
+      "libelle_fr": "Catégorie 17, sous-niveau ج",
+      "libelle_ar": "ج",
+      "libelle_ar_redige": false
+     },
+     "d": {
+      "cle": "17_d",
+      "libelle_fr": "Catégorie 17, sous-niveau د",
+      "libelle_ar": "د",
+      "libelle_ar_redige": false
+     },
+     "e": {
+      "cle": "17_e",
+      "libelle_fr": "Catégorie 17, sous-niveau هـ",
+      "libelle_ar": "هـ",
+      "libelle_ar_redige": false
+     }
+    }
+   }
+  }
+ },
+ "libelles_categories": {
+  "agents": {
+   "ouvrier_horaire_ligne_imprimee": {
+    "ligne": 1,
+    "libelle_fr": "Ouvrier payé à l'heure (ligne imprimée « (par mois) »)",
+    "libelle_ar": "شغال بالساعة (شهريا)",
+    "libelle_ar_redige": false
+   },
+   "10": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 16",
+    "libelle_ar": "الصنف 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 17",
+    "libelle_ar": "الصنف 17",
+    "libelle_ar_redige": true
+   },
+   "18": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 18",
+    "libelle_ar": "الصنف 18",
+    "libelle_ar_redige": true
+   },
+   "19": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 19",
+    "libelle_ar": "الصنف 19",
+    "libelle_ar_redige": true
+   },
+   "20": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 20",
+    "libelle_ar": "الصنف 20",
+    "libelle_ar_redige": true
+   },
+   "21": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 21",
+    "libelle_ar": "الصنف 21",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "agents": {
+   "fr": [
+    "Unité : les tableaux n'impriment pas l'unité ; les montants sont lus comme des salaires mensuels (TND/mois).",
+    "Promotion automatique après quinze ans et passage dans la catégorie suivante après deux ans au degré 13 (article 12 (جديد), page 8) : non calculés ; seul l'écart de la catégorie 21 est servi.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة: لا تذكر الجداول الوحدة؛ تُعتبر المبالغ أجورا شهرية (دينار/شهر).",
+    "لا تُحتسب الترقية الآلية بعد خمس عشرة سنة ولا التحول إلى الصنف الموالي بعد سنتين بالدرجة 13 (الفصل 12 (جديد)، الصفحة 8)؛ ولا يُرجَع إلا فارق الصنف 21.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  },
+  "chefs_rayon_gerants": {
+   "fr": [
+    "Unité : les tableaux n'impriment pas l'unité ; les montants sont lus comme des salaires mensuels (TND/mois).",
+    "Promotion automatique après quinze ans et passage dans la catégorie suivante après deux ans au degré 13 (article 12 (جديد), page 8) : non calculés ; seul l'écart de la catégorie 21 est servi.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة: لا تذكر الجداول الوحدة؛ تُعتبر المبالغ أجورا شهرية (دينار/شهر).",
+    "لا تُحتسب الترقية الآلية بعد خمس عشرة سنة ولا التحول إلى الصنف الموالي بعد سنتين بالدرجة 13 (الفصل 12 (جديد)، الصفحة 8)؛ ولا يُرجَع إلا فارق الصنف 21.",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ]
+  }
+ },
+ "hypotheses_categories": {
+  "agents": {
+   "ouvrier_horaire_ligne_imprimee": {
+    "fr": [
+     "Ligne « شغال بالساعة » servie telle qu'imprimée : l'unité n'est pas imprimée dans l'en-tête du tableau ; la case du libellé porte la mention imprimée « (شهريا) » ; le montant est donné dans l'unité retenue pour le tableau (hypothèse)."
+    ],
+    "ar": [
+     "يُرجَع سطر «شغال بالساعة» كما هو مطبوع: لا يذكر رأس الجدول الوحدة، وتحمل خانة التسمية عبارة «(شهريا)» المطبوعة؛ ويُرجَع المبلغ بالوحدة المعتمدة للجدول (فرضية)."
+    ]
+   }
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "48 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "execution_gestion": 65.826,
+     "cadres": 72.612
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "execution_gestion": 70.269,
+     "cadres": 77.514
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "execution_gestion": 75.012,
+     "cadres": 82.746
+    }
+   ],
+   "libelles_groupes": {
+    "execution_gestion": {
+     "fr": "Agents d'exécution et de gestion",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "hypotheses": {
+    "fr": [
+     "Groupe choisi par l'appelant : le rattachement de sa catégorie au groupe n'est pas vérifié ici."
+    ],
+    "ar": [
+     "يختار الطالب المجموعة: لا يقع هنا التثبت من ربط صنفه بالمجموعة."
+    ]
+   },
+   "note": "Prime globale mensuelle ; elle comprend la prime du décret n° 503 du 16 mars 1982 (art. 48 (جديد), p.14-15).",
+   "note_ar": "منحة نقل جملية وشهرية تتضمن المنحة المحدثة بالأمر عدد 503 المؤرخ في 16 مارس 1982 (الفصل 48 (جديد)، الصفحتان 14 و15)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "48 مكرر (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 12.400
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 13.237
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 14.130
+    }
+   ]
+  },
+  {
+   "code": "prime_caisse_jusqu_a_5_ans",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse (ancienneté d'un jour à cinq ans)",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 5.000,
+   "effective_date": null,
+   "condition": "agent chargé de la caisse ayant une ancienneté d'un jour à cinq ans (art. 47 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   },
+   "note": "L'article donne « de un jour à cinq ans » puis « de cinq à dix ans » : à cinq ans pile, il ne dit pas quel montant s'applique.",
+   "note_ar": "ينص الفصل على «من يوم إلى خمس سنوات» ثم «من خمس سنوات إلى عشر سنوات» دون تحديد المبلغ عند خمس سنوات بالضبط."
+  },
+  {
+   "code": "prime_caisse_5_a_10_ans",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse (ancienneté de cinq à dix ans)",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 10.000,
+   "effective_date": null,
+   "condition": "agent chargé de la caisse ayant une ancienneté de cinq à dix ans (art. 47 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   },
+   "note": "À cinq ans et à dix ans pile, l'article ne dit pas quel montant s'applique.",
+   "note_ar": "لا يحدد الفصل المبلغ عند خمس سنوات أو عشر سنوات بالضبط."
+  },
+  {
+   "code": "prime_caisse_plus_10_ans",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse (ancienneté de plus de dix ans)",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 15.000,
+   "effective_date": null,
+   "condition": "agent chargé de la caisse ayant une ancienneté de plus de dix ans (art. 47 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_base",
+   "label_ar": "المنحة المدرسية",
+   "label_fr": "Prime scolaire (enseignement de base)",
+   "source_article": "47 مكرر",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 20.000,
+   "effective_date": null,
+   "condition": "enfant élève de l'enseignement de base, à l'ouverture de l'année scolaire (art. 47 مكرر, p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_secondaire",
+   "label_ar": "المنحة المدرسية",
+   "label_fr": "Prime scolaire (enseignement secondaire)",
+   "source_article": "47 مكرر",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 30.000,
+   "effective_date": null,
+   "condition": "enfant élève de l'enseignement secondaire (art. 47 مكرر, p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_superieur",
+   "label_ar": "المنحة المدرسية",
+   "label_fr": "Prime scolaire (enseignement supérieur)",
+   "source_article": "47 مكرر",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 40.000,
+   "effective_date": null,
+   "condition": "enfant étudiant de l'enseignement supérieur (art. 47 مكرر, p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deces_travailleur",
+   "label_ar": "منحة الوفاة",
+   "label_fr": "Prime de décès (travailleur en activité)",
+   "source_article": "45-3",
+   "source_pdf_page": 14,
+   "unite": "TND/versement",
+   "montant": 150.000,
+   "effective_date": null,
+   "condition": "décès du travailleur en activité, prime versée à sa famille (art. 45-3, p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_deces_pere_mere",
+   "label_ar": "منحة الوفاة",
+   "label_fr": "Prime de décès (père ou mère du travailleur)",
+   "source_article": "45-3",
+   "source_pdf_page": 14,
+   "unite": "TND/versement",
+   "montant": 100.000,
+   "effective_date": null,
+   "condition": "décès du père ou de la mère du travailleur en activité (art. 45-3, p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_depart_retraite": {
+   "source_pdf_page": 14,
+   "source_article": "45 مكرر (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 45 مكرر (جديد), page 14) : quatre mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التقاعد (الفصل 45 مكرر (جديد)، الصفحة 14): أجرة 4 أشهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_productivite": {
+   "source_pdf_page": 15,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime de productivité (article 49 (جديد), page 15) : pourcentages d'un mois de salaire selon la note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاجية (الفصل 49 (جديد)، الصفحة 15): نسب من أجر شهر حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_fin_annee": {
+   "source_pdf_page": 15,
+   "source_article": "49 مكرر",
+   "message_fr": "Prime de fin d'année (article 49 مكرر, page 15) : un demi-mois de salaire de base, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة آخر السنة (الفصل 49 مكرر، الصفحة 15): أجرة نصف شهر أساسي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "COM_AGENTS_2021-12-01",
+   "numero_imprime": 1,
+   "population": "agents",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "valeurs": {
+    "ouvrier_horaire_ligne_imprimee": [
+     588.841,
+     596.310,
+     596.791,
+     597.297,
+     597.827,
+     598.384,
+     598.976,
+     599.584,
+     600.229,
+     602.624,
+     605.215,
+     607.935,
+     610.800
+    ],
+    "10": [
+     674.808,
+     675.296,
+     675.824,
+     676.361,
+     676.931,
+     677.530,
+     678.159,
+     678.819,
+     681.685,
+     684.302,
+     687.051,
+     690.003,
+     696.054
+    ],
+    "11": [
+     681.256,
+     681.867,
+     682.477,
+     683.159,
+     683.885,
+     684.627,
+     687.182,
+     689.814,
+     692.576,
+     695.499,
+     698.595,
+     705.058,
+     708.768
+    ],
+    "12": [
+     687.705,
+     688.511,
+     689.358,
+     690.247,
+     692.184,
+     695.828,
+     697.559,
+     700.450,
+     703.698,
+     707.928,
+     713.509,
+     717.024,
+     720.646
+    ],
+    "13": [
+     694.162,
+     695.322,
+     696.777,
+     699.372,
+     702.096,
+     704.892,
+     707.674,
+     713.494,
+     716.743,
+     720.150,
+     723.729,
+     727.486,
+     731.431
+    ],
+    "14": [
+     700.607,
+     703.279,
+     705.664,
+     708.168,
+     711.796,
+     713.751,
+     719.642,
+     722.960,
+     726.443,
+     730.100,
+     733.939,
+     737.972,
+     742.204
+    ],
+    "15": [
+     786.055,
+     791.883,
+     795.131,
+     798.542,
+     802.124,
+     805.884,
+     809.833,
+     813.980,
+     818.334,
+     822.905,
+     830.437,
+     835.477,
+     840.769
+    ],
+    "16": [
+     805.858,
+     809.234,
+     812.779,
+     816.500,
+     820.408,
+     824.610,
+     828.818,
+     833.342,
+     840.824,
+     845.811,
+     851.048,
+     856.545,
+     862.318
+    ],
+    "17": [
+     904.189,
+     909.811,
+     915.724,
+     924.659,
+     931.172,
+     938.011,
+     945.191,
+     952.731,
+     960.647,
+     968.960,
+     977.491,
+     986.853,
+     996.475
+    ],
+    "18": [
+     953.851,
+     960.541,
+     967.565,
+     974.941,
+     982.684,
+     990.816,
+     999.353,
+     1008.318,
+     1017.731,
+     1027.614,
+     1037.991,
+     1048.887,
+     1060.328
+    ],
+    "19": [
+     1034.348,
+     1041.874,
+     1049.776,
+     1058.072,
+     1066.784,
+     1075.931,
+     1085.535,
+     1095.621,
+     1106.210,
+     1117.328,
+     1129.004,
+     1141.262,
+     1154.174
+    ],
+    "20": [
+     1070.271,
+     1078.840,
+     1087.621,
+     1096.839,
+     1106.521,
+     1116.684,
+     1127.357,
+     1138.562,
+     1150.329,
+     1162.682,
+     1175.654,
+     1189.275,
+     1203.577
+    ],
+    "21": [
+     1129.245,
+     1139.002,
+     1149.245,
+     1160.000,
+     1171.294,
+     1183.151,
+     1195.603,
+     1208.676,
+     1222.403,
+     1236.816,
+     1247.821,
+     1267.841,
+     1284.527
+    ]
+   }
+  },
+  {
+   "table_id": "COM_CHEFS_RAYON_GERANTS_2021-12-01",
+   "numero_imprime": 2,
+   "population": "chefs_rayon_gerants",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 23,
+   "unite": "TND/mois",
+   "valeurs": {
+    "16_a": [
+     817.076,
+     820.733,
+     824.579,
+     828.605,
+     832.838,
+     837.283,
+     844.682,
+     849.583,
+     854.727,
+     860.130,
+     865.803,
+     871.759,
+     880.745
+    ],
+    "16_b": [
+     805.816,
+     809.191,
+     812.737,
+     816.458,
+     820.365,
+     824.468,
+     828.775,
+     833.299,
+     840.781,
+     845.769,
+     851.005,
+     856.503,
+     862.276
+    ],
+    "16_c": [
+     789.045,
+     794.666,
+     798.120,
+     801.531,
+     805.114,
+     808.874,
+     812.822,
+     816.970,
+     821.323,
+     825.895,
+     833.427,
+     838.467,
+     843.759
+    ],
+    "16_d": [
+     774.461,
+     776.939,
+     779.541,
+     782.413,
+     788.271,
+     791.553,
+     794.996,
+     798.619,
+     802.419,
+     806.408,
+     810.598,
+     814.997,
+     822.347
+    ],
+    "16_e": [
+     766.230,
+     768.501,
+     770.886,
+     773.391,
+     776.018,
+     778.972,
+     784.864,
+     788.182,
+     791.664,
+     795.321,
+     799.161,
+     803.193,
+     807.426
+    ],
+    "17_a": [
+     904.187,
+     909.814,
+     915.722,
+     924.657,
+     931.171,
+     938.009,
+     945.190,
+     952.729,
+     960.646,
+     968.959,
+     977.687,
+     986.800,
+     996.473
+    ],
+    "17_b": [
+     864.934,
+     872.449,
+     877.470,
+     882.742,
+     888.278,
+     894.090,
+     900.194,
+     909.335,
+     916.064,
+     923.130,
+     930.548,
+     938.337,
+     946.527
+    ],
+    "17_c": [
+     831.284,
+     835.222,
+     839.471,
+     843.699,
+     848.257,
+     855.777,
+     860.803,
+     866.080,
+     871.621,
+     877.440,
+     883.549,
+     892.695,
+     899.429
+    ],
+    "17_d": [
+     808.849,
+     812.224,
+     815.770,
+     819.491,
+     823.398,
+     827.501,
+     831.808,
+     836.332,
+     843.814,
+     848.802,
+     854.038,
+     859.536,
+     865.288
+    ],
+    "17_e": [
+     792.036,
+     797.863,
+     801.111,
+     804.615,
+     808.105,
+     811.865,
+     815.813,
+     819.961,
+     824.314,
+     828.886,
+     836.418,
+     841.458,
+     846.750
+    ]
+   }
+  },
+  {
+   "table_id": "COM_AGENTS_2023-01-01",
+   "numero_imprime": 3,
+   "population": "agents",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 24,
+   "unite": "TND/mois",
+   "valeurs": {
+    "ouvrier_horaire_ligne_imprimee": [
+     628.587,
+     636.056,
+     636.537,
+     637.043,
+     637.573,
+     638.130,
+     638.722,
+     639.330,
+     639.975,
+     642.370,
+     644.961,
+     647.681,
+     650.546
+    ],
+    "10": [
+     720.357,
+     720.845,
+     721.373,
+     721.910,
+     722.480,
+     723.079,
+     723.708,
+     724.368,
+     727.234,
+     729.851,
+     732.600,
+     735.552,
+     741.603
+    ],
+    "11": [
+     727.241,
+     727.852,
+     728.462,
+     729.144,
+     729.870,
+     730.612,
+     733.167,
+     735.799,
+     738.561,
+     741.484,
+     744.580,
+     751.043,
+     754.753
+    ],
+    "12": [
+     734.125,
+     734.931,
+     735.778,
+     736.667,
+     738.604,
+     742.248,
+     743.979,
+     746.870,
+     750.118,
+     754.348,
+     759.929,
+     763.444,
+     767.066
+    ],
+    "13": [
+     741.017,
+     742.177,
+     743.632,
+     746.227,
+     748.951,
+     751.747,
+     754.529,
+     760.349,
+     763.598,
+     767.005,
+     770.584,
+     774.341,
+     778.286
+    ],
+    "14": [
+     747.898,
+     750.570,
+     752.955,
+     755.459,
+     759.087,
+     761.042,
+     766.933,
+     770.251,
+     773.734,
+     777.391,
+     781.230,
+     785.263,
+     789.495
+    ],
+    "15": [
+     839.113,
+     844.941,
+     848.189,
+     851.600,
+     855.182,
+     858.942,
+     862.891,
+     867.038,
+     871.392,
+     875.963,
+     883.495,
+     888.535,
+     893.827
+    ],
+    "16": [
+     860.253,
+     863.629,
+     867.174,
+     870.895,
+     874.803,
+     879.005,
+     883.213,
+     887.737,
+     895.219,
+     900.206,
+     905.443,
+     910.940,
+     916.713
+    ],
+    "17": [
+     965.221,
+     970.843,
+     976.756,
+     985.691,
+     992.204,
+     999.043,
+     1006.223,
+     1013.763,
+     1021.679,
+     1029.992,
+     1038.523,
+     1047.885,
+     1057.507
+    ],
+    "18": [
+     1018.236,
+     1024.926,
+     1031.950,
+     1039.326,
+     1047.069,
+     1055.201,
+     1063.738,
+     1072.703,
+     1082.116,
+     1091.999,
+     1102.376,
+     1113.272,
+     1124.713
+    ],
+    "19": [
+     1104.167,
+     1111.693,
+     1119.595,
+     1127.891,
+     1136.603,
+     1145.750,
+     1155.354,
+     1165.440,
+     1176.029,
+     1187.147,
+     1198.823,
+     1211.081,
+     1223.993
+    ],
+    "20": [
+     1142.515,
+     1151.084,
+     1159.865,
+     1169.083,
+     1178.765,
+     1188.928,
+     1199.601,
+     1210.806,
+     1222.573,
+     1234.926,
+     1247.898,
+     1261.519,
+     1275.821
+    ],
+    "21": [
+     1205.469,
+     1215.226,
+     1225.469,
+     1236.224,
+     1247.518,
+     1259.375,
+     1271.827,
+     1284.900,
+     1298.627,
+     1313.040,
+     1324.045,
+     1344.065,
+     1360.751
+    ]
+   }
+  },
+  {
+   "table_id": "COM_CHEFS_RAYON_GERANTS_2023-01-01",
+   "numero_imprime": 4,
+   "population": "chefs_rayon_gerants",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "valeurs": {
+    "16_a": [
+     872.228,
+     875.885,
+     879.731,
+     883.757,
+     887.990,
+     892.435,
+     899.834,
+     904.735,
+     909.879,
+     915.282,
+     920.955,
+     926.911,
+     935.897
+    ],
+    "16_b": [
+     860.209,
+     863.584,
+     867.130,
+     870.851,
+     874.758,
+     878.861,
+     883.168,
+     887.692,
+     895.174,
+     900.162,
+     905.398,
+     910.896,
+     916.669
+    ],
+    "16_c": [
+     842.306,
+     847.927,
+     851.381,
+     854.792,
+     858.375,
+     862.135,
+     866.083,
+     870.231,
+     874.584,
+     879.156,
+     886.688,
+     891.728,
+     897.020
+    ],
+    "16_d": [
+     826.737,
+     829.215,
+     831.817,
+     834.689,
+     840.547,
+     843.829,
+     847.272,
+     850.895,
+     854.695,
+     858.684,
+     862.874,
+     867.273,
+     874.623
+    ],
+    "16_e": [
+     817.951,
+     820.222,
+     822.607,
+     825.112,
+     827.739,
+     830.693,
+     836.585,
+     839.903,
+     843.385,
+     847.042,
+     850.882,
+     854.914,
+     859.147
+    ],
+    "17_a": [
+     965.220,
+     970.847,
+     976.755,
+     985.690,
+     992.204,
+     999.042,
+     1006.223,
+     1013.762,
+     1021.679,
+     1029.992,
+     1038.720,
+     1047.833,
+     1057.506
+    ],
+    "17_b": [
+     923.318,
+     930.833,
+     935.854,
+     941.126,
+     946.662,
+     952.474,
+     958.578,
+     967.719,
+     974.448,
+     981.514,
+     988.932,
+     996.721,
+     1004.911
+    ],
+    "17_c": [
+     887.396,
+     891.334,
+     895.583,
+     899.811,
+     904.369,
+     911.889,
+     916.915,
+     922.192,
+     927.733,
+     933.552,
+     939.661,
+     948.807,
+     955.541
+    ],
+    "17_d": [
+     863.446,
+     866.821,
+     870.367,
+     874.088,
+     877.995,
+     882.098,
+     886.405,
+     890.929,
+     898.411,
+     903.399,
+     908.635,
+     914.133,
+     919.885
+    ],
+    "17_e": [
+     845.498,
+     851.325,
+     854.573,
+     858.077,
+     861.567,
+     865.327,
+     869.275,
+     873.423,
+     877.776,
+     882.348,
+     889.880,
+     894.920,
+     900.212
+    ]
+   }
+  },
+  {
+   "table_id": "COM_AGENTS_2024-01-01",
+   "numero_imprime": 5,
+   "population": "agents",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "valeurs": {
+    "ouvrier_horaire_ligne_imprimee": [
+     671.017,
+     678.486,
+     678.967,
+     679.473,
+     680.003,
+     680.560,
+     681.152,
+     681.760,
+     682.405,
+     684.800,
+     687.391,
+     690.111,
+     692.976
+    ],
+    "10": [
+     768.982,
+     769.470,
+     769.998,
+     770.535,
+     771.105,
+     771.704,
+     772.333,
+     772.993,
+     775.859,
+     778.476,
+     781.225,
+     784.177,
+     790.228
+    ],
+    "11": [
+     776.330,
+     776.941,
+     777.551,
+     778.233,
+     778.959,
+     779.701,
+     782.256,
+     784.888,
+     787.650,
+     790.573,
+     793.669,
+     800.132,
+     803.842
+    ],
+    "12": [
+     783.678,
+     784.484,
+     785.331,
+     786.220,
+     788.157,
+     791.801,
+     793.532,
+     796.423,
+     799.671,
+     803.901,
+     809.482,
+     812.997,
+     816.619
+    ],
+    "13": [
+     791.036,
+     792.196,
+     793.651,
+     796.246,
+     798.970,
+     801.766,
+     804.548,
+     810.368,
+     813.617,
+     817.024,
+     820.603,
+     824.360,
+     828.305
+    ],
+    "14": [
+     798.381,
+     801.053,
+     803.438,
+     805.942,
+     809.570,
+     811.525,
+     817.416,
+     820.734,
+     824.217,
+     827.874,
+     831.713,
+     835.746,
+     839.978
+    ],
+    "15": [
+     895.754,
+     901.582,
+     904.830,
+     908.241,
+     911.823,
+     915.583,
+     919.532,
+     923.679,
+     928.033,
+     932.604,
+     940.136,
+     945.176,
+     950.468
+    ],
+    "16": [
+     918.321,
+     921.697,
+     925.242,
+     928.963,
+     932.871,
+     937.073,
+     941.281,
+     945.805,
+     953.287,
+     958.274,
+     963.511,
+     969.008,
+     974.781
+    ],
+    "17": [
+     1030.374,
+     1035.996,
+     1041.909,
+     1050.844,
+     1057.357,
+     1064.196,
+     1071.376,
+     1078.916,
+     1086.832,
+     1095.145,
+     1103.676,
+     1113.038,
+     1122.660
+    ],
+    "18": [
+     1086.967,
+     1093.657,
+     1100.681,
+     1108.057,
+     1115.800,
+     1123.932,
+     1132.469,
+     1141.434,
+     1150.847,
+     1160.730,
+     1171.107,
+     1182.003,
+     1193.444
+    ],
+    "19": [
+     1178.698,
+     1186.224,
+     1194.126,
+     1202.422,
+     1211.134,
+     1220.281,
+     1229.885,
+     1239.971,
+     1250.560,
+     1261.678,
+     1273.354,
+     1285.612,
+     1298.524
+    ],
+    "20": [
+     1219.635,
+     1228.204,
+     1236.985,
+     1246.203,
+     1255.885,
+     1266.048,
+     1276.721,
+     1287.926,
+     1299.693,
+     1312.046,
+     1325.018,
+     1338.639,
+     1352.941
+    ],
+    "21": [
+     1286.838,
+     1296.595,
+     1306.838,
+     1317.593,
+     1328.887,
+     1340.744,
+     1353.196,
+     1366.269,
+     1379.996,
+     1394.409,
+     1405.414,
+     1425.434,
+     1442.120
+    ]
+   }
+  },
+  {
+   "table_id": "COM_CHEFS_RAYON_GERANTS_2024-01-01",
+   "numero_imprime": 6,
+   "population": "chefs_rayon_gerants",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "valeurs": {
+    "16_a": [
+     931.104,
+     934.761,
+     938.607,
+     942.633,
+     946.866,
+     951.311,
+     958.710,
+     963.611,
+     968.755,
+     974.158,
+     979.831,
+     985.787,
+     994.773
+    ],
+    "16_b": [
+     918.273,
+     921.648,
+     925.194,
+     928.915,
+     932.822,
+     936.925,
+     941.232,
+     945.756,
+     953.238,
+     958.226,
+     963.462,
+     968.960,
+     974.733
+    ],
+    "16_c": [
+     899.162,
+     904.783,
+     908.237,
+     911.648,
+     915.231,
+     918.991,
+     922.939,
+     927.087,
+     931.440,
+     936.012,
+     943.544,
+     948.584,
+     953.876
+    ],
+    "16_d": [
+     882.541,
+     885.019,
+     887.621,
+     890.493,
+     896.351,
+     899.633,
+     903.076,
+     906.699,
+     910.499,
+     914.488,
+     918.678,
+     923.077,
+     930.427
+    ],
+    "16_e": [
+     873.162,
+     875.433,
+     877.818,
+     880.323,
+     882.950,
+     885.904,
+     891.796,
+     895.114,
+     898.596,
+     902.253,
+     906.093,
+     910.125,
+     914.358
+    ],
+    "17_a": [
+     1030.372,
+     1035.999,
+     1041.907,
+     1050.842,
+     1057.356,
+     1064.194,
+     1071.375,
+     1078.914,
+     1086.831,
+     1095.144,
+     1103.872,
+     1112.985,
+     1122.658
+    ],
+    "17_b": [
+     985.641,
+     993.156,
+     998.177,
+     1003.449,
+     1008.985,
+     1014.797,
+     1020.901,
+     1030.042,
+     1036.771,
+     1043.837,
+     1051.255,
+     1059.044,
+     1067.234
+    ],
+    "17_c": [
+     947.295,
+     951.233,
+     955.482,
+     959.710,
+     964.268,
+     971.788,
+     976.814,
+     982.091,
+     987.632,
+     993.451,
+     999.560,
+     1008.706,
+     1015.440
+    ],
+    "17_d": [
+     921.728,
+     925.103,
+     928.649,
+     932.370,
+     936.277,
+     940.380,
+     944.687,
+     949.211,
+     956.693,
+     961.681,
+     966.917,
+     972.415,
+     978.167
+    ],
+    "17_e": [
+     902.569,
+     908.396,
+     911.644,
+     915.148,
+     918.638,
+     922.398,
+     926.346,
+     930.494,
+     934.847,
+     939.419,
+     946.951,
+     951.991,
+     957.283
+    ]
+   }
+  }
+ ]
+}

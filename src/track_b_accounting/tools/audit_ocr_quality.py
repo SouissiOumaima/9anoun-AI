@@ -22,17 +22,26 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 # Un "mot-chiffre" suspect : lettres arabes collees à des chiffres sans espace
 # ex: "4.155J" ou "26866دينارا" ou "39.519"دينارا"
 SUSPECT_PATTERNS = [
-    r"\d+[A-Za-zء-ي]",        # chiffre suivi direct d'une lettre (arabe ou latine)
-    r"[A-Za-zء-ي]\d+",        # lettre suivie direct d'un chiffre
+    r"\d+[A-Za-zء-ي]",  # chiffre suivi direct d'une lettre (arabe ou latine)
+    r"[A-Za-zء-ي]\d+",  # lettre suivie direct d'un chiffre
     r"\d{1,3}[.,]\d{1,3}[.,]\d{1,3}",  # triple separateur suspect (ex: 1.234.567 mal groupe)
-    r"\d+J\b",                 # artefact OCR frequent "155J"
+    r"\d+J\b",  # artefact OCR frequent "155J"
 ]
 
 # Mots-cles indiquant qu'une section contient probablement des donnees
 # chiffrees critiques pour la paie (à verifier en priorite)
 PAYROLL_KEYWORDS = [
-    "أجر", "دينار", "مليم", "نسبة", "%", "راتب", "منحة", "أقدمية",
-    "اشتراك", "الصندوق الوطني للضمان الاجتماعي", "جراية",
+    "أجر",
+    "دينار",
+    "مليم",
+    "نسبة",
+    "%",
+    "راتب",
+    "منحة",
+    "أقدمية",
+    "اشتراك",
+    "الصندوق الوطني للضمان الاجتماعي",
+    "جراية",
 ]
 
 suspect_re = re.compile("|".join(SUSPECT_PATTERNS))
@@ -61,12 +70,14 @@ def audit_file(path: Path) -> dict:
         content = sec.get("content", "") or ""
         diag = score_section(content)
         if diag["needs_review"]:
-            flagged.append({
-                "number": sec.get("number"),
-                "title": (sec.get("title") or "")[:80],
-                "suspect_hits": diag["suspect_hits"],
-                "excerpt": content[:160].replace("\n", " "),
-            })
+            flagged.append(
+                {
+                    "number": sec.get("number"),
+                    "title": (sec.get("title") or "")[:80],
+                    "suspect_hits": diag["suspect_hits"],
+                    "excerpt": content[:160].replace("\n", " "),
+                }
+            )
 
     return {
         "file": path.name,
@@ -102,9 +113,7 @@ def main():
     lines.append("| Fichier | Secteur | Sections totales | Sections à revoir |")
     lines.append("|---|---|---|---|")
     for r in results:
-        lines.append(
-            f"| {r['file']} | {r['sector_ar']} | {r['section_count']} | {r['flagged_count']} |"
-        )
+        lines.append(f"| {r['file']} | {r['sector_ar']} | {r['section_count']} | {r['flagged_count']} |")
 
     lines.append("\n## Detail des sections suspectes (priorite haute)\n")
     for r in results:

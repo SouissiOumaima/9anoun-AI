@@ -2,6 +2,7 @@
 Les montants BTP eux-mêmes (657 cellules, règle entre années, calcul de bout en bout) : test_grid_btp.py.
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_calc_btp.py
 """
+
 import copy
 import json
 from decimal import Decimal
@@ -21,8 +22,9 @@ BTP_FILE = "data/processed/salary_grids/batiment_travaux_publics.json"
 G = lire_json(BTP_FILE)
 BM = lire_json("data/processed/salary_grids/metallurgie_batiment.json")
 OCC = "ouvriers_occasionnels"
-REQ_V = Draft202012Validator(json.loads(
-    (REPO_ROOT / "data/mock_cards/schemas/track_b_request.v0.schema.json").read_text(encoding="utf-8")))
+REQ_V = Draft202012Validator(
+    json.loads((REPO_ROOT / "data/mock_cards/schemas/track_b_request.v0.schema.json").read_text(encoding="utf-8"))
+)
 
 
 def refus(code, f, *a, **k):
@@ -33,6 +35,7 @@ def refus(code, f, *a, **k):
 
 
 # --- fichier BTP : tables transcrites (D9), aucune prime servie --------------------------------------
+
 
 def test_btp_enregistre_avec_tables():
     assert loaders.GRILLES[BTP] == BTP_FILE
@@ -45,7 +48,39 @@ def test_btp_enregistre_avec_tables():
 
 
 def test_secteurs_disponibles():
-    assert loaders.secteurs_disponibles() == [BM_S, BTP, "ASSOCIATIONS_PERSONNES_HANDICAPEES", "ASSURANCE", "ENSEIGNEMENT_PRIVE", "BANQUES", "GARDIENNAGE_SECURITE_TRANSPORT_FONDS"]
+    assert loaders.secteurs_disponibles() == [
+        BM_S,
+        BTP,
+        "ASSOCIATIONS_PERSONNES_HANDICAPEES",
+        "ASSURANCE",
+        "ENSEIGNEMENT_PRIVE",
+        "BANQUES",
+        "GARDIENNAGE_SECURITE_TRANSPORT_FONDS",
+        "TORREFACTION_CAFE",
+        "AGENCES_VOYAGES",
+        "HOTELS_TOURISTIQUES",
+        "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+        "PATES_ALIMENTAIRES_COUSCOUS",
+        "COSMETIQUES_PARFUMS",
+        "SAVONNERIE_RAFFINAGE_GRIGNONS",
+        "COMMERCE_DISTRIBUTION_PETROLE",
+        "PLASTURGIE",
+        "MINOTERIES",
+        "TEINTURERIES_PRESSINGS",
+        "BOISSONS_GAZEUSES",
+        "MECANIQUE_STATIONS_SERVICE",
+        "BOISSONS_ALCOOLISEES",
+        "BOIS_AMEUBLEMENT_LIEGE",
+        "GESTION_DECHETS",
+        "HABILLEMENT",
+        "COMMERCE_GROS_DETAIL",
+        "IMPRIMERIE_EDITION_CARTONNAGE",
+        "VERRE_MIROIRS",
+        "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+        "BOULANGERIES",
+        "TEXTILE",
+        "FONDERIE_METALLURGIE_MECANIQUE",
+    ]
 
 
 def test_secteur_non_transcrit_absent_des_disponibles(monkeypatch):
@@ -69,6 +104,7 @@ def test_sous_categories_btp_libelles_du_pdf():
 
 # --- secteur absent : PARAM_INVALIDE (plus de secteur par défaut) -------------------------------------
 
+
 @pytest.mark.parametrize("secteur", [None, "", "  ", 42])
 def test_secteur_absent(secteur):
     refus(Refus.PARAM_INVALIDE, salaire_base, secteur, "admin_tech", "4", 5, "2024-01-01")
@@ -84,11 +120,14 @@ def test_degre_sans_secteur_refuse():
 
 # --- populations ------------------------------------------------------------------------------------
 
+
 def test_ouvriers_permanents_refus_lu_dans_le_json():
     bloc = G["populations_non_couvertes"]["ouvriers_permanents"]
-    for f, a in [(salaire_base, (BTP, "ouvriers_permanents", "1", None, "2024-01-01")),
-                 (table_applicable, (BTP, "ouvriers_permanents", "2024-01-01")),
-                 (degre_from_anciennete, (5, BTP, "ouvriers_permanents"))]:
+    for f, a in [
+        (salaire_base, (BTP, "ouvriers_permanents", "1", None, "2024-01-01")),
+        (table_applicable, (BTP, "ouvriers_permanents", "2024-01-01")),
+        (degre_from_anciennete, (5, BTP, "ouvriers_permanents")),
+    ]:
         e = refus(Refus.SOURCE_MANQUANTE, f, *a)
         assert (e.message_fr, e.message_ar) == (bloc["message_fr"], bloc["message_ar"])
     assert "annexe 4" in bloc["message_fr"] and "article 56" in bloc["message_fr"] and "page 16" in bloc["message_fr"]
@@ -102,6 +141,7 @@ def test_population_inconnue_btp():
 
 # --- sous-catégories --------------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("cat,valeurs", [(6, "I, II"), ("7", "1, 2, 3")])
 def test_sous_categorie_manquante(cat, valeurs):
     e = refus(Refus.PARAM_INVALIDE, salaire_base, BTP, OCC, cat, None, "2024-01-01")
@@ -114,7 +154,9 @@ def test_sous_categorie_inconnue(cat, sous):
     assert "Sous-catégorie inconnue" in e.message_fr
 
 
-@pytest.mark.parametrize("secteur,pop,cat,anc", [(BTP, OCC, 3, None), (BTP, "admin_tech", 4, 5), (BM_S, "admin_tech", "4", 5)])
+@pytest.mark.parametrize(
+    "secteur,pop,cat,anc", [(BTP, OCC, 3, None), (BTP, "admin_tech", 4, 5), (BM_S, "admin_tech", "4", 5)]
+)
 def test_sous_categorie_inattendue(secteur, pop, cat, anc):
     e = refus(Refus.PARAM_INVALIDE, salaire_base, secteur, pop, cat, anc, "2024-01-01", sous_categorie="I")
     assert "non prévue" in e.message_fr and "n'a pas de sous-catégorie" in e.message_fr
@@ -128,10 +170,17 @@ def test_cle_technique_ou_categorie_absente_refusee(cat):
 
 def test_secteur_inconnu_liste_les_secteurs():
     e = refus(Refus.SOURCE_MANQUANTE, salaire_base, "SECTEUR_FICTIF_NON_SUPPORTE", "admin_tech", "4", 5, "2024-01-01")
-    assert e.message_fr.endswith(f"(disponibles : {BM_S}, {BTP}, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
+    assert e.message_fr.endswith(
+        f"(disponibles : {BM_S}, {BTP}, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+        "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
+        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
+        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
+    )
 
 
 # --- ancienneté : obligatoire avec degrés, interdite sans --------------------------------------------
+
 
 def test_anciennete_interdite_pour_occasionnels():
     e = refus(Refus.PARAM_INVALIDE, salaire_base, BTP, OCC, 1, 3, "2024-01-01")
@@ -146,6 +195,7 @@ def test_anciennete_obligatoire_avec_degres(secteur):
 
 
 # --- BTP admin_tech : degrés p.23 et borne de 27 ans (art. 13, p.8, D10) --------------------------------
+
 
 @pytest.mark.parametrize("annees,degre", [(0, 1), (11.5, 6), (13, 7), (Decimal("23.9"), 10), (25, 11), (26.99, 11)])
 def test_degres_btp(annees, degre):
@@ -170,6 +220,7 @@ def test_btp_27_ans_pile_refuse(annees):
 
 # --- textes de refus lus dans le JSON, pour les deux secteurs ----------------------------------------
 
+
 @pytest.mark.parametrize("secteur,grille,cat,annees", [(BM_S, BM, "4", 24), (BTP, G, "4", 27)])
 def test_textes_borne_art13_lus_dans_le_json(secteur, grille, cat, annees, monkeypatch):
     g = copy.deepcopy(grille)
@@ -183,7 +234,10 @@ def test_textes_borne_art13_lus_dans_le_json(secteur, grille, cat, annees, monke
 def test_textes_fenetre_et_categorie_19_lus_dans_le_json(monkeypatch):
     g = copy.deepcopy(G)
     b = g["au_dela_dernier_degre"]["admin_tech"]
-    b.update(message_hors_fenetre_fr="F {a} {categorie} {case} {fin}", message_hors_fenetre_ar="A {a} {categorie} {case} {fin}")
+    b.update(
+        message_hors_fenetre_fr="F {a} {categorie} {case} {fin}",
+        message_hors_fenetre_ar="A {a} {categorie} {case} {fin}",
+    )
     b["categories_refusees"]["19"].update(message_fr="C19-FR", message_ar="C19-AR")
     monkeypatch.setattr("track_b_accounting.calc.salary.charger_grille", lambda s: g)
     e = refus(Refus.SOURCE_MANQUANTE, salaire_base, BTP, "admin_tech", "4", 29, "2024-06-01")
@@ -212,6 +266,7 @@ def test_texte_permanents_et_qefa_lus_dans_le_json(monkeypatch):
 
 # --- prime qefa BTP : non exposée ---------------------------------------------------------------------
 
+
 def test_qefa_btp_non_exposee():
     bloc = G["primes_non_couvertes"]["prime_panier_qefa"]
     for params in ({}, {"condition_remplie": True}, {"transport_assure": False}):
@@ -234,18 +289,22 @@ def test_autre_prime_btp_non_transcrite():
 
 def test_valider_grille_rejette_structures_btp_incoherentes():
     mutations = [
-        lambda g: g["degres"].__setitem__(OCC, [{"degre": 1, "anciennete_label": "0+"}]),   # degrés sans au_dela
+        lambda g: g["degres"].__setitem__(OCC, [{"degre": 1, "anciennete_label": "0+"}]),  # degrés sans au_dela
         lambda g: g["au_dela_dernier_degre"].__setitem__(OCC, g["au_dela_dernier_degre"]["admin_tech"]),
         lambda g: g["sous_categories"][OCC]["par_categorie"]["6"]["I"].__setitem__("cle", "6_X"),
         lambda g: g["sous_categories"][OCC]["par_categorie"]["6"]["I"].__setitem__("libelle_ar", ""),
-        lambda g: g["categories"][OCC].append("6"),                    # catégorie parente aussi en clé
+        lambda g: g["categories"][OCC].append("6"),  # catégorie parente aussi en clé
         lambda g: g["populations_non_couvertes"]["ouvriers_permanents"].pop("message_ar"),
         lambda g: g["populations_non_couvertes"].__setitem__("admin_tech", {}),
         lambda g: g["primes_non_couvertes"]["prime_panier_qefa"].__setitem__("source_pdf_page", None),
         lambda g: g["_meta"].__setitem__("tables_transcrites", False),  # tables présentes mais déclarées absentes
         # article 13 (D10) : table de correspondance cohérente avec la grille
-        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("fenetre_annees", 3),
-        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("case_imprimee", "5/4"),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__(
+            "fenetre_annees", 3
+        ),
+        lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__(
+            "case_imprimee", "5/4"
+        ),
         lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("degre", 12),
         lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"]["4"].__setitem__("categorie", "20"),
         lambda g: g["au_dela_dernier_degre"]["admin_tech"]["table_correspondance"].pop("18"),
@@ -253,8 +312,8 @@ def test_valider_grille_rejette_structures_btp_incoherentes():
         lambda g: g["au_dela_dernier_degre"]["admin_tech"]["categories_refusees"]["19"].__setitem__("message_ar", ""),
         lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("message_hors_fenetre_fr", "sans fin {a}"),
         lambda g: g["au_dela_dernier_degre"]["admin_tech"].__setitem__("dernier_degre_atteint_a_annees", 21),
-        lambda g: g["grilles"][0]["valeurs"].__setitem__("1", [Decimal("2.567")]),   # occasionnels : montant unique
-        lambda g: g["grilles"][1]["valeurs"]["4"].pop(),                # admin_tech : 10 degrés au lieu de 11
+        lambda g: g["grilles"][0]["valeurs"].__setitem__("1", [Decimal("2.567")]),  # occasionnels : montant unique
+        lambda g: g["grilles"][1]["valeurs"]["4"].pop(),  # admin_tech : 10 degrés au lieu de 11
     ]
     for m in mutations:
         g = copy.deepcopy(G)
@@ -264,9 +323,15 @@ def test_valider_grille_rejette_structures_btp_incoherentes():
 
 # --- contrat : sous_categorie et anciennete_annees optionnelle ----------------------------------------
 
+
 def _req(**params):
-    return {"contract_version": "track_b.v0", "request_id": "t", "operation": "salaire_base", "lang": "fr",
-            "params": {"secteur": BTP, "population": OCC, "date": "2024-01-01", **params}}
+    return {
+        "contract_version": "track_b.v0",
+        "request_id": "t",
+        "operation": "salaire_base",
+        "lang": "fr",
+        "params": {"secteur": BTP, "population": OCC, "date": "2024-01-01", **params},
+    }
 
 
 def test_schema_accepte_sous_categorie_sans_anciennete():

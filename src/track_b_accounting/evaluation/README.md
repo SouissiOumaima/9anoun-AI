@@ -7,10 +7,11 @@ part : DS5 évalue son propre module.
 ```
 evaluation/
   README.md                                ce fichier
-  golden_sets/track_b_golden.v0.json       63 cas, valeurs attendues lues dans les PDF
+  golden_sets/track_b_golden.v0.json       290 cas, valeurs attendues lues dans les PDF
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
   results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
   results/eval_<date>.json, .md            rapports des relances (ignorés par git)
+  results/eval_<date>_comparaison.json     écarts à la baseline, métrique par métrique (ignoré par git)
 ```
 
 ## Méthode
@@ -28,21 +29,34 @@ données ; cette évaluation vérifie le module contre la source.
   article et texte lu), pour vérifier le cas sur le document ;
 - `certitude` : **L** (lu directement), **C** (calculé à la main à partir de
   cellules lues), **I** (interprétation) ; `decision` donne l'entrée de
-  `docs/DECISIONS.md` (D6, D9, D10, D23) qui fonde un cas I ou C ;
+  `docs/DECISIONS.md` (D6, D9, D10, D23, D29, D38, D46, D47, D49 à D72) qui
+  fonde un cas I ou C ;
 - `verification_humaine` : `true` quand DS5 a vérifié le cas sur le PDF.
 
 Convention des colonnes : le numéro de colonne est le degré ; le degré 1 est
 la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP, « 1 » / « 2 » dans les grilles
 des associations pour personnes handicapées).
 
-**Répartition (63 cas, dont 53 vérifiés par DS5 sur le PDF : `verification_humaine = true`).**
+**Répartition (290 cas, dont 280 vérifiés par DS5 sur le PDF : `verification_humaine = true`).**
 
 | Catégorie | Cas | Contenu |
 |---|---|---|
-| `ok` | 34 | Métallurgie 2021, 2023, 2024 (administratifs et exécution) ; BTP 2021, 2023, 2024 (administratifs, occasionnels avec sous-catégorie) ; primes (transport, qefa) ; SMIG ; cellule corrigée en D4 ; 3 cellules BTP à anomalie d'incrément ; associations pour personnes handicapées (D23) : un salaire par population sur 2021, 2023 et 2024, alias « 1 », ligne « III+II », primes de transport, de présence et spécifique |
-| `art13` | 6 | Article 13 au-delà du dernier degré, métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
-| `refus` | 17 | Bornes exactes (D6, D10), fenêtre BTP dépassée, catégorie 19, ouvriers permanents, qefa BTP, CNSS, conversion d'unité, secteur non transcrit, catégorie inconnue ; associations : 32 ans, borne de 10 ans, catégorie inconnue, prime sans date d'effet, prime de production |
-| `piege` | 6 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel ; associations : date antérieure, « II » pour les techniciens (alias non admis, messages FR et AR attendus) |
+| `ok` | 155 | Salaires de base (une ou plusieurs populations et dates par secteur), primes à montant fixe, SMIG |
+| `art13` | 6 | Article 13 au-delà du dernier degré : métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
+| `refus` | 123 | Bornes exactes, ancienneté hors grille, catégories ou populations inconnues ou non couvertes, primes non couvertes, CNSS, conversion d'unité, secteur non transcrit |
+| `piege` | 6 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel, alias non admis (messages FR et AR attendus) |
+
+Par certitude : 167 cas **L**, 7 cas **C**, 116 cas **I**. Par opération :
+207 `salaire_base`, 79 `prime`, 3 `smig`, 1 `cotisation_cnss` (refus).
+
+Secteurs couverts (nombre de cas) : métallurgie et bâtiment 22, BTP 20,
+enseignement privé 18, associations pour personnes handicapées 16, assurance
+16, banques 14, gardiennage 14, confiserie 8, cosmétiques 7, savonnerie 7,
+commerce du pétrole 7, boissons gazeuses 7, torréfaction du café 6, pâtes 6,
+plasturgie 6, minoteries 6, teintureries 6, gestion des déchets 8, commerce de gros et de détail 8, mécanique et
+stations-service 7, boissons alcoolisées 7, bois et ameublement 7, habillement 6, imprimerie 8, matériel agricole 8,
+fonderie 9, verre 7, boulangeries 7, textile 7, agences de voyages 5, hôtels 5 ;
+SMIG 4 ; secteur fictif non supporté 1.
 
 ## Métriques
 
@@ -76,10 +90,23 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
 - Sorties : `results/eval_<date>.json` (clés triées) et `.md`. La date est
   passée en argument : à commit et date égaux, les fichiers sont identiques à
   l'octet près.
-- Code de sortie **1** s'il y a au moins un faux montant ou une exception,
-  sinon 0.
-- `--baseline` réécrit le rapport de référence (`results/baseline.*`), à
-  faire seulement quand le golden set ou le module change volontairement.
+- **Comparaison automatique à la baseline** (sans `--baseline`) : les
+  métriques de l'ensemble sont comparées à `results/baseline.json`. Le script
+  affiche, pour chaque métrique, la valeur de la baseline, la valeur obtenue,
+  l'écart et le statut (`stable`, `amélioration`, `baisse`, `non comparable`),
+  et écrit le même détail dans `results/eval_<date>_comparaison.json`. Une
+  métrique en taux est comparée sur son taux, un compteur sur son nombre.
+- Code de sortie :
+  - **1** s'il y a au moins un faux montant ou une exception ;
+  - **2** sinon, si **au moins deux métriques baissent** par rapport à la
+    baseline (règle de régression : le changement est bloqué) ;
+  - **0** sinon.
+- `--baseline` réécrit le rapport de référence (`results/baseline.*`) sans
+  comparer, à faire seulement quand le golden set ou le module change
+  volontairement.
+- Le banc lui-même est testé : `../tests/test_run_eval.py` (verdicts,
+  métriques, comparaison, codes de sortie, et relance complète identique à la
+  baseline versionnée).
 
 ## Limites
 
@@ -91,9 +118,10 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   métriques à part.
 - **Les cas I traduisent nos décisions** (D6, D9, D10, D23), pas le texte seul :
   ils mesurent la conformité du module à ces décisions, pas leur justesse.
-- **63 cas sur environ 2 400 cellules** : c'est un échantillon. La couverture
+- **290 cas sur plus de 10 000 cellules transcrites** : c'est un échantillon. La couverture
   exhaustive des grilles repose sur la double lecture et les contrôles
   automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`,
-  `../tests/test_grid_associations.py`).
+  `../tests/test_grid_associations.py`), dont le contrôle de hausse entre
+  dates sur toutes les grilles à plusieurs tables (`../tests/test_controle_hausse.py`).
 - Les scans des pages 30 à 35 de la métallurgie sont bruités ; les cas dont un
   chiffre est peu net portent une `note`.

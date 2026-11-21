@@ -49,9 +49,14 @@ def run_question(item: dict[str, Any], store: CorpusStore) -> dict[str, Any]:
         if result["version_group"] not in groups:
             groups.append(result["version_group"])
     ranks = [groups.index(g) + 1 for g in item["expected"] if g in groups]
+    # Rang de CHAQUE source attendue, pas seulement de la première trouvée : sans
+    # cela une question qui en attend huit est comptée réussie dès qu'une sort.
+    ranks_par_source = {g: (groups.index(g) + 1 if g in groups else None)
+                        for g in item["expected"]}
     signals = top_signals(request, store)
     return {"id": item["id"], "kind": item["kind"], "mode": response["mode"],
             "status": response["status"], "rank": min(ranks) if ranks else None,
+            "ranks": ranks_par_source,
             "top1": groups[0] if groups else None, "raw_top": round(signals["raw"], 3),
             "coverage": round(signals["coverage"], 3),
             "cosine": None if signals["cosine"] is None else round(signals["cosine"], 3),
@@ -62,6 +67,33 @@ def _recall(rows: list[dict[str, Any]], k: int) -> float | None:
     return sum(1 for r in rows if r["rank"] and r["rank"] <= k) / len(rows) if rows else None
 
 
+def _source_of(group: str) -> str:
+    """ "CCS-ASSURANCE-ART-12" -> "CCS-ASSURANCE". Le préfixe identifie le texte."""
+    for separateur in ("-ART-", "-ANX-", "-SEC-"):
+        if separateur in group:
+            return group.split(separateur)[0]
+    return group
+
+
+def _coverage(rows: list[dict[str, Any]], k: int) -> float | None:
+    """Part MOYENNE des sources attendues retrouvées dans les k premiers.
+
+    Égale à recall@k pour une question mono-source. Plus basse dès qu'une
+    question attend plusieurs conventions et qu'on n'en rend qu'une partie.
+    Les anciens fichiers de résultats n'ont pas le champ "ranks" : ils sont
+    ignorés plutôt que comptés à zéro, pour ne pas fabriquer une fausse baisse.
+    """
+    parts = [sum(1 for rang in r["ranks"].values() if rang and rang <= k) / len(r["ranks"])
+             for r in rows if r.get("ranks")]
+    return sum(parts) / len(parts) if parts else None
+
+
+def _multi_source(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Les questions dont les sources attendues relèvent de plusieurs textes."""
+    return [r for r in rows
+            if len({_source_of(g) for g in (r.get("ranks") or {})}) > 1]
+
+
 def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Headline metrics, per kind, and the abstention threshold study."""
     in_scope = [r for r in rows if r["kind"] != OUT_OF_SCOPE]
@@ -70,7 +102,9 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     kinds = sorted({r["kind"] for r in in_scope})
     summary: dict[str, Any] = {
         "n_questions": len(rows),
-        "core": {"n": len(core), **{f"recall@{k}": _recall(core, k) for k in (1, 5, 10)},
+        "core": {"n": len(core),
+                 **{f"recall@{k}": _recall(core, k) for k in (1, 3, 5, 10)},
+                 **{f"coverage@{k}": _coverage(core, k) for k in (1, 3, 5, 10)},
                  "mrr": (sum(1 / r["rank"] for r in core if r["rank"]) / len(core)) if core else None},
         "per_kind_recall@10": {k: _recall([r for r in in_scope if r["kind"] == k], 10)
                                for k in kinds},
@@ -78,6 +112,15 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
                        if outside else None),
         "false_refusals": [r["id"] for r in in_scope if r["status"] == "refus"],
         "missed@10": [r["id"] for r in core if not (r["rank"] and r["rank"] <= 10)],
+    }
+    # Le sous-ensemble où rappel et couverture divergent : c'est là que se juge la
+    # capacité à rendre TOUTES les sources applicables, et pas une seule d'entre elles.
+    multi = _multi_source(core)
+    summary["multi_source"] = {
+        "n": len(multi),
+        "ids": [r["id"] for r in multi],
+        **{f"coverage@{k}": _coverage(multi, k) for k in (1, 3, 5, 10)},
+        "recall@10": _recall(multi, 10),
     }
     summary["threshold_study"] = threshold_study(core, outside, "raw_top")
     summary["coverage_study"] = threshold_study(core, outside, "coverage")
@@ -149,8 +192,19 @@ def main() -> None:
     print(f"\nquestions mesurées : {s['n_questions']}  (ignorées, a_completer : "
           f"{len(report['skipped_a_completer'])})")
     c = s["core"]
-    print(f"sujet+numero (n={c['n']}) : R@1 {_pct(c['recall@1'])}  R@5 {_pct(c['recall@5'])}  "
+    # R@3 est en tête de rapport parce que l'agent consommateur ne lit que les
+    # premiers articles : une bonne source classée 7e est une source qu'il ne voit pas.
+    print(f"sujet+numero (n={c['n']}) : R@1 {_pct(c['recall@1'])}  R@3 {_pct(c['recall@3'])}  "
+          f"R@5 {_pct(c['recall@5'])}  "
           f"R@10 {_pct(c['recall@10'])}  (cible 88 %)  MRR {c['mrr'] if c['mrr'] is None else round(c['mrr'], 3)}")
+    m = s["multi_source"]
+    # Couverture : part des sources attendues réellement rendues. Le rappel, lui, se
+    # contente d'une seule ; l'écart entre les deux lignes mesure ce qui reste à faire
+    # sur la recherche multi-textes.
+    print(f"couverture (n={c['n']}) : C@1 {_pct(c['coverage@1'])}  "
+          f"C@3 {_pct(c['coverage@3'])}  C@10 {_pct(c['coverage@10'])}")
+    print(f"dont multi-sources (n={m['n']}) : C@10 {_pct(m['coverage@10'])}  "
+          f"contre R@10 {_pct(m['recall@10'])}  -> {m['ids']}")
     print("R@10 par type :", {k: _pct(v) for k, v in s["per_kind_recall@10"].items()})
     print(f"abstention hors périmètre : {_pct(s['abstention'])}  (cible 85 %)")
     print("refus à tort :", s["false_refusals"], " | ratées à 10 :", s["missed@10"])

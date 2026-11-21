@@ -153,7 +153,9 @@ def audit_history() -> list[dict[str, Any]]:
     return history
 
 
-def chat(payload: Mapping[str, Any]) -> dict[str, Any]:
+def chat(
+    payload: Mapping[str, Any], *, dispatcher: HybridSpecialistDispatcher | None = None,
+) -> dict[str, Any]:
     """Run one free-text question through the DS1 parser and allow-listed planner."""
 
     message = payload.get("message")
@@ -176,7 +178,7 @@ def chat(payload: Mapping[str, Any]) -> dict[str, Any]:
         actor=request.actor, context=request.context,
     ))
     result = StateMachine(
-        HybridSpecialistDispatcher(), planner=planner, audit_hook=_WEB_AUDIT.record_flow,
+        dispatcher or HybridSpecialistDispatcher(), planner=planner, audit_hook=_WEB_AUDIT.record_flow,
     ).run(envelope)
     tool_response = result.tool_response or {}
     data = tool_response.get("data", tool_response)

@@ -1,0 +1,1211 @@
+{
+ "_meta": {
+  "secteur_code": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+  "convention_ar": "الاتفاقية المشتركة القومية لصناعة الحلويات والبسكوي والشكولاطة والمرطبات",
+  "convention_fr": "Convention collective nationale de la confiserie, de la biscuiterie, de la chocolaterie et de la pâtisserie",
+  "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+  "pages_sources": [
+   2,
+   3,
+   7,
+   8,
+   13,
+   14,
+   16,
+   18,
+   21,
+   22,
+   23
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "450 cellules lues par une double lecture indépendante (rendus à 200 et 280 dpi), comparées par script ; 1 écart tranché à l'image (mensuels 2021, ligne 2, degré 15 : 590.535) ; 6 cellules illisibles déclarées SOURCE_MANQUANTE (cellules_source_manquante) ; lots de vérification relus contre l'image par DS5 (« LOTS VALIDÉS », aucune correction) ; montants des primes lus deux fois (90 et 170 dpi) et relus contre l'image par DS5. Mise à jour du 2026-11-13 (contrôle de hausse entre dates, D52) : 2 cellules au dernier chiffre abîmé déclarées SOURCE_MANQUANTE (mensuels 2021, lignes 1 et 6, degré 8), soit 8 au total.",
+  "decision_ref": "D52",
+  "currency": "TND",
+  "note_unite": "Tableaux n° 1, 3, 5 : agents payés au mois (TND/mois) ; tableaux n° 2, 4, 6 : agents payés à l'heure (TND/heure) ; titres imprimés (p.21-23).",
+  "note_degres": "En-tête (p.21-23) : degrés 1 à 15 (degré 1 à droite) ; « الأقدمية بالدرجة » vide, 1, puis 2 ; libellés « 0-1 », « 1-2 », « 2-4 », …, « 24-26 », « 26+ » ; au degré 15, écart cumulé tous les 2 ans (art. 14 (جديد) أ, p.7) ; bornes exactes et paliers refusés (D6, D10) ; de 4 ans exclus à 5 ans inclus : refus (art. 53, p.14, anciennetes_refusees).",
+  "note_categories": "Clés : numéros imprimés « 1 » à « 6 » (mensuels, annexe 1, p.16) et « 1 » à « 4 » (horaires, annexe 3, p.18) ; population obligatoire.",
+  "note_dates": "Tableaux de 2021-12-01 (p.21), 2023-01-01 (p.22), 2024-01-01 (p.23) pour chaque population ; refus avant le 2021-12-01.",
+  "remarque_pdf": "Note sous chaque tableau (p.21-23) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul ; ils incluent aussi la prime de présence de 112 millimes par jour.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 21 إلى 23): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982 وكذلك مقدار منحة الحضور المضبوط بـ 112 مليم يوميا.",
+  "regime_hebdomadaire": null,
+  "note_regime_hebdomadaire": "Régime non imprimé sur les tableaux : non renseigné."
+ },
+ "populations": {
+  "mensuels": {
+   "libelle_fr": "Agents payés au mois",
+   "libelle_ar": "الأعوان الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 21,
+   "note": "Tableaux n° 1, 3 et 5 ; population obligatoire (deux populations)."
+  },
+  "horaires": {
+   "libelle_fr": "Agents payés à l'heure",
+   "libelle_ar": "الأعوان الخالصون بالساعة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 21,
+   "note": "Tableaux n° 2, 4 et 6 ; population obligatoire (deux populations)."
+  }
+ },
+ "degres": {
+  "mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": null
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "26+",
+    "duree_imprimee": 2
+   }
+  ],
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": null
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "26+",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "mensuels": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 26,
+   "source_pdf_page": 7,
+   "source_article": "14 (جديد) أ",
+   "texte_source_ar": "إذا بلغ العامل الدرجة الأخيرة في الصنف المرتب به (الدرجة 15)، فإنه ينتفع كل سنتين بالفارق بين القيمة المالية لهذه الدرجة والدرجة التي تسبقها مباشرة (الدرجة 14).",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D52",
+   "hypotheses_fr": [
+    "Article 14 (جديد) أ (p.7) : au degré 15, l'écart entre les degrés 15 et 14 s'ajoute tous les 2 ans ; le degré 15 est atteint à 26 ans (lecture de l'en-tête) ; n = nombre de périodes de 2 ans révolues depuis 26 ans ; écart cumulé (règle D10, période 2)."
+   ],
+   "hypotheses_ar": [
+    "الفصل 14 (جديد) أ (الصفحة 7): عند بلوغ الدرجة 15 يضاف الفارق بين الدرجتين 15 و14 كل سنتين؛ تُبلغ الدرجة 15 عند 26 سنة (حسب رأس الجدول)؛ عدد الفترات هو عدد السنتين المنقضيتين منذ 26 سنة؛ يُجمع الفارق (القاعدة D10، فترة سنتين)."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 14 (جديد) أ (page 7 : 28, 30, 32… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. 28 ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 14 (جديد) أ (الصفحة 7: 28 و30 و32 سنة...) ولا يحدد المصدر إن كان الفارق مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة.",
+   "cases_refusees": [
+    {
+     "table_id": "CONF_MENSUELS_2021-12-01",
+     "categorie": "2",
+     "source_pdf_page": 21,
+     "source_article": "14 (جديد) أ",
+     "message_fr": "Ancienneté de {a} ans, agents payés au mois, catégorie 2 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : le degré 15 est imprimé à 590,535, plus bas que le degré 14 (688,217) ; l'écart de l'article 14 (جديد) أ (page 7) serait négatif. Le degré 15 est servi tel qu'imprimé jusqu'à 28 ans ; au-delà, aucun montant n'est renvoyé.",
+     "message_ar": "أقدمية {a} سنة، الأعوان الخالصون بالشهر، الصنف 2 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): طُبعت الدرجة 15 بمبلغ 590.535 وهو أقل من الدرجة 14 (688.217)؛ فيكون فارق الفصل 14 (جديد) أ (الصفحة 7) سالبا. تُعتمد الدرجة 15 كما هي مطبوعة إلى غاية 28 سنة؛ وبعد ذلك لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  "horaires": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 26,
+   "source_pdf_page": 7,
+   "source_article": "14 (جديد) أ",
+   "texte_source_ar": "إذا بلغ العامل الدرجة الأخيرة في الصنف المرتب به (الدرجة 15)، فإنه ينتفع كل سنتين بالفارق بين القيمة المالية لهذه الدرجة والدرجة التي تسبقها مباشرة (الدرجة 14).",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D52",
+   "hypotheses_fr": [
+    "Article 14 (جديد) أ (p.7) : au degré 15, l'écart entre les degrés 15 et 14 s'ajoute tous les 2 ans ; le degré 15 est atteint à 26 ans (lecture de l'en-tête) ; n = nombre de périodes de 2 ans révolues depuis 26 ans ; écart cumulé (règle D10, période 2)."
+   ],
+   "hypotheses_ar": [
+    "الفصل 14 (جديد) أ (الصفحة 7): عند بلوغ الدرجة 15 يضاف الفارق بين الدرجتين 15 و14 كل سنتين؛ تُبلغ الدرجة 15 عند 26 سنة (حسب رأس الجدول)؛ عدد الفترات هو عدد السنتين المنقضيتين منذ 26 سنة؛ يُجمع الفارق (القاعدة D10، فترة سنتين)."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 14 (جديد) أ (page 7 : 28, 30, 32… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. 28 ans et 1 jour).",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 14 (جديد) أ (الصفحة 7: 28 و30 و32 سنة...) ولا يحدد المصدر إن كان الفارق مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة."
+  }
+ },
+ "anciennetes_refusees": {
+  "mensuels": [
+   {
+    "au_dela_de": 4,
+    "jusqu_a_inclus": 5,
+    "source_pdf_page": 14,
+    "source_article": "53",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête des tableaux de salaires (pages 21 à 23) place cette ancienneté au degré 4 (de 4 à 6 ans), alors que l'article 53 (page 14) range les travailleurs de la troisième à la cinquième année au degré 3. Les deux textes se contredisent de 4 ans exclus à 5 ans inclus. Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يضع رأس جداول الأجور (الصفحات من 21 إلى 23) هذه الأقدمية في الدرجة 4 (من 4 إلى 6 سنوات)، في حين يرتب الفصل 53 (الصفحة 14) العمال من السنة الثالثة إلى السنة الخامسة في الدرجة 3. يتعارض النصان من أكثر من 4 سنوات إلى 5 سنوات. لا يُرجَع أي مبلغ."
+   }
+  ],
+  "horaires": [
+   {
+    "au_dela_de": 4,
+    "jusqu_a_inclus": 5,
+    "source_pdf_page": 14,
+    "source_article": "53",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête des tableaux de salaires (pages 21 à 23) place cette ancienneté au degré 4 (de 4 à 6 ans), alors que l'article 53 (page 14) range les travailleurs de la troisième à la cinquième année au degré 3. Les deux textes se contredisent de 4 ans exclus à 5 ans inclus. Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يضع رأس جداول الأجور (الصفحات من 21 إلى 23) هذه الأقدمية في الدرجة 4 (من 4 إلى 6 سنوات)، في حين يرتب الفصل 53 (الصفحة 14) العمال من السنة الثالثة إلى السنة الخامسة في الدرجة 3. يتعارض النصان من أكثر من 4 سنوات إلى 5 سنوات. لا يُرجَع أي مبلغ."
+   }
+  ]
+ },
+ "categories": {
+  "mensuels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "horaires": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ]
+ },
+ "libelles_categories": {
+  "mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true,
+    "classification_pages": "16"
+   }
+  },
+  "horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true,
+    "classification_pages": "18"
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true,
+    "classification_pages": "18"
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true,
+    "classification_pages": "18"
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true,
+    "classification_pages": "18"
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "mensuels": {
+   "fr": [
+    "Degrés : l'en-tête « الأقدمية بالدرجة » (p.21-23) est vide pour le degré 1, puis 1, puis 2 (degrés 3 à 15) ; il est lu comme la durée de séjour, degré 1 d'un an : 0-1, 1-2, 2-4, …, 24-26, puis degré 15 à partir de 26 ans (lecture A).",
+    "Article 53 (p.14) : de 4 ans exclus à 5 ans inclus, l'article (degré 3) et l'en-tête (degré 4) se contredisent : aucun montant. Les degrés supplémentaires des points a) et b) de l'article 53 (plus de 5 ans dans la même catégorie) ne sont pas calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion automatique après 20 ans (article 14 (جديد) ب, p.7) n'est pas calculée.",
+    "Les salaires des tableaux incluent la prime de présence de 112 millimes par jour (note sous chaque tableau) : elle n'est pas ajoutée ; la prime de présence mensuelle de l'article 51 (جديد) est une autre prime (prime_presence)."
+   ],
+   "ar": [
+    "الدرجات: خانة «الأقدمية بالدرجة» في رأس الجداول (الصفحات من 21 إلى 23) فارغة للدرجة 1، ثم 1، ثم 2 (من الدرجة 3 إلى الدرجة 15)؛ تُعتبر مدة بقاء بالدرجة، والدرجة 1 سنة واحدة: 0-1، 1-2، 2-4، ...، 24-26، ثم الدرجة 15 بداية من 26 سنة.",
+    "الفصل 53 (الصفحة 14): من أكثر من 4 سنوات إلى 5 سنوات يتعارض الفصل (الدرجة 3) ورأس الجدول (الدرجة 4): لا يُرجَع أي مبلغ. ولا تُحتسب الدرجات الإضافية الواردة بالنقطتين أ) وب) من الفصل 53 (أكثر من 5 سنوات في نفس الصنف).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية الآلية عند بلوغ 20 سنة أقدمية (الفصل 14 (جديد) ب، الصفحة 7).",
+    "تتضمن أجور الجداول منحة الحضور المضبوطة بـ 112 مليما يوميا (ملاحظة تحت كل جدول): لا تُضاف؛ ومنحة الحضور الجملية الشهرية الواردة بالفصل 51 (جديد) منحة أخرى (prime_presence)."
+   ]
+  },
+  "horaires": {
+   "fr": [
+    "Degrés : l'en-tête « الأقدمية بالدرجة » (p.21-23) est vide pour le degré 1, puis 1, puis 2 (degrés 3 à 15) ; il est lu comme la durée de séjour, degré 1 d'un an : 0-1, 1-2, 2-4, …, 24-26, puis degré 15 à partir de 26 ans (lecture A).",
+    "Article 53 (p.14) : de 4 ans exclus à 5 ans inclus, l'article (degré 3) et l'en-tête (degré 4) se contredisent : aucun montant. Les degrés supplémentaires des points a) et b) de l'article 53 (plus de 5 ans dans la même catégorie) ne sont pas calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : la promotion automatique après 20 ans (article 14 (جديد) ب, p.7) n'est pas calculée.",
+    "Les salaires des tableaux incluent la prime de présence de 112 millimes par jour (note sous chaque tableau) : elle n'est pas ajoutée ; la prime de présence mensuelle de l'article 51 (جديد) est une autre prime (prime_presence)."
+   ],
+   "ar": [
+    "الدرجات: خانة «الأقدمية بالدرجة» في رأس الجداول (الصفحات من 21 إلى 23) فارغة للدرجة 1، ثم 1، ثم 2 (من الدرجة 3 إلى الدرجة 15)؛ تُعتبر مدة بقاء بالدرجة، والدرجة 1 سنة واحدة: 0-1، 1-2، 2-4، ...، 24-26، ثم الدرجة 15 بداية من 26 سنة.",
+    "الفصل 53 (الصفحة 14): من أكثر من 4 سنوات إلى 5 سنوات يتعارض الفصل (الدرجة 3) ورأس الجدول (الدرجة 4): لا يُرجَع أي مبلغ. ولا تُحتسب الدرجات الإضافية الواردة بالنقطتين أ) وب) من الفصل 53 (أكثر من 5 سنوات في نفس الصنف).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقية الآلية عند بلوغ 20 سنة أقدمية (الفصل 14 (جديد) ب، الصفحة 7).",
+    "تتضمن أجور الجداول منحة الحضور المضبوطة بـ 112 مليما يوميا (ملاحظة تحت كل جدول): لا تُضاف؛ ومنحة الحضور الجملية الشهرية الواردة بالفصل 51 (جديد) منحة أخرى (prime_presence)."
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/jour",
+   "montant": 0.200,
+   "effective_date": null,
+   "note": "200 millimes par jour, payés selon la législation en vigueur (art. 51 (جديد), p.14).",
+   "note_ar": "200 مليم في اليوم تدفع وفقا للتشريع الجاري به العمل (الفصل 51 (جديد)، الصفحة 14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montant journalier imprimé servi tel quel : aucun calcul selon le nombre de jours n'est fait."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "يُرجَع المبلغ اليومي المطبوع كما هو: لا يقع أي احتساب حسب عدد الأيام."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_plus_12h",
+   "label_ar": "منحة التنقل",
+   "label_fr": "Prime de déplacement (plus de 12 heures)",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/deplacement",
+   "montant": 1.800,
+   "effective_date": null,
+   "condition": "déplacement de plus de 12 heures (art. 51 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_deplacement_plus_18h",
+   "label_ar": "منحة التنقل",
+   "label_fr": "Prime de déplacement (plus de 18 heures)",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/deplacement",
+   "montant": 4.000,
+   "effective_date": null,
+   "condition": "déplacement de plus de 18 heures (art. 51 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse",
+   "label_ar": "منحة صندوق المقابيض",
+   "label_fr": "Prime de caisse",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 7.000,
+   "effective_date": null,
+   "condition": "agent chargé de la caisse des recettes (art. 51 (جديد), p.14)",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence (forfait mensuel)",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 4.071
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 4.346
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 4.639
+    }
+   ],
+   "note": "Prime de présence globale mensuelle (art. 51 (جديد), p.14), distincte des 112 millimes par jour déjà inclus dans les tableaux de salaires.",
+   "note_ar": "منحة حضور جملية شهرية (الفصل 51 (جديد)، الصفحة 14)، غير منحة الحضور المضبوطة بـ 112 مليم يوميا المتضمنة في جداول الأجور."
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "52 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 52.479
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 56.022
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 59.803
+    }
+   ],
+   "note": "Prime globale de transport à la charge de l'employeur, payée à la fin du mois (art. 52 (جديد), p.14).",
+   "note_ar": "منحة جملية للنقل، تحمل على كاهل المؤجر وتدفع في آخر الشهر (الفصل 52 (جديد)، الصفحة 14)."
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production": {
+   "source_pdf_page": 14,
+   "source_article": "49",
+   "message_fr": "Prime de production et de fin d'année (article 49, page 14) : pourcentage du salaire (4 % à 11 % selon la note), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج وآخر السنة (الفصل 49، الصفحة 14): نسبة من الأجر (من 4 % إلى 11 % حسب العدد المهني)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 13,
+   "source_article": "48",
+   "message_fr": "Prime de départ à la retraite (article 48, page 13) : montant en mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التقاعد (الفصل 48، الصفحة 13): مقدار بحساب أجرة أشهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CONF_MENSUELS_2021-12-01",
+   "numero_imprime": 1,
+   "population": "mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "1",
+     "degre": 8,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (3 ou 8)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 1, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (3 أو 8)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "2",
+     "degre": 8,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (0 ou 3)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 2, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "3",
+     "degre": 8,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (0 ou 3)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 3, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "5",
+     "degre": 8,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (0 ou 3)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 5, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "6",
+     "degre": 8,
+     "source_pdf_page": 21,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (3 ou 8)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 6, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (3 أو 8)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "anomalies_imprimees": [
+    {
+     "ligne": 2,
+     "colonne": 15,
+     "categorie": "2",
+     "degre": 15,
+     "valeur_imprimee": 590.535,
+     "voisines": {
+      "colonne_14": 688.217,
+      "ligne_1_colonne_15": 629.506
+     },
+     "constat": "plus basse que le degré 14 de la même ligne et que la cellule au-dessus ; la même case vaut 735.197 en 2023",
+     "note": "Valeur imprimée conservée, aucune correction ; relue au zoom ×3 et à 400 dpi ; écart de l'article 14 refusé pour cette case (cases_refusees)."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     609.208,
+     612.302,
+     612.579,
+     613.154,
+     613.728,
+     614.286,
+     614.861,
+     null,
+     617.583,
+     619.570,
+     621.558,
+     623.545,
+     625.532,
+     627.519,
+     629.506
+    ],
+    "2": [
+     661.660,
+     662.060,
+     662.460,
+     663.283,
+     664.850,
+     667.169,
+     669.487,
+     null,
+     674.125,
+     676.443,
+     678.762,
+     683.581,
+     685.899,
+     688.217,
+     590.535
+    ],
+    "3": [
+     713.983,
+     715.224,
+     716.499,
+     719.045,
+     721.591,
+     724.138,
+     726.684,
+     null,
+     731.777,
+     736.823,
+     739.369,
+     741.915,
+     744.461,
+     747.007,
+     749.553
+    ],
+    "4": [
+     773.456,
+     774.757,
+     776.058,
+     778.659,
+     781.261,
+     783.863,
+     786.464,
+     791.565,
+     794.168,
+     796.727,
+     799.371,
+     801.973,
+     804.574,
+     807.175,
+     809.776
+    ],
+    "5": [
+     854.790,
+     856.649,
+     858.507,
+     862.224,
+     865.941,
+     869.657,
+     873.374,
+     null,
+     883.307,
+     887.024,
+     890.740,
+     894.457,
+     898.174,
+     901.891,
+     905.605
+    ],
+    "6": [
+     935.636,
+     938.113,
+     940.591,
+     948.046,
+     953.002,
+     957.957,
+     962.913,
+     null,
+     972.824,
+     980.280,
+     985.235,
+     990.191,
+     995.146,
+     1000.101,
+     1005.056
+    ]
+   }
+  },
+  {
+   "table_id": "CONF_HORAIRES_2021-12-01",
+   "numero_imprime": 2,
+   "population": "horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 21,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     2.924,
+     2.946,
+     2.947,
+     2.950,
+     2.953,
+     2.956,
+     2.959,
+     2.961,
+     2.964,
+     2.968,
+     2.977,
+     2.987,
+     2.995,
+     3.005,
+     3.015
+    ],
+    "2": [
+     3.189,
+     3.190,
+     3.192,
+     3.194,
+     3.197,
+     3.200,
+     3.202,
+     3.214,
+     3.224,
+     3.233,
+     3.244,
+     3.254,
+     3.263,
+     3.273,
+     3.283
+    ],
+    "3": [
+     3.455,
+     3.456,
+     3.458,
+     3.462,
+     3.473,
+     3.484,
+     3.495,
+     3.507,
+     3.518,
+     3.529,
+     3.541,
+     3.551,
+     3.575,
+     3.587,
+     3.599
+    ],
+    "4": [
+     3.698,
+     3.704,
+     3.709,
+     3.720,
+     3.732,
+     3.743,
+     3.754,
+     3.766,
+     3.777,
+     3.801,
+     3.812,
+     3.824,
+     3.837,
+     3.849,
+     3.861
+    ]
+   }
+  },
+  {
+   "table_id": "CONF_MENSUELS_2023-01-01",
+   "numero_imprime": 3,
+   "population": "mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "valeurs": {
+    "1": [
+     650.330,
+     653.424,
+     653.701,
+     654.276,
+     654.850,
+     655.408,
+     655.983,
+     656.541,
+     658.705,
+     660.692,
+     662.680,
+     664.667,
+     666.654,
+     668.641,
+     670.628
+    ],
+    "2": [
+     706.322,
+     706.722,
+     707.122,
+     707.945,
+     709.512,
+     711.831,
+     714.149,
+     716.442,
+     718.787,
+     721.105,
+     723.424,
+     728.243,
+     730.561,
+     732.879,
+     735.197
+    ],
+    "3": [
+     762.176,
+     763.417,
+     764.692,
+     767.238,
+     769.784,
+     772.331,
+     774.877,
+     777.433,
+     779.970,
+     785.016,
+     787.562,
+     790.108,
+     792.654,
+     795.200,
+     797.746
+    ],
+    "4": [
+     825.665,
+     826.966,
+     828.267,
+     830.868,
+     833.470,
+     836.072,
+     838.673,
+     843.775,
+     846.377,
+     848.936,
+     851.580,
+     854.182,
+     856.783,
+     859.384,
+     861.985
+    ],
+    "5": [
+     912.488,
+     914.347,
+     916.205,
+     919.922,
+     923.639,
+     927.355,
+     931.072,
+     934.788,
+     941.005,
+     944.722,
+     948.438,
+     952.155,
+     955.872,
+     959.589,
+     963.303
+    ],
+    "6": [
+     998.791,
+     1001.268,
+     1003.746,
+     1011.201,
+     1016.157,
+     1021.112,
+     1026.068,
+     1031.023,
+     1035.979,
+     1043.435,
+     1048.390,
+     1053.346,
+     1058.301,
+     1063.256,
+     1068.211
+    ]
+   }
+  },
+  {
+   "table_id": "CONF_HORAIRES_2023-01-01",
+   "numero_imprime": 4,
+   "population": "horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 22,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     3.121,
+     3.143,
+     3.144,
+     3.147,
+     3.150,
+     3.153,
+     3.156,
+     3.158,
+     3.161,
+     3.165,
+     3.174,
+     3.184,
+     3.192,
+     3.202,
+     3.212
+    ],
+    "2": [
+     3.404,
+     3.405,
+     3.407,
+     3.409,
+     3.412,
+     3.415,
+     3.417,
+     3.429,
+     3.439,
+     3.448,
+     3.459,
+     3.469,
+     3.478,
+     3.488,
+     3.498
+    ],
+    "3": [
+     3.689,
+     3.690,
+     3.692,
+     3.696,
+     3.707,
+     3.718,
+     3.729,
+     3.741,
+     3.752,
+     3.763,
+     3.775,
+     3.785,
+     3.809,
+     3.821,
+     3.833
+    ],
+    "4": [
+     3.948,
+     3.954,
+     3.959,
+     3.970,
+     3.982,
+     3.993,
+     4.004,
+     4.016,
+     4.027,
+     4.051,
+     4.062,
+     4.074,
+     4.087,
+     4.099,
+     4.111
+    ]
+   }
+  },
+  {
+   "table_id": "CONF_MENSUELS_2024-01-01",
+   "numero_imprime": 5,
+   "population": "mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 23,
+   "unite": "TND/mois",
+   "cellules_source_manquante": [
+    {
+     "categorie": "2",
+     "degre": 8,
+     "source_pdf_page": 23,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (0 ou 3)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 2, degré 8 (tableau n° 5, en vigueur à partir du 2024-01-01, page 23) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2024-01-01، الصفحة 23): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "3",
+     "degre": 8,
+     "source_pdf_page": 23,
+     "source_article": "جدول الأجور",
+     "raison": "dernier chiffre abîmé à l'impression (0 ou 3)",
+     "message_fr": "Salaire des agents payés au mois, catégorie 3, degré 8 (tableau n° 5, en vigueur à partir du 2024-01-01, page 23) : dernier chiffre abîmé à l'impression (0 ou 3) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2024-01-01، الصفحة 23): الرقم الأخير تالف في الطباعة (0 أو 3)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "6",
+     "degre": 8,
+     "source_pdf_page": 23,
+     "source_article": "جدول الأجور",
+     "raison": "avant-dernier chiffre abîmé à l'impression",
+     "message_fr": "Salaire des agents payés au mois, catégorie 6, degré 8 (tableau n° 5, en vigueur à partir du 2024-01-01, page 23) : avant-dernier chiffre abîmé à l'impression ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2024-01-01، الصفحة 23): الرقم ما قبل الأخير تالف في الطباعة؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     694.227,
+     697.321,
+     697.598,
+     698.173,
+     698.747,
+     699.305,
+     699.880,
+     700.438,
+     702.602,
+     704.589,
+     706.577,
+     708.564,
+     710.551,
+     712.538,
+     714.525
+    ],
+    "2": [
+     753.999,
+     754.399,
+     754.799,
+     755.622,
+     757.189,
+     759.508,
+     761.826,
+     null,
+     766.464,
+     768.782,
+     771.101,
+     775.920,
+     778.238,
+     780.556,
+     782.874
+    ],
+    "3": [
+     813.623,
+     814.864,
+     816.139,
+     818.685,
+     821.231,
+     823.778,
+     826.324,
+     null,
+     831.417,
+     836.463,
+     839.009,
+     841.555,
+     844.101,
+     846.647,
+     849.193
+    ],
+    "4": [
+     881.397,
+     882.698,
+     883.999,
+     886.600,
+     889.202,
+     891.804,
+     894.405,
+     899.507,
+     902.109,
+     904.668,
+     907.312,
+     909.914,
+     912.515,
+     915.116,
+     917.717
+    ],
+    "5": [
+     974.081,
+     975.940,
+     977.798,
+     981.515,
+     985.232,
+     988.948,
+     992.665,
+     996.381,
+     1002.598,
+     1006.315,
+     1010.031,
+     1013.748,
+     1017.465,
+     1021.182,
+     1024.896
+    ],
+    "6": [
+     1066.209,
+     1068.686,
+     1071.164,
+     1078.619,
+     1083.575,
+     1088.530,
+     1093.486,
+     null,
+     1103.397,
+     1110.853,
+     1115.808,
+     1120.764,
+     1125.719,
+     1130.674,
+     1135.629
+    ]
+   }
+  },
+  {
+   "table_id": "CONF_HORAIRES_2024-01-01",
+   "numero_imprime": 6,
+   "population": "horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 23,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     3.332,
+     3.354,
+     3.355,
+     3.358,
+     3.361,
+     3.364,
+     3.367,
+     3.369,
+     3.372,
+     3.376,
+     3.385,
+     3.395,
+     3.403,
+     3.413,
+     3.423
+    ],
+    "2": [
+     3.634,
+     3.635,
+     3.637,
+     3.639,
+     3.642,
+     3.645,
+     3.647,
+     3.659,
+     3.669,
+     3.678,
+     3.689,
+     3.699,
+     3.708,
+     3.718,
+     3.728
+    ],
+    "3": [
+     3.938,
+     3.939,
+     3.941,
+     3.945,
+     3.956,
+     3.967,
+     3.978,
+     3.990,
+     4.001,
+     4.012,
+     4.024,
+     4.034,
+     4.058,
+     4.070,
+     4.082
+    ],
+    "4": [
+     4.214,
+     4.220,
+     4.225,
+     4.236,
+     4.248,
+     4.259,
+     4.270,
+     4.282,
+     4.293,
+     4.317,
+     4.328,
+     4.340,
+     4.353,
+     4.365,
+     4.377
+    ]
+   }
+  }
+ ]
+}

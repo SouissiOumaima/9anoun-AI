@@ -4,6 +4,7 @@ Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_as
 Les tests de montants lisent une copie en mémoire (référence de test « D99 », charger_grille et GRILLES
 remplacés le temps du test) ; le fichier réel, activé par D29, est vérifié à part.
 """
+
 import copy
 from decimal import Decimal
 
@@ -18,9 +19,13 @@ REEL = lire_json(FICHIER)
 # Valeurs de la double lecture de la p.11 (art. 20 (جديد), 0 écart).
 TRANSPORT = [("2016-06-01", Decimal("75.000")), ("2017-06-01", Decimal("85.000"))]
 NON_COUVERTES = {
-    "prime_13e_14e_mois": ("20 (جديد)", 11), "prime_production": ("20 (جديد)", 11),
-    "prime_fonctionnelle": ("21 (جديد)", 11), "prime_sujetion_services": ("22 (جديد)", 11),
-    "aide_deces": ("44", 17), "aide_scolaire": ("46", 17), "prime_depart_retraite": ("47 (جديد)", 17),
+    "prime_13e_14e_mois": ("20 (جديد)", 11),
+    "prime_production": ("20 (جديد)", 11),
+    "prime_fonctionnelle": ("21 (جديد)", 11),
+    "prime_sujetion_services": ("22 (جديد)", 11),
+    "aide_deces": ("44", 17),
+    "aide_scolaire": ("46", 17),
+    "prime_depart_retraite": ("47 (جديد)", 17),
 }
 
 
@@ -44,6 +49,7 @@ def refus(code, *a, **k):
 
 # --- fichier réel : grille non activée ------------------------------------------------------------
 
+
 def test_fichier_reel_active_d29_et_dans_le_registre(ok):
     assert REEL["_meta"]["decision_ref"] == "D29"
     loaders.valider_grille(copy.deepcopy(REEL), FICHIER)
@@ -55,22 +61,32 @@ def test_fichier_reel_active_d29_et_dans_le_registre(ok):
 def test_prime_transport_dans_le_fichier():
     (p,) = REEL["primes"]
     assert (p["code"], p["source_article"], p["source_pdf_page"], p["unite"]) == (
-        "prime_transport", "20 (جديد)", 11, "TND/mois")
+        "prime_transport",
+        "20 (جديد)",
+        11,
+        "TND/mois",
+    )
     assert [(m["effective_date"], m["montant"]) for m in p["montants"]] == TRANSPORT
     assert "texte_source_ar" not in p
 
 
 # --- montants datés --------------------------------------------------------------------------------
 
+
 def test_avant_le_2016_06_01_aucun_montant(assurance):
     e = refus(Refus.SOURCE_MANQUANTE, S, "prime_transport", "2016-05-31")
     assert "2016-06-01" in e.message_fr
 
 
-@pytest.mark.parametrize("jour,attendu", [
-    ("2016-06-01", Decimal("75.000")), ("2017-05-31", Decimal("75.000")),
-    ("2017-06-01", Decimal("85.000")), ("2025-01-01", Decimal("85.000")),
-])
+@pytest.mark.parametrize(
+    "jour,attendu",
+    [
+        ("2016-06-01", Decimal("75.000")),
+        ("2017-05-31", Decimal("75.000")),
+        ("2017-06-01", Decimal("85.000")),
+        ("2025-01-01", Decimal("85.000")),
+    ],
+)
 def test_montant_transport_par_date(assurance, ok, jour, attendu):
     r = ok(prime(S, "prime_transport", jour))
     assert r.montant == attendu and r.unite == "TND/mois"
@@ -91,6 +107,7 @@ def test_aucun_parametre_de_groupe(assurance):
 
 
 # --- primes non couvertes -------------------------------------------------------------------------
+
 
 def test_liste_des_primes_non_couvertes():
     assert set(REEL["primes_non_couvertes"]) == set(NON_COUVERTES)

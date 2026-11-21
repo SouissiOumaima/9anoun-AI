@@ -1,6 +1,7 @@
 """Registre des secteurs découvert dans data/processed/salary_grids/ (calc/loaders.py, decouvrir_grilles).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_registre_secteurs.py
 """
+
 import json
 from decimal import Decimal
 
@@ -41,8 +42,34 @@ def test_registre_actuel_identique():
         "ENSEIGNEMENT_PRIVE": "data/processed/salary_grids/enseignement_prive.json",
         "BANQUES": "data/processed/salary_grids/banques.json",
         "GARDIENNAGE_SECURITE_TRANSPORT_FONDS": "data/processed/salary_grids/gardiennage.json",
+        "TORREFACTION_CAFE": "data/processed/salary_grids/torrefaction_cafe.json",
+        "AGENCES_VOYAGES": "data/processed/salary_grids/agences_voyages.json",
+        "HOTELS_TOURISTIQUES": "data/processed/salary_grids/hotels_touristiques.json",
+        "CONFISERIE_BISCUITERIE_CHOCOLATERIE": "data/processed/salary_grids/confiserie_biscuiterie.json",
+        "PATES_ALIMENTAIRES_COUSCOUS": "data/processed/salary_grids/pates_alimentaires.json",
+        "COSMETIQUES_PARFUMS": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "SAVONNERIE_RAFFINAGE_GRIGNONS": "data/processed/salary_grids/savonnerie_raffinage.json",
+        "COMMERCE_DISTRIBUTION_PETROLE": "data/processed/salary_grids/distribution_petrole.json",
+        "PLASTURGIE": "data/processed/salary_grids/plasturgie.json",
+        "MINOTERIES": "data/processed/salary_grids/minoteries.json",
+        "TEINTURERIES_PRESSINGS": "data/processed/salary_grids/teintureries_pressings.json",
+        "BOISSONS_GAZEUSES": "data/processed/salary_grids/boissons_gazeuses.json",
+        "MECANIQUE_STATIONS_SERVICE": "data/processed/salary_grids/mecanique_stations_service.json",
+        "BOISSONS_ALCOOLISEES": "data/processed/salary_grids/boissons_alcoolisees.json",
+        "BOIS_AMEUBLEMENT_LIEGE": "data/processed/salary_grids/bois_ameublement_liege.json",
+        "GESTION_DECHETS": "data/processed/salary_grids/gestion_dechets.json",
+        "HABILLEMENT": "data/processed/salary_grids/habillement.json",
+        "COMMERCE_GROS_DETAIL": "data/processed/salary_grids/commerce_gros_detail.json",
+        "IMPRIMERIE_EDITION_CARTONNAGE": "data/processed/salary_grids/imprimerie_edition.json",
+        "VERRE_MIROIRS": "data/processed/salary_grids/verre_miroirs.json",
+        "CONCESSIONNAIRES_MATERIEL_AGRICOLE": "data/processed/salary_grids/materiel_agricole.json",
+        "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
+        "TEXTILE": "data/processed/salary_grids/textile.json",
+        "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
     }
-    assert list(loaders.GRILLES) == loaders.secteurs_disponibles()            # ordre D4, puis D9, D23, D29, D38, D46, D47
+    assert (
+        list(loaders.GRILLES) == loaders.secteurs_disponibles()
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -68,8 +95,14 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
     with pytest.raises(Refus) as e:
         salaire_base("SANS_REF", "admin_tech", "4", 15, "2022-06-01")
     assert e.value.code == Refus.SOURCE_MANQUANTE
-    assert e.value.message_fr == ("Aucune grille vérifiée pour le secteur 'SANS_REF' "
-                                  "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS).")
+    assert e.value.message_fr == (
+        "Aucune grille vérifiée pour le secteur 'SANS_REF' "
+        "(disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, "
+        "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
+        "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
+        "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
+        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
+    )
 
 
 def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):
@@ -77,7 +110,7 @@ def test_fichiers_invalides_ou_ambigus_ignores(tmp_path):
     (tmp_path / "liste.json").write_text("[]", encoding="utf-8")
     (tmp_path / "sans_code.json").write_text(json.dumps({"_meta": {"decision_ref": "D4"}}), encoding="utf-8")
     _ecrire(tmp_path, "a.json", "DOUBLON", ref="D4")
-    _ecrire(tmp_path, "b.json", "DOUBLON", ref="D5")              # même code dans deux fichiers : ambigu
+    _ecrire(tmp_path, "b.json", "DOUBLON", ref="D5")  # même code dans deux fichiers : ambigu
     _ecrire(tmp_path, "c.json", "UNIQUE", ref="D7")
     assert loaders.decouvrir_grilles(tmp_path) == {"UNIQUE": (tmp_path / "c.json").resolve().as_posix()}
 

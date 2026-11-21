@@ -78,11 +78,29 @@ def test_codes_ds5_dans_le_registre_et_meta_identique():
         assert s["evidence"]["convention_ar"] == meta["convention_ar"]
 
 
+# Seule exemption : grilles des vagues 1 à 4 (D49 à D72), activées dans le registre DS5 sans entrée dans la table, en
+# attente de validation DS2 (noms, codes et alias). Vider cette liste quand l'équipe les inscrit dans la table.
+EN_ATTENTE_DS2 = ["TORREFACTION_CAFE", "AGENCES_VOYAGES", "HOTELS_TOURISTIQUES", "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+                  "PATES_ALIMENTAIRES_COUSCOUS", "COSMETIQUES_PARFUMS",
+                  "SAVONNERIE_RAFFINAGE_GRIGNONS", "COMMERCE_DISTRIBUTION_PETROLE", "PLASTURGIE", "MINOTERIES", "TEINTURERIES_PRESSINGS", "BOISSONS_GAZEUSES",
+                  "MECANIQUE_STATIONS_SERVICE", "BOISSONS_ALCOOLISEES", "BOIS_AMEUBLEMENT_LIEGE", "GESTION_DECHETS", "HABILLEMENT", "COMMERCE_GROS_DETAIL",
+                  "IMPRIMERIE_EDITION_CARTONNAGE", "VERRE_MIROIRS", "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "BOULANGERIES", "TEXTILE", "FONDERIE_METALLURGIE_MECANIQUE"]
+
+
 def test_chaque_secteur_ds5_disponible_figure_une_fois():
-    """Une nouvelle grille ajoutée au registre DS5 doit être inscrite dans la table."""
+    """Une nouvelle grille ajoutée au registre DS5 doit être inscrite dans la table (sauf EN_ATTENTE_DS2)."""
     codes = [s["ds5_code"] for s in ACTIFS]
-    for code in loaders.secteurs_disponibles():
+    disponibles = loaders.secteurs_disponibles()
+    for code in disponibles:
+        if code in EN_ATTENTE_DS2:
+            continue
         assert codes.count(code) == 1, code
+    # Les secteurs exemptés sont bien disponibles et absents de la table : à leur ajout, ce test échoue jusqu'à ce
+    # que la liste d'exemption soit vidée.
+    tous_codes = [s["ds5_code"] for s in TABLE["sectors"]]
+    for code in EN_ATTENTE_DS2:
+        assert code in disponibles, code
+        assert code not in tous_codes, code
 
 
 # --- (4) preuve exécutable : même fichier source côté DS2 -----------------------------------------------------

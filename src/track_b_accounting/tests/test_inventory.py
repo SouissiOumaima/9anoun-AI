@@ -1,6 +1,7 @@
 """Tests de l'inventaire couche texte (PDF générés en mémoire, jamais data/raw/).
 Lancer depuis la racine du dépôt : pytest src/track_b_accounting/tests/test_inventory.py
 """
+
 import sys
 from pathlib import Path
 
@@ -14,13 +15,13 @@ LONG_TEXT = "Salaire de base categorie 5 : 459.264 TND, prime 81.435 TND, conge 
 
 def _make_pdf(tmp_path: Path) -> Path:
     doc = pymupdf.open()
-    doc.new_page().insert_text((72, 72), "Couverture")           # p1 : < 50 car.
-    doc.new_page().insert_text((72, 72), LONG_TEXT)              # p2 : texte
-    page = doc.new_page()                                        # p3 : image seule
+    doc.new_page().insert_text((72, 72), "Couverture")  # p1 : < 50 car.
+    doc.new_page().insert_text((72, 72), LONG_TEXT)  # p2 : texte
+    page = doc.new_page()  # p3 : image seule
     pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, 20, 20), False)
     pix.clear_with(200)
     page.insert_image(pymupdf.Rect(72, 72, 300, 300), pixmap=pix)
-    doc.new_page()                                               # p4 : vide
+    doc.new_page()  # p4 : vide
     path = tmp_path / "mini.pdf"
     doc.save(path)
     return path
