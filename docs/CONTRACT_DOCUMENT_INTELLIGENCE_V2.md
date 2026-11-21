@@ -52,8 +52,9 @@ réponse). Opérations : `analyze_document` (résultat `DocumentAnalysis`) et `e
 
 **Seuil de confiance.** `options.min_confidence` est seulement indicatif : DS3 **n'applique aucun seuil**. Il
 renvoie toujours la confiance réelle de chaque champ (`fields[...].confidence`), et c'est le **consommateur** qui
-décide quoi en faire. DS1 exige **0,90** avant tout calcul DS5 ; en dessous, le champ passe « à confirmer » et
-n'est jamais pré-coché. Le champ n'a donc pas de valeur par défaut (voir D39).
+décide quoi en faire. DS1 exige **0,90** avant tout calcul DS5 ; en dessous, le champ reste **visible** (avec sa
+citation) mais **ne peut pas être sélectionné** pour un calcul. Le champ n'a donc pas de valeur par défaut (voir
+D39).
 
 ## Réponse : que faire selon le statut
 
@@ -165,12 +166,14 @@ texte natif du PDF est lu d'abord ; les zones image, les pages scannées et les 
 partie A (PaddleOCR PP-OCRv5, arabe et français), seulement s'il reste quelque chose à lire et si l'OCR est
 disponible sur le serveur (aujourd'hui : PaddleOCR installé et `DS3_OCR_INPROCESS=1`, réservé aux démonstrations ;
 ensuite : backend OCR en arrière-plan, D42). Une ligne lue par
-l'OCR porte sa confiance réelle, sans seuil : sous 0,90, DS1 demande une confirmation. Pour une image, les `bbox`
+l'OCR porte sa confiance réelle, sans seuil : sous 0,90, DS1 l'affiche mais ne permet pas de l'utiliser pour un
+calcul. Pour une image, les `bbox`
 sont en points d'une page virtuelle de `pixels × 72 / dpi` points (300 DPI par défaut).
 
 **Limite de l'OCR.** Un chiffre **perdu** par l'OCR est attrapé par la vérification (le champ reste à `null`). Un
-chiffre **remplacé** (424,700 lu au lieu de 424,100) ne l'est pas, puisqu'il figure dans la ligne lue : ce sont la
-confiance et la confirmation par l'utilisateur, qui voit la citation, qui protègent contre ce cas.
+chiffre **remplacé** (424,700 lu au lieu de 424,100) ne l'est pas, puisqu'il figure dans la ligne lue. Ce qui
+protège contre ce cas : sous 0,90, DS1 affiche le champ sans permettre de l'utiliser pour un calcul ; à 0,90 ou
+plus, l'utilisateur doit le confirmer explicitement, en voyant la citation.
 
 Le reste donne un refus clair, en français et en arabe :
 

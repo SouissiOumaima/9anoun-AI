@@ -196,6 +196,28 @@ def test_mixed_pdf_cites_native_and_ocr_lines(tmp_path: Path) -> None:
     assert "424,100" in excerpts and "Catégorie" in excerpts
 
 
+def test_ocr_zone_above_native_lines_is_read_first(tmp_path: Path) -> None:
+    """Zone image en haut de page, deux lignes natives plus bas : la ligne OCR prend sa place en premier,
+    et les lignes natives gardent leur ordre (merge_by_position dans reading/ocr.py, D41)."""
+    pdf = tmp_path / "zone_en_haut.pdf"
+    doc = pymupdf.open()
+    page = doc.new_page()
+    pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, 600, 220), False)
+    pix.clear_with(230)
+    page.insert_image(pymupdf.Rect(72, 60, 372, 170), stream=pix.tobytes("png"))
+    page.insert_text((72, 400), "Salaire de base 424,100", fontsize=11)
+    page.insert_text((72, 450), "Salaire brut 516,100", fontsize=11)
+    doc.save(pdf)
+    doc.close()
+
+    read = read_document(pdf, "doc_zone_en_haut", FakeEngine(["Catégorie : 3"]))
+    lines = read.pages[0].lines
+    assert [line.source for line in lines] == ["ocr", "natif", "natif"]
+    assert [line.text for line in lines[1:]] == ["Salaire de base 424,100", "Salaire brut 516,100"]
+    text = read.full_text()
+    assert text.index("Catégorie") < text.index("Salaire de base") < text.index("Salaire brut")
+
+
 def test_image_without_ocr_is_refused_by_the_pipeline(tmp_path: Path) -> None:
     png = tmp_path / "paie.png"
     png.write_bytes(_png_bytes())
