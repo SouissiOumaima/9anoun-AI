@@ -646,5 +646,287 @@
     ],
     "refus": null,
     "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-19-peintures-execution-horaires-degre-13",
+    "status": "ok",
+    "result": {
+      "montant": "5.668",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_horaires",
+        "categorie": "ouvrier_hautement_qualifie",
+        "degre": 13,
+        "degre_imprime": "13",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد) و 52, page 8",
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 24,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-20-peintures-administratifs-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "1428.536",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "administratifs_techniciens",
+        "categorie": "23",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Unité non imprimée pour les administratifs et techniciens : montants de 550 à 1 645 dinars, servis en TND/mois (hypothèse affichée). Les 23 lignes portent des intitulés de postes, sans numéro de catégorie : clés 1 à 23 par position imprimée.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالنسبة إلى الأعوان الإداريين والفنيين: مبالغ من 550 إلى 1645 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض. تحمل الأسطر الثلاثة والعشرون أسماء خطط دون رقم صنف: المفاتيح من 1 إلى 23 حسب الترتيب المطبوع.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_ADMINISTRATIFS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-21-peintures-execution-mensuels-degre-7",
+    "status": "ok",
+    "result": {
+      "montant": "540.294",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_mensuels",
+        "categorie": "ouvrier_manuel",
+        "degre": 7,
+        "degre_imprime": "7",
+        "degre_declare": true,
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-22-chaussure-horaires-degre-30",
+    "status": "ok",
+    "result": {
+      "montant": "3.881",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "horaires",
+        "categorie": "VI",
+        "degre": 30,
+        "degre_imprime": "30",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد), page 8",
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 33,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-23-chaussure-mensuels-1b-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "579.170",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "b",
+        "libelle_fr": "Catégorie 1 ب",
+        "libelle_ar": "الصنف 1 ب",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2021-12-15",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-24-chaussure-mensuels-anomalie-degre-24",
+    "status": "ok",
+    "result": {
+      "montant": "707.557",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "5",
+        "degre": 24,
+        "degre_imprime": "24",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-25-refus-peintures-degre-absent",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Degré 14 absent de la grille PEINTURES/execution_horaires (table PEI_EXECUTION_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+      "message_ar": "الدرجة 14 غير موجودة في جدول الأجور PEINTURES/execution_horaires (الجدول PEI_EXECUTION_HORAIRES_2024-01-01)؛ التسميات المطبوعة المقبولة: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]

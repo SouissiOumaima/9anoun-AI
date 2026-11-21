@@ -124,5 +124,54 @@
     "operation": "salaire_base",
     "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4", "anciennete_annees": 15, "date": "2022-06-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-19-peintures-execution-horaires-degre-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_horaires", "categorie": "ouvrier_hautement_qualifie", "degre": 13, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-20-peintures-administratifs-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "administratifs_techniciens", "categorie": "23", "degre": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-21-peintures-execution-mensuels-degre-7",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_mensuels", "categorie": "ouvrier_manuel", "degre": 7, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-22-chaussure-horaires-degre-30",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "horaires", "categorie": "VI", "degre": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-23-chaussure-mensuels-1b-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "degre": 1, "date": "2021-12-15"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-24-chaussure-mensuels-anomalie-degre-24",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "mensuels", "categorie": "5", "degre": 24, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-25-refus-peintures-degre-absent",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_horaires", "categorie": "ouvrier", "degre": 14, "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]
