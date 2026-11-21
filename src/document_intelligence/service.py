@@ -8,7 +8,8 @@ Utilisation côté DS1 (seule la ligne d'import change par rapport au mock) :
 Ce que fait le service, dans l'ordre :
 1. mêmes contrôles que le mock : opération connue, requête conforme au contrat, document de la carte active ;
 2. retrouve le fichier à partir de `document.storage_ref` (voir « Stockage » ci-dessous) ;
-3. vérifie ce qui est disponible en live aujourd'hui : fiches de paie en PDF, opération `analyze_document` ;
+3. vérifie ce qui est disponible en live aujourd'hui : fiches de paie en PDF, PNG ou JPG (images lues par
+   l'OCR de la partie A, D41), opération `analyze_document` ;
 4. appelle la chaîne d'extraction (lecture, Gemini, vérification, normalisation, réponse citée).
 Il ne lève jamais d'exception : tout problème devient une réponse `refus` ou `erreur`.
 
@@ -43,14 +44,20 @@ from src.document_intelligence.contract.v2.models import (
     Refus,
     ResponseMeta,
 )
+from src.document_intelligence.extraction import pipeline
 from src.document_intelligence.extraction.assemble import COMPUTED_BY, PIPELINE_VERSION
-from src.document_intelligence.extraction.pipeline import analyze_payslip_pdf
+from src.document_intelligence.extraction.pipeline import (
+    IMAGE_EXTENSIONS,
+    OCR_IMAGE_AR,
+    OCR_IMAGE_FR,
+    analyze_payslip_pdf,
+)
 
 log = logging.getLogger(__name__)
 
 STORAGE_ROOT_ENV: Final = "DS3_STORAGE_ROOT"
 MAX_FILE_BYTES: Final = 20 * 1024 * 1024
-LIVE_EXTENSIONS: Final = {".pdf"}
+LIVE_EXTENSIONS: Final = {".pdf", *IMAGE_EXTENSIONS}
 LIVE_DOCUMENT_TYPES: Final = {None, "fiche_de_paie"}
 
 
@@ -140,14 +147,16 @@ def resolve_storage_ref(req: DS3Request, root: Path) -> Path:
 
 
 def handle_request(request: dict[str, Any], *, storage_root_dir: Path | str | None = None,
-                   client: Any | None = None, model: str | None = None) -> dict[str, Any]:
+                   client: Any | None = None, model: str | None = None,
+                   ocr_engine: Any | None = None) -> dict[str, Any]:
     """Point d'entrée unique DS3 en live. Reçoit et renvoie du JSON (dict), jamais d'exception.
 
-    `client` et `model` permettent aux tests de remplacer Gemini (aucun appel réseau).
+    `client` et `model` permettent aux tests de remplacer Gemini (aucun appel réseau) ;
+    `ocr_engine` permet de remplacer PaddleOCR (aucun modèle chargé).
     """
     started = time.perf_counter()
     try:
-        return _handle(request, storage_root_dir, client, model, started)
+        return _handle(request, storage_root_dir, client, model, ocr_engine, started)
     except Exception:  # le contrat interdit de propager une exception à DS1
         log.exception("Erreur interne DS3")
         raw_id = request.get("request_id") if isinstance(request, dict) else None
@@ -157,7 +166,7 @@ def handle_request(request: dict[str, Any], *, storage_root_dir: Path | str | No
 
 
 def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | None, model: str | None,
-            started: float) -> dict[str, Any]:
+            ocr_engine: Any | None, started: float) -> dict[str, Any]:
     raw_id = request.get("request_id")
     operation = str(request.get("operation", "unknown"))
     env = _envelope(raw_id if isinstance(raw_id, str) and raw_id else None, operation, None, None, None, started)
@@ -180,10 +189,14 @@ def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | 
                       live_fr="La lecture des grilles de salaires n'est pas encore disponible en live "
                       "(utiliser le mock v2).",
                       live_ar="قراءة جداول الأجور غير متاحة بعد في الخدمة الفعلية.")
-    if PurePosixPath(req.document.file_name).suffix.lower() not in LIVE_EXTENSIONS:
+    suffix = PurePosixPath(req.document.file_name).suffix.lower()
+    if suffix not in LIVE_EXTENSIONS:
         return _refus(env, "UNSUPPORTED_FORMAT",
-                      live_fr="Format pas encore pris en charge en live : seuls les PDF le sont pour l'instant.",
-                      live_ar="هذه الصيغة غير مدعومة بعد في الخدمة الفعلية: ملفات PDF فقط حاليا.")
+                      live_fr="Format pas encore pris en charge en live : seuls les PDF, PNG et JPG le sont.",
+                      live_ar="هذه الصيغة غير مدعومة بعد في الخدمة الفعلية: ملفات PDF وPNG وJPG فقط حاليا.")
+    if suffix in IMAGE_EXTENSIONS and ocr_engine is None and not pipeline.paddle_installed():
+        # D41 : refus clair, décidé avant toute lecture du fichier.
+        return _refus(env, "UNSUPPORTED_FORMAT", live_fr=OCR_IMAGE_FR, live_ar=OCR_IMAGE_AR)
     if req.options.expected_type not in LIVE_DOCUMENT_TYPES:
         return _refus(env, "UNSUPPORTED_FORMAT",
                       live_fr="Type de document pas encore pris en charge en live : seules les fiches de paie "
@@ -202,7 +215,7 @@ def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | 
             return _refus(env, "ACCESS_DENIED")
         return _refus(env, exc.code, exc.detail)
 
-    return analyze_payslip_pdf(path, req, client=client, model=model)
+    return analyze_payslip_pdf(path, req, client=client, model=model, ocr_engine=ocr_engine)
 
 
 # ------------------------------------------------------------------ démonstration en ligne de commande
