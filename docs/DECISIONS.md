@@ -2002,14 +2002,17 @@ Gemini, fichier absent, vide ou trop grand, opérations et formats hors périmè
 
 **Décision** : `extraction/pipeline.py` lit d'abord le texte natif du PDF, puis passe à l'OCR de la partie A
 (`reading/ocr.py`, PaddleOCR PP-OCRv5) **seulement s'il reste des zones en attente** (images, scans, arabe en
-« Private Use ») ; une image PNG/JPG est lue entièrement par l'OCR. Les lignes OCR (`source = "ocr"`) sont
-remises dans l'ordre de lecture (haut de page en premier) ; leurs identifiants ne changent pas. La confiance d'un
-champ reste celle de sa ligne, sans seuil (D32, D39) : DS1 demande une confirmation sous 0,90. L'OCR est importé
-dans la fonction : sans `requirements-ocr.txt`, un PDF est lu comme avant (zones non lues, avertissement) ; une
-image est refusée **avant toute lecture** par `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), avec le message « La
-lecture des images (OCR) n'est pas installée sur ce serveur ». Si rien n'est lisible, même après l'OCR :
-`SOURCE_MANQUANTE`, et Gemini n'est pas appelé. Un échec de l'OCR sur une zone ne lève pas d'exception : la zone
-reste en attente avec un avertissement.
+« Private Use ») ; une image PNG/JPG est lue entièrement par l'OCR. La confiance d'un champ reste celle de sa
+ligne, sans seuil (D32, D39) : DS1 demande une confirmation sous 0,90. L'ordre des lignes OCR est celui que donne
+`reading/ocr.py` (un seul endroit). L'OCR est **disponible** si un moteur est passé en paramètre (tests), ou si
+PaddleOCR est installé **et** que `DS3_OCR_INPROCESS=1`. Cette variable, réservée aux démonstrations, autorise
+l'OCR dans le processus du service ; elle est absente par défaut, parce qu'un plantage natif de Paddle arrêterait
+tout le service et qu'une page prend environ 27 s (plus environ 8,5 s de chargement des modèles), au-delà de la
+cible de 20 s. Sans OCR disponible, un PDF est lu comme avant (zones non lues, avertissement) et une image est
+refusée **avant toute lecture** : `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), message « La lecture des images
+n'est pas possible : l'OCR n'est pas installé ou pas activé sur ce serveur. Envoyez un PDF avec du texte. ». Si
+rien n'est lisible, même après l'OCR : `SOURCE_MANQUANTE`, et Gemini n'est pas appelé. Un échec de l'OCR sur une
+zone ne lève pas d'exception : la zone reste en attente avec un avertissement.
 
 **Limite connue** : la vérification (D32) attrape un chiffre **perdu** par l'OCR (la valeur ne figure plus dans la
 ligne : champ à `null`), mais pas un chiffre **remplacé** (424,700 lu au lieu de 424,100 figure bien dans la ligne
@@ -2020,16 +2023,21 @@ citation, qui protègent contre ce cas.
 - Réponse `ok` avec tous les champs à `null` pour une image sans OCR → rejeté : DS1 croirait le document
   illisible, alors que c'est le serveur qui ne sait pas lire.
 - Lancer l'OCR sur toutes les pages, même natives → rejeté : environ 27 s par page sur CPU, pour rien.
+- OCR dans le processus du service dès que PaddleOCR est installé → rejeté : un plantage natif de Paddle
+  arrêterait tout le service (relecture de Wiem, PR #44). Réservé aux démonstrations, derrière `DS3_OCR_INPROCESS`.
 
-**Raison** : le service lit enfin les scans et les fiches arabes illisibles en natif, sans changer le contrat
-ds3.v2 (mêmes codes, mêmes champs) et sans dépendre de PaddleOCR là où il n'est pas installé.
+**Raison** : le service sait lire les scans et les fiches arabes illisibles en natif, sans changer le contrat
+ds3.v2 (mêmes codes, mêmes champs), sans dépendre de PaddleOCR là où il n'est pas installé, et sans mettre le
+service en danger tant que le backend en arrière-plan n'est pas branché.
 
-**Statut** : ✅ appliquée, prouvée par `test_document_intelligence_ocr_pipeline.py` (scan lu et cité avec la
-confiance de l'OCR, PDF natif sans appel à l'OCR, OCR en panne, OCR non installé pour un PDF et pour une image,
-ordre de lecture, image dans le service, format refusé, image corrompue). Suite prévue (D42, avec Wiem) : OCR dans
-un processus séparé et cache dans `DS3_CACHE_DIR` ; à la première question sur un scan, OCR en arrière-plan et
-réponse `erreur` `TIMEOUT` réessayable ; déclenchement au téléversement (`prepare_document`) après accord de DS1.
-Remplace, dans D40, la ligne « page scannée : `SOURCE_MANQUANTE` en attendant l'OCR ».
+**Statut** : ✅ appliquée à la fusion de la PR #44 ; prouvée par `test_document_intelligence_ocr_pipeline.py` (scan
+lu et cité avec la confiance de l'OCR, PDF natif sans appel à l'OCR, OCR en panne, OCR non disponible pour un PDF
+et pour une image, PaddleOCR installé mais non activé, activation par `DS3_OCR_INPROCESS`, numpy / Pillow absents,
+image où l'OCR ne lit rien, PDF mixte cité des deux sources, image dans le service, format refusé, image
+corrompue). Suite (D42, avec Wiem) : backend OCR en arrière-plan (processus séparé, cache dans `DS3_CACHE_DIR`,
+verrou, PR #46) ; à la première question sur un scan, réponse `erreur` `TIMEOUT` réessayable pendant la lecture ;
+puis déclenchement au téléversement (`prepare_document`) après accord de DS1. Remplace, dans D40, la ligne
+« page scannée : `SOURCE_MANQUANTE` en attendant l'OCR ».
 
 ---
 

@@ -10,15 +10,21 @@
 Ne lève jamais d'exception : un problème devient une réponse « refus » ou « erreur ».
 
 OCR (D41) : appelé seulement s'il reste des zones en attente (un PDF entièrement natif ne paie aucun temps
-d'OCR). Il est importé dans la fonction, pas en tête du module : sans les dépendances de requirements-ocr.txt,
-le service fonctionne comme avant (zones non lues, avertissement). Si rien n'est lisible, même après l'OCR :
-refus SOURCE_MANQUANTE (« citation ou silence »).
+d'OCR), et seulement s'il est disponible :
+- un moteur passé en paramètre (`ocr_engine`, pour les tests) est toujours utilisé ;
+- sinon, PaddleOCR n'est lancé **dans le processus du service** que si la variable d'environnement
+  DS3_OCR_INPROCESS vaut 1 (démonstrations). Par défaut il ne l'est pas : un plantage natif de Paddle
+  arrêterait tout le service, et une page prend environ 27 s. Le fonctionnement normal passera par le backend
+  OCR en arrière-plan (processus séparé et cache, D42).
+Sans OCR disponible : un PDF est lu comme avant (zones non lues, avertissement) ; une image est refusée.
+Si rien n'est lisible, même après l'OCR : refus SOURCE_MANQUANTE (« citation ou silence »).
 """
 
 from __future__ import annotations
 
 import importlib.util
 import logging
+import os
 import time
 from pathlib import Path
 from typing import Any, Final
@@ -42,10 +48,17 @@ from src.document_intelligence.reading.pdf_natif import read_pdf
 log = logging.getLogger(__name__)
 
 IMAGE_EXTENSIONS: Final = frozenset({".png", ".jpg", ".jpeg"})
-OCR_NOT_INSTALLED: Final = "OCR non installé (requirements-ocr.txt) : les zones en attente ne sont pas lues."
-OCR_IMAGE_FR: Final = ("La lecture des images (OCR) n'est pas installée sur ce serveur : "
-                       "envoyez un PDF avec du texte.")
-OCR_IMAGE_AR: Final = "قراءة الصور (OCR) غير مثبتة على هذا الخادم: أرسل ملف PDF يحتوي على نص."
+INPROCESS_ENV: Final = "DS3_OCR_INPROCESS"
+OCR_UNAVAILABLE_WARNING: Final = (
+    "OCR non disponible (non installé, ou DS3_OCR_INPROCESS non activé) : les zones en attente ne sont pas lues."
+)
+OCR_IMAGE_FR: Final = ("La lecture des images n'est pas possible : l'OCR n'est pas installé ou pas activé sur ce "
+                       "serveur. Envoyez un PDF avec du texte.")
+OCR_IMAGE_AR: Final = "قراءة الصور غير ممكنة: نظام OCR غير مثبت أو غير مفعّل على هذا الخادم. أرسل ملف PDF يحتوي على نص."
+
+
+class OcrUnavailable(Exception):
+    """L'OCR n'est pas disponible pour lire une image. Levée seulement par `read_document`."""
 
 
 def paddle_installed() -> bool:
@@ -53,49 +66,48 @@ def paddle_installed() -> bool:
     return importlib.util.find_spec("paddleocr") is not None
 
 
-def _reading_order(doc: IntermediateDocument) -> None:
-    """Trie les lignes de chaque page de haut en bas (tri stable).
+def ocr_inprocess_enabled() -> bool:
+    """L'OCR dans le processus du service est-il autorisé ? (DS3_OCR_INPROCESS=1, démonstrations seulement)."""
+    return os.getenv(INPROCESS_ENV) == "1"
 
-    L'OCR ajoute ses lignes après les lignes natives : sans ce tri, Gemini lirait une page mixte dans le
-    désordre. Les identifiants ne changent pas, donc les citations restent justes.
-    """
-    for page in doc.pages:
-        page.lines.sort(key=lambda line: line.bbox[1])
+
+def ocr_available(ocr_engine: Any | None = None) -> bool:
+    """Un OCR peut-il être utilisé ? Moteur fourni, ou PaddleOCR installé ET autorisé dans le processus."""
+    return ocr_engine is not None or (paddle_installed() and ocr_inprocess_enabled())
 
 
 def read_document(path: Path, document_id: str, ocr_engine: Any | None = None) -> IntermediateDocument:
     """Lit le document : texte natif du PDF puis OCR des zones en attente ; image : OCR de toute l'image.
 
-    - `ocr_engine` donné (tests) : il est toujours utilisé ;
-    - sinon, PaddleOCR est utilisé s'il est installé ; s'il ne l'est pas, un PDF est lu comme avant et une
-      image lève ImportError (le service l'a normalement déjà refusée avant, voir D41).
-    Les autres erreurs (fichier corrompu) remontent à l'appelant.
+    - OCR disponible (voir `ocr_available`) : zones en attente ou image lues par l'OCR ;
+    - OCR non disponible : un PDF est lu comme avant (avertissement) ; une image lève `OcrUnavailable`
+      (le service l'a normalement déjà refusée avant, D41).
+    L'ordre de lecture des lignes OCR est celui que donne `reading/ocr.py`. Les autres erreurs (fichier
+    corrompu) remontent à l'appelant.
     """
     is_image = path.suffix.lower() in IMAGE_EXTENSIONS
-    use_ocr = ocr_engine is not None or paddle_installed()
+    use_ocr = ocr_available(ocr_engine)
     if is_image:
         if not use_ocr:
-            raise ImportError(OCR_NOT_INSTALLED)
-        from src.document_intelligence.reading.ocr import read_image
-
-        doc = read_image(path, engine=ocr_engine, document_id=document_id)
-        _reading_order(doc)
-        return doc
+            raise OcrUnavailable(OCR_UNAVAILABLE_WARNING)
+        try:
+            from src.document_intelligence.reading.ocr import read_image
+        except ImportError as exc:  # numpy / Pillow absents
+            raise OcrUnavailable(OCR_UNAVAILABLE_WARNING) from exc
+        return read_image(path, engine=ocr_engine, document_id=document_id)
 
     doc = read_pdf(path, document_id=document_id)
     if not any(page.pending_zones for page in doc.pages):
         return doc
     if not use_ocr:
-        doc.warnings.append(OCR_NOT_INSTALLED)
+        doc.warnings.append(OCR_UNAVAILABLE_WARNING)
         return doc
     try:
         from src.document_intelligence.reading.ocr import ocr_pending_zones
-    except ImportError:  # numpy / Pillow absents : même comportement que sans PaddleOCR
-        doc.warnings.append(OCR_NOT_INSTALLED)
+    except ImportError:  # numpy / Pillow absents : même comportement que sans OCR
+        doc.warnings.append(OCR_UNAVAILABLE_WARNING)
         return doc
-    doc = ocr_pending_zones(doc, path, engine=ocr_engine)
-    _reading_order(doc)
-    return doc
+    return ocr_pending_zones(doc, path, engine=ocr_engine)
 
 
 def _envelope(req: DS3Request, started: float) -> dict[str, Any]:
@@ -121,7 +133,7 @@ def analyze_payslip_pdf(pdf_path: Path, req: DS3Request, client: Any | None = No
     started = time.perf_counter()
     try:
         doc = read_document(pdf_path, req.document.document_id, ocr_engine)
-    except ImportError:  # image alors que l'OCR n'est pas installé (le service la refuse normalement avant)
+    except OcrUnavailable:  # image sans OCR disponible (le service la refuse normalement avant, D41)
         return DS3Response(
             **_envelope(req, started), status="refus", ds3_code="UNSUPPORTED_FORMAT",
             refus=Refus(code="HORS_SCOPE", message_fr=OCR_IMAGE_FR, message_ar=OCR_IMAGE_AR),

@@ -6,6 +6,7 @@ Aucun modèle chargé, aucun appel réseau : les tests passent avec ou sans requ
 from __future__ import annotations
 
 import copy
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -24,11 +25,15 @@ from src.document_intelligence.evaluation.run_gemini_eval import (
     score_case,
 )
 from src.document_intelligence.extraction import pipeline
-from src.document_intelligence.extraction.assemble import PAYSLIP_FIELDS
+from src.document_intelligence.extraction.assemble import (
+    PAYSLIP_FIELDS,
+    GeminiPayslipAnswer,
+)
 from src.document_intelligence.extraction.pipeline import (
     analyze_payslip_pdf,
     read_document,
 )
+from src.document_intelligence.extraction.verify import RawField
 from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang
 from src.document_intelligence.reading.pdf_natif import ROW_SEPARATOR
 from src.document_intelligence.service import handle_request
@@ -118,29 +123,77 @@ def test_ocr_failure_keeps_silence_and_never_raises() -> None:
     assert any("échec" in w for w in resp["warnings"])
 
 
-def test_without_ocr_installed_a_pdf_behaves_as_before() -> None:
+def test_without_ocr_a_pdf_behaves_as_before() -> None:
     path = DOCS_DIR / SCAN["requete"]["file_name"]
     resp = analyze_payslip_pdf(path, request_for(SCAN), client=FakeClient("{}"))
     assert resp["status"] == "refus" and resp["refus"]["code"] == "SOURCE_MANQUANTE"
-    assert pipeline.OCR_NOT_INSTALLED in resp["warnings"]
+    assert pipeline.OCR_UNAVAILABLE_WARNING in resp["warnings"]
 
 
-def test_ocr_lines_are_put_in_reading_order(tmp_path: Path) -> None:
-    """Une image en haut de page et une ligne native plus bas : la ligne OCR vient en premier."""
+def test_installed_paddle_is_not_run_in_process_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
+    """PaddleOCR installé mais DS3_OCR_INPROCESS absent : pas d'OCR dans le processus du service."""
+    monkeypatch.setattr(pipeline, "paddle_installed", lambda: True)
+    used = FakeEngine(SCAN_LINES)
+    monkeypatch.setattr("src.document_intelligence.reading.ocr.default_engine", lambda: used)
+    doc = read_document(DOCS_DIR / SCAN["requete"]["file_name"], SCAN["doc_id"])
+    assert used.calls == []
+    assert pipeline.OCR_UNAVAILABLE_WARNING in doc.warnings
+
+
+def test_in_process_ocr_is_used_only_when_enabled(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(pipeline, "paddle_installed", lambda: True)
+    monkeypatch.setenv(pipeline.INPROCESS_ENV, "1")
+    used = FakeEngine(SCAN_LINES)
+    monkeypatch.setattr("src.document_intelligence.reading.ocr.default_engine", lambda: used)
+    doc = read_document(DOCS_DIR / SCAN["requete"]["file_name"], SCAN["doc_id"])
+    assert used.calls == ["ar"]
+    assert any(line.source == "ocr" for page in doc.pages for line in page.lines)
+
+
+def test_missing_numpy_or_pillow_keeps_the_pdf_readable(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Le module OCR ne s'importe pas (numpy / Pillow absents) : le PDF est lu comme sans OCR."""
+    monkeypatch.setitem(sys.modules, "src.document_intelligence.reading.ocr", None)  # import -> ImportError
+    doc = read_document(DOCS_DIR / SCAN["requete"]["file_name"], SCAN["doc_id"], FakeEngine(SCAN_LINES))
+    assert pipeline.OCR_UNAVAILABLE_WARNING in doc.warnings
+    assert all(page.pending_zones for page in doc.pages)
+
+
+def test_image_where_ocr_reads_nothing_gives_source_manquante(tmp_path: Path) -> None:
+    png = tmp_path / "paie.png"
+    png.write_bytes(_png_bytes())
+    client = FakeClient("{}")
+    resp = analyze_payslip_pdf(png, request_for(SCAN), client=client, ocr_engine=FakeEngine([]))
+    assert resp["status"] == "refus" and resp["refus"]["code"] == "SOURCE_MANQUANTE"
+    assert client.calls == []
+
+
+def test_mixed_pdf_cites_native_and_ocr_lines(tmp_path: Path) -> None:
+    """Une ligne native et une zone image lue par l'OCR : les deux sont citées, chacune avec sa confiance."""
     pdf = tmp_path / "mixte.pdf"
     doc = pymupdf.open()
     page = doc.new_page()
+    page.insert_text((72, 100), "Salaire de base 424,100", fontsize=11)
     pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, 600, 220), False)
     pix.clear_with(230)
-    page.insert_image(pymupdf.Rect(72, 60, 372, 170), stream=pix.tobytes("png"))
-    page.insert_text((72, 400), "Salaire de base 424,100", fontsize=11)
+    page.insert_image(pymupdf.Rect(72, 300, 372, 410), stream=pix.tobytes("png"))
     doc.save(pdf)
     doc.close()
 
     read = read_document(pdf, "doc_mixte", FakeEngine(["Catégorie : 3"]))
-    lines = read.pages[0].lines
-    assert [line.source for line in lines] == ["ocr", "natif"]
-    assert read.full_text().index("Catégorie") < read.full_text().index("Salaire")
+    native = next(line for p in read.pages for line in p.lines if line.source == "natif")
+    ocr_line = next(line for p in read.pages for line in p.lines if line.source == "ocr")
+    answer = GeminiPayslipAnswer(document_type="fiche_de_paie", fields={
+        "base_salary": RawField(raw="424,100", line_id=native.line_id),
+        "category": RawField(raw="3", line_id=ocr_line.line_id),
+    })
+    resp = analyze_payslip_pdf(pdf, request_for(NATIVE), client=FakeClient(_output_json(answer)),
+                               ocr_engine=FakeEngine(["Catégorie : 3"]))
+    DS3Response.model_validate(resp)
+    fields = resp["result"]["fields"]
+    assert (fields["base_salary"]["value"], fields["base_salary"]["confidence"]) == ("424.100", 1.0)
+    assert (fields["category"]["value"], fields["category"]["confidence"]) == ("3", OCR_CONFIDENCE)
+    excerpts = " | ".join(c["excerpt"] for c in resp["citations"])
+    assert "424,100" in excerpts and "Catégorie" in excerpts
 
 
 def test_image_without_ocr_is_refused_by_the_pipeline(tmp_path: Path) -> None:
@@ -148,7 +201,7 @@ def test_image_without_ocr_is_refused_by_the_pipeline(tmp_path: Path) -> None:
     png.write_bytes(_png_bytes())
     resp = analyze_payslip_pdf(png, request_for(SCAN), client=FakeClient("{}"))
     assert resp["status"] == "refus" and resp["ds3_code"] == "UNSUPPORTED_FORMAT"
-    assert "OCR" in resp["refus"]["message_fr"]
+    assert resp["refus"]["message_fr"] == pipeline.OCR_IMAGE_FR
 
 
 # ------------------------------------------------------------ service live

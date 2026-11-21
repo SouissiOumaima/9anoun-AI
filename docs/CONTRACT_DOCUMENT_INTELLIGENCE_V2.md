@@ -162,7 +162,9 @@ Même entrée et même sortie que le mock : seules les valeurs changent (`mode =
 
 **Disponible en live aujourd'hui :** `analyze_document` sur une **fiche de paie en PDF, PNG ou JPG** (D41). Le
 texte natif du PDF est lu d'abord ; les zones image, les pages scannées et les images sont lues par l'OCR de la
-partie A (PaddleOCR PP-OCRv5, arabe et français), seulement s'il reste quelque chose à lire. Une ligne lue par
+partie A (PaddleOCR PP-OCRv5, arabe et français), seulement s'il reste quelque chose à lire et si l'OCR est
+disponible sur le serveur (aujourd'hui : PaddleOCR installé et `DS3_OCR_INPROCESS=1`, réservé aux démonstrations ;
+ensuite : backend OCR en arrière-plan, D42). Une ligne lue par
 l'OCR porte sa confiance réelle, sans seuil : sous 0,90, DS1 demande une confirmation. Pour une image, les `bbox`
 sont en points d'une page virtuelle de `pixels × 72 / dpi` points (300 DPI par défaut).
 
@@ -176,7 +178,7 @@ Le reste donne un refus clair, en français et en arabe :
 |---|---|
 | `extract_wage_grid` | `refus` `PARAM_INVALIDE` (`ds3_code` `UNSUPPORTED_OPERATION`) : utiliser le mock v2 |
 | fichier autre que PDF, PNG, JPG | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
-| image alors que l'OCR n'est pas installé sur le serveur | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), message « OCR non installé », décidé avant toute lecture |
+| image alors que l'OCR n'est pas disponible sur le serveur | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), message « OCR non installé ou pas activé », décidé avant toute lecture |
 | `expected_type` autre que `fiche_de_paie` | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
 | document où ni la couche texte ni l'OCR ne lisent rien | `refus` `SOURCE_MANQUANTE` (Gemini n'est pas appelé) |
 | image corrompue | `refus` `PARAM_INVALIDE` (`FILE_EMPTY_OR_CORRUPTED`) |

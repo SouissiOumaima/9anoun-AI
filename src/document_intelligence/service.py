@@ -9,7 +9,7 @@ Ce que fait le service, dans l'ordre :
 1. mêmes contrôles que le mock : opération connue, requête conforme au contrat, document de la carte active ;
 2. retrouve le fichier à partir de `document.storage_ref` (voir « Stockage » ci-dessous) ;
 3. vérifie ce qui est disponible en live aujourd'hui : fiches de paie en PDF, PNG ou JPG (images lues par
-   l'OCR de la partie A, D41), opération `analyze_document` ;
+   l'OCR de la partie A quand il est disponible, D41), opération `analyze_document` ;
 4. appelle la chaîne d'extraction (lecture, Gemini, vérification, normalisation, réponse citée).
 Il ne lève jamais d'exception : tout problème devient une réponse `refus` ou `erreur`.
 
@@ -194,7 +194,7 @@ def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | 
         return _refus(env, "UNSUPPORTED_FORMAT",
                       live_fr="Format pas encore pris en charge en live : seuls les PDF, PNG et JPG le sont.",
                       live_ar="هذه الصيغة غير مدعومة بعد في الخدمة الفعلية: ملفات PDF وPNG وJPG فقط حاليا.")
-    if suffix in IMAGE_EXTENSIONS and ocr_engine is None and not pipeline.paddle_installed():
+    if suffix in IMAGE_EXTENSIONS and not pipeline.ocr_available(ocr_engine):
         # D41 : refus clair, décidé avant toute lecture du fichier.
         return _refus(env, "UNSUPPORTED_FORMAT", live_fr=OCR_IMAGE_FR, live_ar=OCR_IMAGE_AR)
     if req.options.expected_type not in LIVE_DOCUMENT_TYPES:
