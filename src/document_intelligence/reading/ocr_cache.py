@@ -1,6 +1,6 @@
 """Lecture OCR en arrière-plan, dans un processus séparé, avec un cache par carte et par document (D42).
 
-Pourquoi (voir `docs/PROPOSITION_INTEGRATION_OCR.md`, section 7) :
+Pourquoi (voir D41 dans `docs/DECISIONS.md`) :
 - l'OCR prend environ 27 s par page sur CPU, au-delà des 20 s (P95) visées pour une réponse : il tourne en
   arrière-plan, et la question suivante lit le résultat gardé en cache ;
 - un plantage natif de Paddle (access violation) tue le processus qui l'a appelé : l'OCR tourne donc dans un
@@ -126,6 +126,11 @@ def temp_path(target: Path) -> Path:
     return target.with_name(f"{target.name}.{uuid.uuid4().hex[:TEMP_SUFFIX_CHARS]}.tmp")
 
 
+def part_path(sibling: Path) -> Path:
+    """JSON temporaire écrit par le processus OCR (`<nom de base>.part`), voisin du résultat, du marqueur et du verrou."""
+    return sibling.with_name(f"{sibling.stem}.part")
+
+
 def write_atomically(target: Path, text: str) -> None:
     """Écrit dans un fichier voisin puis le renomme : un lecteur ne voit jamais un fichier à moitié écrit."""
     tmp = temp_path(target)
@@ -168,7 +173,7 @@ def run_ocr_job(source: Path, document_id: str, final: Path, *, timeout_s: float
     Le JSON temporaire (`.part`) contient le texte du document : il est supprimé dans tous les cas (succès,
     plantage du processus, délai dépassé, JSON invalide). Rien n'est deviné : un échec ne produit aucune ligne.
     """
-    part = final.with_name(f"{final.stem}.part")
+    part = part_path(final)
     try:
         code = run_process(ocr_command(source, part), timeout_s)
         if code != 0:
@@ -254,7 +259,11 @@ class OcrCache:
         return OcrState("echec") if failed.exists() else OcrState("en_cours")
 
     def _existing_lock(self, lock: Path, failed: Path, document_id: str) -> OcrState:
-        """Lecture déjà lancée. Un verrou trop vieux veut dire que son processus est mort sans nettoyer : échec."""
+        """Lecture déjà lancée. Un verrou trop vieux veut dire que son processus est mort sans nettoyer : échec.
+
+        Dans ce cas, l'éventuel `.part` laissé par le processus orphelin est supprimé aussi : il contient le texte
+        du document, et plus personne ne viendra le nettoyer.
+        """
         try:
             started = float(json.loads(lock.read_text(encoding="utf-8"))["started_at"])
         except (OSError, ValueError, KeyError, TypeError):
@@ -264,6 +273,7 @@ class OcrCache:
         log.warning("OCR %s : verrou abandonné (plus de %.0f s), lecture considérée en échec.",
                     document_id, self.lock_max_age_s)
         self._mark_failed(failed, "verrou_abandonne")
+        remove_file(part_path(lock))  # texte du document laissé par le processus orphelin
         remove_file(lock)
         return OcrState("echec")
 

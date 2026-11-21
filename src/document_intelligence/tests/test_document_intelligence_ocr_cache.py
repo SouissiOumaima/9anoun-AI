@@ -223,6 +223,27 @@ def test_an_abandoned_lock_becomes_an_echec(tmp_path: Path, source: Path) -> Non
     assert _leftovers(cache.folder(CARD, DOC), ".lock") == []
 
 
+def test_an_abandoned_lock_also_deletes_the_orphan_part_file(tmp_path: Path, source: Path) -> None:
+    """Le processus orphelin a laissé son `.part` (texte du document) : supprimé avec le verrou abandonné."""
+    now = [1000.0]
+    cache = _cache(tmp_path, FakeProcess(_doc_json()), Deferred(), lock_max_age_s=60.0, clock=lambda: now[0])
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
+    final, failed, lock = cache.paths(source, card_id=CARD, document_id=DOC)
+    part = ocr_cache.part_path(final)
+    assert part == ocr_cache.part_path(lock) and part.parent == lock.parent  # même nom de base que le verrou
+    part.write_text(SECRET, encoding="utf-8")  # écrit à moitié, puis le processus meurt
+
+    now[0] += 30  # verrou encore récent : la lecture tourne peut-être toujours, on ne touche à rien
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
+    assert part.exists()
+
+    now[0] += 31  # verrou abandonné
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert not part.exists() and not lock.exists() and not final.exists()
+    assert SECRET not in failed.read_text(encoding="utf-8")  # le marqueur d'échec ne contient aucun texte
+    assert _leftovers(cache.folder(CARD, DOC), ".lock", ".part", ".tmp") == []
+
+
 def test_an_unreadable_lock_uses_the_file_date(tmp_path: Path, source: Path) -> None:
     cache = _cache(tmp_path, FakeProcess(_doc_json()), Deferred(), lock_max_age_s=3600.0)
     folder = cache.folder(CARD, DOC)
@@ -376,6 +397,8 @@ def test_start_thread_runs_the_job_in_the_background() -> None:
 
 
 def test_cache_version_follows_the_reader_versions() -> None:
+    pytest.importorskip("numpy")
+    pytest.importorskip("PIL")
     from src.document_intelligence.reading.ocr import READER_SUFFIX
     from src.document_intelligence.reading.pdf_natif import READER_NAME
 
