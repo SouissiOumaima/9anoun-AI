@@ -14,6 +14,8 @@ from __future__ import annotations
 
 import importlib
 import os
+import hashlib
+import json
 from typing import Any, Final, Literal
 
 from pydantic import BaseModel, ValidationError
@@ -21,6 +23,9 @@ from pydantic import BaseModel, ValidationError
 from src.document_intelligence.extraction.assemble import PAYSLIP_FIELDS, GeminiPayslipAnswer, RawPayLine
 from src.document_intelligence.extraction.verify import RawField
 from src.document_intelligence.intermediate import IntermediateDocument
+from src.document_intelligence.extraction.cache import ExtractionCache
+
+_answers = ExtractionCache()
 
 DEFAULT_MODEL: Final = "gemini-flash-latest"
 
@@ -138,12 +143,20 @@ def _default_client() -> Any:
     return genai.Client(api_key=key)
 
 
-def ask_gemini(doc: IntermediateDocument, client: Any | None = None, model: str | None = None) -> GeminiPayslipAnswer:
+def ask_gemini(doc: IntermediateDocument, client: Any | None = None, model: str | None = None,
+               *, cache_scope: tuple[str, ...] | None = None) -> GeminiPayslipAnswer:
     """Envoie le document à Gemini et renvoie sa réponse, au format GeminiPayslipAnswer.
 
     `client` permet aux tests de remplacer Gemini par un faux client (aucun appel réseau).
     Lève GeminiError si l'appel échoue ou si la réponse n'a pas le bon format.
     """
+    if client is None and cache_scope is not None and os.getenv("DS3_EXTRACTION_CACHE", "1") != "0":
+        # Hash the full prompt and scope; never retain keys, paths or credentials in cache keys.
+        key = hashlib.sha256(json.dumps([
+            cache_scope, model or os.getenv("GEMINI_MODEL", DEFAULT_MODEL),
+            os.getenv("GEMINI_API_KEY", ""), build_prompt(doc),
+        ], ensure_ascii=False).encode()).hexdigest()
+        return _answers.get_or_compute(key, lambda: ask_gemini(doc, model=model))
     client = client or _default_client()
     try:
         response = client.models.generate_content(
