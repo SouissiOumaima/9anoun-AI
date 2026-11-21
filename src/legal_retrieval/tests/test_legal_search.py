@@ -83,6 +83,13 @@ def test_stemming_joins_singular_plural_and_article_forms() -> None:
     ("الفصل 46 - 3", [("46-3", "")]),
     ("que dit l'article 14 bis ?", [("14", "BIS")]),
     ("منحة النقل", []),
+    # ordinaux vus dans les conventions (ex. CC-CADRE a 51 مكرر ET 51 ثالثا) :
+    # sans eux, « 51 ثالثا » renvoyait l'article 51, donc le mauvais article.
+    ("الفصل 51 ثالثا", [("51", "TER")]),
+    ("الفصل 47 رابعا", [("47", "QUATER")]),
+    ("الفصل 47 خامسا", [("47", "QUINQUIES")]),
+    ("الفصل 47 سادسا", [("47", "SEXIES")]),
+    ("الفصل 50– 5", [("50-5", "")]),          # tiret demi-cadratin
 ])
 def test_article_references_in_the_question(question: str, refs: list[tuple[str, str]]) -> None:
     assert article_refs(question) == refs

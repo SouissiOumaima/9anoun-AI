@@ -1,0 +1,14 @@
+# DS3 partie A (OCR) — dépendances de l'OCR PaddleOCR et de l'expérience Transfer Learning / Fine-Tuning.
+# Séparé de requirements.txt (dépendances lourdes, CPU). Versions figées (==), testées sous Windows / Python 3.13.
+# Installation (depuis la racine, dans le .venv) :
+#   python -m venv --system-site-packages .venv
+#   .venv\Scripts\python -m pip install -r requirements-ocr.txt
+paddlepaddle==3.3.1
+paddleocr==3.7.0
+paddlex==3.7.2
+PyYAML==6.0.2
+pymupdf==1.28.2
+opencv-python==5.0.0.93
+pillow==12.3.0
+matplotlib==3.11.2
+mypy==2.4.1

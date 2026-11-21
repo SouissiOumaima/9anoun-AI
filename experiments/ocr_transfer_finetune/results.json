@@ -1,0 +1,624 @@
+{
+  "config": {
+    "seed": 42,
+    "n_train": 1200,
+    "n_val": 200,
+    "n_test": 400,
+    "n_generic": 150,
+    "epochs_tl": 15,
+    "epochs_ft": 4,
+    "lr_tl": 0.001,
+    "lr_ft": 0.0001,
+    "batch_size": 32,
+    "budget_min": 150.0,
+    "out": "C:\\Users\\DELL\\Documents\\5DS2\\projet 9anoun\\partie_devequipe_github\\9anoun-AI\\experiments\\ocr_transfer_finetune",
+    "quick": false,
+    "fresh": false,
+    "ft_variant": "bn_frozen",
+    "worker": true,
+    "sizes": {
+      "train": 1200,
+      "val": 200,
+      "test": 400,
+      "generic": 150
+    },
+    "manifest": {
+      "config": {
+        "seed": 42,
+        "sizes": {
+          "train": 1200,
+          "val": 200,
+          "test": 400,
+          "generic": 150
+        },
+        "fonts": [
+          "arial.ttf",
+          "tahoma.ttf",
+          "times.ttf",
+          "segoeui.ttf"
+        ],
+        "version": 1
+      },
+      "counts": {
+        "train": 1200,
+        "val": 200,
+        "test": 400,
+        "generic": 150
+      },
+      "rejected_out_of_charset": 0
+    },
+    "machine": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel (20 threads)",
+    "paddle": "3.3.1",
+    "ppocr_tag": "v3.7.0",
+    "model": "arabic_PP-OCRv5_mobile_rec",
+    "cpu_flags": {
+      "FLAGS_use_mkldnn": "0",
+      "MKL_NUM_THREADS": "défaut",
+      "OMP_NUM_THREADS": "1"
+    }
+  },
+  "baseline": {
+    "val": {
+      "cer": 0.1291927755252488,
+      "wer": 0.24549549549549549,
+      "exact": 0.485,
+      "n": 200,
+      "cer_fr": 0.0045806906272022555,
+      "wer_fr": 0.03002309468822171,
+      "n_fr": 100,
+      "cer_ar": 0.2598844957796535,
+      "wer_ar": 0.43672456575682383,
+      "n_ar": 89,
+      "cer_mixte": 0.3056379821958457,
+      "wer_mixte": 0.5576923076923077,
+      "n_mixte": 11,
+      "examples": [
+        {
+          "ref": "Prime de rendement : 2507.677 DT",
+          "hyp": "Prime de rendement : 2507.677 DT"
+        },
+        {
+          "ref": "الاتفاقية المشتركة لقطاع النزل",
+          "hyp": "الاتفاقية المشتركة لقطاع النزل"
+        },
+        {
+          "ref": "Période du 22/01/2017 au 20/10/2016",
+          "hyp": "Période du 22/01/2017 au 20/10/2016"
+        },
+        {
+          "ref": "شهر ماي 2020",
+          "hyp": "شهر ماي "
+        },
+        {
+          "ref": "تاريخ الانتداب : 04/09/2019",
+          "hyp": "تاريخ الانتداب"
+        },
+        {
+          "ref": "منحة الإنتاج Prime de panier",
+          "hyp": "منحة الإنتاجPrime de panier "
+        },
+        {
+          "ref": "منحة الإنتاج 574.689",
+          "hyp": "منحة الإنتاج"
+        },
+        {
+          "ref": "منحة الأقدمية Indemnité kilométrique",
+          "hyp": "منحة الأقدمية"
+        }
+      ]
+    },
+    "test": {
+      "cer": 0.1367976496511201,
+      "wer": 0.24740010946907498,
+      "exact": 0.47,
+      "n": 400,
+      "cer_fr": 0.0056901615271659324,
+      "wer_fr": 0.03274853801169591,
+      "n_fr": 193,
+      "cer_ar": 0.2492974708952228,
+      "wer_ar": 0.41490545050055616,
+      "n_ar": 192,
+      "cer_mixte": 0.4696969696969697,
+      "wer_mixte": 0.6986301369863014,
+      "n_mixte": 15,
+      "examples": [
+        {
+          "ref": "Catégorie 4 Échelon 5",
+          "hyp": "Catégorie 4 Echelon 5"
+        },
+        {
+          "ref": "Date d'embauche : 21/06/2015",
+          "hyp": "Date d'embauche : 21/06/2015"
+        },
+        {
+          "ref": "الضريبة على الدخل : 2613.193 د",
+          "hyp": "الضريبة علىالدخل"
+        },
+        {
+          "ref": "Convention collective du commerce",
+          "hyp": "Convention collective du commerce"
+        },
+        {
+          "ref": "Date d'embauche : 11/01/2022",
+          "hyp": "Date d'embauche : 11/01/2022"
+        },
+        {
+          "ref": "Qualification : Agent de maîtrise",
+          "hyp": "Qualification : Agent de maïtrise"
+        },
+        {
+          "ref": "Catégorie 12 sous-catégorie I",
+          "hyp": "Catégorie 12 sous-catégorie I"
+        },
+        {
+          "ref": "Avance sur salaire 26 1296.688",
+          "hyp": "Avance sur salaire 26 1296.688"
+        }
+      ]
+    },
+    "generic": {
+      "cer": 0.006450351837372948,
+      "wer": 0.035864978902953586,
+      "exact": 0.8333333333333334,
+      "n": 150,
+      "cer_fr": 0.009800362976406534,
+      "wer_fr": 0.05223880597014925,
+      "n_fr": 72,
+      "cer_ar": 0.0025412960609911056,
+      "wer_ar": 0.014563106796116505,
+      "n_ar": 78,
+      "examples": [
+        {
+          "ref": "Nous avons acheté du pain et des olives",
+          "hyp": "Nous avons acheté du pain et des olives"
+        },
+        {
+          "ref": "يقرأ الرجل الجريدة في المقهى",
+          "hyp": "يقرأ الرجل الجريدة في المقهى"
+        },
+        {
+          "ref": "ذهب الطفل إلى المدرسة في الصباح",
+          "hyp": "ذهب الطفل إلى المدرسة في الصباح"
+        },
+        {
+          "ref": "Le musée accueille une nouvelle exposition",
+          "hyp": "Le musée accueille une nouvelle exposition"
+        },
+        {
+          "ref": "تفتح المكتبة أبوابها كل يوم",
+          "hyp": "تفتح المكتبة أبوابها كل يوم"
+        },
+        {
+          "ref": "اشترينا الخبز والزيتون من السوق",
+          "hyp": "اشترينا الخبز والزيتون من السوق"
+        },
+        {
+          "ref": "ينتظر المسافرون القطار في المحطة",
+          "hyp": "ينتظر المسافرون القطار في المحطة"
+        },
+        {
+          "ref": "زرنا المتحف الوطني يوم الأحد",
+          "hyp": "زرنا المتحف الوطني يوم الأحد"
+        }
+      ]
+    }
+  },
+  "transfer": {
+    "history": {
+      "train_loss": [
+        12.632616017994128,
+        7.498128705903103,
+        6.202077986378419,
+        5.39814986053266,
+        4.8274288875492,
+        4.449692376350102,
+        4.2181729015551115,
+        3.9937157944629065,
+        3.8475792815810754,
+        3.7370666453712866,
+        3.6982605833756295,
+        3.6461515897198726,
+        3.633840601695211,
+        3.605485100495188,
+        3.6158058486486735
+      ],
+      "val_loss": [
+        7.774932895898819,
+        6.108762423992157,
+        5.266869277954101,
+        4.680187658071518,
+        4.284830951690674,
+        3.976737436056137,
+        3.7500318086147306,
+        3.6212009131908416,
+        3.505141224861145,
+        3.4458581399917603,
+        3.3997383546829223,
+        3.3772398829460144,
+        3.3627893424034117,
+        3.3561893033981325,
+        3.3555625534057616
+      ],
+      "val_cer": [
+        0.06063398451898268,
+        0.042388499815702176,
+        0.03722816070770365,
+        0.034832288978990045,
+        0.03188352377441946,
+        0.029119056395134537,
+        0.030224843346848506,
+        0.027644673792849243,
+        0.0293033542204202,
+        0.028013269443420568,
+        0.028566162919277552,
+        0.02819756726870623,
+        0.02819756726870623,
+        0.02819756726870623,
+        0.02819756726870623
+      ],
+      "epoch_s": [
+        2.507891000001109,
+        2.5271931999996013,
+        2.5397666999997455,
+        2.524098400001094,
+        2.551638000000821,
+        4.473569599998882,
+        2.5842355999993742,
+        2.5380506000001333,
+        2.5748794000028283,
+        2.5440319999979693,
+        2.5876500999984273,
+        2.559779299997899,
+        2.564441900001839,
+        2.566361799999868,
+        2.5555816999985836
+      ],
+      "epoch0_val_loss": [
+        17.39435377061367
+      ],
+      "epoch0_val_cer": [
+        0.1291927755252488
+      ]
+    },
+    "best_epoch": 8,
+    "best_val_cer": 0.027644673792849243,
+    "trainable_params": 90629,
+    "lr": 0.001,
+    "epochs_run": 15,
+    "train_lines_used": 1200,
+    "train_s": 1025.761546400001,
+    "val": {
+      "cer": 0.027644673792849243,
+      "wer": 0.19031531531531531,
+      "exact": 0.61,
+      "n": 200,
+      "cer_fr": 0.00035236081747709656,
+      "wer_fr": 0.0023094688221709007,
+      "n_fr": 100,
+      "cer_ar": 0.05952909817858729,
+      "wer_ar": 0.3548387096774194,
+      "n_ar": 89,
+      "cer_mixte": 0.04451038575667656,
+      "wer_mixte": 0.4807692307692308,
+      "n_mixte": 11,
+      "examples": [
+        {
+          "ref": "Prime de rendement : 2507.677 DT",
+          "hyp": "Prime de rendement : 2507.677 DT"
+        },
+        {
+          "ref": "الاتفاقية المشتركة لقطاع النزل",
+          "hyp": "الاتفاقية المشتركة لقطاع النزل"
+        },
+        {
+          "ref": "Période du 22/01/2017 au 20/10/2016",
+          "hyp": " Période du 22/01/2017 au 20/10/2016"
+        },
+        {
+          "ref": "شهر ماي 2020",
+          "hyp": "شهر ماي2020 "
+        },
+        {
+          "ref": "تاريخ الانتداب : 04/09/2019",
+          "hyp": "تاريخ الانتداب04/09/2019"
+        },
+        {
+          "ref": "منحة الإنتاج Prime de panier",
+          "hyp": "منحة الإنتاجPrime de panier "
+        },
+        {
+          "ref": "منحة الإنتاج 574.689",
+          "hyp": "منحة الإنتاج574.689"
+        },
+        {
+          "ref": "منحة الأقدمية Indemnité kilométrique",
+          "hyp": "منحة الأقدميةIndenitékiométrique "
+        }
+      ]
+    },
+    "test": {
+      "cer": 0.03240910760190966,
+      "wer": 0.19376026272577998,
+      "exact": 0.585,
+      "n": 400,
+      "cer_fr": 0.0012848751835535977,
+      "wer_fr": 0.008187134502923977,
+      "n_fr": 193,
+      "cer_ar": 0.059213167402649536,
+      "wer_ar": 0.3437152391546162,
+      "n_ar": 192,
+      "cer_mixte": 0.11038961038961038,
+      "wer_mixte": 0.5205479452054794,
+      "n_mixte": 15,
+      "examples": [
+        {
+          "ref": "Catégorie 4 Échelon 5",
+          "hyp": "Catégorie 4 Échelon 5"
+        },
+        {
+          "ref": "Date d'embauche : 21/06/2015",
+          "hyp": "Date d'embauche : 21/06/2015"
+        },
+        {
+          "ref": "الضريبة على الدخل : 2613.193 د",
+          "hyp": "الضريبة علىالدخل 2613.193د"
+        },
+        {
+          "ref": "Convention collective du commerce",
+          "hyp": "Convention collective du commerce"
+        },
+        {
+          "ref": "Date d'embauche : 11/01/2022",
+          "hyp": "Date d'embauche : 11/01/2022"
+        },
+        {
+          "ref": "Qualification : Agent de maîtrise",
+          "hyp": "Qualification : Agent de maitrise"
+        },
+        {
+          "ref": "Catégorie 12 sous-catégorie I",
+          "hyp": "Catégorie 12 sous-catégorie I"
+        },
+        {
+          "ref": "Avance sur salaire 26 1296.688",
+          "hyp": "Avance sur salaire 26 1296.688"
+        }
+      ]
+    },
+    "generic": {
+      "cer": 0.004300234558248631,
+      "wer": 0.02531645569620253,
+      "exact": 0.8533333333333334,
+      "n": 150,
+      "cer_fr": 0.005807622504537205,
+      "wer_fr": 0.03171641791044776,
+      "n_fr": 72,
+      "cer_ar": 0.0025412960609911056,
+      "wer_ar": 0.01699029126213592,
+      "n_ar": 78,
+      "examples": [
+        {
+          "ref": "Nous avons acheté du pain et des olives",
+          "hyp": "Nous avons acheté du pain et des olives"
+        },
+        {
+          "ref": "يقرأ الرجل الجريدة في المقهى",
+          "hyp": "يقرأ الرجل الجريدة في المقهى"
+        },
+        {
+          "ref": "ذهب الطفل إلى المدرسة في الصباح",
+          "hyp": "ذهب الطفل إلى المدرسة في الصباح"
+        },
+        {
+          "ref": "Le musée accueille une nouvelle exposition",
+          "hyp": "Le musée accueille une nouvelle exposition"
+        },
+        {
+          "ref": "تفتح المكتبة أبوابها كل يوم",
+          "hyp": "تفتح المكتبة أبوابها كل يوم"
+        },
+        {
+          "ref": "اشترينا الخبز والزيتون من السوق",
+          "hyp": "اشترينا الخبز و الزيتون من السوق"
+        },
+        {
+          "ref": "ينتظر المسافرون القطار في المحطة",
+          "hyp": "ينتظر المسافرون القطار في المحطة"
+        },
+        {
+          "ref": "زرنا المتحف الوطني يوم الأحد",
+          "hyp": "زرنا المتحف الوطني يوم الأحد"
+        }
+      ]
+    }
+  },
+  "finetune": {
+    "history": {
+      "train_loss": [
+        8.053293171681856,
+        2.681453609152844,
+        1.661228967340369,
+        1.297353164145821
+      ],
+      "val_loss": [
+        3.257831995487213,
+        1.7357893872261048,
+        1.2775279259681702,
+        1.1357593458890916
+      ],
+      "val_cer": [
+        0.0269074824917066,
+        0.014743826022852931,
+        0.010504976041282713,
+        0.010689273866568375
+      ],
+      "epoch_s": [
+        852.3310344999991,
+        2608.5332254000023,
+        2827.8446576999995,
+        2827.6376821000013
+      ],
+      "epoch0_val_loss": [
+        17.39435377061367
+      ],
+      "epoch0_val_cer": [
+        0.1291927755252488
+      ]
+    },
+    "best_epoch": 3,
+    "best_val_cer": 0.010504976041282713,
+    "trainable_params": 5478185,
+    "lr": 0.0001,
+    "epochs_run": 4,
+    "train_lines_used": 1200,
+    "train_s": 9233.5138717,
+    "val": {
+      "cer": 0.010504976041282713,
+      "wer": 0.07995495495495496,
+      "exact": 0.79,
+      "n": 200,
+      "cer_fr": 0.0014094432699083862,
+      "wer_fr": 0.009237875288683603,
+      "n_fr": 100,
+      "cer_ar": 0.018658374055975122,
+      "wer_ar": 0.11166253101736973,
+      "n_ar": 89,
+      "cer_mixte": 0.032640949554896145,
+      "wer_mixte": 0.4230769230769231,
+      "n_mixte": 11,
+      "examples": [
+        {
+          "ref": "Prime de rendement : 2507.677 DT",
+          "hyp": "Prime de rendement : 2507.677 DT"
+        },
+        {
+          "ref": "الاتفاقية المشتركة لقطاع النزل",
+          "hyp": "الاتفاقية المشتركة لقطاع النزل"
+        },
+        {
+          "ref": "Période du 22/01/2017 au 20/10/2016",
+          "hyp": "Période du 22/01/2017 au 20/10/2016"
+        },
+        {
+          "ref": "شهر ماي 2020",
+          "hyp": "شهر ماي 2020"
+        },
+        {
+          "ref": "تاريخ الانتداب : 04/09/2019",
+          "hyp": "تاريخ الانتداب 04/09/2019"
+        },
+        {
+          "ref": "منحة الإنتاج Prime de panier",
+          "hyp": "منحة الإنتاجPrime de panier "
+        },
+        {
+          "ref": "منحة الإنتاج 574.689",
+          "hyp": "منحة الإنتاج 574.689"
+        },
+        {
+          "ref": "منحة الأقدمية Indemnité kilométrique",
+          "hyp": "منحة الأقدميةIndemnité kilométrique"
+        }
+      ]
+    },
+    "test": {
+      "cer": 0.01202717590892398,
+      "wer": 0.07060755336617405,
+      "exact": 0.795,
+      "n": 400,
+      "cer_fr": 0.0012848751835535977,
+      "wer_fr": 0.008187134502923977,
+      "n_fr": 193,
+      "cer_ar": 0.0190686471296668,
+      "wer_ar": 0.1067853170189099,
+      "n_ar": 192,
+      "cer_mixte": 0.06277056277056277,
+      "wer_mixte": 0.3561643835616438,
+      "n_mixte": 15,
+      "examples": [
+        {
+          "ref": "Catégorie 4 Échelon 5",
+          "hyp": "Catégorie 4 Échelon 5"
+        },
+        {
+          "ref": "Date d'embauche : 21/06/2015",
+          "hyp": "Date d'embauche : 21/06/2015"
+        },
+        {
+          "ref": "الضريبة على الدخل : 2613.193 د",
+          "hyp": "الضريبة على الدخل : 2613.193د"
+        },
+        {
+          "ref": "Convention collective du commerce",
+          "hyp": "Convention collective du commerce"
+        },
+        {
+          "ref": "Date d'embauche : 11/01/2022",
+          "hyp": "Date d'embauche : 11/01/2022"
+        },
+        {
+          "ref": "Qualification : Agent de maîtrise",
+          "hyp": "Qualification : Agent de maïtrise"
+        },
+        {
+          "ref": "Catégorie 12 sous-catégorie I",
+          "hyp": "Catégorie 12 sous-catégorie I"
+        },
+        {
+          "ref": "Avance sur salaire 26 1296.688",
+          "hyp": "Avance sur salaire 26 1296.688"
+        }
+      ]
+    },
+    "generic": {
+      "cer": 0.003518373729476153,
+      "wer": 0.020042194092827006,
+      "exact": 0.88,
+      "n": 150,
+      "cer_fr": 0.005807622504537205,
+      "wer_fr": 0.03171641791044776,
+      "n_fr": 72,
+      "cer_ar": 0.0008470986869970351,
+      "wer_ar": 0.0048543689320388345,
+      "n_ar": 78,
+      "examples": [
+        {
+          "ref": "Nous avons acheté du pain et des olives",
+          "hyp": "Nous avons acheté du pain et des olives"
+        },
+        {
+          "ref": "يقرأ الرجل الجريدة في المقهى",
+          "hyp": "يقرأ الرجل الجريدة في المقهى"
+        },
+        {
+          "ref": "ذهب الطفل إلى المدرسة في الصباح",
+          "hyp": "ذهب الطفل إلى المدرسة في الصباح"
+        },
+        {
+          "ref": "Le musée accueille une nouvelle exposition",
+          "hyp": "Le musée accueille une nouvelle exposition"
+        },
+        {
+          "ref": "تفتح المكتبة أبوابها كل يوم",
+          "hyp": "تفتح المكتبة أبوابها كل يوم"
+        },
+        {
+          "ref": "اشترينا الخبز والزيتون من السوق",
+          "hyp": "اشترينا الخبز والزيتون من السوق"
+        },
+        {
+          "ref": "ينتظر المسافرون القطار في المحطة",
+          "hyp": "ينتظر المسافرون القطار في المحطة"
+        },
+        {
+          "ref": "زرنا المتحف الوطني يوم الأحد",
+          "hyp": "زرنا المتحف الوطني يوم الأحد"
+        }
+      ]
+    },
+    "variant": "bn_frozen",
+    "variant_description": "tout dégelé sauf BatchNorm (paramètres et statistiques gelés)"
+  },
+  "total_s": 21830.162184238434,
+  "restarts": 1
+}
