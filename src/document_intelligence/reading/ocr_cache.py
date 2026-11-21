@@ -13,7 +13,9 @@ Pourquoi (voir `docs/PROPOSITION_INTEGRATION_OCR.md`, section 7) :
 - `echec` : la lecture a planté, dépassé le délai ou rendu un JSON invalide ; on ne relance pas en boucle
   (nouvel essai seulement si le fichier change, donc si son empreinte change).
 
-Cache : `<DS3_CACHE_DIR>/cards/<carte>/documents/<document>/<sha256>__<version>.json`, écrit de façon atomique.
+Cache : `<DS3_CACHE_DIR>/cards/<carte>/documents/<document>/<sha256[:24]>_<code version>.json`, écrit de façon
+atomique. Noms volontairement courts : sous Windows sans chemins longs, un chemin complet ne doit pas dépasser
+260 caractères (fichiers temporaires compris).
 Contrôles d'accès (comme le stockage, D40) : `card_id` et `document_id` sont de simples noms, et le chemin résolu
 reste dans `DS3_CACHE_DIR`. Le cache contient le texte du document : il n'est jamais journalisé. Le JSON temporaire
 écrit par le processus OCR (`.part`) est supprimé dans tous les cas.
@@ -42,8 +44,15 @@ log = logging.getLogger(__name__)
 
 CACHE_DIR_ENV: Final = "DS3_CACHE_DIR"
 CACHE_VERSION: Final = "pdf_natif-0.3+ocr_paddle-0.1"
-"""Version des lecteurs dans le nom du fichier de cache : un nouveau lecteur donne un nouveau nom (pas de résultat
-périmé). À mettre à jour avec `pdf_natif.READER_NAME` et `ocr.READER_SUFFIX` (vérifié par un test)."""
+"""Version des lecteurs : un nouveau lecteur donne un nouveau nom de fichier de cache (pas de résultat périmé).
+À mettre à jour avec `pdf_natif.READER_NAME` et `ocr.READER_SUFFIX` (vérifié par un test). Elle entre dans le nom
+du fichier sous forme d'un code court (`version_code`), pour garder des chemins courts."""
+
+FILE_HASH_CHARS: Final = 24
+"""Caractères de l'empreinte SHA-256 du fichier gardés dans le nom (96 bits : collision accidentelle impossible en
+pratique pour quelques milliers de documents par document_id)."""
+VERSION_CODE_CHARS: Final = 8
+TEMP_SUFFIX_CHARS: Final = 8
 
 DEFAULT_TIMEOUT_S: Final = 900.0
 """Délai maximal d'une lecture OCR (environ 27 s par page mesurées : marge pour une trentaine de pages)."""
@@ -102,9 +111,24 @@ def file_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def version_code(version: str | None = None) -> str:
+    """Code court (8 caractères) de la version des lecteurs : change dès que `CACHE_VERSION` change."""
+    return hashlib.sha256((version or CACHE_VERSION).encode("utf-8")).hexdigest()[:VERSION_CODE_CHARS]
+
+
+def cache_key(file_hash: str) -> str:
+    """Nom de base des fichiers d'un document : 24 caractères d'empreinte du fichier + code de version (33 car.)."""
+    return f"{file_hash[:FILE_HASH_CHARS]}_{version_code()}"
+
+
+def temp_path(target: Path) -> Path:
+    """Fichier voisin temporaire court (sans PID) : `<nom>.<8 caractères>.tmp`."""
+    return target.with_name(f"{target.name}.{uuid.uuid4().hex[:TEMP_SUFFIX_CHARS]}.tmp")
+
+
 def write_atomically(target: Path, text: str) -> None:
     """Écrit dans un fichier voisin puis le renomme : un lecteur ne voit jamais un fichier à moitié écrit."""
-    tmp = target.with_name(f"{target.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp")
+    tmp = temp_path(target)
     try:
         tmp.write_text(text, encoding="utf-8")
         os.replace(tmp, target)
@@ -187,10 +211,15 @@ class OcrCache:
             raise CacheAccessError("chemin hors du dossier de cache.")
         return folder
 
-    def lookup_or_start(self, path: Path, *, card_id: str, document_id: str) -> OcrState:
+    def paths(self, path: Path, *, card_id: str, document_id: str) -> tuple[Path, Path, Path]:
+        """Fichiers du document dans le cache : résultat (`.json`), marqueur d'échec (`.echec`), verrou (`.lock`)."""
         folder = self.folder(card_id, document_id)
-        key = f"{file_sha256(path)}__{CACHE_VERSION}"
-        final, failed, lock = folder / f"{key}.json", folder / f"{key}.echec", folder / f"{key}.lock"
+        key = cache_key(file_sha256(path))
+        return folder / f"{key}.json", folder / f"{key}.echec", folder / f"{key}.lock"
+
+    def lookup_or_start(self, path: Path, *, card_id: str, document_id: str) -> OcrState:
+        final, failed, lock = self.paths(path, card_id=card_id, document_id=document_id)
+        folder = final.parent
 
         if final.exists():
             try:

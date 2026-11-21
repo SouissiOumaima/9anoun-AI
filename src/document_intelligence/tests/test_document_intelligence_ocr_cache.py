@@ -118,7 +118,7 @@ def test_success_is_cached_atomically_and_the_temporary_json_is_deleted(tmp_path
     assert state.document.pages[0].lines[0].text == SECRET
     folder = cache.folder(CARD, DOC)
     assert folder == (tmp_path / "cache" / "cards" / CARD / "documents" / DOC).resolve()
-    assert [p.name for p in folder.iterdir()] == [f"{ocr_cache.file_sha256(source)}__{CACHE_VERSION}.json"]
+    assert [p.name for p in folder.iterdir()] == [f"{ocr_cache.cache_key(ocr_cache.file_sha256(source))}.json"]
     assert not process.parts_seen[0].exists()  # remarque 4 : JSON temporaire supprimé
 
     again = cache.lookup_or_start(source, card_id=CARD, document_id=DOC)
@@ -187,7 +187,7 @@ def test_an_unreadable_cache_file_is_replaced(tmp_path: Path, source: Path) -> N
     cache = _cache(tmp_path, process)
     folder = cache.folder(CARD, DOC)
     folder.mkdir(parents=True)
-    (folder / f"{ocr_cache.file_sha256(source)}__{CACHE_VERSION}.json").write_text("abîmé", encoding="utf-8")
+    (folder / f"{ocr_cache.cache_key(ocr_cache.file_sha256(source))}.json").write_text("abîmé", encoding="utf-8")
     assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "pret"
     assert len(process.calls) == 1
 
@@ -227,7 +227,7 @@ def test_an_unreadable_lock_uses_the_file_date(tmp_path: Path, source: Path) -> 
     cache = _cache(tmp_path, FakeProcess(_doc_json()), Deferred(), lock_max_age_s=3600.0)
     folder = cache.folder(CARD, DOC)
     folder.mkdir(parents=True)
-    (folder / f"{ocr_cache.file_sha256(source)}__{CACHE_VERSION}.lock").write_text("?", encoding="utf-8")
+    (folder / f"{ocr_cache.cache_key(ocr_cache.file_sha256(source))}.lock").write_text("?", encoding="utf-8")
     assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
 
 
@@ -307,6 +307,59 @@ def test_write_atomically_leaves_no_temporary_file(tmp_path: Path) -> None:
     write_atomically(target, '{"a": 1}')
     assert json.loads(target.read_text(encoding="utf-8")) == {"a": 1}
     assert [p.name for p in tmp_path.iterdir()] == ["cache.json"]
+
+
+def test_cache_names_are_short_and_change_with_the_reader_version(monkeypatch: pytest.MonkeyPatch,
+                                                                   tmp_path: Path) -> None:
+    key = ocr_cache.cache_key("a" * 64)
+    assert key == "a" * 24 + "_" + ocr_cache.version_code() and len(key) == 33
+    assert ocr_cache.cache_key("a" * 64) == key  # stable pour une même version
+    monkeypatch.setattr(ocr_cache, "CACHE_VERSION", "pdf_natif-0.4+ocr_paddle-0.1")
+    assert ocr_cache.cache_key("a" * 64) != key  # nouveau lecteur : nouveau nom, donc cache invalidé
+    tmp = ocr_cache.temp_path(tmp_path / f"{key}.echec")
+    assert tmp.name.startswith(f"{key}.echec.") and tmp.name.endswith(".tmp")
+    random_part = tmp.name.removeprefix(f"{key}.echec.").removesuffix(".tmp")
+    assert len(random_part) == 8 and all(c in "0123456789abcdef" for c in random_part)  # pas de PID
+
+
+def test_deep_cache_dir_keeps_every_written_path_under_240_characters(tmp_path: Path, source: Path,
+                                                                      monkeypatch: pytest.MonkeyPatch) -> None:
+    """Sous Windows sans chemins longs, un chemin complet est refusé au-delà de 260 caractères (FileNotFoundError).
+
+    Dossier de cache volontairement profond : son chemin complet fait 120 caractères. Avec des identifiants longs,
+    tout fichier écrit (résultat, marqueur d'échec, verrou, JSON temporaire de l'OCR, fichiers .tmp) doit tenir dans
+    les 120 caractères restants, soit moins de 240 au total. Le test vérifie la longueur elle-même : il échoue même
+    sur un poste où les chemins longs sont activés.
+    """
+    base = len(str(tmp_path.resolve())) + 1
+    root = tmp_path / ("c" * max(1, 120 - base))  # chemin complet de 120 caractères (ou plus si tmp_path est long)
+    root_len = len(str(root.resolve()))
+    written: list[Path] = []
+    real_temp_path = ocr_cache.temp_path
+
+    def recording_temp_path(target: Path) -> Path:
+        tmp = real_temp_path(target)
+        written.append(tmp)
+        return tmp
+
+    monkeypatch.setattr(ocr_cache, "temp_path", recording_temp_path)
+    card, doc = "company-demo-001", "doc-company-payslip-01"
+
+    ok = FakeProcess(_doc_json())
+    cache = OcrCache(root, run_process=ok, launcher=_sync)
+    assert cache.lookup_or_start(source, card_id=card, document_id=doc).status == "pret"
+    source.write_bytes(b"%PDF fictif, autre version")  # autre empreinte : nouvelle lecture, qui échoue
+    crash = FakeProcess(None, code=1)
+    cache_fail = OcrCache(root, run_process=crash, launcher=_sync)
+    assert cache_fail.lookup_or_start(source, card_id=card, document_id=doc).status == "echec"
+
+    final, failed, lock = cache_fail.paths(source, card_id=card, document_id=doc)
+    written += [final, failed, lock, *ok.parts_seen, *crash.parts_seen]
+    assert all(p.resolve().is_relative_to(root.resolve()) for p in written)
+    longest = max(len(str(p.resolve())) for p in written)
+    assert longest - root_len <= 120, f"partie du chemin ajoutée par le cache : {longest - root_len} caractères"
+    if root_len <= 120:
+        assert longest < 240, f"chemin le plus long : {longest} caractères"
 
 
 def test_run_cli_returns_the_exit_code_and_respects_the_timeout() -> None:
