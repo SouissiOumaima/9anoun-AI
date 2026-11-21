@@ -1,0 +1,102 @@
+{
+  "missing_source_count": 24,
+  "missing_sources": [
+    {
+      "sector": "AGENCES_VOYAGES",
+      "source_file": "data/raw/pdf/وكالات الاسفار.pdf"
+    },
+    {
+      "sector": "BOISSONS_ALCOOLISEES",
+      "source_file": "data/raw/pdf/صناعة وتجارة المشروبات الكحولية.pdf"
+    },
+    {
+      "sector": "BOISSONS_GAZEUSES",
+      "source_file": "data/raw/pdf/معامل المشروبات الغازية غير الكحولية.pdf"
+    },
+    {
+      "sector": "BOIS_AMEUBLEMENT_LIEGE",
+      "source_file": "data/raw/pdf/صناعة الخشب والموبيليا والخفاف.pdf"
+    },
+    {
+      "sector": "BOULANGERIES",
+      "source_file": "data/raw/pdf/المخابز.pdf"
+    },
+    {
+      "sector": "COMMERCE_GROS_DETAIL",
+      "source_file": "data/raw/pdf/تجارة الجملة ونصف الجملة و التفصيل.pdf"
+    },
+    {
+      "sector": "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
+      "source_file": "data/raw/pdf/صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf"
+    },
+    {
+      "sector": "COSMETIQUES_PARFUMS",
+      "source_file": "data/raw/pdf/صناعة مواد التجميل والعطورات.pdf"
+    },
+    {
+      "sector": "COMMERCE_DISTRIBUTION_PETROLE",
+      "source_file": "data/raw/pdf/تجارة و توزيع النفط و جميع مشتقاته.pdf"
+    },
+    {
+      "sector": "FONDERIE_METALLURGIE_MECANIQUE",
+      "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf"
+    },
+    {
+      "sector": "GESTION_DECHETS",
+      "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf"
+    },
+    {
+      "sector": "HABILLEMENT",
+      "source_file": "data/raw/pdf/صناعة الملابس المنسوجة و الجاهزة.pdf"
+    },
+    {
+      "sector": "HOTELS_TOURISTIQUES",
+      "source_file": "data/raw/pdf/النزل السياحية والمؤسسات المشابهة لها2.pdf"
+    },
+    {
+      "sector": "IMPRIMERIE_EDITION_CARTONNAGE",
+      "source_file": "data/raw/pdf/الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf"
+    },
+    {
+      "sector": "CONCESSIONNAIRES_MATERIEL_AGRICOLE",
+      "source_file": "data/raw/pdf/وكلاء التجهيزات الفلاحية.pdf"
+    },
+    {
+      "sector": "MECANIQUE_STATIONS_SERVICE",
+      "source_file": "data/raw/pdf/ميكانيك العام و محطات بيع الوقود.pdf"
+    },
+    {
+      "sector": "MINOTERIES",
+      "source_file": "data/raw/pdf/مطاحن.pdf"
+    },
+    {
+      "sector": "PATES_ALIMENTAIRES_COUSCOUS",
+      "source_file": "data/raw/pdf/العجين الغذائي و الكسكسي.pdf"
+    },
+    {
+      "sector": "PLASTURGIE",
+      "source_file": "data/raw/pdf/صناعة وتحويل البلاستيك.pdf"
+    },
+    {
+      "sector": "SAVONNERIE_RAFFINAGE_GRIGNONS",
+      "source_file": "data/raw/pdf/صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf"
+    },
+    {
+      "sector": "TEINTURERIES_PRESSINGS",
+      "source_file": "data/raw/pdf/مصابغ ومعامل التنظيف.pdf"
+    },
+    {
+      "sector": "TEXTILE",
+      "source_file": "data/raw/pdf/النسيج.pdf"
+    },
+    {
+      "sector": "TORREFACTION_CAFE",
+      "source_file": "data/raw/pdf/قلي القهوة.pdf"
+    },
+    {
+      "sector": "VERRE_MIROIRS",
+      "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf"
+    }
+  ],
+  "restored_from_downloads": []
+}
