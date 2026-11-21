@@ -125,7 +125,20 @@ def validate_legal_versions(
                 ),
             })
 
-        # Contr?ler les versions du m?me groupe juridique.
+        # Une version déclarée applicable doit couvrir la date du dossier.
+        if (
+            applicable is True
+            and reference is not None
+            and (
+                (start is not None and start > reference)
+                or (end is not None and end < reference)
+            )
+        ):
+            errors.append({
+                "code": "APPLICABILITY_DATE_CONTRADICTION",
+                "path": f"{path}.applicable_at_reference_date",
+            })
+        # Contrôler les versions du même groupe juridique.
         group = source.get("version_group")
 
         if applicable is True and isinstance(group, str) and group:

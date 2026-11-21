@@ -428,3 +428,30 @@ def test_explicit_missing_information_marks_case_insufficient():
 
     assert result["analysis_status"] == "insufficient_evidence"
     assert result["legal_conclusion"] is None
+
+def test_applicability_flag_contradicts_expired_period():
+    """Une version expirée ne peut pas être déclarée applicable."""
+    from src.track_a_legal.v1_legal_version_validation import (
+        validate_legal_versions,
+    )
+
+    sources = [
+        {
+            "source_id": "SRC-EXPIRED",
+            "version_group": "GROUP-EXPIRED",
+            "version": 1,
+            "effective_from": "2020-01-01",
+            "effective_to": "2024-12-31",
+            "applicable_at_reference_date": True,
+        }
+    ]
+
+    errors = validate_legal_versions(
+        sources,
+        reference_date="2026-03-01",
+    )
+
+    codes = {error["code"] for error in errors}
+
+    assert "NO_LONGER_EFFECTIVE" in codes
+    assert "APPLICABILITY_DATE_CONTRADICTION" in codes
