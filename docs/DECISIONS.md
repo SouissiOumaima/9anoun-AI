@@ -3400,3 +3400,179 @@ livraison actuelle, tout titre non reconnu étant signalé.
 `corpus/models.py` : `LegalArticle` n'a aujourd'hui aucun champ distinguant un article d'une
 annexe, d'une section ou d'un pointeur, et la garantie du point 4 doit vivre dans le modèle, pas
 dans une convention de nommage d'identifiant.
+
+### D75 — Contrat `track_b.v1` à côté de v0 ; demande du salaire de base par degré déclaré
+
+**Décision** (DS5, réponse à l'ARRÊT 3 des évolutions du moteur) :
+
+1. **Version `track_b.v1` à côté de `track_b.v0`**, qui ne change pas.
+   - Le format `<track>.v<N>` est imposé par le schéma commun ; `track_b.v0.1` y serait invalide.
+   - Une requête est traitée en v1 seulement si `contract_version` vaut exactement `"track_b.v1"`. Toute autre
+     requête suit le chemin v0, avec les mêmes réponses et les mêmes messages.
+   - Nouveaux schémas : `data/mock_cards/schemas/track_b_request.v1.schema.json` et `track_b_response.v1.schema.json`.
+     v1 = v0 plus le paramètre `degre` (requête) ; `montant` à 3 décimales au moins et `unite` en `TND/` ou
+     `millimes/` (réponse, D76).
+   - L'orchestrateur (DS1) reste en v0 : aucun fichier de DS1 n'est modifié.
+2. **`degre` = désignation imprimée de la colonne** (entier ou texte) : `colonne_imprimee` quand la grille la donne
+   (textile `"stage"`, 0 à 20 ; banques `"stage"`, 2 à 19 ; minoteries 0 à 13 ; pétrole `"-"`, 1 à 13 ;
+   cosmétiques `"درجة وحيدة"`), sinon le numéro du degré.
+   - Alias neutre `"unique"` pour la seule colonne en arabe, déclaré dans le fichier (`degres[].alias_designation`).
+   - Exactement un des deux paramètres `anciennete_annees` et `degre`. Les deux ensemble, ou aucun : `PARAM_INVALIDE`
+     (aucun : même message qu'en v0).
+   - Désignation absente de la grille : `PARAM_INVALIDE`, avec la liste des désignations acceptées. Population sans
+     degré : `PARAM_INVALIDE`.
+3. **Par le degré, aucun refus lié à l'ancienneté** : ni `anciennetes_refusees`, ni seuil de la règle « refus », ni
+   borne exacte (D6). Une case illisible (D48) reste refusée avec le même message.
+4. **Textile** (D71), drapeaux lus seulement par le chemin du degré :
+   - `servie_par_degre: true` sur les 36 cases « stage » de `cellules_source_manquante` : servies avec
+     `valeur_imprimee` ;
+   - `servies_par_degre: true` sur les 4 blocs `colonnes_non_servies` : colonnes imprimées « 19 » et « 20 » servies
+     depuis leurs valeurs.
+   - Rien d'autre ne change dans `valeurs` ni dans `degres`. Le chemin par l'ancienneté et le contrôle de hausse ne
+     voient aucune différence.
+5. **Dernier degré** : servi tel qu'imprimé, avec hypothèse, pour les secteurs à écart cumulé (D10), à table de
+   correspondance (D9) et à seuil de refus. Aucune règle au-delà du dernier degré n'est appliquée.
+   - `detail.regle_au_dela_non_appliquee` donne l'article et la page de la règle (ex. « article 13 (جديد) ب, page 9 »).
+   - Une hypothèse FR et AR la décrit. Pour l'écart cumulé et la table de correspondance, elle donne l'ancienneté
+     au-delà de laquelle il faut demander par l'ancienneté.
+   - Règle « ouvert » (D29) : servi sans changement, sans ce champ.
+6. **Réponse** : `detail` avec `degre` (numéro interne), `degre_imprime`, `degre_declare: true`,
+   `anciennete_imprimee` et `libelle_degre` quand la grille les imprime ; sans `anciennete_annees`.
+   - Hypothèses ajoutées après celles de la grille :
+     - le degré est déclaré et n'est pas vérifié ;
+     - l'ancienneté imprimée pour ce degré, avec la page ;
+     - le verre (aucune durée de degré imprimée, art. 12 (جديد) et 53) ;
+     - colonne atteinte seulement par le degré ;
+     - degré qui touche un intervalle refusé (confiserie, art. 53) ;
+     - case exclue de l'écart cumulé (confiserie, 590,535).
+   - Citation : la table, comme en v0. `regles` : `D75`.
+   - Les hypothèses de grille écrites pour le chemin par l'ancienneté ne sont pas affichées par le degré. Leur rang
+     est déclaré dans `hypotheses_grille[population].chemin_anciennete_seulement` (52 phrases « L'ancienneté reçue
+     est l'ancienneté de progression déjà établie… », et leur traduction arabe au même rang, dans 27 grilles).
+     Aucun texte, aucune valeur ni aucun libellé ne change ; le chemin par l'ancienneté les affiche comme avant.
+
+**Alternatives écartées** :
+- Remplacer v0 par v1 partout : il aurait fallu modifier DS1, les 211 démos et leurs réponses, et on perdait la
+  preuve « v0 inchangé ».
+- `degre` = position de la colonne : dans 5 grilles, la position diffère du numéro imprimé, avec un risque réel
+  d'erreur.
+- Intégrer les colonnes du textile à `valeurs` : il aurait fallu changer le nombre de degrés, le chemin par
+  l'ancienneté, le contrôle de hausse et une dizaine de tests.
+- Refuser le dernier degré par le chemin du degré dans les secteurs à écart cumulé : le montant servi est exactement
+  celui imprimé pour ce degré, et l'hypothèse dit ce qui n'est pas appliqué.
+
+**Raison** :
+- Le verre (900 cellules) n'imprime aucune durée de degré. La colonne « stage » et les degrés 19 et 20 du textile
+  ont une valeur imprimée vérifiée, mais aucune ancienneté imprimée ne permet de les atteindre.
+- Le degré déclaré est la seule façon honnête de les servir. Il est donné par l'utilisateur, et la réponse le dit.
+
+**Source PDF + page** :
+- verre : `تحويل البلّور والمرآة.pdf`, pp.19-21 (grilles), art. 12 (جديد) pp.7-8, art. 53 p.15 ;
+- textile : `النسيج.pdf`, pp.29-32 (grilles), art. 12 (جديد) p.8 ;
+- banques : `البنوك.pdf`, pp.22-23 ;
+- cosmétiques : `صناعة مواد التجميل والعطورات.pdf`, pp.21-23, art. 49 p.15 ;
+- règles au-delà du dernier degré : pages et articles de chaque grille (D9, D10, D29, D48, D67 à D72).
+
+**Mise en œuvre** :
+- `calc/salary.py` (`salaire_par_degre`, appelée seulement si `degre` est donné) ;
+- `calc/loaders.py` (validation de `alias_designation`, `servie_par_degre`, `servies_par_degre`) ;
+- `contract/handler.py` (choix de la version) ;
+- `textile.json`, `cosmetiques_parfums.json` ; indicateur `chemin_anciennete_seulement` dans 27 grilles ;
+- démos `data/mock_cards/track_b_requests_demo.v1.json` (18), réponses
+  `tests/references/track_b_responses_demo.v1.json` ;
+- `test_contrat_v1.py` ; cas TB-291 à TB-308 ; `run_eval.py` (schéma de réponse selon la version).
+
+**Statut de vérification** :
+- Valeurs des 11 cas `ok` du salaire de base, lues sur le rendu des pages à 300 dpi : verre p.21 (4,055 ; 648,760),
+  textile p.29, 31 et 32 (2,604 ; 2,829 ; 559,062 ; 1 273,662), banques p.23 (1687,106), métallurgie p.34
+  (680,334), cosmétiques p.23 (575,741). Plus 1 refus de cellule illisible (confiserie p.21, « 615.41? »).
+- Ce sont des cellules déjà lues en double lecture dans leurs décisions de grille.
+- **Vérification humaine (DS5, « VÉRIFIÉS », 2026-11-21)** : « J'ai vérifié sur les images les 17 points de claude-docs/moteur/verification/page.html, tous conformes : les 3 primes à plus de 3 décimales (montant, unité, période), les 9 cellules servies par le degré avec leur en-tête, le refus de la confiserie, l'absence de colonne « 1 » aux banques, l'en-tête du verre et les deux refus de paramètres. »
+- Les 18 cas TB-291 à TB-308 passent à `verification_humaine` à `true`.
+- Test : chaque cellule imprimée de chaque grille est servie, par sa désignation, telle qu'elle est dans le fichier.
+
+### D76 — Montants imprimés à plus de 3 décimales, servis exacts en v1
+
+**Décision** (DS5, réponse à l'ARRÊT 3) : les 3 primes refusées pour ce motif restent dans `primes_non_couvertes`,
+avec leur message v0 inchangé. Chacune reçoit un bloc `service_contrat_v1`, servi seulement en contrat v1, tel
+qu'imprimé, sans arrondi, dans l'unité imprimée.
+
+| Secteur | Code | Imprimé | Servi en v1 | Équivalent en dinars |
+|---|---|---|---|---|
+| Boissons alcoolisées (D62) | `prime_panier` | art. 53 (جديد), 3), p.15 : « 416.666 م في اليوم » | `416.666` `millimes/jour` | `0.416666` |
+| Bois, ameublement et liège (D63) | `aide_deces` | art. 61 (جديد), p.18 : « 466.6666 د » | `466.6666` `TND/versement` | — |
+| Fonderie (D72) | `prime_panier` | art. 51 (جديد), p.15 : « 706.666 مليما في اليوم » | `706.666` `millimes/jour` | `0.706666` |
+
+1. **Date d'effet** : aucune n'est imprimée pour les trois. La valeur est servie quelle que soit la date demandée,
+   comme D4, avec l'hypothèse habituelle.
+2. **Conditions, lues sur la page** :
+   - boissons alcoolisées : « تسند للعمال الذين وقع تعيينهم اسميا للبقاء في مكان العمل أو إذا اضطروا للبقاء طيلة
+     كامل مدة العمل » ;
+   - bois : « في صورة عدم وجود تأمين اجتماعي يضمن مثل هذه الإعانة بمبلغ يكون على الأقل مساويا ».
+   - Ces deux primes exigent `condition_remplie`, comme les autres primes à condition.
+   - Fonderie : « طبقا للتشريع الجاري به العمل », sans condition écrite. C'est une hypothèse, sans paramètre.
+3. **Représentation** :
+   - `result.montant` : chaîne décimale exacte (`Decimal` lu tel quel, `arrondi_millime` non appliqué à ces seuls
+     montants : champ `montant_exact: true` du fichier).
+   - `detail.montant_tel_qu_imprime: true`, `regles: D76`.
+   - Pour les millimes, `detail.montant_equivalent_tnd` : chaîne décimale exacte (décalage de 3 rangs, sans arrondi).
+   - Une hypothèse FR et AR reprend le texte imprimé, par exemple « 416,666 millimes, soit 0,416666 dinar ».
+4. **v0 inchangé** : `prime` (v0) refuse ces 3 primes avec le même message. `prime_v1` est choisie par le handler
+   selon `contract_version`, et jamais par un paramètre de la requête (un paramètre `contrat` reste inconnu).
+5. **Schéma commun** : aucun changement. L'enveloppe ne contrôle pas `result.montant`. Faire évoluer
+   `$defs.montant` (3 décimales) est à proposer à l'équipe.
+
+**Alternatives écartées** :
+- Arrondir au millime : le montant n'est pas celui imprimé, et l'arrondi est silencieux.
+- Déplacer les 3 primes dans `primes` avec un refus v0 propre : il aurait fallu modifier les tests des primes des
+  vagues 3 et 4, `test_libelles_primes`, et les cas TB-213 et TB-221.
+- Convertir les millimes en dinars : on change l'unité imprimée.
+
+**Raison** : ces montants sont imprimés et lisibles. Seule la représentation à 3 décimales empêchait de les servir.
+Aucun autre montant servi n'a plus de 3 décimales (contrôle des 21 963 nombres décimaux des fichiers, ARRÊT 3).
+
+**Source PDF + page** :
+- `صناعة وتجارة المشروبات الكحولية.pdf`, p.15, art. 53 (جديد), 3) ;
+- `صناعة الخشب والموبيليا والخفاف.pdf`, p.18, art. 61 (جديد) ;
+- `مسابك و التعدين و البناءات الميكانيكية.pdf`, p.15, art. 51 (جديد).
+
+**Mise en œuvre** :
+- `calc/primes.py` (`prime_v1`) ;
+- `calc/loaders.py` (validation de `service_contrat_v1`) ;
+- `boissons_alcoolisees.json`, `bois_ameublement_liege.json`, `fonderies_mecanique.json` ;
+- démos v1 15 à 17 ; cas TB-305 à TB-307.
+
+**Statut de vérification** :
+- Les 3 montants et leurs conditions ont été relus sur le rendu des pages (110 dpi, puis zoom à 300 dpi), le
+  2026-11-20. Ils étaient déjà lus dans D62, D63 et D72.
+- **Vérification humaine (DS5, « VÉRIFIÉS », 2026-11-21)** : « J'ai vérifié sur les images les 17 points de claude-docs/moteur/verification/page.html, tous conformes : les 3 primes à plus de 3 décimales (montant, unité, période), les 9 cellules servies par le degré avec leur en-tête, le refus de la confiserie, l'absence de colonne « 1 » aux banques, l'en-tête du verre et les deux refus de paramètres. »
+- Cas TB-305 à TB-307 : `verification_humaine` à `true`.
+
+### D77 — Besoin n° 2 refusé : pas de date de fin de validité pour une prime
+
+**Décision** (DS5, 14/11/2026, réponse à l'ARRÊT 3) : le moteur ne reçoit pas de date de fin de validité pour une
+prime, ni de montant borné à une période. Aucun changement de code ni de données. Les deux primes concernées restent
+refusées entièrement (`SOURCE_MANQUANTE`), en v0 comme en v1, avec leurs messages actuels :
+- **matériel agricole** : prime de transport, art. 49 (جديد), p.14. L'avenant 15 (effet au 2021-12-01, p.3) la
+  modifie, et le refus couvre aussi 2018-2021 ;
+- **textile** : prime d'assiduité, art. 49-3 (جديد), pp.15-16. La seconde ligne est datée de mai 2021, avant la
+  première (septembre 2021).
+
+**Alternatives écartées** :
+- Champ `valide_jusqu_au` par ligne de prime, comme pour les tables : il aurait servi 6 montants (4 au matériel
+  agricole, 2 au textile), mais la date « mai 2021 » du textile reste à confirmer sur une autre source.
+
+**Raison** :
+- Le gain est de 6 montants dans 2 secteurs.
+- Une des deux dates est douteuse.
+- Servir un montant borné à une période sur une date incertaine contredit « Citation ou Silence ».
+
+**Source PDF + page** :
+- `وكلاء التجهيزات الفلاحية.pdf`, p.3 (avenant 15) et p.14 (art. 49 (جديد)) ;
+- `النسيج.pdf`, pp.15-16 (art. 49-3 (جديد)).
+
+**Statut de vérification** : choix de DS5. La date « mai 2021 » du textile attend une confirmation de M. Salah ;
+une décision ultérieure pourra rouvrir ce besoin.
+
+**Numérotation** : D75 à D77 suivent D73 et D74 (PR 42, fusionnée). Les lectures des vagues 5 et 6 partiront
+de D78.

@@ -8436,128 +8436,688 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تحويل البلّور والمرآة.pdf"
+     }
+    ],
+    "montant": "4.055",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-291",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D68",
+      "page": 21,
+      "pdf": "تحويل البلّور والمرآة.pdf"
+     }
+    ],
+    "montant": "4.055",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تحويل البلّور والمرآة.pdf"
+     }
+    ],
+    "montant": "648.760",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-292",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D68",
+      "page": 21,
+      "pdf": "تحويل البلّور والمرآة.pdf"
+     }
+    ],
+    "montant": "648.760",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 32,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "559.062",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-293",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D71",
+      "page": 32,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "559.062",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "2.829",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-294",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D71",
+      "page": 31,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "2.829",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 32,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "1273.662",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-295",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D71",
+      "page": 32,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "1273.662",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 29,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "2.604",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-296",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D71",
+      "page": 29,
+      "pdf": "النسيج.pdf"
+     }
+    ],
+    "montant": "2.604",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "البنوك.pdf"
+     }
+    ],
+    "montant": "1687.106",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-297",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D46",
+      "page": 23,
+      "pdf": "البنوك.pdf"
+     }
+    ],
+    "montant": "1687.106",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-298",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Degré 1 absent de la grille BANQUES/tous_agents (table BQ_TOUS_AGENTS_2021-05-01) ; désignations imprimées acceptées : stage, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-299",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Degré 14 absent de la grille VERRE_MIROIRS/horaires (table VERRE_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-300",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "anciennete_annees et degre ne peuvent pas être donnés ensemble : donner l'un ou l'autre.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-301",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "anciennete_annees obligatoire pour VERRE_MIROIRS/horaires (grille à degrés d'ancienneté).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D48",
+   "id": "TB-302",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents payés au mois, catégorie 1, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 34,
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+     }
+    ],
+    "montant": "680.334",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-303",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D4",
+      "page": 34,
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+     }
+    ],
+    "montant": "680.334",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "صناعة مواد التجميل والعطورات.pdf"
+     }
+    ],
+    "montant": "575.741",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-304",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D54",
+      "page": 23,
+      "pdf": "صناعة مواد التجميل والعطورات.pdf"
+     }
+    ],
+    "montant": "575.741",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "صناعة وتجارة المشروبات الكحولية.pdf"
+     }
+    ],
+    "montant": "416.666",
+    "status": "ok",
+    "unite": "millimes/jour"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D76",
+   "id": "TB-305",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D62",
+      "page": 15,
+      "pdf": "صناعة وتجارة المشروبات الكحولية.pdf"
+     }
+    ],
+    "montant": "416.666",
+    "status": "ok",
+    "unite": "millimes/jour"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "صناعة الخشب والموبيليا والخفاف.pdf"
+     }
+    ],
+    "montant": "466.6666",
+    "status": "ok",
+    "unite": "TND/versement"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D76",
+   "id": "TB-306",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D63",
+      "page": 18,
+      "pdf": "صناعة الخشب والموبيليا والخفاف.pdf"
+     }
+    ],
+    "montant": "466.6666",
+    "status": "ok",
+    "unite": "TND/versement"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf"
+     }
+    ],
+    "montant": "706.666",
+    "status": "ok",
+    "unite": "millimes/jour"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D76",
+   "id": "TB-307",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D72",
+      "page": 15,
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf"
+     }
+    ],
+    "montant": "706.666",
+    "status": "ok",
+    "unite": "millimes/jour"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 30,
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+     }
+    ],
+    "montant": "593.873",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "piege",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-308",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D4",
+      "page": 30,
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+     }
+    ],
+    "montant": "593.873",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
- "date": "2026-11-14",
+ "date": "2026-11-21",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 290,
-  "cas_verifies_par_ds5": 280,
+  "cas": 308,
+  "cas_verifies_par_ds5": 298,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "edacbd1e57a3f2188bb170989cc93d12b705628dc6326135e97585af073702e2",
+  "sha256": "29190e68241e10df04a5414bf7d9b39696e20a0ad8056231547508fb89d66789",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 280,
+   "cas": 298,
    "citations_valides": {
-    "n": 161,
-    "sur": 161,
+    "n": 174,
+    "sur": 174,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 119,
+    "sur": 124,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 280,
-    "sur": 280,
+    "n": 298,
+    "sur": 298,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 280,
-    "sur": 280,
+    "n": 298,
+    "sur": 298,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 161,
-    "sur": 161,
+    "n": 174,
+    "sur": 174,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 161,
+    "sur": 174,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 119,
+    "sur": 124,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 119,
+    "sur": 124,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 119,
-    "sur": 119,
+    "n": 124,
+    "sur": 124,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 161,
+    "sur": 174,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 290,
+   "cas": 308,
    "citations_valides": {
-    "n": 161,
-    "sur": 161,
+    "n": 174,
+    "sur": 174,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 129,
+    "sur": 134,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 290,
-    "sur": 290,
+    "n": 308,
+    "sur": 308,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 290,
-    "sur": 290,
+    "n": 308,
+    "sur": 308,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 161,
-    "sur": 161,
+    "n": 174,
+    "sur": 174,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 161,
+    "sur": 174,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 129,
+    "sur": 134,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 129,
+    "sur": 134,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 129,
-    "sur": 129,
+    "n": 134,
+    "sur": 134,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 161,
+    "sur": 174,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -8620,10 +9180,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 155,
+    "cas": 167,
     "citations_valides": {
-     "n": 155,
-     "sur": 155,
+     "n": 167,
+     "sur": 167,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -8632,24 +9192,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 155,
-     "sur": 155,
+     "n": 167,
+     "sur": 167,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 155,
-     "sur": 155,
+     "n": 167,
+     "sur": 167,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 155,
-     "sur": 155,
+     "n": 167,
+     "sur": 167,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 155,
+     "sur": 167,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -8670,17 +9230,17 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 155,
+     "sur": 167,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "piege": {
-    "cas": 6,
+    "cas": 7,
     "citations_valides": {
-     "n": 0,
-     "sur": 0,
-     "taux": null
+     "n": 1,
+     "sur": 1,
+     "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
@@ -8688,25 +9248,25 @@
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 6,
-     "sur": 6,
+     "n": 7,
+     "sur": 7,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 6,
-     "sur": 6,
+     "n": 7,
+     "sur": 7,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 0,
-     "sur": 0,
-     "taux": null
+     "n": 1,
+     "sur": 1,
+     "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 0,
-     "taux": null
+     "sur": 1,
+     "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
@@ -8726,13 +9286,13 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 0,
-     "taux": null
+     "sur": 1,
+     "taux": 0.0
     },
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 123,
+    "cas": 128,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -8740,17 +9300,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 123,
+     "sur": 128,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 123,
-     "sur": 123,
+     "n": 128,
+     "sur": 128,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 123,
-     "sur": 123,
+     "n": 128,
+     "sur": 128,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -8767,17 +9327,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 123,
+     "sur": 128,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 123,
+     "sur": 128,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 123,
-     "sur": 123,
+     "n": 128,
+     "sur": 128,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -8846,113 +9406,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 116,
+    "cas": 129,
     "citations_valides": {
-     "n": 44,
-     "sur": 44,
+     "n": 53,
+     "sur": 53,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 72,
+     "sur": 76,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 116,
-     "sur": 116,
+     "n": 129,
+     "sur": 129,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 116,
-     "sur": 116,
+     "n": 129,
+     "sur": 129,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 44,
-     "sur": 44,
+     "n": 53,
+     "sur": 53,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 44,
+     "sur": 53,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 72,
+     "sur": 76,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 72,
+     "sur": 76,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 72,
-     "sur": 72,
+     "n": 76,
+     "sur": 76,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 44,
+     "sur": 53,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 167,
+    "cas": 172,
     "citations_valides": {
-     "n": 110,
-     "sur": 110,
+     "n": 114,
+     "sur": 114,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 57,
+     "sur": 58,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 167,
-     "sur": 167,
+     "n": 172,
+     "sur": 172,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 167,
-     "sur": 167,
+     "n": 172,
+     "sur": 172,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 110,
-     "sur": 110,
+     "n": 114,
+     "sur": 114,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 110,
+     "sur": 114,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 57,
+     "sur": 58,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 57,
+     "sur": 58,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 57,
-     "sur": 57,
+     "n": 58,
+     "sur": 58,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 110,
+     "sur": 114,
      "taux": 0.0
     },
     "statut_erreur": 0

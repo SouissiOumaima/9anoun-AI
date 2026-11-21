@@ -1,47 +1,47 @@
-# Évaluation Track B — 2026-11-14
+# Évaluation Track B — 2026-11-21
 
-Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 290 cas, sha256 `edacbd1e57a3…`).
-Cas vérifiés sur les PDF par DS5 : **280 / 290**.
+Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 308 cas, sha256 `29190e68241e…`).
+Cas vérifiés sur les PDF par DS5 : **298 / 308**.
 
 **Faux montants : 0** (montant faux pour un ok attendu, ou montant renvoyé alors qu'un refus était attendu).
 
-## Ensemble des cas (290 cas)
+## Ensemble des cas (308 cas)
 
 | Métrique | Nombre | Taux |
 |---|---|---|
-| Faux montants (ok attendu) | 0 / 161 | 0.0 % |
-| Montant au lieu d'un refus | 0 / 129 | 0.0 % |
-| Exactitude des montants | 161 / 161 | 100.0 % |
-| Silence excessif | 0 / 161 | 0.0 % |
-| Refus corrects (même code ; même message s'il est fixé) | 129 / 129 | 100.0 % |
-| Messages de refus différents de l'attendu | 0 / 129 | 0.0 % |
-| Citations valides | 161 / 161 | 100.0 % |
-| Conformité schéma Track B | 290 / 290 | 100.0 % |
-| Conformité schéma commun | 290 / 290 | 100.0 % |
+| Faux montants (ok attendu) | 0 / 174 | 0.0 % |
+| Montant au lieu d'un refus | 0 / 134 | 0.0 % |
+| Exactitude des montants | 174 / 174 | 100.0 % |
+| Silence excessif | 0 / 174 | 0.0 % |
+| Refus corrects (même code ; même message s'il est fixé) | 134 / 134 | 100.0 % |
+| Messages de refus différents de l'attendu | 0 / 134 | 0.0 % |
+| Citations valides | 174 / 174 | 100.0 % |
+| Conformité schéma Track B | 308 / 308 | 100.0 % |
+| Conformité schéma commun | 308 / 308 | 100.0 % |
 | Statut erreur / exceptions | 0 / 0 | |
 
-## Cas vérifiés par DS5 (280 cas)
+## Cas vérifiés par DS5 (298 cas)
 
 | Métrique | Nombre | Taux |
 |---|---|---|
-| Faux montants (ok attendu) | 0 / 161 | 0.0 % |
-| Montant au lieu d'un refus | 0 / 119 | 0.0 % |
-| Exactitude des montants | 161 / 161 | 100.0 % |
-| Silence excessif | 0 / 161 | 0.0 % |
-| Refus corrects (même code ; même message s'il est fixé) | 119 / 119 | 100.0 % |
-| Messages de refus différents de l'attendu | 0 / 119 | 0.0 % |
-| Citations valides | 161 / 161 | 100.0 % |
-| Conformité schéma Track B | 280 / 280 | 100.0 % |
-| Conformité schéma commun | 280 / 280 | 100.0 % |
+| Faux montants (ok attendu) | 0 / 174 | 0.0 % |
+| Montant au lieu d'un refus | 0 / 124 | 0.0 % |
+| Exactitude des montants | 174 / 174 | 100.0 % |
+| Silence excessif | 0 / 174 | 0.0 % |
+| Refus corrects (même code ; même message s'il est fixé) | 124 / 124 | 100.0 % |
+| Messages de refus différents de l'attendu | 0 / 124 | 0.0 % |
+| Citations valides | 174 / 174 | 100.0 % |
+| Conformité schéma Track B | 298 / 298 | 100.0 % |
+| Conformité schéma commun | 298 / 298 | 100.0 % |
 | Statut erreur / exceptions | 0 / 0 | |
 
 ## Par certitude
 
 | Certitude | Cas | Exactitude montants | Refus corrects | Faux montants |
 |---|---|---|---|---|
-| L | 167 | 110 / 110 | 57 / 57 | 0 |
+| L | 172 | 114 / 114 | 58 / 58 | 0 |
 | C | 7 | 7 / 7 | 0 / 0 | 0 |
-| I | 116 | 44 / 44 | 72 / 72 | 0 |
+| I | 129 | 53 / 53 | 76 / 76 | 0 |
 
 L = lu dans le PDF, C = calculé à la main, I = interprétation (Dn). Un échec sur un cas I est un désaccord d'interprétation, pas une erreur de lecture.
 
@@ -342,3 +342,21 @@ L = lu dans le PDF, C = calculé à la main, I = interprétation (Dn). Un échec
 | TB-288 | refus | I D72 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
 | TB-289 | refus | I D6 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
 | TB-290 | refus | I D72 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-291 | ok | L D75 | oui | 4.055 TND/heure | 4.055 TND/heure | correct |
+| TB-292 | ok | L D75 | oui | 648.760 TND/mois | 648.760 TND/mois | correct |
+| TB-293 | ok | I D75 | oui | 559.062 TND/mois | 559.062 TND/mois | correct |
+| TB-294 | ok | L D75 | oui | 2.829 TND/heure | 2.829 TND/heure | correct |
+| TB-295 | ok | I D75 | oui | 1273.662 TND/mois | 1273.662 TND/mois | correct |
+| TB-296 | ok | I D75 | oui | 2.604 TND/heure | 2.604 TND/heure | correct |
+| TB-297 | ok | I D75 | oui | 1687.106 TND/mois | 1687.106 TND/mois | correct |
+| TB-298 | refus | I D75 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-299 | refus | L | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-300 | refus | I D75 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-301 | refus | I D75 | oui | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| TB-302 | refus | I D48 | oui | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| TB-303 | ok | I D75 | oui | 680.334 TND/mois | 680.334 TND/mois | correct |
+| TB-304 | ok | I D75 | oui | 575.741 TND/mois | 575.741 TND/mois | correct |
+| TB-305 | ok | I D76 | oui | 416.666 millimes/jour | 416.666 millimes/jour | correct |
+| TB-306 | ok | I D76 | oui | 466.6666 TND/versement | 466.6666 TND/versement | correct |
+| TB-307 | ok | I D76 | oui | 706.666 millimes/jour | 706.666 millimes/jour | correct |
+| TB-308 | piege | L | oui | 593.873 TND/mois | 593.873 TND/mois | correct |
