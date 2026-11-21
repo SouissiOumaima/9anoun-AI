@@ -47,7 +47,11 @@ PRETRAINED: Final = BUILD / "weights" / "arabic_PP-OCRv5_mobile_rec_pretrained.p
 FT_FILE: Final = "finetune_bn_frozen_best.pdparams"
 ILLEGIBLE: Final = "#ILLISIBLE"
 RESULTS_NAME: Final = "resultats_cer_reel.json"
-LANGS: Final = ("fr", "ar", "mixte")
+LANGS: Final = ("fr", "ar", "mixte", "inconnu")
+"""Langue de la référence ; « inconnu » = ligne sans lettres (montants, dates seuls). Les portées par langue
+couvrent donc toutes les lignes : leurs totaux s'additionnent pour donner le global."""
+RESULTS_FORMAT: Final = "ds3.cer_reel.v2"
+"""Format du fichier de résultats (v2 : avec les totaux nécessaires pour combiner plusieurs annotatrices)."""
 
 Recognizer = Callable[[list[Path]], list[str]]
 """Lit une liste d'images de lignes et renvoie un texte par image (remplaçable dans les tests)."""
@@ -91,8 +95,29 @@ def read_annotations(csv_path: Path) -> tuple[list[Row], dict[str, int]]:
 
 
 def scores(refs: Sequence[str], hyps: Sequence[str]) -> dict[str, float | int]:
-    return {"n": len(refs), "cer": round(metrics.cer(refs, hyps), 4), "wer": round(metrics.wer(refs, hyps), 4),
-            "lignes_exactes": round(metrics.exact_match(refs, hyps), 4)}
+    """Taux (CER, WER, part de lignes exactes) et totaux qui permettent de combiner plusieurs fichiers.
+
+    Les totaux sont des nombres seulement (aucun texte) : caractères et mots de référence, erreurs (distance
+    d'édition) en caractères et en mots, lignes exactes. CER = erreurs_caracteres / caracteres_reference, etc.
+    """
+    norm_refs = [metrics.normalize(r) for r in refs]
+    norm_hyps = [metrics.normalize(h) for h in hyps]
+    chars = sum(len(r) for r in norm_refs)
+    words = sum(len(r.split()) for r in norm_refs)
+    char_errors = sum(metrics.levenshtein(r, h) for r, h in zip(norm_refs, norm_hyps, strict=True))
+    word_errors = sum(metrics.levenshtein(r.split(), h.split()) for r, h in zip(norm_refs, norm_hyps, strict=True))
+    exact = sum(r == h for r, h in zip(norm_refs, norm_hyps, strict=True))
+    return {
+        "n": len(refs),
+        "cer": round(char_errors / chars, 4) if chars else 0.0,
+        "wer": round(word_errors / words, 4) if words else 0.0,
+        "lignes_exactes": round(exact / len(refs), 4) if refs else 0.0,
+        "caracteres_reference": chars,
+        "erreurs_caracteres": char_errors,
+        "mots_reference": words,
+        "erreurs_mots": word_errors,
+        "nb_lignes_exactes": exact,
+    }
 
 
 def evaluate(rows: Sequence[Row], recognizers: dict[str, Recognizer]) -> dict[str, dict[str, Any]]:
@@ -205,8 +230,8 @@ def main(argv: list[str] | None = None, recognizers: dict[str, Recognizer] | Non
 
     results = evaluate(rows, recognizers)
     print_results(counts, results)
-    (args.csv.parent / RESULTS_NAME).write_text(json.dumps({"lignes": counts, "resultats": results}, indent=2),
-                                                encoding="utf-8")
+    payload = {"format": RESULTS_FORMAT, "lignes": counts, "resultats": results}
+    (args.csv.parent / RESULTS_NAME).write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"\nChiffres écrits dans {RESULTS_NAME}, à côté du CSV.")
     return 0
 
