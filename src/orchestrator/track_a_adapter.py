@@ -21,6 +21,13 @@ class TrackAAdapter:
         request = payload.get("params", {}).get("track_a_request")
         if not isinstance(request, Mapping):
             raise ToolContractError("Track A call requires a track_a_request object")
+        if request.get("contract_version") == "track_a.v1":
+            from src.track_a_legal.tools.ds1_v1_adapter import DS1TrackAV1Adapter, DS1V1ContractError
+            try:
+                adapter = DS1TrackAV1Adapter(self._handler) if self._handler is not None else DS1TrackAV1Adapter()
+                return adapter(payload)
+            except DS1V1ContractError as error:
+                raise ToolContractError(str(error)) from error
         if request.get("contract_version") != "track_a.v0":
             raise ToolContractError("Track A request must use track_a.v0")
         if request.get("request_id") != payload.get("request_id"):

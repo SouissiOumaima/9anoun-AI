@@ -221,6 +221,93 @@ def test_live_ds3_service_can_launch_explicit_ds5_calculation_with_separate_cita
     assert calculation["salary_comparison_warning"] is not None
 
 
+def test_live_payslip_with_traps_keeps_unreadable_fields_out_of_confirmation(monkeypatch) -> None:
+    fields = {
+        "period_start": {"value": "2024-02-01", "value_type": "date", "confidence": 0.95, "citation_id": "c-period"},
+        "pay_mode": {"value": "mensuel", "value_type": "enum", "confidence": 0.95, "citation_id": "c-mode"},
+        "category": {"value": "3", "value_type": "texte", "confidence": 0.95, "citation_id": "c-category"},
+        "hire_date": {"value": None, "value_type": "date", "confidence": 0.0, "citation_id": None,
+                      "unreadable_reason": "valeur_incoherente"},
+        "employment_status": {"value": None, "value_type": "enum", "confidence": 0.0, "citation_id": None,
+                              "unreadable_reason": "valeur_incoherente"},
+        "work_hours_regime": {"value": None, "value_type": "entier", "confidence": 0.0, "citation_id": None,
+                               "unreadable_reason": "valeur_incoherente"},
+    }
+    citations = [
+        {"citation_id": citation_id, "document_id": "doc-company-payslip-02", "page": 1, "excerpt": citation_id}
+        for citation_id in ("c-period", "c-mode", "c-category")
+    ]
+
+    def live_handler(request):
+        assert request["document"]["file_name"] == "paie_fictive_04_pieges.pdf"
+        assert request["document"]["mime_type"] == "application/pdf"
+        return {
+            "contract_version": "ds3.v2", "request_id": request["request_id"],
+            "operation": request["operation"], "status": "ok", "refus": None,
+            "computed_by": "document_intelligence.service", "mode": "live",
+            "result": {"complete": False, "document_type": "fiche_de_paie", "fields": fields},
+            "citations": citations, "warnings": [], "ds3_code": None,
+        }
+
+    monkeypatch.setattr(ds3_service, "handle_request", live_handler)
+    response = chat(
+        {
+            "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
+            "document_id": "doc-company-payslip-02",
+        },
+        dispatcher=HybridSpecialistDispatcher(
+            document_intelligence_adapter=DocumentIntelligenceAdapter(handler_mode="live"),
+        ),
+    )
+    review = response["document_review"]
+    states = {field["name"]: field["state"] for field in review["fields"]}
+    assert review["mode"] == "live"
+    assert all(states[name] == "unavailable" for name in ("hire_date", "employment_status", "work_hours_regime"))
+    rejected = confirm_document_review({
+        "review_id": review["review_id"], "confirmed_fields": ["period_start", "hire_date"],
+    })
+    assert rejected["error"] == "unconfirmed_or_unusable_field"
+    confirmed = confirm_document_review({
+        "review_id": review["review_id"], "confirmed_fields": ["period_start", "pay_mode", "category"],
+    })
+    assert confirmed["status"] == "confirmed"
+    salary = next(item for item in confirmed["ds5_prefill"]["candidates"] if item["operation"] == "salaire_base")
+    assert not {"hire_date", "employment_status", "work_hours_regime"} & set(salary["params"])
+
+
+def test_live_image_document_returns_a_bilingual_out_of_scope_refusal(monkeypatch) -> None:
+    def live_handler(request):
+        assert request["document"]["file_name"] == "paie_mars_2026_scan_illisible.jpg"
+        assert request["document"]["mime_type"] == "image/jpeg"
+        return {
+            "contract_version": "ds3.v2", "request_id": request["request_id"],
+            "operation": request["operation"], "status": "refus", "result": None,
+            "computed_by": "document_intelligence.service", "mode": "live", "citations": [],
+            "refus": {
+                "code": "HORS_SCOPE", "message_fr": "Seuls les PDF sont pris en charge en mode live.",
+                "message_ar": "يتم دعم ملفات PDF فقط في وضع live.",
+            },
+            "warnings": [], "ds3_code": "UNSUPPORTED_FORMAT",
+        }
+
+    monkeypatch.setattr(ds3_service, "handle_request", live_handler)
+    response = chat(
+        {
+            "message": "Analyse ce document", "language": "fr", "card_id": "company-demo-001",
+            "document_id": "doc-company-payslip-scan-01",
+        },
+        dispatcher=HybridSpecialistDispatcher(
+            document_intelligence_adapter=DocumentIntelligenceAdapter(handler_mode="live"),
+        ),
+    )
+    user_response = response["user_response"]
+    assert user_response["status"] == "refused"
+    assert user_response["code"] == "OUT_OF_SCOPE"
+    assert user_response["message_fr"] and user_response["message_ar"]
+    assert response["answer"] is None
+    assert response["document_review"] is None
+
+
 def test_document_seniority_is_only_a_proposal_until_the_user_confirms_it() -> None:
     response = chat({
         "message": "Analyse ce document PDF", "language": "fr", "card_id": "company-demo-001",
@@ -324,10 +411,12 @@ def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:
     response = chat({
         "message": "Analyse les preuves de ce dossier", "language": "fr", "card_id": "case-demo-001",
     })
-    assert response["user_response"]["status"] == "refused"
-    assert response["user_response"]["code"] == "SOURCE_MISSING"
+    assert response["user_response"]["status"] == "success"
     assert response["route"] == {"agent": "track_a_legal", "operation": "analyze_case"}
-    assert response["answer"] is None
+    assert response["answer"]["kind"] == "case_preparatory"
+    assert response["answer"]["legal_conclusion"] is None
+    assert response["citations"] == []
+    assert response["answer"]["message_ar"]
 
 
 def test_chat_asks_for_clarification_without_guessing_payroll_fields() -> None:
