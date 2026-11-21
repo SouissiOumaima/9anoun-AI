@@ -139,13 +139,28 @@ def evaluate(rows: Sequence[Row], recognizers: dict[str, Recognizer]) -> dict[st
     return results
 
 
-def find_finetuned_weights(build: Path = BUILD) -> Path | None:
-    """Poids du Fine-Tuning de l'expérience COMPLÈTE (jamais ceux de l'essai rapide `--quick`).
+@dataclass(frozen=True)
+class FinetunedRun:
+    """Lancement de l'expérience dont viennent les poids fine-tunés."""
 
-    `run_experiment.py` écrit aussi `build/<étape>_best.pdparams` pendant l'essai rapide : ce fichier peut donc
-    venir de l'essai rapide. On prend le meilleur état gardé dans le dossier d'état d'un lancement non rapide.
+    weights: Path
+    run_id: str
+    """Nom du dossier d'état (`seed<graine>_<empreinte de la configuration>`) : un identifiant, pas un chemin."""
+    seed: int | None
+
+    def describe(self) -> dict[str, Any]:
+        """Ce qui peut être affiché et écrit dans le JSON : graine et identifiant, jamais de chemin."""
+        return {"graine": self.seed, "identifiant": self.run_id}
+
+
+def find_finetuned_run(build: Path = BUILD) -> FinetunedRun | None:
+    """Lancement le plus récent de l'expérience COMPLÈTE qui a des poids fine-tunés (jamais l'essai rapide).
+
+    Depuis la PR #50, l'essai rapide (`--quick`) écrit tout sous `build/quick/` et n'écrit plus dans
+    `build/<étape>_best.pdparams`. Par précaution, on ne lit **jamais** `build/*_best.pdparams` (un ancien essai
+    rapide a pu l'écraser) : on prend le meilleur état gardé dans le dossier d'état d'un lancement non rapide.
     """
-    found: list[Path] = []
+    found: list[FinetunedRun] = []
     for run_info in (build / "state").glob("*/run.json"):
         try:
             config = json.loads(run_info.read_text(encoding="utf-8"))["config"]
@@ -153,8 +168,9 @@ def find_finetuned_weights(build: Path = BUILD) -> Path | None:
             continue
         weights = run_info.parent / FT_FILE
         if not config.get("quick", False) and weights.exists():
-            found.append(weights)
-    return max(found, key=lambda p: p.stat().st_mtime) if found else None
+            seed = config.get("seed")
+            found.append(FinetunedRun(weights, run_info.parent.name, seed if isinstance(seed, int) else None))
+    return max(found, key=lambda run: run.weights.stat().st_mtime) if found else None
 
 
 def experiment_recognizers(ft_weights: Path | None) -> dict[str, Recognizer]:  # pragma: no cover - charge Paddle
@@ -216,13 +232,24 @@ def main(argv: list[str] | None = None, recognizers: dict[str, Recognizer] | Non
         print("Aucune ligne annotée : remplissez la colonne texte_correct.")
         return 1
 
+    run_info: dict[str, Any] | None = None
     if recognizers is None:
         recognizers = {}
         if not args.sans_modeles:
             if PPOCR_ROOT.is_dir() and PRETRAINED.is_file():
-                ft = args.poids_finetune or find_finetuned_weights()
+                ft: Path | None = args.poids_finetune
+                if ft is not None:
+                    run_info = {"graine": None, "identifiant": "poids fournis par --poids-finetune"}
+                else:
+                    run = find_finetuned_run()
+                    if run is not None:
+                        ft, run_info = run.weights, run.describe()
                 if ft is None:
                     print("Note : poids du Fine-Tuning introuvables : seul le modèle pré-entraîné est mesuré.")
+                else:
+                    assert run_info is not None
+                    print(f"Lancement du Fine-Tuning retenu : graine {run_info['graine']}, "
+                          f"identifiant {run_info['identifiant']}.")
                 recognizers = experiment_recognizers(ft)
             else:
                 print("Note : expérience non préparée (build/PaddleOCR ou poids absents) : seule la lecture de "
@@ -230,7 +257,8 @@ def main(argv: list[str] | None = None, recognizers: dict[str, Recognizer] | Non
 
     results = evaluate(rows, recognizers)
     print_results(counts, results)
-    payload = {"format": RESULTS_FORMAT, "lignes": counts, "resultats": results}
+    payload = {"format": RESULTS_FORMAT, "lignes": counts, "resultats": results,
+               "lancement_fine_tune": run_info}  # graine + identifiant, jamais de chemin ; None sans fine-tuné
     (args.csv.parent / RESULTS_NAME).write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"\nChiffres écrits dans {RESULTS_NAME}, à côté du CSV.")
     return 0

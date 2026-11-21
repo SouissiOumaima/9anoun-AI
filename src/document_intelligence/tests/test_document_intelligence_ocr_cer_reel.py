@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import importlib.util
 import json
+import os
 import sys
 from pathlib import Path
 from types import ModuleType
@@ -16,7 +17,10 @@ from types import ModuleType
 import pymupdf
 import pytest
 
-from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang
+pytest.importorskip("numpy")
+pytest.importorskip("PIL")
+
+from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang  # noqa: E402
 
 SCRIPTS = Path(__file__).resolve().parents[3] / "scripts"
 SECRET = "SECRET"
@@ -244,7 +248,7 @@ def test_results_json_contains_no_document_text_and_no_file_name(tmp_path: Path)
     allowed_keys = {"format", "lignes", "resultats", "global", "fr", "ar", "mixte", "inconnu", "ocr_production",
                     "fine_tune", "n", "cer", "wer", "lignes_exactes", "caracteres_reference", "erreurs_caracteres",
                     "mots_reference", "erreurs_mots", "nb_lignes_exactes", "lignes_dans_le_csv", "lignes_annotees",
-                    "lignes_illisibles", "lignes_non_annotees"}
+                    "lignes_illisibles", "lignes_non_annotees", "lancement_fine_tune", "graine", "identifiant"}
     assert set(_walk_strings(saved)) <= allowed_keys | {evaluer.RESULTS_FORMAT}
 
 
@@ -257,7 +261,7 @@ def test_sans_modeles_never_loads_paddle_or_the_finetuned_model(tmp_path: Path, 
         raise AssertionError("Paddle ne doit pas être chargé avec --sans-modeles")
 
     monkeypatch.setattr(evaluer, "experiment_recognizers", must_not_run)
-    monkeypatch.setattr(evaluer, "find_finetuned_weights", must_not_run)
+    monkeypatch.setattr(evaluer, "find_finetuned_run", must_not_run)
     csv_path = _annotated_csv(tmp_path / "hadil")
     assert evaluer.main([str(csv_path), "--sans-modeles"]) == 0
     saved = json.loads((tmp_path / "hadil" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
@@ -327,8 +331,59 @@ def test_finetuned_weights_come_from_the_full_run_never_from_the_quick_run(tmp_p
             (state / evaluer.FT_FILE).write_bytes(b"poids")
     (build / "state" / "casse").mkdir()
     (build / "state" / "casse" / "run.json").write_text("{pas du json", encoding="utf-8")
-    assert evaluer.find_finetuned_weights(build) == build / "state" / "complet" / evaluer.FT_FILE
-    assert evaluer.find_finetuned_weights(tmp_path / "rien") is None
+    run = evaluer.find_finetuned_run(build)
+    assert run is not None and run.weights == build / "state" / "complet" / evaluer.FT_FILE
+    assert evaluer.find_finetuned_run(tmp_path / "rien") is None
+
+
+def test_the_chosen_run_is_printed_and_saved_by_seed_and_id_without_any_path(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
+    """Le lancement retenu est affiché et écrit dans le JSON (graine, identifiant), sans aucun chemin."""
+    evaluer = _load("evaluer_cer_reel")
+    build = tmp_path / "exp_build"
+    for name, seed in (("seed7_aaaa", 7), ("seed42_bbbb", 42)):
+        state = build / "state" / name
+        state.mkdir(parents=True)
+        (state / "run.json").write_text(json.dumps({"config": {"quick": False, "seed": seed}}), encoding="utf-8")
+        (state / evaluer.FT_FILE).write_bytes(b"poids")
+    old = build / "state" / "seed7_aaaa" / evaluer.FT_FILE
+    os.utime(old, (1_000_000, 1_000_000))  # le plus ancien : c'est seed42 qui doit être retenu
+    run = evaluer.find_finetuned_run(build)
+    assert run is not None and (run.seed, run.run_id) == (42, "seed42_bbbb")
+
+    loaded: list[Path | None] = []
+
+    def fake_recognizers(ft: Path | None) -> dict[str, object]:
+        loaded.append(ft)
+        return {"fine_tune": lambda paths: ["x"] * len(paths)}
+
+    monkeypatch.setattr(evaluer, "PPOCR_ROOT", tmp_path)  # « expérience prête » sans Paddle
+    monkeypatch.setattr(evaluer, "PRETRAINED", build / "state" / "seed42_bbbb" / "run.json")
+    monkeypatch.setattr(evaluer, "find_finetuned_run", lambda: run)
+    monkeypatch.setattr(evaluer, "experiment_recognizers", fake_recognizers)
+    csv_path = _annotated_csv(tmp_path / "ann")
+    assert evaluer.main([str(csv_path)]) == 0
+    printed = capsys.readouterr().out
+    assert loaded == [run.weights]
+    assert "graine 42" in printed and "seed42_bbbb" in printed
+    saved_text = (tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    assert json.loads(saved_text)["lancement_fine_tune"] == {"graine": 42, "identifiant": "seed42_bbbb"}
+    for forbidden in (str(tmp_path), "exp_build", "state", evaluer.FT_FILE, ".pdparams"):
+        assert forbidden not in printed and forbidden not in saved_text
+
+    # Poids donnés à la main : ni graine ni chemin, seulement la mention de l'option.
+    assert evaluer.main([str(csv_path), "--poids-finetune", str(run.weights)]) == 0
+    saved_text = (tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    assert json.loads(saved_text)["lancement_fine_tune"] == {"graine": None,
+                                                              "identifiant": "poids fournis par --poids-finetune"}
+    assert str(tmp_path) not in capsys.readouterr().out and "exp_build" not in saved_text
+
+    # Sans modèle fine-tuné (ni trouvé, ni fourni) : rien n'est inventé.
+    monkeypatch.setattr(evaluer, "find_finetuned_run", lambda: None)
+    assert evaluer.main([str(csv_path)]) == 0
+    saved = json.loads((tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert saved["lancement_fine_tune"] is None
+    assert "introuvables" in capsys.readouterr().out
 
 
 # ------------------------------------------------------------ combiner_resultats_cer.py
