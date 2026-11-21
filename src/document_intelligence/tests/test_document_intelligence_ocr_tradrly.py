@@ -124,7 +124,8 @@ def test_archive_problems_are_reported_without_crashing(archive: tuple[Path, Pat
     assert set(convs) == {"conv_a", "conv_b", "conv_c", "casse"}  # les .verification.json sont ignorés
     assert convs["conv_a"].problems == [] and convs["conv_a"].pdf_pages == 3
     assert convs["conv_b"].pdf is not None  # retrouvé par son nom dans le dossier des PDF
-    assert convs["conv_b"].problems == ["pages_content : 1 entrées pour 2 pages"]
+    # 1 entrée {page, text} pour 2 pages : normal (page sans contenu), plus signalé comme anomalie
+    assert convs["conv_b"].problems == [] and convs["conv_b"].association == "explicite"
     assert "source_file introuvable dans le dossier des PDF" in convs["conv_c"].problems
     assert convs["casse"].problems == ["JSON illisible"]
 
@@ -164,7 +165,7 @@ def test_run_scores_pages_and_flags_unusable_ones(archive: tuple[Path, Path]) ->
     pages = {(p["convention"], p["page"]): p for p in report["pages"]}
     assert pages[("conv_a", 1)]["cer"] == 0.0  # ١٢٣ et 123 : mêmes chiffres après normalisation
     assert pages[("conv_a", 3)]["cer"] == round(1 / len("Annexe 3"), 4)
-    assert pages[("conv_b", 2)]["probleme"] == "page absente de pages_content"
+    assert pages[("conv_b", 2)]["probleme"] == "pas de texte Tradrly"
     assert pages[("conv_c", 1)]["probleme"] == "PDF indisponible"
     assert pages[("inconnue", 1)]["probleme"] == "convention inconnue"
     assert pages[("conv_a", 9)]["probleme"] == "page hors du PDF (1 à 3)"
@@ -172,7 +173,7 @@ def test_run_scores_pages_and_flags_unusable_ones(archive: tuple[Path, Path]) ->
     assert (summary["pages_demandees"], summary["pages_controlees"]) == (6, 2)
     assert summary["pages_a_relire"][0] == {"convention": "conv_a", "page": 3, "cer": pages[("conv_a", 3)]["cer"],
                                             "cer_lettres": 0.0, "rappel_mots": 0.5}
-    assert {c["convention"] for c in summary["conventions_signalees"]} == {"conv_b", "conv_c", "casse"}
+    assert {c["convention"] for c in summary["conventions_signalees"]} == {"conv_c", "casse"}
 
 
 def test_output_contains_numbers_only_never_page_text(archive: tuple[Path, Path], tmp_path: Path,
@@ -192,6 +193,98 @@ def test_output_contains_numbers_only_never_page_text(archive: tuple[Path, Path]
     report = json.loads(raw)
     assert report["resume"]["pages_controlees"] == 3
     assert all("durees_s" in p for p in report["pages"])
+
+
+# ------------------------------------------------------------ forme réelle de l'archive (décrite sans texte)
+
+
+@pytest.fixture()
+def real_shape_archive(tmp_path: Path) -> tuple[Path, Path]:
+    """Forme décrite pour l'archive : pages_content = liste d'objets {page, page_type, text} (dans le désordre ici),
+    content_pages = {from, to, included, excluded_salary_pages}. PDF de 6 pages : 1-4 avec texte, 5-6 exclues."""
+    json_dir, pdf_dir = tmp_path / "json", tmp_path / "pdf"
+    json_dir.mkdir()
+    pdf_dir.mkdir()
+    _pdf(pdf_dir / "conv_reelle.pdf", 6)
+    texts = {1: "الفصل الأول", 2: "الفصل الثاني", 3: f"الفصل الثالث {SECRET}", 4: "الفصل الرابع"}
+    data = {
+        "source_file": "conv_reelle.pdf", "pages": 6,
+        "content_pages": {"from": 1, "to": 4, "included": [1, 2, 3, 4], "excluded_salary_pages": [5, 6]},
+        "pages_content": [{"page": p, "page_type": "articles" if p < 4 else "annexe", "text": texts[p]}
+                          for p in (3, 1, 4, 2)],  # ordre volontairement différent des numéros de page
+        "articles": [], "annexes": [],
+    }
+    (json_dir / "conv_reelle.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    # même archive sans numéro de page ni content_pages exploitable : association par position incertaine
+    flat = {"source_file": "conv_reelle.pdf", "pages": 6, "pages_content": ["a", "b", "c"]}
+    (json_dir / "conv_position.json").write_text(json.dumps(flat), encoding="utf-8")
+    # liste de textes + content_pages en liste de même longueur : association par content_pages
+    listed = {"source_file": "conv_reelle.pdf", "pages": 6, "content_pages": [2, 5], "pages_content": ["x", "y"]}
+    (json_dir / "conv_liste.json").write_text(json.dumps(listed), encoding="utf-8")
+    return json_dir, pdf_dir
+
+
+def test_text_is_matched_by_the_page_key_never_by_list_position(real_shape_archive: tuple[Path, Path]) -> None:
+    script = _load()
+    convs = {c.name: c for c in script.load_archive(*real_shape_archive)}
+    real = convs["conv_reelle"]
+    assert real.association == "explicite"
+    assert real.pages_text[1] == "الفصل الأول" and real.pages_text[3].startswith("الفصل الثالث")
+    assert real.excluded_pages == {5, 6}
+    assert real.page_types == {1: "articles", 2: "articles", 3: "articles", 4: "annexe"}
+    assert real.problems == []  # 4 entrées pour 6 pages : normal, pas une anomalie
+    listed = convs["conv_liste"]
+    assert listed.association == "content_pages" and listed.pages_text == {2: "x", 5: "y"}
+    position = convs["conv_position"]
+    assert position.association == "position" and position.association_incertaine
+    assert any("association page ↔ texte incertaine" in p for p in position.problems)
+
+
+def test_excluded_and_textless_pages_are_never_scored_nor_sampled(real_shape_archive: tuple[Path, Path]) -> None:
+    script = _load()
+    engine = PageTextEngine(["الفصل الأول", f"الفصل الثالث {SECRET}"])
+    selection = [("conv_reelle", 1), ("conv_reelle", 5), ("conv_reelle", 3), ("conv_position", 1)]
+    report = script.run(*real_shape_archive, selection, n=None, seed=1, strata=None, lang="ar", engine=engine)
+    pages = {(p["convention"], p["page"]): p for p in report["pages"]}
+    assert pages[("conv_reelle", 1)]["cer"] == 0.0 and pages[("conv_reelle", 1)]["page_type"] == "articles"
+    assert pages[("conv_reelle", 3)]["cer"] == 0.0  # le bon texte (clé page = 3), pas le 3e de la liste
+    assert pages[("conv_reelle", 5)]["probleme"] == "page exclue par Tradrly" and "cer" not in pages[("conv_reelle", 5)]
+    assert pages[("conv_position", 1)]["probleme"].startswith("association page ↔ texte incertaine")
+    assert engine.calls == ["ar", "ar"]  # ni la page exclue ni l'association incertaine ne passent à l'OCR
+    assert report["resume"]["pages_controlees"] == 2 and report["resume"]["cer_global_pondere"] == 0.0
+
+    convs = script.load_archive(*real_shape_archive)
+    drawn = script.sample_pages(convs, 100, 3)
+    assert ("conv_reelle", 5) not in drawn and ("conv_reelle", 6) not in drawn
+    assert {p for name, p in drawn if name == "conv_reelle"} == {1, 2, 3, 4}
+    assert all(name != "conv_position" for name, _ in drawn)  # association incertaine : jamais tirée
+    assert ("conv_liste", 2) in drawn
+
+
+def test_page_type_is_shown_but_never_page_text(real_shape_archive: tuple[Path, Path], tmp_path: Path,
+                                                capsys: pytest.CaptureFixture[str]) -> None:
+    script = _load()
+    out = tmp_path / "s"
+    assert script.main([str(real_shape_archive[0]), str(real_shape_archive[1]), "--out", str(out), "--pages",
+                        "conv_reelle:3,conv_reelle:6"], engine=PageTextEngine([f"الفصل الثالث {SECRET}"])) == 0
+    printed = capsys.readouterr().out
+    raw = (out / "controle_tradrly.json").read_text(encoding="utf-8")
+    assert "page_type : articles" in printed and "page exclue par Tradrly" in printed
+    assert "exclues par Tradrly" in printed  # résumé par convention : pages exclues comptées
+    for forbidden in (SECRET, "الفصل"):
+        assert forbidden not in printed and forbidden not in raw
+
+
+def test_structure_option_shows_shape_without_text(real_shape_archive: tuple[Path, Path],
+                                                    capsys: pytest.CaptureFixture[str]) -> None:
+    script = _load()
+    assert script.main([str(real_shape_archive[0]), str(real_shape_archive[1]), "--structure"],
+                       engine=PageTextEngine([])) == 0
+    printed = capsys.readouterr().out
+    assert '"cles_elements": ["page", "page_type", "text"]' in printed
+    assert '"content_pages_cles": ["excluded_salary_pages", "from", "included", "to"]' in printed
+    assert '"pages_exclues": [5, 6]' in printed
+    assert SECRET not in printed and "الفصل" not in printed
 
 
 def test_main_sampling_mode_and_argument_errors(archive: tuple[Path, Path], tmp_path: Path,

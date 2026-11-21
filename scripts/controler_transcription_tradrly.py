@@ -44,7 +44,7 @@ from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Final
+from typing import Any, Final, Literal
 
 REPO_ROOT: Final = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -136,6 +136,17 @@ def page_scores(reference: str, hypothesis: str) -> dict[str, float | int]:
 # ---------------------------------------------------------------- archive Tradrly
 
 
+Association = Literal["explicite", "content_pages", "position"]
+"""Comment une page du PDF est associée à son texte Tradrly :
+- « explicite » : numéro de page dans chaque entrée (`page`, `page_number`, `numero`) ou clé d'un dictionnaire ;
+- « content_pages » : `pages_content[i]` est le texte de la page `content_pages[i]` ;
+- « position » : `pages_content[i]` est le texte de la page i + 1 (seulement fiable si la liste couvre TOUTES les
+  pages : sinon l'association est incertaine et ces pages ne sont pas comparées)."""
+
+PAGE_KEYS: Final = ("page", "page_number", "numero")
+TEXT_KEYS: Final = ("text", "content", "texte")
+
+
 @dataclass
 class Convention:
     name: str
@@ -143,27 +154,117 @@ class Convention:
     pages_text: dict[int, str]
     pdf_pages: int = 0
     problems: list[str] = field(default_factory=list)
+    association: Association | None = None
+    association_incertaine: bool = False
+    excluded_pages: set[int] = field(default_factory=set)
+    page_types: dict[int, str] = field(default_factory=dict)
 
 
-def _pages_content(value: Any) -> dict[int, str] | None:
-    """`pages_content` sous l'une des formes rencontrées : liste de textes (page 1 en premier), liste d'objets
-    {page, text|content}, ou dictionnaire {"1": texte}. Renvoie None si la forme n'est pas reconnue."""
-    if isinstance(value, list):
-        if all(isinstance(v, str) for v in value):
-            return {i: v for i, v in enumerate(value, start=1)}
-        out: dict[int, str] = {}
-        for k, item in enumerate(value, start=1):
-            if not isinstance(item, dict):
-                return None
-            number = str(item.get("page", item.get("page_number", item.get("numero", k))))
-            text = item.get("text", item.get("content", item.get("texte")))
-            if not isinstance(text, str) or not number.isdigit():
-                return None
-            out[int(number)] = text
-        return out
-    if isinstance(value, dict) and all(str(k).isdigit() and isinstance(v, str) for k, v in value.items()):
-        return {int(k): v for k, v in value.items()}
+@dataclass(frozen=True)
+class PagesMapping:
+    pages: dict[int, str]
+    association: Association
+    entries: int
+    duplicates: int = 0
+    content_pages_mismatch: str | None = None
+    page_types: dict[int, str] = field(default_factory=dict)
+
+
+PAGE_TYPE_MAX_LEN: Final = 40
+"""`page_type` est une étiquette courte (valeur affichée) ; une valeur plus longue ressemblerait à du texte de
+document et n'est pas reprise."""
+
+
+def _is_page_number(value: Any) -> bool:
+    return not isinstance(value, bool) and str(value).strip().isdigit()
+
+
+def _page_list(value: Any) -> list[int] | None:
+    if isinstance(value, list) and value and all(_is_page_number(v) for v in value):
+        return [int(str(v).strip()) for v in value]
     return None
+
+
+def _content_pages(value: Any) -> list[int] | None:
+    """Pages qui ont un texte, d'après `content_pages` : liste de numéros, ou objet avec une liste `included`
+    (forme de l'archive : {from, to, included, excluded_salary_pages})."""
+    if isinstance(value, dict):
+        return _page_list(value.get("included"))
+    return _page_list(value)
+
+
+def _excluded_pages(value: Any) -> set[int]:
+    """Pages exclues volontairement par Tradrly (`content_pages.excluded_salary_pages`, ou toute liste `excluded*`)."""
+    if not isinstance(value, dict):
+        return set()
+    excluded: set[int] = set()
+    for key, pages in value.items():
+        if str(key).startswith("excluded"):
+            excluded.update(_page_list(pages) or [])
+    return excluded
+
+
+def _page_type(item: dict[str, Any]) -> str | None:
+    value = item.get("page_type")
+    if isinstance(value, str) and value.strip() and len(value.strip()) <= PAGE_TYPE_MAX_LEN:
+        return value.strip()
+    return None
+
+
+def _first(item: dict[str, Any], keys: tuple[str, ...]) -> Any:
+    return next((item[k] for k in keys if k in item), None)
+
+
+def _pages_content(value: Any, content_pages: Any = None) -> PagesMapping | None:
+    """Associe chaque texte de `pages_content` à son vrai numéro de page (voir `Association`).
+
+    Formes reconnues : liste de textes, liste d'objets {page?, text|content|texte}, dictionnaire {"12": texte}.
+    Renvoie None si la forme n'est pas reconnue.
+    """
+    if isinstance(value, dict):
+        if value and all(_is_page_number(k) and isinstance(v, str) for k, v in value.items()):
+            return PagesMapping({int(str(k)): v for k, v in value.items()}, "explicite", len(value))
+        return None
+    if not isinstance(value, list):
+        return None
+    texts: list[str] = []
+    explicit: list[int | None] = []
+    types: list[str | None] = []
+    for item in value:
+        if isinstance(item, str):
+            texts.append(item)
+            explicit.append(None)
+            types.append(None)
+        elif isinstance(item, dict):
+            text, number = _first(item, TEXT_KEYS), _first(item, PAGE_KEYS)
+            if not isinstance(text, str) or (number is not None and not _is_page_number(number)):
+                return None
+            texts.append(text)
+            explicit.append(int(str(number).strip()) if number is not None else None)
+            types.append(_page_type(item))
+        else:
+            return None
+    numbers = _content_pages(content_pages)
+    mismatch = None
+    association: Association
+    if texts and all(n is not None for n in explicit):
+        pages_numbers, association = [n for n in explicit if n is not None], "explicite"
+    elif numbers is not None and len(numbers) == len(texts):
+        pages_numbers, association = numbers, "content_pages"
+    else:
+        if numbers is not None:
+            mismatch = f"content_pages a {len(numbers)} numéros pour {len(texts)} textes"
+        pages_numbers, association = list(range(1, len(texts) + 1)), "position"
+    mapping: dict[int, str] = {}
+    page_types: dict[int, str] = {}
+    for number, text, kind in zip(pages_numbers, texts, types, strict=True):
+        if number in mapping:
+            continue  # en cas de doublon, la première entrée est gardée (et signalée)
+        mapping[number] = text
+        if kind is not None:
+            page_types[number] = kind
+    return PagesMapping(mapping, association, len(texts), duplicates=len(texts) - len(mapping),
+                        content_pages_mismatch=mismatch, page_types=page_types)
 
 
 def _resolve_pdf(source: Any, pdf_dir: Path) -> Path | None:
@@ -173,6 +274,25 @@ def _resolve_pdf(source: Any, pdf_dir: Path) -> Path | None:
         if candidate.is_file():
             return candidate
     return None
+
+
+def _mapping_problems(mapping: PagesMapping, expected: int) -> list[str]:
+    """Anomalies de l'association page ↔ texte. Avec des numéros de page (explicites ou `content_pages`), des pages
+    sans contenu sont normales : seuls les numéros hors du PDF et les doublons sont signalés."""
+    problems: list[str] = []
+    if mapping.content_pages_mismatch:
+        problems.append(mapping.content_pages_mismatch)
+    if mapping.duplicates:
+        problems.append(f"{mapping.duplicates} numéro(s) de page en double dans pages_content")
+    if mapping.association == "position":
+        if expected and mapping.entries != expected:
+            problems.append(f"association page ↔ texte incertaine : {mapping.entries} textes pour {expected} pages, "
+                            "sans numéro de page ni content_pages utilisable (pages non comparées)")
+    elif expected:
+        outside = sum(1 for p in mapping.pages if not 1 <= p <= expected)
+        if outside:
+            problems.append(f"{outside} numéro(s) de page hors du PDF (1 à {expected})")
+    return problems
 
 
 def load_archive(json_dir: Path, pdf_dir: Path) -> list[Convention]:
@@ -191,11 +311,16 @@ def load_archive(json_dir: Path, pdf_dir: Path) -> list[Convention]:
             conventions.append(Convention(name, None, {}, problems=["JSON sans objet principal"]))
             continue
         conv = Convention(name, _resolve_pdf(data.get("source_file"), pdf_dir), {})
-        pages = _pages_content(data.get("pages_content"))
-        if pages is None:
+        mapping = _pages_content(data.get("pages_content"), data.get("content_pages"))
+        conv.excluded_pages = _excluded_pages(data.get("content_pages"))
+        if mapping is None:
             conv.problems.append("pages_content absent ou de forme non reconnue")
         else:
-            conv.pages_text = pages
+            conv.pages_text, conv.association = mapping.pages, mapping.association
+            conv.page_types = mapping.page_types
+            both = sorted(set(mapping.pages) & conv.excluded_pages)
+            if both:
+                conv.problems.append(f"{len(both)} page(s) à la fois exclue(s) et présente(s) dans pages_content")
         if conv.pdf is None:
             conv.problems.append("source_file introuvable dans le dossier des PDF")
         else:
@@ -207,12 +332,57 @@ def load_archive(json_dir: Path, pdf_dir: Path) -> list[Convention]:
                 conv.pdf = None
         declared = data.get("pages")
         expected = conv.pdf_pages or (declared if isinstance(declared, int) else 0)
-        if pages is not None and expected and set(pages) != set(range(1, expected + 1)):
-            conv.problems.append(f"pages_content : {len(pages)} entrées pour {expected} pages")
+        if mapping is not None:
+            conv.problems += _mapping_problems(mapping, expected)
+            conv.association_incertaine = mapping.association == "position" and mapping.entries != expected
         if isinstance(declared, int) and conv.pdf_pages and declared != conv.pdf_pages:
             conv.problems.append(f"pages déclarées {declared}, PDF de {conv.pdf_pages} pages")
         conventions.append(conv)
     return conventions
+
+
+def describe_structure(json_dir: Path) -> list[dict[str, Any]]:
+    """Forme de `pages_content` et `content_pages` de chaque convention : types, clés, longueurs et numéros de page.
+    Jamais de texte (seuls les NOMS des clés et des nombres sont rapportés)."""
+    out: list[dict[str, Any]] = []
+    for path in sorted(json_dir.glob("*.json")):
+        if path.name.endswith(VERIFICATION_SUFFIX):
+            continue
+        entry: dict[str, Any] = {"convention": path.stem}
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            out.append({**entry, "erreur": "JSON illisible"})
+            continue
+        if not isinstance(data, dict):
+            out.append({**entry, "erreur": "JSON sans objet principal"})
+            continue
+        pc, cp = data.get("pages_content"), data.get("content_pages")
+        entry["cles_principales"] = sorted(data)
+        entry["pages"] = data["pages"] if isinstance(data.get("pages"), int) else type(data.get("pages")).__name__
+        entry["pages_content_type"] = type(pc).__name__
+        if isinstance(pc, (list, dict)):
+            entry["pages_content_entrees"] = len(pc)
+        if isinstance(pc, list):
+            entry["types_elements"] = sorted({type(v).__name__ for v in pc})
+            entry["cles_elements"] = sorted({str(k) for v in pc if isinstance(v, dict) for k in v})
+        elif isinstance(pc, dict):
+            keys = [k for k in pc if _is_page_number(k)]
+            entry["cles_numeriques"] = len(keys)
+            entry["premieres_cles"] = sorted(int(str(k)) for k in keys)[:5]
+        entry["content_pages_type"] = type(cp).__name__
+        if isinstance(cp, int) and not isinstance(cp, bool):
+            entry["content_pages"] = cp
+        if isinstance(cp, dict):
+            entry["content_pages_cles"] = sorted(str(k) for k in cp)
+            entry["pages_exclues"] = sorted(_excluded_pages(cp))
+        numbers = _content_pages(cp)
+        if numbers is not None:
+            entry["content_pages_n"] = len(numbers)
+            entry["content_pages_min_max"] = [min(numbers), max(numbers)]
+            entry["content_pages_premiers"] = numbers[:5]
+        out.append(entry)
+    return out
 
 
 # ---------------------------------------------------------------- choix des pages
@@ -238,9 +408,10 @@ def parse_pages(spec: str) -> list[tuple[str, int]]:
 
 
 def _usable_pages(conv: Convention) -> list[int]:
-    if conv.pdf is None:
+    """Pages tirables : présentes dans pages_content, dans le PDF, et non exclues par Tradrly."""
+    if conv.pdf is None or conv.association_incertaine:
         return []
-    return [p for p in sorted(conv.pages_text) if 1 <= p <= conv.pdf_pages]
+    return [p for p in sorted(conv.pages_text) if 1 <= p <= conv.pdf_pages and p not in conv.excluded_pages]
 
 
 def sample_pages(conventions: list[Convention], n: int, seed: int,
@@ -286,6 +457,7 @@ class PageResult:
     scores: dict[str, float | int] | None = None
     probleme: str | None = None
     durees_s: dict[str, float] = field(default_factory=dict)
+    page_type: str | None = None
 
 
 def check_page(conv: Convention | None, name: str, page: int, engine: OcrEngine, lang: LangOption) -> PageResult:
@@ -299,8 +471,15 @@ def check_page(conv: Convention | None, name: str, page: int, engine: OcrEngine,
     if not 1 <= page <= conv.pdf_pages:
         result.probleme = f"page hors du PDF (1 à {conv.pdf_pages})"
         return result
+    if conv.association_incertaine:  # citation ou silence : on ne compare pas une page à un texte peut-être décalé
+        result.probleme = "association page ↔ texte incertaine (voir conventions signalées)"
+        return result
+    result.page_type = conv.page_types.get(page)
+    if page in conv.excluded_pages:
+        result.probleme = "page exclue par Tradrly"
+        return result
     if page not in conv.pages_text:
-        result.probleme = "page absente de pages_content"
+        result.probleme = "pas de texte Tradrly"
         return result
     t0 = time.perf_counter()
     image = render_page(conv.pdf, page)
@@ -332,6 +511,12 @@ def summarize(results: list[PageResult], conventions: list[Convention], top: int
                             "cer_lettres": r.scores["cer_lettres"], "rappel_mots": r.scores["rappel_mots"]}
                            for r in worst if r.scores],
         "conventions_signalees": [{"convention": c.name, "problemes": c.problems} for c in conventions if c.problems],
+        "conventions": [{"convention": c.name, "association": c.association, "pages_pdf": c.pdf_pages,
+                         "pages_avec_contenu": len(c.pages_text),
+                         "pages_exclues": len(c.excluded_pages),
+                         "pages_sans_contenu": max(0, c.pdf_pages - len([p for p in c.pages_text
+                                                                         if 1 <= p <= c.pdf_pages]))}
+                        for c in conventions],
     }
 
 
@@ -365,7 +550,7 @@ def run(json_dir: Path, pdf_dir: Path, selection: list[tuple[str, int]] | None, 
         "parametres": {"lang": lang, "seed": seed if selection is None else None, "echantillon": n,
                        "strates": strata, "dpi": RENDER_DPI},
         "resume": summarize(results, conventions, top),
-        "pages": [{"convention": r.convention, "page": r.page, **(r.scores or {}),
+        "pages": [{"convention": r.convention, "page": r.page, "page_type": r.page_type, **(r.scores or {}),
                    **({"probleme": r.probleme} if r.probleme else {}),
                    **({"durees_s": r.durees_s} if profile and r.durees_s else {})} for r in results],
     }
@@ -381,16 +566,22 @@ def print_report(report: dict[str, Any]) -> None:
     print("\n  convention / page                         CER  CER lettres     WER   rappel  car.réf")
     for p in report["pages"]:
         label = f"{p['convention']} p.{p['page']}"
+        kind = f"  [page_type : {p['page_type']}]" if p.get("page_type") else ""
         if "cer" in p:
             print(f"  {label:<38} {p['cer']:>7.2%} {p['cer_lettres']:>12.2%} {p['wer']:>7.2%} "
-                  f"{p['rappel_mots']:>7.2%} {p['caracteres_reference']:>8}")
+                  f"{p['rappel_mots']:>7.2%} {p['caracteres_reference']:>8}{kind}")
         else:
-            print(f"  {label:<38} non contrôlée : {p.get('probleme')}")
+            print(f"  {label:<38} non contrôlée : {p.get('probleme')}{kind}")
     if s["pages_a_relire"]:
         print("\nPages les plus divergentes, à relire sur l'image :")
         for p in s["pages_a_relire"]:
             print(f"  {p['convention']} p.{p['page']} : CER {p['cer']:.2%}, CER lettres {p['cer_lettres']:.2%}, "
                   f"rappel des mots {p['rappel_mots']:.2%}")
+    print("\nAssociation page ↔ texte Tradrly :")
+    for c in s["conventions"]:
+        print(f"  {c['convention']} : {c['association'] or '-'} ; {c['pages_avec_contenu']} pages avec contenu, "
+              f"{c['pages_sans_contenu']} sans contenu dont {c['pages_exclues']} exclues par Tradrly, "
+              f"PDF de {c['pages_pdf']} pages")
     if s["conventions_signalees"]:
         print("\nConventions signalées :")
         for c in s["conventions_signalees"]:
@@ -401,10 +592,13 @@ def main(argv: list[str] | None = None, engine: OcrEngine | None = None) -> int:
     parser = argparse.ArgumentParser(description="Contrôle de la transcription Tradrly par l'OCR (chiffres seulement).")
     parser.add_argument("json_dir", type=Path, help="Dossier json/ de l'archive Tradrly (hors dépôt).")
     parser.add_argument("pdf_dir", type=Path, help="Dossier des PDF d'origine (hors dépôt).")
-    parser.add_argument("--out", type=Path, required=True, help="Dossier de sortie, EN DEHORS du dépôt.")
+    parser.add_argument("--out", type=Path, default=None,
+                        help="Dossier de sortie, EN DEHORS du dépôt (obligatoire sauf avec --structure).")
     choice = parser.add_mutually_exclusive_group(required=True)
     choice.add_argument("--pages", help='Liste explicite : "nom:page,nom:page" (pages à partir de 1).')
     choice.add_argument("--echantillon", type=int, help="Nombre de pages à tirer au hasard.")
+    choice.add_argument("--structure", action="store_true",
+                        help="Affiche seulement la forme de pages_content et content_pages (aucun texte, aucun OCR).")
     parser.add_argument("--seed", type=int, default=42, help="Graine du tirage (42 par défaut).")
     parser.add_argument("--strate", default=None, help='Conventions entre lesquelles répartir le tirage : "a,b,c".')
     parser.add_argument("--lang", choices=["ar", "fr", "auto"], default="ar", help="Langue de l'OCR (ar par défaut).")
@@ -416,6 +610,14 @@ def main(argv: list[str] | None = None, engine: OcrEngine | None = None) -> int:
         if not folder.is_dir():
             print(f"Erreur : le dossier {label} n'existe pas.")
             return 2
+    if args.structure:
+        print("Structure de l'archive (noms de clés et nombres seulement, aucun texte) :")
+        for entry in describe_structure(args.json_dir):
+            print("  " + json.dumps(entry, ensure_ascii=False))
+        return 0
+    if args.out is None:
+        print("Erreur : --out est obligatoire (dossier de sortie en dehors du dépôt).")
+        return 2
     if _inside(args.out, REPO_ROOT):
         print("Erreur : --out doit être en dehors du dépôt 9anoun-AI (données de l'archive).")
         return 2
