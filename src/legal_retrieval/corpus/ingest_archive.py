@@ -39,7 +39,7 @@ import unicodedata
 from collections import Counter
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 from .models import ArticleStatus, DocumentKind, LegalArticle, LegalSource, SourceType
 from .normalize import normalize_arabic
@@ -60,9 +60,44 @@ SUFFIXES = {"مكرر": "BIS", "مثلث": "TER", "ثالثا": "TER",
 # « 32 مكرر » | « 54-5 » | « 46 - 3 » | « 50– 5 » | « 39 مكرر (1) » | « 1 مكرّر »
 _NUM = re.compile(r"^\s*(\d+)\s*(?:[-–]\s*(\d+))?\s*([^\s(]+)?\s*(?:\((\d+)\))?\s*$")
 
-# « نقح بالملحق التعديلي عدد 7 ثم عدد 8 » : seuls les nombres qui suivent « عدد »
-# sont des numeros d'avenant, ce qui ecarte le numero d'appel de note.
-_AVENANT_CITE = re.compile(r"عدد\s*(\d+)")
+# Une note cite des avenants, mais aussi des decrets et des lois, sous la meme
+# forme « عدد <n> ». Le nombre seul ne dit pas ce qu'il numerote : c'est le mot
+# qui le precede, ou pour une continuation sans marqueur (« ثم عدد 9 ») le type
+# de la mention precedente. D'ou une lecture sequentielle plutot qu'une
+# recherche globale : dans « نقح بالمرسوم عدد 11 ثم عدد 12 », le 12 est un decret.
+# Les motifs portent sur le texte normalise (ة -> ه, chiffres ASCII).
+_MENTION = re.compile(r"عدد\s*(\d+)")
+_SUITE = re.compile(r"(?:^|\s)(?:ثم|و)\s*$")
+# Avenant = un mot de la famille de ملحق SUIVI de la racine تعديل. C'est تعديل qui
+# fait l'avenant et le separe de l'annexe : « الملحق عدد 4 » de la grille du BTP
+# est l'annexe n° 4. Le premier terme accepte donc les fautes de frappe relevees
+# dans la livraison (محلق, محق, ملح, باملحق) : suivies de تعديل, elles ne peuvent
+# designer qu'un avenant.
+_MULHAQ = re.compile(r"ب?ال(?:ملحق|ملاحق|محلق|ملحقين|محق|ملح)|باملحق")
+_TAADIL = re.compile(r"(?:ال)?تعديل")
+_DECRET = re.compile(r"مرسوم")
+_LOI = re.compile(r"قانون")
+# « عدد 7 ثم 8 » : un numero sans « عدد », tres probablement un autre avenant.
+# Le reconnaitre est un elargissement que la juriste doit valider ; en
+# attendant, la date est gardee et l'incertitude marquee dans l'origine.
+_ORPHELIN = re.compile(r"\s*(?:و|ثم)\s*\d")
+
+AVENANT, DECRET, LOI, NON_RECONNUE = "avenant", "decret", "loi", "non_reconnue"
+
+
+class Mention(NamedTuple):
+    """Une occurrence de « عدد <n> » dans une note, une fois son type tranche.
+
+    Aucun champ ne porte de texte : le rapport d'ingestion est versionne, et ce
+    qui n'est pas dans la mention ne peut pas fuir dans le rapport.
+    """
+    numero: int
+    nature: str              # AVENANT, DECRET, LOI ou NON_RECONNUE
+    suite: bool              # segment termine par « ثم » / « و »
+    mulhaq: bool             # le segment porte une graphie de ملحق
+    taadil: bool             # le segment porte la racine تعديل
+    orpheline_apres: bool    # suivie d'un numero sans « عدد » (« عدد 7 ثم 8 »)
+    alarme: str | None       # une racine sans l'autre : signal d'une forme nouvelle
 
 
 # --------------------------------------------------------------------- outils
@@ -94,41 +129,156 @@ def parse_number(brut: Any) -> tuple[int | None, str]:
     return int(numero), cle
 
 
-def avenants_cites(notes: list[str] | None) -> list[int]:
-    """Numeros d'avenants cites par les notes, dans l'ordre du texte."""
-    numeros: list[int] = []
+def _derniere(motif: re.Pattern[str], texte: str) -> re.Match[str] | None:
+    trouvee = None
+    for trouvee in motif.finditer(texte):
+        pass
+    return trouvee
+
+
+def _nature(segment: str) -> tuple[str, str | None]:
+    """Type d'une mention d'apres les marqueurs de son segment, et son alarme.
+
+    Le marqueur le plus proche de « عدد » l'emporte : dans « نقح بالمرسوم ... ثم
+    بالملحق التعديلي عدد 5 », le 5 est un avenant, pas un decret.
+    """
+    candidats = [(m.start(), nature, m)
+                 for motif, nature in ((_MULHAQ, AVENANT), (_DECRET, DECRET), (_LOI, LOI))
+                 if (m := _derniere(motif, segment))]
+    if not candidats:
+        return NON_RECONNUE, ("taadil_sans_mulhaq" if _TAADIL.search(segment) else None)
+    _, nature, marqueur = max(candidats, key=lambda c: c[0])
+    if nature != AVENANT:
+        return nature, None
+    if _TAADIL.search(segment, marqueur.end()):
+        return AVENANT, None
+    return NON_RECONNUE, "mulhaq_sans_taadil"
+
+
+def releve_mentions(notes: list[str] | None) -> list[Mention]:
+    """Toutes les mentions « عدد <n> » des notes, typees, dans l'ordre du texte.
+
+    Un segment qui porte un marqueur (ملحق, مرسوم, قانون) est type par ce
+    marqueur, meme s'il se termine par « ثم » : « نقح بالملحق التعديلي ثم عدد 6 »
+    cite l'avenant 6. Seul un segment sans marqueur herite du type courant.
+
+    Le type courant repart de zero a chaque note : une note de bas de page ne
+    prolonge pas la precedente. Une continuation sans type connu, ou derriere une
+    mention non reconnue, est elle-meme non reconnue — et donc comptee.
+    """
+    mentions: list[Mention] = []
     for note in notes or []:
-        for n in _AVENANT_CITE.findall(str(note)):
-            if int(n) not in numeros:
-                numeros.append(int(n))
+        texte = normalize_arabic(str(note or ""))
+        courant: str | None = None
+        debut = 0
+        for m in _MENTION.finditer(texte):
+            segment = texte[debut:m.start()]
+            suite = bool(_SUITE.search(segment))
+            mulhaq = bool(_MULHAQ.search(segment))
+            marque = mulhaq or bool(_DECRET.search(segment) or _LOI.search(segment))
+            if suite and not marque:
+                nature, alarme = courant or NON_RECONNUE, None
+            else:
+                nature, alarme = _nature(segment)
+            courant = nature
+            mentions.append(Mention(
+                numero=int(m.group(1)), nature=nature, suite=suite, mulhaq=mulhaq,
+                taadil=bool(_TAADIL.search(segment)),
+                orpheline_apres=nature == AVENANT and bool(_ORPHELIN.match(texte, m.end())),
+                alarme=alarme))
+            debut = m.end()
+    return mentions
+
+
+def _numeros_avenants(mentions: list[Mention]) -> list[int]:
+    numeros: list[int] = []
+    for m in mentions:
+        if m.nature == AVENANT and m.numero not in numeros:
+            numeros.append(m.numero)
     return numeros
 
 
+def forme(mention: Mention) -> str:
+    """Cle ASCII d'une mention pour le rapport : sa forme, jamais son texte."""
+    return (f"nature={mention.nature}|suite={int(mention.suite)}|mulhaq={int(mention.mulhaq)}"
+            f"|taadil={int(mention.taadil)}|alarme={mention.alarme or '-'}")
+
+
+def avenants_cites(notes: list[str] | None) -> list[int]:
+    """Numeros d'avenants cites par les notes, dans l'ordre du texte."""
+    return _numeros_avenants(releve_mentions(notes))
+
+
 def date_effet(notes: list[str] | None, index: dict[int, dict[str, Any]],
-               convention: dict[str, Any]) -> tuple[date | None, str | None]:
+               convention: dict[str, Any],
+               mentions: list[Mention] | None = None) -> tuple[date | None, str | None]:
     """Depuis quand le texte COURANT s'applique, et d'ou vient cette date.
 
-    Article jamais modifie -> date de signature de la convention.
-    Article modifie        -> date d'effet du DERNIER avenant cite ; a defaut sa
-                              date de publication au JORT ; a defaut None.
+    Note sans aucune mention -> date de signature de la convention.
+    Avenant cite             -> date d'effet du DERNIER avenant cite ; a defaut sa
+                                date de publication au JORT ; a defaut None.
+    Mentions, aucun avenant  -> None. Jamais la date de la convention : l'article
+                                a ete touche par un texte dont on ignore la date,
+                                et une date inventee est pire qu'une date absente.
+                                L'origine distingue decret, loi et non reconnu,
+                                pour recuperer chaque groupe d'un coup le jour ou
+                                la date manquante est fournie.
+
+    Une mention non reconnue APRES le dernier avenant, sur toutes les notes du
+    document (les notes d'un article sont son historique), retire la date :
+    None, "mention_non_reconnue_posterieure". On ignore ce qui a modifie
+    l'article ensuite, et une date perimee est une date inventee. Ici la
+    position decide, d'ou un nom positionnel.
+
+    Sinon la date est gardee, mais elle ne sort jamais nue si le document cite
+    quelque chose qu'on n'a pas su lire, OU QU'IL SE TROUVE : l'ordre du texte
+    n'est pas l'ordre chronologique. L'origine porte alors un suffixe par cas
+    present, et ces noms disent la presence, pas la position :
+    ":mention_non_reconnue", ":nombre_orphelin" (« عدد 7 ثم 8 »), ":decret_ou_loi".
+    Provisoires, en attente de la juriste : chaque groupe doit se retrouver.
 
     La provenance est renvoyee avec la date : DS4 doit pouvoir dire « depuis le
     1er mai 2011, par l'avenant n° 7 » plutot qu'afficher une date orpheline.
     """
-    cites = avenants_cites(notes)
-    if not cites:
+    if mentions is None:
+        mentions = releve_mentions(notes)
+    if not mentions:
         d = _date(convention.get("signed_date")) or _date(
             (convention.get("jort") or {}).get("date"))
         return d, ("convention" if d else None)
+    cites = _numeros_avenants(mentions)
+    if not cites:
+        if any(m.nature == NON_RECONNUE for m in mentions):
+            return None, "mentions_non_reconnues"
+        return None, mentions[-1].nature          # DECRET ou LOI
+    rang = max(i for i, m in enumerate(mentions) if m.nature == AVENANT)
+    if any(m.nature == NON_RECONNUE for m in mentions[rang + 1:]):
+        return None, "mention_non_reconnue_posterieure"
+    suffixe = _incertitude(mentions)
     dernier = cites[-1]
     avenant = index.get(dernier)
+    # le suffixe suit aussi les branches sans date : une incertitude qui
+    # disparaitrait selon la branche ne se retrouverait plus le jour ou la date
+    # manquante est fournie
     if avenant is None:
-        return None, f"avenant:{dernier}:introuvable"
+        return None, f"avenant:{dernier}:introuvable{suffixe}"
     d = _date(avenant.get("effective_date"))
     if d:
-        return d, f"avenant:{dernier}"
+        return d, f"avenant:{dernier}{suffixe}"
     d = _date((avenant.get("jort") or {}).get("date"))
-    return d, (f"avenant:{dernier}:jort" if d else f"avenant:{dernier}:sans_date")
+    return d, (f"avenant:{dernier}:jort{suffixe}" if d
+               else f"avenant:{dernier}:sans_date{suffixe}")
+
+
+MARQUES = (":mention_non_reconnue", ":nombre_orphelin", ":decret_ou_loi")
+
+
+def _incertitude(mentions: list[Mention]) -> str:
+    """Suffixes d'origine, dans l'ordre de MARQUES, pour tout le document."""
+    presents = (any(m.nature == NON_RECONNUE for m in mentions),
+                any(m.orpheline_apres for m in mentions),
+                any(m.nature in (DECRET, LOI) for m in mentions))
+    return "".join(marque for marque, present in zip(MARQUES, presents) if present)
 
 
 # Titres de `other_sections` a ne PAS ingerer. La liste est fermee : un titre
@@ -159,6 +309,27 @@ def _hierarchie(condense: dict[str, Any], feuille: str) -> str:
 
 # ------------------------------------------------------- lecture d'un condense
 
+def _tracer(rapport: dict[str, Any], mentions: list[Mention], origine: str | None) -> None:
+    """Comptes des mentions d'un document, pour le rapport d'ingestion.
+
+    `date_retiree_mention_posterieure` et les comptes `avenant_marque*` sont les
+    cas soumis a la juriste ; `alarme_racine` signale une graphie encore inconnue.
+    Seules des formes et des nombres entrent dans le rapport : il est versionne.
+    """
+    for m in mentions:
+        rapport["formes_mentions"][forme(m)] += 1
+        if m.nature == NON_RECONNUE:
+            rapport["mentions_non_reconnues"] += 1
+        if m.alarme:
+            rapport["alarme_racine"][m.alarme] += 1
+        rapport["nombres_sans_adad"] += int(m.orpheline_apres)
+    rapport["date_retiree_mention_posterieure"] += int(
+        origine == "mention_non_reconnue_posterieure")
+    parties = (origine or "").split(":")
+    for marque in MARQUES:
+        rapport["avenant_marque_" + marque[1:]] += int(marque[1:] in parties)
+
+
 def lire_condense(chemin: Path, entree: dict[str, Any],
                   ) -> tuple[LegalSource, list[LegalArticle], dict[str, Any], dict[str, Any]]:
     """Un condense -> sa source, ses documents, son historique, son rapport."""
@@ -181,6 +352,10 @@ def lire_condense(chemin: Path, entree: dict[str, Any],
         "texte_vide": [], "numero_illisible": [], "sans_page": [], "sans_date": [],
         "doublons": [], "sections_exclues": Counter(), "sections_inconnues": [],
         "avenants": len(index), "avenants_sans_date_effet": [],
+        "mentions_non_reconnues": 0, "formes_mentions": Counter(),
+        "nombres_sans_adad": 0, "alarme_racine": Counter(),
+        "date_retiree_mention_posterieure": 0, "avenant_marque_mention_non_reconnue": 0,
+        "avenant_marque_nombre_orphelin": 0, "avenant_marque_decret_ou_loi": 0,
     }
     documents: list[LegalArticle] = []
     vus: Counter = Counter()        # pour la regle -DUP sur les numeros repetes
@@ -213,10 +388,14 @@ def lire_condense(chemin: Path, entree: dict[str, Any],
             rapport["doublons"].append(f"{brut.get('number')} -> {base}")
 
         modifie = statut == "جديد"
-        depuis, origine = date_effet(brut.get("footnotes"), index, convention)
+        mentions = releve_mentions(brut.get("footnotes"))
+        depuis, origine = date_effet(brut.get("footnotes"), index, convention, mentions)
+        _tracer(rapport, mentions, origine)
         if depuis is None:
-            rapport["sans_date"].append(f"article {brut.get('number')}")
-        cites = avenants_cites(brut.get("footnotes"))
+            # l'identifiant plutot que le numero brut : il est ASCII (le rapport est
+            # versionne) et il retrouve la ligne du JSONL sans ambiguite
+            rapport["sans_date"].append(f"{base}-v1")
+        cites = _numeros_avenants(mentions)
 
         documents.append(LegalArticle(
             article_id=f"{base}-v1", article_number=numero,
@@ -243,7 +422,9 @@ def lire_condense(chemin: Path, entree: dict[str, Any],
             rapport["texte_vide"].append(f"annexe {rang}")
             continue
         pages = brut.get("pages") or []
-        depuis, origine = date_effet(brut.get("footnotes"), index, convention)
+        mentions = releve_mentions(brut.get("footnotes"))
+        depuis, origine = date_effet(brut.get("footnotes"), index, convention, mentions)
+        _tracer(rapport, mentions, origine)
         titre = (brut.get("title") or f"ملحق {rang}").strip()
         documents.append(LegalArticle(
             article_id=f"{source_id}-ANX-{rang}-v1", article_number=None,
@@ -271,7 +452,9 @@ def lire_condense(chemin: Path, entree: dict[str, Any],
         rapport["sections_inconnues"].append(titre[:60])   # a relire : liste fermee
         rang += 1
         pages = brut.get("pages") or []
-        depuis, origine = date_effet(brut.get("footnotes"), index, convention)
+        mentions = releve_mentions(brut.get("footnotes"))
+        depuis, origine = date_effet(brut.get("footnotes"), index, convention, mentions)
+        _tracer(rapport, mentions, origine)
         documents.append(LegalArticle(
             article_id=f"{source_id}-SEC-{rang}-v1", article_number=None,
             article_label=titre,
@@ -337,6 +520,8 @@ def lire_condense(chemin: Path, entree: dict[str, Any],
         })
 
     rapport["sections_exclues"] = dict(rapport["sections_exclues"])
+    rapport["formes_mentions"] = dict(sorted(rapport["formes_mentions"].items()))
+    rapport["alarme_racine"] = dict(rapport["alarme_racine"])
     return source, documents, historique, rapport
 
 
@@ -436,6 +621,23 @@ def main() -> None:
     print(f"\nsections ingerees, titres distincts ({len(inconnues)}) — a relire :")
     for titre in inconnues:
         print(f"  {titre}")
+
+    formes: Counter = Counter()
+    alarmes: Counter = Counter()
+    for r in rapports:
+        formes.update(r["formes_mentions"])
+        alarmes.update(r["alarme_racine"])
+    print(f"\nmentions par forme ({sum(formes.values())}) :")
+    for cle, nombre in formes.most_common():
+        print(f"  {nombre:>5}  {cle}")
+    print(f"mentions non reconnues : {sum(r['mentions_non_reconnues'] for r in rapports)}")
+    print(f"numeros sans « عدد » apres un avenant : "
+          f"{sum(r['nombres_sans_adad'] for r in rapports)}")
+    print(f"alarme, une racine sans l'autre : {dict(alarmes) or 'aucune'}")
+    print("documents, cas soumis a la juriste :")
+    for cle in ("date_retiree_mention_posterieure", "avenant_marque_mention_non_reconnue",
+                "avenant_marque_nombre_orphelin", "avenant_marque_decret_ou_loi"):
+        print(f"  {cle} : {sum(r[cle] for r in rapports)}")
 
     doublons = [d for r in rapports for d in r["doublons"]]
     vides = [(r["source_id"], v) for r in rapports for v in r["texte_vide"]]
