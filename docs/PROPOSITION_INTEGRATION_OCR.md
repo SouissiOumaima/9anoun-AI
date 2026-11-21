@@ -512,7 +512,8 @@ nouvel essai ──────► lecture achevée, cache prêt ─► document
 - **Le résultat en cache n'est servi qu'une fois la lecture achevée.** Le JSON est écrit dans un fichier temporaire
   puis renommé d'un seul coup à la fin : tant qu'il n'existe pas en entier, l'état reste `en_cours`. Aucun résultat
   partiel (quelques pages seulement) n'est jamais renvoyé.
-- **Une seule lecture par document** : un fichier verrou (`.en_cours`, avec l'heure de départ) empêche de lancer deux
+- **Une seule lecture par document** : un fichier verrou (`<sha256[:24]>_<code version>.lock`, PR #46, créé de façon atomique, avec
+  l'heure de départ) empêche de lancer deux
   fois l'OCR du même fichier. Un verrou plus vieux que le délai maximal (par exemple 10 min, réglable) est considéré
   comme un échec (processus mort sans nettoyer).
 - **Échec** (plantage, délai dépassé) : un marqueur `echec` (sans aucun texte) est écrit. Les questions suivantes
