@@ -112,3 +112,11 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 - Messages DS3 français/arabe conservés, refus permanents bloquants. Une nouvelle tentative nécessite une action utilisateur et une nouvelle confirmation des faits.
 - Confiance affichée avec une décimale arrondie vers le bas : 0,896 apparaît 89,6 %, 0,89999 apparaît 89,9 %.
 - Validation : 230 tests DS1 réussis. Branche cache : 7 tests cache réussis (dont isolation du pipeline par utilisateur/carte), mypy du cache et ruff des deux fichiers corrigés réussis. Suite DS3 : 272 réussis, 2 ignorés, 3 échecs liés au fichier `scripts/evaluer_donnees_reelles.py` absent du main utilisé ; aucun appel Gemini réel dans ces tests.
+
+
+### Relecture DS3 Hadil : stockage et provenance
+
+- `.gitignore` limité aux copies locales de `cards/case-e2e-payroll-001/` ; le dossier de démo DS3 partagé et les futures cartes ne sont plus ignorés globalement.
+- `is_usable_document_response` refuse déjà tout mode autre que `live`. Le test existant `test_ds3_provenance_boundary.py` caractérise également la limite : des métadonnées déclarées ne prouvent pas l’authenticité. DS1 vérifie séparément la provenance et le contexte de l’appel.
+- Tests supplémentaires au niveau conversion DS4 v1 : modes mock/absent/vide rejetés ; confiances 0,896 et 0,89999 conservées à l’affichage mais non éligibles même après confirmation.
+- Validation : 557 tests DS1/DS4 réussis. Suggestions d’évolution de l’unité monétaire et de séparation de la livraison DS4 laissées à coordonner avec sa propriétaire, sans changement du contrat DS4 dans ce correctif.

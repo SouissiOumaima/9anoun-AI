@@ -81,6 +81,26 @@ def test_live_conversion_preserves_three_monetary_facts(live_response):
     assert all(fact["evidence_id"] == "EV-001" for fact in facts)
 
 
+@pytest.mark.parametrize("mode", ["mock", None, ""])
+def test_non_live_response_never_becomes_v1_document_facts(live_response, mode):
+    """Reject simulated or missing provenance even with valid citations and links."""
+    response = copy.deepcopy(live_response)
+    response["mode"] = mode
+    assert convert(response) == []
+
+
+@pytest.mark.parametrize("confidence", [0.896, 0.89999])
+def test_low_confidence_visible_but_confirmation_cannot_establish_fact(live_response, confidence):
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["confidence"] = confidence
+    fact = next(f for f in convert(response) if f["field_name"] == "base_salary")
+    assert fact["confidence"] == confidence
+    assert fact["user_confirmed"] is False
+    assessment = assess_document_fact({**fact, "user_confirmed": True})
+    assert assessment["eligible_for_established_fact"] is False
+    assert "LOW_OR_MISSING_CONFIDENCE" in assessment["reasons"]
+
+
 def test_converted_facts_match_ds4_v1_schema(live_response):
     """Valider chaque fait contre le contrat officiel DS4 v1."""
 

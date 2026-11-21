@@ -52,4 +52,4 @@ data/processed/legal_corpus/embeddings/
 
 # Local verification outputs and case-scoped demo document copies
 /tmp/
-/src/document_intelligence/evaluation/demo_live/ds3_stockage/
+/src/document_intelligence/evaluation/demo_live/ds3_stockage/cards/case-e2e-payroll-001/
