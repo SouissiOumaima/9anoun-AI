@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import date
 from enum import Enum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
 
 class SourceType(str, Enum):
@@ -30,6 +30,20 @@ class ArticleStatus(str, Enum):
     MODIFIE = "modifie"  # replaced by a newer version
     ABROGE = "abroge"  # repealed
     INCONNU = "inconnu"  # not yet annotated (Sprint 1 default)
+
+
+class DocumentKind(str, Enum):
+    """Nature d'un document du corpus (D74).
+
+    Un POINTEUR n'est pas du droit : c'est le renvoi vers une grille de salaires
+    que la livraison ne transcrit pas. Il est indexable pour etre TROUVE, jamais
+    citable comme source d'un montant.
+    """
+
+    ARTICLE = "article"    # الفصل
+    ANNEXE = "annexe"      # الملحق : meme forme qu'un article, espace -ANX-
+    SECTION = "section"    # other_sections retenue, espace -SEC-
+    POINTEUR = "pointeur"  # excluded_salary_tables, espace -PTR-
 
 
 class LegalSource(BaseModel):
@@ -78,3 +92,29 @@ class LegalArticle(BaseModel):
     previous_version_available: bool = True
     # how the article was found: "section" | "split_from_section" | "abrogation_line"
     origin: str = "section"
+    # --- Sprint 5 (lecteur de l'archive Tradrly, D73 et D74) ---
+    doc_kind: DocumentKind = DocumentKind.ARTICLE
+    # False interdit de presenter ce document comme la source d'un contenu.
+    # Toujours force a False pour un pointeur, voir le validateur plus bas.
+    citable: bool = True
+    # Derniere page quand le document en couvre plusieurs (CC-CADRE-ART-2 : 3 et 4).
+    page_end: int | None = None
+    # D'ou vient effective_from : "convention", "avenant:<n>" ou "avenant:<n>:jort".
+    # Permet de dire « depuis le 1er mai 2011, par l'avenant n° 7 » plutot qu'une
+    # date sans origine.
+    effective_from_origin: str | None = None
+    # SHA-256 du condense dont ce document est issu. L'archive est confidentielle
+    # et n'est pas versee au depot : cette empreinte est ce qui reste pour verifier
+    # qu'un corpus committe correspond bien a une livraison donnee (D75).
+    source_digest_sha256: str | None = None
+
+    @model_validator(mode="after")
+    def _un_pointeur_n_est_jamais_citable(self) -> "LegalArticle":
+        """Interdit structurellement de citer un pointeur comme source de contenu.
+
+        La regle vit ici et non chez l'appelant : un consommateur qui oublierait
+        de regarder doc_kind trouvera quand meme citable = False.
+        """
+        if self.doc_kind is DocumentKind.POINTEUR:
+            self.citable = False
+        return self
