@@ -279,6 +279,10 @@ def table_applicable(secteur: Any, population: Any, date: object) -> dict:
     if fin is not None and jour.isoformat() > fin["date"]:
         # Table remplacée par une grille absente des sources : refus lu dans le JSON (Citation ou Silence).
         raise Refus(Refus.SOURCE_MANQUANTE, fin["message_fr"], fin["message_ar"])
+    for periode in table.get("periodes_refusees", []):
+        # Période de la table contredite par une autre source (ex. date d'avenant) : refus lu dans le JSON (D80).
+        if periode["du"] <= jour.isoformat() <= periode["au"]:
+            raise Refus(Refus.SOURCE_MANQUANTE, periode["message_fr"], periode["message_ar"])
     return table
 
 

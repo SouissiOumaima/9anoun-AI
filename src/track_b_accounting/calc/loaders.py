@@ -393,6 +393,32 @@ def _valider_service_v1(code: str, bloc: dict) -> None:
     _valider_textes_prime(p)
 
 
+_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def _valider_periodes_refusees(t: dict) -> None:
+    """Champ optionnel periodes_refusees d'une table : [{du, au, refus déclaré}], périodes disjointes comprises dans
+    la validité de la table (une période de la table contredite par une autre source est refusée, pas servie)."""
+    objet = f"{t['table_id']}.periodes_refusees"
+    liste = t["periodes_refusees"]
+    _exiger(isinstance(liste, list) and liste, f"{objet} : liste non vide attendue")
+    fin_table = t.get("valide_jusqu_au", {}).get("date")
+    precedente = None
+    for p in sorted(liste, key=lambda x: str(x.get("du"))):
+        _exiger(
+            isinstance(p.get("du"), str)
+            and isinstance(p.get("au"), str)
+            and _DATE.fullmatch(p["du"])
+            and _DATE.fullmatch(p["au"])
+            and t["effective_date"] <= p["du"] <= p["au"]
+            and (fin_table is None or p["au"] <= fin_table),
+            f"{objet} : du ≤ au, dans la validité de la table, au format AAAA-MM-JJ attendus",
+        )
+        _exiger(precedente is None or p["du"] > precedente, f"{objet} : périodes qui se chevauchent")
+        precedente = p["au"]
+        _exiger_refus_declare(p, objet)
+
+
 def _valider_anciennetes_refusees(data: dict, degres: dict) -> None:
     """Champ optionnel anciennetes_refusees : {population à degrés: [{au_dela_de, jusqu_a_inclus, refus déclaré}]}."""
     for pop, liste in data.get("anciennetes_refusees", {}).items():
@@ -477,6 +503,8 @@ def valider_grille(data: dict, chemin: str) -> dict:
                     f"{t['table_id']} : valide_jusqu_au.date invalide",
                 )
                 _exiger_refus_declare(fin, f"{t['table_id']}.valide_jusqu_au")
+            if "periodes_refusees" in t:
+                _valider_periodes_refusees(t)
             pop = population_de_table(data, t)
             _exiger(
                 pop is not None,
@@ -505,6 +533,13 @@ def valider_grille(data: dict, chemin: str) -> dict:
         for p in data.get("primes", []):
             for k in ("code", "source_article", "source_pdf_page", "unite"):
                 _exiger(k in p, f"prime {p.get('code', '?')} : clé {k} manquante")
+            if "montant_reduit_si_transport_assure" in p:
+                # Montant unique ou primes datées, avec ou sans groupe (D80) : décimal positif ou nul.
+                reduit = p["montant_reduit_si_transport_assure"]
+                _exiger(
+                    isinstance(reduit, (Decimal, int)) and not isinstance(reduit, bool) and reduit >= 0,
+                    f"prime {p['code']} : montant_reduit_si_transport_assure décimal positif ou nul attendu",
+                )
             _valider_textes_prime(p)
         for code, bloc in data.get("primes_non_couvertes", {}).items():
             _exiger(

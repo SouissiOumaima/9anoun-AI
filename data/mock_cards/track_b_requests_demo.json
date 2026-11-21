@@ -1494,5 +1494,313 @@
     "operation": "salaire_base",
     "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "population": "horaires", "categorie": "7", "anciennete_annees": 40, "date": "2024-06-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-212-salaire-entretien-javel-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "population": "javel_horaires", "categorie": "3", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-213-salaire-entretien-detergents-mensuels-10",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "population": "detergents_mensuels", "categorie": "10", "anciennete_annees": 18, "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-214-salaire-entretien-javel-mensuels-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "population": "javel_mensuels", "categorie": "1", "anciennete_annees": 0.5, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-215-prime-transport-entretien",
+    "operation": "prime",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-216-prime-logement-entretien",
+    "operation": "prime",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "code": "prime_logement", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-217-refus-entretien-palier-22-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "population": "detergents_horaires", "categorie": "6", "anciennete_annees": 22, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-218-refus-entretien-prime-lait",
+    "operation": "prime",
+    "params": {"secteur": "PRODUITS_ENTRETIEN_INSECTICIDES", "code": "lait_nature", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-219-salaire-automobiles-mensuels-16-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "population": "mensuels", "categorie": "16", "anciennete_annees": 28, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-220-salaire-automobiles-horaires-5",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "population": "horaires", "categorie": "5", "anciennete_annees": 4, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-221-refus-automobiles-cellule-illisible-7",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "population": "mensuels", "categorie": "7", "anciennete_annees": 0.5, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-222-refus-automobiles-cellule-illisible-12",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "population": "mensuels", "categorie": "12", "anciennete_annees": 18, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-223-prime-transport-automobiles-cadres",
+    "operation": "prime",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-224-prime-demi-journee-automobiles",
+    "operation": "prime",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "code": "prime_demi_journee", "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-225-refus-automobiles-aid-adha",
+    "operation": "prime",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "code": "aide_aid_adha", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-226-refus-automobiles-palier-29-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "population": "horaires", "categorie": "1", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-227-salaire-materiaux-horaires-1-premier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "population": "horaires", "categorie": "1", "anciennete_annees": 0.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-228-salaire-materiaux-mensuels-16-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "population": "mensuels", "categorie": "16", "anciennete_annees": 38, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-229-refus-materiaux-periode-contredite",
+    "operation": "salaire_base",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "population": "mensuels", "categorie": "3", "anciennete_annees": 4, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-230-salaire-materiaux-apres-la-periode",
+    "operation": "salaire_base",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "population": "horaires", "categorie": "6", "anciennete_annees": 10, "date": "2022-12-15"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-231-refus-materiaux-39-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "population": "horaires", "categorie": "11", "anciennete_annees": 39, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-232-prime-transport-materiaux-execution",
+    "operation": "prime",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "code": "prime_transport", "date": "2024-06-01", "groupe": "execution_cat1", "transport_assure": false},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-233-prime-transport-materiaux-transport-assure",
+    "operation": "prime",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "code": "prime_transport", "date": "2023-06-01", "groupe": "autres", "transport_assure": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-234-prime-presence-materiaux",
+    "operation": "prime",
+    "params": {"secteur": "MATERIAUX_CONSTRUCTION", "code": "prime_presence", "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-235-refus-peintures-salaire-execution",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_horaires", "categorie": "ouvrier", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-236-refus-peintures-salaire-administratifs",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "administratifs_techniciens", "categorie": "23", "anciennete_annees": 0, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-237-prime-transport-peintures-complement",
+    "operation": "prime",
+    "params": {"secteur": "PEINTURES", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres", "variante": "complement_si_prime_superieure"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-238-prime-poussiere-savon-peintures",
+    "operation": "prime",
+    "params": {"secteur": "PEINTURES", "code": "prime_poussiere_savon", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-239-prime-panier-peintures",
+    "operation": "prime",
+    "params": {"secteur": "PEINTURES", "code": "prime_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-240-prime-nuitee-peintures",
+    "operation": "prime",
+    "params": {"secteur": "PEINTURES", "code": "prime_deplacement_nuitee", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-241-refus-peintures-secours-deces",
+    "operation": "prime",
+    "params": {"secteur": "PEINTURES", "code": "secours_deces", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-242-refus-chaussure-salaire-horaires",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "horaires", "categorie": "III", "anciennete_annees": 10, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-243-refus-chaussure-salaire-mensuels",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "mensuels", "categorie": "1", "sous_categorie": "a", "anciennete_annees": 2, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-244-prime-transport-chaussure",
+    "operation": "prime",
+    "params": {"secteur": "CHAUSSURE", "code": "prime_transport", "date": "2024-06-01", "groupe": "execution_gestion"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-245-prime-regroupee-chaussure",
+    "operation": "prime",
+    "params": {"secteur": "CHAUSSURE", "code": "prime_regroupee", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-246-refus-chaussure-prime-panier",
+    "operation": "prime",
+    "params": {"secteur": "CHAUSSURE", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-247-refus-chaussure-population-omise",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "categorie": "2", "anciennete_annees": 3, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-248-salaire-cuirs-mensuels-14-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "CUIRS_TANNERIE", "population": "mensuels", "categorie": "14", "anciennete_annees": 28.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-249-salaire-cuirs-horaires-v-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CUIRS_TANNERIE", "population": "horaires", "categorie": "V", "anciennete_annees": 0.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-250-salaire-cuirs-anomalie-imprimee",
+    "operation": "salaire_base",
+    "params": {"secteur": "CUIRS_TANNERIE", "population": "mensuels", "categorie": "7", "anciennete_annees": 9.5, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-251-refus-cuirs-29-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CUIRS_TANNERIE", "population": "mensuels", "categorie": "1", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-252-prime-transport-cuirs",
+    "operation": "prime",
+    "params": {"secteur": "CUIRS_TANNERIE", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-253-prime-presence-cuirs",
+    "operation": "prime",
+    "params": {"secteur": "CUIRS_TANNERIE", "code": "prime_presence", "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-254-refus-cuirs-prime-salissure",
+    "operation": "prime",
+    "params": {"secteur": "CUIRS_TANNERIE", "code": "prime_salissure", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-255-refus-cuirs-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "CUIRS_TANNERIE", "population": "horaires", "categorie": "I", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "ar"
   }
 ]

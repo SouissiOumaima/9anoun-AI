@@ -3576,3 +3576,284 @@ une décision ultérieure pourra rouvrir ce besoin.
 
 **Numérotation** : D75 à D77 suivent D73 et D74 (PR 42, fusionnée). Les lectures des vagues 5 et 6 partiront
 de D78.
+
+## Vague 5 — produits d'entretien, automobiles, matériaux de construction, peintures, chaussure, cuirs (D78 à D83)
+
+**Vague 5, règles communes (réponses aux ARRÊT 1 à 3 de la vague 5)** : unité non imprimée en hypothèse ; au-delà du
+dernier degré sans règle, refus avec l'article et la page ; promotions et reclassements non calculés ; primes sans date à
+plusieurs montants : un code par montant ; primes en formule, en pourcentage, en nature, sans période ou à plus de 3
+décimales : non couvertes, texte cité ; plafonds en note ; cellule anormale mais nette : conservée (`anomalies_imprimees` de
+la table) ; cellule illisible : SOURCE_MANQUANTE (D48).
+
+### D78 — Produits d'entretien et insecticides : grille transcrite, écart cumulé tous les deux ans
+
+**Décision** (DS5, vague 5) : `data/processed/salary_grids/produits_entretien.json`, secteur
+`PRODUITS_ENTRETIEN_INSECTICIDES`.
+1. 12 tableaux (pp.21-26), deux familles d'entreprises (eau de Javel ; poudres détergentes diluées) × horaires et
+   mensuels : quatre populations, population obligatoire. Horaires : 6 rangs nommés (clés 1 à 6, libellés imprimés) ;
+   mensuels : catégories 1 à 10. Unité imprimée dans les titres.
+2. 11 degrés : durées 1, 1, 2 (×6), 3, 3, dernier degré « 20 + » ; libellés « 0-1 » … « 17-20 », « 20+ » ; bornes exactes
+   refusées (D6).
+3. Au-delà de 20 ans : écart cumulé de l'art. 13 (جديد) أ (p.8), « كل سنتين وإلى آخر حياته المهنية », pour toutes les
+   catégories (`ecart_cumule_biennal`, période 2, D10) ; paliers 22, 24… en PARAM_INVALIDE.
+4. Primes servies : transport (3 dates, réduction pour absences en note), panier (condition), demi-journée (3 dates),
+   caisse (13,500 et 16 d, un code par montant), rentrée scolaire (plafond de 4 enfants en note), logement (3 dates).
+   Non couvertes : lait (nature), production et fin d'année (formule), aide au décès et retraite (mois de salaire).
+
+**Alternatives écartées** : refuser au-delà du dernier degré (la règle est écrite et déjà modélisée, D10) ; servir la
+hausse de 6 % par degré de l'art. 49 (contrôle de lecture seulement).
+
+**Raison** : la grille imprime les durées et l'ancienneté effective ; l'article 13 fixe la règle au-delà.
+
+**Source PDF + page** : `صناعة مواد التنظيف ومبيدات الحشرات.pdf`, avenant n° 16 pp.2-3, art. 13 (جديد) p.8, art. 49-50
+p.15, primes pp.15-17, grilles pp.21-26.
+
+**Mise en œuvre** : `produits_entretien.json` ; `tests/test_vague5.py` (les six secteurs) ; démos 212 à 218 ; cas TB-309 à TB-315.
+
+**Statut de vérification** :
+- 1 056 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image.
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-309 à TB-315 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+### D79 — Constructeurs et concessionnaires automobiles : deux populations dans un même tableau, deux cases illisibles
+
+**Décision** : `constructeurs_automobiles.json`, secteur `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES`.
+1. 3 tableaux (pp.23-25) ; lignes « ش » (au mois) et « س » (à l'heure) imprimées pour les catégories 1 à 10, catégories 11
+   à 16 au mois seulement : populations `mensuels` (1 à 16) et `horaires` (1 à 10), comme la savonnerie.
+2. 15 degrés : durée de séjour 1 an puis 2 ans, aucune ancienneté imprimée ; libellés « 0-1 » … « 25-27 », « 27+ ».
+3. Au-delà : art. 13 (جديد) أ (p.9), « عن كل فترة سنتين أقدمية بتلك الدرجة » : écart cumulé (D10, période 2), dernier
+   degré atteint à 27 ans, paliers 29, 31… en PARAM_INVALIDE.
+4. Deux cellules du tableau n° 2 (p.24) non tranchées au zoom à 400 dpi : SOURCE_MANQUANTE (D48) — catégorie 7 « ش »,
+   degré 1 (dernier chiffre 3 ou 5) ; catégorie 12, degré 10 (chiffre des dizaines 5 ou 9).
+5. Aïd el-Adha (art. 58 (جديد), p.17) refusée : « خمسة وسبعين دينارا » (75) en lettres, « 82.333د » en chiffres pour les
+   mariés, 43 d pour les célibataires, montants cités. Les autres primes à montant fixe sont servies (transport à deux
+   groupes, logement, fonction ×4, demi-journée en `TND/demi-journee` avec plafond en note, panier, caisse ×2, poste
+   pénible, conduite sans accident, études, décès d'un proche) ; non couvertes : retraite, décès de l'agent, fin
+   d'année, production, tenues.
+
+**Alternatives écartées** : servir 75 ou 82,333 pour l'Aïd el-Adha (aucun des deux n'est justifié par l'autre) ;
+corriger les deux cases illisibles par la hausse (la régularité signale, elle ne remplit pas).
+
+**Raison** : unité imprimée ligne par ligne ; règle au-delà du dernier degré écrite.
+
+**Source PDF + page** : `صانعي و وكلاء السيارات.pdf`, avenant n° 15 pp.2-3, art. 13 (جديد) pp.9-10, primes pp.16-18,
+grilles pp.23-25.
+
+**Mise en œuvre** : `constructeurs_automobiles.json` ; démos 219 à 226 ; cas TB-316 à TB-323.
+
+**Statut de vérification** :
+- 1 170 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image. Comparaison : 1 écart et 1 doute sur deux cellules de la p.24, non tranchés au zoom.
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-316 à TB-323 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+### D80 — Matériaux de construction : période contredite refusée ; transport non versé si l'employeur transporte
+
+**Décision** : `materiaux_construction.json`, secteur `MATERIAUX_CONSTRUCTION`.
+1. 6 tableaux (pp.19-21) : horaires (catégories 1 à 11) et mensuels (1 à 16), unité imprimée dans les titres ; 15 degrés,
+   durées 1, 2 (×4), 3 (×10) ; libellés « 0-1 » … « 36-39 ».
+2. À partir de 39 ans : refus (art. 13 (جديد) ب, p.8 : seulement une prime complémentaire de 5 d, sans période, non
+   couverte).
+3. **Date** (réponse Q2 de l'ARRÊT 1, option a) : les tableaux sont datés comme leurs titres (2021-12-01, 2023-01-01,
+   2024-01-01). L'avenant n° 16 (p.3) imprime un effet au « غرة ديسمبر 2022 » : la période du 2021-12-01 au 2022-11-30
+   est refusée sur les tableaux n° 1 et 2 (`periodes_refusees`), avenant et tableau cités. La date de l'avenant est
+   peut-être une coquille, à confirmer ; l'art. 37 (جديد) د (p.12) date lui aussi les primes « à partir du 1er décembre
+   2021 ». Les primes ne sont pas refusées sur cette période : elles suivent la date de l'art. 37 (choix validé par
+   DS5, ARRÊT 3 bis).
+4. **Transport et présence** (réponse Q5 de l'ARRÊT 1) : le texte imprime un total et sa décomposition ; deux codes,
+   `prime_transport` (exécution de la 1re catégorie / autres agents × 3 dates) et `prime_presence` (3 dates), total cité
+   en note (`tests/test_vague5.py` : total imprimé = transport + présence, pour chaque groupe et chaque date).
+5. **Transport non versé** (réponse Q2 de l'ARRÊT 2) : « ولا يصرف للعمال الجزء المخصص للنقل إذا قام المؤجر بنقلهم »
+   (p.13) : `montant_reduit_si_transport_assure` = 0 sur `prime_transport` ; `transport_assure` obligatoire.
+6. Autres primes : poussière (8 millimes par heure, postes listés), panier (209 millimes), fonction ×4, logement ×3,
+   scolaire (plafond de 3 enfants en note). Non couvertes : lait (nature), production (formule), prime complémentaire.
+
+**Changements du moteur** (réponse à l'ARRÊT 3 de la vague 5 : A1 et B1), commit séparé, avant les grilles :
+- **`periodes_refusees`**, champ optionnel d'une table : `[{du, au, source_pdf_page, source_article, message_fr,
+  message_ar}]`.
+  - Raison : le moteur ne savait refuser une table qu'après une date (`valide_jusqu_au`) ; le refus du début de validité,
+    avec un message cité, n'était pas exprimable.
+  - `calc/salary.py`, `table_applicable`, l. 282-285 : un jour compris dans une période refusée lève SOURCE_MANQUANTE avec
+    le message du fichier ; v0 et v1 (salaire par l'ancienneté et par le degré) passent par cette fonction.
+  - `calc/loaders.py`, `_valider_periodes_refusees`, l. 394-419, appelée l. 506-507 : liste non vide, dates AAAA-MM-JJ,
+    `effective_date ≤ du ≤ au`, au plus `valide_jusqu_au`, périodes disjointes, refus déclaré (source et messages FR/AR).
+- **`montant_reduit_si_transport_assure` pour les primes datées, avec ou sans groupe**.
+  - Raison : le champ n'était lu que pour une prime à montant unique ; la prime de transport des matériaux est datée et à
+    deux groupes.
+  - `calc/primes.py`, `_prime`, l. 181-186 : le montant réduit s'applique après le choix de la ligne datée et du groupe,
+    comme avant pour le montant unique (même ordre des clés de détail).
+  - `calc/loaders.py`, l. 536-542 : valeur décimale positive ou nulle.
+- Tests sur des grilles fictives : `tests/test_periodes_refusees_et_transport_reduit.py` (35 tests). Aucun test existant
+  modifié pour ces deux points ; aucun schéma de requête changé (v0 et v1 acceptaient déjà `transport_assure`).
+- Contrôle : prime de panier de la métallurgie, 211 démos v0, 18 démos v1 et 308 cas identiques avant et après.
+
+**Alternatives écartées** : dater les tableaux n° 1 et 2 du 2022-12-01 (refus générique sans citation, date différente du
+titre) ; les servir dès le 2021-12-01 (option b de la Q2) ; une condition « transport non assuré » (refus HORS_SCOPE au
+lieu de 0).
+
+**Raison** : suivre l'en-tête et refuser seulement l'intervalle contredit ; servir exactement ce que dit le texte pour le
+transport.
+
+**Source PDF + page** : `صناعة مواد البناء.pdf`, avenant n° 16 p.3, art. 13 (جديد) p.8, art. 37 (جديد) pp.12-13, art. 37
+مكرر p.13, grilles pp.19-21.
+
+**Mise en œuvre** : `materiaux_construction.json` ; `calc/salary.py`, `calc/loaders.py`, `calc/primes.py` ; démos 227 à
+234 ; cas TB-324 à TB-331.
+
+**Statut de vérification** :
+- 1 215 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image.
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-324 à TB-331 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+### D81 — Peintures : salaire refusé par l'ancienneté, servi par le degré en v1
+
+**Décision** : `peintures.json`, secteur `PEINTURES` (réponse Q1 de l'ARRÊT 1).
+1. 6 tableaux (pp.20-25) : exécution (n° 1, 3, 5 : 6 rangs, lignes « سعوي » et « شهري », populations
+   `execution_horaires` et `execution_mensuels`) ; administratifs et techniciens (n° 2, 4, 6 : 23 intitulés de postes,
+   clés 1 à 23 par position imprimée, unité non imprimée, TND/mois en hypothèse).
+2. **Aucune durée de degré imprimée** (13 degrés numérotés) : règle « refus » avec seuil 0, comme le verre (D68),
+   art. 12 (جديد) (p.8) et 52 (p.16) cités ; libellés « degré k » ; servi par le degré déclaré en contrat v1 (D75).
+3. Primes : transport à deux groupes avec la variante `complement_si_prime_superieure` (réponse Q6), présence, logement,
+   caisse ×2, scolaire (plafond de 4 enfants en note) ; poussière et savon (1996-1998), nuitée (2002-2004), panier et
+   retour le jour même, montants imprimés seulement en toutes lettres. Primes de 1996 à 2004 (réponse Q4 de l'ARRÊT 2) :
+   dernier montant servi depuis sa date imprimée, sans date de fin, hypothèse affichée « dernier montant imprimé, aucune
+   révision ultérieure dans la convention » (l'avenant n° 16, p.3, ne révise que les art. 45, 45-3 et 47 مكرر).
+4. Refusée (réponse Q1 de l'ARRÊT 2) : secours en cas de décès (art. 46 (جديد), p.15), « خمسمائة دينار » (500) contre
+   « 533.333 » et « أربعمائة دينار » (400) contre « 433.333 », quatre montants cités. Non couvertes : production et fin
+   d'année, lait, retraite.
+
+**Alternatives écartées** : reporter la transcription jusqu'à la demande par degré ; un code à part pour la hausse de
+transport.
+
+**Raison** : comme le verre, l'ancienneté ne permet pas de trouver le degré ; la grille est vérifiée et servie par le
+degré.
+
+**Source PDF + page** : `صناعة الدهن.pdf`, avenants pp.2-3, art. 12 (جديد) p.8, primes pp.14-16, art. 52 p.16, grilles
+pp.20-25.
+
+**Mise en œuvre** : `peintures.json` ; démos 235 à 241, démos v1 19 à 21 et 25 ; cas TB-332 à TB-338, TB-353 à TB-355 et
+TB-359.
+
+**Statut de vérification** :
+- 1 365 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image.
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-332 à TB-338, TB-353 à TB-355 et TB-359 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+### D82 — Chaussure et similaires : salaire refusé par l'ancienneté, servi par le degré en v1
+
+**Décision** : `chaussure.json`, secteur `CHAUSSURE` (réponse Q1 de l'ARRÊT 1).
+1. 6 tableaux (pp.29-34) : horaires (catégories I à VI, libellés imprimés) ; mensuels « agents des bureaux et des services
+   annexes et techniques » (1 أ, 1 ب en sous-catégories, 2 à 15).
+2. **Aucune durée de degré imprimée** (30 degrés numérotés) : règle « refus » avec seuil 0 (D68), art. 12 (جديد) (p.8)
+   cité ; libellés « degré k » ; servi par le degré déclaré en contrat v1 (D75).
+3. Primes : transport à deux groupes ; prime regroupée (demi-journée et assiduité, 3 dates), montant mensuel servi,
+   « environ 75, 80, 85 millimes de l'heure » cité en note, non servi (réponse Q3 de l'ARRÊT 2). Non couvertes : panier
+   de 250 millimes, sans période (réponse Q7 de l'ARRÊT 1, texte cité), fin d'année, production.
+
+**Alternatives écartées** : servir le panier par jour (période non imprimée).
+
+**Raison** : comme le verre et les peintures.
+
+**Source PDF + page** : `صناعة الاحذية و ما شاكلها.pdf`, avenants pp.2-3, art. 12 (جديد) p.8, art. 48 (جديد) pp.14-15,
+grilles pp.29-34.
+
+**Mise en œuvre** : `chaussure.json` ; démos 242 à 247, démos v1 22 à 24 ; cas TB-339 à TB-344, TB-356 à TB-358.
+
+**Statut de vérification** :
+- 1 980 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image. Cellules non croissantes conservées, aux trois dates : 16 paires de degrés égaux (horaires) et 2 cellules plus basses que la précédente (mensuels).
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-339 à TB-344 et TB-356 à TB-358 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+### D83 — Cuirs et tannerie : colonne initiale des horaires transcrite et refusée, refus à partir de 29 ans
+
+**Décision** : `cuirs_tannerie.json`, secteur `CUIRS_TANNERIE`.
+1. 6 tableaux (pp.18-20) : mensuels (catégories 1 à 14, groupes imprimés en marge) et horaires (I à V) ; 29 degrés d'un an
+   (ligne « الاقدمية ») ; libellés « 0-1 » … « 28-29 » ; à partir de 29 ans, refus (art. 49, p.14).
+2. Horaires : colonne initiale à droite du degré 1, sans numéro ni ancienneté (réponse Q3 de l'ARRÊT 1) ; contrôlé sur
+   l'image : le degré numéroté 1 porte l'ancienneté « 1 », comme chez les mensuels. Colonne transcrite dans
+   `colonnes_non_servies` et atteinte par aucun chemin : ni par l'ancienneté, ni par le degré déclaré en contrat v1
+   (aucune ancienneté ni désignation imprimée ; choix validé par DS5, ARRÊT 3 bis).
+3. Cellule non croissante conservée : catégorie 7, degré 10, plus haut que le degré 11, aux trois dates
+   (`anomalies_imprimees`).
+4. Primes : transport et présence (3 dates). Non couvertes : salissure (2 kg de savon), tenues, production et fin d'année.
+
+**Alternatives écartées** : servir la colonne initiale pour la première année (aucune durée imprimée).
+
+**Raison** : en-tête lu tel qu'imprimé ; rien n'est prévu au-delà de 29 ans.
+
+**Source PDF + page** : `صناعة الجلود و الدباغة.pdf`, avenants pp.2-3, art. 44-46 p.13, art. 49-50 p.14, grilles
+pp.18-20.
+
+**Mise en œuvre** : `cuirs_tannerie.json` ; démos 248 à 255 ; cas TB-345 à TB-352.
+
+**Statut de vérification** :
+- 1 668 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des
+  bandes différentes, dans l'ordre inverse), comparées par script ; contrôle de hausse entre les trois dates : aucun écart
+  au-delà de 1 millime ; montants des primes lus sur l'image.
+- **Vérification humaine (DS5, « VÉRIFIÉS »)** :
+  - vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) :
+    12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes
+    (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les
+    tableaux lus de façon non entièrement aveugle) ;
+  - les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html.
+  - Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle
+    de hausse.
+- Cas TB-345 à TB-352 : `verification_humaine` à `true` (vérifiés sur cas.html).
+
+**Tests existants modifiés (réponse à l'ARRÊT 3 bis de la vague 5)**, hors listes et comptes mécaniques, dans
+`tests/test_contrat_v1.py` :
+- `test_chaque_cellule_atteinte_par_son_degre_imprime` : quand la date d'effet d'une table tombe dans une
+  `periodes_refusees` (D80), la cellule est demandée le lendemain de la fin de la période ;
+- « v0 inchangé » (D75) : l'empreinte des fichiers entiers de démos v0 et de leurs réponses est remplacée par celle
+  des 211 premières requêtes et de leurs réponses hors demo-10, en JSON canonique figé dans le test
+  (`test_211_premieres_demos_v0_inchangees`) ; demo-10 ne doit différer de sa réponse figée que par la liste des
+  secteurs disponibles, qui garde chaque secteur figé (`test_demo_10_ne_differe_que_par_la_liste_des_secteurs`).
+  Valable sans changement quand des démos ou des secteurs s'ajoutent ; les schémas v0 restent figés à l'octet ;
+- `test_jeu_de_reference_cas_v1` : TB-291 à TB-308 présents et vérifiés ; les cas v1 ajoutés ensuite ont des
+  identifiants uniques et portent page, ligne, colonne et rendu, sans contrainte sur `verification_humaine`.
+
+**Numérotation** : la vague 6 prendra D84 à D89.
