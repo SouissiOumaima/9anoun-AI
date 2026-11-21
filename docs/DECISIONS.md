@@ -3275,9 +3275,11 @@ même forme que les articles, `('footnotes', 'pages', 'text', 'title')`.
    Deux comportements, selon la table de correspondance D30 :
 
    - **grille DS5 disponible** (`ds5_status = actif`) : la réponse nomme la table, sa date et sa
-     page, et oriente vers Track B, qui sait calculer le montant à partir de la catégorie et de
-     l'ancienneté. C'est le seul chemin par lequel 9anoun AI peut répondre juste à « combien
-     dois-je gagner » ;
+     page, et oriente vers Track B. Track B calcule le montant **lorsque la grille couvre le cas**
+     — catégorie, ancienneté, régime horaire — et refuse explicitement sinon. Ce refus fait partie
+     de la réponse et ne doit pas être présenté comme une absence de source : la source existe,
+     c'est la grille qui ne tranche pas ce cas. Sous cette réserve, c'est le seul chemin par lequel
+     9anoun AI peut répondre juste à « combien dois-je gagner » ;
    - **pas de grille** : refus informé, qui nomme la table, sa date et sa page dans la convention,
      pour que le travailleur sache où regarder.
 
