@@ -37,6 +37,7 @@ import argparse
 import json
 import random
 import re
+import statistics
 import sys
 import time
 import unicodedata
@@ -506,7 +507,7 @@ def summarize(results: list[PageResult], conventions: list[Convention], top: int
         "pages_non_controlees": len(results) - len(scored),
         "cer_global_pondere": round(char_err / chars, 4) if chars else 0.0,
         "wer_global_pondere": round(word_err / words, 4) if words else 0.0,
-        "cer_median": round(cers[len(cers) // 2], 4) if cers else 0.0,
+        "cer_median": round(statistics.median(cers), 4) if cers else 0.0,  # pair : moyenne des 2 du milieu
         "pages_a_relire": [{"convention": r.convention, "page": r.page, "cer": r.scores["cer"],
                             "cer_lettres": r.scores["cer_lettres"], "rappel_mots": r.scores["rappel_mots"]}
                            for r in worst if r.scores],

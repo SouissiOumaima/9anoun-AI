@@ -14,6 +14,9 @@ from types import ModuleType
 import pymupdf
 import pytest
 
+pytest.importorskip("numpy")
+pytest.importorskip("PIL")
+
 from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang
 
 SCRIPT = Path(__file__).resolve().parents[3] / "scripts" / "controler_transcription_tradrly.py"
@@ -174,6 +177,21 @@ def test_run_scores_pages_and_flags_unusable_ones(archive: tuple[Path, Path]) ->
     assert summary["pages_a_relire"][0] == {"convention": "conv_a", "page": 3, "cer": pages[("conv_a", 3)]["cer"],
                                             "cer_lettres": 0.0, "rappel_mots": 0.5}
     assert {c["convention"] for c in summary["conventions_signalees"]} == {"conv_c", "casse"}
+
+
+def test_cer_median_averages_the_two_middle_pages_when_the_count_is_even(archive: tuple[Path, Path]) -> None:
+    """Nombre pair de pages contrôlées : médiane = moyenne des deux valeurs du milieu (statistics.median)."""
+    script = _load()
+    even = script.run(*archive, [("conv_a", 1), ("conv_a", 3)], n=None, seed=42, strata=None, lang="ar",
+                      engine=PageTextEngine([f"الفصل الأول {SECRET} 123", "Annexe 8"]))
+    cers = sorted(p["cer"] for p in even["pages"])
+    assert cers == [0.0, round(1 / len("Annexe 3"), 4)]
+    assert even["resume"]["cer_median"] == round((cers[0] + cers[1]) / 2, 4) == 0.0625  # pas 0.125 (haute)
+
+    odd = script.run(*archive, [("conv_a", 1), ("conv_a", 2), ("conv_a", 3)], n=None, seed=42, strata=None,
+                     lang="ar", engine=PageTextEngine([f"الفصل الأول {SECRET} 123", "x", "Annexe 8"]))
+    odd_cers = sorted(p["cer"] for p in odd["pages"])
+    assert odd["resume"]["cer_median"] == odd_cers[1]  # impair : la valeur du milieu, inchangé
 
 
 def test_output_contains_numbers_only_never_page_text(archive: tuple[Path, Path], tmp_path: Path,
