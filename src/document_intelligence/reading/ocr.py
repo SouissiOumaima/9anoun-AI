@@ -289,6 +289,25 @@ def to_pdf_bbox(zone: BBox, pixel_bbox: BBox, dpi: float) -> BBox:
     )
 
 
+def merge_by_position(existing: Sequence[TextLine], added: Sequence[TextLine]) -> list[TextLine]:
+    """Insère les lignes OCR à leur place verticale parmi les lignes déjà présentes (texte natif).
+
+    Gemini reçoit ainsi le texte de la page dans l'ordre de lecture, de haut en bas. L'ordre des lignes existantes
+    entre elles n'est jamais modifié (le lecteur natif a déjà rangé les siennes), et aucun `line_id` ne change :
+    les citations restent justes. À hauteur égale, la ligne existante passe en premier.
+    """
+    pending = sorted(added, key=lambda line: (line.bbox[1], line.bbox[0]))
+    out: list[TextLine] = []
+    i = 0
+    for line in existing:
+        while i < len(pending) and pending[i].bbox[1] < line.bbox[1]:
+            out.append(pending[i])
+            i += 1
+        out.append(line)
+    out.extend(pending[i:])
+    return out
+
+
 @dataclass
 class _Stats:
     zones_read: int = 0
@@ -312,6 +331,7 @@ def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, l
     preferred: OcrLang = "ar"
     for page in doc.pages:
         remaining: list[PendingZone] = []
+        added: list[TextLine] = []
         number = _next_line_number(page)
         for zone in sorted(page.pending_zones, key=lambda z: (z.bbox[1], z.bbox[0])):
             try:
@@ -329,7 +349,7 @@ def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, l
             if lang == "auto" and stats.document_lang is None:
                 stats.document_lang = preferred = used
             for row in rows:
-                page.lines.append(
+                added.append(
                     TextLine(
                         line_id=f"p{page.page}_l{number}",
                         page=page.page,
@@ -343,6 +363,7 @@ def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, l
                 number += 1
                 stats.lines_added += 1
             stats.zones_read += 1
+        page.lines = merge_by_position(page.lines, added)  # ordre de lecture, line_id inchangés
         page.pending_zones = [z for z in page.pending_zones if z in remaining]
 
     retained = f" ; langue retenue pour le document : {stats.document_lang}" if stats.document_lang else ""

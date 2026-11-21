@@ -17,7 +17,7 @@ import pymupdf
 import pytest
 from PIL import Image
 
-from src.document_intelligence.intermediate import IntermediateDocument
+from src.document_intelligence.intermediate import IntermediateDocument, TextLine
 from src.document_intelligence.reading.ocr import (
     DET_MODEL,
     READER_SUFFIX,
@@ -27,6 +27,7 @@ from src.document_intelligence.reading.ocr import (
     PaddleEngine,
     clean_boxes,
     group_rows,
+    merge_by_position,
     ocr_pending_zones,
     read_image,
     read_zone_boxes,
@@ -288,6 +289,53 @@ def test_explicit_language_is_never_switched(tmp_path: Path) -> None:
     out = ocr_pending_zones(read_pdf(path), path, engine=engine, lang="fr")
     assert [lang for _, lang in engine.calls] == ["fr", "fr"]
     assert not any("langue retenue" in w for w in out.warnings)
+
+
+# ------------------------------------------------------------ lignes OCR rangées de haut en bas
+
+
+def test_ocr_lines_are_placed_in_reading_order_without_changing_ids(tmp_path: Path) -> None:
+    """Image en haut de page, texte natif, image, texte natif : Gemini reçoit le texte de haut en bas."""
+    doc = pymupdf.open()
+    page = doc.new_page()
+    page.insert_image(pymupdf.Rect(72, 30, 372, 90), stream=_png_bytes(600, 120))  # zone p1_z1, tout en haut
+    page.insert_text((72, 130), "Ligne native 1", fontsize=12)
+    page.insert_image(pymupdf.Rect(72, 200, 372, 260), stream=_png_bytes(600, 120))  # zone p1_z2
+    page.insert_text((72, 320), "Ligne native 2", fontsize=12)
+    path = tmp_path / "ordre.pdf"
+    doc.save(path)
+    doc.close()
+
+    natif = read_pdf(path)
+    assert [line.line_id for line in natif.pages[0].lines] == ["p1_l1", "p1_l2"]
+    engine = FakeEngine([[OcrBox("Titre scanné 1.000", 0.9, (0, 0, 400, 40))],
+                         [OcrBox("Prime scannée 2.000", 0.9, (0, 0, 400, 40))]])
+    out = ocr_pending_zones(natif, path, engine=engine, lang="fr")
+
+    lines = out.pages[0].lines
+    assert [(line.line_id, line.source) for line in lines] == [
+        ("p1_l3", "ocr"), ("p1_l1", "natif"), ("p1_l4", "ocr"), ("p1_l2", "natif"),
+    ]  # rangées de haut en bas ; les identifiants ne changent pas (les citations restent justes)
+    assert [line.bbox[1] for line in lines] == sorted(line.bbox[1] for line in lines)
+    text = out.full_text()
+    assert text.index("Titre scanné") < text.index("Ligne native 1") < text.index("Prime scannée")
+    assert text.index("Prime scannée") < text.index("Ligne native 2")
+
+
+def _line(line_id: str, y: float, source: str = "natif") -> TextLine:
+    return TextLine(line_id=line_id, page=1, text=line_id, bbox=(0.0, y, 10.0, y + 5), confidence=1.0,
+                    source=source, language="fr")  # type: ignore[arg-type]
+
+
+def test_merge_by_position_never_reorders_existing_lines() -> None:
+    # lignes natives volontairement pas triées (deux colonnes) : leur ordre est gardé tel quel
+    existing = [_line("p1_l1", 100), _line("p1_l2", 300), _line("p1_l3", 120)]
+    added = [_line("p1_l5", 310, "ocr"), _line("p1_l4", 50, "ocr"), _line("p1_l6", 100, "ocr")]
+    merged = merge_by_position(existing, added)
+    assert [line.line_id for line in merged] == ["p1_l4", "p1_l1", "p1_l6", "p1_l2", "p1_l3", "p1_l5"]
+    assert [line.line_id for line in merged if line.source == "natif"] == ["p1_l1", "p1_l2", "p1_l3"]
+    assert merge_by_position(existing, []) == existing
+    assert [line.line_id for line in merge_by_position([], added)] == ["p1_l4", "p1_l6", "p1_l5"]
 
 
 def test_read_zone_boxes_keeps_its_former_behaviour() -> None:
