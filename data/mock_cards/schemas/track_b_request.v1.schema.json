@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_b_request.v1.schema.json",
+  "title": "Requête Track B (calculs de paie) — v1",
+  "description": "v1 — proposition Track B, à valider avec l'équipe ; v0 reste valide et inchangé (D75). v1 = v0 plus le paramètre degre de salaire_base. Requête envoyée au module comptable (src/track_b_accounting/contract/handler.py). Les règles métier (bornes de degré, dates, catégories, primes) sont vérifiées par calc/ et renvoyées comme refus, pas par ce schéma. Voir docs/DECISIONS.md (D6, D7, D75, D76).",
+  "type": "object",
+  "required": ["contract_version", "request_id", "operation", "params", "lang"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "track_b.v1"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "operation": {
+      "enum": ["salaire_base", "prime", "smig", "cotisation_cnss"],
+      "description": "cotisation_cnss : opération valide au contrat mais hors périmètre Track B v1 → toujours un refus HORS_SCOPE (aucune source vérifiée). Une valeur absente de cette liste est une requête non conforme (PARAM_INVALIDE)."
+    },
+    "params": {"type": "object"},
+    "lang": {"enum": ["fr", "ar"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"operation": {"const": "salaire_base"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_salaire_base"}}}
+    },
+    {
+      "if": {"properties": {"operation": {"const": "prime"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_prime"}}}
+    },
+    {
+      "if": {"properties": {"operation": {"const": "smig"}}},
+      "then": {"properties": {"params": {"$ref": "#/$defs/params_smig"}}}
+    }
+  ],
+  "$defs": {
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "params_salaire_base": {
+      "type": "object",
+      "required": ["secteur", "categorie", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "secteur": {"type": "string"},
+        "population": {"type": "string", "description": "Obligatoire pour un secteur à plusieurs populations ; peut être omise pour un secteur à une seule population (si elle est donnée, elle doit être celle-là). Vérifié par calc/ (refus PARAM_INVALIDE)."},
+        "categorie": {"type": ["string", "integer"]},
+        "sous_categorie": {"type": "string", "minLength": 1, "description": "Obligatoire si la catégorie a des sous-catégories (ex. BATIMENT_TRAVAUX_PUBLICS/ouvriers_occasionnels, catégorie 6 : I ou II ; catégorie 7 : 1, 2 ou 3), interdite sinon. Vérifié par calc/ (refus PARAM_INVALIDE)."},
+        "anciennete_annees": {"type": "number", "description": "Pour une population à degrés d'ancienneté : anciennete_annees ou degre, exactement un des deux (les deux, ou aucun : PARAM_INVALIDE). Interdite pour une population sans degré (ex. BATIMENT_TRAVAUX_PUBLICS/ouvriers_occasionnels). Vérifié par calc/ (refus PARAM_INVALIDE)."},
+        "degre": {"type": ["integer", "string"], "minLength": 1, "description": "v1 (D75) : désignation imprimée du degré, telle qu'elle figure dans la grille (ex. 5, 0, \"stage\", \"19\"), ou alias déclaré (\"unique\" pour la colonne « درجة وحيدة »). À la place de anciennete_annees : aucune ancienneté n'est contrôlée. Désignation absente de la grille, population sans degré, ou degre donné avec anciennete_annees : PARAM_INVALIDE (vérifié par calc/)."},
+        "date": {"$ref": "#/$defs/date"},
+        "unite_souhaitee": {"type": "string"}
+      }
+    },
+    "params_prime": {
+      "type": "object",
+      "required": ["secteur", "code", "date"],
+      "additionalProperties": {"type": ["string", "boolean"]},
+      "properties": {
+        "secteur": {"type": "string"},
+        "code": {"type": "string"},
+        "date": {"$ref": "#/$defs/date"},
+        "groupe": {"type": "string"},
+        "variante": {"type": "string"},
+        "transport_assure": {"type": "boolean"},
+        "condition_remplie": {"type": "boolean"}
+      }
+    },
+    "params_smig": {
+      "type": "object",
+      "required": ["mode", "regime_heures", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {"type": "string"},
+        "regime_heures": {"type": "integer"},
+        "date": {"$ref": "#/$defs/date"}
+      }
+    }
+  }
+}

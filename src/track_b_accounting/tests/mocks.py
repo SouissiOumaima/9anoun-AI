@@ -11,6 +11,8 @@ import json
 from pathlib import Path
 
 DEMO_FILE = Path(__file__).resolve().parents[3] / "data" / "mock_cards" / "track_b_requests_demo.json"
+# Démos du contrat v1 (D75), à part : le fichier v0 et ses réponses de référence restent à l'octet près.
+DEMO_FILE_V1 = DEMO_FILE.with_name("track_b_requests_demo.v1.json")
 
 
 class MockOrchestrator:

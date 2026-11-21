@@ -507,7 +507,8 @@
     "الدرجة 13: يذكر رأس الجدول «26 +»؛ تُعتمد من 26 إلى 27 سنة فقط لأن الفصل 50 (جديد) يضبط مدة البقاء بها بسنة؛ وبعد ذلك يقع الرفض.",
     "الخالصون بالشهر: يحتسب الأجر على قاعدة 40 ساعة في الأسبوع (عنوان الجداول)؛ ولا تُحتسب صيغة الفصل 51 لمدة عمل أطول.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [2]
   },
   "horaires": {
    "fr": [
@@ -519,7 +520,8 @@
     "الدرجة 13: يذكر رأس الجدول «26 +»؛ تُعتمد من 26 إلى 27 سنة فقط لأن الفصل 50 (جديد) يضبط مدة البقاء بها بسنة؛ وبعد ذلك يقع الرفض.",
     "الخالصون بالشهر: يحتسب الأجر على قاعدة 40 ساعة في الأسبوع (عنوان الجداول)؛ ولا تُحتسب صيغة الفصل 51 لمدة عمل أطول.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [2]
   }
  },
  "primes": [
@@ -859,7 +861,30 @@
    "source_article": "61 (جديد)",
    "message_fr": "Aide en cas de décès (article 61 (جديد), page 18) : le montant est imprimé « 466.6666 د » : il a plus de trois décimales et le moteur arrondit au millime ; il n'est pas servi arrondi. Prime non exposée ; aucun montant n'est renvoyé.",
    "message_ar": "نجدة الوفاة (الفصل 61 (جديد)، الصفحة 18): المبلغ مطبوع «466.6666 د» أي بأكثر من ثلاثة أرقام بعد الفاصل؛ ولا يُرجَع مدوَّرا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
-   "motif": "montant à plus de trois décimales"
+   "motif": "montant à plus de trois décimales",
+   "service_contrat_v1": {
+    "code": "aide_deces",
+    "label_ar": "نجدة الوفاة",
+    "label_fr": "Aide en cas de décès",
+    "source_article": "61 (جديد)",
+    "source_pdf_page": 18,
+    "unite": "TND/versement",
+    "montant": 466.6666,
+    "montant_exact": true,
+    "montant_imprime": "466.6666 د",
+    "effective_date": null,
+    "condition": "décès de l'agent ; aide versée à sa veuve, à défaut à ses enfants à charge, en l'absence d'assurance sociale garantissant une aide d'un montant au moins égal (art. 61 (جديد), p.18)",
+    "hypotheses": {
+     "fr": [
+      "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+      "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+     ],
+     "ar": [
+      "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+      "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+     ]
+    }
+   }
   },
   "avantage_lait": {
    "source_pdf_page": 17,

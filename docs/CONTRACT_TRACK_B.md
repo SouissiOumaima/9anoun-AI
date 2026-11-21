@@ -5,6 +5,9 @@
 > toute personne qui appellera le module comptable. Le contrat peut changer après
 > vos retours. Le détail des décisions se trouve dans
 > [`docs/DECISIONS.md`](DECISIONS.md) (D6 : règles de calcul, D7 : contrat).
+>
+> **Contrat v1 (D75, D76)** : à côté de la v0, inchangée ; demande du salaire par degré déclaré et montants
+> imprimés à plus de 3 décimales. Voir le §9.
 
 ## 1. Résumé
 
@@ -119,7 +122,7 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT`, `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66), `IMPRIMERIE_EDITION_CARTONNAGE`, `VERRE_MIROIRS`, `CONCESSIONNAIRES_MATERIEL_AGRICOLE`, `BOULANGERIES`, `TEXTILE` ou `FONDERIE_METALLURGIE_MECANIQUE` (vague 4, D67 à D72) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT`, `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66), `IMPRIMERIE_EDITION_CARTONNAGE`, `VERRE_MIROIRS`, `CONCESSIONNAIRES_MATERIEL_AGRICOLE`, `BOULANGERIES`, `TEXTILE`, `FONDERIE_METALLURGIE_MECANIQUE` (vague 4, D67 à D72), `PRODUITS_ENTRETIEN_INSECTICIDES`, `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES`, `MATERIAUX_CONSTRUCTION`, `PEINTURES`, `CHAUSSURE` ou `CUIRS_TANNERIE` (vague 5, D78 à D83) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
 | `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `COMMERCE_DISTRIBUTION_PETROLE`, `MECANIQUE_STATIONS_SERVICE`, `GESTION_DECHETS` et `CONCESSIONNAIRES_MATERIEL_AGRICOLE`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. Gardiennage, sécurité et transport de fonds : une seule population, `tous_agents` (أعوان مؤسسات الحراسة والسلامة ونقل العملة), qui peut être omise ; la catégorie est le numéro « 1 » à « 15 » de la classification (pages 16 à 20 de la convention), sans alias par métier. |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. Associations pour personnes handicapées : la clé est le chiffre romain imprimé sur la ligne de la grille (`"I"` à `"VI"` selon la population) ; le numéro de catégorie de l'annexe est accepté comme alias (`"1"` → `"I"`, `"2"` → `"II"`…), et `detail` renvoie `categorie` (clé) et `categorie_demandee` (alias reçu). Pour `techniciens`, seuls `"I"` (alias `"1"`) et `"III+II"` existent : `"III+II"` est une clé unique, et `"II"`, `"III"`, `"2"` ou `"3"` sont refusés (`PARAM_INVALIDE`), car l'annexe 4 ne confirme pas que les catégories 2 et 3 partagent cette ligne (D23). |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
@@ -501,7 +504,12 @@ Draft202012Validator(schema).validate(ma_requete)
     montants), `VERRE_MIROIRS` (6, 900, salaire de base refusé), `CONCESSIONNAIRES_MATERIEL_AGRICOLE` (3, 912, dont
     8 cases illisibles refusées), `BOULANGERIES` (9, 1 014, dont 12 cases illisibles refusées), `TEXTILE` (4, 1 050,
     dont 136 cellules transcrites non servies) et `FONDERIE_METALLURGIE_MECANIQUE` (6, 1 092, dont 1 case illisible
-    refusée). Détail ci-dessous.
+    refusée). Détail ci-dessous ;
+  - vague 5 (D78 à D83, vérification humaine sur échantillon, voir les décisions) : `PRODUITS_ENTRETIEN_INSECTICIDES`
+    (12 tableaux, 1 056 montants), `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES` (3, 1 170, dont 2 cases illisibles
+    refusées), `MATERIAUX_CONSTRUCTION` (6, 1 215), `PEINTURES` (6, 1 365, salaire de base refusé par l'ancienneté),
+    `CHAUSSURE` (6, 1 980, salaire de base refusé par l'ancienneté) et `CUIRS_TANNERIE` (6, 1 668, dont 15 cellules
+    transcrites non servies). Détail ci-dessous.
 
   Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
@@ -783,6 +791,25 @@ Draft202012Validator(schema).validate(ma_requete)
   - `FONDERIE_METALLURGIE_MECANIQUE` (D72) : `mensuels` (`1` + `a` / `b`, `2` à `18`) et `horaires` (`1` à `7`) ;
     degré 14 (imprimé « +32 ») servi de 32 à moins de 35 ans, refus à partir de 35 ans (note de l'art. 58 contraire à
     l'en-tête) ; `prime_transport` à deux groupes, « au titre de » 2021, 2023, 2024 tel qu'imprimé.
+- **Vague 5 (D78 à D83) : particularités visibles pour DS1.** Mêmes conventions de codes de primes. Les six secteurs ne
+  figurent pas encore dans la table des secteurs (en attente DS2).
+  - `PRODUITS_ENTRETIEN_INSECTICIDES` (D78) : `javel_horaires`, `detergents_horaires` (`1` à `6`, rangs nommés),
+    `javel_mensuels`, `detergents_mensuels` (`1` à `10`), population obligatoire ; écart cumulé tous les 2 ans au-delà
+    de 20 ans, paliers exacts en `PARAM_INVALIDE`.
+  - `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES` (D79) : `mensuels` (`1` à `16`) et `horaires` (`1` à `10`) ; écart
+    cumulé tous les 2 ans au-delà de 27 ans ; 2 cases illisibles ; Aïd el-Adha refusée (montants contradictoires).
+  - `MATERIAUX_CONSTRUCTION` (D80) : `horaires` (`1` à `11`) et `mensuels` (`1` à `16`) ; **salaire refusé du
+    2021-12-01 au 2022-11-30** (`periodes_refusees`, date de l'avenant contraire au titre) ; refus à partir de 39 ans ;
+    `prime_transport` à deux groupes (`execution_cat1`, `autres`) avec `transport_assure` obligatoire (0 si True).
+  - `PEINTURES` (D81) : `execution_horaires`, `execution_mensuels` (6 rangs nommés) et `administratifs_techniciens`
+    (`1` à `23`, TND/mois en hypothèse) ; **salaire de base refusé par l'ancienneté, servi par le degré en v1** ;
+    `prime_transport` avec la variante `complement_si_prime_superieure`.
+  - `CHAUSSURE` (D82) : `horaires` (`I` à `VI`) et `mensuels` (`1` + `a` / `b`, `2` à `15`) ; **salaire de base
+    refusé par l'ancienneté, servi par le degré en v1** ; panier refusé (sans période).
+  - `CUIRS_TANNERIE` (D83) : `mensuels` (`1` à `14`) et `horaires` (`I` à `V`) ; refus à partir de 29 ans ; colonne
+    initiale des horaires, sans numéro, jamais servie.
+- **Période refusée d'une table (`periodes_refusees`, D80)** : un jour compris dans la période donne `SOURCE_MANQUANTE`
+  avec le message du fichier, en v0 comme en v1 ; avant et après, la table est servie.
 - **Trois refus lus dans les fichiers (D48), sans effet sur les autres secteurs.**
   - Case illisible (`cellules_source_manquante` d'une table, valeur `null`) : `SOURCE_MANQUANTE` avec la page et la
     raison.
@@ -816,7 +843,7 @@ Draft202012Validator(schema).validate(ma_requete)
 - **Pas de transport réseau** : le module est une fonction Python et un CLI.
   Il n'existe ni service HTTP ni file de messages. L'intégration avec
   l'orchestrateur reste à définir ensemble.
-- **Le contrat est en v0.** Les noms de champs, les codes de refus, la forme
+- **Le contrat est en v0, avec une v1 à côté (§9).** Les noms de champs, les codes de refus, la forme
   de `detail` et la liste des opérations peuvent changer après vos retours.
   Je propose qu'un changement incompatible fasse passer `contract_version` à
   une nouvelle valeur ; c'est à valider avec vous.
@@ -832,3 +859,131 @@ Points sur lesquels l'avis de l'équipe est utile :
 - la séparation entre refus de contrat et refus métier (`computed_by` + code) :
   est-elle suffisante, ou faut-il un champ dédié ?
 - les opérations à ajouter en priorité.
+
+## 9. Contrat v1 (D75, D76)
+
+> **Statut : v1 — proposition Track B, à valider avec l'équipe.** La v1 s'ajoute à la v0 et ne la remplace pas :
+> les schémas v0 sont inchangés à l'octet près, et les 211 démos v0 du contrat v1 et leurs réponses de référence le sont aussi, à la liste des secteurs disponibles de demo-10 près (empreintes figées dans `test_contrat_v1.py`, ARRÊT 3 bis de la vague 5). L'orchestrateur
+> (DS1) reste en v0 ; son passage en v1 relève de l'équipe DS1.
+
+### 9.1 Choix de la version
+
+- Une requête dont `contract_version` vaut exactement `"track_b.v1"` est validée avec les schémas v1 et reçoit
+  une réponse `"track_b.v1"`.
+- Toute autre requête suit le chemin v0, comme avant. Une version inconnue (ex. `"track_b.v9"`) donne le même refus
+  de contrat qu'avant (`Requête non conforme au contrat track_b.v0 (contract_version) …`).
+- Schémas : `data/mock_cards/schemas/track_b_request.v1.schema.json` et `track_b_response.v1.schema.json`.
+- **v1 = v0 plus deux changements** :
+  - le paramètre `degre` de `salaire_base` (§9.2) ;
+  - les montants imprimés à plus de 3 décimales, servis exacts dans l'unité imprimée (§9.3).
+- Une requête v1 sans `degre` donne exactement la réponse v0, à `contract_version` près. Seules exceptions : les
+  3 primes du §9.3.
+
+### 9.2 Demande par degré déclaré (`salaire_base`, D75)
+
+**Le paramètre.** `degre` (entier ou texte) est la **désignation imprimée** de la colonne, telle qu'on la lit dans
+la grille ou sur la fiche de paie :
+
+| Grille | Désignations acceptées |
+|---|---|
+| la plupart des secteurs | le numéro imprimé du degré : `1` à `n` |
+| textile, mensuels | `"stage"`, `1` à `18`, puis `19` et `20` |
+| textile, horaires | `0` à `18`, puis `19` et `20` |
+| banques | `"stage"`, `2` à `19` (aucune colonne « 1 ») |
+| minoteries | `0` à `13` |
+| distribution du pétrole | `"-"`, `1` à `13` |
+| cosmétiques, production catégorie 1 | `"درجة وحيدة"` ou l'alias `"unique"` |
+
+`5` et `"5"` sont équivalents.
+
+**Refus `PARAM_INVALIDE`** :
+- `degre` et `anciennete_annees` donnés ensemble ;
+- aucun des deux, pour une population à degrés (même message qu'en v0) ;
+- une désignation absente de la grille (le message liste les désignations acceptées) ;
+- `degre` pour une population sans degré (BTP, ouvriers occasionnels) ;
+- un type invalide (booléen, nombre non entier). Le schéma refuse aussi une chaîne vide.
+
+**Ce que fait le calcul :**
+- Aucun refus lié à l'ancienneté ne s'applique : ni intervalles refusés, ni seuil de la règle « refus », ni bornes
+  exactes (D6).
+- Une case illisible reste refusée (`SOURCE_MANQUANTE`, même message). Seule exception : la colonne « stage » du
+  textile (36 cases), déclarée `servie_par_degre`, est servie avec sa valeur imprimée.
+- Les degrés 19 et 20 du textile, gardés hors de `valeurs`, sont servis par le degré (`servies_par_degre`).
+- Aucune règle au-delà du dernier degré n'est appliquée : ni l'écart cumulé, ni la table de correspondance, ni le
+  plafond d'ancienneté. Le montant servi est celui imprimé pour le degré demandé.
+
+**Le `detail` de la réponse :**
+- `degre` : numéro interne ;
+- `degre_imprime` : désignation imprimée ;
+- `degre_declare: true` ;
+- `alias_designation` : présent si l'alias a été utilisé ;
+- `anciennete_imprimee` : présent quand la grille l'imprime ;
+- `libelle_degre` : présent quand le libellé est un intervalle, par exemple « 2-4 » ;
+- `regle_au_dela_non_appliquee` : au dernier degré, sauf règle « ouvert ». C'est la règle non appliquée, sous la
+  forme « article …, page … ».
+
+`anciennete_annees` est absent du `detail`. La citation est celle de la table, comme en v0.
+
+**Hypothèses FR et AR**, à afficher avec le montant, ajoutées après celles de la grille :
+- le degré est déclaré par l'utilisateur et n'est pas vérifié ;
+- l'ancienneté imprimée pour ce degré, avec la page ;
+- pour le verre : aucune durée de degré n'est imprimée (art. 12 (جديد) et 53) ;
+- pour une colonne atteinte seulement par le degré (stage, 19, 20) : aucune ancienneté n'y mène ;
+- pour un degré qui touche un intervalle d'ancienneté refusé (confiserie, art. 53) : la contradiction est citée ;
+- au dernier degré : la règle non appliquée, avec son article et sa page. Pour l'écart cumulé et la table de
+  correspondance, l'hypothèse précise à partir de quelle ancienneté il faut plutôt demander par l'ancienneté.
+
+Les hypothèses de grille rédigées pour le chemin par l'ancienneté (« L'ancienneté reçue est l'ancienneté de
+progression déjà établie… », 52 phrases dans 27 grilles) ne sont pas affichées par le degré : leur rang est déclaré
+dans `hypotheses_grille[population].chemin_anciennete_seulement`. Le chemin par l'ancienneté les affiche comme avant.
+
+### 9.3 Montants imprimés à plus de 3 décimales (`prime`, D76)
+
+Trois primes, refusées en v0 avec le même message qu'avant, sont servies en v1, telles qu'imprimées :
+
+| Secteur | Code | Article, page | Imprimé | `montant` | `unite` | `montant_equivalent_tnd` |
+|---|---|---|---|---|---|---|
+| `BOISSONS_ALCOOLISEES` | `prime_panier` | 53 (جديد), 3), p.15 | « 416.666 م في اليوم » | `"416.666"` | `millimes/jour` | `"0.416666"` |
+| `BOIS_AMEUBLEMENT_LIEGE` | `aide_deces` | 61 (جديد), p.18 | « 466.6666 د » | `"466.6666"` | `TND/versement` | — |
+| `FONDERIE_METALLURGIE_MECANIQUE` | `prime_panier` | 51 (جديد), p.15 | « 706.666 مليما في اليوم » | `"706.666"` | `millimes/jour` | `"0.706666"` |
+
+- **Aucun arrondi.** `montant` a au moins 3 décimales (motif `^-?[0-9]+\.[0-9]{3,}$`). `unite` commence par
+  `TND/` ou `millimes/`.
+- `detail.montant_tel_qu_imprime: true`. Pour les millimes, `detail.montant_equivalent_tnd` donne l'équivalent en
+  dinars : une chaîne décimale exacte, obtenue par décalage de 3 rangs, sans arrondi. Une hypothèse FR et AR
+  reprend le texte imprimé.
+- Aucune date d'effet n'est imprimée : la valeur est servie quelle que soit la date (comme D4).
+- Le panier des boissons alcoolisées et l'aide en cas de décès du bois ont une condition d'octroi :
+  `condition_remplie` est obligatoire (`false` donne `HORS_SCOPE`). Le panier de la fonderie est attribué
+  « conformément à la législation en vigueur », sans condition écrite ; c'est dit en hypothèse.
+- Le schéma commun (`src/shared/schemas/common.v0.schema.json`) ne change pas : son enveloppe ne contrôle pas
+  `result.montant`.
+
+### 9.4 Exemple v1
+
+Requête (démo `demo-v1-03-textile-colonne-stage`) :
+
+```json
+{"contract_version": "track_b.v1", "request_id": "demo-v1-03-textile-colonne-stage", "operation": "salaire_base", "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "1", "sous_categorie": "a", "degre": "stage", "date": "2022-06-01"}, "lang": "fr"}
+```
+
+Réponse (extrait) : `"contract_version": "track_b.v1"`, `"montant": "559.062"`, `"unite": "TND/mois"`, `detail`
+avec `"degre": 1`, `"degre_imprime": "stage"`, `"degre_declare": true`, `"anciennete_imprimee": "période de stage"`,
+et la citation `النسيج.pdf`, page 32, `D71`.
+
+### 9.5 Démos et tests
+
+- 18 requêtes : `data/mock_cards/track_b_requests_demo.v1.json`.
+- Réponses de référence : `src/track_b_accounting/tests/references/track_b_responses_demo.v1.json`.
+- `python -m src.track_b_accounting.demo` affiche la série v0 (inchangée), puis la série v1 :
+  « Bilan v1 : 13 ok, 5 refus, 0 erreur(s). »
+- Jeu de référence : cas TB-291 à TB-308, en v1, avec `verification_humaine: false`.
+- Tests : `src/track_b_accounting/tests/test_contrat_v1.py`.
+
+### 9.6 Hors de la v1
+
+- Besoin n° 2, date de fin de validité d'une prime : refusé (D77). La prime de transport du matériel agricole et
+  la prime d'assiduité du textile restent refusées, en v0 comme en v1.
+- Besoins n° 4 à 7 de la liste des évolutions : l'écart cumulé de l'imprimerie après 31 ans, la hausse fixe au
+  dernier degré du verre, les degrés sans borne du textile par l'ancienneté et la réduction par jour d'absence.
+  Ils restent comme en v0.
