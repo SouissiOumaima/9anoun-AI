@@ -65,13 +65,8 @@ def analyze_payslip_pdf(pdf_path: Path, req: DS3Request, client: Any | None = No
             warnings=[*doc.warnings, "Aucun texte natif : le document doit passer par l'OCR (partie A)."],
         ).to_json()
 
-    read_ms = _ms(started)
-    extraction_started = time.perf_counter()
     try:
-        answer = ask_gemini(doc, client=client, model=model, cache_scope=(
-            req.context.organization_id, req.context.user_id, req.context.role,
-            req.context.card_id, req.document.document_id, req.document.storage_ref,
-        ))
+        answer = ask_gemini(doc, client=client, model=model)
     except GeminiError as exc:
         log.warning("%s : %s", pdf_path.name, exc)  # détail technique dans le journal, pas dans la réponse
         return DS3Response(
@@ -83,6 +78,4 @@ def analyze_payslip_pdf(pdf_path: Path, req: DS3Request, client: Any | None = No
 
     response = build_payslip_response(req, doc, answer, processing_ms=_ms(started))
     response["warnings"] = doc.warnings + response["warnings"]
-    log.info("DS3 timings read_ms=%d extraction_ms=%d total_ms=%d", read_ms,
-             _ms(extraction_started), _ms(started))
     return response
