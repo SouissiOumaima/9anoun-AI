@@ -25,7 +25,8 @@ laissée à ses co-owners.
 - Messages échangés avec les autres rôles : JSON Schema versionnés (`src/shared/schemas/`).
 - Dépendances : section **DS3** du `requirements.txt` racine.
 - Règle « Citation ou Silence » : toute réponse factuelle est sourcée, sinon refus explicite.
-# Performance des analyses PDF live
+
+## Performance des analyses PDF live
 
 Les extractions Gemini réussies sont conservées en mémoire du processus pendant
 5 minutes, avec un maximum de 32 entrées. Une analyse identique évite un nouvel
