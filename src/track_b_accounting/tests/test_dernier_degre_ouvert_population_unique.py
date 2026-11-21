@@ -53,6 +53,12 @@ SECTEURS = {
     "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
     "TEXTILE": "data/processed/salary_grids/textile.json",
     "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
+    "PRODUITS_ENTRETIEN_INSECTICIDES": "data/processed/salary_grids/produits_entretien.json",
+    "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES": "data/processed/salary_grids/constructeurs_automobiles.json",
+    "MATERIAUX_CONSTRUCTION": "data/processed/salary_grids/materiaux_construction.json",
+    "PEINTURES": "data/processed/salary_grids/peintures.json",
+    "CHAUSSURE": "data/processed/salary_grids/chaussure.json",
+    "CUIRS_TANNERIE": "data/processed/salary_grids/cuirs_tannerie.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 

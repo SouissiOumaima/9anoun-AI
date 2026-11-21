@@ -33,3 +33,5 @@ Règles :
 
 - `track_b_requests_demo.json` : 10 requêtes de démo du contrat Track B v0.
 - `schemas/track_b_request.v0.schema.json`, `schemas/track_b_response.v0.schema.json`.
+- `track_b_requests_demo.v1.json` : 18 requêtes de démo du contrat Track B v1 (D75, D76), à part des démos v0.
+- `schemas/track_b_request.v1.schema.json`, `schemas/track_b_response.v1.schema.json`.

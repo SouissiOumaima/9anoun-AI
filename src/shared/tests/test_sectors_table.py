@@ -78,13 +78,14 @@ def test_codes_ds5_dans_le_registre_et_meta_identique():
         assert s["evidence"]["convention_ar"] == meta["convention_ar"]
 
 
-# Seule exemption : grilles des vagues 1 à 4 (D49 à D72), activées dans le registre DS5 sans entrée dans la table, en
+# Seule exemption : grilles des vagues 1 à 5 (D49 à D72, D78 à D83), activées dans le registre DS5 sans entrée dans la table, en
 # attente de validation DS2 (noms, codes et alias). Vider cette liste quand l'équipe les inscrit dans la table.
 EN_ATTENTE_DS2 = ["TORREFACTION_CAFE", "AGENCES_VOYAGES", "HOTELS_TOURISTIQUES", "CONFISERIE_BISCUITERIE_CHOCOLATERIE",
                   "PATES_ALIMENTAIRES_COUSCOUS", "COSMETIQUES_PARFUMS",
                   "SAVONNERIE_RAFFINAGE_GRIGNONS", "COMMERCE_DISTRIBUTION_PETROLE", "PLASTURGIE", "MINOTERIES", "TEINTURERIES_PRESSINGS", "BOISSONS_GAZEUSES",
                   "MECANIQUE_STATIONS_SERVICE", "BOISSONS_ALCOOLISEES", "BOIS_AMEUBLEMENT_LIEGE", "GESTION_DECHETS", "HABILLEMENT", "COMMERCE_GROS_DETAIL",
-                  "IMPRIMERIE_EDITION_CARTONNAGE", "VERRE_MIROIRS", "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "BOULANGERIES", "TEXTILE", "FONDERIE_METALLURGIE_MECANIQUE"]
+                  "IMPRIMERIE_EDITION_CARTONNAGE", "VERRE_MIROIRS", "CONCESSIONNAIRES_MATERIEL_AGRICOLE", "BOULANGERIES", "TEXTILE", "FONDERIE_METALLURGIE_MECANIQUE",
+                  "PRODUITS_ENTRETIEN_INSECTICIDES", "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES", "MATERIAUX_CONSTRUCTION", "PEINTURES", "CHAUSSURE", "CUIRS_TANNERIE"]
 
 
 def test_chaque_secteur_ds5_disponible_figure_une_fois():

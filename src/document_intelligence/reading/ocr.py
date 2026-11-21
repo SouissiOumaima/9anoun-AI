@@ -223,17 +223,50 @@ def _mean_score(boxes: Sequence[OcrBox]) -> float:
     return sum(b.score for b in boxes) / len(boxes) if boxes else 0.0
 
 
-def read_zone_boxes(engine: OcrEngine, image: Image3, lang: LangOption) -> list[OcrBox]:
-    """Lit une image. En mode « auto », on lit d'abord en arabe (le modèle arabe connaît aussi les
-    lettres latines et les chiffres) ; si le texte lu est surtout latin, on relit avec le modèle latin
-    (accents français) et on garde la lecture dont la confiance moyenne est la plus haute."""
+LATIN_SURE: Final = 0.95
+"""Confiance moyenne minimale pour garder une lecture du modèle latin sans relire la zone en arabe, quand le
+document a été retenu « français ». Le modèle latin ne connaît pas les lettres arabes : sur une zone arabe, il
+écrit du latin sans sens. Mesuré sur 15 lignes fictives de chaque langue : lignes françaises lues par le modèle
+latin, confiance moyenne de 0,983 à 1,000 ; lignes arabes lues par le modèle latin, 0,000 à 0,904, dont 2 sur 15
+quand même détectées « fr ». La langue détectée seule ne suffit donc pas ; avec ce seuil, les deux cas sont séparés."""
+
+
+def _text_of(boxes: Sequence[OcrBox]) -> str:
+    return " ".join(b.text for b in boxes)
+
+
+def read_zone(engine: OcrEngine, image: Image3, lang: LangOption,
+              preferred: OcrLang = "ar") -> tuple[list[OcrBox], OcrLang]:
+    """Lit une image et renvoie les boîtes avec la langue du modèle retenu.
+
+    Mode « auto » : on lit d'abord avec le modèle de la langue **retenue pour le document** (`preferred`) :
+    - `preferred = "ar"` (par défaut) : le modèle arabe connaît aussi les lettres latines et les chiffres ; si le
+      texte lu est surtout latin, on relit avec le modèle latin (accents français) et on garde la lecture dont la
+      confiance moyenne est la plus haute ;
+    - `preferred = "fr"` : on garde la lecture latine si elle est détectée « fr » avec une confiance moyenne d'au
+      moins `LATIN_SURE` ; sinon la zone est peut-être de l'autre langue, et on la relit avec le modèle arabe.
+    Une seule lecture par zone dans le cas courant ; une relecture seulement si la zone semble de l'autre langue.
+    """
     if lang != "auto":
-        return clean_boxes(engine.recognize(image, lang))
-    arabic = clean_boxes(engine.recognize(image, "ar"))
-    if detect_language(" ".join(b.text for b in arabic)) != "fr":
-        return arabic
-    latin = clean_boxes(engine.recognize(image, "fr"))
-    return latin if _mean_score(latin) > _mean_score(arabic) else arabic
+        return clean_boxes(engine.recognize(image, lang)), lang
+    if preferred == "fr":
+        latin = clean_boxes(engine.recognize(image, "fr"))
+        if detect_language(_text_of(latin)) == "fr" and _mean_score(latin) >= LATIN_SURE:
+            return latin, "fr"
+        arabic = clean_boxes(engine.recognize(image, "ar"))
+    else:
+        arabic = clean_boxes(engine.recognize(image, "ar"))
+        if detect_language(_text_of(arabic)) != "fr":
+            return arabic, "ar"
+        latin = clean_boxes(engine.recognize(image, "fr"))
+    if detect_language(_text_of(arabic)) != "fr":  # zone arabe (ou vide) : le modèle arabe gagne
+        return arabic, "ar"
+    return (latin, "fr") if _mean_score(latin) > _mean_score(arabic) else (arabic, "ar")
+
+
+def read_zone_boxes(engine: OcrEngine, image: Image3, lang: LangOption) -> list[OcrBox]:
+    """Lit une image seule (langue retenue : arabe d'abord). Voir `read_zone`."""
+    return read_zone(engine, image, lang)[0]
 
 
 # ---------------------------------------------------------------- cœur commun
@@ -256,27 +289,54 @@ def to_pdf_bbox(zone: BBox, pixel_bbox: BBox, dpi: float) -> BBox:
     )
 
 
+def merge_by_position(existing: Sequence[TextLine], added: Sequence[TextLine]) -> list[TextLine]:
+    """Insère les lignes OCR à leur place verticale parmi les lignes déjà présentes (texte natif).
+
+    Gemini reçoit ainsi le texte de la page dans l'ordre de lecture, de haut en bas. L'ordre des lignes existantes
+    entre elles n'est jamais modifié (le lecteur natif a déjà rangé les siennes), et aucun `line_id` ne change :
+    les citations restent justes. À hauteur égale, la ligne existante passe en premier.
+    """
+    pending = sorted(added, key=lambda line: (line.bbox[1], line.bbox[0]))
+    out: list[TextLine] = []
+    i = 0
+    for line in existing:
+        while i < len(pending) and pending[i].bbox[1] < line.bbox[1]:
+            out.append(pending[i])
+            i += 1
+        out.append(line)
+    out.extend(pending[i:])
+    return out
+
+
 @dataclass
 class _Stats:
     zones_read: int = 0
     lines_added: int = 0
     empty_zones: list[str] = field(default_factory=list)
     failed_zones: list[str] = field(default_factory=list)
+    document_lang: OcrLang | None = None
 
 
 Renderer = Callable[[PendingZone], tuple[Image3, float]]
 
 
 def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, lang: LangOption) -> _Stats:
-    """Lit toutes les zones en attente de `doc` (modifié en place) et renvoie le bilan."""
+    """Lit toutes les zones en attente de `doc` (modifié en place) et renvoie le bilan.
+
+    Mode « auto » : la langue est retenue **une fois par document**, d'après la première zone où l'OCR lit du
+    texte ; les zones suivantes sont lues d'abord dans cette langue (voir `read_zone`). Un document français ne
+    paie donc la double lecture que sur sa première zone, au lieu de toutes.
+    """
     stats = _Stats()
+    preferred: OcrLang = "ar"
     for page in doc.pages:
         remaining: list[PendingZone] = []
+        added: list[TextLine] = []
         number = _next_line_number(page)
         for zone in sorted(page.pending_zones, key=lambda z: (z.bbox[1], z.bbox[0])):
             try:
                 image, dpi = render(zone)
-                boxes = read_zone_boxes(engine, image, lang)
+                boxes, used = read_zone(engine, image, lang, preferred)
             except Exception as exc:  # noqa: BLE001 — un échec d'OCR ne doit pas faire perdre le reste du document
                 stats.failed_zones.append(f"{zone.zone_id} ({type(exc).__name__})")
                 remaining.append(zone)
@@ -286,8 +346,10 @@ def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, l
                 stats.empty_zones.append(zone.zone_id)
                 remaining.append(zone)
                 continue
+            if lang == "auto" and stats.document_lang is None:
+                stats.document_lang = preferred = used
             for row in rows:
-                page.lines.append(
+                added.append(
                     TextLine(
                         line_id=f"p{page.page}_l{number}",
                         page=page.page,
@@ -301,10 +363,12 @@ def _ocr_pages(doc: IntermediateDocument, render: Renderer, engine: OcrEngine, l
                 number += 1
                 stats.lines_added += 1
             stats.zones_read += 1
+        page.lines = merge_by_position(page.lines, added)  # ordre de lecture, line_id inchangés
         page.pending_zones = [z for z in page.pending_zones if z in remaining]
 
+    retained = f" ; langue retenue pour le document : {stats.document_lang}" if stats.document_lang else ""
     doc.warnings.append(
-        f"OCR ({engine.name}) : {stats.zones_read} zone(s) lue(s), {stats.lines_added} ligne(s) ajoutée(s)."
+        f"OCR ({engine.name}) : {stats.zones_read} zone(s) lue(s), {stats.lines_added} ligne(s) ajoutée(s){retained}."
     )
     if stats.empty_zones:
         doc.warnings.append(

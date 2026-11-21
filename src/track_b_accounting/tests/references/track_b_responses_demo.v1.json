@@ -1,0 +1,932 @@
+[
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-01-verre-horaires-degre-5",
+    "status": "ok",
+    "result": {
+      "montant": "4.055",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "population": "horaires",
+        "categorie": "3",
+        "degre": 5,
+        "degre_imprime": "5",
+        "degre_declare": true,
+        "hypotheses": [
+          "Au dernier degré, l'article 12 (جديد) (page 8) fait passer à la catégorie suivante après deux ans ; les catégories 18 (mensuels) et 7 (horaires) reçoivent une hausse de 15 dinars par mois : ni la promotion ni cette hausse ne sont calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 53, page 7) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "عند بلوغ آخر درجة، ينص الفصل 12 (جديد) (الصفحة 8) على الانتقال إلى الصنف الموالي بعد سنتين، ويتمتع الصنفان 18 (بالشهر) و7 (بالساعة) بزيادة 15 دينارا في الشهر: لا تُحتسب الترقية ولا هذه الزيادة.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 53، الصفحة 7): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "VERRE_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-02-verre-mensuels-dernier-degre",
+    "status": "ok",
+    "result": {
+      "montant": "648.760",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "VERRE_MIROIRS",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "b",
+        "libelle_fr": "Catégorie 1 ب",
+        "libelle_ar": "الصنف 1 ب",
+        "degre": 11,
+        "degre_imprime": "11",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد) و 53, page 7",
+        "hypotheses": [
+          "Au dernier degré, l'article 12 (جديد) (page 8) fait passer à la catégorie suivante après deux ans ; les catégories 18 (mensuels) et 7 (horaires) reçoivent une hausse de 15 dinars par mois : ni la promotion ni cette hausse ne sont calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 53, page 7) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "عند بلوغ آخر درجة، ينص الفصل 12 (جديد) (الصفحة 8) على الانتقال إلى الصنف الموالي بعد سنتين، ويتمتع الصنفان 18 (بالشهر) و7 (بالساعة) بزيادة 15 دينارا في الشهر: لا تُحتسب الترقية ولا هذه الزيادة.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 53، الصفحة 7): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "VERRE_MENSUELS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/verre_miroirs.json",
+        "decision_ref": "D68"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-03-textile-colonne-stage",
+    "status": "ok",
+    "result": {
+      "montant": "559.062",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "a",
+        "libelle_fr": "Catégorie 1 أ",
+        "libelle_ar": "الصنف 1 أ",
+        "degre": 1,
+        "degre_imprime": "stage",
+        "degre_declare": true,
+        "anciennete_imprimee": "période de stage",
+        "libelle_degre": "0-1",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 32) : « période de stage ».",
+          "Cette colonne n'est atteinte par aucune ancienneté, faute de durée imprimée (page 32) : elle n'est servie que par le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 32): «période de stage».",
+          "لا تُبلَغ هذه الخانة بأي أقدمية لعدم ذكر مدتها (الصفحة 32): لا تُعتمد إلا بالدرجة المصرَّح بها."
+        ],
+        "table_id": "TEX_MENSUELS_2022-05-01",
+        "effective_date": "2022-05-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-04-textile-colonne-0",
+    "status": "ok",
+    "result": {
+      "montant": "2.829",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "horaires",
+        "categorie": "II",
+        "degre": 1,
+        "degre_imprime": "0",
+        "degre_declare": true,
+        "anciennete_imprimee": "titularisation",
+        "libelle_degre": "0-1",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 31) : « titularisation »."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 31): «titularisation»."
+        ],
+        "table_id": "TEX_HORAIRES_2022-05-01",
+        "effective_date": "2022-05-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-05-textile-colonne-19",
+    "status": "ok",
+    "result": {
+      "montant": "1273.662",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "mensuels",
+        "categorie": "17",
+        "degre": 20,
+        "degre_imprime": "19",
+        "degre_declare": true,
+        "anciennete_imprimee": "36",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 32) : « 36 ».",
+          "Cette colonne n'est atteinte par aucune ancienneté, faute de durée imprimée (page 32) : elle n'est servie que par le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 32): «36».",
+          "لا تُبلَغ هذه الخانة بأي أقدمية لعدم ذكر مدتها (الصفحة 32): لا تُعتمد إلا بالدرجة المصرَّح بها."
+        ],
+        "table_id": "TEX_MENSUELS_2022-05-01",
+        "effective_date": "2022-05-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-06-textile-colonne-20",
+    "status": "ok",
+    "result": {
+      "montant": "2.604",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "TEXTILE",
+        "population": "horaires",
+        "categorie": "I",
+        "degre": 21,
+        "degre_imprime": "20",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد), page 8",
+        "hypotheses": [
+          "Le nombre imprimé sous chaque degré est lu comme le début du degré : horaires, degré 0 (titularisation) de 0 à 1 an, degré 1 de 1 à 2 ans, puis 2, 3, 5 … ; mensuels, degré 1 de 1 à 2 ans, puis 2, 4 … ; l'article 45 (page 15) répartit l'ancienneté sur trente ans à partir de la deuxième année.",
+          "Aucune grille n'est imprimée après le 1er mai 2022 ; le dernier avenant (effet au 1er septembre 2021, page 3) n'en annonce pas d'autre : la table de 2022 reste appliquée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Cette colonne n'est atteinte par aucune ancienneté, faute de durée imprimée (page 29) : elle n'est servie que par le degré déclaré.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 35 ans ; au-delà, la convention ne fixe pas le montant (article 12 (جديد), page 8). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
+          "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا تُبلَغ هذه الخانة بأي أقدمية لعدم ذكر مدتها (الصفحة 29): لا تُعتمد إلا بالدرجة المصرَّح بها.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 35 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 12 (جديد)، الصفحة 8). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "TEX_HORAIRES_2021-09-01",
+        "effective_date": "2021-09-01",
+        "date_calcul": "2021-10-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/النسيج.pdf",
+        "page": 29,
+        "article": null,
+        "data_file": "data/processed/salary_grids/textile.json",
+        "decision_ref": "D71"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-07-banques-colonne-stage",
+    "status": "ok",
+    "result": {
+      "montant": "1687.106",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "BANQUES",
+        "population": "tous_agents",
+        "categorie": "agent_services_3",
+        "degre": 1,
+        "degre_imprime": "stage",
+        "degre_declare": true,
+        "anciennete_imprimee": "1",
+        "libelle_degre": "0-1",
+        "hypotheses": [
+          "Degrés d'ancienneté : dans l'en-tête des grilles (p.22 et 23), le nombre de la ligne « ancienneté effective » de chaque colonne (1, 2, 3, 4, 5, 7, …, 33) est la somme des durées de séjour jusqu'à cette colonne, le stage comptant pour 1 an ; la colonne k couvre de la fin de la colonne précédente à ce nombre (stage : de 0 à 1 an ; degré 19 : de 31 à 33 ans).",
+          "Colonne « stage » (colonne 1 des grilles) servie pour une ancienneté de 0 à 1 an : l'article 11 (p.8) fixe la période de stage ou d'essai à un an, renouvelable une fois ; la grille n'indique pas ce qui vaut pendant le renouvellement ; la situation de stage de l'agent n'est pas vérifiée.",
+          "Aucune grille postérieure au 2021-05-01 n'est présente dans les sources ; la grille du 2021-05-01 est la dernière transcrite.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 23) : « 1 »."
+        ],
+        "hypotheses_ar": [
+          "درجات الأقدمية: في رأس جدولي الأجور (الصفحتان 22 و23)، يساوي عدد «الأقدمية الفعلية» لكل عمود (1، 2، 3، 4، 5، 7، …، 33) مجموع مدد البقاء إلى هذا العمود، مع احتساب التربص بسنة واحدة؛ ويغطي العمود k الفترة من نهاية العمود السابق إلى هذا العدد (التربص: من 0 إلى سنة واحدة؛ الدرجة 19: من 31 إلى 33 سنة).",
+          "يُطبَّق عمود «التربص» (العمود الأول من الجدولين) على أقدمية من 0 إلى سنة واحدة: يحدد الفصل 11 (الصفحة 8) فترة التربص أو التجربة بسنة واحدة قابلة للتجديد مرة واحدة؛ ولا يبيّن الجدول ما ينطبق خلال فترة التجديد؛ ولا يقع التثبت من أن العون في فترة تربص.",
+          "لا يوجد في المصادر أي جدول أجور لاحق لتاريخ 2021-05-01؛ وجدول 2021-05-01 هو آخر جدول تم نقله.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 23): «1»."
+        ],
+        "table_id": "BQ_TOUS_AGENTS_2021-05-01",
+        "effective_date": "2021-05-01",
+        "date_calcul": "2021-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/البنوك.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/banques.json",
+        "decision_ref": "D46"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-08-refus-banques-colonne-1",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Degré 1 absent de la grille BANQUES/tous_agents (table BQ_TOUS_AGENTS_2021-05-01) ; désignations imprimées acceptées : stage, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19.",
+      "message_ar": "الدرجة 1 غير موجودة في جدول الأجور BANQUES/tous_agents (الجدول BQ_TOUS_AGENTS_2021-05-01)؛ التسميات المطبوعة المقبولة: stage, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-09-refus-degre-absent",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Degré 14 absent de la grille VERRE_MIROIRS/horaires (table VERRE_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+      "message_ar": "الدرجة 14 غير موجودة في جدول الأجور VERRE_MIROIRS/horaires (الجدول VERRE_HORAIRES_2024-01-01)؛ التسميات المطبوعة المقبولة: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-10-refus-degre-et-anciennete",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "anciennete_annees et degre ne peuvent pas être donnés ensemble : donner l'un ou l'autre.",
+      "message_ar": "لا يمكن تقديم anciennete_annees و degre معا: يُقدَّم أحدهما فقط."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-11-refus-ni-degre-ni-anciennete",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "anciennete_annees obligatoire pour VERRE_MIROIRS/horaires (grille à degrés d'ancienneté).",
+      "message_ar": "anciennete_annees إلزامي لـ VERRE_MIROIRS/horaires (جدول بدرجات أقدمية)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-12-refus-confiserie-cellule-illisible",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents payés au mois, catégorie 1, degré 8 (tableau n° 1, en vigueur à partir du 2021-12-01, page 21) : dernier chiffre abîmé à l'impression (3 ou 8) ; la cellule n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1، الدرجة 8 (جدول الأجور الذي يقع العمل به بداية من 2021-12-01، الصفحة 21): الرقم الأخير تالف في الطباعة (3 أو 8)؛ الخانة غير مقروءة في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-13-metallurgie-dernier-degre",
+    "status": "ok",
+    "result": {
+      "montant": "680.334",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "population": "admin_tech",
+        "categorie": "4",
+        "degre": 11,
+        "degre_imprime": "11",
+        "degre_declare": true,
+        "libelle_degre": "20+",
+        "regle_au_dela_non_appliquee": "article 13 (جديد) ب, page 9",
+        "hypotheses": [
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : l'écart cumulé de l'article 13 (جديد) ب (page 9) s'ajoute au-delà de 22 ans d'ancienneté ; il dépend de l'ancienneté, non fournie, et n'est pas appliqué. Pour un salarié de plus de 22 ans, demander par l'ancienneté."
+        ],
+        "hypotheses_ar": [
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: يُضاف الفارق المتراكم المنصوص عليه بالفصل 13 (جديد) ب (الصفحة 9) بعد 22 سنة من الأقدمية؛ وهو مرتبط بالأقدمية غير المُقدَّمة ولا يُطبَّق. بالنسبة إلى عامل تفوق أقدميته 22 سنة، يُطلب الأجر بحساب الأقدمية."
+        ],
+        "table_id": "BM_T_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 42,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-14-cosmetiques-degre-unique",
+    "status": "ok",
+    "result": {
+      "montant": "575.741",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COSMETIQUES_PARFUMS",
+        "population": "production_categorie_1",
+        "categorie": "1",
+        "degre": 1,
+        "degre_imprime": "درجة وحيدة",
+        "degre_declare": true,
+        "alias_designation": "unique",
+        "libelle_degre": "0-1",
+        "regle_au_dela_non_appliquee": "article 49, page 15",
+        "hypotheses": [
+          "Catégorie 1 de la production (« شغال عادي ») : un seul degré (« درجة وحيدة », p.21-23), servi pendant la première année ; après un an, l'article 49 (p.15) classe l'ouvrier au degré 1 de la catégorie 2 : ce passage n'est pas calculé.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 1 an ; au-delà, la convention ne fixe pas le montant (article 49, page 15). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الصنف الأول من أعوان الإنتاج («شغال عادي»): درجة واحدة («درجة وحيدة»، الصفحات من 21 إلى 23) تُعتمد خلال السنة الأولى؛ وبعد سنة يرتب الفصل 49 (الصفحة 15) العامل في الدرجة الأولى من الصنف الثاني: لا يُحتسب هذا الانتقال.",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 1 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 49، الصفحة 15). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "COSM_PRODUCTION_CAT1_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة مواد التجميل والعطورات.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cosmetiques_parfums.json",
+        "decision_ref": "D54"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-15-alcool-prime-panier-millimes",
+    "status": "ok",
+    "result": {
+      "montant": "416.666",
+      "unite": "millimes/jour",
+      "detail": {
+        "secteur": "BOISSONS_ALCOOLISEES",
+        "code": "prime_panier",
+        "label_fr": "Prime de panier",
+        "label_ar": "منحة قفة",
+        "date_calcul": "2024-06-01",
+        "regles": "D76",
+        "condition": "travailleur désigné nommément pour rester sur le lieu de travail, ou obligé d'y rester pendant toute la durée du travail (art. 53 (جديد), point 3, p.15)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+          "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici.",
+          "Montant servi tel qu'imprimé, sans arrondi au millime (« 416.666 م في اليوم ») : 416,666 millimes, soit 0,416666 dinar."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+          "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا.",
+          "يُرجَع المبلغ كما هو مطبوع دون تدوير إلى المليم («416.666 م في اليوم»): 416.666 مليما، أي 0.416666 دينارا."
+        ],
+        "montant_tel_qu_imprime": true,
+        "montant_equivalent_tnd": "0.416666"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة وتجارة المشروبات الكحولية.pdf",
+        "page": 15,
+        "article": "53 (جديد)",
+        "data_file": "data/processed/salary_grids/boissons_alcoolisees.json",
+        "decision_ref": "D62"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-16-bois-aide-deces-4-decimales",
+    "status": "ok",
+    "result": {
+      "montant": "466.6666",
+      "unite": "TND/versement",
+      "detail": {
+        "secteur": "BOIS_AMEUBLEMENT_LIEGE",
+        "code": "aide_deces",
+        "label_fr": "Aide en cas de décès",
+        "label_ar": "نجدة الوفاة",
+        "date_calcul": "2024-06-01",
+        "regles": "D76",
+        "condition": "décès de l'agent ; aide versée à sa veuve, à défaut à ses enfants à charge, en l'absence d'assurance sociale garantissant une aide d'un montant au moins égal (art. 61 (جديد), p.18)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici.",
+          "Montant servi tel qu'imprimé, sans arrondi au millime (« 466.6666 د »)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا.",
+          "يُرجَع المبلغ كما هو مطبوع دون تدوير إلى المليم («466.6666 د»)."
+        ],
+        "montant_tel_qu_imprime": true
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الخشب والموبيليا والخفاف.pdf",
+        "page": 18,
+        "article": "61 (جديد)",
+        "data_file": "data/processed/salary_grids/bois_ameublement_liege.json",
+        "decision_ref": "D63"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-17-fonderie-prime-panier-millimes",
+    "status": "ok",
+    "result": {
+      "montant": "706.666",
+      "unite": "millimes/jour",
+      "detail": {
+        "secteur": "FONDERIE_METALLURGIE_MECANIQUE",
+        "code": "prime_panier",
+        "label_fr": "Prime de panier",
+        "label_ar": "منحة السلّة",
+        "date_calcul": "2024-06-01",
+        "regles": "D76",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+          "L'article attribue la prime « conformément à la législation en vigueur » sans en préciser les conditions : elles ne sont pas vérifiées ici.",
+          "Montant servi tel qu'imprimé, sans arrondi au millime (« 706.666 مليما في اليوم ») : 706,666 millimes, soit 0,706666 dinar."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+          "يسند الفصل المنحة «طبقا للتشريع الجاري به العمل» دون تحديد شروطها: لا يقع التثبت منها هنا.",
+          "يُرجَع المبلغ كما هو مطبوع دون تدوير إلى المليم («706.666 مليما في اليوم»): 706.666 مليما، أي 0.706666 دينارا."
+        ],
+        "montant_tel_qu_imprime": true,
+        "montant_equivalent_tnd": "0.706666"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مسابك و التعدين و البناءات الميكانيكية.pdf",
+        "page": 15,
+        "article": "51 (جديد)",
+        "data_file": "data/processed/salary_grids/fonderies_mecanique.json",
+        "decision_ref": "D72"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-18-sans-degre-identique-a-v0",
+    "status": "ok",
+    "result": {
+      "montant": "593.873",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "METALLURGIE_BATIMENT",
+        "population": "admin_tech",
+        "categorie": "4",
+        "degre": 8,
+        "anciennete_annees": "15",
+        "table_id": "BM_T_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": 42,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-19-peintures-execution-horaires-degre-13",
+    "status": "ok",
+    "result": {
+      "montant": "5.668",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_horaires",
+        "categorie": "ouvrier_hautement_qualifie",
+        "degre": 13,
+        "degre_imprime": "13",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد) و 52, page 8",
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 24,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-20-peintures-administratifs-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "1428.536",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "administratifs_techniciens",
+        "categorie": "23",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Unité non imprimée pour les administratifs et techniciens : montants de 550 à 1 645 dinars, servis en TND/mois (hypothèse affichée). Les 23 lignes portent des intitulés de postes, sans numéro de catégorie : clés 1 à 23 par position imprimée.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالنسبة إلى الأعوان الإداريين والفنيين: مبالغ من 550 إلى 1645 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض. تحمل الأسطر الثلاثة والعشرون أسماء خطط دون رقم صنف: المفاتيح من 1 إلى 23 حسب الترتيب المطبوع.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_ADMINISTRATIFS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-21-peintures-execution-mensuels-degre-7",
+    "status": "ok",
+    "result": {
+      "montant": "540.294",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_mensuels",
+        "categorie": "ouvrier_manuel",
+        "degre": 7,
+        "degre_imprime": "7",
+        "degre_declare": true,
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-22-chaussure-horaires-degre-30",
+    "status": "ok",
+    "result": {
+      "montant": "3.881",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "horaires",
+        "categorie": "VI",
+        "degre": 30,
+        "degre_imprime": "30",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد), page 8",
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 33,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-23-chaussure-mensuels-1b-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "579.170",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "b",
+        "libelle_fr": "Catégorie 1 ب",
+        "libelle_ar": "الصنف 1 ب",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2021-12-15",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-24-chaussure-mensuels-anomalie-degre-24",
+    "status": "ok",
+    "result": {
+      "montant": "707.557",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "5",
+        "degre": 24,
+        "degre_imprime": "24",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-25-refus-peintures-degre-absent",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Degré 14 absent de la grille PEINTURES/execution_horaires (table PEI_EXECUTION_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+      "message_ar": "الدرجة 14 غير موجودة في جدول الأجور PEINTURES/execution_horaires (الجدول PEI_EXECUTION_HORAIRES_2024-01-01)؛ التسميات المطبوعة المقبولة: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  }
+]

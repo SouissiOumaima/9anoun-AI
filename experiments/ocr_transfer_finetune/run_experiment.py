@@ -77,6 +77,7 @@ sys.path[:0] = [str(HERE), str(REPO_ROOT)]
 import data_gen
 import metrics
 import model as m
+from run_paths import run_paths
 
 from src.document_intelligence.intermediate import detect_language as line_language
 
@@ -252,7 +253,7 @@ def stage_label(stage: str, ft_variant: str) -> str:
 
 def train_stage(
     stage: m.Stage, model: Any, train: Split, val: Split, charset: m.Charset, *, epochs: int, lr: float,
-    batch_size: int, seed: int, warmup_epochs: int, budget_s: float, ckpt_dir: Path,
+    batch_size: int, seed: int, warmup_epochs: int, budget_s: float, ckpt_dir: Path, best_dir: Path,
     ft_variant: m.FtVariant = "bn_frozen",
 ) -> dict[str, Any]:
     """Transfer Learning (tête seule, sur les sorties pré-calculées de l'encodeur gelé) ou Fine-Tuning.
@@ -340,7 +341,7 @@ def train_stage(
             "elapsed_s": elapsed_before + time.perf_counter() - start,
         }), encoding="utf-8")
     model.set_state_dict(paddle.load(str(best_path)))
-    paddle.save(model.state_dict(), str(BUILD / f"{label}_best.pdparams"))
+    paddle.save(model.state_dict(), str(best_dir / f"{label}_best.pdparams"))  # build/quick/ pour --quick
     return {
         "history": history, "best_epoch": best_epoch, "best_val_cer": best_cer,
         "trainable_params": m.count_params(params), "lr": lr, "epochs_run": len(history["train_loss"]),
@@ -484,15 +485,18 @@ def main(argv: list[str] | None = None) -> None:
     a = p.parse_args(argv)
     if a.quick:
         a.n_train, a.n_val, a.n_test, a.n_generic, a.epochs_tl, a.epochs_ft = 64, 32, 32, 16, 2, 2
-        a.out = BUILD / "quick"
-    a.out.mkdir(parents=True, exist_ok=True)
 
     # Dossier d'état propre à cette configuration : résultats de chaque étape terminée + points de sauvegarde.
     # La variante de Fine-Tuning n'entre pas dans la clé : baseline et Transfer Learning restent partagés,
     # et chaque variante a ses propres fichiers (finetune_<variante>_*).
     key = {k: v for k, v in vars(a).items() if k not in ("out", "worker", "fresh", "budget_min", "ft_variant")}
     tag = hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()[:10]
-    state_dir = BUILD / "state" / f"seed{a.seed}_{tag}"
+    # --quick écrit tout dans build/quick/ : il n'écrase jamais l'état ni les poids de l'expérience complète.
+    dirs = run_paths(BUILD, quick=a.quick, seed=a.seed, tag=tag, out=a.out)
+    a.out = dirs.out
+    a.out.mkdir(parents=True, exist_ok=True)
+    dirs.work.mkdir(parents=True, exist_ok=True)
+    state_dir = dirs.state
     # --fresh : on efface l'état à la première tentative seulement ; une relance après plantage doit reprendre.
     if a.fresh and state_dir.exists() and os.environ.get("OCR_EXP_ATTEMPT", "1") == "1":
         shutil.rmtree(state_dir)
@@ -517,7 +521,7 @@ def main(argv: list[str] | None = None) -> None:
     charset = m.Charset(PPOCR_ROOT / m.DICT_REL)
 
     sizes = {"train": a.n_train, "val": a.n_val, "test": a.n_test, "generic": a.n_generic}
-    data_dir = BUILD / ("data_quick" if a.quick else "data") / f"seed{a.seed}"
+    data_dir = dirs.data
     print("1/5 Génération des données fictives…", flush=True)
     manifest = data_gen.generate(data_dir, a.seed, sizes, charset.known)
     splits = {name: load(data_dir, name, charset) for name in data_gen.SPLITS}
@@ -559,7 +563,8 @@ def main(argv: list[str] | None = None) -> None:
             stage_budget = budget_s * (0.25 if stage == "transfer" else 0.75)
             info = train_stage(stage, net, splits["train"], splits["val"], charset, epochs=epochs, lr=lr,
                                batch_size=a.batch_size, seed=a.seed, warmup_epochs=warmup,
-                               budget_s=max(60.0, stage_budget), ckpt_dir=state_dir, ft_variant=a.ft_variant)
+                               budget_s=max(60.0, stage_budget), ckpt_dir=state_dir, best_dir=dirs.work,
+                               ft_variant=a.ft_variant)
             info.update({k: evaluate(net, splits[k], charset) for k in ("val", "test", "generic")})
             if stage == "finetune":
                 info["variant"] = a.ft_variant
