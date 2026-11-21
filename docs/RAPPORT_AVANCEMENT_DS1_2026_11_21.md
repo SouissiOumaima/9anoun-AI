@@ -120,3 +120,11 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 - `is_usable_document_response` refuse déjà tout mode autre que `live`. Le test existant `test_ds3_provenance_boundary.py` caractérise également la limite : des métadonnées déclarées ne prouvent pas l’authenticité. DS1 vérifie séparément la provenance et le contexte de l’appel.
 - Tests supplémentaires au niveau conversion DS4 v1 : modes mock/absent/vide rejetés ; confiances 0,896 et 0,89999 conservées à l’affichage mais non éligibles même après confirmation.
 - Validation : 557 tests DS1/DS4 réussis. Suggestions d’évolution de l’unité monétaire et de séparation de la livraison DS4 laissées à coordonner avec sa propriétaire, sans changement du contrat DS4 dans ce correctif.
+
+
+## Découpage DS4 / DS1 après revue
+
+- PR DS4 #53 : `codex/ds4-track-a-v1-delivery` vers `main`, commit `922784b`, 116 fichiers DS4 extraits de la livraison existante avec attribution au commit source `52c5384`. 327 tests DS4 réussis indépendamment de DS1. Les évolutions ultérieures de la branche de Ghofrane ne sont pas incluses implicitement.
+- PR DS1 #47 : base temporaire `codex/ds4-track-a-v1-delivery`, 23 fichiers DS1 uniquement ; l'historique existant est conservé. Branche actualisée avec main `ebe87ba` ; 557 tests DS1/DS4 réussis.
+- Ordre : revue DS4 par Ghofrane (notamment devise, schémas et routage), fusion de #53 dans main, actualisation de la branche DS1 avec main puis retour de la base de #47 à main et nouvelle vérification du diff/tests. Ne pas fusionner #47 dans la branche DS4. Cette actualisation est importante également si #53 est fusionnée par squash.
+- Cache DS3 #48 indépendant. Aucune fusion dans main effectuée pendant ce découpage. Validation juridique humaine inchangée.
