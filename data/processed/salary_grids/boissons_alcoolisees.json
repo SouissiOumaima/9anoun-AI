@@ -349,7 +349,8 @@
    "ar": [
     "لا تُحتسب الزيادة الآلية كل عشر سنوات في نفس الصنف (الفصل 15 (جديد)، الصفحة 8)؛ ولا تُستعمل الزيادة بـ 68 بالمائة في نهاية 31 سنة (الفصل 52 (جديد)، الصفحة 15) لاحتساب أي مبلغ.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [1]
   },
   "horaires": {
    "fr": [
@@ -359,7 +360,8 @@
    "ar": [
     "لا تُحتسب الزيادة الآلية كل عشر سنوات في نفس الصنف (الفصل 15 (جديد)، الصفحة 8)؛ ولا تُستعمل الزيادة بـ 68 بالمائة في نهاية 31 سنة (الفصل 52 (جديد)، الصفحة 15) لاحتساب أي مبلغ.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [1]
   }
  },
  "primes": [
@@ -646,7 +648,32 @@
    "source_article": "53 (جديد)",
    "message_fr": "Prime de panier (article 53 (جديد), page 15) : le montant est imprimé « 416.666 م » par jour, soit 0,416666 dinar : il a plus de trois décimales et le moteur arrondit au millime ; il n'est pas servi arrondi. Prime non exposée ; aucun montant n'est renvoyé.",
    "message_ar": "منحة قفة (الفصل 53 (جديد)، الصفحة 15): المبلغ مطبوع «416.666 م» في اليوم أي أكثر من ثلاثة أرقام بعد الفاصل بحساب الدينار؛ ولا يُرجَع مدوَّرا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
-   "motif": "montant à plus de trois décimales"
+   "motif": "montant à plus de trois décimales",
+   "service_contrat_v1": {
+    "code": "prime_panier",
+    "label_ar": "منحة قفة",
+    "label_fr": "Prime de panier",
+    "source_article": "53 (جديد)",
+    "source_pdf_page": 15,
+    "unite": "millimes/jour",
+    "montant": 416.666,
+    "montant_exact": true,
+    "montant_imprime": "416.666 م في اليوم",
+    "effective_date": null,
+    "condition": "travailleur désigné nommément pour rester sur le lieu de travail, ou obligé d'y rester pendant toute la durée du travail (art. 53 (جديد), point 3, p.15)",
+    "hypotheses": {
+     "fr": [
+      "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+      "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+      "Condition d'octroi lue dans l'article : l'appelant indique si elle est remplie (condition_remplie) ; elle n'est pas vérifiée ici."
+     ],
+     "ar": [
+      "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+      "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+      "شرط الإسناد كما ورد بالفصل: يحدد الطالب إن كان متوفرا (condition_remplie)؛ ولا يقع التثبت منه هنا."
+     ]
+    }
+   }
   },
   "prime_production_fin_annee": {
    "source_pdf_page": 14,

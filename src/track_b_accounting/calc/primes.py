@@ -65,14 +65,49 @@ def _ligne_datee(lignes: list[dict], jour: dt.date, code: str) -> dict:
 
 
 def prime(secteur: str, code: str, date: object, **params: Any) -> Result:
+    """Prime du contrat v0 : montant arrondi au millime (D6) ; une prime de primes_non_couvertes est refusée."""
+    return _prime(secteur, code, date, params, v1=False)
+
+
+def prime_v1(secteur: str, code: str, date: object, **params: Any) -> Result:
+    """Prime du contrat v1 (D76) : comme prime, et une prime non couverte qui porte un bloc service_contrat_v1
+    est servie telle qu'imprimée (montant exact, sans arrondi, dans l'unité imprimée). Le choix du contrat n'est
+    pas un paramètre de la requête : il est fait par le handler selon contract_version."""
+    return _prime(secteur, code, date, params, v1=True)
+
+
+def _exact(p: dict, detail: dict) -> None:
+    """Montant servi exact (D76) : drapeau, équivalent en dinars pour les millimes (décalage décimal, sans arrondi)
+    et hypothèse FR/AR affichée."""
+    montant = p["montant"]
+    detail["montant_tel_qu_imprime"] = True
+    fr = f"Montant servi tel qu'imprimé, sans arrondi au millime (« {p['montant_imprime']} »)"
+    ar = f"يُرجَع المبلغ كما هو مطبوع دون تدوير إلى المليم («{p['montant_imprime']}»)"
+    if p["unite"].startswith("millimes/"):
+        equivalent = montant.scaleb(-3)
+        detail["montant_equivalent_tnd"] = str(equivalent)
+        fr += f" : {str(montant).replace('.', ',')} millimes, soit {str(equivalent).replace('.', ',')} dinar."
+        ar += f": {montant} مليما، أي {equivalent} دينارا."
+    else:
+        fr += "."
+        ar += "."
+    detail["hypotheses"] = detail.get("hypotheses", []) + [fr]
+    detail["hypotheses_ar"] = detail.get("hypotheses_ar", []) + [ar]
+
+
+def _prime(secteur: str, code: str, date: object, params: dict, v1: bool) -> Result:
     grille = charger_grille(secteur)
     jour = parse_date(date)
+    p = None
     if code in grille.get("primes_non_couvertes", {}):
         # Prime présente dans la source mais non exposée (ex. condition ambiguë) : refus lu dans le JSON (D9).
         bloc = grille["primes_non_couvertes"][code]
-        raise Refus(Refus.SOURCE_MANQUANTE, bloc["message_fr"], bloc["message_ar"])
+        if not (v1 and "service_contrat_v1" in bloc):
+            raise Refus(Refus.SOURCE_MANQUANTE, bloc["message_fr"], bloc["message_ar"])
+        p = bloc["service_contrat_v1"]
     exiger_tables_transcrites(grille, secteur)
-    p = next((x for x in grille.get("primes", []) if x["code"] == code), None)
+    if p is None:
+        p = next((x for x in grille.get("primes", []) if x["code"] == code), None)
     if p is None:
         codes = ", ".join(x["code"] for x in grille.get("primes", [])) or "aucune prime transcrite"
         raise Refus(
@@ -143,20 +178,24 @@ def prime(secteur: str, code: str, date: object, **params: Any) -> Result:
         valeur = p["montant"]
         detail["effective_date"] = p.get("effective_date")
         _notes(p, detail)
-        if "montant_reduit_si_transport_assure" in p:
-            transport = _bool_obligatoire(params, "transport_assure", code)
-            detail["transport_assure"] = transport
-            if transport:
-                valeur = p["montant_reduit_si_transport_assure"]
+    if "montant_reduit_si_transport_assure" in p:
+        # Montant unique (D4) ou ligne datée, avec ou sans groupe (D80) : même montant réduit pour tous.
+        transport = _bool_obligatoire(params, "transport_assure", code)
+        detail["transport_assure"] = transport
+        if transport:
+            valeur = p["montant_reduit_si_transport_assure"]
 
     hyp = p.get("hypotheses")
     if hyp:
         # Interprétations affichées (ex. « لكل الأصناف » : même montant pour toutes les catégories).
         detail["hypotheses"], detail["hypotheses_ar"] = list(hyp["fr"]), list(hyp["ar"])
+    if p.get("montant_exact") is True:
+        _exact(p, detail)
+        detail["regles"] = "D76"
 
     ref = decision_ref(grille, secteur)
     return Result(
-        montant=arrondi_millime(valeur),
+        montant=valeur if p.get("montant_exact") is True else arrondi_millime(valeur),
         unite=p["unite"],
         detail=detail,
         citations=[

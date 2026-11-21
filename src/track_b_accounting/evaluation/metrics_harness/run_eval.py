@@ -38,6 +38,8 @@ from track_b_accounting.contract import handle  # noqa: E402
 
 GOLDEN = EVAL_DIR / "golden_sets" / "track_b_golden.v0.json"
 SCHEMA_TB = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v0.schema.json"
+# Cas dont la requête porte contract_version = track_b.v1 (D75) : réponse validée avec le schéma v1.
+SCHEMA_TB_V1 = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v1.schema.json"
 SCHEMA_COMMUN = REPO_ROOT / "src" / "shared" / "schemas" / "common.v0.schema.json"
 DECISIONS = REPO_ROOT / "docs" / "DECISIONS.md"
 
@@ -127,7 +129,8 @@ def _citations_valides(attendu: dict, rep: dict, refs: set[str]) -> list[str]:
     return problemes
 
 
-def evaluer_cas(c: dict, refs: set[str], v_tb, v_commun) -> dict:
+def evaluer_cas(c: dict, refs: set[str], v_tb, v_commun, v_tb_v1=None) -> dict:
+    """v_tb : schéma de réponse Track B v0 ; v_tb_v1 : schéma v1, pour une réponse en track_b.v1."""
     out = {
         "id": c["id"],
         "categorie": c["categorie"],
@@ -174,7 +177,9 @@ def evaluer_cas(c: dict, refs: set[str], v_tb, v_commun) -> dict:
         obtenu=obtenu,
         citations_ok=(not problemes) if rep["status"] == "ok" and c["attendu"]["status"] == "ok" else None,
         problemes_citations=problemes,
-        conforme_schema_track_b=v_tb.is_valid(rep),
+        conforme_schema_track_b=(
+            v_tb_v1 if v_tb_v1 is not None and rep.get("contract_version") == "track_b.v1" else v_tb
+        ).is_valid(rep),
         conforme_schema_commun=v_commun.is_valid(rep),
     )
     return out
@@ -385,8 +390,8 @@ def main(argv=None) -> int:
     dt.date.fromisoformat(args.date)
     golden = json.loads(GOLDEN.read_text(encoding="utf-8"))
     refs = set(re.findall(r"^### (D[0-9]+)\b", DECISIONS.read_text(encoding="utf-8"), flags=re.M))
-    v_tb, v_commun = _validateur(SCHEMA_TB), _validateur(SCHEMA_COMMUN)
-    res = [evaluer_cas(c, refs, v_tb, v_commun) for c in golden["cases"]]
+    v_tb, v_commun, v_tb_v1 = _validateur(SCHEMA_TB), _validateur(SCHEMA_COMMUN), _validateur(SCHEMA_TB_V1)
+    res = [evaluer_cas(c, refs, v_tb, v_commun, v_tb_v1) for c in golden["cases"]]
     rap = rapport(golden, res, args.date)
     nom = "baseline" if args.baseline else f"eval_{args.date}"
     sortie = RESULTS_DIR

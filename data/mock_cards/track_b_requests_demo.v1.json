@@ -1,0 +1,177 @@
+[
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-01-verre-horaires-degre-5",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "horaires", "categorie": "3", "degre": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-02-verre-mensuels-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "degre": 11, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-03-textile-colonne-stage",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "1", "sous_categorie": "a", "degre": "stage", "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-04-textile-colonne-0",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "horaires", "categorie": "II", "degre": 0, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-05-textile-colonne-19",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "17", "degre": "19", "date": "2022-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-06-textile-colonne-20",
+    "operation": "salaire_base",
+    "params": {"secteur": "TEXTILE", "population": "horaires", "categorie": "I", "degre": 20, "date": "2021-10-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-07-banques-colonne-stage",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "agent_services_3", "degre": "stage", "date": "2021-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-08-refus-banques-colonne-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "BANQUES", "categorie": "agent_services_3", "degre": 1, "date": "2021-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-09-refus-degre-absent",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "horaires", "categorie": "3", "degre": 14, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-10-refus-degre-et-anciennete",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "horaires", "categorie": "3", "degre": 5, "anciennete_annees": 4, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-11-refus-ni-degre-ni-anciennete",
+    "operation": "salaire_base",
+    "params": {"secteur": "VERRE_MIROIRS", "population": "horaires", "categorie": "3", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-12-refus-confiserie-cellule-illisible",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONFISERIE_BISCUITERIE_CHOCOLATERIE", "population": "mensuels", "categorie": "1", "degre": 8, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-13-metallurgie-dernier-degre",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4", "degre": 11, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-14-cosmetiques-degre-unique",
+    "operation": "salaire_base",
+    "params": {"secteur": "COSMETIQUES_PARFUMS", "population": "production_categorie_1", "categorie": "1", "degre": "unique", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-15-alcool-prime-panier-millimes",
+    "operation": "prime",
+    "params": {"secteur": "BOISSONS_ALCOOLISEES", "code": "prime_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-16-bois-aide-deces-4-decimales",
+    "operation": "prime",
+    "params": {"secteur": "BOIS_AMEUBLEMENT_LIEGE", "code": "aide_deces", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-17-fonderie-prime-panier-millimes",
+    "operation": "prime",
+    "params": {"secteur": "FONDERIE_METALLURGIE_MECANIQUE", "code": "prime_panier", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-18-sans-degre-identique-a-v0",
+    "operation": "salaire_base",
+    "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "4", "anciennete_annees": 15, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-19-peintures-execution-horaires-degre-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_horaires", "categorie": "ouvrier_hautement_qualifie", "degre": 13, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-20-peintures-administratifs-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "administratifs_techniciens", "categorie": "23", "degre": 1, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-21-peintures-execution-mensuels-degre-7",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_mensuels", "categorie": "ouvrier_manuel", "degre": 7, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-22-chaussure-horaires-degre-30",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "horaires", "categorie": "VI", "degre": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-23-chaussure-mensuels-1b-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "mensuels", "categorie": "1", "sous_categorie": "b", "degre": 1, "date": "2021-12-15"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-24-chaussure-mensuels-anomalie-degre-24",
+    "operation": "salaire_base",
+    "params": {"secteur": "CHAUSSURE", "population": "mensuels", "categorie": "5", "degre": 24, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-25-refus-peintures-degre-absent",
+    "operation": "salaire_base",
+    "params": {"secteur": "PEINTURES", "population": "execution_horaires", "categorie": "ouvrier", "degre": 14, "date": "2024-06-01"},
+    "lang": "fr"
+  }
+]

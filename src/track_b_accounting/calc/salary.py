@@ -7,7 +7,15 @@ import math
 from decimal import Decimal
 from typing import Any
 
-from .loaders import GRILLES, bornes_degre, charger_grille, decision_ref, exiger_tables_transcrites, population_de_table
+from .loaders import (
+    GRILLES,
+    bornes_degre,
+    charger_grille,
+    decision_ref,
+    designations_degres,
+    exiger_tables_transcrites,
+    population_de_table,
+)
 from .models import Citation, Refus, Result, arrondi_millime, parse_date, plus_recent_avant
 
 
@@ -271,6 +279,10 @@ def table_applicable(secteur: Any, population: Any, date: object) -> dict:
     if fin is not None and jour.isoformat() > fin["date"]:
         # Table remplacée par une grille absente des sources : refus lu dans le JSON (Citation ou Silence).
         raise Refus(Refus.SOURCE_MANQUANTE, fin["message_fr"], fin["message_ar"])
+    for periode in table.get("periodes_refusees", []):
+        # Période de la table contredite par une autre source (ex. date d'avenant) : refus lu dans le JSON (D80).
+        if periode["du"] <= jour.isoformat() <= periode["au"]:
+            raise Refus(Refus.SOURCE_MANQUANTE, periode["message_fr"], periode["message_ar"])
     return table
 
 
@@ -282,12 +294,19 @@ def salaire_base(
     date: object = None,
     unite_souhaitee: str | None = None,
     sous_categorie: str | None = None,
+    degre: Any = None,
 ) -> Result:
     """Salaire de base dans l'unité de la table (TND/mois ou TND/heure), sans aucune conversion.
 
     anciennete_annees : obligatoire pour une population à degrés, refusée pour une population sans degré.
     sous_categorie : obligatoire pour une catégorie à sous-catégories, refusée sinon (D9).
+    degre : désignation imprimée du degré, à la place de anciennete_annees (contrat v1, D75) ; None → chemin par
+    l'ancienneté, strictement inchangé.
     """
+    if degre is not None:
+        return salaire_par_degre(
+            secteur, population, categorie, anciennete_annees, date, unite_souhaitee, sous_categorie, degre
+        )
     grille = charger_grille(secteur)
     pop = _population(grille, population)
     cat, cle, info_sous = _cle_categorie(grille, pop, categorie, sous_categorie)
@@ -412,3 +431,257 @@ def _appliquer_art13(art13: dict, table: dict, cle: str, valeur_dernier_degre: D
         )
     info.update(hypotheses=list(bloc["hypotheses_fr"]), hypotheses_ar=list(bloc["hypotheses_ar"]))
     return valeur, info
+
+
+# --- Demande par degré déclaré (contrat v1, D75) ----------------------------------------------------------------
+
+
+def _ans(n: int) -> str:
+    return f"{n} an" if n == 1 else f"{n} ans"
+
+
+def _colonnes_par_degre(grille: dict, population: str, table: dict) -> list[dict]:
+    """Colonnes atteignables par le degré déclaré, dans l'ordre de la grille : les degrés (désignation imprimée,
+    alias éventuel), puis les colonnes gardées hors de valeurs que la table déclare servies par degré."""
+    degres = grille["degres"][population]
+    out = [
+        {
+            "designation": nom,
+            "alias": d.get("alias_designation"),
+            "degre": d["degre"],
+            "anciennete_imprimee": d.get("anciennete_imprimee"),
+            "libelle": d["anciennete_label"] if bornes_degre(d["anciennete_label"]) else None,
+            "hors_valeurs": None,
+        }
+        for d, nom in zip(degres, designations_degres(degres))
+    ]
+    ns = table.get("colonnes_non_servies")
+    if ns is not None and ns.get("servies_par_degre") is True:
+        for i, (nom, anc) in enumerate(zip(ns["colonnes_imprimees"], ns["anciennete_imprimee"])):
+            out.append(
+                {
+                    "designation": nom,
+                    "alias": None,
+                    "degre": len(degres) + i + 1,
+                    "anciennete_imprimee": anc,
+                    "libelle": None,
+                    "hors_valeurs": i,
+                }
+            )
+    return out
+
+
+def _valeur_par_degre(table: dict, cle: str, col: dict) -> tuple[Decimal, bool]:
+    """(montant imprimé, colonne atteinte seulement par le degré). Case illisible → refus lu dans le JSON ; case
+    déclarée servie_par_degre → valeur_imprimee."""
+    if col["hors_valeurs"] is not None:
+        return table["colonnes_non_servies"]["valeurs"][cle][col["hors_valeurs"]], True
+    valeur = table["valeurs"][cle][col["degre"] - 1]
+    if valeur is not None:
+        return valeur, False
+    r = next(c for c in table["cellules_source_manquante"] if (c["categorie"], c["degre"]) == (cle, col["degre"]))
+    if r.get("servie_par_degre") is True:
+        return r["valeur_imprimee"], True
+    raise Refus(Refus.SOURCE_MANQUANTE, r["message_fr"], r["message_ar"])
+
+
+def _hypotheses_par_degre(
+    grille: dict, pop: str, cle: str, table: dict, col: dict, dernier: bool, sans_anciennete: bool
+) -> tuple[list[str], list[str], str | None]:
+    """Hypothèses FR/AR du degré déclaré, et règle au-delà du dernier degré non appliquée (ou None)."""
+    page = table["source_pdf_page"]
+    fr = ["Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée."]
+    ar = ["الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية."]
+    if col["anciennete_imprimee"] is not None:
+        x = col["anciennete_imprimee"]
+        fr.append(f"Ancienneté imprimée pour ce degré dans la grille (page {page}) : « {x} ».")
+        ar.append(f"الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة {page}): «{x}».")
+    bloc = grille["au_dela_dernier_degre"][pop]
+    regle = bloc.get("regle", "refus")
+    art, p = bloc.get("source_article"), bloc.get("source_pdf_page")
+    seuil_nul = regle == "refus" and bloc["anciennete_max_couverte_annees"] == 0
+    if seuil_nul:
+        fr.append(
+            f"La grille n'imprime aucune durée de degré (article {art}, page {p}) : le degré déclaré n'est rattaché "
+            "à aucune ancienneté."
+        )
+        ar.append(f"لا يذكر الجدول مدة أي درجة (الفصل {art}، الصفحة {p}): لا ترتبط الدرجة المصرَّح بها بأي أقدمية.")
+    if sans_anciennete:
+        fr.append(
+            f"Cette colonne n'est atteinte par aucune ancienneté, faute de durée imprimée (page {page}) : elle n'est "
+            "servie que par le degré déclaré."
+        )
+        ar.append(f"لا تُبلَغ هذه الخانة بأي أقدمية لعدم ذكر مدتها (الصفحة {page}): لا تُعتمد إلا بالدرجة المصرَّح بها.")
+    bornes = bornes_degre(col["libelle"]) if col["libelle"] else None
+    for r in grille.get("anciennetes_refusees", {}).get(pop, []):
+        x, y = r["au_dela_de"], r["jusqu_a_inclus"]
+        if bornes is not None and bornes[0] < y and (bornes[1] is None or bornes[1] >= x):
+            ra, rp = r["source_article"], r["source_pdf_page"]
+            fr.append(
+                f"L'article {ra} (page {rp}) et l'en-tête de la grille se contredisent pour une ancienneté de plus de "
+                f"{_ans(x)} jusqu'à {_ans(y)} inclus, intervalle qui touche ce degré : par l'ancienneté, il est "
+                "refusé ; le montant servi est celui imprimé pour le degré déclaré."
+            )
+            ar.append(
+                f"يتعارض الفصل {ra} (الصفحة {rp}) مع رأس الجدول بالنسبة إلى أقدمية تفوق {x} سنة إلى {y} سنة، وهي "
+                "فترة تمسّ هذه الدرجة: تُرفض بحساب الأقدمية؛ والمبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+            )
+    if not dernier or regle == "ouvert":
+        return fr, ar, None
+    if regle == "ecart_cumule_biennal":
+        s = bloc["dernier_degre_atteint_a_annees"] + bloc["periode_annees"]
+        fr.append(
+            f"Dernier degré : l'écart cumulé de l'article {art} (page {p}) s'ajoute au-delà de {_ans(s)} "
+            "d'ancienneté ; il dépend de l'ancienneté, non fournie, et n'est pas appliqué. Pour un salarié de plus "
+            f"de {_ans(s)}, demander par l'ancienneté."
+        )
+        ar.append(
+            f"آخر درجة: يُضاف الفارق المتراكم المنصوص عليه بالفصل {art} (الصفحة {p}) بعد {s} سنة من الأقدمية؛ "
+            "وهو مرتبط بالأقدمية غير المُقدَّمة ولا يُطبَّق. بالنسبة إلى عامل تفوق أقدميته "
+            f"{s} سنة، يُطلب الأجر بحساب الأقدمية."
+        )
+        for r in bloc.get("cases_refusees", []):
+            if (r["table_id"], r["categorie"]) == (table["table_id"], cle):
+                ra, rp = r["source_article"], r["source_pdf_page"]
+                fr.append(
+                    f"Cette case est exclue de l'écart cumulé (article {ra}, page {rp}) ; le montant servi est "
+                    "celui imprimé."
+                )
+                ar.append(
+                    f"هذه الخانة مستثناة من الفارق المتراكم (الفصل {ra}، الصفحة {rp})؛ والمبلغ المُرجَع هو المطبوع."
+                )
+    elif regle == "table_correspondance":
+        s = bloc["dernier_degre_atteint_a_annees"] + bloc["duree_au_dernier_degre_annees"]
+        fr.append(
+            f"Dernier degré : la table de correspondance de l'article {art} (page {p}) s'applique au-delà de "
+            f"{_ans(s)} d'ancienneté ; elle dépend de l'ancienneté, non fournie, et n'est pas appliquée. Pour un "
+            f"salarié de plus de {_ans(s)}, demander par l'ancienneté."
+        )
+        ar.append(
+            f"آخر درجة: يُطبَّق جدول التناظر المنصوص عليه بالفصل {art} (الصفحة {p}) بعد {s} سنة من الأقدمية؛ "
+            "وهو مرتبط بالأقدمية غير المُقدَّمة ولا يُطبَّق. بالنسبة إلى عامل تفوق أقدميته "
+            f"{s} سنة، يُطلب الأجر بحساب الأقدمية."
+        )
+    elif not seuil_nul:
+        n = bloc["anciennete_max_couverte_annees"]
+        fr.append(
+            f"Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de {_ans(n)} ; au-delà, la "
+            f"convention ne fixe pas le montant (article {art}, page {p}). Cette règle n'est pas appliquée : le "
+            "montant servi est celui imprimé pour le degré déclaré."
+        )
+        ar.append(
+            f"آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن {n} سنة، وبعدها لا تضبط الاتفاقية "
+            f"المبلغ (الفصل {art}، الصفحة {p}). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة "
+            "المصرَّح بها."
+        )
+    return fr, ar, f"article {art}, page {p}"
+
+
+def salaire_par_degre(
+    secteur: Any,
+    population: Any,
+    categorie: Any,
+    anciennete_annees: Any,
+    date: object,
+    unite_souhaitee: str | None,
+    sous_categorie: str | None,
+    degre: Any,
+) -> Result:
+    """Salaire de base de la colonne désignée par degre, telle qu'imprimée (D75).
+
+    degre : désignation imprimée (colonne_imprimee, sinon numéro du degré), entier ou chaîne, ou alias déclaré.
+    Aucun refus lié à l'ancienneté ne s'applique ; aucune règle au-delà du dernier degré n'est appliquée (elle est
+    nommée dans detail) ; une case illisible reste refusée, sauf case déclarée servie_par_degre.
+    """
+    if anciennete_annees is not None:
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            "anciennete_annees et degre ne peuvent pas être donnés ensemble : donner l'un ou l'autre.",
+            "لا يمكن تقديم anciennete_annees و degre معا: يُقدَّم أحدهما فقط.",
+        )
+    grille = charger_grille(secteur)
+    pop = _population(grille, population)
+    cat, cle, info_sous = _cle_categorie(grille, pop, categorie, sous_categorie)
+    if not grille["degres"][pop]:
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            f"degre non prévu : la grille {secteur}/{pop} n'a pas de degré d'ancienneté.",
+            f"degre غير متوقع: جدول الأجور {secteur}/{pop} لا يتضمن درجات أقدمية.",
+        )
+    if isinstance(degre, bool) or not isinstance(degre, (int, str)):
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            f"Degré invalide : {degre!r} (désignation imprimée attendue, nombre entier ou texte).",
+            f"درجة غير صالحة: {degre!r} (المطلوب التسمية المطبوعة، عدد صحيح أو نص).",
+        )
+    table = table_applicable(secteur, pop, date)
+    if unite_souhaitee is not None and unite_souhaitee != table["unite"]:
+        raise Refus(
+            Refus.HORS_SCOPE,
+            f"La grille donne un montant en {table['unite']} ; la conversion en {unite_souhaitee} "
+            "n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé).",
+            f"يعطي الجدول المبلغ بوحدة {table['unite']}؛ التحويل إلى {unite_souhaitee} "
+            "غير منصوص عليه في أي مصدر مُتحقَّق منه.",
+        )
+    colonnes = _colonnes_par_degre(grille, pop, table)
+    demande = str(degre)
+    col = next((c for c in colonnes if demande in (c["designation"], c["alias"])), None)
+    if col is None:
+        noms = ", ".join(c["designation"] for c in colonnes)
+        alias = [c["alias"] for c in colonnes if c["alias"]]
+        noms += f" ; alias : {', '.join(alias)}" if alias else ""
+        raise Refus(
+            Refus.PARAM_INVALIDE,
+            f"Degré {degre!r} absent de la grille {secteur}/{pop} (table {table['table_id']}) ; désignations "
+            f"imprimées acceptées : {noms}.",
+            f"الدرجة {degre!r} غير موجودة في جدول الأجور {secteur}/{pop} (الجدول {table['table_id']})؛ "
+            f"التسميات المطبوعة المقبولة: {noms}.",
+        )
+    valeur, sans_anciennete = _valeur_par_degre(table, cle, col)
+    fr, ar, regle_non_appliquee = _hypotheses_par_degre(
+        grille, pop, cle, table, col, col is colonnes[-1], sans_anciennete
+    )
+    detail: dict[str, Any] = {"secteur": secteur, "population": pop, "categorie": cat, **info_sous}
+    detail.update(degre=col["degre"], degre_imprime=col["designation"], degre_declare=True)
+    if col["alias"] is not None and demande == col["alias"]:
+        detail["alias_designation"] = col["alias"]
+    if col["anciennete_imprimee"] is not None:
+        detail["anciennete_imprimee"] = str(col["anciennete_imprimee"])
+    if col["libelle"] is not None:
+        detail["libelle_degre"] = col["libelle"]
+    if regle_non_appliquee is not None:
+        detail["regle_au_dela_non_appliquee"] = regle_non_appliquee
+    hyps = [
+        h
+        for h in (
+            grille.get("hypotheses_grille", {}).get(pop),
+            grille.get("hypotheses_categories", {}).get(pop, {}).get(cle),
+        )
+        if h
+    ]
+    # Hypothèses écrites pour le chemin par l'ancienneté (« L'ancienneté reçue… ») : non affichées ici.
+    detail["hypotheses"] = [
+        x for h in hyps for i, x in enumerate(h["fr"]) if i not in h.get("chemin_anciennete_seulement", ())
+    ] + fr
+    detail["hypotheses_ar"] = [
+        x for h in hyps for i, x in enumerate(h["ar"]) if i not in h.get("chemin_anciennete_seulement", ())
+    ] + ar
+    detail.update(
+        {
+            "table_id": table["table_id"],
+            "effective_date": table["effective_date"],
+            "date_calcul": parse_date(date).isoformat(),
+            "regime_hebdomadaire_heures": table.get("regime_hebdomadaire_heures"),
+            "regles": "D75",
+        }
+    )
+    citations = [
+        Citation(
+            source_file=grille["_meta"]["source_file"],
+            page=table["source_pdf_page"],
+            article=None,
+            data_file=GRILLES[secteur],
+            decision_ref=decision_ref(grille, secteur),
+        )
+    ]
+    return Result(montant=arrondi_millime(valeur), unite=table["unite"], detail=detail, citations=citations)

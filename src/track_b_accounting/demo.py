@@ -1,4 +1,6 @@
-"""Démo du contrat JSON v0 : MockOrchestrator → handler Track B → MockTrackA.
+"""Démo du contrat JSON : MockOrchestrator → handler Track B → MockTrackA.
+
+Série v0 d'abord (inchangée), puis série v1 (D75, D76 : fichier track_b_requests_demo.v1.json).
 
 Depuis la racine du dépôt :  python -m src.track_b_accounting.demo
 """
@@ -14,7 +16,7 @@ from typing import TextIO, cast
 from .contract import handle
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "tests"))
-from mocks import MockOrchestrator, MockTrackA  # noqa: E402
+from mocks import DEMO_FILE_V1, MockOrchestrator, MockTrackA  # noqa: E402
 
 
 def main(out: TextIO | None = None) -> int:
@@ -31,6 +33,19 @@ def main(out: TextIO | None = None) -> int:
     statuts = [rep["status"] for _, rep in echanges]
     print(
         f"\nBilan : {statuts.count('ok')} ok, {statuts.count('refus')} refus, {statuts.count('erreur')} erreur(s).",
+        file=out,
+    )
+    requetes_v1 = json.loads(DEMO_FILE_V1.read_text(encoding="utf-8"))
+    echanges_v1 = MockOrchestrator(handle, requetes_v1).run()
+    for i, (req, rep) in enumerate(echanges_v1, 1):
+        print(f"\n=== Contrat v1, démo {i}/{len(echanges_v1)} — {req['request_id']} ({req['lang']}) ===", file=out)
+        print("Requête  :", json.dumps(req, ensure_ascii=False), file=out)
+        print("Réponse  :", json.dumps(rep, ensure_ascii=False), file=out)
+        print("Track A  :", track_a.formuler(req, rep), file=out)
+    statuts_v1 = [rep["status"] for _, rep in echanges_v1]
+    print(
+        f"\nBilan v1 : {statuts_v1.count('ok')} ok, {statuts_v1.count('refus')} refus, "
+        f"{statuts_v1.count('erreur')} erreur(s).",
         file=out,
     )
     return 0
