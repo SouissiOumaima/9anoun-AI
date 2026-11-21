@@ -86,6 +86,10 @@ aller au bout sur cette machine.
 - **Taille des données réduite pour le CPU** : 1 200 lignes d'entraînement au lieu des 3 000 prévues, et 4 époques de
   FT seulement.
 - **Le TL précalcule les caractéristiques de l'encodeur gelé** une seule fois : c'est ce qui le rend aussi rapide.
+- **Vitesse de l'OCR sur un vrai PDF** (mesurée avec `scripts/evaluer_donnees_reelles.py --profile`, 5 pages,
+  chiffres agrégés seulement) : 146 s au total, environ 27 s d'OCR par page. La reconnaissance prend 69 % du temps
+  d'OCR (94,6 s sur 137,1 s), et le temps suit le nombre de lignes de la page. Un premier essai avait pris 4 563 s
+  pour les mêmes pages : la machine était chargée par autre chose (cause probable, non mesurée directement).
 
 ## 4. Limites : ce que ces chiffres ne prouvent pas
 
