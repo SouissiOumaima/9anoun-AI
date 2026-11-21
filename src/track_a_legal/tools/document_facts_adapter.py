@@ -122,6 +122,11 @@ def extract_document_facts(
         if citation_id not in citation_ids:
             continue
 
+        # Ne pas inventer la devise : elle doit provenir de DS3.
+        currency = field.get("currency")
+        if currency != "TND":
+            continue
+
         # Produire un fait compatible avec fact_comparison.py.
         facts.append(
             {
@@ -129,7 +134,7 @@ def extract_document_facts(
                 "subject_id": subject_id,
                 "property": property_name,
                 "period": period,
-                "unit": "TND",
+                "unit": currency,
                 "value": value,
                 "document_id": document_id,
                 "citation_id": citation_id,
