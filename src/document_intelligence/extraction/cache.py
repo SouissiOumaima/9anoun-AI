@@ -1,11 +1,12 @@
 """Bounded, short-lived process memory cache; concurrent identical calls share work."""
 
 from collections import OrderedDict
+from collections.abc import Callable
 from concurrent.futures import Future
 from copy import deepcopy
 from threading import Lock
 from time import monotonic
-from typing import Any, Callable
+from typing import Any
 
 
 class ExtractionCache:
@@ -13,7 +14,7 @@ class ExtractionCache:
         self.ttl, self.capacity = ttl, capacity
         self._lock = Lock()
         self._values: OrderedDict[str, tuple[float, Any]] = OrderedDict()
-        self._pending: dict[str, Future] = {}
+        self._pending: dict[str, Future[Any]] = {}
 
     def get_or_compute(self, key: str, compute: Callable[[], Any]) -> Any:
         with self._lock:
@@ -23,10 +24,11 @@ class ExtractionCache:
             if key in self._values:
                 self._values.move_to_end(key)
                 return deepcopy(self._values[key][1])
-            future = self._pending.get(key)
-            owner = future is None
+            pending = self._pending.get(key)
+            owner = pending is None
+            future: Future[Any] = pending if pending is not None else Future()
             if owner:
-                future = self._pending[key] = Future()
+                self._pending[key] = future
         if not owner:
             return deepcopy(future.result())
         try:
