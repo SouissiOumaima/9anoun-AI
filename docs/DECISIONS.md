@@ -3857,3 +3857,83 @@ pp.18-20.
   identifiants uniques et portent page, ligne, colonne et rendu, sans contrainte sur `verification_humaine`.
 
 **Numérotation** : la vague 6 prendra D84 à D89.
+
+### D90 — Ce qu'une note de bas de page désigne par un numéro
+
+**Contexte.** Les notes de bas de page des 56 condensés citent les textes qui ont modifié
+un article sous une forme unique : « عدد <n> ». Le même gabarit sert aux avenants, aux
+décrets et aux lois, et le lecteur d'origine retenait tous ces numéros comme des avenants.
+Sur 3 487 documents citables, la correction en change 145 : 65 reçoivent une date
+différente ou perdent la leur, et 80 gardent la même date mais portent désormais la marque
+d'une incertitude qui n'était pas signalée. Une date fausse accompagnée d'une citation
+d'article est le pire cas pour un assistant juridique : elle a l'apparence de la précision.
+
+**1. La lecture est séquentielle, pas globale.** Le type d'un numéro est donné par le mot
+qui le précède, dans le segment compris entre la mention précédente et lui. Une recherche
+par expression régulière sur toute la note ne peut pas le voir.
+
+**2. Une continuation hérite, sauf si elle porte son propre marqueur.** « ثم عدد <n> » et
+« و عدد <n> » reprennent le type de la mention précédente : dans « نقح بالمرسوم عدد 11 ثم
+عدد 12 », le 12 est un décret. Mais si le segment contient lui-même un marqueur, c'est le
+marqueur qui tranche, et c'est le plus proche de « عدد » qui l'emporte.
+
+**3. Un avenant exige deux racines.** Une graphie de ملحق — y compris les fautes de frappe
+relevées dans la livraison — **suivie** de la racine تعديل. C'est تعديل qui fait l'avenant.
+Les deux racines sont exigées parce qu'elles sont le discriminant juridique, et non parce
+qu'une liste de graphies aurait été relevée : une liste fermée se casserait à la prochaine
+convention.
+
+**4. « الملحق عدد <n> » sans التعديلي n'est pas un avenant.** Signalé par DS5 le 21/11 :
+dans la grille du BTP, « الملحق عدد 4 » désigne l'**annexe** n° 4. La forme reste donc non reconnue,
+et elle est comptée : 23 mentions dans la livraison. Son sort est une question de droit,
+soumise à DS4 et DS5, et non une question de code.
+
+**5. Les décrets et les lois sont reconnus puis exclus.** Ils reçoivent une origine propre,
+`decret` et `loi`, plutôt que d'être fondus dans les mentions non reconnues : le jour où
+leurs dates sont fournies, chaque groupe se récupère d'un coup.
+
+**6. Aucune date n'est inventée, et aucune date ne sort nue.** Deux règles distinctes :
+
+   - **Retrait.** Si une mention non reconnue suit le dernier avenant retenu, dans l'ordre
+     de toutes les notes du document, la date est retirée : `None`, origine
+     `mention_non_reconnue_posterieure`. On ignore ce qui a modifié l'article ensuite, et
+     une date périmée est une date inventée. Ici la position décide, d'où un nom
+     positionnel. 19 documents.
+   - **Marque.** Sinon la date est gardée, mais l'origine porte une marque pour chaque
+     élément que le document cite sans qu'on ait su le lire, **où qu'il se trouve** :
+     `:mention_non_reconnue`, `:nombre_orphelin`, `:decret_ou_loi`. La position n'est pas
+     retenue ici, parce que l'ordre du texte n'est pas l'ordre chronologique :
+     `CCS-PLASTIQUE-ART-48` cite les avenants 10 à 15 dans sa première note et l'avenant 9
+     dans la seconde. 3, 70 et 44 documents respectivement.
+
+   Les marques suivent aussi les branches `:introuvable` et `:sans_date` : une incertitude
+   qui disparaîtrait selon la branche ne se retrouverait plus le jour où la date manquante
+   est fournie.
+
+**7. Les trois marques sont provisoires.** Elles attendent l'arbitrage de la juriste sur
+77 mentions non reconnues et 72 numéros orphelins. L'indice est fort : **les 77 portent un
+numéro qui figure dans l'index des avenants de leur propre convention**, et pour les 65
+numéros orphelins qui suivent le dernier avenant, la date d'effet de l'avenant ainsi
+désigné est postérieure à celle qu'on sert. Si DS4 et DS5 confirment que ces formes
+désignent des avenants, les reconnaître rendra une date plus juste à ces documents ; en
+attendant, on préfère une date marquée à une date affirmée.
+
+**8. Le rapport d'ingestion ne contient aucun texte du corpus.** Les mentions y sont
+comptées par forme typée — nature, continuation, présence de chaque racine, alarme — en
+clés ASCII. `ingestion_report.json` est écrit dans `data/processed/legal_corpus/` et sera
+versionné : ce qui est committé sort du cercle des personnes qui détiennent l'archive, ce
+qui est imprimé en console n'en sort pas. Un test vérifie qu'aucun caractère arabe ne sort
+du rapport d'un condensé d'essai qui en contient, numéro d'article compris. Trois champs
+antérieurs à cette décision — `digest`, `sections_inconnues` et `doublons` — en contiennent
+encore ; ils relèvent de l'étape qui remplacera le corpus committé.
+
+**Conséquence mesurée** sur la livraison du 21/11, par rapport au lecteur d'origine :
+documents citables sans date d'effet 69 → 89 ; articles `modified=True` portant la date de
+signature de leur convention **13, inchangé**. Ce second chiffre est le critère
+d'acceptation : un article déclaré modifié qui porte la date du texte d'origine est une
+date fausse, et le correctif ne doit pas en créer.
+
+**Conséquence pour DS4.** Le champ `effective_from_origin` prend des valeurs nouvelles :
+`decret`, `loi`, `mention_non_reconnue_posterieure`, et les trois marques en suffixe. Le
+commentaire de `models.py` ne les liste pas encore. Toute lecture de ce champ qui en
+analyse la valeur plutôt que de l'afficher doit être revue.
