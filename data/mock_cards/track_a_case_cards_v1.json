@@ -1,0 +1,612 @@
+[
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-001",
+    "case_id": "CASE-A-001",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ]
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-002",
+    "case_id": "CASE-A-002",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis.",
+        "evidence_ids": [
+          "E-UNKNOWN-002"
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ]
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-003",
+    "case_id": "CASE-A-003",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ],
+    "missing_information": [
+      {
+        "missing_id": "MISS-A-003-001",
+        "field_name": "termination_notice_delivery_proof",
+        "reason": "No evidence establishing receipt of the termination notice is available in this fictitious case."
+      }
+    ]
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-004",
+    "case_id": "CASE-A-004",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ],
+    "contradictions": [
+      {
+        "contradiction_id": "CONTRA-A-004-001",
+        "description": "The two fictitious parties provide conflicting accounts of the disputed termination circumstances. Neither account has been independently verified.",
+        "source_ids": [
+          "C1",
+          "C2"
+        ],
+        "related_claim_ids": [
+          "C1",
+          "C2"
+        ]
+      }
+    ]
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-005",
+    "case_id": "CASE-A-005",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ],
+    "document_facts": [
+      {
+        "fact_id": "FACT-A-005-001",
+        "subject_id": "P1",
+        "evidence_id": "E1",
+        "document_id": "mock://documents/contrat_001",
+        "field_name": "contract_start_date",
+        "value": "2024-01-01",
+        "confidence": null,
+        "user_confirmed": false,
+        "citation": null,
+        "warnings": [
+          "Illustrative value derived from the fictitious case timeline.",
+          "No document extraction or authenticity verification performed."
+        ]
+      }
+    ]
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-006",
+    "case_id": "CASE-A-006",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ],
+    "legal_sources": [
+      {
+        "article_id": "MOCK-ARTICLE-A-006",
+        "reference": "FICTIONAL LEGAL TEST REFERENCE",
+        "source_id": "mock://legal/unverified_article_006",
+        "text": "Synthetic test content only. This text does not represent any real legal rule.",
+        "citation": null,
+        "effective_date": null,
+        "validity_status": null,
+        "effective_from": null,
+        "effective_to": null,
+        "version_group": null,
+        "version": null,
+        "applicable_at_reference_date": null
+      }
+    ],
+    "reference_date": null
+  },
+  {
+    "contract_version": "track_a.v1",
+    "request_id": "REQ-A-V1-007",
+    "case_id": "CASE-A-007",
+    "lang": "fr",
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Ahmed Ben Ali",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Société Démo SARL",
+        "role": "employer"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "EV1",
+        "date": "2024-01-01",
+        "description": "Début du contrat de travail.",
+        "source_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-05",
+        "description": "Incident allégué par l'employeur.",
+        "source_ids": [
+          "E2"
+        ]
+      },
+      {
+        "event_id": "EV3",
+        "date": "2026-09-10",
+        "description": "Notification du licenciement.",
+        "source_ids": [
+          "E3"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C1",
+        "party_id": "P1",
+        "text": "Le salarié affirme ne pas avoir reçu de préavis."
+      },
+      {
+        "claim_id": "C2",
+        "party_id": "P2",
+        "text": "L'employeur affirme que le licenciement est motivé par une faute grave."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contract",
+        "description": "Contrat de travail fictif.",
+        "source": "mock://documents/contrat_001"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "email",
+        "description": "Email fictif relatif à l'incident.",
+        "source": "mock://documents/email_001"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "termination_letter",
+        "description": "Lettre fictive de licenciement.",
+        "source": "mock://documents/licenciement_001"
+      }
+    ],
+    "reference_date": "2026-01-15",
+    "legal_sources": [
+      {
+        "article_id": "MOCK-ARTICLE-A-007",
+        "reference": "FICTIONAL FUTURE LEGAL VERSION",
+        "source_id": "mock://legal/future_version_007",
+        "text": "Synthetic provision for temporal regression testing.",
+        "citation": {
+          "citation_id": "MOCK-CIT-A-007",
+          "document": "fictional-legal-source-007.pdf",
+          "page": 1,
+          "exact_excerpt": "Synthetic provision for temporal regression testing."
+        },
+        "effective_from": "2026-06-01",
+        "effective_to": null,
+        "version_group": "MOCK-GROUP-A-007",
+        "version": 2,
+        "applicable_at_reference_date": false
+      }
+    ]
+  }
+]

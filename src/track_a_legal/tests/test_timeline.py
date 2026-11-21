@@ -117,3 +117,20 @@ def test_build_timeline_rejects_invalid_date() -> None:
     # Nous attendons explicitement une ValueError.
     with pytest.raises(ValueError):
         build_timeline(events)
+def test_build_timeline_rejects_unknown_date() -> None:
+    """Une date inconnue ne doit jamais etre inventee."""
+
+    events = [
+        {
+            "event_id": "EV-UNKNOWN-001",
+            "date": None,
+            "description": "Evenement fictif dont la date est inconnue.",
+            "source_ids": [],
+        }
+    ]
+
+    with pytest.raises(ValueError):
+        build_timeline(events)
+
+    # La date originale doit rester inconnue.
+    assert events[0]["date"] is None
