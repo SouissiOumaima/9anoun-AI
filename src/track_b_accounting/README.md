@@ -8,9 +8,9 @@ citations (PDF, page, article, entrée de `docs/DECISIONS.md`) ; sans source vé
 ```
 src/track_b_accounting/
   calc/                 calculs : salaire_base, prime, smig (aucune donnée saisie ici)
-  contract/             interface JSON track_b.v0 : handler (handle) et ligne de commande (cli)
-  demo.py               démo du contrat : 122 échanges orchestrateur → Track B → Track A (fictifs)
-  evaluation/           jeu de référence (201 cas lus dans les PDF), banc de mesure et baseline
+  contract/             interface JSON track_b.v0 et track_b.v1 (D75) : handler (handle) et ligne de commande (cli)
+  demo.py               démo du contrat : 255 échanges v0 puis 25 échanges v1, orchestrateur → Track B → Track A (fictifs)
+  evaluation/           jeu de référence (308 cas lus dans les PDF, dont 18 en v1), banc de mesure et baseline
   tests/                tests unitaires et de bout en bout du module
   tools/                outils de contrôle des PDF et de l'OCR
   requirements.txt      dépendances d'exécution et de test
@@ -34,7 +34,7 @@ Depuis la racine du dépôt :
 python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA-MM-JJ
 ```
 
-Elle évalue le module sur les 201 cas du jeu de référence, écrit le rapport dans
+Elle évalue le module sur les 308 cas du jeu de référence, écrit le rapport dans
 `evaluation/results/eval_<date>.json` et `.md`, et compare automatiquement chaque métrique à la baseline
 (`evaluation/results/baseline.json`). Code de sortie : **1** en cas de faux montant ou d'exception, **2** si au
 moins deux métriques baissent par rapport à la baseline, **0** sinon. Détails : `evaluation/README.md`.
@@ -67,6 +67,14 @@ Toutes depuis la racine du dépôt :
    une seule table (enseignement privé, gardiennage), ni une erreur reproduite à l'identique aux deux dates.
 4. **Contrôles par grille** (lignes croissantes, comparaison au SMIG, valeurs figées dans les tests) et lots de
    vérification relus par DS5.
+
+## Contrat v1 (D75, D76)
+
+Une requête `"contract_version": "track_b.v1"` peut demander le salaire de base par la **désignation imprimée du
+degré** (`degre`, à la place de `anciennete_annees`) : aucune ancienneté n'est contrôlée, aucune règle au-delà du
+dernier degré n'est appliquée, et le `detail` le dit en hypothèses. Elle reçoit aussi, exacts et dans l'unité
+imprimée, les 3 montants imprimés à plus de 3 décimales (deux en millimes, avec leur équivalent en dinars).
+La v0 est inchangée et l'orchestrateur reste en v0. Détail : `docs/CONTRACT_TRACK_B.md`, §9.
 
 ## Reste à faire
 

@@ -1,0 +1,2210 @@
+{
+ "_meta": {
+  "secteur_code": "MATERIAUX_CONSTRUCTION",
+  "convention_ar": "الاتفاقية المشتركة القومية لقطاع صناعة مواد البناء",
+  "convention_fr": "Convention collective nationale de l'industrie des matériaux de construction",
+  "source_file": "data/raw/pdf/صناعة مواد البناء.pdf",
+  "pages_sources": [
+   3,
+   8,
+   12,
+   13,
+   19,
+   20,
+   21
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "1215 cellules lues en double lecture indépendante sur image (première lecture à 200-300 dpi, seconde à 280 dpi sur des bandes différentes, saisie dans deux ordres), comparées par script : 0 écart ni doute ; contrôle de hausse entre les trois dates (montant fixe ou pourcentage par ligne) : aucun écart au-delà de 1 millime ; montants des primes lus sur l'image. Vérification humaine (DS5, « VÉRIFIÉS ») : vérification des lots faite le 21/11/2026 sur claude-docs/vague5/verification/page.html (214 points, tous conformes) : 12 montants de primes en toutes lettres, les 2 cellules non tranchées des automobiles, les cellules non croissantes (une par anomalie, aux trois dates), un échantillon d'une ligne sur trois de chaque tableau (une sur deux pour les tableaux lus de façon non entièrement aveugle) ; les 51 cas de référence TB-309 à TB-359 vérifiés sur claude-docs/vague5/verification/cas.html. Les autres cellules ne sont pas vérifiées par moi une par une : elles reposent sur la double lecture et le contrôle de hausse.",
+  "decision_ref": "D80",
+  "currency": "TND",
+  "note_unite": "Unité imprimée dans le titre : « العمال الخالصون بالساعة » (TND/heure) ou « بالشهر » (TND/mois).",
+  "note_degres": "En-tête (p.19-21) : 15 degrés, « مدة البقاء بالدرجة » 1, 2 (degrés 2 à 5), 3 (degrés 6 à 15) ; libellés « 0-1 » … « 36-39 » ; bornes exactes refusées (D6) ; à partir de 39 ans, refus (art. 13 (جديد) ب, p.8).",
+  "note_categories": "Horaires : catégories 1 à 11 (exécution 1-6, gestion 7-11) ; mensuels : 1 à 16 (cadres 12-16) ; population obligatoire.",
+  "note_dates": "Tableaux de 2021-12-01 (n° 1-2, p.19), 2023-01-01 (n° 3-4, p.20), 2024-01-01 (n° 5-6, p.21), dates des titres. L'avenant n° 16 (p.3, signé le 15 avril 2022) imprime un effet au « غرة ديسمبر 2022 » : la période du 2021-12-01 au 2022-11-30 est refusée sur les tableaux n° 1 et 2 (periodes_refusees, D80). L'art. 37 (جديد) د (p.12) date lui aussi les primes « à partir du 1er décembre 2021 ».",
+  "remarque_pdf": "Note sous chaque tableau (p.19-21) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 19 إلى 21): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "horaires": {
+   "libelle_fr": "Ouvriers payés à l'heure",
+   "libelle_ar": "العمال الخالصون بالساعة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 19,
+   "note": "Tableaux n° 1, 3, 5 ; population obligatoire."
+  },
+  "mensuels": {
+   "libelle_fr": "Ouvriers payés au mois",
+   "libelle_ar": "العمال الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 19,
+   "note": "Tableaux n° 2, 4, 6 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "9-12",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "36-39",
+    "duree_imprimee": 3
+   }
+  ],
+  "mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "9-12",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "36-39",
+    "duree_imprimee": 3
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "horaires": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 39,
+   "source_pdf_page": 8,
+   "source_article": "13 (جديد) ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'industrie des matériaux de construction s'arrête au degré 15 (36 à 39 ans) ; l'en-tête imprime des durées de séjour qui totalisent 39 ans ; l'article 13 (جديد) ب (page 8) accorde seulement à l'agent qui a passé la durée requise au dernier degré une prime complémentaire de 5 dinars, sans période ; aucune règle de salaire au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 39 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية صناعة مواد البناء عند الدرجة 15 (من 36 إلى 39 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 39 سنة؛ ولا يسند الفصل 13 (جديد) ب (الصفحة 8) للعون الذي قضى المدة المطلوبة بأعلى درجة إلا منحة تكميلية قدرها 5 دنانير دون تحديد فترة؛ لا قاعدة للأجر بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 39 سنة)."
+  },
+  "mensuels": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 39,
+   "source_pdf_page": 8,
+   "source_article": "13 (جديد) ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'industrie des matériaux de construction s'arrête au degré 15 (36 à 39 ans) ; l'en-tête imprime des durées de séjour qui totalisent 39 ans ; l'article 13 (جديد) ب (page 8) accorde seulement à l'agent qui a passé la durée requise au dernier degré une prime complémentaire de 5 dinars, sans période ; aucune règle de salaire au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 39 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية صناعة مواد البناء عند الدرجة 15 (من 36 إلى 39 سنة)؛ وتبلغ جملة مدد البقاء المطبوعة برأس الجدول 39 سنة؛ ولا يسند الفصل 13 (جديد) ب (الصفحة 8) للعون الذي قضى المدة المطلوبة بأعلى درجة إلا منحة تكميلية قدرها 5 دنانير دون تحديد فترة؛ لا قاعدة للأجر بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 39 سنة)."
+  }
+ },
+ "categories": {
+  "horaires": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "mensuels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16"
+  ]
+ },
+ "libelles_categories": {
+  "horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1 (exécution)",
+    "libelle_ar": "الصنف 1 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2 (exécution)",
+    "libelle_ar": "الصنف 2 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3 (exécution)",
+    "libelle_ar": "الصنف 3 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4 (exécution)",
+    "libelle_ar": "الصنف 4 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5 (exécution)",
+    "libelle_ar": "الصنف 5 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6 (exécution)",
+    "libelle_ar": "الصنف 6 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7 (gestion)",
+    "libelle_ar": "الصنف 7 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8 (gestion)",
+    "libelle_ar": "الصنف 8 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9 (gestion)",
+    "libelle_ar": "الصنف 9 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10 (gestion)",
+    "libelle_ar": "الصنف 10 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11 (gestion)",
+    "libelle_ar": "الصنف 11 (التسيير)",
+    "libelle_ar_redige": true
+   }
+  },
+  "mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1 (exécution)",
+    "libelle_ar": "الصنف 1 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2 (exécution)",
+    "libelle_ar": "الصنف 2 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3 (exécution)",
+    "libelle_ar": "الصنف 3 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4 (exécution)",
+    "libelle_ar": "الصنف 4 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5 (exécution)",
+    "libelle_ar": "الصنف 5 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6 (exécution)",
+    "libelle_ar": "الصنف 6 (التنفيذ)",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7 (gestion)",
+    "libelle_ar": "الصنف 7 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8 (gestion)",
+    "libelle_ar": "الصنف 8 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9 (gestion)",
+    "libelle_ar": "الصنف 9 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10 (gestion)",
+    "libelle_ar": "الصنف 10 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11 (gestion)",
+    "libelle_ar": "الصنف 11 (التسيير)",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12 (cadres)",
+    "libelle_ar": "الصنف 12 (الإطارات)",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13 (cadres)",
+    "libelle_ar": "الصنف 13 (الإطارات)",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14 (cadres)",
+    "libelle_ar": "الصنف 14 (الإطارات)",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 15 (cadres)",
+    "libelle_ar": "الصنف 15 (الإطارات)",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Catégorie 16 (cadres)",
+    "libelle_ar": "الصنف 16 (الإطارات)",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "horaires": {
+   "fr": [
+    "Promotion automatique selon la note (art. 13 (جديد) ج, page 8) et prime complémentaire de 5 dinars au dernier degré (art. 13 (جديد) ب, page 8, sans période) : non calculées.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لا تُحتسب الترقية الآلية حسب العدد (الفصل 13 (جديد) ج، الصفحة 8) ولا المنحة التكميلية بخمسة دنانير بآخر درجة (الفصل 13 (جديد) ب، الصفحة 8، دون تحديد فترة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    1
+   ]
+  },
+  "mensuels": {
+   "fr": [
+    "Promotion automatique selon la note (art. 13 (جديد) ج, page 8) et prime complémentaire de 5 dinars au dernier degré (art. 13 (جديد) ب, page 8, sans période) : non calculées.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لا تُحتسب الترقية الآلية حسب العدد (الفصل 13 (جديد) ج، الصفحة 8) ولا المنحة التكميلية بخمسة دنانير بآخر درجة (الفصل 13 (جديد) ب، الصفحة 8، دون تحديد فترة).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    1
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "37 (جديد) د",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "execution_cat1": 79.399,
+     "autres": 71.256
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "execution_cat1": 84.758,
+     "autres": 76.066
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "execution_cat1": 90.479,
+     "autres": 81.200
+    }
+   ],
+   "libelles_groupes": {
+    "execution_cat1": {
+     "fr": "Agents d'exécution de la première catégorie",
+     "ar": "أعوان التنفيذ المنتمين للصنف الأول"
+    },
+    "autres": {
+     "fr": "Autres agents",
+     "ar": "بقية الأعوان"
+    }
+   },
+   "montant_reduit_si_transport_assure": 0.000,
+   "note": "Part transport du total imprimé « prime de transport et de présence » : 86,293 = 79,399 + 6,894 et 78,150 = 71,256 + 6,894 (2021-12-01) ; 92,117 et 83,425 (2023) ; 98,335 et 89,056 (2024). Non versée quand l'employeur transporte les agents (« ولا يصرف للعمال الجزء المخصص للنقل إذا قام المؤجر بنقلهم », p.13) ; jours d'absence non justifiés déduits (non calculé) ; elle inclut le décret n° 503 (art. 37 (جديد) د, pp.12-13).",
+   "hypotheses": {
+    "fr": [
+     "Montant réduit à 0 quand l'appelant déclare que l'employeur transporte les agents (transport_assure) : non vérifié ici."
+    ],
+    "ar": [
+     "يُرجَع مبلغ صفر عندما يصرّح الطالب بأن المؤجر يقوم بنقل الأعوان (transport_assure): لا يقع التثبت منه هنا."
+    ]
+   }
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "37 (جديد) د",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "au_titre_de": "2022",
+     "montant": 6.894
+    },
+    {
+     "effective_date": "2023-01-01",
+     "au_titre_de": "2023",
+     "montant": 7.359
+    },
+    {
+     "effective_date": "2024-01-01",
+     "au_titre_de": "2024",
+     "montant": 7.856
+    }
+   ],
+   "note": "Part présence du total imprimé « prime de transport et de présence », même montant pour tous les agents ; jours d'absence non justifiés déduits (non calculé) (art. 37 (جديد) د, p.12)."
+  },
+  {
+   "code": "prime_poussiere",
+   "label_ar": "منحة الغبار",
+   "label_fr": "Prime de poussière",
+   "source_article": "37 (جديد) ب",
+   "source_pdf_page": 12,
+   "unite": "TND/heure",
+   "montant": 0.008,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent affecté en permanence à un poste listé (ensachage du ciment et de la chaux, mélanges secs, concassage, carrières, briqueteries…) (art. 37 (جديد) ب, p.12)"
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "37 (جديد) ج",
+   "source_pdf_page": 12,
+   "unite": "TND/jour",
+   "montant": 0.209,
+   "effective_date": null,
+   "note": "« طبقا للتشريع الجاري به العمل » (art. 37 (جديد) ج, p.12).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_fonction_sous_chef_service",
+   "label_ar": "منحة الوظيفة (كاهية رئيس مصلحة)",
+   "label_fr": "Prime de fonction : sous-chef de service",
+   "source_article": "37 (جديد) هـ",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre : sous-chef de service, prime non intégrée au salaire (art. 37 (جديد) هـ, p.13)"
+  },
+  {
+   "code": "prime_fonction_chef_service",
+   "label_ar": "منحة الوظيفة (رئيس مصلحة)",
+   "label_fr": "Prime de fonction : chef de service",
+   "source_article": "37 (جديد) هـ",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 30.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre : chef de service, prime non intégrée au salaire (art. 37 (جديد) هـ, p.13)"
+  },
+  {
+   "code": "prime_fonction_sous_directeur",
+   "label_ar": "منحة الوظيفة (كاهية مدير)",
+   "label_fr": "Prime de fonction : sous-directeur",
+   "source_article": "37 (جديد) هـ",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre : sous-directeur, prime non intégrée au salaire (art. 37 (جديد) هـ, p.13)"
+  },
+  {
+   "code": "prime_fonction_directeur",
+   "label_ar": "منحة الوظيفة (مدير)",
+   "label_fr": "Prime de fonction : directeur",
+   "source_article": "37 (جديد) هـ",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 50.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre : directeur, prime non intégrée au salaire (art. 37 (جديد) هـ, p.13)"
+  },
+  {
+   "code": "prime_logement_chef_agence",
+   "label_ar": "منحة السكن (رؤساء الوكالات)",
+   "label_fr": "Prime de logement : chef d'agence",
+   "source_article": "37 (جديد) و",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chef d'agence (art. 37 (جديد) و, p.13)"
+  },
+  {
+   "code": "prime_logement_ingenieur",
+   "label_ar": "منحة السكن (المهندسين وكواهي المدير)",
+   "label_fr": "Prime de logement : ingénieur ou sous-directeur",
+   "source_article": "37 (جديد) و",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 30.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "ingénieur ou sous-directeur (art. 37 (جديد) و, p.13)"
+  },
+  {
+   "code": "prime_logement_directeur",
+   "label_ar": "منحة السكن (المديرين)",
+   "label_fr": "Prime de logement : directeur",
+   "source_article": "37 (جديد) و",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "directeur (art. 37 (جديد) و, p.13)"
+  },
+  {
+   "code": "prime_scolaire",
+   "label_ar": "المنحة المدرسية",
+   "label_fr": "Prime scolaire",
+   "source_article": "37 مكرر",
+   "source_pdf_page": 13,
+   "unite": "TND/enfant",
+   "montant": 10.000,
+   "effective_date": null,
+   "note": "Par enfant scolarisé, versée le 1er septembre ; plafond (non calculé) : trois enfants (art. 37 مكرر, p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "lait_nature": {
+   "source_pdf_page": 12,
+   "source_article": "37 (جديد) أ",
+   "message_fr": "Ration de lait (article 37 (جديد) أ, page 12) : un demi-litre de lait, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الحليب (الفصل 37 (جديد) أ، الصفحة 12): نصف لتر من الحليب، عينا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  },
+  "prime_production": {
+   "source_pdf_page": 13,
+   "source_article": "37 (جديد) ز",
+   "message_fr": "Prime de production (article 37 (جديد) ز, page 13) : formule en jours de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 37 (جديد) ز، الصفحة 13): صيغة بأيام عمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_complementaire_dernier_degre": {
+   "source_pdf_page": 8,
+   "source_article": "13 (جديد) ب",
+   "message_fr": "Prime complémentaire au dernier degré (article 13 (جديد) ب, page 8) : 5 dinars, sans période imprimée. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة تكميلية (الفصل 13 (جديد) ب، الصفحة 8): 5 دنانير دون تحديد فترة. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "sans période"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "MAT_HORAIRES_2021-12-01",
+   "numero_imprime": 1,
+   "population": "horaires",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 19,
+   "unite": "TND/heure",
+   "periodes_refusees": [
+    {
+     "du": "2021-12-01",
+     "au": "2022-11-30",
+     "source_pdf_page": 3,
+     "source_article": "الملحق التعديلي عدد 16 وجدول الأجور عدد 1",
+     "message_fr": "Du 1er décembre 2021 au 30 novembre 2022 : le tableau n° 1 (page 19) s'applique « à partir du 1er décembre 2021 », mais l'avenant n° 16 (page 3), qui le publie, fixe son effet à « غرة ديسمبر 2022 » (1er décembre 2022). Les deux dates imprimées se contredisent pour cette période ; la date de l'avenant est peut-être une coquille, à confirmer. Aucun montant n'est renvoyé.",
+     "message_ar": "من 1 ديسمبر 2021 إلى 30 نوفمبر 2022: يقع العمل بجدول الأجور عدد 1 (الصفحة 19) «بداية من 1 ديسمبر 2021» بينما يحدد الملحق التعديلي عدد 16 (الصفحة 3) تاريخ مفعوله بـ«غرة ديسمبر 2022». يتناقض التاريخان المطبوعان بالنسبة إلى هذه الفترة؛ قد يكون تاريخ الملحق خطأ مطبعيا يتعين التثبت منه. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     2.606,
+     2.642,
+     2.644,
+     2.646,
+     2.649,
+     2.651,
+     2.654,
+     2.656,
+     2.658,
+     2.661,
+     2.669,
+     2.719,
+     2.769,
+     2.819,
+     2.869
+    ],
+    "2": [
+     2.803,
+     2.806,
+     2.808,
+     2.811,
+     2.814,
+     2.816,
+     2.819,
+     2.821,
+     2.833,
+     2.841,
+     2.851,
+     2.901,
+     2.951,
+     3.001,
+     3.051
+    ],
+    "3": [
+     2.869,
+     2.872,
+     2.876,
+     2.879,
+     2.889,
+     2.900,
+     2.912,
+     2.923,
+     2.935,
+     2.946,
+     2.970,
+     3.020,
+     3.070,
+     3.120,
+     3.170
+    ],
+    "4": [
+     2.999,
+     3.010,
+     3.023,
+     3.036,
+     3.050,
+     3.063,
+     3.076,
+     3.101,
+     3.115,
+     3.127,
+     3.141,
+     3.191,
+     3.241,
+     3.291,
+     3.341
+    ],
+    "5": [
+     3.106,
+     3.121,
+     3.135,
+     3.151,
+     3.178,
+     3.193,
+     3.206,
+     3.220,
+     3.234,
+     3.248,
+     3.261,
+     3.311,
+     3.361,
+     3.411,
+     3.461
+    ],
+    "6": [
+     3.275,
+     3.293,
+     3.320,
+     3.335,
+     3.351,
+     3.365,
+     3.381,
+     3.396,
+     3.411,
+     3.426,
+     3.441,
+     3.491,
+     3.541,
+     3.591,
+     3.641
+    ],
+    "7": [
+     3.518,
+     3.534,
+     3.551,
+     3.569,
+     3.585,
+     3.602,
+     3.618,
+     3.635,
+     3.652,
+     3.681,
+     3.697,
+     3.747,
+     3.797,
+     3.847,
+     3.897
+    ],
+    "8": [
+     3.763,
+     3.785,
+     3.807,
+     3.829,
+     3.863,
+     3.886,
+     3.909,
+     3.931,
+     3.952,
+     3.975,
+     3.996,
+     4.046,
+     4.096,
+     4.146,
+     4.196
+    ],
+    "9": [
+     3.995,
+     4.019,
+     4.056,
+     4.082,
+     4.107,
+     4.132,
+     4.155,
+     4.180,
+     4.206,
+     4.243,
+     4.267,
+     4.317,
+     4.367,
+     4.417,
+     4.467
+    ],
+    "10": [
+     4.260,
+     4.288,
+     4.315,
+     4.344,
+     4.372,
+     4.400,
+     4.441,
+     4.469,
+     4.498,
+     4.526,
+     4.554,
+     4.604,
+     4.654,
+     4.704,
+     4.754
+    ],
+    "11": [
+     4.529,
+     4.562,
+     4.594,
+     4.638,
+     4.671,
+     4.703,
+     4.735,
+     4.768,
+     4.799,
+     4.831,
+     4.864,
+     4.914,
+     4.964,
+     5.014,
+     5.064
+    ]
+   }
+  },
+  {
+   "table_id": "MAT_MENSUELS_2021-12-01",
+   "numero_imprime": 2,
+   "population": "mensuels",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "periodes_refusees": [
+    {
+     "du": "2021-12-01",
+     "au": "2022-11-30",
+     "source_pdf_page": 3,
+     "source_article": "الملحق التعديلي عدد 16 وجدول الأجور عدد 2",
+     "message_fr": "Du 1er décembre 2021 au 30 novembre 2022 : le tableau n° 2 (page 19) s'applique « à partir du 1er décembre 2021 », mais l'avenant n° 16 (page 3), qui le publie, fixe son effet à « غرة ديسمبر 2022 » (1er décembre 2022). Les deux dates imprimées se contredisent pour cette période ; la date de l'avenant est peut-être une coquille, à confirmer. Aucun montant n'est renvoyé.",
+     "message_ar": "من 1 ديسمبر 2021 إلى 30 نوفمبر 2022: يقع العمل بجدول الأجور عدد 2 (الصفحة 19) «بداية من 1 ديسمبر 2021» بينما يحدد الملحق التعديلي عدد 16 (الصفحة 3) تاريخ مفعوله بـ«غرة ديسمبر 2022». يتناقض التاريخان المطبوعان بالنسبة إلى هذه الفترة؛ قد يكون تاريخ الملحق خطأ مطبعيا يتعين التثبت منه. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "valeurs": {
+    "1": [
+     542.185,
+     549.695,
+     550.337,
+     550.787,
+     551.301,
+     551.815,
+     552.329,
+     552.843,
+     553.293,
+     553.807,
+     555.576,
+     565.976,
+     576.376,
+     586.776,
+     597.176
+    ],
+    "2": [
+     583.229,
+     583.499,
+     584.014,
+     584.594,
+     585.174,
+     585.753,
+     586.269,
+     586.848,
+     589.106,
+     590.947,
+     593.017,
+     603.417,
+     613.817,
+     624.217,
+     634.617
+    ],
+    "3": [
+     596.126,
+     596.839,
+     597.553,
+     598.266,
+     600.348,
+     602.675,
+     605.001,
+     607.439,
+     609.886,
+     612.212,
+     617.039,
+     627.439,
+     637.839,
+     648.239,
+     658.639
+    ],
+    "4": [
+     623.357,
+     624.883,
+     628.241,
+     631.047,
+     633.852,
+     636.658,
+     639.229,
+     644.535,
+     647.340,
+     649.912,
+     652.717,
+     663.117,
+     673.517,
+     683.917,
+     694.317
+    ],
+    "5": [
+     645.124,
+     648.176,
+     651.228,
+     654.514,
+     660.066,
+     663.118,
+     666.169,
+     669.221,
+     672.305,
+     675.097,
+     677.889,
+     688.289,
+     698.689,
+     709.089,
+     719.489
+    ],
+    "6": [
+     680.074,
+     683.608,
+     688.407,
+     692.941,
+     696.226,
+     699.233,
+     702.454,
+     705.675,
+     708.896,
+     711.902,
+     715.123,
+     725.523,
+     735.923,
+     746.323,
+     756.723
+    ],
+    "7": [
+     732.842,
+     735.478,
+     738.814,
+     742.564,
+     746.000,
+     749.436,
+     752.872,
+     756.308,
+     759.958,
+     765.894,
+     769.330,
+     779.730,
+     790.130,
+     800.530,
+     810.930
+    ],
+    "8": [
+     783.155,
+     787.794,
+     792.433,
+     796.839,
+     804.184,
+     808.822,
+     813.461,
+     818.099,
+     822.506,
+     827.143,
+     831.782,
+     842.182,
+     852.582,
+     862.982,
+     873.382
+    ],
+    "9": [
+     830.132,
+     835.234,
+     843.043,
+     848.377,
+     853.479,
+     858.581,
+     863.683,
+     868.785,
+     874.119,
+     881.928,
+     887.031,
+     897.431,
+     907.831,
+     918.231,
+     928.631
+    ],
+    "10": [
+     884.193,
+     889.991,
+     895.789,
+     901.818,
+     907.616,
+     913.414,
+     921.919,
+     927.717,
+     933.747,
+     939.545,
+     945.343,
+     955.743,
+     966.143,
+     976.543,
+     986.943
+    ],
+    "11": [
+     942.333,
+     949.057,
+     955.782,
+     964.982,
+     971.708,
+     978.433,
+     987.390,
+     991.885,
+     998.378,
+     1005.104,
+     1011.830,
+     1022.230,
+     1032.630,
+     1043.030,
+     1053.430
+    ],
+    "12": [
+     1006.082,
+     1016.302,
+     1023.817,
+     1031.332,
+     1038.845,
+     1046.359,
+     1053.729,
+     1061.387,
+     1068.902,
+     1076.415,
+     1083.930,
+     1094.330,
+     1104.730,
+     1115.130,
+     1125.530
+    ],
+    "13": [
+     1075.733,
+     1084.196,
+     1092.657,
+     1101.121,
+     1109.585,
+     1118.047,
+     1126.510,
+     1134.972,
+     1143.435,
+     1151.899,
+     1160.361,
+     1170.761,
+     1181.161,
+     1191.561,
+     1201.961
+    ],
+    "14": [
+     1134.190,
+     1143.499,
+     1152.808,
+     1162.116,
+     1171.425,
+     1180.735,
+     1190.044,
+     1199.293,
+     1208.661,
+     1217.971,
+     1227.280,
+     1237.680,
+     1248.080,
+     1258.480,
+     1268.880
+    ],
+    "15": [
+     1225.586,
+     1236.973,
+     1248.359,
+     1259.745,
+     1271.132,
+     1282.518,
+     1293.903,
+     1305.291,
+     1316.676,
+     1328.062,
+     1339.449,
+     1349.849,
+     1360.249,
+     1370.649,
+     1381.049
+    ],
+    "16": [
+     1315.208,
+     1328.603,
+     1341.999,
+     1355.395,
+     1368.792,
+     1382.189,
+     1395.583,
+     1408.979,
+     1422.375,
+     1435.771,
+     1449.167,
+     1459.567,
+     1469.967,
+     1480.367,
+     1490.767
+    ]
+   }
+  },
+  {
+   "table_id": "MAT_HORAIRES_2023-01-01",
+   "numero_imprime": 3,
+   "population": "horaires",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 20,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     2.782,
+     2.818,
+     2.820,
+     2.822,
+     2.825,
+     2.827,
+     2.830,
+     2.832,
+     2.834,
+     2.837,
+     2.845,
+     2.895,
+     2.945,
+     2.995,
+     3.045
+    ],
+    "2": [
+     2.993,
+     2.996,
+     2.998,
+     3.001,
+     3.004,
+     3.006,
+     3.009,
+     3.011,
+     3.023,
+     3.031,
+     3.041,
+     3.091,
+     3.141,
+     3.191,
+     3.241
+    ],
+    "3": [
+     3.063,
+     3.066,
+     3.070,
+     3.073,
+     3.083,
+     3.094,
+     3.106,
+     3.117,
+     3.129,
+     3.140,
+     3.164,
+     3.214,
+     3.264,
+     3.314,
+     3.364
+    ],
+    "4": [
+     3.201,
+     3.212,
+     3.225,
+     3.238,
+     3.252,
+     3.265,
+     3.278,
+     3.303,
+     3.317,
+     3.329,
+     3.343,
+     3.393,
+     3.443,
+     3.493,
+     3.543
+    ],
+    "5": [
+     3.316,
+     3.331,
+     3.345,
+     3.361,
+     3.388,
+     3.403,
+     3.416,
+     3.430,
+     3.444,
+     3.458,
+     3.471,
+     3.521,
+     3.571,
+     3.621,
+     3.671
+    ],
+    "6": [
+     3.496,
+     3.514,
+     3.541,
+     3.556,
+     3.572,
+     3.586,
+     3.602,
+     3.617,
+     3.632,
+     3.647,
+     3.662,
+     3.712,
+     3.762,
+     3.812,
+     3.862
+    ],
+    "7": [
+     3.755,
+     3.771,
+     3.788,
+     3.806,
+     3.822,
+     3.839,
+     3.855,
+     3.872,
+     3.889,
+     3.918,
+     3.934,
+     3.984,
+     4.034,
+     4.084,
+     4.134
+    ],
+    "8": [
+     4.017,
+     4.039,
+     4.061,
+     4.083,
+     4.117,
+     4.140,
+     4.163,
+     4.185,
+     4.206,
+     4.229,
+     4.250,
+     4.300,
+     4.350,
+     4.400,
+     4.450
+    ],
+    "9": [
+     4.265,
+     4.289,
+     4.326,
+     4.352,
+     4.377,
+     4.402,
+     4.425,
+     4.450,
+     4.476,
+     4.513,
+     4.537,
+     4.587,
+     4.637,
+     4.687,
+     4.737
+    ],
+    "10": [
+     4.547,
+     4.575,
+     4.602,
+     4.631,
+     4.659,
+     4.687,
+     4.728,
+     4.756,
+     4.785,
+     4.813,
+     4.841,
+     4.891,
+     4.941,
+     4.991,
+     5.041
+    ],
+    "11": [
+     4.834,
+     4.867,
+     4.899,
+     4.943,
+     4.976,
+     5.008,
+     5.040,
+     5.073,
+     5.104,
+     5.136,
+     5.169,
+     5.219,
+     5.269,
+     5.319,
+     5.369
+    ]
+   }
+  },
+  {
+   "table_id": "MAT_MENSUELS_2023-01-01",
+   "numero_imprime": 4,
+   "population": "mensuels",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "valeurs": {
+    "1": [
+     578.783,
+     586.293,
+     586.935,
+     587.385,
+     587.899,
+     588.413,
+     588.927,
+     589.441,
+     589.891,
+     590.405,
+     592.174,
+     602.574,
+     612.974,
+     623.374,
+     633.774
+    ],
+    "2": [
+     622.597,
+     622.867,
+     623.382,
+     623.962,
+     624.542,
+     625.121,
+     625.637,
+     626.216,
+     628.474,
+     630.315,
+     632.385,
+     642.785,
+     653.185,
+     663.585,
+     673.985
+    ],
+    "3": [
+     636.365,
+     637.078,
+     637.792,
+     638.505,
+     640.587,
+     642.914,
+     645.240,
+     647.678,
+     650.125,
+     652.451,
+     657.278,
+     667.678,
+     678.078,
+     688.478,
+     698.878
+    ],
+    "4": [
+     665.434,
+     666.960,
+     670.318,
+     673.124,
+     675.929,
+     678.735,
+     681.306,
+     686.612,
+     689.417,
+     691.989,
+     694.794,
+     705.194,
+     715.594,
+     725.994,
+     736.394
+    ],
+    "5": [
+     688.670,
+     691.722,
+     694.774,
+     698.060,
+     703.612,
+     706.664,
+     709.715,
+     712.767,
+     715.851,
+     718.643,
+     721.435,
+     731.835,
+     742.235,
+     752.635,
+     763.035
+    ],
+    "6": [
+     725.979,
+     729.513,
+     734.312,
+     738.846,
+     742.131,
+     745.138,
+     748.359,
+     751.580,
+     754.801,
+     757.807,
+     761.028,
+     771.428,
+     781.828,
+     792.228,
+     802.628
+    ],
+    "7": [
+     782.309,
+     784.945,
+     788.281,
+     792.031,
+     795.467,
+     798.903,
+     802.339,
+     805.775,
+     809.425,
+     815.361,
+     818.797,
+     829.197,
+     839.597,
+     849.997,
+     860.397
+    ],
+    "8": [
+     836.018,
+     840.657,
+     845.296,
+     849.702,
+     857.047,
+     861.685,
+     866.324,
+     870.962,
+     875.369,
+     880.006,
+     884.645,
+     895.045,
+     905.445,
+     915.845,
+     926.245
+    ],
+    "9": [
+     886.166,
+     891.268,
+     899.077,
+     904.411,
+     909.513,
+     914.615,
+     919.717,
+     924.819,
+     930.153,
+     937.962,
+     943.065,
+     953.465,
+     963.865,
+     974.265,
+     984.665
+    ],
+    "10": [
+     943.876,
+     949.674,
+     955.472,
+     961.501,
+     967.299,
+     973.097,
+     981.602,
+     987.400,
+     993.430,
+     999.228,
+     1005.026,
+     1015.426,
+     1025.826,
+     1036.226,
+     1046.626
+    ],
+    "11": [
+     1005.940,
+     1012.664,
+     1019.389,
+     1028.589,
+     1035.315,
+     1042.040,
+     1050.997,
+     1055.492,
+     1061.985,
+     1068.711,
+     1075.437,
+     1085.837,
+     1096.237,
+     1106.637,
+     1117.037
+    ],
+    "12": [
+     1073.993,
+     1084.213,
+     1091.728,
+     1099.243,
+     1106.756,
+     1114.270,
+     1121.640,
+     1129.298,
+     1136.813,
+     1144.326,
+     1151.841,
+     1162.241,
+     1172.641,
+     1183.041,
+     1193.441
+    ],
+    "13": [
+     1148.345,
+     1156.808,
+     1165.269,
+     1173.733,
+     1182.197,
+     1190.659,
+     1199.122,
+     1207.584,
+     1216.047,
+     1224.511,
+     1232.973,
+     1243.373,
+     1253.773,
+     1264.173,
+     1274.573
+    ],
+    "14": [
+     1210.748,
+     1220.057,
+     1229.366,
+     1238.674,
+     1247.983,
+     1257.293,
+     1266.602,
+     1275.851,
+     1285.219,
+     1294.529,
+     1303.838,
+     1314.238,
+     1324.638,
+     1335.038,
+     1345.438
+    ],
+    "15": [
+     1308.313,
+     1319.700,
+     1331.086,
+     1342.472,
+     1353.859,
+     1365.245,
+     1376.630,
+     1388.018,
+     1399.403,
+     1410.789,
+     1422.176,
+     1432.576,
+     1442.976,
+     1453.376,
+     1463.776
+    ],
+    "16": [
+     1403.985,
+     1417.380,
+     1430.776,
+     1444.172,
+     1457.569,
+     1470.966,
+     1484.360,
+     1497.756,
+     1511.152,
+     1524.548,
+     1537.944,
+     1548.344,
+     1558.744,
+     1569.144,
+     1579.544
+    ]
+   }
+  },
+  {
+   "table_id": "MAT_HORAIRES_2024-01-01",
+   "numero_imprime": 5,
+   "population": "horaires",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 21,
+   "unite": "TND/heure",
+   "valeurs": {
+    "1": [
+     2.970,
+     3.006,
+     3.008,
+     3.010,
+     3.013,
+     3.015,
+     3.018,
+     3.020,
+     3.022,
+     3.025,
+     3.033,
+     3.083,
+     3.133,
+     3.183,
+     3.233
+    ],
+    "2": [
+     3.195,
+     3.198,
+     3.200,
+     3.203,
+     3.206,
+     3.208,
+     3.211,
+     3.213,
+     3.225,
+     3.233,
+     3.243,
+     3.293,
+     3.343,
+     3.393,
+     3.443
+    ],
+    "3": [
+     3.270,
+     3.273,
+     3.277,
+     3.280,
+     3.290,
+     3.301,
+     3.313,
+     3.324,
+     3.336,
+     3.347,
+     3.371,
+     3.421,
+     3.471,
+     3.521,
+     3.571
+    ],
+    "4": [
+     3.417,
+     3.428,
+     3.441,
+     3.454,
+     3.468,
+     3.481,
+     3.494,
+     3.519,
+     3.533,
+     3.545,
+     3.559,
+     3.609,
+     3.659,
+     3.709,
+     3.759
+    ],
+    "5": [
+     3.540,
+     3.555,
+     3.569,
+     3.585,
+     3.612,
+     3.627,
+     3.640,
+     3.654,
+     3.668,
+     3.682,
+     3.695,
+     3.745,
+     3.795,
+     3.845,
+     3.895
+    ],
+    "6": [
+     3.732,
+     3.750,
+     3.777,
+     3.792,
+     3.808,
+     3.822,
+     3.838,
+     3.853,
+     3.868,
+     3.883,
+     3.898,
+     3.948,
+     3.998,
+     4.048,
+     4.098
+    ],
+    "7": [
+     4.009,
+     4.025,
+     4.042,
+     4.060,
+     4.076,
+     4.093,
+     4.109,
+     4.126,
+     4.143,
+     4.172,
+     4.188,
+     4.238,
+     4.288,
+     4.338,
+     4.388
+    ],
+    "8": [
+     4.288,
+     4.310,
+     4.332,
+     4.354,
+     4.388,
+     4.411,
+     4.434,
+     4.456,
+     4.477,
+     4.500,
+     4.521,
+     4.571,
+     4.621,
+     4.671,
+     4.721
+    ],
+    "9": [
+     4.553,
+     4.577,
+     4.614,
+     4.640,
+     4.665,
+     4.690,
+     4.713,
+     4.738,
+     4.764,
+     4.801,
+     4.825,
+     4.875,
+     4.925,
+     4.975,
+     5.025
+    ],
+    "10": [
+     4.854,
+     4.882,
+     4.909,
+     4.938,
+     4.966,
+     4.994,
+     5.035,
+     5.063,
+     5.092,
+     5.120,
+     5.148,
+     5.198,
+     5.248,
+     5.298,
+     5.348
+    ],
+    "11": [
+     5.161,
+     5.194,
+     5.226,
+     5.270,
+     5.303,
+     5.335,
+     5.367,
+     5.400,
+     5.431,
+     5.463,
+     5.496,
+     5.546,
+     5.596,
+     5.646,
+     5.696
+    ]
+   }
+  },
+  {
+   "table_id": "MAT_MENSUELS_2024-01-01",
+   "numero_imprime": 6,
+   "population": "mensuels",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "valeurs": {
+    "1": [
+     617.851,
+     625.361,
+     626.003,
+     626.453,
+     626.967,
+     627.481,
+     627.995,
+     628.509,
+     628.959,
+     629.473,
+     631.242,
+     641.642,
+     652.042,
+     662.442,
+     672.842
+    ],
+    "2": [
+     664.623,
+     664.893,
+     665.408,
+     665.988,
+     666.568,
+     667.147,
+     667.663,
+     668.242,
+     670.500,
+     672.341,
+     674.411,
+     684.811,
+     695.211,
+     705.611,
+     716.011
+    ],
+    "3": [
+     679.319,
+     680.032,
+     680.746,
+     681.459,
+     683.541,
+     685.868,
+     688.194,
+     690.632,
+     693.079,
+     695.405,
+     700.232,
+     710.632,
+     721.032,
+     731.432,
+     741.832
+    ],
+    "4": [
+     710.351,
+     711.877,
+     715.235,
+     718.041,
+     720.846,
+     723.652,
+     726.223,
+     731.529,
+     734.334,
+     736.906,
+     739.711,
+     750.111,
+     760.511,
+     770.911,
+     781.311
+    ],
+    "5": [
+     735.155,
+     738.207,
+     741.259,
+     744.545,
+     750.097,
+     753.149,
+     756.200,
+     759.252,
+     762.336,
+     765.128,
+     767.920,
+     778.320,
+     788.720,
+     799.120,
+     809.520
+    ],
+    "6": [
+     774.982,
+     778.516,
+     783.315,
+     787.849,
+     791.134,
+     794.141,
+     797.362,
+     800.583,
+     803.804,
+     806.810,
+     810.031,
+     820.431,
+     830.831,
+     841.231,
+     851.631
+    ],
+    "7": [
+     835.114,
+     837.750,
+     841.086,
+     844.836,
+     848.272,
+     851.708,
+     855.144,
+     858.580,
+     862.230,
+     868.166,
+     871.602,
+     882.002,
+     892.402,
+     902.802,
+     913.202
+    ],
+    "8": [
+     892.449,
+     897.088,
+     901.727,
+     906.133,
+     913.478,
+     918.116,
+     922.755,
+     927.393,
+     931.800,
+     936.437,
+     941.076,
+     951.476,
+     961.876,
+     972.276,
+     982.676
+    ],
+    "9": [
+     945.983,
+     951.085,
+     958.894,
+     964.228,
+     969.330,
+     974.432,
+     979.534,
+     984.636,
+     989.970,
+     997.779,
+     1002.882,
+     1013.282,
+     1023.682,
+     1034.082,
+     1044.482
+    ],
+    "10": [
+     1007.588,
+     1013.386,
+     1019.184,
+     1025.213,
+     1031.011,
+     1036.809,
+     1045.314,
+     1051.112,
+     1057.142,
+     1062.940,
+     1068.738,
+     1079.138,
+     1089.538,
+     1099.938,
+     1110.338
+    ],
+    "11": [
+     1073.841,
+     1080.565,
+     1087.290,
+     1096.490,
+     1103.216,
+     1109.941,
+     1118.898,
+     1123.393,
+     1129.886,
+     1136.612,
+     1143.338,
+     1153.738,
+     1164.138,
+     1174.538,
+     1184.938
+    ],
+    "12": [
+     1146.487,
+     1156.707,
+     1164.222,
+     1171.737,
+     1179.250,
+     1186.764,
+     1194.134,
+     1201.792,
+     1209.307,
+     1216.820,
+     1224.335,
+     1234.735,
+     1245.135,
+     1255.535,
+     1265.935
+    ],
+    "13": [
+     1225.858,
+     1234.321,
+     1242.782,
+     1251.246,
+     1259.710,
+     1268.172,
+     1276.635,
+     1285.097,
+     1293.560,
+     1302.024,
+     1310.486,
+     1320.886,
+     1331.286,
+     1341.686,
+     1352.086
+    ],
+    "14": [
+     1292.474,
+     1301.783,
+     1311.092,
+     1320.400,
+     1329.709,
+     1339.019,
+     1348.328,
+     1357.577,
+     1366.945,
+     1376.255,
+     1385.564,
+     1395.964,
+     1406.364,
+     1416.764,
+     1427.164
+    ],
+    "15": [
+     1396.624,
+     1408.011,
+     1419.397,
+     1430.783,
+     1442.170,
+     1453.556,
+     1464.941,
+     1476.329,
+     1487.714,
+     1499.100,
+     1510.487,
+     1520.887,
+     1531.287,
+     1541.687,
+     1552.087
+    ],
+    "16": [
+     1498.754,
+     1512.149,
+     1525.545,
+     1538.941,
+     1552.338,
+     1565.735,
+     1579.129,
+     1592.525,
+     1605.921,
+     1619.317,
+     1632.713,
+     1643.113,
+     1653.513,
+     1663.913,
+     1674.313
+    ]
+   }
+  }
+ ]
+}
