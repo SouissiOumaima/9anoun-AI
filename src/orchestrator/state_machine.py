@@ -15,7 +15,7 @@ from uuid import uuid4
 
 from .context import ContextResolutionError, resolve_context
 from .intent import parse_message
-from .legal_retrieval_prompt import extract_legal_prompt
+from .legal_retrieval_prompt import extract_legal_prompt, legal_sector_clarification
 from .models import CardType, Intent, ParsedRequest, RequestEnvelope
 from .tool_contracts import ToolCall, ToolContractError, build_tool_call
 from .track_b_requests import build_track_b_request
@@ -160,7 +160,8 @@ class Planner:
 
         extracted = extract_legal_prompt(envelope.message)
         if extracted.sector_ambiguous:
-            raise ClarificationNeeded("Le terme construction est ambigu : précisez BTP ou construction métallique")
+            message_fr, message_ar = legal_sector_clarification(extracted)
+            raise ClarificationNeeded(message_fr, message_fr=message_fr, message_ar=message_ar)
         dates = parsed.entities.get("dates", ())
         reference_date = next((value for value in dates if len(value) == 10), None)
         if extracted.article is not None and extracted.source_id is None and extracted.article_id is None:
@@ -197,6 +198,7 @@ class Planner:
             request = build_track_a_request_from_case_card(
                 request_id=envelope.request_id, case_id=envelope.context.card_id,
                 language=parsed.language, case_card=case_card,
+                contract_version="track_a.v1",
             )
         except (KeyError, TypeError, ValueError) as error:
             raise ClarificationNeeded("The active Case Card is incomplete or inconsistent") from error

@@ -411,10 +411,12 @@ def test_chat_routes_case_prompt_to_real_ds4_handler() -> None:
     response = chat({
         "message": "Analyse les preuves de ce dossier", "language": "fr", "card_id": "case-demo-001",
     })
-    assert response["user_response"]["status"] == "refused"
-    assert response["user_response"]["code"] == "SOURCE_MISSING"
+    assert response["user_response"]["status"] == "success"
     assert response["route"] == {"agent": "track_a_legal", "operation": "analyze_case"}
-    assert response["answer"] is None
+    assert response["answer"]["kind"] == "case_preparatory"
+    assert response["answer"]["legal_conclusion"] is None
+    assert response["citations"] == []
+    assert response["answer"]["message_ar"]
 
 
 def test_chat_asks_for_clarification_without_guessing_payroll_fields() -> None:

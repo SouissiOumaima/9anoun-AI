@@ -49,3 +49,7 @@ dist/
 src/track_b_accounting/evaluation/results/eval_*
 # DS2 : vecteurs Gemini du corpus, recalculés localement (D28)
 data/processed/legal_corpus/embeddings/
+
+# Local verification outputs and case-scoped demo document copies
+/tmp/
+/src/document_intelligence/evaluation/demo_live/ds3_stockage/
