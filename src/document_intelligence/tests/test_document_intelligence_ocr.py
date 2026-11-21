@@ -29,6 +29,7 @@ from src.document_intelligence.reading.ocr import (
     group_rows,
     ocr_pending_zones,
     read_image,
+    read_zone_boxes,
     to_pdf_bbox,
 )
 from src.document_intelligence.reading.pdf_natif import read_pdf
@@ -179,15 +180,121 @@ def test_auto_mode_rereads_latin_text_with_french_model(mixed_pdf: Path) -> None
     doc = read_pdf(mixed_pdf)
     engine = FakeEngine(
         [
-            [OcrBox("Indemnite", 0.80, (0, 0, 300, 50))],  # passe arabe : texte latin, sans accent
-            [OcrBox("Indemnité", 0.95, (0, 0, 300, 50))],  # passe latine, plus sûre : gardée
-            [OcrBox("الصنف", 0.9, (0, 0, 300, 50))],  # zone 2 : arabe, pas de seconde passe
+            [OcrBox("Indemnite", 0.80, (0, 0, 300, 50))],  # zone 1, passe arabe : texte latin, sans accent
+            [OcrBox("Indemnité", 0.97, (0, 0, 300, 50))],  # zone 1, passe latine, plus sûre : gardée → document « fr »
+            [OcrBox("Alsnf", 0.41, (0, 0, 300, 50))],  # zone 2 lue d'abord en latin : charabia peu sûr
+            [OcrBox("الصنف", 0.9, (0, 0, 300, 50))],  # zone 2 relue en arabe : l'autre langue gagne
         ]
     )
     out = ocr_pending_zones(doc, mixed_pdf, engine=engine, lang="auto")
-    assert [lang for _, lang in engine.calls] == ["ar", "fr", "ar"]
+    assert [lang for _, lang in engine.calls] == ["ar", "fr", "fr", "ar"]
     ocr = [line for line in out.pages[0].lines if line.source == "ocr"]
     assert [(line.text, line.language) for line in ocr] == [("Indemnité", "fr"), ("الصنف", "ar")]
+    assert any("langue retenue pour le document : fr" in w for w in out.warnings)
+
+
+# ------------------------------------------------------------ langue retenue une fois par document
+
+
+class ZoneLanguageEngine:
+    """Faux moteur qui connaît la vraie langue de chaque zone (reconnue à la hauteur de l'image) et répond
+    comme les vrais modèles mesurés : le modèle arabe lit aussi le latin (sans accents) ; le modèle latin écrit
+    du charabia sur une zone arabe, avec une confiance réglable."""
+
+    name = "fake-langues"
+
+    def __init__(self, zones: dict[int, str], junk: tuple[str, float] = ("Alsnf", 0.45)) -> None:
+        self.zones = zones  # hauteur en points du cadre de la zone -> "fr", "ar" ou "vide"
+        self.junk = junk
+        self.calls: list[tuple[str, OcrLang]] = []
+
+    def recognize(self, image: Image3, lang: OcrLang) -> list[OcrBox]:
+        height_pt = round(image.shape[0] * 72 / 300)
+        truth = self.zones[min(self.zones, key=lambda h: abs(h - height_pt))]
+        self.calls.append((truth, lang))
+        box = (0.0, 0.0, 300.0, 40.0)
+        if truth == "vide":
+            return []
+        if truth == "fr":
+            return [OcrBox("Échelon 5", 0.99, box)] if lang == "fr" else [OcrBox("Echelon 5", 0.90, box)]
+        return [OcrBox("الدرجة 5", 0.92, box)] if lang == "ar" else [OcrBox(self.junk[0], self.junk[1], box)]
+
+
+def _zones_pdf(tmp_path: Path, heights: list[int]) -> Path:
+    """Une page FICTIVE avec une image par zone, de hauteurs différentes (pour que le faux moteur les reconnaisse)."""
+    doc = pymupdf.open()
+    page = doc.new_page()
+    y = 60
+    for h in heights:
+        pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, 1200, round(h * 300 / 72)), False)
+        pix.clear_with(230)
+        page.insert_image(pymupdf.Rect(72, y, 360, y + h), stream=bytes(pix.tobytes("png")))
+        y += h + 40
+    path = tmp_path / "zones.pdf"
+    doc.save(path)
+    doc.close()
+    return path
+
+
+def _ocr_texts(doc: IntermediateDocument) -> list[str]:
+    return [line.text for page in doc.pages for line in page.lines if line.source == "ocr"]
+
+
+def test_french_document_is_read_twice_only_on_its_first_zone(tmp_path: Path) -> None:
+    path = _zones_pdf(tmp_path, [40, 60, 80])
+    engine = ZoneLanguageEngine({40: "fr", 60: "fr", 80: "fr"})
+    out = ocr_pending_zones(read_pdf(path), path, engine=engine)
+    assert [lang for _, lang in engine.calls] == ["ar", "fr", "fr", "fr"]  # 4 lectures au lieu de 6
+    assert _ocr_texts(out) == ["Échelon 5"] * 3
+
+
+def test_arabic_document_keeps_one_reading_per_zone(tmp_path: Path) -> None:
+    path = _zones_pdf(tmp_path, [40, 60, 80])
+    engine = ZoneLanguageEngine({40: "ar", 60: "ar", 80: "ar"})
+    out = ocr_pending_zones(read_pdf(path), path, engine=engine)
+    assert [lang for _, lang in engine.calls] == ["ar", "ar", "ar"]
+    assert _ocr_texts(out) == ["الدرجة 5"] * 3
+    assert any("langue retenue pour le document : ar" in w for w in out.warnings)
+
+
+@pytest.mark.parametrize(
+    "junk",
+    [("Alsnf", 0.45), ("$$ 12", 0.70), ("Aldrjt", 0.90)],  # le dernier : détecté « fr », confiance sous LATIN_SURE
+)
+def test_a_zone_of_the_other_language_is_reread_with_the_arabic_model(tmp_path: Path, junk: tuple[str, float]) -> None:
+    path = _zones_pdf(tmp_path, [40, 60, 80])
+    engine = ZoneLanguageEngine({40: "fr", 60: "ar", 80: "fr"}, junk=junk)
+    out = ocr_pending_zones(read_pdf(path), path, engine=engine)
+    assert [(truth, lang) for truth, lang in engine.calls] == [
+        ("fr", "ar"), ("fr", "fr"),  # zone 1 : double lecture, document retenu « fr »
+        ("ar", "fr"), ("ar", "ar"),  # zone 2 arabe : latin peu sûr → relue en arabe, l'arabe gagne
+        ("fr", "fr"),  # zone 3 : une seule lecture
+    ]
+    assert _ocr_texts(out) == ["Échelon 5", "الدرجة 5", "Échelon 5"]  # aucun charabia gardé
+
+
+def test_language_is_retained_on_the_first_zone_with_text(tmp_path: Path) -> None:
+    path = _zones_pdf(tmp_path, [40, 60, 80])
+    engine = ZoneLanguageEngine({40: "vide", 60: "fr", 80: "fr"})
+    out = ocr_pending_zones(read_pdf(path), path, engine=engine)
+    # zone vide : arabe seulement (rien de latin à relire), puis la langue est retenue sur la zone 2
+    assert [(truth, lang) for truth, lang in engine.calls] == [("vide", "ar"), ("fr", "ar"), ("fr", "fr"), ("fr", "fr")]
+    assert [z.zone_id for z in out.pages[0].pending_zones] == ["p1_z1"]  # zone vide gardée : rien n'est deviné
+
+
+def test_explicit_language_is_never_switched(tmp_path: Path) -> None:
+    path = _zones_pdf(tmp_path, [40, 60])
+    engine = ZoneLanguageEngine({40: "fr", 60: "ar"})
+    out = ocr_pending_zones(read_pdf(path), path, engine=engine, lang="fr")
+    assert [lang for _, lang in engine.calls] == ["fr", "fr"]
+    assert not any("langue retenue" in w for w in out.warnings)
+
+
+def test_read_zone_boxes_keeps_its_former_behaviour() -> None:
+    engine = FakeEngine([[OcrBox("Indemnite", 0.80, (0, 0, 9, 9))], [OcrBox("Indemnité", 0.97, (0, 0, 9, 9))]])
+    image: Image3 = np.zeros((20, 40, 3), dtype=np.uint8)
+    assert [b.text for b in read_zone_boxes(engine, image, "auto")] == ["Indemnité"]
+    assert [lang for _, lang in engine.calls] == ["ar", "fr"]
 
 
 def test_read_image_uses_dpi_for_points(tmp_path: Path) -> None:
