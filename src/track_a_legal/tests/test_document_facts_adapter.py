@@ -348,3 +348,29 @@ def test_salary_confidence_boundaries():
         )
 
         assert found is expected, confidence
+
+def test_rejects_missing_or_invalid_currency():
+    """Ne jamais inventer la devise d'un montant DS3."""
+
+    examples = json.loads(DEMO_PATH.read_text(encoding="utf-8"))
+    original = next(
+        item["response"]
+        for item in examples
+        if item["name"] == "01_ok_fiche_paie"
+    )
+
+    for currency in (None, "", "EUR"):
+        response = copy.deepcopy(original)
+        response["mode"] = "live"
+        response["computed_by"] = "document_intelligence.service"
+        response["result"]["fields"]["base_salary"]["currency"] = currency
+
+        facts = extract_document_facts(
+            response=response,
+            subject_id="P1",
+        )
+
+        assert not any(
+            fact["property"] == "base_salary"
+            for fact in facts
+        ), currency
