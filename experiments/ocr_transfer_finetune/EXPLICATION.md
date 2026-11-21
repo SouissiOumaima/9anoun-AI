@@ -14,6 +14,7 @@ Document de préparation à la présentation. Français simple, phrases courtes.
 | [T] | sortie de pytest pendant la session de travail (pas de fichier) |
 | [S] | mesure faite pendant la session de travail sur la page A4 fictive (script temporaire, pas de fichier dans le dépôt) |
 | [U] | résumé agrégé des vraies données, lancé par toi (`resume_agrege.json`, hors dépôt) |
+| [P] | profil des vraies données (`--profile`, 5 pages), lancé par toi (`profil.json`, hors dépôt) |
 
 ---
 
@@ -481,14 +482,19 @@ Comment les lire :
 
 Voir 2.7 : plantage reproduit sur une page A4 fictive, `mobile_det` ne plante pas et donne la même qualité [S].
 
-### 5.8 Lenteur sur les vraies pages
+### 5.8 Vitesse sur les vraies pages (mesurée avec `--profile`)
 
-- Sur tes vraies données : 5 pages en 4 563 s [U], soit environ **913 s (15 min) par page**.
-- Sur la page A4 fictive, `mobile_det` met environ 30 à 40 s [S].
-- **Pourquoi cet écart ? Je ne sais pas, ce n'est pas mesuré.** Pistes possibles, à vérifier :
-  - une page réelle peut contenir **beaucoup de zones**, et chaque zone est un appel OCR séparé ;
-  - en mode `auto`, une zone surtout française est lue **deux fois** ;
-  - et il faut vérifier que ce lancement utilisait déjà `mobile_det`.
+- Mesure avec `--profile` sur les 5 pages du vrai PDF [P] :
+  - **146 s au total**, dont 137,1 s d'OCR, soit environ **27 s d'OCR par page** ;
+  - **la reconnaissance prend 69 % du temps d'OCR** (94,6 s), la détection 42,1 s, le chargement des modèles 8,5 s,
+    le rendu 0,3 s ;
+  - 5 zones (une par page, 2482 × 3510 pixels), 5 appels en arabe, **aucune double lecture**, 201 boîtes ;
+  - par page : 11,5 s pour 6 boîtes, 35,8 s pour 53, 27,8 s pour 41, 21,8 s pour 30, 40,1 s pour 71.
+- **Le temps suit le nombre de lignes** : plus la page a de texte, plus la reconnaissance est longue.
+- **Le premier essai (4 563 s pour les mêmes 5 pages, environ 15 min par page) n'était pas représentatif.** Cause
+  probable : la machine faisait autre chose en même temps (charge du processeur, disque C: presque plein). Le profil
+  sur les mêmes pages ne montre rien qui coûte autant dans l'OCR. Cette cause n'a pas été mesurée directement.
+- Conclusion : **la vitesse est acceptable**, `ocr.py` n'a pas été modifié.
 
 ### 5.9 Autres contraintes
 
@@ -577,7 +583,7 @@ Toutes se lancent depuis la racine `9anoun-AI`, dans PowerShell.
 | Tests DS3 + expérience | `.venv\Scripts\python -m pytest -q src/document_intelligence/tests experiments/ocr_transfer_finetune/tests` | 276 réussis, en 49 s à 250 s selon les lancements [T] |
 | Tests OCR seuls | `.venv\Scripts\python -m pytest -q src/document_intelligence/tests/test_document_intelligence_ocr.py` | 17 réussis en 61,5 s [T] |
 | Démo OCR | `.venv\Scripts\python -m src.document_intelligence.reading.ocr <fichier_fictif.pdf ou .png>` (ajouter `--json sortie.json` pour le détail) | environ 30 à 40 s pour une page A4 dense [S], plus le chargement des modèles |
-| Vraies données (c'est **toi** qui lances) | `.venv\Scripts\python -X faulthandler scripts/evaluer_donnees_reelles.py "<dossier_pdf>" --out "<dossier_hors_depot>" --limit 1` | environ 15 min par page d'après le dernier lancement [U] |
+| Vraies données (c'est **toi** qui lances) | `.venv\Scripts\python -X faulthandler scripts/evaluer_donnees_reelles.py "<dossier_pdf>" --out "<dossier_hors_depot>" --limit 1` | environ 27 s d'OCR par page (146 s pour 5 pages) [P]. Options : `--max-pages N`, `--profile` (durées par étape, chiffres seulement) |
 
 Pour la démo, utilise **uniquement un fichier fictif**. Le test `test_paddle_reads_fictive_scanned_payslip`
 fabrique lui-même un PDF fictif (une ligne française, une ligne arabe) : c'est une démo sûre.
@@ -595,7 +601,7 @@ Résumé agrégé que tu as obtenu [U] :
 | Lignes OCR | 174 |
 | Confiance moyenne | 0,9378 |
 | Lignes avec une confiance sous 0,90 | 24 (environ 14 % des 174) |
-| Durée | 4 563 s (environ 76 min, environ 15 min par page) |
+| Durée | 146 s pour les 5 pages, environ 27 s d'OCR par page, mesurée avec `--profile` [P]. Le premier essai (4 563 s) avait tourné sur une machine chargée (voir 5.8). |
 
 **Ce que ça montre :**
 - la chaîne complète tourne sur un vrai document : lecteur PDF → zones → OCR → lignes, sans plantage ;
@@ -609,7 +615,8 @@ Résumé agrégé que tu as obtenu [U] :
 - **Un seul document** : impossible de généraliser aux 66 PDF.
 - **Le CER de 1,20 % de l'expérience ne s'applique pas** à ces données. Il a été mesuré sur des lignes fictives,
   avec un modèle fine-tuné qui **n'est pas** celui utilisé par `ocr.py` (qui garde le modèle pré-entraîné).
-- La durée est trop longue pour 66 PDF en l'état (section 10).
+- La vitesse ne vaut que pour ce document : une page plus dense prendra plus de temps (le temps suit le nombre de
+  lignes).
 
 ---
 
@@ -652,7 +659,7 @@ Résumé agrégé que tu as obtenu [U] :
 
 10. **Ça marche sur les vraies données ?**
     La chaîne tourne sur 1 document réel de 5 pages : 174 lignes, confiance moyenne 0,9378 [U]. Mais sans texte de
-    référence, on ne connaît pas la précision réelle. Et c'est lent : environ 15 min par page.
+    référence, on ne connaît pas la précision réelle. La vitesse est d'environ 27 s par page sur CPU [P].
 
 Questions bonus possibles :
 - *Pourquoi 1,20 % n'est-il pas utilisé en production ?* Parce qu'il est mesuré sur des données fictives, très
@@ -673,14 +680,11 @@ Questions bonus possibles :
    fichier de Hadil : à décider avec elle, puis à tester avec les tests du service.
 3. **Jeu réel annoté** : quelques centaines de lignes réelles, avec leur texte exact, gardées hors du dépôt. Il
    permettra de mesurer le vrai CER de la baseline, puis de refaire le FT `bn_frozen` sur un mélange réel + fictif.
-4. **Lenteur** : environ 15 min par page [U]. À faire :
-   - mesurer où part le temps (nombre de zones par page, double lecture en mode `auto`) ;
-   - vérifier que `mobile_det` était bien utilisé ;
-   - essayer `--lang ar` pour éviter la double lecture ;
-   - regrouper les zones par page.
-5. **Les 66 PDF** : au rythme actuel, ce serait très long. Par exemple, 66 documents de 5 pages chacun, à 4 563 s
-   par document, feraient environ 84 h. C'est une **estimation**, pas une mesure. Le nombre réel de pages n'est pas
-   connu ici. Il faut d'abord régler la lenteur, puis lancer par lots avec `--limit`.
+4. **Vitesse** : mesurée, environ 27 s d'OCR par page [P], ce qui est acceptable. Rien à optimiser pour l'instant.
+   À surveiller sur des pages plus denses (la reconnaissance prend 69 % du temps).
+5. **Les 66 PDF** : par exemple, 66 documents de 5 pages chacun, à 146 s par document, feraient environ 2 h 40.
+   C'est une **estimation**, pas une mesure. Le nombre réel de pages n'est pas connu ici. Lancer par lots avec
+   `--limit`.
 6. **Défaut des chiffres dans les lignes arabes** : le modèle pré-entraîné perd des chiffres. C'est grave pour des
    montants. Le FT le corrige sur les données fictives : c'est l'argument principal pour adopter un modèle
    fine-tuné, une fois validé sur des données réelles.
