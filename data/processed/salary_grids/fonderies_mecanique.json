@@ -430,7 +430,8 @@
     "رأس الجدول «+32» (الصفحات من 25 إلى 30) والمذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17: ثلاث سنوات بالدرجات من 8 إلى 14): تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبداية من 35 سنة يتعارض النصان ويُرفض الطلب.",
     "تصف المذكرة نفسها جدولا «ذا 7 أسطر و14 عمودا»: هو جدول الأعوان الخالصين بالساعة؛ ويتضمن جدول الأعوان الخالصين بالشهر 19 سطرا.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [2]
   },
   "horaires": {
    "fr": [
@@ -440,7 +441,8 @@
    "ar": [
     "رأس الجدول «+32» (الصفحات من 25 إلى 30) والمذكرة التوضيحية للفصل 58 (جديد) (الصفحة 17: ثلاث سنوات بالدرجات من 8 إلى 14): تُعتمد الدرجة 14 من 32 سنة إلى أقل من 35 سنة؛ وبداية من 35 سنة يتعارض النصان ويُرفض الطلب.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [1]
   }
  },
  "primes": [
@@ -671,7 +673,31 @@
    "source_article": "51 (جديد)",
    "message_fr": "Prime de panier (article 51 (جديد), page 15) : imprimée « 706.666 millimes par jour » : montant à plus de trois décimales de dinar, que le moteur ne sert pas. Prime non exposée ; aucun montant n'est renvoyé.",
    "message_ar": "منحة السلّة (الفصل 51 (جديد)، الصفحة 15): مطبوعة «706.666 مليما في اليوم»: مبلغ بأكثر من ثلاثة أرقام عشرية من الدينار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
-   "motif": "plus de 3 décimales"
+   "motif": "plus de 3 décimales",
+   "service_contrat_v1": {
+    "code": "prime_panier",
+    "label_ar": "منحة السلّة",
+    "label_fr": "Prime de panier",
+    "source_article": "51 (جديد)",
+    "source_pdf_page": 15,
+    "unite": "millimes/jour",
+    "montant": 706.666,
+    "montant_exact": true,
+    "montant_imprime": "706.666 مليما في اليوم",
+    "effective_date": null,
+    "hypotheses": {
+     "fr": [
+      "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+      "Montant unitaire imprimé servi tel quel : aucun calcul selon le nombre de jours ou d'heures n'est fait.",
+      "L'article attribue la prime « conformément à la législation en vigueur » sans en préciser les conditions : elles ne sont pas vérifiées ici."
+     ],
+     "ar": [
+      "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+      "يُرجَع المبلغ المطبوع للوحدة كما هو: لا يقع أي احتساب حسب عدد الأيام أو الساعات.",
+      "يسند الفصل المنحة «طبقا للتشريع الجاري به العمل» دون تحديد شروطها: لا يقع التثبت منها هنا."
+     ]
+    }
+   }
   },
   "prime_production": {
    "source_pdf_page": 15,

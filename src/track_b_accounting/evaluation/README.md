@@ -67,7 +67,7 @@ SMIG 4 ; secteur fictif non supporté 1.
 | Silence excessif | `ok` attendu, refus renvoyé (perte de couverture, pas de faux montant) | 0 |
 | Refus corrects | Refus attendu : statut `refus` **et** même code ; si le cas fixe `message_fr` ou `message_ar`, même texte | 100 % |
 | Citations valides | Pour un `ok` : nombre de citations, nom du PDF et page égaux à ceux du golden set ; `source_file` et `data_file` existent ; `decision_ref` est un titre `### Dn` de `docs/DECISIONS.md` | 100 % |
-| Conformité aux schémas | Réponse valide contre `track_b_response.v0` et contre le schéma commun (`src/shared/schemas/common.v0.schema.json`) | 100 % |
+| Conformité aux schémas | Réponse valide contre `track_b_response.v0` (ou `track_b_response.v1` pour un cas dont la requête porte `contract_version: track_b.v1`, D75) et contre le schéma commun (`src/shared/schemas/common.v0.schema.json`) | 100 % |
 | Statut erreur, exceptions | Réponses `erreur` et exceptions levées par le handler | 0 |
 
 Les métriques sont calculées **sur l'ensemble des cas et sur les seuls cas

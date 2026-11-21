@@ -1,7 +1,10 @@
-"""Interface JSON v0 du module comptable : requête dict → réponse dict (D7).
+"""Interface JSON du module comptable : requête dict → réponse dict (D7 ; contrat v1 à côté de v0, D75).
 
 Aucune logique de calcul ici : validation de la requête (JSON Schema), appel de calc/,
 conversion Result/Refus en réponse. Toute exception inattendue → status "erreur", sans montant.
+
+Versions : une requête dont contract_version vaut exactement "track_b.v1" est traitée en v1 (schémas v1, demande
+par degré, primes servies exactes) et reçoit une réponse v1 ; toute autre requête suit le chemin v0, inchangé.
 """
 
 from __future__ import annotations
@@ -19,10 +22,19 @@ from .. import calc
 from ..calc import Refus, Result
 
 CONTRACT_VERSION = "track_b.v0"
+CONTRACT_VERSION_V1 = "track_b.v1"
+CONTRACT_VERSIONS = (CONTRACT_VERSION, CONTRACT_VERSION_V1)
 SCHEMAS_DIR = Path(__file__).resolve().parents[3] / "data" / "mock_cards" / "schemas"
 OPERATIONS: dict[str, Callable[..., Result]] = {
     "salaire_base": calc.salaire_base,
     "prime": calc.prime,
+    "smig": calc.smig,
+}
+# Contrat v1 : mêmes opérations ; la prime sert aussi les montants imprimés exacts (D76). Le choix est fait ici,
+# selon contract_version, jamais par un paramètre de la requête.
+OPERATIONS_V1: dict[str, Callable[..., Result]] = {
+    "salaire_base": calc.salaire_base,
+    "prime": calc.prime_v1,
     "smig": calc.smig,
 }
 # Opérations valides au schéma de requête, mais toujours refusées (HORS_SCOPE) : aucune source vérifiée.
@@ -35,9 +47,10 @@ class _RefusContrat(Refus):
 
 
 @lru_cache(maxsize=None)
-def validator(nom: str) -> Draft202012Validator:
-    """nom = "request" ou "response" (schémas de data/mock_cards/schemas/)."""
-    schema = json.loads((SCHEMAS_DIR / f"track_b_{nom}.v0.schema.json").read_text(encoding="utf-8"))
+def validator(nom: str, version: str = CONTRACT_VERSION) -> Draft202012Validator:
+    """nom = "request" ou "response", version = "track_b.v0" ou "track_b.v1" (schémas de data/mock_cards/schemas/)."""
+    suffixe = version.split(".")[1]
+    schema = json.loads((SCHEMAS_DIR / f"track_b_{nom}.{suffixe}.schema.json").read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
     return Draft202012Validator(schema)
 
@@ -95,6 +108,13 @@ def reponse_erreur(request_id: str | None, exc: BaseException) -> dict:
     return rep
 
 
+def _version(request) -> str:
+    """track_b.v1 seulement si la requête le demande exactement ; sinon v0 (y compris pour une requête invalide)."""
+    if isinstance(request, dict) and request.get("contract_version") == CONTRACT_VERSION_V1:
+        return CONTRACT_VERSION_V1
+    return CONTRACT_VERSION
+
+
 def _request_id(request) -> str | None:
     rid = request.get("request_id") if isinstance(request, dict) else None
     return rid if isinstance(rid, str) else None
@@ -102,17 +122,18 @@ def _request_id(request) -> str | None:
 
 def _traiter(request) -> dict:
     rid = _request_id(request)
+    version = _version(request)
     if not isinstance(request, dict):
         raise _RefusContrat(Refus.PARAM_INVALIDE, "La requête doit être un objet JSON.", "يجب أن يكون الطلب كائن JSON.")
 
     # 1. Refus de contrat : requête mal formée (bug de l'appelant).
-    erreur = best_match(validator("request").iter_errors(request))
+    erreur = best_match(validator("request", version).iter_errors(request))
     if erreur is not None:
         chemin = "/".join(str(p) for p in erreur.absolute_path) or "(racine)"
         raise _RefusContrat(
             Refus.PARAM_INVALIDE,
-            f"Requête non conforme au contrat {CONTRACT_VERSION} ({chemin}) : {erreur.message}",
-            f"الطلب غير مطابق للعقد {CONTRACT_VERSION} ({chemin}): {erreur.message}",
+            f"Requête non conforme au contrat {version} ({chemin}) : {erreur.message}",
+            f"الطلب غير مطابق للعقد {version} ({chemin}): {erreur.message}",
         )
 
     # 2. Refus métier : requête valide, opération connue du contrat mais hors périmètre Track B.
@@ -120,20 +141,21 @@ def _traiter(request) -> dict:
     if op in OPERATIONS_HORS_PERIMETRE:
         raise _RefusContrat(
             Refus.HORS_SCOPE,
-            f"Opération {op!r} hors du périmètre Track B v0 (disponibles : {', '.join(OPERATIONS)}). "
+            f"Opération {op!r} hors du périmètre Track B {version.split('.')[1]} (disponibles : {', '.join(OPERATIONS)}). "
             "CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
             f"العملية {op!r} خارج نطاق المسار B (المتوفر: {', '.join(OPERATIONS)}). "
             "الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه.",
         )
 
     # 3. Calcul (refus éventuels émis par calc/).
-    r = OPERATIONS[op](**request["params"])
+    r = (OPERATIONS_V1 if version == CONTRACT_VERSION_V1 else OPERATIONS)[op](**request["params"])
     return reponse_ok(rid, r, f"track_b_accounting.calc.{op}")
 
 
 def handle(request: object) -> dict:
-    """Point d'entrée unique. Renvoie toujours une réponse conforme au schéma de réponse v0."""
+    """Point d'entrée unique. Renvoie toujours une réponse conforme au schéma de réponse de la version traitée."""
     rid = _request_id(request)
+    version = _version(request)
     op = request.get("operation") if isinstance(request, dict) else None
     try:
         rep = _traiter(request)
@@ -142,6 +164,9 @@ def handle(request: object) -> dict:
         rep = reponse_refus(rid, e, qui)
     except Exception as exc:  # noqa: BLE001 — contrat : jamais d'exception vers l'appelant
         rep = reponse_erreur(rid, exc)
-    if not validator("response").is_valid(rep):
-        rep = reponse_erreur(rid, ValueError("réponse non conforme au schéma v0"))
+    if version != CONTRACT_VERSION and isinstance(rep, dict):
+        rep["contract_version"] = version
+    if not validator("response", version).is_valid(rep):
+        rep = reponse_erreur(rid, ValueError(f"réponse non conforme au schéma {version}"))
+        rep["contract_version"] = version
     return rep

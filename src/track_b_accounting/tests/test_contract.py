@@ -286,7 +286,7 @@ def _alterer(f):
         ({}, None),
         (_alterer(lambda r: r.pop("request_id")), None),
         (_alterer(lambda r: r.__setitem__("request_id", 42)), None),
-        (_alterer(lambda r: r.__setitem__("contract_version", "track_b.v1")), "demo-01-salaire-admin-2022"),
+        (_alterer(lambda r: r.__setitem__("contract_version", "track_b.v9")), "demo-01-salaire-admin-2022"),
         (_alterer(lambda r: r.__setitem__("lang", "en")), "demo-01-salaire-admin-2022"),
         (_alterer(lambda r: r.__setitem__("extra", 1)), "demo-01-salaire-admin-2022"),
         (_alterer(lambda r: r["params"].pop("date")), "demo-01-salaire-admin-2022"),

@@ -513,7 +513,8 @@
     "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
     "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [2]
   },
   "mensuels": {
    "fr": [
@@ -525,7 +526,8 @@
     "يُعتبر الرقم المطبوع تحت كل درجة بداية الدرجة: بالنسبة إلى الأعوان الخالصين بالساعة، الدرجة 0 (الترسيم) من 0 إلى سنة، والدرجة 1 من سنة إلى سنتين، ثم 2 و3 و5 …؛ وبالنسبة إلى الأعوان الخالصين بالشهر، الدرجة 1 من سنة إلى سنتين ثم 2 و4 …؛ ويوزع الفصل 45 (الصفحة 15) الأقدمية على ثلاثين سنة بداية من السنة الثانية.",
     "لا يتضمن المصدر أي جدول بعد غرة ماي 2022؛ ولا يذكر آخر ملحق تعديلي (المفعول بداية من أول سبتمبر 2021، الصفحة 3) جدولا آخر: يبقى جدول 2022 معتمدا.",
     "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
-   ]
+   ],
+   "chemin_anciennete_seulement": [2]
   }
  },
  "primes": [
@@ -627,6 +629,7 @@
    "source_pdf_page": 29,
    "unite": "TND/heure",
    "colonnes_non_servies": {
+    "servies_par_degre": true,
     "colonnes_imprimees": [
      "19",
      "20"
@@ -826,6 +829,7 @@
    "source_pdf_page": 30,
    "unite": "TND/mois",
    "colonnes_non_servies": {
+    "servies_par_degre": true,
     "colonnes_imprimees": [
      "19",
      "20"
@@ -1299,6 +1303,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 522.488,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 1a, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1a، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1309,6 +1314,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 542.927,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 1b, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1b، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1319,6 +1325,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 558.287,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 2, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1329,6 +1336,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 645.112,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 3, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1339,6 +1347,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 678.838,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 4, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 4، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1349,6 +1358,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 704.548,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 5, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1359,6 +1369,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 788.384,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 6, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1369,6 +1380,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 802.409,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 7, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 7، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1379,6 +1391,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 822.078,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 8, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 8، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1389,6 +1402,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 836.514,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 9, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 9، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1399,6 +1413,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 850.950,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 10, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 10، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1409,6 +1424,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 864.601,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 11, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 11، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1419,6 +1435,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 884.817,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 12, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 12، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1429,6 +1446,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 904.709,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 13, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 13، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1439,6 +1457,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 937.140,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 14, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 14، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1449,6 +1468,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 969.417,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 15, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 15، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1459,6 +1479,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 998.214,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 16, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 16، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -1469,6 +1490,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 1057.273,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 17, colonne « période de stage » (tableau n° 2, en vigueur à partir du 2021-09-01, page 30) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 17، عمود «فترة التربص» (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-09-01، الصفحة 30): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     }
@@ -1482,6 +1504,7 @@
    "source_pdf_page": 31,
    "unite": "TND/heure",
    "colonnes_non_servies": {
+    "servies_par_degre": true,
     "colonnes_imprimees": [
      "19",
      "20"
@@ -1681,6 +1704,7 @@
    "source_pdf_page": 32,
    "unite": "TND/mois",
    "colonnes_non_servies": {
+    "servies_par_degre": true,
     "colonnes_imprimees": [
      "19",
      "20"
@@ -2154,6 +2178,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 559.062,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 1a, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1a، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2164,6 +2189,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 580.932,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 1b, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 1b، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2174,6 +2200,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 597.367,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 2, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 2، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2184,6 +2211,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 690.270,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 3, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 3، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2194,6 +2222,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 726.357,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 4, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 4، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2204,6 +2233,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 753.866,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 5, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 5، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2214,6 +2244,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 843.571,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 6, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 6، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2224,6 +2255,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 858.577,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 7, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 7، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2234,6 +2266,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 879.623,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 8, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 8، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2244,6 +2277,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 895.070,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 9, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 9، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2254,6 +2288,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 910.516,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 10, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 10، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2264,6 +2299,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 925.123,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 11, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 11، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2274,6 +2310,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 946.754,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 12, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 12، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2284,6 +2321,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 968.039,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 13, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 13، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2294,6 +2332,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 1002.740,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 14, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 14، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2304,6 +2343,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 1037.277,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 15, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 15، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2314,6 +2354,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 1068.089,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 16, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 16، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     },
@@ -2324,6 +2365,7 @@
      "source_article": "جدول الأجور",
      "raison": "colonne « période de stage » : durée du stage imprimée nulle part (l'article 8, page 7, ne fixe que la période d'essai)",
      "valeur_imprimee": 1131.282,
+     "servie_par_degre": true,
      "message_fr": "Salaire des agents payés au mois, catégorie 17, colonne « période de stage » (tableau n° 4, en vigueur à partir du 2022-05-01, page 32) : la durée du stage n'est imprimée nulle part dans la convention du textile (l'article 8, page 7, ne fixe que la période d'essai). Aucun montant n'est renvoyé.",
      "message_ar": "أجر الأعوان الخالصين بالشهر، الصنف 17، عمود «فترة التربص» (جدول الأجور عدد 4 الذي يقع العمل به بداية من 2022-05-01، الصفحة 32): لا تذكر اتفاقية النسيج مدة التربص (لا يضبط الفصل 8، الصفحة 7، إلا مدة التجربة). لا يُرجَع أي مبلغ."
     }
