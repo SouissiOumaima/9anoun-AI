@@ -4,8 +4,8 @@ Règles : docs/DECISIONS.md (D6). Aucune donnée n'est saisie ici : tout vient d
 """
 
 from .models import Citation, Refus, Result
-from .primes import prime
-from .salary import degre_from_anciennete, salaire_base, table_applicable
+from .primes import prime, prime_v1
+from .salary import degre_from_anciennete, salaire_base, salaire_par_degre, table_applicable
 from .smig_calc import smig
 
 __all__ = [
@@ -16,5 +16,7 @@ __all__ = [
     "table_applicable",
     "salaire_base",
     "prime",
+    "prime_v1",
+    "salaire_par_degre",
     "smig",
 ]

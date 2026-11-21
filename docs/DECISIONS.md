@@ -1950,7 +1950,8 @@ lignes de grille non recopiés.
 
 **Décision** : DS3 n'applique **aucun** seuil de confiance. Chaque champ renvoie sa confiance réelle
 (`fields[...].confidence`), et c'est le consommateur qui décide de l'utiliser ou non. DS1 exige
-**0,90** avant tout calcul DS5 : en dessous, le champ passe « à confirmer » et n'est jamais pré-coché.
+**0,90** avant tout calcul DS5 : en dessous, le champ reste visible (avec sa citation) mais ne peut pas être
+sélectionné pour un calcul (comportement de DS1 précisé à la relecture de la PR #44).
 Le champ `options.min_confidence` du contrat devient facultatif, sans valeur par défaut (il valait
 0,80, jamais utilisé) ; il reste seulement comme indication que l'appelant peut transmettre.
 
@@ -1993,6 +1994,53 @@ est vérifiée avant de lire le moindre fichier.
 **Statut** : ⏳ provisoire (stockage à définir avec DS1 et le backend) ; prouvée par
 `test_document_intelligence_service.py` (cas nominal, même interface que le mock, accès refusés sans appel à
 Gemini, fichier absent, vide ou trop grand, opérations et formats hors périmètre, Gemini indisponible).
+
+---
+
+### D41 — OCR (partie A) branché dans le service DS3 live : images PNG/JPG et zones en attente
+
+**Numéro** : D41, premier des numéros D41 à D45 réservés à DS3 (D40).
+
+**Décision** : `extraction/pipeline.py` lit d'abord le texte natif du PDF, puis passe à l'OCR de la partie A
+(`reading/ocr.py`, PaddleOCR PP-OCRv5) **seulement s'il reste des zones en attente** (images, scans, arabe en
+« Private Use ») ; une image PNG/JPG est lue entièrement par l'OCR. La confiance d'un champ reste celle de sa
+ligne, sans seuil (D32, D39) : sous 0,90, DS1 l'affiche mais ne permet pas de l'utiliser pour un calcul. L'ordre
+des lignes OCR est celui que donne `reading/ocr.py` (`merge_by_position`, un seul endroit) : une ligne OCR prend
+sa place selon sa position dans la page, sans réordonner les lignes natives. L'OCR est **disponible** si un moteur est passé en paramètre (tests), ou si
+PaddleOCR est installé **et** que `DS3_OCR_INPROCESS=1`. Cette variable, réservée aux démonstrations, autorise
+l'OCR dans le processus du service ; elle est absente par défaut, parce qu'un plantage natif de Paddle arrêterait
+tout le service et qu'une page prend environ 27 s (plus environ 8,5 s de chargement des modèles), au-delà de la
+cible de 20 s. Sans OCR disponible, un PDF est lu comme avant (zones non lues, avertissement) et une image est
+refusée **avant toute lecture** : `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), message « La lecture des images
+n'est pas possible : l'OCR n'est pas installé ou pas activé sur ce serveur. Envoyez un PDF avec du texte. ». Si
+rien n'est lisible, même après l'OCR : `SOURCE_MANQUANTE`, et Gemini n'est pas appelé. Un échec de l'OCR sur une
+zone ne lève pas d'exception : la zone reste en attente avec un avertissement.
+
+**Limite connue** : la vérification (D32) attrape un chiffre **perdu** par l'OCR (la valeur ne figure plus dans la
+ligne : champ à `null`), mais pas un chiffre **remplacé** (424,700 lu au lieu de 424,100 figure bien dans la ligne
+lue). Ce qui protège contre ce cas : sous 0,90, DS1 affiche le champ sans permettre de l'utiliser pour un calcul ;
+à 0,90 ou plus, l'utilisateur doit le confirmer explicitement, en voyant la citation.
+
+**Alternatives envisagées** :
+- Réponse `ok` avec tous les champs à `null` pour une image sans OCR → rejeté : DS1 croirait le document
+  illisible, alors que c'est le serveur qui ne sait pas lire.
+- Lancer l'OCR sur toutes les pages, même natives → rejeté : environ 27 s par page sur CPU, pour rien.
+- OCR dans le processus du service dès que PaddleOCR est installé → rejeté : un plantage natif de Paddle
+  arrêterait tout le service (relecture de Wiem, PR #44). Réservé aux démonstrations, derrière `DS3_OCR_INPROCESS`.
+
+**Raison** : le service sait lire les scans et les fiches arabes illisibles en natif, sans changer le contrat
+ds3.v2 (mêmes codes, mêmes champs), sans dépendre de PaddleOCR là où il n'est pas installé, et sans mettre le
+service en danger tant que le backend en arrière-plan n'est pas branché.
+
+**Statut** : ✅ appliquée à la fusion de la PR #44 ; prouvée par `test_document_intelligence_ocr_pipeline.py` (scan
+lu et cité avec la confiance de l'OCR, PDF natif sans appel à l'OCR, OCR en panne, OCR non disponible pour un PDF
+et pour une image, PaddleOCR installé mais non activé, activation par `DS3_OCR_INPROCESS`, numpy / Pillow absents,
+image où l'OCR ne lit rien, PDF mixte cité des deux sources, zone OCR au-dessus des lignes natives remise à sa
+place, image dans le service, format refusé, image
+corrompue). Suite (D42, avec Wiem) : backend OCR en arrière-plan (processus séparé, cache dans `DS3_CACHE_DIR`,
+verrou, PR #46) ; à la première question sur un scan, réponse `erreur` `TIMEOUT` réessayable pendant la lecture ;
+puis déclenchement au téléversement (`prepare_document`) après accord de DS1. Remplace, dans D40, la ligne
+« page scannée : `SOURCE_MANQUANTE` en attendant l'OCR ».
 
 ---
 
@@ -3125,3 +3173,406 @@ Au total, 1 050 montants.
 - Primes à montant fixe imprimé seulement, un code par montant sans date. Promotions, reclassements et passages d'échelle non calculés, affichés en hypothèse.
 - Libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`). La note des tableaux (décrets 437/1981 et 501/1982) est reprise en remarque, sans calcul.
 - **Vérification humaine partielle faite par DS5** (détail dans le statut de chaque décision) : cas de référence TB-245 à TB-290 (`verification_humaine` à `true`), primes sans date, cellules tranchées au zoom, échantillon de cellules non tranchées ; les autres cellules reposent sur la double lecture et le contrôle de hausse.
+
+---
+
+### D73 — Identifiants d'article sans numéro de partie (migration de l'archive Tradrly)
+
+**Numéro** : D73. D31 à D40 sont pris par DS3, D41 à D72 par les grilles salariales de DS5
+(jusqu'à D72, FONDERIE_METALLURGIE_MECANIQUE). La numérotation reprend après la dernière entrée
+écrite.
+
+**Source** : archive « اتفاقيات قطاعية محينة » livrée par Tradrly le 15/11/2026 : 56 conventions
+transcrites depuis les images de pages, un condensé JSON et un fichier de vérification par
+convention.
+
+**Contexte** : l'ancien chemin d'ingestion (D20) produisait des identifiants portant un numéro de
+partie, par exemple `CCS-ASSURANCE-P3-ART-26`. Le nouveau schéma ne fournit pas de numéro de
+partie exploitable : son champ `structure.part` contient le **titre du chapitre en toutes lettres**
+(`الباب الأول - مجال تطبيق الاتفاقية…`) et n'est renseigné que dans **2 conventions sur 56**. Il
+fallait donc choisir entre reconstituer artificiellement l'ancienne numérotation et l'abandonner.
+Le golden set référence ces identifiants : un changement non maîtrisé ferait chuter le rappel sans
+aucun message d'erreur, la question étant simplement comptée comme manquée.
+
+**Mesures** (relevés du 20/11, scripts dans `tools/ds2_releves/`) :
+
+- une seule source du corpus livré porte un numéro de partie : `CCS-ASSURANCE`, parties 2 et 3 ;
+- l'ancien corpus contient **55** articles pour cette convention : `ART-1` (82 caractères, sans
+  page), `ART-2` (62 caractères, sans page), `P2-ART-1` (1519 caractères) et 52 articles sous `P3` ;
+- l'archive en contient **53**, avec 53 numéros tous distincts et aucun doublon ;
+- `P3-ART-1` fait 1661 caractères, l'article 1 de l'archive 1656 : c'est le même texte à la
+  normalisation près. `P2-ART-1`, 1519 caractères, est une seconde occurrence du même article
+  captée ailleurs dans le PDF ;
+- l'article **40**, absent de l'ancien corpus, est présent dans l'archive, page 16. Aucun article
+  de l'ancien corpus n'est absent de l'archive.
+
+**Décision** : l'identifiant d'un article devient `{source_id}-ART-{clé}-v{n}`, **sans numéro de
+partie**. Le groupe de versions devient `{source_id}-ART-{clé}`.
+
+Le numéro de partie n'encodait pas une structure juridique : il séparait les doublons produits par
+le découpeur heuristique. L'archive n'ayant pas de doublons, la collision disparaît avec sa cause.
+La hiérarchie n'est pas perdue : le titre de chapitre, quand la source le fournit, reste dans
+`hierarchy_path`, où il sert à l'affichage et au contexte, mais il ne participe plus à l'identité
+de l'article.
+
+**Alternatives envisagées** :
+
+- conserver l'ancienne numérotation via `overrides.v0.json` → rejeté : il faudrait inscrire à la
+  main quel article relève de quelle partie, information que l'archive ne porte pas, pour préserver
+  un découpage qui n'a pas d'existence juridique ;
+- dériver le numéro de partie du titre de chapitre → rejeté : seules 2 conventions sur 56 portent
+  ce champ, la règle serait inapplicable sur les 54 autres.
+
+**Conséquences, et ce qu'il faut corriger** :
+
+- régénérés automatiquement par l'ingestion, rien à faire : `legal_articles.jsonl`,
+  `legal_graph.json`, `embeddings/gemini-embedding-001.json` ;
+- archives de mesure à **ne pas modifier** : `evaluation/results/2026-10-14.json` et
+  `2026-10-18.json`, qui documentent un état passé et doivent rester lisibles comme tel ;
+- `src/legal_retrieval/evaluation/golden_set_retrieval.v0.json` : une seule entrée,
+  `CCS-ASSURANCE-P3-ART-12` devient `CCS-ASSURANCE-ART-12` ;
+- `src/legal_retrieval/tests/test_legal_sections.py` utilise `CCS-BTP-P2-ART-1-v1`. Aucun
+  identifiant BTP avec partie n'existe dans `data/` : il s'agit vraisemblablement d'une donnée
+  synthétique fabriquée par le test, à confirmer avant de conclure.
+
+**Effet sur DS4** : `data/mock_cards/legal_retrieval_ds4_cases.v0.json` référence
+`CCS-ASSURANCE-P3-ART-6` et `CCS-ASSURANCE-P3-ART-6-v1`. Ces deux identifiants changent. Le
+changement est annoncé **avant** la pull request, pas découvert dedans.
+
+**Réversibilité** : `overrides.v0.json` permettra de forcer un identifiant source par source. Si un
+consommateur externe se révélait dépendre de l'ancienne forme, la numérotation pourrait y être
+réintroduite sans toucher au lecteur.
+
+**Test associé** : aucun identifiant produit par le nouveau lecteur ne contient `-P<chiffre>-`, et
+aucun identifiant de groupe n'est émis deux fois pour une même source. Le second est le vrai
+garde-fou : il échouerait immédiatement si une convention comportait réellement des numéros
+d'article répétés.
+
+**Statut** : ⏳ proposée (2026-11-20), à valider par DS5 et annoncée à DS4. Appliquée avec la
+branche de migration.
+
+
+---
+
+### D74 — Périmètre d'ingestion de l'archive Tradrly : articles, annexes, sections, pointeurs de grilles
+
+**Numéro** : D74, à la suite de D73.
+
+**Contexte** : le nouveau schéma range le contenu d'une convention dans six champs — `articles`,
+`annexes`, `other_sections`, `excluded_salary_tables`, `pages_content` et `extraction_notes`. Le
+prototype de lecteur ne lisait que `articles`. La mesure sur les 56 condensés montre que ce choix
+amputerait le corpus du quart de son texte.
+
+**Mesures** (relevés du 20/11) :
+
+| champ | entrées | caractères de texte | part |
+|---|---:|---:|---:|
+| `articles` | 3 351 | 2 067 493 | 73,4 % |
+| `annexes` | 121 | 698 616 | 24,8 % |
+| `other_sections` | 128 | 52 429 | 1,8 % |
+| `excluded_salary_tables` | 256 | **0** | — |
+
+Les annexes dépassent 20 % du texte dans **25 conventions sur 56**, et atteignent 66 % pour les
+hôtels touristiques, 59 % pour les explosifs, 54 % pour le textile. Les 121 annexes ont toutes la
+même forme que les articles, `('footnotes', 'pages', 'text', 'title')`.
+
+**Décisions** :
+
+1. **`articles` — ingérés**, identifiant `{source_id}-ART-{clé}` (D73).
+
+2. **`annexes` — ingérées**, identifiant `{source_id}-ANX-{rang}`, espace distinct pour qu'une
+   annexe ne puisse jamais être confondue avec un article dans une citation. C'est là que se
+   trouvent les tableaux de classification professionnelle, par exemple
+   `الملحق عدد 1 - جدول التصنيف المهني`, qui déterminent la catégorie d'un travailleur. Les notes
+   d'extraction de Tradrly confirment la frontière : la classification professionnelle est
+   transcrite, le barème en dinars ne l'est pas.
+
+3. **`other_sections` — ingérées sauf exclusion explicite**, identifiant `{source_id}-SEC-{rang}`.
+   Le champ mélange métadonnée documentaire et droit, dans un rapport d'environ trois pour un. Une
+   exclusion en bloc perdrait 13 100 caractères normatifs, dont les 5 915 du
+   `الباب الثالث عشر - المنح`, le chapitre des primes. Une ingestion en bloc ajouterait 39 300
+   caractères de bruit indexable.
+
+   Liste d'exclusion, et elle seule :
+
+   | motif du titre | entrées | raison |
+   |---|---:|---|
+   | `التوقيعات` (exact) | 56 | signatures, une par convention |
+   | titre contenant `معلومات حول` et `التعديل` | 53 | note éditoriale de Tradrly, neuf graphies |
+   | `غلاف الوثيقة`, `العنوان (الصفحة الأولى)`, `عنوان …` | 4 | couvertures et titres de page |
+   | `ملاحظة حول إعادة ترقيم الفصول` | 1 | voir le point 6, conservée en métadonnée |
+
+   La liste est fermée et vérifiée par un test. Si une future livraison introduit un titre non
+   reconnu, il est **ingéré** et non écarté : omettre du droit est plus grave qu'indexer du bruit.
+   Le test signale les titres nouveaux pour relecture.
+
+4. **`excluded_salary_tables` — ingérées comme pointeurs vers Track B, jamais comme contenu.**
+
+   C'est le point le plus important de cette décision, et celui qui a le plus d'effet hors de DS2.
+
+   Tradrly n'a pas transcrit les barèmes : les 256 entrées ne portent que `('pages', 'title')`,
+   sans aucun texte. Mais **le projet les a quand même**, ailleurs : DS5 a produit 31 grilles
+   salariales dans `data/processed/salary_grids/`, lues à la main depuis les PDF, avec double
+   lecture et relecture contre l'image (D4 à D72).
+
+   La bonne réponse n'est donc ni le silence ni le refus sec, mais le renvoi. Chaque table devient
+   un document de type `pointeur`, portant son titre, sa page, son secteur et sa date d'entrée en
+   vigueur — lisible dans **252 titres sur 256**. Ce document est indexable pour être **trouvé**,
+   et porte un statut qui interdit structurellement de le citer comme source d'un montant.
+
+   Deux comportements, selon la table de correspondance D30 :
+
+   - **grille DS5 disponible** (`ds5_status = actif`) : la réponse nomme la table, sa date et sa
+     page, et oriente vers Track B, qui sait calculer le montant à partir de la catégorie et de
+     l'ancienneté. C'est le seul chemin par lequel 9anoun AI peut répondre juste à « combien
+     dois-je gagner » ;
+   - **pas de grille** : refus informé, qui nomme la table, sa date et sa page dans la convention,
+     pour que le travailleur sache où regarder.
+
+   La date est toujours mentionnée, car elle est parfois ancienne : la grille la plus récente est
+   de 2024 pour la plupart des conventions, mais de **juin 2021** pour l'assurance,
+   **septembre 2015** pour l'enseignement privé et **mai 2010** pour le gardiennage.
+
+5. **`pages_content` — non ingéré.** C'est la couche page brute, qui reprend les en-têtes
+   d'articles, les titres de chapitres et les signatures déjà comptés ailleurs. L'indexer créerait
+   des doublons de rang élevé sur presque chaque requête. Conservé comme source de vérification et
+   de repli, pas comme document.
+
+6. **`ملاحظة حول إعادة ترقيم الفصول` — traitée comme un risque, pas comme du texte.** Une convention
+   signale avoir renuméroté ses articles. Une question citant un numéro selon l'ancienne
+   numérotation serait résolue par la recherche par référence explicite, celle qui attribue un
+   score de 1,0 et place le résultat en tête : elle renverrait le mauvais article avec une
+   confiance maximale. C'est le défaut corrigé en PR #39 pour les suffixes ordinaux. La note est
+   conservée en métadonnée de la source et la convention inscrite au relevé des risques ; le
+   traitement fera l'objet d'une décision séparée, car il dépasse l'ingestion.
+
+**Alternatives envisagées** :
+
+- n'ingérer que `articles`, comme le prototype → rejeté : perte de 24,8 % du texte, dont les
+  tableaux de classification professionnelle ;
+- ingérer `other_sections` en bloc → rejeté : 39 300 caractères de signatures et de notes
+  éditoriales deviendraient indexables et concurrenceraient le droit ;
+- écarter `excluded_salary_tables` → rejeté : sans pointeur, une question sur un montant reçoit un
+  article voisin au lieu d'un renvoi. Le pointeur occupe la place que le barème laisse vide, et
+  depuis les grilles de DS5 il peut même mener à la bonne réponse.
+
+**Conséquences chiffrées** : le corpus passe d'environ 468 documents sur 9 conventions à un ordre
+de 3 600 articles, 121 annexes, environ 75 sections et 256 pointeurs sur 56 conventions.
+
+Il faut s'attendre à une **baisse du rappel et de l'abstention** avant réoptimisation : le nombre
+de candidats est multiplié par sept, donc le bruit augmente. Les seuils actuels, `MIN_RAW = 8,0` et
+`MIN_COVERAGE = 0,5` (D27), ont été réglés sur 9 conventions et n'ont aucune raison de rester bons.
+Dit avant la mesure, pas après.
+
+Le coût d'embedding est à vérifier avant de lancer : environ sept fois le volume actuel, sur un
+crédit d'API fourni par Tradrly (D28).
+
+**Chaîne à mettre à jour, dans cet ordre** :
+
+1. `data/mock_cards/legal_retrieval_vocabulary.v0.json` (vocabulaire D21) : il ne connaît
+   aujourd'hui que 7 secteurs. C'est lui qui fournit `ds2_code`, `label_fr`, `label_ar` et les
+   alias, et **DS1 s'en sert pour détecter le secteur d'une question**. L'étendre à 56 secteurs est
+   un changement visible par DS1, à annoncer.
+2. `src/shared/sectors/sectors.v0.json` (table D30) : elle n'inscrit une correspondance que si la
+   grille DS5 et la source DS2 désignent le même fichier de `data/raw/pdf/`. Avec 56 conventions
+   d'un côté et 31 grilles de l'autre, une trentaine de correspondances deviennent inscriptibles,
+   là où il n'y en a que 7 aujourd'hui. C'est ce qui rend le point 4 opérant.
+3. Le corpus et le graphe, régénérés.
+
+**À remonter à Tradrly** :
+
+1. les barèmes de salaires sont exclus de la transcription. Peuvent-ils être fournis, fût-ce dans
+   un format séparé ? DS5 les lit à la main, ce qui est coûteux et ne couvre que 31 secteurs sur
+   56 ;
+2. pour l'assurance, l'enseignement privé et le gardiennage, la grille la plus récente date
+   respectivement de 2021, 2015 et 2010. Conventions non renégociées, ou tables manquantes au PDF ?
+3. les conventions citent **180 fois** des textes externes, dont **86 fois le Code du travail** et
+   31 fois quinze articles nommés (166, 143, 333, 21, 138, 90, 280, 234, 89, 93, 169 bis, 76, 13,
+   44, 153). Ces quinze articles, et non le Code entier, suffiraient à combler la part la plus
+   visible du trou.
+
+**Tests associés** : aucun document ingéré n'a un texte vide ; aucun identifiant n'est émis deux
+fois, tous espaces confondus ; un pointeur ne peut être retourné que comme renvoi, et le test
+échoue s'il porte du texte ; la liste d'exclusion de `other_sections` est exhaustive sur la
+livraison actuelle, tout titre non reconnu étant signalé.
+
+**Statut** : ⏳ proposée (2026-11-20), à valider par DS5. Demande une extension de
+`corpus/models.py` : `LegalArticle` n'a aujourd'hui aucun champ distinguant un article d'une
+annexe, d'une section ou d'un pointeur, et la garantie du point 4 doit vivre dans le modèle, pas
+dans une convention de nommage d'identifiant.
+
+### D75 — Contrat `track_b.v1` à côté de v0 ; demande du salaire de base par degré déclaré
+
+**Décision** (DS5, réponse à l'ARRÊT 3 des évolutions du moteur) :
+
+1. **Version `track_b.v1` à côté de `track_b.v0`**, qui ne change pas.
+   - Le format `<track>.v<N>` est imposé par le schéma commun ; `track_b.v0.1` y serait invalide.
+   - Une requête est traitée en v1 seulement si `contract_version` vaut exactement `"track_b.v1"`. Toute autre
+     requête suit le chemin v0, avec les mêmes réponses et les mêmes messages.
+   - Nouveaux schémas : `data/mock_cards/schemas/track_b_request.v1.schema.json` et `track_b_response.v1.schema.json`.
+     v1 = v0 plus le paramètre `degre` (requête) ; `montant` à 3 décimales au moins et `unite` en `TND/` ou
+     `millimes/` (réponse, D76).
+   - L'orchestrateur (DS1) reste en v0 : aucun fichier de DS1 n'est modifié.
+2. **`degre` = désignation imprimée de la colonne** (entier ou texte) : `colonne_imprimee` quand la grille la donne
+   (textile `"stage"`, 0 à 20 ; banques `"stage"`, 2 à 19 ; minoteries 0 à 13 ; pétrole `"-"`, 1 à 13 ;
+   cosmétiques `"درجة وحيدة"`), sinon le numéro du degré.
+   - Alias neutre `"unique"` pour la seule colonne en arabe, déclaré dans le fichier (`degres[].alias_designation`).
+   - Exactement un des deux paramètres `anciennete_annees` et `degre`. Les deux ensemble, ou aucun : `PARAM_INVALIDE`
+     (aucun : même message qu'en v0).
+   - Désignation absente de la grille : `PARAM_INVALIDE`, avec la liste des désignations acceptées. Population sans
+     degré : `PARAM_INVALIDE`.
+3. **Par le degré, aucun refus lié à l'ancienneté** : ni `anciennetes_refusees`, ni seuil de la règle « refus », ni
+   borne exacte (D6). Une case illisible (D48) reste refusée avec le même message.
+4. **Textile** (D71), drapeaux lus seulement par le chemin du degré :
+   - `servie_par_degre: true` sur les 36 cases « stage » de `cellules_source_manquante` : servies avec
+     `valeur_imprimee` ;
+   - `servies_par_degre: true` sur les 4 blocs `colonnes_non_servies` : colonnes imprimées « 19 » et « 20 » servies
+     depuis leurs valeurs.
+   - Rien d'autre ne change dans `valeurs` ni dans `degres`. Le chemin par l'ancienneté et le contrôle de hausse ne
+     voient aucune différence.
+5. **Dernier degré** : servi tel qu'imprimé, avec hypothèse, pour les secteurs à écart cumulé (D10), à table de
+   correspondance (D9) et à seuil de refus. Aucune règle au-delà du dernier degré n'est appliquée.
+   - `detail.regle_au_dela_non_appliquee` donne l'article et la page de la règle (ex. « article 13 (جديد) ب, page 9 »).
+   - Une hypothèse FR et AR la décrit. Pour l'écart cumulé et la table de correspondance, elle donne l'ancienneté
+     au-delà de laquelle il faut demander par l'ancienneté.
+   - Règle « ouvert » (D29) : servi sans changement, sans ce champ.
+6. **Réponse** : `detail` avec `degre` (numéro interne), `degre_imprime`, `degre_declare: true`,
+   `anciennete_imprimee` et `libelle_degre` quand la grille les imprime ; sans `anciennete_annees`.
+   - Hypothèses ajoutées après celles de la grille :
+     - le degré est déclaré et n'est pas vérifié ;
+     - l'ancienneté imprimée pour ce degré, avec la page ;
+     - le verre (aucune durée de degré imprimée, art. 12 (جديد) et 53) ;
+     - colonne atteinte seulement par le degré ;
+     - degré qui touche un intervalle refusé (confiserie, art. 53) ;
+     - case exclue de l'écart cumulé (confiserie, 590,535).
+   - Citation : la table, comme en v0. `regles` : `D75`.
+   - Les hypothèses de grille écrites pour le chemin par l'ancienneté ne sont pas affichées par le degré. Leur rang
+     est déclaré dans `hypotheses_grille[population].chemin_anciennete_seulement` (52 phrases « L'ancienneté reçue
+     est l'ancienneté de progression déjà établie… », et leur traduction arabe au même rang, dans 27 grilles).
+     Aucun texte, aucune valeur ni aucun libellé ne change ; le chemin par l'ancienneté les affiche comme avant.
+
+**Alternatives écartées** :
+- Remplacer v0 par v1 partout : il aurait fallu modifier DS1, les 211 démos et leurs réponses, et on perdait la
+  preuve « v0 inchangé ».
+- `degre` = position de la colonne : dans 5 grilles, la position diffère du numéro imprimé, avec un risque réel
+  d'erreur.
+- Intégrer les colonnes du textile à `valeurs` : il aurait fallu changer le nombre de degrés, le chemin par
+  l'ancienneté, le contrôle de hausse et une dizaine de tests.
+- Refuser le dernier degré par le chemin du degré dans les secteurs à écart cumulé : le montant servi est exactement
+  celui imprimé pour ce degré, et l'hypothèse dit ce qui n'est pas appliqué.
+
+**Raison** :
+- Le verre (900 cellules) n'imprime aucune durée de degré. La colonne « stage » et les degrés 19 et 20 du textile
+  ont une valeur imprimée vérifiée, mais aucune ancienneté imprimée ne permet de les atteindre.
+- Le degré déclaré est la seule façon honnête de les servir. Il est donné par l'utilisateur, et la réponse le dit.
+
+**Source PDF + page** :
+- verre : `تحويل البلّور والمرآة.pdf`, pp.19-21 (grilles), art. 12 (جديد) pp.7-8, art. 53 p.15 ;
+- textile : `النسيج.pdf`, pp.29-32 (grilles), art. 12 (جديد) p.8 ;
+- banques : `البنوك.pdf`, pp.22-23 ;
+- cosmétiques : `صناعة مواد التجميل والعطورات.pdf`, pp.21-23, art. 49 p.15 ;
+- règles au-delà du dernier degré : pages et articles de chaque grille (D9, D10, D29, D48, D67 à D72).
+
+**Mise en œuvre** :
+- `calc/salary.py` (`salaire_par_degre`, appelée seulement si `degre` est donné) ;
+- `calc/loaders.py` (validation de `alias_designation`, `servie_par_degre`, `servies_par_degre`) ;
+- `contract/handler.py` (choix de la version) ;
+- `textile.json`, `cosmetiques_parfums.json` ; indicateur `chemin_anciennete_seulement` dans 27 grilles ;
+- démos `data/mock_cards/track_b_requests_demo.v1.json` (18), réponses
+  `tests/references/track_b_responses_demo.v1.json` ;
+- `test_contrat_v1.py` ; cas TB-291 à TB-308 ; `run_eval.py` (schéma de réponse selon la version).
+
+**Statut de vérification** :
+- Valeurs des 11 cas `ok` du salaire de base, lues sur le rendu des pages à 300 dpi : verre p.21 (4,055 ; 648,760),
+  textile p.29, 31 et 32 (2,604 ; 2,829 ; 559,062 ; 1 273,662), banques p.23 (1687,106), métallurgie p.34
+  (680,334), cosmétiques p.23 (575,741). Plus 1 refus de cellule illisible (confiserie p.21, « 615.41? »).
+- Ce sont des cellules déjà lues en double lecture dans leurs décisions de grille.
+- **Vérification humaine (DS5, « VÉRIFIÉS », 2026-11-21)** : « J'ai vérifié sur les images les 17 points de claude-docs/moteur/verification/page.html, tous conformes : les 3 primes à plus de 3 décimales (montant, unité, période), les 9 cellules servies par le degré avec leur en-tête, le refus de la confiserie, l'absence de colonne « 1 » aux banques, l'en-tête du verre et les deux refus de paramètres. »
+- Les 18 cas TB-291 à TB-308 passent à `verification_humaine` à `true`.
+- Test : chaque cellule imprimée de chaque grille est servie, par sa désignation, telle qu'elle est dans le fichier.
+
+### D76 — Montants imprimés à plus de 3 décimales, servis exacts en v1
+
+**Décision** (DS5, réponse à l'ARRÊT 3) : les 3 primes refusées pour ce motif restent dans `primes_non_couvertes`,
+avec leur message v0 inchangé. Chacune reçoit un bloc `service_contrat_v1`, servi seulement en contrat v1, tel
+qu'imprimé, sans arrondi, dans l'unité imprimée.
+
+| Secteur | Code | Imprimé | Servi en v1 | Équivalent en dinars |
+|---|---|---|---|---|
+| Boissons alcoolisées (D62) | `prime_panier` | art. 53 (جديد), 3), p.15 : « 416.666 م في اليوم » | `416.666` `millimes/jour` | `0.416666` |
+| Bois, ameublement et liège (D63) | `aide_deces` | art. 61 (جديد), p.18 : « 466.6666 د » | `466.6666` `TND/versement` | — |
+| Fonderie (D72) | `prime_panier` | art. 51 (جديد), p.15 : « 706.666 مليما في اليوم » | `706.666` `millimes/jour` | `0.706666` |
+
+1. **Date d'effet** : aucune n'est imprimée pour les trois. La valeur est servie quelle que soit la date demandée,
+   comme D4, avec l'hypothèse habituelle.
+2. **Conditions, lues sur la page** :
+   - boissons alcoolisées : « تسند للعمال الذين وقع تعيينهم اسميا للبقاء في مكان العمل أو إذا اضطروا للبقاء طيلة
+     كامل مدة العمل » ;
+   - bois : « في صورة عدم وجود تأمين اجتماعي يضمن مثل هذه الإعانة بمبلغ يكون على الأقل مساويا ».
+   - Ces deux primes exigent `condition_remplie`, comme les autres primes à condition.
+   - Fonderie : « طبقا للتشريع الجاري به العمل », sans condition écrite. C'est une hypothèse, sans paramètre.
+3. **Représentation** :
+   - `result.montant` : chaîne décimale exacte (`Decimal` lu tel quel, `arrondi_millime` non appliqué à ces seuls
+     montants : champ `montant_exact: true` du fichier).
+   - `detail.montant_tel_qu_imprime: true`, `regles: D76`.
+   - Pour les millimes, `detail.montant_equivalent_tnd` : chaîne décimale exacte (décalage de 3 rangs, sans arrondi).
+   - Une hypothèse FR et AR reprend le texte imprimé, par exemple « 416,666 millimes, soit 0,416666 dinar ».
+4. **v0 inchangé** : `prime` (v0) refuse ces 3 primes avec le même message. `prime_v1` est choisie par le handler
+   selon `contract_version`, et jamais par un paramètre de la requête (un paramètre `contrat` reste inconnu).
+5. **Schéma commun** : aucun changement. L'enveloppe ne contrôle pas `result.montant`. Faire évoluer
+   `$defs.montant` (3 décimales) est à proposer à l'équipe.
+
+**Alternatives écartées** :
+- Arrondir au millime : le montant n'est pas celui imprimé, et l'arrondi est silencieux.
+- Déplacer les 3 primes dans `primes` avec un refus v0 propre : il aurait fallu modifier les tests des primes des
+  vagues 3 et 4, `test_libelles_primes`, et les cas TB-213 et TB-221.
+- Convertir les millimes en dinars : on change l'unité imprimée.
+
+**Raison** : ces montants sont imprimés et lisibles. Seule la représentation à 3 décimales empêchait de les servir.
+Aucun autre montant servi n'a plus de 3 décimales (contrôle des 21 963 nombres décimaux des fichiers, ARRÊT 3).
+
+**Source PDF + page** :
+- `صناعة وتجارة المشروبات الكحولية.pdf`, p.15, art. 53 (جديد), 3) ;
+- `صناعة الخشب والموبيليا والخفاف.pdf`, p.18, art. 61 (جديد) ;
+- `مسابك و التعدين و البناءات الميكانيكية.pdf`, p.15, art. 51 (جديد).
+
+**Mise en œuvre** :
+- `calc/primes.py` (`prime_v1`) ;
+- `calc/loaders.py` (validation de `service_contrat_v1`) ;
+- `boissons_alcoolisees.json`, `bois_ameublement_liege.json`, `fonderies_mecanique.json` ;
+- démos v1 15 à 17 ; cas TB-305 à TB-307.
+
+**Statut de vérification** :
+- Les 3 montants et leurs conditions ont été relus sur le rendu des pages (110 dpi, puis zoom à 300 dpi), le
+  2026-11-20. Ils étaient déjà lus dans D62, D63 et D72.
+- **Vérification humaine (DS5, « VÉRIFIÉS », 2026-11-21)** : « J'ai vérifié sur les images les 17 points de claude-docs/moteur/verification/page.html, tous conformes : les 3 primes à plus de 3 décimales (montant, unité, période), les 9 cellules servies par le degré avec leur en-tête, le refus de la confiserie, l'absence de colonne « 1 » aux banques, l'en-tête du verre et les deux refus de paramètres. »
+- Cas TB-305 à TB-307 : `verification_humaine` à `true`.
+
+### D77 — Besoin n° 2 refusé : pas de date de fin de validité pour une prime
+
+**Décision** (DS5, 14/11/2026, réponse à l'ARRÊT 3) : le moteur ne reçoit pas de date de fin de validité pour une
+prime, ni de montant borné à une période. Aucun changement de code ni de données. Les deux primes concernées restent
+refusées entièrement (`SOURCE_MANQUANTE`), en v0 comme en v1, avec leurs messages actuels :
+- **matériel agricole** : prime de transport, art. 49 (جديد), p.14. L'avenant 15 (effet au 2021-12-01, p.3) la
+  modifie, et le refus couvre aussi 2018-2021 ;
+- **textile** : prime d'assiduité, art. 49-3 (جديد), pp.15-16. La seconde ligne est datée de mai 2021, avant la
+  première (septembre 2021).
+
+**Alternatives écartées** :
+- Champ `valide_jusqu_au` par ligne de prime, comme pour les tables : il aurait servi 6 montants (4 au matériel
+  agricole, 2 au textile), mais la date « mai 2021 » du textile reste à confirmer sur une autre source.
+
+**Raison** :
+- Le gain est de 6 montants dans 2 secteurs.
+- Une des deux dates est douteuse.
+- Servir un montant borné à une période sur une date incertaine contredit « Citation ou Silence ».
+
+**Source PDF + page** :
+- `وكلاء التجهيزات الفلاحية.pdf`, p.3 (avenant 15) et p.14 (art. 49 (جديد)) ;
+- `النسيج.pdf`, pp.15-16 (art. 49-3 (جديد)).
+
+**Statut de vérification** : choix de DS5. La date « mai 2021 » du textile attend une confirmation de M. Salah ;
+une décision ultérieure pourra rouvrir ce besoin.
+
+**Numérotation** : D75 à D77 suivent D73 et D74 (PR 42, fusionnée). Les lectures des vagues 5 et 6 partiront
+de D78.

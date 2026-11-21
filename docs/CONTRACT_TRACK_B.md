@@ -5,6 +5,9 @@
 > toute personne qui appellera le module comptable. Le contrat peut changer après
 > vos retours. Le détail des décisions se trouve dans
 > [`docs/DECISIONS.md`](DECISIONS.md) (D6 : règles de calcul, D7 : contrat).
+>
+> **Contrat v1 (D75, D76)** : à côté de la v0, inchangée ; demande du salaire par degré déclaré et montants
+> imprimés à plus de 3 décimales. Voir le §9.
 
 ## 1. Résumé
 
@@ -816,7 +819,7 @@ Draft202012Validator(schema).validate(ma_requete)
 - **Pas de transport réseau** : le module est une fonction Python et un CLI.
   Il n'existe ni service HTTP ni file de messages. L'intégration avec
   l'orchestrateur reste à définir ensemble.
-- **Le contrat est en v0.** Les noms de champs, les codes de refus, la forme
+- **Le contrat est en v0, avec une v1 à côté (§9).** Les noms de champs, les codes de refus, la forme
   de `detail` et la liste des opérations peuvent changer après vos retours.
   Je propose qu'un changement incompatible fasse passer `contract_version` à
   une nouvelle valeur ; c'est à valider avec vous.
@@ -832,3 +835,131 @@ Points sur lesquels l'avis de l'équipe est utile :
 - la séparation entre refus de contrat et refus métier (`computed_by` + code) :
   est-elle suffisante, ou faut-il un champ dédié ?
 - les opérations à ajouter en priorité.
+
+## 9. Contrat v1 (D75, D76)
+
+> **Statut : v1 — proposition Track B, à valider avec l'équipe.** La v1 s'ajoute à la v0 et ne la remplace pas :
+> les schémas v0, les 211 démos v0 et leurs réponses de référence sont inchangés à l'octet près. L'orchestrateur
+> (DS1) reste en v0 ; son passage en v1 relève de l'équipe DS1.
+
+### 9.1 Choix de la version
+
+- Une requête dont `contract_version` vaut exactement `"track_b.v1"` est validée avec les schémas v1 et reçoit
+  une réponse `"track_b.v1"`.
+- Toute autre requête suit le chemin v0, comme avant. Une version inconnue (ex. `"track_b.v9"`) donne le même refus
+  de contrat qu'avant (`Requête non conforme au contrat track_b.v0 (contract_version) …`).
+- Schémas : `data/mock_cards/schemas/track_b_request.v1.schema.json` et `track_b_response.v1.schema.json`.
+- **v1 = v0 plus deux changements** :
+  - le paramètre `degre` de `salaire_base` (§9.2) ;
+  - les montants imprimés à plus de 3 décimales, servis exacts dans l'unité imprimée (§9.3).
+- Une requête v1 sans `degre` donne exactement la réponse v0, à `contract_version` près. Seules exceptions : les
+  3 primes du §9.3.
+
+### 9.2 Demande par degré déclaré (`salaire_base`, D75)
+
+**Le paramètre.** `degre` (entier ou texte) est la **désignation imprimée** de la colonne, telle qu'on la lit dans
+la grille ou sur la fiche de paie :
+
+| Grille | Désignations acceptées |
+|---|---|
+| la plupart des secteurs | le numéro imprimé du degré : `1` à `n` |
+| textile, mensuels | `"stage"`, `1` à `18`, puis `19` et `20` |
+| textile, horaires | `0` à `18`, puis `19` et `20` |
+| banques | `"stage"`, `2` à `19` (aucune colonne « 1 ») |
+| minoteries | `0` à `13` |
+| distribution du pétrole | `"-"`, `1` à `13` |
+| cosmétiques, production catégorie 1 | `"درجة وحيدة"` ou l'alias `"unique"` |
+
+`5` et `"5"` sont équivalents.
+
+**Refus `PARAM_INVALIDE`** :
+- `degre` et `anciennete_annees` donnés ensemble ;
+- aucun des deux, pour une population à degrés (même message qu'en v0) ;
+- une désignation absente de la grille (le message liste les désignations acceptées) ;
+- `degre` pour une population sans degré (BTP, ouvriers occasionnels) ;
+- un type invalide (booléen, nombre non entier). Le schéma refuse aussi une chaîne vide.
+
+**Ce que fait le calcul :**
+- Aucun refus lié à l'ancienneté ne s'applique : ni intervalles refusés, ni seuil de la règle « refus », ni bornes
+  exactes (D6).
+- Une case illisible reste refusée (`SOURCE_MANQUANTE`, même message). Seule exception : la colonne « stage » du
+  textile (36 cases), déclarée `servie_par_degre`, est servie avec sa valeur imprimée.
+- Les degrés 19 et 20 du textile, gardés hors de `valeurs`, sont servis par le degré (`servies_par_degre`).
+- Aucune règle au-delà du dernier degré n'est appliquée : ni l'écart cumulé, ni la table de correspondance, ni le
+  plafond d'ancienneté. Le montant servi est celui imprimé pour le degré demandé.
+
+**Le `detail` de la réponse :**
+- `degre` : numéro interne ;
+- `degre_imprime` : désignation imprimée ;
+- `degre_declare: true` ;
+- `alias_designation` : présent si l'alias a été utilisé ;
+- `anciennete_imprimee` : présent quand la grille l'imprime ;
+- `libelle_degre` : présent quand le libellé est un intervalle, par exemple « 2-4 » ;
+- `regle_au_dela_non_appliquee` : au dernier degré, sauf règle « ouvert ». C'est la règle non appliquée, sous la
+  forme « article …, page … ».
+
+`anciennete_annees` est absent du `detail`. La citation est celle de la table, comme en v0.
+
+**Hypothèses FR et AR**, à afficher avec le montant, ajoutées après celles de la grille :
+- le degré est déclaré par l'utilisateur et n'est pas vérifié ;
+- l'ancienneté imprimée pour ce degré, avec la page ;
+- pour le verre : aucune durée de degré n'est imprimée (art. 12 (جديد) et 53) ;
+- pour une colonne atteinte seulement par le degré (stage, 19, 20) : aucune ancienneté n'y mène ;
+- pour un degré qui touche un intervalle d'ancienneté refusé (confiserie, art. 53) : la contradiction est citée ;
+- au dernier degré : la règle non appliquée, avec son article et sa page. Pour l'écart cumulé et la table de
+  correspondance, l'hypothèse précise à partir de quelle ancienneté il faut plutôt demander par l'ancienneté.
+
+Les hypothèses de grille rédigées pour le chemin par l'ancienneté (« L'ancienneté reçue est l'ancienneté de
+progression déjà établie… », 52 phrases dans 27 grilles) ne sont pas affichées par le degré : leur rang est déclaré
+dans `hypotheses_grille[population].chemin_anciennete_seulement`. Le chemin par l'ancienneté les affiche comme avant.
+
+### 9.3 Montants imprimés à plus de 3 décimales (`prime`, D76)
+
+Trois primes, refusées en v0 avec le même message qu'avant, sont servies en v1, telles qu'imprimées :
+
+| Secteur | Code | Article, page | Imprimé | `montant` | `unite` | `montant_equivalent_tnd` |
+|---|---|---|---|---|---|---|
+| `BOISSONS_ALCOOLISEES` | `prime_panier` | 53 (جديد), 3), p.15 | « 416.666 م في اليوم » | `"416.666"` | `millimes/jour` | `"0.416666"` |
+| `BOIS_AMEUBLEMENT_LIEGE` | `aide_deces` | 61 (جديد), p.18 | « 466.6666 د » | `"466.6666"` | `TND/versement` | — |
+| `FONDERIE_METALLURGIE_MECANIQUE` | `prime_panier` | 51 (جديد), p.15 | « 706.666 مليما في اليوم » | `"706.666"` | `millimes/jour` | `"0.706666"` |
+
+- **Aucun arrondi.** `montant` a au moins 3 décimales (motif `^-?[0-9]+\.[0-9]{3,}$`). `unite` commence par
+  `TND/` ou `millimes/`.
+- `detail.montant_tel_qu_imprime: true`. Pour les millimes, `detail.montant_equivalent_tnd` donne l'équivalent en
+  dinars : une chaîne décimale exacte, obtenue par décalage de 3 rangs, sans arrondi. Une hypothèse FR et AR
+  reprend le texte imprimé.
+- Aucune date d'effet n'est imprimée : la valeur est servie quelle que soit la date (comme D4).
+- Le panier des boissons alcoolisées et l'aide en cas de décès du bois ont une condition d'octroi :
+  `condition_remplie` est obligatoire (`false` donne `HORS_SCOPE`). Le panier de la fonderie est attribué
+  « conformément à la législation en vigueur », sans condition écrite ; c'est dit en hypothèse.
+- Le schéma commun (`src/shared/schemas/common.v0.schema.json`) ne change pas : son enveloppe ne contrôle pas
+  `result.montant`.
+
+### 9.4 Exemple v1
+
+Requête (démo `demo-v1-03-textile-colonne-stage`) :
+
+```json
+{"contract_version": "track_b.v1", "request_id": "demo-v1-03-textile-colonne-stage", "operation": "salaire_base", "params": {"secteur": "TEXTILE", "population": "mensuels", "categorie": "1", "sous_categorie": "a", "degre": "stage", "date": "2022-06-01"}, "lang": "fr"}
+```
+
+Réponse (extrait) : `"contract_version": "track_b.v1"`, `"montant": "559.062"`, `"unite": "TND/mois"`, `detail`
+avec `"degre": 1`, `"degre_imprime": "stage"`, `"degre_declare": true`, `"anciennete_imprimee": "période de stage"`,
+et la citation `النسيج.pdf`, page 32, `D71`.
+
+### 9.5 Démos et tests
+
+- 18 requêtes : `data/mock_cards/track_b_requests_demo.v1.json`.
+- Réponses de référence : `src/track_b_accounting/tests/references/track_b_responses_demo.v1.json`.
+- `python -m src.track_b_accounting.demo` affiche la série v0 (inchangée), puis la série v1 :
+  « Bilan v1 : 13 ok, 5 refus, 0 erreur(s). »
+- Jeu de référence : cas TB-291 à TB-308, en v1, avec `verification_humaine: false`.
+- Tests : `src/track_b_accounting/tests/test_contrat_v1.py`.
+
+### 9.6 Hors de la v1
+
+- Besoin n° 2, date de fin de validité d'une prime : refusé (D77). La prime de transport du matériel agricole et
+  la prime d'assiduité du textile restent refusées, en v0 comme en v1.
+- Besoins n° 4 à 7 de la liste des évolutions : l'écart cumulé de l'imprimerie après 31 ans, la hausse fixe au
+  dernier degré du verre, les degrés sans borne du textile par l'ancienneté et la réduction par jour d'absence.
+  Ils restent comme en v0.
