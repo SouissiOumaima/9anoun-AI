@@ -143,3 +143,29 @@ def test_handle_response_validation_error(monkeypatch):
     assert response["status"] == "erreur"
     assert response["erreur"]["type"] == "INTERNAL_ERROR"
     assert response["request_id"] == "TEST-ERROR-002"
+
+def test_contract_accepts_case_without_evidence() -> None:
+    """Un dossier sans preuves doit respecter le contrat v0."""
+
+    from jsonschema import Draft202012Validator, FormatChecker
+    from src.track_a_legal.handler import REQUEST_SCHEMA, load_schema
+    from src.track_a_legal.tests.test_case_analysis import create_fake_case
+
+    # Creer un dossier fictif
+    case = create_fake_case()
+
+    # Retirer les preuves et leurs references
+    case["evidence"] = []
+
+    for event in case["events"]:
+        event["source_ids"] = []
+
+    # Charger et verifier le contrat v0
+    schema = load_schema(REQUEST_SCHEMA)
+
+    validator = Draft202012Validator(
+        schema,
+        format_checker=FormatChecker()
+    )
+
+    assert validator.is_valid(case)

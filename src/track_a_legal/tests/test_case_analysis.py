@@ -159,3 +159,115 @@ def test_analyze_case_includes_evidence_mapping() -> None:
 
     # Aucune conclusion juridique inventée.
     assert result["legal_conclusion"] is None
+
+def test_incomplete_case_without_evidence() -> None:
+    """Un dossier sans preuves ne doit pas produire de conclusion juridique."""
+
+    # 1. Creer un dossier fictif existant
+    case = create_fake_case()
+
+    # 2. Supprimer les preuves du dossier
+    case["evidence"] = []
+
+    # 3. Supprimer les references aux preuves absentes
+    for event in case["events"]:
+        event["source_ids"] = []
+
+    # 4. Analyser le dossier incomplet
+    result = analyze_case(case)
+
+    # 5. Verifier que DS4 n'invente rien
+    assert result["case_summary"]["number_of_evidence"] == 0
+    assert result["claims_analysis"][0]["status"] == "unverified"
+    assert result["evidence_mapping"] == []
+    assert result["legal_conclusion"] is None
+
+def test_opposite_claims_remain_unverified() -> None:
+    """Deux affirmations opposees ne doivent pas etre jugees automatiquement."""
+
+    case = create_fake_case()
+
+    # Deux parties donnent des versions opposees.
+    case["claims"] = [
+        {
+            "claim_id": "C1",
+            "party_id": "P1",
+            "text": "Le salarie affirme avoir travaille le 10 septembre.",
+        },
+        {
+            "claim_id": "C2",
+            "party_id": "P2",
+            "text": "L'employeur affirme que le salarie n'a pas travaille le 10 septembre.",
+        },
+    ]
+
+    result = analyze_case(case)
+
+    # Aucune affirmation ne devient automatiquement un fait.
+    assert len(result["claims_analysis"]) == 2
+
+    assert all(
+        claim["status"] == "unverified"
+        for claim in result["claims_analysis"]
+    )
+
+    # La detection des contradictions n'est pas encore implementee.
+    assert result["contradictions"] == []
+
+    # Aucune conclusion juridique inventee.
+    assert result["legal_conclusion"] is None
+
+def test_partially_documented_case_does_not_invent_evidence() -> None:
+    """
+    Vérifie qu'un dossier partiellement documenté
+    conserve uniquement les associations explicites.
+
+    Une preuve liée à un événement ne valide pas
+    automatiquement les autres événements ou déclarations.
+    """
+
+    # Construire un dossier fictif valide.
+    case = create_fake_case()
+
+    # Le premier événement conserve sa preuve E2.
+    # Le second événement ne possède aucune référence.
+    case["events"][1]["source_ids"] = []
+
+    # Analyser le dossier partiellement documenté.
+    result = analyze_case(case)
+
+    # Seule la relation explicitement déclarée est conservée.
+    assert result["evidence_mapping"] == [
+        {
+            "event_id": "EV2",
+            "evidence_id": "E2",
+            "relation": "source",
+        }
+    ]
+
+    # La déclaration reste non vérifiée.
+    assert result["claims_analysis"][0]["status"] == "unverified"
+
+    # Aucune contradiction ni preuve manquante
+    # n'est automatiquement déduite par la version actuelle.
+    assert result["contradictions"] == []
+    # Le contrat Track A v0 impose une liste vide.
+    assert result["missing_evidence"] == []
+
+    # Aucune conclusion juridique n'est inventée.
+    assert result["legal_conclusion"] is None
+
+def test_analyze_case_rejects_unknown_party() -> None:
+    """Le Case Analysis doit refuser une partie inexistante."""
+
+    # Construire un dossier fictif.
+    case = create_fake_case()
+
+    # Introduire une reference incoherente.
+    case["claims"][0]["party_id"] = "P99"
+
+    # Verifier que le Case Analysis appelle le validateur.
+    import pytest
+
+    with pytest.raises(ValueError, match="unknown_party_id"):
+        analyze_case(case)

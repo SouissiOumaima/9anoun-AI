@@ -1,0 +1,352 @@
+{
+  "dataset_version": "track_a_golden_set_lawyer_s9.v1",
+  "validation_level": "lawyer_review_preparation",
+  "lawyer_validated": false,
+  "source_validation_version": "track_a_business_validation_s6.v1",
+  "criteria": [
+    {
+      "id": "S6-C01",
+      "name": "case_identity",
+      "description": "Preserve case identity and request traceability.",
+      "verification": "automated"
+    },
+    {
+      "id": "S6-C02",
+      "name": "chronology_traceability",
+      "description": "Preserve event dates, precision and source references.",
+      "verification": "automated_and_lawyer_review"
+    },
+    {
+      "id": "S6-C03",
+      "name": "claims_prudence",
+      "description": "Do not present unverified claims as established facts.",
+      "verification": "automated_and_lawyer_review"
+    },
+    {
+      "id": "S6-C04",
+      "name": "evidence_traceability",
+      "description": "Preserve evidence links without inventing supporting documents.",
+      "verification": "automated_and_lawyer_review"
+    },
+    {
+      "id": "S6-C05",
+      "name": "contradictions_and_gaps",
+      "description": "Identify contradictions, missing evidence and uncertainty.",
+      "verification": "automated_and_lawyer_review"
+    },
+    {
+      "id": "S6-C06",
+      "name": "legal_source_prudence",
+      "description": "Do not certify legal applicability without independent verification.",
+      "verification": "automated_and_lawyer_review"
+    },
+    {
+      "id": "S6-C07",
+      "name": "legal_abstention",
+      "description": "Do not produce unsupported legal conclusions.",
+      "verification": "automated"
+    },
+    {
+      "id": "S6-C08",
+      "name": "lawyer_business_review",
+      "description": "Assess legal relevance, clarity and completeness.",
+      "verification": "lawyer_only"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "CASE-A-001",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-002",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-003",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-004",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-005",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-006",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    },
+    {
+      "case_id": "CASE-A-007",
+      "lawyer_status": "pending",
+      "lawyer_reviews": [
+        {
+          "criterion_id": "S6-C02",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C03",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C04",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C05",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C06",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        },
+        {
+          "criterion_id": "S6-C08",
+          "decision": null,
+          "comments": null,
+          "supporting_references": []
+        }
+      ]
+    }
+  ]
+}

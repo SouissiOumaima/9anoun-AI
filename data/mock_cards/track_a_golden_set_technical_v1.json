@@ -1,0 +1,196 @@
+{
+  "dataset_version": "track_a_golden_technical.v1",
+  "validation_level": "technical_only",
+  "lawyer_validated": false,
+  "description": "Technical reference expectations for fictitious Track A cases. No legal truth labels or legal conclusions.",
+  "cases": [
+    {
+      "case_id": "CASE-A-001",
+      "request_id": "REQ-A-V1-001",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "preparatory",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true
+      }
+    },
+    {
+      "case_id": "CASE-A-002",
+      "request_id": "REQ-A-V1-002",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "insufficient_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true,
+        "reference_errors": [
+          {
+            "code": "UNKNOWN_REFERENCE",
+            "path": "claims/0/evidence_ids/0",
+            "reference_id": "E-UNKNOWN-002"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CASE-A-003",
+      "request_id": "REQ-A-V1-003",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "insufficient_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true
+      }
+    },
+    {
+      "case_id": "CASE-A-004",
+      "request_id": "REQ-A-V1-004",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "contradictory_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true
+      }
+    },
+    {
+      "case_id": "CASE-A-005",
+      "request_id": "REQ-A-V1-005",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "insufficient_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true,
+        "document_fact_assessments": [
+          {
+            "fact_id": "FACT-A-005-001",
+            "eligible_for_established_fact": false,
+            "reasons": [
+              "USER_NOT_CONFIRMED",
+              "LOW_OR_MISSING_CONFIDENCE",
+              "MISSING_CITATION"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CASE-A-006",
+      "request_id": "REQ-A-V1-006",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "insufficient_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true,
+        "legal_source_assessments": [
+          {
+            "source_id": "mock://legal/unverified_article_006",
+            "eligible_for_legal_support": false,
+            "reasons": [
+              "MISSING_CITATION"
+            ]
+          }
+        ],
+        "legal_temporal_assessments": [
+          {
+            "source_id": "mock://legal/unverified_article_006",
+            "temporal_eligibility": "not_confirmed",
+            "eligible_for_legal_conclusion": false,
+            "validity_status_reported": null,
+            "reasons": [
+              "MISSING_CITATION",
+              "REFERENCE_DATE_MISSING",
+              "EFFECTIVE_DATE_UNKNOWN",
+              "TEMPORAL_VALIDITY_UNKNOWN"
+            ]
+          }
+        ],
+        "legal_version_errors": [
+          {
+            "code": "REFERENCE_DATE_MISSING",
+            "path": "reference_date"
+          },
+          {
+            "code": "APPLICABILITY_UNKNOWN",
+            "path": "legal_sources[0].applicable_at_reference_date"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CASE-A-007",
+      "request_id": "REQ-A-V1-007",
+      "input_file": "track_a_case_cards_v1.json",
+      "expected": {
+        "response_status": "ok",
+        "analysis_status": "insufficient_evidence",
+        "claims_count": 2,
+        "claims_status": "unverified",
+        "citations_count": 0,
+        "legal_conclusion": null,
+        "refus": null,
+        "response_schema_valid": true,
+        "reference_errors": [],
+        "legal_source_assessments": [
+          {
+            "source_id": "mock://legal/future_version_007",
+            "eligible_for_legal_support": true,
+            "reasons": []
+          }
+        ],
+        "legal_temporal_assessments": [
+          {
+            "source_id": "mock://legal/future_version_007",
+            "temporal_eligibility": "not_confirmed",
+            "eligible_for_legal_conclusion": false,
+            "validity_status_reported": null,
+            "reasons": [
+              "EFFECTIVE_DATE_UNKNOWN",
+              "TEMPORAL_VALIDITY_UNKNOWN"
+            ]
+          }
+        ],
+        "legal_version_errors": [
+          {
+            "code": "NOT_YET_EFFECTIVE",
+            "path": "legal_sources[0]"
+          }
+        ],
+        "temporal_consistency_findings": [
+          {
+            "source_id": "mock://legal/future_version_007",
+            "findings": []
+          }
+        ]
+      }
+    }
+  ]
+}
