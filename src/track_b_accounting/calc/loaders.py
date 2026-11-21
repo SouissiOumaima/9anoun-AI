@@ -252,6 +252,16 @@ def _valider_alias_et_hypotheses(data: dict, cats: dict) -> None:
     for pop, h in data.get("hypotheses_grille", {}).items():
         _exiger(pop in cats, f"hypotheses_grille[{pop}] : population inconnue")
         _hyp(h, f"hypotheses_grille[{pop}]")
+        # Rangs des hypothèses écrites pour le chemin par l'ancienneté : non affichées par le degré déclaré (D75).
+        if "chemin_anciennete_seulement" in h:
+            rangs = h["chemin_anciennete_seulement"]
+            _exiger(
+                isinstance(rangs, list)
+                and rangs
+                and all(isinstance(i, int) and not isinstance(i, bool) and 0 <= i < len(h["fr"]) for i in rangs)
+                and len(set(rangs)) == len(rangs),
+                f"hypotheses_grille[{pop}] : chemin_anciennete_seulement, rangs distincts des hypothèses attendus",
+            )
     # Hypothèses propres à une ligne de grille (ex. ligne combinée « III+II »), ajoutées seulement pour cette clé.
     for pop, par_cle in data.get("hypotheses_categories", {}).items():
         _exiger(pop in cats and isinstance(par_cle, dict), f"hypotheses_categories[{pop}] : population inconnue")
@@ -310,6 +320,77 @@ def _cellules_manquantes(table: dict, n_degres: int) -> set[tuple[str, int]]:
 
 def _entier_positif_ou_nul(v) -> bool:
     return isinstance(v, int) and not isinstance(v, bool) and v >= 0
+
+
+def designations_degres(degres: list) -> list[str]:
+    """Désignations imprimées des degrés d'une population (colonne_imprimee, sinon numéro du degré), en chaîne."""
+    return [str(d.get("colonne_imprimee", d["degre"])) for d in degres]
+
+
+def _valider_par_degre(data: dict, degres: dict) -> None:
+    """Champs lus seulement par la demande par degré déclaré (contrat v1, D75) : alias_designation des degrés,
+    servie_par_degre des cases illisibles, servies_par_degre des colonnes gardées hors de valeurs."""
+    for pop, liste in degres.items():
+        noms = designations_degres(liste)
+        alias = [d["alias_designation"] for d in liste if "alias_designation" in d]
+        _exiger(
+            all(_texte(a) for a in alias) and len(set(alias)) == len(alias) and not set(alias) & set(noms),
+            f"degres[{pop}] : alias_designation vide, en double ou égal à une désignation",
+        )
+    for t in data["grilles"]:
+        pop = population_de_table(data, t)
+        for c in t.get("cellules_source_manquante", []):
+            if "servie_par_degre" in c:
+                _exiger(
+                    c["servie_par_degre"] is True and isinstance(c.get("valeur_imprimee"), Decimal),
+                    f"{t['table_id']} : servie_par_degre exige true et une valeur_imprimee décimale",
+                )
+        ns = t.get("colonnes_non_servies")
+        if ns is None or "servies_par_degre" not in ns:
+            continue
+        objet = f"{t['table_id']}.colonnes_non_servies"
+        cols, anc = ns["colonnes_imprimees"], ns["anciennete_imprimee"]
+        _exiger(ns["servies_par_degre"] is True, f"{objet} : servies_par_degre doit valoir true")
+        _exiger(
+            isinstance(cols, list)
+            and cols
+            and all(_texte(x) for x in cols)
+            and len(set(cols)) == len(cols)
+            and not set(cols) & set(designations_degres(degres[pop])),
+            f"{objet} : colonnes_imprimees distinctes des désignations attendues",
+        )
+        _exiger(
+            isinstance(anc, list) and len(anc) == len(cols) and all(a is None or _texte(a) for a in anc),
+            f"{objet} : anciennete_imprimee alignée sur colonnes_imprimees attendue",
+        )
+        _exiger(_entier_positif(ns["source_pdf_page"]), f"{objet} : source_pdf_page attendue")
+        _exiger(
+            set(ns["valeurs"]) == set(t["valeurs"])
+            and all(
+                isinstance(v, list) and len(v) == len(cols) and all(isinstance(x, Decimal) for x in v)
+                for v in ns["valeurs"].values()
+            ),
+            f"{objet} : une valeur décimale par catégorie et par colonne attendue",
+        )
+
+
+def _valider_service_v1(code: str, bloc: dict) -> None:
+    """Prime non couverte en v0, servie en v1 telle qu'imprimée (D76) : bloc service_contrat_v1."""
+    p = bloc["service_contrat_v1"]
+    objet = f"primes_non_couvertes[{code}].service_contrat_v1"
+    for k in ("code", "source_article", "source_pdf_page", "unite", "montant", "montant_imprime"):
+        _exiger(k in p, f"{objet} : clé {k} manquante")
+    _exiger(p["code"] == code, f"{objet} : code différent de {code}")
+    _exiger(
+        isinstance(p["montant"], Decimal) and p.get("montant_exact") is True and _texte(p["montant_imprime"]),
+        f"{objet} : montant décimal, montant_exact true et montant_imprime attendus",
+    )
+    _exiger(
+        isinstance(p["unite"], str) and re.fullmatch(r"(TND|millimes)/\S+", p["unite"]),
+        f"{objet} : unité TND/… ou millimes/… attendue",
+    )
+    _exiger("montants" not in p, f"{objet} : montant unique attendu")
+    _valider_textes_prime(p)
 
 
 def _valider_anciennetes_refusees(data: dict, degres: dict) -> None:
@@ -430,6 +511,9 @@ def valider_grille(data: dict, chemin: str) -> dict:
                 code not in {p["code"] for p in data.get("primes", [])}, f"prime {code} à la fois servie et refusée"
             )
             _exiger_refus_declare(bloc, f"primes_non_couvertes[{code}]")
+            if "service_contrat_v1" in bloc:
+                _valider_service_v1(code, bloc)
+        _valider_par_degre(data, degres)
     except (_SchemaInvalide, KeyError, TypeError, AttributeError) as e:
         raise _invalide(chemin, str(e) or "schéma inattendu") from e
     return data
