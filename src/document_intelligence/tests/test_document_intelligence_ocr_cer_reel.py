@@ -20,7 +20,7 @@ import pytest
 pytest.importorskip("numpy")
 pytest.importorskip("PIL")
 
-from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang  # noqa: E402
+from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang
 
 SCRIPTS = Path(__file__).resolve().parents[3] / "scripts"
 SECRET = "SECRET"
