@@ -25,8 +25,11 @@ from .track_a_requests import build_track_a_request_from_case_card
 
 
 class CaseWorkflowError(ValueError):
-    def __init__(self, code: str):
+    def __init__(self, code: str, *, retryable: bool = False,
+                 message_fr: str | None = None, message_ar: str | None = None):
         self.code = code
+        self.retryable = retryable
+        self.message_fr, self.message_ar = message_fr, message_ar
         super().__init__(code)
 
 
@@ -97,12 +100,19 @@ class CaseIntegrationWorkflow:
         normalized = DocumentIntelligenceAdapter(extract, handler_mode='live')(self._call(
             actor, context, request_id, 'document_intelligence', 'analyze_document', {'ds3_request': ds3_request},
         ))
-        if normalized['status'] not in {'success', 'partial'}:
-            raise CaseWorkflowError(f"DS3_{captured.get('ds3_code') or captured.get('status', 'ERROR')}")
         DS3Response.model_validate(captured)
         if (captured.get('mode') != 'live' or captured.get('request_id') != request_id
                 or captured.get('card_id') != context.card_id or captured.get('document_id') != document_id):
             raise CaseWorkflowError('DS3_PROVENANCE_MISMATCH')
+        if normalized['status'] not in {'success', 'partial'}:
+            detail = captured.get('erreur') or captured.get('refus') or {}
+            retryable = captured.get('status') == 'erreur' and captured.get('retryable') is True
+            self._record(actor, context, request_id, 'document_intelligence', 'analyze_document',
+                         'retry_later' if retryable else 'blocked')
+            raise CaseWorkflowError(
+                f"DS3_{captured.get('ds3_code') or detail.get('code') or detail.get('type') or 'ERROR'}",
+                retryable=retryable, message_fr=detail.get('message_fr'), message_ar=detail.get('message_ar'),
+            )
         facts = convert_ds3_facts_to_v1(captured, subject_id, request['evidence'], {document_id: evidence_id})
         if not facts:
             raise CaseWorkflowError('NO_DOCUMENT_FACTS')

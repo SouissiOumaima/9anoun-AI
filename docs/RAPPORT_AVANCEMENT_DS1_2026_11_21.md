@@ -1,7 +1,7 @@
 # Rapport d'avancement DS1 du 21 novembre 2026
 
 La livraison DS1 est préparée sur `codex/ds1-delivery-2026-11-21`, à partir de
-`main` actualisé au commit `b8799ef`. Elle réunit l'optimisation DS3, la nouvelle
+`main` actualisé au commit `b8799ef`. Elle réunit la nouvelle
 interface, l'intégration DS4 v1 et le scénario complet DS3/DS2/DS4 avec revue
 utilisateur. La validation juridique et certaines données sources restent
 à fournir avant de considérer les scénarios métier définitivement validés.
@@ -10,7 +10,7 @@ utilisateur. La validation juridique et certaines données sources restent
 
 | Périmètre | Résultat |
 |---|---|
-| Performance DS3 | Cache mémoire de 5 minutes, 32 entrées, isolé par acteur/carte/document/modèle et contenu du prompt ; erreurs non conservées et appels identiques simultanés regroupés |
+| Performance DS3 | Cache retiré du diff DS1 et transféré sur `codex/ds3-extraction-cache` pour revue séparée par Hadil |
 | Interface DS1 | Mise en page responsive, débordement des champs corrigé, étapes de revue et résultats préparatoires affichés explicitement |
 | DS4 v1 | Livraison source `52c5384` importée avec ses tests et contrats, adaptateur officiel v0/v1 et planner DS1 raccordés |
 | Schémas DS4 | Métadonnées v0 résiduelles du schéma d'entrée v1 corrigées ; chargement du schéma de réponse indépendant du dossier courant |
@@ -95,7 +95,7 @@ tests de refus, après accord sur le périmètre.
 
 ## Commits de réalisation
 
-- `2c6faf0` : cache DS3 et tests.
+- `2c6faf0` : cache DS3 initial, retiré de DS1 par `b099f9f` et transféré sur la branche DS3 dédiée.
 - `d219286` : import de la livraison DS4 v1 et corrections de contrat.
 - `ef09e6e` : orchestration DS1, design, scénario complet et préparation secteurs.
 - `3a1e85b` : synchronisation de la branche avec `main`.
@@ -103,3 +103,12 @@ tests de refus, après accord sur le périmètre.
 Les rapports détaillés des étapes précédentes restent historiques. Le présent
 rapport décrit le périmètre de la livraison à revoir dans la PR, sans annoncer
 la migration officielle des 56 secteurs ni une validation métier finale.
+
+
+## Suite à la revue de PR #47
+
+- Cache Gemini sorti du diff DS1 sans réécriture de l’historique Git. Branche dédiée : `codex/ds3-extraction-cache`, revue Hadil attendue.
+- Les erreurs DS3 valides, de provenance vérifiée, avec `retryable=true` donnent `retry_later` et un bouton Réessayer. Aucun fait n’est confirmé et DS2/DS4 ne sont pas lancés à cette étape.
+- Messages DS3 français/arabe conservés, refus permanents bloquants. Une nouvelle tentative nécessite une action utilisateur et une nouvelle confirmation des faits.
+- Confiance affichée avec une décimale arrondie vers le bas : 0,896 apparaît 89,6 %, 0,89999 apparaît 89,9 %.
+- Validation : 230 tests DS1 réussis. Branche cache : 7 tests cache réussis (dont isolation du pipeline par utilisateur/carte), mypy du cache et ruff des deux fichiers corrigés réussis. Suite DS3 : 272 réussis, 2 ignorés, 3 échecs liés au fichier `scripts/evaluer_donnees_reelles.py` absent du main utilisé ; aucun appel Gemini réel dans ces tests.

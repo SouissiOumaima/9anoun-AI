@@ -81,9 +81,10 @@ def case_integration_action(payload: Mapping[str, Any], *, complete: bool = Fals
             legal_request=scenario['legal_request'],
         )
     except CaseWorkflowError as error:
-        return {'status': 'blocked', 'code': error.code,
-                'message_fr': 'Le scénario ne peut pas continuer. Aucun fait ni source ne sera inventé.',
-                'message_ar': 'لا يمكن متابعة السيناريو. لن يتم اختلاق أي واقعة أو مصدر.'}
+        return {'status': 'retry_later' if error.retryable else 'blocked', 'code': error.code,
+                'retryable': error.retryable,
+                'message_fr': error.message_fr or 'Le scénario ne peut pas continuer. Aucun fait ni source ne sera inventé.',
+                'message_ar': error.message_ar or 'لا يمكن متابعة السيناريو. لن يتم اختلاق أي واقعة أو مصدر.'}
     except Exception:
         return {'status': 'blocked', 'code': 'INTEGRATION_ERROR',
                 'message_fr': 'Incident technique. Aucun résultat juridique n’est validé.',

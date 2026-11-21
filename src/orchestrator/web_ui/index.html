@@ -134,6 +134,9 @@
 </main>
 <script>
   const $ = id => document.getElementById(id);
+  const confidencePercent = value => Number.isFinite(value) ? (Math.floor(value * 1000) / 10).toFixed(1) : '—';
+  const caseErrorHtml = data => `<p>${escapeHtml(data.message_fr || 'Scénario interrompu.')}</p><p lang="ar" dir="rtl">${escapeHtml(data.message_ar || '')}</p><p><code>${escapeHtml(data.code || 'ERROR')}</code></p>`;
+
   $('startCaseIntegration').addEventListener('click', async () => {
     const button = $('startCaseIntegration');
     button.disabled = true;
@@ -142,11 +145,11 @@
       const response = await fetch('/api/case-integration/prepare', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({language:$('chat_language').value})});
       const data = await response.json();
       if (data.status !== 'pending_confirmation') {
-        $('caseIntegrationResult').textContent = `${data.message_fr || 'Scénario interrompu.'} (${data.code || 'ERROR'})`;
+        $('caseIntegrationResult').innerHTML = caseErrorHtml(data) + (data.status === 'retry_later' && data.retryable === true ? '<button type="button" data-case-retry>Réessayer l’analyse DS3</button>' : '');
         return;
       }
       let html = `<section class="review"><h3>2. Vérifiez les faits extraits</h3><p>DS3 : live · ${escapeHtml(data.timings_ms.ds3)} ms. Les valeurs ne sont pas modifiables.</p>`;
-      html += data.facts.map(f => `<div class="review-row"><label><span><input type="checkbox" data-case-fact="${escapeHtml(f.fact_id)}" ${f.selectable ? '' : 'disabled'}>${escapeHtml(f.field_name)} : ${escapeHtml(f.value)} · confiance ${escapeHtml(Math.round((f.confidence || 0)*100))}%</span></label><p class="citation">Page ${escapeHtml(f.citation?.page ?? '?')} · ${escapeHtml(f.citation?.exact_excerpt || 'Citation indisponible')}</p></div>`).join('');
+      html += data.facts.map(f => `<div class="review-row"><label><span><input type="checkbox" data-case-fact="${escapeHtml(f.fact_id)}" ${f.selectable ? '' : 'disabled'}>${escapeHtml(f.field_name)} : ${escapeHtml(f.value)} · confiance ${escapeHtml(confidencePercent(f.confidence))}%</span></label><p class="citation">Page ${escapeHtml(f.citation?.page ?? '?')} · ${escapeHtml(f.citation?.exact_excerpt || 'Citation indisponible')}</p></div>`).join('');
       html += `<label style="margin-top:20px"><span><input type="checkbox" id="caseDocumentLink">Je confirme que cette fiche correspond à ${escapeHtml(data.subject_name)} et à la pièce du dossier fictif indiquée.</span></label><p class="note">Recherche DS2 prévue : ${escapeHtml(data.legal_request.query)} · secteur : ${escapeHtml(data.legal_request.sector)} · date : ${escapeHtml(data.legal_request.reference_date)}. Les sources récupérées restent à vérifier juridiquement.</p><button type="button" id="completeCaseIntegration" data-review-id="${escapeHtml(data.review_id)}">3. Confirmer et lancer DS2 live → DS4</button><div id="caseCompletionStatus" aria-live="polite"></div></section>`;
       $('caseIntegrationResult').innerHTML = html;
     } catch (_) {
@@ -154,6 +157,7 @@
     } finally { button.disabled = false; }
   });
   $('caseIntegrationResult').addEventListener('click', async event => {
+    if (event.target.closest('[data-case-retry]')) { $('startCaseIntegration').click(); return; }
     const button = event.target.closest('#completeCaseIntegration');
     if (!button) return;
     const selected = [...$('caseIntegrationResult').querySelectorAll('[data-case-fact]:checked')].map(e=>e.dataset.caseFact);
@@ -167,7 +171,7 @@
       const response = await fetch('/api/case-integration/complete', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({review_id:button.dataset.reviewId, confirmed_fact_ids:selected, confirm_document_link:$('caseDocumentLink').checked})});
       const data = await response.json();
       if (data.status !== 'completed') {
-        $('caseCompletionStatus').textContent = `${data.message_fr || 'Scénario interrompu.'} (${data.code || 'ERROR'})`;
+        $('caseCompletionStatus').innerHTML = caseErrorHtml(data);
         button.disabled = false;
         return;
       }
@@ -246,7 +250,7 @@
     if (answer?.kind === 'case') html += `<p>Faits : ${escapeHtml(answer.facts.join('; ') || '—')}</p><p>Risques : ${escapeHtml(answer.risks.join('; ') || '—')}</p>`;
     if (answer?.kind === 'document') {
       if (answer.document_type) html += `<p>Type détecté : <code>${escapeHtml(answer.document_type)}</code></p>`;
-      if (answer.fields) html += '<h3>Champs extraits</h3><ul>' + Object.entries(answer.fields).map(([name, field]) => `<li><strong>${escapeHtml(name)}</strong> : ${escapeHtml(field.value ?? 'Illisible / non extrait')} <span class="citation">(${escapeHtml(Math.round((field.confidence || 0) * 100))}%)</span></li>`).join('') + '</ul>';
+      if (answer.fields) html += '<h3>Champs extraits</h3><ul>' + Object.entries(answer.fields).map(([name, field]) => `<li><strong>${escapeHtml(name)}</strong> : ${escapeHtml(field.value ?? 'Illisible / non extrait')} <span class="citation">(${escapeHtml(confidencePercent(field.confidence))}%)</span></li>`).join('') + '</ul>';
       if (answer.warnings?.length) html += '<p><strong>Avertissements :</strong></p><ul>' + answer.warnings.map(item => `<li>${escapeHtml(item)}</li>`).join('') + '</ul>';
     }
     const review = data.document_review;
@@ -259,7 +263,7 @@
         const disabled = field.state !== 'verified' ? ' disabled' : '';
         const className = unavailable ? 'review-unavailable' : field.state === 'review_required' ? 'review-required' : '';
         const state = unavailable ? `Non utilisable : ${field.reason || 'valeur ou citation manquante'}` : field.state === 'review_required' ? `Visible, non sélectionnable : ${field.reason || 'confiance sous le seuil'}` : 'Vérifié';
-        return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(Math.round((field.confidence || 0) * 100))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
+        return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(confidencePercent(field.confidence))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
       }).join('');
       html += `<button class="small-button" data-document-review-id="${escapeHtml(review.review_id)}">Confirmer les champs sélectionnés</button><div id="reviewStatus" class="note"></div></section>`;
     }

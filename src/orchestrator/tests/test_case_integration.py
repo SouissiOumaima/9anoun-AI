@@ -125,12 +125,13 @@ def test_response_from_another_document_is_rejected(setup_flow):
         prepare(setup_flow)
 
 
-def test_low_confidence_field_cannot_be_confirmed(setup_flow):
+@pytest.mark.parametrize('confidence', [0.5, 0.896, 0.89999])
+def test_low_confidence_field_cannot_be_confirmed(setup_flow, confidence):
     flow, _, common, calls = setup_flow
     original = flow.ds3
     def weak(request):
         result = original(request)
-        result['result']['fields']['base_salary']['confidence'] = 0.5
+        result['result']['fields']['base_salary']['confidence'] = confidence
         return result
     flow.ds3 = weak
     prepared = prepare(setup_flow)
@@ -145,3 +146,74 @@ def test_fictitious_case_matches_official_card_schema(setup_flow):
     from jsonschema import Draft202012Validator, FormatChecker
     schema = json.loads((ROOT / 'data/mock_cards/schemas/orchestrator_case_card.v0.schema.json').read_text(encoding='utf-8'))
     Draft202012Validator(schema, format_checker=FormatChecker()).validate(setup_flow[1]['card'])
+
+
+@pytest.mark.parametrize('code,retryable', [('TIMEOUT', True), ('INTERNAL_ERROR', True), ('INTERNAL_ERROR', False)])
+def test_ds3_error_messages_and_retry_reach_web_api(setup_flow, monkeypatch, code, retryable):
+    from src.orchestrator import web_app
+    flow, _, _, calls = setup_flow
+    original = flow.ds3
+
+    def unavailable(request):
+        response = original(request)
+        response.update(status='erreur', result=None, citations=[], refus=None,
+                        ds3_code=code, retryable=retryable,
+                        erreur={'type': code, 'message_fr': 'Lecture en cours. Réessayez.',
+                                'message_ar': 'القراءة جارية. أعد المحاولة.'})
+        return response
+
+    flow.ds3 = unavailable
+    monkeypatch.setattr(web_app, '_CASE_WORKFLOW', flow)
+    result = web_app.case_integration_action({'language': 'ar'})
+    assert result['status'] == ('retry_later' if retryable else 'blocked')
+    assert result['retryable'] is retryable
+    assert result['code'] == f'DS3_{code}'
+    assert result['message_fr'] == 'Lecture en cours. Réessayez.'
+    assert result['message_ar'] == 'القراءة جارية. أعد المحاولة.'
+    assert calls == ['ds3']
+    assert not flow._sessions
+    flow.ds3 = original
+    prepared = web_app.case_integration_action({'language': 'ar'})
+    assert prepared['status'] == 'pending_confirmation'
+    assert calls == ['ds3', 'ds3']
+    assert all(not f['user_confirmed'] for f in prepared['facts'])
+
+
+def test_ds3_refusal_preserves_messages_without_retry(setup_flow, monkeypatch):
+    from src.orchestrator import web_app
+    flow, _, _, calls = setup_flow
+    original = flow.ds3
+
+    def refused(request):
+        response = original(request)
+        response.update(status='refus', result=None, citations=[], ds3_code='UNSUPPORTED_FORMAT',
+                        refus={'code': 'HORS_SCOPE', 'message_fr': 'OCR non installé.',
+                               'message_ar': 'خدمة OCR غير مثبتة.'})
+        return response
+
+    flow.ds3 = refused
+    monkeypatch.setattr(web_app, '_CASE_WORKFLOW', flow)
+    result = web_app.case_integration_action({})
+    assert result['status'] == 'blocked'
+    assert result['retryable'] is False
+    assert result['message_fr'] == 'OCR non installé.'
+    assert result['message_ar'] == 'خدمة OCR غير مثبتة.'
+    assert calls == ['ds3']
+    assert not flow._sessions
+
+
+def test_retryable_error_from_other_document_is_rejected(setup_flow):
+    flow, _, _, _ = setup_flow
+    original = flow.ds3
+
+    def foreign(request):
+        response = original(request)
+        response.update(status='erreur', result=None, citations=[], refus=None,
+                        document_id='foreign-document', ds3_code='TIMEOUT', retryable=True,
+                        erreur={'type': 'TIMEOUT', 'message_fr': 'Attendez.', 'message_ar': 'انتظر.'})
+        return response
+
+    flow.ds3 = foreign
+    with pytest.raises(CaseWorkflowError, match='PROVENANCE') as error:
+        prepare(setup_flow)
+    assert error.value.retryable is False
