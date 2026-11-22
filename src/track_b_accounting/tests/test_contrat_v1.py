@@ -307,6 +307,10 @@ def test_bilan_demo_v1():
         "demo-v1-22-chaussure-horaires-degre-30": ("3.881", "TND/heure"),
         "demo-v1-23-chaussure-mensuels-1b-degre-1": ("579.170", "TND/mois"),
         "demo-v1-24-chaussure-mensuels-anomalie-degre-24": ("707.557", "TND/mois"),
+        "demo-v1-26-cinema-projectionniste-degre-13": ("410.151", "TND/mois"),
+        "demo-v1-27-transport-categorie-15-degre-13": ("748.830", "TND/mois"),
+        "demo-v1-28-clercs-anomalie-degre-5": ("348.380", "TND/mois"),
+        "demo-v1-29-grossistes-ii-a-degre-15": ("465.220", "TND/mois"),
     }
     codes = {k: r["refus"]["code"] for k, r in reps.items() if r["status"] == "refus"}
     assert codes == {
@@ -334,9 +338,9 @@ def test_demo_affiche_la_serie_v1_apres_la_serie_v0():
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 25
-    assert texte.index("Bilan : 135 ok, 120 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/25")
-    assert texte.rstrip().endswith("Bilan v1 : 19 ok, 6 refus, 0 erreur(s).")
+    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 29
+    assert texte.index("Bilan : 163 ok, 136 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/29")
+    assert texte.rstrip().endswith("Bilan v1 : 23 ok, 6 refus, 0 erreur(s).")
 
 
 # --- demande par degré : chaque cellule imprimée ----------------------------------------------------------------------
@@ -666,8 +670,8 @@ def test_chemin_par_l_anciennete_affiche_toujours_ces_hypotheses():
 
 
 def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
-    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (67 phrases,
-    33 fichiers), avec leur traduction arabe au même rang."""
+    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (74 phrases,
+    39 fichiers), avec leur traduction arabe au même rang."""
     fichiers = phrases = 0
     for chemin in loaders.GRILLES.values():
         g = lire_json(chemin)
@@ -679,7 +683,7 @@ def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
             phrases += len(rangs)
             vu = vu or bool(rangs)
         fichiers += vu
-    assert (fichiers, phrases) == (33, 67)
+    assert (fichiers, phrases) == (39, 74)
 
 
 @pytest.mark.parametrize("rangs", [[], [5], [0, 0], ["1"], [True], "1"])
