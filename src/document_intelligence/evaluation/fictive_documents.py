@@ -67,10 +67,10 @@ DOCS: Final[list[FictiveDoc]] = [
             ("Nom : Ahmed Ben Salah", "Date d'entrée : 01/09/2019"),
             ("Ancienneté : 6 ans 6 mois", "Catégorie : 3   Échelon : 2"),
             ("Emploi : Agent administratif", "Statut : Permanent"),
-            ("Mode de paiement : Mensuel", "Horaire : 208 h"),
+            ("Mode de paiement : Mensuel", "Horaire : 42 h/semaine"),
         ],
-        rows=[("Salaire de base", "424,100"), ("Prime de transport", "56,000"), ("Prime de présence", "36,000"),
-              ("Salaire brut", "516,100"), ("Retenue CNSS", "47,378"), ("Net à payer", "468,722")],
+        rows=[("Salaire de base", "641,013"), ("Prime de transport", "56,000"), ("Prime de présence", "36,000"),
+              ("Salaire brut", "733,013"), ("Retenue CNSS", "67,291"), ("Net à payer", "665,722")],
         fields={
             "employee_name": Value("Ahmed Ben Salah", "Ahmed Ben Salah"),
             "period_start": Value("Mars 2026", "2026-03-01"),
@@ -82,13 +82,16 @@ DOCS: Final[list[FictiveDoc]] = [
             "job_qualification": Value("Agent administratif", "Agent administratif"),
             "employment_status": Value("Permanent", "permanent"),
             "pay_mode": Value("Mensuel", "mensuel"),
-            "work_hours_regime": Value("208 h", "48"),
-            "base_salary": Value("424,100", "424.100"),
-            "gross_salary": Value("516,100", "516.100"),
-            "cnss_employee": Value("47,378", "47.378"),
+            # 42 h/semaine n'est ni 40 ni 48 : pas de conversion inventée (contrat ds3.v2), donc null.
+            "work_hours_regime": Value("42 h/semaine", None, "valeur_incoherente"),
+            "base_salary": Value("641,013", "641.013"),
+            "gross_salary": Value("733,013", "733.013"),
+            "cnss_employee": Value("67,291", "67.291"),
         },
         pay_lines=[("Prime de transport", "56.000"), ("Prime de présence", "36.000")],
-        note="Cas de base : fiche complète en français, PDF natif, libellés et montants en deux colonnes.",
+        note="Cas de base : fiche en français, PDF natif, libellés et montants en deux colonnes. Alignée sur la "
+        "grille METALLURGIE_BATIMENT / admin_tech, catégorie 3 (base 641,013). Régime imprimé 42 h/semaine : "
+        "work_hours_regime attendu à null (ni 40 ni 48), donc aucun parcours SMIG.",
     ),
     FictiveDoc(
         doc_id="FICTIF-02", case_id="DS3-02", file_name="paie_fictive_02_tampon.pdf", lang="fr", fmt="pdf_natif",

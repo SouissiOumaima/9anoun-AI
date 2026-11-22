@@ -76,7 +76,7 @@ def test_prompt_contains_rules_fields_and_numbered_lines() -> None:
     prompt = build_prompt(doc)
     assert "Ne devine jamais" in prompt
     assert all(f"- {name} :" in prompt for name in PAYSLIP_FIELDS)
-    assert "[p1_l8] Salaire de base  424,100" in prompt
+    assert "[p1_l8] Salaire de base  641,013" in prompt
 
 
 def test_call_uses_json_output_and_zero_temperature() -> None:

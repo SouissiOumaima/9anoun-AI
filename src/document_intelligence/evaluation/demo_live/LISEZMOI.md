@@ -9,7 +9,7 @@ DS1 n'accepte que la référence exacte de sa propre carte, donc DS1 et ce stock
 
 | storage_ref | Fichier (`file_name` à déclarer côté DS1) | Ce que DS3 renvoie |
 |---|---|---|
-| `tradrly://cards/company-demo-001/documents/doc-company-payslip-01` | `ds3_stockage/cards/company-demo-001/documents/doc-company-payslip-01/paie_fictive_01_fr.pdf` | Cas normal : tous les champs lus et cités (base 424.100, brut 516.100, CNSS 47.378). |
+| `tradrly://cards/company-demo-001/documents/doc-company-payslip-01` | `ds3_stockage/cards/company-demo-001/documents/doc-company-payslip-01/paie_fictive_01_fr.pdf` | Cas normal (grille METALLURGIE_BATIMENT / admin_tech, catégorie 3) : base 641.013, brut 733.013, CNSS 67.291, tous lus et cités ; régime imprimé « 42 h/semaine » renvoyé à `null` (`valeur_incoherente`, ni 40 ni 48), donc `complete = false` et aucun parcours SMIG. |
 | `tradrly://cards/company-demo-001/documents/doc-company-payslip-02` | `ds3_stockage/cards/company-demo-001/documents/doc-company-payslip-02/paie_fictive_04_pieges.pdf` | Cas avec pièges : date d'entrée « 01/09/19 », « CDD » et « 195 h » reviennent à `null` avec leur raison. Sert à tester l'étape de confirmation. |
 
 Pour le live, la carte DS1 doit déclarer, pour chaque document : `file_name` exactement comme ci-dessus et
