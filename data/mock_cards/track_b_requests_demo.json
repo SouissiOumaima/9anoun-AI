@@ -1802,5 +1802,313 @@
     "operation": "salaire_base",
     "params": {"secteur": "CUIRS_TANNERIE", "population": "horaires", "categorie": "I", "anciennete_annees": 5, "date": "2024-06-01"},
     "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-256-salaire-clercs-clerc-degre-4",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "2", "anciennete_annees": 5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-257-salaire-clercs-anomalie-degre-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "1", "anciennete_annees": 1.5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-258-salaire-clercs-premier-clerc-date-effet",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "3", "anciennete_annees": 29.5, "date": "2014-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-259-refus-clercs-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "3", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-260-refus-clercs-avant-entree-en-vigueur",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "1", "anciennete_annees": 3, "date": "2014-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-261-refus-clercs-perte-emploi",
+    "operation": "prime",
+    "params": {"secteur": "CLERCS_AVOCATS", "code": "indemnite_perte_emploi", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-262-refus-clercs-borne-exacte",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLERCS_AVOCATS", "categorie": "1", "anciennete_annees": 2, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-263-salaire-pharmacies-tableau-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "I", "anciennete_annees": 0.5, "date": "2021-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-264-salaire-pharmacies-dernier-jour",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "V", "anciennete_annees": 28, "date": "2021-12-31"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-265-salaire-pharmacies-tableau-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "IV", "anciennete_annees": 7, "date": "2021-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-266-refus-pharmacies-avenant-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "III", "anciennete_annees": 10, "date": "2022-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-267-refus-pharmacies-29-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "II", "anciennete_annees": 29, "date": "2021-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-268-refus-pharmacies-avant-tableau-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "categorie": "I", "anciennete_annees": 1.5, "date": "2020-10-31"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-269-prime-travail-nuit-pharmacies",
+    "operation": "prime",
+    "params": {"secteur": "PERSONNEL_PHARMACIES", "code": "prime_travail_nuit", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-270-salaire-conserveries-horaires-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "population": "horaires", "categorie": "1", "anciennete_annees": 1, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-271-salaire-conserveries-mensuels-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "population": "mensuels", "categorie": "3", "anciennete_annees": 15, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-272-salaire-conserveries-ecart-cumule",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "population": "mensuels", "categorie": "5", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-273-refus-conserveries-palier-26-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "population": "horaires", "categorie": "3", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-274-refus-conserveries-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "population": "mensuels", "categorie": "2", "anciennete_annees": 3, "date": "2019-05-31"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-275-prime-transport-conserveries-2018",
+    "operation": "prime",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "code": "prime_transport", "date": "2018-07-01", "groupe": "categories_4_5"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-276-prime-etudes-conserveries",
+    "operation": "prime",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "code": "prime_etudes", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-277-refus-conserveries-avantages-nature",
+    "operation": "prime",
+    "params": {"secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES", "code": "avantages_nature", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-278-salaire-grossistes-sous-ligne-b",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "IV", "sous_categorie": "2", "anciennete_annees": 17.5, "date": "2020-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-279-salaire-grossistes-observation",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "IV", "sous_categorie": "2", "anciennete_annees": 16, "date": "2020-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-280-salaire-grossistes-vi-date-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "VI", "anciennete_annees": 0.5, "date": "2010-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-281-refus-grossistes-avant-tableau-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "I", "sous_categorie": "1", "anciennete_annees": 2, "date": "2010-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-282-refus-grossistes-29-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "V", "sous_categorie": "1", "anciennete_annees": 29, "date": "2020-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-283-refus-grossistes-sous-ligne-manquante",
+    "operation": "salaire_base",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "II", "anciennete_annees": 2, "date": "2020-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-284-prime-transport-grossistes-2008",
+    "operation": "prime",
+    "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "code": "prime_transport", "date": "2008-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-285-salaire-cinema-directeur-degre-13",
+    "operation": "salaire_base",
+    "params": {"secteur": "SALLES_CINEMA", "categorie": "III_6", "anciennete_annees": 25, "date": "2020-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-286-salaire-cinema-ouvrier-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "SALLES_CINEMA", "categorie": "I_1", "anciennete_annees": 1, "date": "2011-05-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-287-refus-cinema-26-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "SALLES_CINEMA", "categorie": "II_2", "anciennete_annees": 26, "date": "2020-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-288-prime-caisse-cinema-en-lettres",
+    "operation": "prime",
+    "params": {"secteur": "SALLES_CINEMA", "code": "prime_caisse", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-289-prime-encouragement-cinema-salle-b",
+    "operation": "prime",
+    "params": {"secteur": "SALLES_CINEMA", "code": "prime_encouragement_salle_b_cat2", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-290-prime-scolaire-cinema",
+    "operation": "prime",
+    "params": {"secteur": "SALLES_CINEMA", "code": "prime_scolaire_preparatoire_secondaire", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-291-refus-cinema-deux-longs-metrages",
+    "operation": "prime",
+    "params": {"secteur": "SALLES_CINEMA", "code": "majoration_deux_longs_metrages", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-292-salaire-transport-degre-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "categorie": "20", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-293-salaire-transport-categorie-7",
+    "operation": "salaire_base",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "categorie": "7", "anciennete_annees": 7, "date": "2020-01-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-294-refus-transport-avant-tableau-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "categorie": "1", "anciennete_annees": 0.5, "date": "2017-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-295-prime-kilometrique-transport-tunisie",
+    "operation": "prime",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_kilometrique_tunisie", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-296-prime-kilometrique-transport-etranger",
+    "operation": "prime",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_kilometrique_etranger", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-297-prime-aid-adha-transport-en-lettres",
+    "operation": "prime",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_aid_adha", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-298-prime-transport-transport-2016-cadres",
+    "operation": "prime",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_transport", "date": "2016-09-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-299-prime-sans-accompagnateur-transport",
+    "operation": "prime",
+    "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_travail_sans_accompagnateur", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
   }
 ]

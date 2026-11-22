@@ -1,0 +1,749 @@
+{
+ "_meta": {
+  "secteur_code": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لمعامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت",
+  "convention_fr": "Convention collective sectorielle des conserveries, semi-conserveries alimentaires et du conditionnement des huiles",
+  "source_file": "data/raw/pdf/معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+  "pages_sources": [
+   3,
+   8,
+   9,
+   10,
+   15,
+   16,
+   17,
+   20
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "130 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; une seule table datée : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D86",
+  "currency": "TND",
+  "note_unite": "Unité imprimée dans le titre : « للعمال الخالصين بالساعة » (TND/heure, tableau n° 3) ou « للعمال الإداريون والخالصين بالشهر » (TND/mois, tableau n° 4) ; durée du travail : 48 heures pour toutes les catégories (art. 25 (جديد), p.10).",
+  "note_degres": "En-tête (p.20) : 13 degrés de 2 ans ; libellés « 0-2 » … « 22-24 », « 24+ » ; bornes exactes refusées (D6) ; au-delà de 24 ans, écart cumulé (degré 13 − degré 12) tous les 2 ans de l'art. 15 (جديد) (p.8, D10), pour toutes les catégories ; paliers 26, 28… en PARAM_INVALIDE.",
+  "note_categories": "Horaires : catégories 1 à 5 ; mensuels (administratifs et payés au mois) : catégories 1 à 5 ; population obligatoire.",
+  "note_dates": "Tableaux n° 3 et 4 seuls (p.20), en vigueur à partir du 2019-06-01 ; le dernier avenant listé (n° 15, p.3) a effet au 2018-06-01 et les tableaux n° 1 et 2 (2018) ne sont pas dans la source : salaire refusé avant le 2019-06-01 ; les primes datées sont servies à leurs propres dates (2018-06-01, 2019-06-01).",
+  "remarque_pdf": "Note sous chaque tableau (p.20) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحة 20): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "horaires": {
+   "libelle_fr": "Ouvriers payés à l'heure",
+   "libelle_ar": "العمال الخالصون بالساعة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 20,
+   "note": "Tableau n° 3 ; population obligatoire."
+  },
+  "mensuels": {
+   "libelle_fr": "Administratifs et agents payés au mois",
+   "libelle_ar": "العمال الإداريون والخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 20,
+   "note": "Tableau n° 4 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "horaires": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24+"
+   }
+  ],
+  "mensuels": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24+"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "horaires": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد)",
+   "texte_source_ar": "يتمتع العمال بدون استثناء المرتبون بالدرجة 13 بالفارق المالي بين الدرجة 13 والدرجة 12 وذلك كل سنتين إلى نهاية حياتهم المهنية.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D86",
+   "hypotheses_fr": [
+    "Article 15 (جديد) (p.8) : au dernier degré (atteint à 24 ans selon les durées imprimées), l'écart entre les deux derniers degrés s'ajoute tous les 2 ans ; n = nombre de périodes de 2 ans révolues depuis 24 ans ; écart cumulé calculé sur la table en vigueur (règle D10, période 2), pour toutes les catégories de la convention des conserveries, semi-conserveries alimentaires et du conditionnement des huiles."
+   ],
+   "hypotheses_ar": [
+    "الفصل 15 (جديد) (الصفحة 8): عند بلوغ آخر درجة (المبلوغة عند 24 سنة حسب المدد المطبوعة) يضاف الفارق بين الدرجتين الأخيرتين كل سنتين؛ عدد الفترات هو عدد الفترات المنقضية منذ 24 سنة؛ يُجمع الفارق محسوبا على الجدول الساري (القاعدة D10)، لكل أصناف اتفاقية معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 15 (جديد) (page 8 : 26, 28, 30… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. ancienneté et un jour).",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 15 (جديد) (الصفحة 8: 26 و28 و30... سنة) ولا يحدد المصدر إن كان الفارق مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة."
+  },
+  "mensuels": {
+   "regle": "ecart_cumule_biennal",
+   "periode_annees": 2,
+   "dernier_degre_atteint_a_annees": 24,
+   "source_pdf_page": 8,
+   "source_article": "15 (جديد)",
+   "texte_source_ar": "يتمتع العمال بدون استثناء المرتبون بالدرجة 13 بالفارق المالي بين الدرجة 13 والدرجة 12 وذلك كل سنتين إلى نهاية حياتهم المهنية.",
+   "texte_source_saisi_depuis_image": true,
+   "decision_ref": "D86",
+   "hypotheses_fr": [
+    "Article 15 (جديد) (p.8) : au dernier degré (atteint à 24 ans selon les durées imprimées), l'écart entre les deux derniers degrés s'ajoute tous les 2 ans ; n = nombre de périodes de 2 ans révolues depuis 24 ans ; écart cumulé calculé sur la table en vigueur (règle D10, période 2), pour toutes les catégories de la convention des conserveries, semi-conserveries alimentaires et du conditionnement des huiles."
+   ],
+   "hypotheses_ar": [
+    "الفصل 15 (جديد) (الصفحة 8): عند بلوغ آخر درجة (المبلوغة عند 24 سنة حسب المدد المطبوعة) يضاف الفارق بين الدرجتين الأخيرتين كل سنتين؛ عدد الفترات هو عدد الفترات المنقضية منذ 24 سنة؛ يُجمع الفارق محسوبا على الجدول الساري (القاعدة D10)، لكل أصناف اتفاقية معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت."
+   ],
+   "message_borne_fr": "Ancienneté de {a} ans = palier de l'article 15 (جديد) (page 8 : 26, 28, 30… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. ancienneté et un jour).",
+   "message_borne_ar": "أقدمية {a} سنة تقع على حد فترة من فترات الفصل 15 (جديد) (الصفحة 8: 26 و28 و30... سنة) ولا يحدد المصدر إن كان الفارق مستحقا عند هذا الحد. يرجى تحديد الأقدمية بدقة."
+  }
+ },
+ "categories": {
+  "horaires": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "mensuels": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ]
+ },
+ "libelles_categories": {
+  "horaires": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   }
+  },
+  "mensuels": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "horaires": {
+   "fr": [
+    "Hausse de 6 % par degré (article 15 (جديد), page 8) non appliquée : seuls les montants imprimés sont servis ; promotion d'une catégorie à la suivante (même article) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لا تُطبَّق زيادة 6 بالمائة لكل درجة (الفصل 15 (جديد)، الصفحة 8): تُرجَع المبالغ المطبوعة فقط؛ ولا تُحتسب الترقية من صنف إلى صنف أعلى (نفس الفصل).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    1
+   ]
+  },
+  "mensuels": {
+   "fr": [
+    "Hausse de 6 % par degré (article 15 (جديد), page 8) non appliquée : seuls les montants imprimés sont servis ; promotion d'une catégorie à la suivante (même article) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لا تُطبَّق زيادة 6 بالمائة لكل درجة (الفصل 15 (جديد)، الصفحة 8): تُرجَع المبالغ المطبوعة فقط؛ ولا تُحتسب الترقية من صنف إلى صنف أعلى (نفس الفصل).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    1
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2018-06-01",
+     "categories_1_3": 69.404,
+     "categories_4_5": 78.777
+    },
+    {
+     "effective_date": "2019-06-01",
+     "categories_1_3": 73.915,
+     "categories_4_5": 83.897
+    }
+   ],
+   "libelles_groupes": {
+    "categories_1_3": {
+     "fr": "Catégories 1, 2 et 3",
+     "ar": "الأصناف 1 و2 و3"
+    },
+    "categories_4_5": {
+     "fr": "Catégories 4 et 5",
+     "ar": "الصنفان 4 و5"
+    }
+   },
+   "note": "Montants à partir du 1er juin 2018 et du 1er juin 2019 ; celui de 2018 est servi même si la grille de salaires de 2018 n'est pas dans la source (art. 54 (جديد), p.16)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "58 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2018-06-01",
+     "montant": 13.794
+    },
+    {
+     "effective_date": "2019-06-01",
+     "montant": 14.690
+    }
+   ]
+  },
+  {
+   "code": "prime_deplacement_repas_75_100km",
+   "label_ar": "منحة التنقل: الوجبة (من 75 كلم إلى 100 كلم)",
+   "label_fr": "Prime de déplacement : repas, de 75 à 100 km",
+   "source_article": "54 مكرر (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/repas",
+   "montant": 2.333,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travail exigeant un déplacement hors du site, de 75 à 100 km (art. 54 مكرر (جديد), p.17)"
+  },
+  {
+   "code": "prime_deplacement_repas_100_160km",
+   "label_ar": "منحة التنقل: الوجبة (من 100 كلم إلى 160 كلم)",
+   "label_fr": "Prime de déplacement : repas, de 100 à 160 km",
+   "source_article": "54 مكرر (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/repas",
+   "montant": 3.333,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travail exigeant un déplacement hors du site, de 100 à 160 km (art. 54 مكرر (جديد), p.17)"
+  },
+  {
+   "code": "prime_deplacement_repas_plus_160km",
+   "label_ar": "منحة التنقل: الوجبة (من 160 كلم فما فوق)",
+   "label_fr": "Prime de déplacement : repas, plus de 160 km",
+   "source_article": "54 مكرر (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/repas",
+   "montant": 4.166,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travail exigeant un déplacement hors du site, plus de 160 km (art. 54 مكرر (جديد), p.17)"
+  },
+  {
+   "code": "prime_deplacement_nuitee",
+   "label_ar": "منحة التنقل: المبيت",
+   "label_fr": "Prime de déplacement : nuitée",
+   "source_article": "54 مكرر (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/nuitee",
+   "montant": 7.666,
+   "effective_date": null,
+   "note": "S'ajoute aux repas (art. 54 مكرر (جديد), p.17).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "nuit hors du domicile imposée par le travail (art. 54 مكرر (جديد), p.17)"
+  },
+  {
+   "code": "prime_etudes",
+   "label_ar": "منحة الدراسة",
+   "label_fr": "Prime d'études",
+   "source_article": "55 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/enfant",
+   "montant": 25.166,
+   "effective_date": null,
+   "note": "Pour les travailleurs permanents, par enfant scolarisé ; plafond (non calculé) : quatre enfants (art. 55 (جديد), p.17).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "La convention n'imprime pas la fréquence du versement : montant servi par versement, sans période annuelle."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "لا تذكر الاتفاقية دورية الصرف: يُرجَع المبلغ عن كل صرف، دون اعتبار فترة سنوية."
+    ]
+   }
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "57 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/jour",
+   "montant": 0.500,
+   "effective_date": null,
+   "note": "Imprimé « 500 مليم في اليوم » ; prime prévue par la législation en vigueur, dont les conditions ne sont pas vérifiées ici (art. 57 (جديد), p.17).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_nuit_equipe",
+   "label_ar": "المنحة الليلية لعمال فريق التناوب",
+   "label_fr": "Prime de nuit des équipes tournantes",
+   "source_article": "26 (جديد)",
+   "source_pdf_page": 10,
+   "unite": "TND/nuit",
+   "montant": 0.500,
+   "effective_date": null,
+   "note": "Imprimé « 500 مليم في الليلة الواحدة » ; s'ajoute à la majoration de 35 % (non couverte) (art. 26 (جديد), p.10).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travailleur d'une équipe tournante (trois équipes) travaillant de 22 heures à 6 heures (art. 26 (جديد), p.10)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production": {
+   "source_pdf_page": 15,
+   "source_article": "46 (جديد)",
+   "message_fr": "Prime de production (article 46 (جديد), page 15) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 46 (جديد)، الصفحة 15): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_depart_retraite": {
+   "source_pdf_page": 16,
+   "source_article": "50 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 50 (جديد), page 16) : exprimée en mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التقاعد (الفصل 50 (جديد)، الصفحة 16): بأجر شهري، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "salaire_13e_mois": {
+   "source_pdf_page": 16,
+   "source_article": "51 (جديد)",
+   "message_fr": "Treizième mois (article 51 (جديد), page 16) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "أجرة الشهر الثالث عشر (الفصل 51 (جديد)، الصفحة 16): أجرة شهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 9,
+   "source_article": "19 (جديد)",
+   "message_fr": "Indemnité de fin de service (article 19 (جديد), page 9) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 19 (جديد)، الصفحة 9): صيغة حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_travail_nuit": {
+   "source_pdf_page": 10,
+   "source_article": "26 (جديد)",
+   "message_fr": "Majoration du travail de nuit (article 26 (جديد), page 10) : majoration de 35 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "أجرة العمل بالليل (الفصل 26 (جديد)، الصفحة 10): زيادة بـ35 بالمائة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "avantages_nature": {
+   "source_pdf_page": 17,
+   "source_article": "56 (جديد)",
+   "message_fr": "Avantages en nature (article 56 (جديد), page 17) : 8,333 kg de produits, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الامتيازات العينية (الفصل 56 (جديد)، الصفحة 17): 8.333 كلغ من المواد، عينا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  },
+  "vetements_travail": {
+   "source_pdf_page": 16,
+   "source_article": "53 (جديد)",
+   "message_fr": "Vêtements de travail (article 53 (جديد), page 16) : fournis en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "ملابس الشغل (الفصل 53 (جديد)، الصفحة 16): تُسند عينا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CONS_HORAIRES_2019-06-01",
+   "numero_imprime": 3,
+   "population": "horaires",
+   "effective_date": "2019-06-01",
+   "source_pdf_page": 20,
+   "unite": "TND/heure",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     2.445,
+     2.549,
+     2.553,
+     2.559,
+     2.564,
+     2.568,
+     2.573,
+     2.579,
+     2.582,
+     2.597,
+     2.612,
+     2.628,
+     2.645
+    ],
+    "2": [
+     2.736,
+     2.742,
+     2.747,
+     2.753,
+     2.758,
+     2.762,
+     2.769,
+     2.786,
+     2.802,
+     2.819,
+     2.837,
+     2.856,
+     2.872
+    ],
+    "3": [
+     2.912,
+     2.920,
+     2.925,
+     2.931,
+     2.953,
+     2.973,
+     2.995,
+     3.015,
+     3.035,
+     3.057,
+     3.075,
+     3.118,
+     3.140
+    ],
+    "4": [
+     3.125,
+     3.141,
+     3.163,
+     3.189,
+     3.211,
+     3.233,
+     3.257,
+     3.277,
+     3.319,
+     3.341,
+     3.361,
+     3.382,
+     3.404
+    ],
+    "5": [
+     3.290,
+     3.314,
+     3.336,
+     3.358,
+     3.382,
+     3.404,
+     3.449,
+     3.471,
+     3.493,
+     3.517,
+     3.539,
+     3.561,
+     3.585
+    ]
+   }
+  },
+  {
+   "table_id": "CONS_MENSUELS_2019-06-01",
+   "numero_imprime": 4,
+   "population": "mensuels",
+   "effective_date": "2019-06-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     514.319,
+     539.024,
+     540.294,
+     541.562,
+     545.405,
+     549.566,
+     553.816,
+     558.066,
+     562.318,
+     566.569,
+     575.401,
+     579.651,
+     583.903
+    ],
+    "2": [
+     601.368,
+     606.480,
+     611.592,
+     616.703,
+     626.397,
+     631.509,
+     636.620,
+     641.734,
+     646.846,
+     651.957,
+     657.069,
+     662.181,
+     667.292
+    ],
+    "3": [
+     684.702,
+     691.518,
+     698.333,
+     705.149,
+     711.965,
+     718.781,
+     725.597,
+     736.994,
+     743.810,
+     750.626,
+     757.442,
+     764.259,
+     771.073
+    ],
+    "4": [
+     765.208,
+     774.297,
+     787.966,
+     797.053,
+     806.142,
+     815.229,
+     824.318,
+     833.405,
+     847.074,
+     856.163,
+     865.250,
+     874.338,
+     883.425
+    ],
+    "5": [
+     905.441,
+     919.074,
+     932.704,
+     946.336,
+     959.969,
+     973.599,
+     987.232,
+     1001.014,
+     1014.495,
+     1028.127,
+     1041.758,
+     1055.390,
+     1069.021
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,618 @@
+{
+ "_meta": {
+  "secteur_code": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لموزعي الأدوية بالجملة ونصف الجملة",
+  "convention_fr": "Convention collective sectorielle des grossistes et demi-grossistes répartiteurs de médicaments",
+  "source_file": "data/raw/pdf/موزعي الأدوية بالجملة و نصف الجملة.pdf",
+  "pages_sources": [
+   2,
+   6,
+   7,
+   11,
+   12,
+   19
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "165 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; une seule table datée : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D87",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 351 à 714).",
+  "note_degres": "En-tête (p.19) : 15 degrés, durée de séjour 1 (degré 1) puis 2 ; ancienneté effective imprimée 1, 3 … 29 (fin du degré) ; libellés « 0-1 », « 1-3 » … « 27-29 » ; bornes exactes refusées (D6) ; à partir de 29 ans, refus (art. 12, pp.6-7).",
+  "note_categories": "Catégories I à V, chacune en deux sous-lignes أ et ب (clés I_1, I_2 … V_2, sous_categorie « 1 » ou « 2 »), et catégorie VI ; population unique.",
+  "note_dates": "Tableau n° 3 seul (p.19), en vigueur à partir du 2010-05-01 ; les tableaux n° 1 et 2 ne sont pas dans la source et le dernier avenant listé (n° 8, p.2) a effet au 2008-05-01 : salaire refusé avant le 2010-05-01 ; la prime de transport est servie à ses propres dates (2008, 2009, 2010).",
+  "note_observations": "Cellules qui ne suivent pas la régularité des sous-lignes, conservées telles qu'imprimées (réponse à l'ARRÊT 2) : IV ب, degré 9 (550.618) ; ligne I : I أ, degré 12 (400.006) et I ب, degré 11 (399.445). Nettement imprimées et vérifiées sur l'image (observations_imprimees de la table).",
+  "remarque_pdf": "Note sous chaque tableau (p.19) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحة 19): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "agents": {
+   "libelle_fr": "Agents des grossistes répartiteurs de médicaments",
+   "libelle_ar": "أعوان موزعي الأدوية بالجملة ونصف الجملة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 19,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": "1"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "3"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "13"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "15"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "15-17",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "17"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "17-19",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "19"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "19-21",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "21"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-23",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "23"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "23-25",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "25"
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "25-27",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "27"
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "27-29",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "29"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "agents": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 29,
+   "source_pdf_page": 6,
+   "source_article": "12",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des grossistes et demi-grossistes répartiteurs de médicaments s'arrête au degré 15 (27 à 29 ans) ; l'en-tête (page 19) imprime la durée de séjour (1 an, puis 2 ans) et l'ancienneté effective 1, 3 … 29 ; l'article 12 (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 29 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية موزعي الأدوية بالجملة ونصف الجملة عند الدرجة 15 (من 27 إلى 29 سنة)؛ ويذكر رأس الجدول (الصفحة 19) مدة البقاء (سنة ثم سنتان) والأقدمية الفعلية 1 و3 ... 29؛ ولا ينص الفصل 12 (الصفحتان 6 و7) على شيء بعد الدرجة 15. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 29 سنة)."
+  }
+ },
+ "categories": {
+  "agents": [
+   "I_1",
+   "I_2",
+   "II_1",
+   "II_2",
+   "III_1",
+   "III_2",
+   "IV_1",
+   "IV_2",
+   "V_1",
+   "V_2",
+   "VI"
+  ]
+ },
+ "libelles_categories": {
+  "agents": {
+   "I_1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie I, sous-ligne أ",
+    "libelle_ar": "الصنف I أ",
+    "libelle_ar_redige": false
+   },
+   "I_2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie I, sous-ligne ب",
+    "libelle_ar": "الصنف I ب",
+    "libelle_ar_redige": false
+   },
+   "II_1": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie II, sous-ligne أ",
+    "libelle_ar": "الصنف II أ",
+    "libelle_ar_redige": false
+   },
+   "II_2": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie II, sous-ligne ب",
+    "libelle_ar": "الصنف II ب",
+    "libelle_ar_redige": false
+   },
+   "III_1": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie III, sous-ligne أ",
+    "libelle_ar": "الصنف III أ",
+    "libelle_ar_redige": false
+   },
+   "III_2": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie III, sous-ligne ب",
+    "libelle_ar": "الصنف III ب",
+    "libelle_ar_redige": false
+   },
+   "IV_1": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie IV, sous-ligne أ",
+    "libelle_ar": "الصنف IV أ",
+    "libelle_ar_redige": false
+   },
+   "IV_2": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie IV, sous-ligne ب",
+    "libelle_ar": "الصنف IV ب",
+    "libelle_ar_redige": false
+   },
+   "V_1": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie V, sous-ligne أ",
+    "libelle_ar": "الصنف V أ",
+    "libelle_ar_redige": false
+   },
+   "V_2": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie V, sous-ligne ب",
+    "libelle_ar": "الصنف V ب",
+    "libelle_ar_redige": false
+   },
+   "VI": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie VI",
+    "libelle_ar": "الصنف VI",
+    "libelle_ar_redige": false
+   }
+  }
+ },
+ "sous_categories": {
+  "agents": {
+   "source_pdf_page": 19,
+   "par_categorie": {
+    "I": {
+     "1": {
+      "cle": "I_1",
+      "libelle_fr": "Catégorie I, première sous-ligne (أ)",
+      "libelle_ar": "الصنف I أ",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "I_2",
+      "libelle_fr": "Catégorie I, seconde sous-ligne (ب)",
+      "libelle_ar": "الصنف I ب",
+      "libelle_ar_redige": false
+     }
+    },
+    "II": {
+     "1": {
+      "cle": "II_1",
+      "libelle_fr": "Catégorie II, première sous-ligne (أ)",
+      "libelle_ar": "الصنف II أ",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "II_2",
+      "libelle_fr": "Catégorie II, seconde sous-ligne (ب)",
+      "libelle_ar": "الصنف II ب",
+      "libelle_ar_redige": false
+     }
+    },
+    "III": {
+     "1": {
+      "cle": "III_1",
+      "libelle_fr": "Catégorie III, première sous-ligne (أ)",
+      "libelle_ar": "الصنف III أ",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "III_2",
+      "libelle_fr": "Catégorie III, seconde sous-ligne (ب)",
+      "libelle_ar": "الصنف III ب",
+      "libelle_ar_redige": false
+     }
+    },
+    "IV": {
+     "1": {
+      "cle": "IV_1",
+      "libelle_fr": "Catégorie IV, première sous-ligne (أ)",
+      "libelle_ar": "الصنف IV أ",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "IV_2",
+      "libelle_fr": "Catégorie IV, seconde sous-ligne (ب)",
+      "libelle_ar": "الصنف IV ب",
+      "libelle_ar_redige": false
+     }
+    },
+    "V": {
+     "1": {
+      "cle": "V_1",
+      "libelle_fr": "Catégorie V, première sous-ligne (أ)",
+      "libelle_ar": "الصنف V أ",
+      "libelle_ar_redige": false
+     },
+     "2": {
+      "cle": "V_2",
+      "libelle_fr": "Catégorie V, seconde sous-ligne (ب)",
+      "libelle_ar": "الصنف V ب",
+      "libelle_ar_redige": false
+     }
+    }
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "agents": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 351,255 à 714,112).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Sous-lignes أ et ب des catégories I à V numérotées par position (1 = أ, 2 = ب), sans libellé sur la grille (page 19) : la sous-ligne est donnée par l'appelant.",
+    "Promotion à la catégorie supérieure après cinq ans d'ancienneté, par examen (article 12 ب, page 6) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 351,255 à 714,112).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "السطران الفرعيان أ وب للأصناف من I إلى V مرقمان حسب الترتيب (1 = أ، 2 = ب) دون تسمية بالجدول (الصفحة 19): يحدد الطالب السطر الفرعي.",
+    "لا تُحتسب الترقية إلى الصنف الأعلى بعد خمس سنوات أقدمية عن طريق امتحان مهني (الفصل 12 ب، الصفحة 6).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-05-01",
+     "montant": 4.000
+    },
+    {
+     "effective_date": "2009-05-01",
+     "montant": 5.000
+    },
+    {
+     "effective_date": "2010-05-01",
+     "montant": 6.000
+    }
+   ],
+   "note": "En plus de la prime de transport du décret n° 503 du 16 mars 1982, modifié par le décret n° 691 du 19 juillet 1986 ; 2008 et 2009 sont servis même si les grilles de salaires de ces années ne sont pas dans la source (art. 47 (جديد), p.12)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة حضور",
+   "label_fr": "Prime de présence",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 12,
+   "unite": "TND/jour",
+   "montant": 0.115,
+   "effective_date": null,
+   "note": "Imprimé « 115 مليما يوميا عن كل يوم عمل » (art. 47 (جديد), p.12).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production_fin_annee": {
+   "source_pdf_page": 12,
+   "source_article": "48 (جديد)",
+   "message_fr": "Prime de production et de fin d'année (article 48 (جديد), page 12) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج والمرابيح ومنحة آخر السنة (الفصل 48 (جديد)، الصفحة 12): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_licenciement": {
+   "source_pdf_page": 7,
+   "source_article": "16",
+   "message_fr": "Indemnité de licenciement (article 16, page 7) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "غرامة الفصل عن العمل (الفصل 16، الصفحة 7): صيغة حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "tenue_travail": {
+   "source_pdf_page": 11,
+   "source_article": "41 (جديد)",
+   "message_fr": "Tenue de travail (article 41 (جديد), page 11) : fournie en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "لباس الشغل (الفصل 41 (جديد)، الصفحة 11): تُسند عينا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "GROSS_2010-05-01",
+   "numero_imprime": 3,
+   "population": "agents",
+   "effective_date": "2010-05-01",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "valeurs": {
+    "I_1": [
+     351.255,
+     357.905,
+     358.431,
+     362.019,
+     365.750,
+     369.631,
+     373.669,
+     377.864,
+     382.233,
+     386.773,
+     391.495,
+     400.006,
+     404.464,
+     409.776,
+     415.300
+    ],
+    "I_2": [
+     355.069,
+     358.519,
+     362.108,
+     365.839,
+     369.720,
+     373.758,
+     377.953,
+     382.321,
+     386.862,
+     391.583,
+     399.445,
+     404.552,
+     409.865,
+     415.388,
+     421.134
+    ],
+    "II_1": [
+     388.366,
+     392.298,
+     396.388,
+     400.642,
+     405.060,
+     409.668,
+     414.453,
+     422.379,
+     427.553,
+     432.935,
+     438.533,
+     444.354,
+     450.240,
+     456.136,
+     465.220
+    ],
+    "II_2": [
+     392.430,
+     396.526,
+     400.786,
+     405.216,
+     409.822,
+     414.614,
+     422.546,
+     427.728,
+     433.117,
+     438.722,
+     444.551,
+     450.240,
+     456.136,
+     465.220,
+     471.598
+    ],
+    "III_1": [
+     444.156,
+     448.741,
+     453.507,
+     461.413,
+     466.567,
+     471.929,
+     477.496,
+     482.903,
+     488.527,
+     494.373,
+     500.455,
+     509.728,
+     516.305,
+     523.146,
+     530.260
+    ],
+    "III_2": [
+     448.873,
+     453.644,
+     461.556,
+     466.716,
+     472.083,
+     477.496,
+     482.903,
+     488.527,
+     494.373,
+     500.455,
+     509.728,
+     516.305,
+     523.146,
+     530.260,
+     537.659
+    ],
+    "IV_1": [
+     495.560,
+     500.803,
+     505.997,
+     511.266,
+     516.743,
+     522.443,
+     528.369,
+     537.481,
+     543.890,
+     550.556,
+     557.487,
+     564.698,
+     572.196,
+     582.945,
+     591.054
+    ],
+    "IV_2": [
+     500.932,
+     505.997,
+     511.266,
+     516.743,
+     522.443,
+     528.369,
+     537.481,
+     543.890,
+     550.618,
+     557.487,
+     564.698,
+     572.196,
+     582.945,
+     591.054,
+     599.487
+    ],
+    "V_1": [
+     557.397,
+     562.852,
+     568.525,
+     574.426,
+     583.511,
+     589.893,
+     596.530,
+     603.432,
+     610.611,
+     618.076,
+     628.791,
+     636.863,
+     645.263,
+     653.997,
+     663.081
+    ],
+    "V_2": [
+     562.852,
+     568.525,
+     574.426,
+     583.511,
+     589.893,
+     596.530,
+     603.432,
+     610.611,
+     618.076,
+     628.791,
+     636.863,
+     645.263,
+     653.997,
+     663.081,
+     672.527
+    ],
+    "VI": [
+     598.450,
+     604.450,
+     613.641,
+     620.131,
+     626.881,
+     633.901,
+     641.201,
+     648.795,
+     659.641,
+     667.853,
+     676.394,
+     685.276,
+     694.514,
+     704.120,
+     714.112
+    ]
+   },
+   "observations_imprimees": [
+    {
+     "ligne": 8,
+     "colonne": 9,
+     "categorie": "IV_2",
+     "degre": 9,
+     "valeur_imprimee": 550.618,
+     "constat": "ne suit pas la régularité des sous-lignes : la sous-ligne ب reprend la valeur de la sous-ligne أ au degré suivant pour V, pour III (degrés 6 à 14) et pour IV (degrés 2 à 8 et 10 à 14) ; ici IV أ, degré 10 = 550.556",
+     "note": "Valeur imprimée conservée, aucune correction (réponse à l'ARRÊT 2 de la vague 6) : nettement imprimée, lue de façon identique aux deux lectures et vérifiée sur l'image au zoom à 400 dpi par DS5 (page de vérification, groupe 2)."
+    },
+    {
+     "ligne": 1,
+     "colonne": 12,
+     "categorie": "I_1",
+     "degre": 12,
+     "valeur_imprimee": 400.006,
+     "constat": "ne suit pas la régularité des sous-lignes : écart de 8,511 avec le degré 11 (391.495), double de celui des degrés voisins ; I ب, degré 11 (399.445), est plus bas que I أ, degré 12",
+     "note": "Valeur imprimée conservée, aucune correction (réponse à l'ARRÊT 2 de la vague 6) : nettement imprimée, lue de façon identique aux deux lectures et vérifiée sur l'image au zoom à 400 dpi par DS5 (page de vérification, groupe 2)."
+    },
+    {
+     "ligne": 2,
+     "colonne": 11,
+     "categorie": "I_2",
+     "degre": 11,
+     "valeur_imprimee": 399.445,
+     "constat": "ne suit pas la régularité des sous-lignes : plus basse que I أ, degré 12 (400.006), qu'elle devrait reprendre",
+     "note": "Valeur imprimée conservée, aucune correction (réponse à l'ARRÊT 2 de la vague 6) : nettement imprimée, lue de façon identique aux deux lectures et vérifiée sur l'image au zoom à 400 dpi par DS5 (page de vérification, groupe 2)."
+    }
+   ]
+  }
+ ]
+}
