@@ -89,16 +89,51 @@ def test_non_live_response_never_becomes_v1_document_facts(live_response, mode):
     assert convert(response) == []
 
 
-@pytest.mark.parametrize("confidence", [0.896, 0.89999])
+@pytest.mark.parametrize("confidence", [0.0, 0.42, 0.896, 0.89999])
 def test_low_confidence_visible_but_confirmation_cannot_establish_fact(live_response, confidence):
     response = copy.deepcopy(live_response)
     response["result"]["fields"]["base_salary"]["confidence"] = confidence
     fact = next(f for f in convert(response) if f["field_name"] == "base_salary")
     assert fact["confidence"] == confidence
     assert fact["user_confirmed"] is False
+    assert "LOW_OR_MISSING_CONFIDENCE" in fact["warnings"]
     assessment = assess_document_fact({**fact, "user_confirmed": True})
     assert assessment["eligible_for_established_fact"] is False
     assert "LOW_OR_MISSING_CONFIDENCE" in assessment["reasons"]
+
+
+@pytest.mark.parametrize("confidence", [0.90, 1.0])
+def test_confidence_at_threshold_still_requires_explicit_confirmation(live_response, confidence):
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["confidence"] = confidence
+    fact = next(f for f in convert(response) if f["field_name"] == "base_salary")
+    assert "LOW_OR_MISSING_CONFIDENCE" not in fact["warnings"]
+    assert "USER_CONFIRMATION_REQUIRED" in fact["warnings"]
+    assert not assess_document_fact(fact)["eligible_for_established_fact"]
+    assert assess_document_fact({**fact, "user_confirmed": True})["eligible_for_established_fact"]
+
+
+@pytest.mark.parametrize("currency", [None, "", " ", 42, "tnd", "TND/mois"])
+def test_missing_or_invalid_currency_cannot_become_document_fact(live_response, currency):
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["currency"] = currency
+    assert all(f["field_name"] != "base_salary" for f in convert(response))
+
+
+def test_currency_is_copied_from_each_ds3_field(live_response):
+    from src.track_a_legal.tools.document_facts_adapter import extract_document_facts
+
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["currency"] = "EUR"
+    facts = extract_document_facts(response, "P1")
+    assert next(f for f in facts if f["property"] == "base_salary")["unit"] == "EUR"
+    assert next(f for f in facts if f["property"] == "gross_salary")["unit"] == "TND"
+
+
+def test_absent_currency_is_not_defaulted(live_response):
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"].pop("currency")
+    assert all(f["field_name"] != "base_salary" for f in convert(response))
 
 
 def test_converted_facts_match_ds4_v1_schema(live_response):
