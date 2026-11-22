@@ -1,3 +1,4 @@
+# Tests conservés côté DS4 pour protéger les attentes du consommateur envers DS3 v2.
 ﻿"""Tests de conformité des réponses de démonstration DS3 v2."""
 
 import json

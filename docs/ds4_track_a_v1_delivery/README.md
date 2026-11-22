@@ -10,13 +10,13 @@ Le module produit une analyse juridique préparatoire, sans générer automatiqu
 
 | Fichier | Description |
 |---|---|
-| `track_a_request.v1.schema.json` | Contrat d'entrée DS4 v1 |
-| `track_a_response.v1.schema.json` | Contrat de sortie DS4 v1 |
+| [track_a_request.v1.schema.json](../../data/mock_cards/schemas/track_a_request.v1.schema.json) | Contrat d'entrée DS4 v1 |
+| [track_a_response.v1.schema.json](../../data/mock_cards/schemas/track_a_response.v1.schema.json) | Contrat de sortie DS4 v1 |
 | `example_request_v1.json` | Exemple de requête fictive |
 | `example_response_v1.json` | Exemple de réponse DS4 |
 | `example_refusal_v1.json` | Exemple de refus `PARAM_INVALIDE` |
 
-Les trois exemples JSON ont été validés avec les schémas officiels.
+Les schémas canoniques sont conservés uniquement dans `data/mock_cards/schemas/`. Les trois exemples JSON sont validés contre ces fichiers, sans copie dans la livraison documentaire.
 
 ## 3. Architecture et intégration
 
@@ -46,7 +46,7 @@ Les faits documentaires DS3 doivent être associés à des preuves identifiables
 | Pipeline DS2 LIVE + DS3 fictif + DS4 v1 | Réussi |
 | Erreurs JSON Schema E2E | 0 |
 | Modification des données d'entrée E2E | Aucune |
-| Intégrité des schémas copiés | SHA-256 identiques |
+| Référence des schémas | Une seule version canonique dans data/mock_cards/schemas |
 
 **Résultat du scénario E2E :**
 
