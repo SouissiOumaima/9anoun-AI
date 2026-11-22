@@ -217,3 +217,16 @@ def test_retryable_error_from_other_document_is_rejected(setup_flow):
     with pytest.raises(CaseWorkflowError, match='PROVENANCE') as error:
         prepare(setup_flow)
     assert error.value.retryable is False
+
+
+def test_unexpected_error_is_logged_without_document_or_exception_content(monkeypatch, caplog):
+    from src.orchestrator import web_app
+
+    def fail(**kwargs):
+        raise ValueError('PRIVATE_DOCUMENT_TEXT_AND_TOKEN')
+
+    monkeypatch.setattr(web_app._CASE_WORKFLOW, 'prepare', fail)
+    response = web_app.case_integration_action({})
+    assert response['code'] == 'INTEGRATION_ERROR'
+    assert 'Case integration failed (ValueError)' in caplog.text
+    assert 'PRIVATE_DOCUMENT_TEXT_AND_TOKEN' not in caplog.text

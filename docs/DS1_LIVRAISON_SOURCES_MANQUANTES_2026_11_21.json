@@ -1,6 +1,11 @@
 {
-  "missing_source_count": 24,
-  "missing_sources": [
+  "checked_on": "2026-11-22",
+  "verified_main_commit": "34d8bec55421ce6683b68b94b750f8d8dafc33e3",
+  "status": "resolved",
+  "previously_missing_source_count": 24,
+  "missing_source_count": 0,
+  "missing_sources": [],
+  "resolved_sources": [
     {
       "sector": "AGENCES_VOYAGES",
       "source_file": "data/raw/pdf/وكالات الاسفار.pdf"
@@ -98,5 +103,5 @@
       "source_file": "data/raw/pdf/تحويل البلّور والمرآة.pdf"
     }
   ],
-  "restored_from_downloads": []
+  "note": "Les 24 sources sont maintenant suivies dans main et présentes dans le checkout de recette. Le clone partiel doit inclure data/raw/pdf."
 }

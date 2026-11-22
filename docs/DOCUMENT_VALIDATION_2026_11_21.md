@@ -56,10 +56,7 @@ métier. Le scénario de paie reste explicitement fictif.
 
 ## Sources D30 restaurées
 
-Les sept fichiers existaient sous
-`C:/Users/moham/Downloads/project 1/project 1/data/pdf/` avec les noms exacts
-référencés par D30. Ils ont été copiés, sans modifier les originaux, vers leurs
-chemins attendus dans `data/raw/pdf/`.
+Les sources D30 sont maintenant suivies dans `main`, sous `data/raw/pdf/`. Aucun chemin personnel ni pack externe n’est requis. Avec un clone partiel, inclure ce dossier avant de lancer les tests. Les 24 autres PDF DS5 précédemment signalés manquants sont également présents dans `main` au contrôle du 22 novembre 2026.
 
 Contrôles : ouverture PDF, nombre de pages, titre de couverture vérifié
 visuellement, correspondance du registre DS2 et SHA-256 identique avant/après
@@ -81,7 +78,7 @@ Résultat : **17 tests réussis**, dont les sept qui échouaient sur les PDF abs
 La table D30 et ses assertions ne sont pas modifiées.
 
 Les rapports antérieurs mentionnant sept sources locales manquantes décrivent
-donc un état désormais résolu sur ce poste. La migration D21 vers les 56 secteurs
+donc un état historique résolu dans le dépôt partagé. La migration D21 vers les 56 secteurs
 reste un chantier distinct.
 
 ## Suite et demandes éventuelles
@@ -100,3 +97,8 @@ test technique. Elles ne remplacent pas une revue humaine juridique ou comptable
 Les détails de l'exécution sont disponibles localement dans
 `tmp/document_live_validation_2026_11_21.json` et le manifeste des copies dans
 `tmp/d30_restore_manifest.json`.
+
+
+## Contrôle actualisé du 22 novembre 2026
+
+Après actualisation sur main `34d8bec` et récupération des dossiers suivis nécessaires au clone partiel (`data/raw/pdf`, `scripts`, `experiments`), la suite globale donne **5227 tests réussis, 4 ignorés, aucun échec**. Les 24 PDF DS5 autrefois manquants sont tous disponibles dans le dépôt ; aucune demande de pack externe n’est nécessaire. Les mesures live du 21 novembre ci-dessus restent historiques et ne sont pas une recette live de la fiche modifiée de #56.

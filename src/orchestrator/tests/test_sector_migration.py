@@ -18,12 +18,13 @@ from src.orchestrator.sector_vocabulary_audit import audit_vocabulary
 
 def vocabulary56():
     data = deepcopy(load_vocabulary())
-    data['sectors'].extend([
+    data['sectors'] = [
         dict(code='commerce_gros', source_id='TEST-GROS', label_fr='Commerce de gros', label_ar='تجارة الجملة', aliases=['commerce', 'commerce de gros']),
         dict(code='commerce_materiaux', source_id='TEST-MATERIAUX', label_fr='Commerce des matériaux de construction', label_ar='تجارة مواد البناء', aliases=['commerce des matériaux', 'commerce des matériaux de construction']),
         dict(code='boissons_gazeuses', source_id='TEST-GAZEUSES', label_fr='Boissons gazeuses', label_ar='المشروبات الغازية', aliases=['boissons']),
         dict(code='boissons_alcoolisees', source_id='TEST-ALCOOL', label_fr='Boissons alcoolisées', label_ar='المشروبات الكحولية', aliases=['boissons']),
-    ])
+    ]
+    data['sector_ambiguities'] = []
     while len(data['sectors']) < 56:
         i = len(data['sectors'])
         suffix = chr(97+i//26) + chr(97+i%26)

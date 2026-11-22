@@ -58,19 +58,7 @@ Résultat final après restauration D30 : **3973 tests réussis, 25 échecs,
 | shared | 250 | 0 | 0 |
 | DS5 track_b_accounting | 2702 | 25 | 0 |
 
-Les 25 échecs DS5 sont les 24 assertions de présence des PDF des vagues 1–4
-et la comparaison exacte de baseline, dont le taux de citations valides dépend
-des fichiers sources présents. Les montants et schémas de cette baseline
-restent conformes ; les tests et le code DS5 sont inchangés par la livraison.
-La PR reste en brouillon pour revue, avec ces limites de données explicites.
-
-Les 7 sources D30 sont restaurables depuis le pack local historique et les
-17 tests D30 passent avec ces fichiers. Un audit élargi des grilles DS5 a
-identifié 24 autres PDF absents pour les vagues 1–4 ; la liste exacte est dans
-`DS1_LIVRAISON_SOURCES_MANQUANTES_2026_11_21.json`. Leur absence empêche les
-tests de présence correspondants et la reproduction exacte des citations de
-la baseline DS5. Les calculs et schémas DS5 ne sont pas modifiés pour masquer
-ces manques.
+Les résultats de la table précédente décrivent l’exécution historique du 21 novembre, avant récupération des PDF partagés. Ils ne décrivent plus un blocage actuel. Au contrôle du 22 novembre, les 24 sources auparavant manquantes sont toutes suivies dans main et présentes localement. L’inventaire JSON associé est mis à jour avec zéro source manquante et la liste des sources résolues. Les résultats de la nouvelle recette sont ajoutés ci-dessous après exécution.
 
 ## Points attendus de l'équipe
 
@@ -78,7 +66,7 @@ ces manques.
 |---|---|
 | Ghofrane | Revue de l'adaptation DS4 v1 et des corrections de contrat ; validation du dossier fictif, de l'applicabilité des sources et du Golden Set |
 | Mouhib | D21 officiel des 56 secteurs, branche/commit et corpus/index associés ; cas de recette ; pages et dates d'effet des références du scénario |
-| Oumaima | Cohérence de la fiche positive : PDF 208 h normalisé 48h, grille sélectionnée 42h ; pack des 24 PDF DS5 manquants pour une recette globale reproductible |
+| Oumaima | Cohérence de la fiche positive : PDF 208 h normalisé 48h, grille sélectionnée 42h ; les sources PDF sont désormais disponibles dans main |
 | Hadil / Wiem | Revue du cache DS3 et de son isolation ; confirmer les exigences avant un éventuel branchement OCR au flux live |
 
 Aucune conclusion juridique n'est considérée validée avant revue humaine.
@@ -128,3 +116,13 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 - PR DS1 #47 : base temporaire `codex/ds4-track-a-v1-delivery`, 23 fichiers DS1 uniquement ; l'historique existant est conservé. Branche actualisée avec main `ebe87ba` ; 557 tests DS1/DS4 réussis.
 - Ordre : revue DS4 par Ghofrane (notamment devise, schémas et routage), fusion de #53 dans main, actualisation de la branche DS1 avec main puis retour de la base de #47 à main et nouvelle vérification du diff/tests. Ne pas fusionner #47 dans la branche DS4. Cette actualisation est importante également si #53 est fusionnée par squash.
 - Cache DS3 #48 indépendant. Aucune fusion dans main effectuée pendant ce découpage. Validation juridique humaine inchangée.
+
+
+## Actualisation après relecture Oumaima du 22 novembre 2026
+
+- Main actualisé au commit `34d8bec`. Les 24 sources DS5 auparavant absentes sont toutes suivies et présentes ; inventaire mis à jour avec zéro manque. Aucun chemin personnel de téléchargement dans la documentation de validation.
+- Schémas DS4 v1 canoniques uniquement dans `data/mock_cards/schemas/` ; README de livraison et tests des exemples raccordés à ces fichiers. Sept fiches de revue avocat réencodées en UTF-8 avec accents corrigés.
+- Tests synthétiques à 56 secteurs indépendants de la taille du D21 réel. Message de refus OCR aligné D41. Erreurs inattendues journalisées avec type et emplacements de pile, sans message d’exception ni lignes de code susceptibles de contenir des données ; test de non-divulgation réussi.
+- Nouvelle suite globale `python -m pytest -q src` : **5227 réussis, 4 ignorés, aucun échec**. Services distants injectés dans les tests ; cela ne constitue pas une nouvelle revue juridique ni une recette Gemini réelle.
+- Suite DS4 indépendante : **339 réussis**. Les 14 rapports préparatoires S7/S8 sont conservés comme instantané pour la revue, explicitement sans validation juridique. Les tests de contrat DS3 conservés dans DS4 documentent la frontière du consommateur.
+- Partie DS4 isolée dans #53 ; sa revue et son accord par Ghofrane restent requis. #47 garde sa base temporaire DS4. Après fusion #53 : actualiser DS1 avec main, remettre la base sur main et refaire les vérifications. Fusion squash proposée par Oumaima ; aucune fusion ni fermeture de #38 effectuée ici.

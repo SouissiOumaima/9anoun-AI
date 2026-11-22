@@ -8,6 +8,8 @@ production authentication service.
 from __future__ import annotations
 
 import json
+import logging
+import traceback
 from decimal import Decimal, InvalidOperation
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -28,6 +30,8 @@ from .response_formatter import UserResponse, UserResponseCode, format_flow_resu
 from .state_machine import Planner, StateMachine, StructuredTrackBPlanner
 from .tool_contracts import ToolContractError
 from .case_integration import CaseIntegrationWorkflow, CaseWorkflowError
+
+_LOG = logging.getLogger(__name__)
 
 HOST, PORT = "127.0.0.1", 8765
 _HTML_PATH = Path(__file__).with_name("web_ui") / "index.html"
@@ -85,7 +89,12 @@ def case_integration_action(payload: Mapping[str, Any], *, complete: bool = Fals
                 'retryable': error.retryable,
                 'message_fr': error.message_fr or 'Le scénario ne peut pas continuer. Aucun fait ni source ne sera inventé.',
                 'message_ar': error.message_ar or 'لا يمكن متابعة السيناريو. لن يتم اختلاق أي واقعة أو مصدر.'}
-    except Exception:
+    except Exception as error:
+        # Preserve stack locations but never log exception text or document content.
+        locations = [(Path(frame.filename).name, frame.name, frame.lineno)
+                     for frame in traceback.extract_tb(error.__traceback__)]
+        _LOG.error('Case integration failed (%s); details redacted; stack locations=%s',
+                   type(error).__name__, locations)
         return {'status': 'blocked', 'code': 'INTEGRATION_ERROR',
                 'message_fr': 'Incident technique. Aucun résultat juridique n’est validé.',
                 'message_ar': 'حدث خطأ تقني. لا توجد نتيجة قانونية معتمدة.'}

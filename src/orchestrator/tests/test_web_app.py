@@ -284,8 +284,8 @@ def test_live_image_document_returns_a_bilingual_out_of_scope_refusal(monkeypatc
             "operation": request["operation"], "status": "refus", "result": None,
             "computed_by": "document_intelligence.service", "mode": "live", "citations": [],
             "refus": {
-                "code": "HORS_SCOPE", "message_fr": "Seuls les PDF sont pris en charge en mode live.",
-                "message_ar": "يتم دعم ملفات PDF فقط في وضع live.",
+                "code": "HORS_SCOPE", "message_fr": "La lecture des images n’est pas possible : l’OCR n’est pas installé ou pas activé sur ce serveur. Envoyez un PDF avec du texte.",
+                "message_ar": "قراءة الصور غير ممكنة: نظام OCR غير مثبت أو غير مفعّل على هذا الخادم. أرسل ملف PDF يحتوي على نص.",
             },
             "warnings": [], "ds3_code": "UNSUPPORTED_FORMAT",
         }

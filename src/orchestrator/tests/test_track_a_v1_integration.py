@@ -76,7 +76,7 @@ def test_v1_adapter_rejects_unauthorized_legal_conclusion():
 def test_delivery_examples_match_corrected_official_schemas(kind):
     folder = ROOT / 'docs/ds4_track_a_v1_delivery'
     schema_kind = 'request' if kind == 'request' else 'response'
-    schema = json.loads((folder / f'track_a_{schema_kind}.v1.schema.json').read_text(encoding='utf-8-sig'))
+    schema = json.loads((ROOT / 'data/mock_cards/schemas' / f'track_a_{schema_kind}.v1.schema.json').read_text(encoding='utf-8-sig'))
     example = json.loads((folder / f'example_{kind}_v1.json').read_text(encoding='utf-8-sig'))
     Draft202012Validator(schema, format_checker=FormatChecker()).validate(example)
     assert schema['$id'] == f'track_a_{schema_kind}.v1.schema.json'
