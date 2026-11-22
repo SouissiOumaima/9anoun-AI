@@ -12,18 +12,22 @@ Configuration (fichier .env à la racine, jamais commité) :
 
 from __future__ import annotations
 
-import importlib
-import os
 import hashlib
+import importlib
 import json
+import os
 from typing import Any, Final, Literal
 
 from pydantic import BaseModel, ValidationError
 
-from src.document_intelligence.extraction.assemble import PAYSLIP_FIELDS, GeminiPayslipAnswer, RawPayLine
+from src.document_intelligence.extraction.assemble import (
+    PAYSLIP_FIELDS,
+    GeminiPayslipAnswer,
+    RawPayLine,
+)
+from src.document_intelligence.extraction.cache import ExtractionCache
 from src.document_intelligence.extraction.verify import RawField
 from src.document_intelligence.intermediate import IntermediateDocument
-from src.document_intelligence.extraction.cache import ExtractionCache
 
 _answers = ExtractionCache()
 

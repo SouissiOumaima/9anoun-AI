@@ -6,7 +6,7 @@ import pytest
 from src.document_intelligence.extraction.cache import ExtractionCache
 
 
-def test_cache_reuses_success_but_returns_independent_values():
+def test_cache_reuses_success_but_returns_independent_values() -> None:
     cache = ExtractionCache()
     value = cache.get_or_compute('user-card-prompt', lambda: {'fields': [1]})
     value['fields'].append(2)
@@ -14,14 +14,14 @@ def test_cache_reuses_success_but_returns_independent_values():
     assert cache.get_or_compute('other-user-card', lambda: {'fields': [3]}) == {'fields': [3]}
 
 
-def test_errors_are_not_cached():
+def test_errors_are_not_cached() -> None:
     cache = ExtractionCache()
     with pytest.raises(ValueError):
         cache.get_or_compute('key', lambda: int('invalid'))
     assert cache.get_or_compute('key', lambda: 42) == 42
 
 
-def test_expiration_and_capacity():
+def test_expiration_and_capacity() -> None:
     cache = ExtractionCache(ttl=0)
     assert cache.get_or_compute('key', lambda: 1) == 1
     assert cache.get_or_compute('key', lambda: 2) == 2
@@ -31,12 +31,12 @@ def test_expiration_and_capacity():
     assert cache.get_or_compute('first', lambda: 3) == 3
 
 
-def test_concurrent_duplicate_calls_share_one_computation():
+def test_concurrent_duplicate_calls_share_one_computation() -> None:
     cache = ExtractionCache()
     entered, release = Event(), Event()
-    calls = []
+    calls: list[int] = []
 
-    def compute():
+    def compute() -> int:
         calls.append(1)
         entered.set()
         assert release.wait(5)
@@ -52,7 +52,9 @@ def test_concurrent_duplicate_calls_share_one_computation():
 
 
 @pytest.mark.parametrize("different_scope", [None, "user", "card"])
-def test_pipeline_cache_reuses_only_same_actor_and_card(monkeypatch, different_scope):
+def test_pipeline_cache_reuses_only_same_actor_and_card(
+    monkeypatch: pytest.MonkeyPatch, different_scope: str | None,
+) -> None:
     from src.document_intelligence.contract.v2.models import DS3Response
     from src.document_intelligence.evaluation.fictive_documents import DOCS_DIR
     from src.document_intelligence.evaluation.run_gemini_eval import request_for

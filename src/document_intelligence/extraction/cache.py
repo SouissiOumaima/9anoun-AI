@@ -1,4 +1,4 @@
-"""Bounded, short-lived process memory cache; concurrent identical calls share work."""
+"""Cache mémoire borné à durée limitée ; les appels identiques simultanés partagent le calcul."""
 
 from collections import OrderedDict
 from collections.abc import Callable
