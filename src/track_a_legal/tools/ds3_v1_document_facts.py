@@ -8,6 +8,7 @@ from src.track_a_legal.tools.document_facts_adapter import (
 from src.track_a_legal.tools.document_evidence_orchestration import (
     collect_document_evidence_links,
 )
+from src.track_a_legal.v1_document_fact_validation import assess_document_fact
 
 
 def convert_ds3_facts_to_v1(
@@ -16,9 +17,9 @@ def convert_ds3_facts_to_v1(
     evidence: list[dict],
     document_links: dict,
 ) -> list[dict]:
-    """Convertir uniquement les faits reli?s ? une preuve explicite."""
+    """Convertir uniquement les faits reliés à une preuve explicite."""
 
-    # V?rifier les associations ? l'aide du composant DS4 existant.
+    # Vérifier les associations à l'aide du composant DS4 existant.
     associations = collect_document_evidence_links(
         evidence,
         [ds3_response],
@@ -30,7 +31,7 @@ def convert_ds3_facts_to_v1(
 
     association = associations[0]
 
-    # Extraire les faits mon?taires sans inf?rence.
+    # Extraire les faits monétaires sans inférence.
     facts = extract_document_facts(
         ds3_response,
         subject_id,
@@ -42,7 +43,7 @@ def convert_ds3_facts_to_v1(
         for item in ds3_response["citations"]
     }
 
-    # Acc?der aux champs d'origine pour conserver leur confiance.
+    # Accéder aux champs d'origine pour conserver leur confiance.
     fields = ds3_response["result"]["fields"]
 
     converted = []
@@ -58,6 +59,11 @@ def convert_ds3_facts_to_v1(
 
         citation = None
         warnings = ["USER_CONFIRMATION_REQUIRED"]
+        # Réutiliser le seuil D39 de la qualification finale, sans arrondir.
+        # Le champ reste visible mais une confirmation ne le rend pas éligible.
+        confidence_assessment = assess_document_fact({"confidence": original_field["confidence"]})
+        if "LOW_OR_MISSING_CONFIDENCE" in confidence_assessment["reasons"]:
+            warnings.append("LOW_OR_MISSING_CONFIDENCE")
 
         if (
             isinstance(page, int)
@@ -77,7 +83,7 @@ def convert_ds3_facts_to_v1(
         else:
             warnings.append("INCOMPLETE_DOCUMENT_CITATION")
 
-        # Pr?server la valeur et la confiance originales.
+        # Préserver la valeur et la confiance originales.
         converted.append({
             "fact_id": fact["fact_id"],
             "subject_id": fact["subject_id"],

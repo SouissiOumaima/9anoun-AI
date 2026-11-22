@@ -115,6 +115,11 @@ def extract_document_facts(
         if re.fullmatch(r"-?[0-9]+\.[0-9]{3}", value) is None:
             continue
 
+        # Conserver la devise déclarée par DS3 sans en inventer une.
+        currency = field.get("currency")
+        if not isinstance(currency, str) or re.fullmatch(r"[A-Z]{3}", currency) is None:
+            continue
+
         # Refuser une citation absente ou inconnue.
         if not isinstance(citation_id, str):
             continue
@@ -129,7 +134,7 @@ def extract_document_facts(
                 "subject_id": subject_id,
                 "property": property_name,
                 "period": period,
-                "unit": "TND",
+                "unit": currency,
                 "value": value,
                 "document_id": document_id,
                 "citation_id": citation_id,
