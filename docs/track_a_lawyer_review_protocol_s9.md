@@ -64,3 +64,8 @@ They are not accepted by the current preparation-only JSON schema.
 - Lawyer-review criteria per case: 6
 - Total pending assessments: 42
 - Lawyer validation: pending
+
+
+## Rapports préparatoires conservés
+
+Les 14 fichiers de `track_a_lawyer_reviews_s9/generated_reports/` sont conservés comme instantané de la livraison initiale pour comparer la revue humaine aux sorties préparatoires. Ils ne sont ni régénérés automatiquement ni une preuve de validation juridique. Après une évolution des fixtures, les nouveaux rapports doivent être identifiés séparément ; ne pas écraser cet historique comme s’il avait été validé.

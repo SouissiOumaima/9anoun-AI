@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -8996,128 +8996,3112 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "3.931",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-309",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D78",
+      "page": 25,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "3.931",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 22,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "1253.413",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-310",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D78",
+      "page": 22,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "1253.413",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "554.273",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-311",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D78",
+      "page": 23,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "554.273",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "75.787",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-312",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D78",
+      "page": 15,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "75.787",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "16.894",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-313",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D78",
+      "page": 16,
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf"
+     }
+    ],
+    "montant": "16.894",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D10",
+   "id": "TB-314",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 22 ans = palier de l'article 13 (جديد) أ (page 8 : 22, 24, 26… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. ancienneté et un jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-315",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ration de lait (article 55 مكرر (جديد), page 16) : un litre de lait par jour ou sa valeur, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "2163.414",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D79",
+   "id": "TB-316",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D79",
+      "page": 25,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "2163.414",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 24,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "4.479",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D79",
+   "id": "TB-317",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D79",
+      "page": 24,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "4.479",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-318",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents payés au mois, catégorie 7, degré 1 (tableau n° 2, en vigueur à partir du 2023-01-01, page 24) : cellule illisible au zoom à 400 dpi : dernier chiffre lu 5 (lecture 1) puis 3 (lecture 2) ; au zoom 400 dpi, haut du chiffre arrondi mais incomplet, 3 ou 5 (rendus/Z400/auto_p24_l13_d1.png) (lecture 1 « 842.915 », lecture 2 « 842.913 ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-319",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents payés au mois, catégorie 12, degré 10 (tableau n° 2, en vigueur à partir du 2023-01-01, page 24) : cellule illisible au zoom à 400 dpi : chiffre des dizaines abîmé, 5 ou 9 (zoom 400 dpi, rendus/Z400/auto_p24_l12_d10.png) (lecture 1 « 12?6.307 », lecture 2 « 12?6.307 ») ; elle n'est pas lisible dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "102.336",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-320",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D79",
+      "page": 16,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "102.336",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "0.159",
+    "status": "ok",
+    "unite": "TND/demi-journee"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-321",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D79",
+      "page": 17,
+      "pdf": "صانعي و وكلاء السيارات.pdf"
+     }
+    ],
+    "montant": "0.159",
+    "status": "ok",
+    "unite": "TND/demi-journee"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D79",
+   "id": "TB-322",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aide de l'Aïd el-Adha (article 58 (جديد), page 17) : montants contradictoires : « خمسة وسبعين دينارا » (75 dinars) en lettres mais « 82.333د » en chiffres pour les agents mariés, et 43 dinars pour les célibataires dans la même phrase ; la source ne permet pas de choisir. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D10",
+   "id": "TB-323",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 29 ans = palier de l'article 13 (جديد) أ (page 9 : 29, 31, 33… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. ancienneté et un jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "2.970",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-324",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 21,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "2.970",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "1579.544",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-325",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 20,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "1579.544",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D80",
+   "id": "TB-326",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Du 1er décembre 2021 au 30 novembre 2022 : le tableau n° 2 (page 19) s'applique « à partir du 1er décembre 2021 », mais l'avenant n° 16 (page 3), qui le publie, fixe son effet à « غرة ديسمبر 2022 » (1er décembre 2022). Les deux dates imprimées se contredisent pour cette période ; la date de l'avenant est peut-être une coquille, à confirmer. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "3.365",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D80",
+   "id": "TB-327",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 19,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "3.365",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D80",
+   "id": "TB-328",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 39 ans : la grille de la convention de l'industrie des matériaux de construction s'arrête au degré 15 (36 à 39 ans) ; l'en-tête imprime des durées de séjour qui totalisent 39 ans ; l'article 13 (جديد) ب (page 8) accorde seulement à l'agent qui a passé la durée requise au dernier degré une prime complémentaire de 5 dinars, sans période ; aucune règle de salaire au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 39 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "90.479",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-329",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "90.479",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "0.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D80",
+   "id": "TB-330",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "0.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "6.894",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-331",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D80",
+      "page": 12,
+      "pdf": "صناعة مواد البناء.pdf"
+     }
+    ],
+    "montant": "6.894",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D81",
+   "id": "TB-332",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 3 ans : les tableaux de la convention de l'industrie des peintures (pages 20 à 25) n'impriment que le numéro de chaque degré (1 à 13), sans durée de séjour ni ancienneté ; l'article 12 (جديد) (page 8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et l'article 52 (page 16) répartit une prime d'ancienneté de 65 % sur 24 ans sans durée par degré. L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D81",
+   "id": "TB-333",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 0 ans : les tableaux de la convention de l'industrie des peintures (pages 20 à 25) n'impriment que le numéro de chaque degré (1 à 13), sans durée de séjour ni ancienneté ; l'article 12 (جديد) (page 8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et l'article 52 (page 16) répartit une prime d'ancienneté de 65 % sur 24 ans sans durée par degré. L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "7.433",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-334",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "7.433",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "8.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D81",
+   "id": "TB-335",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "8.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "0.600",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-336",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 14,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "0.600",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "8.000",
+    "status": "ok",
+    "unite": "TND/nuitee"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D81",
+   "id": "TB-337",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 15,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "8.000",
+    "status": "ok",
+    "unite": "TND/nuitee"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D81",
+   "id": "TB-338",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Secours en cas de décès (article 46 (جديد), page 15) : montants contradictoires : au décès de l'agent, « خمسمائة دينار » (500 dinars) en lettres mais « 533.333 د » en chiffres ; au décès de l'épouse, « أربعمائة دينار » (400 dinars) en lettres mais « 433.333د » en chiffres ; la source ne permet pas de choisir. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D82",
+   "id": "TB-339",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 10 ans : les tableaux de la convention de l'industrie de la chaussure et similaires (pages 29 à 34) n'impriment que le numéro de chaque degré (1 à 30), sans durée de séjour ni ancienneté ; l'article 12 (جديد) أ (page 8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et ne règle que la promotion automatique au dernier degré (âge limite de 55 ans). L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D82",
+   "id": "TB-340",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 2 ans : les tableaux de la convention de l'industrie de la chaussure et similaires (pages 29 à 34) n'impriment que le numéro de chaque degré (1 à 30), sans durée de séjour ni ancienneté ; l'article 12 (جديد) أ (page 8) fait dépendre le passage d'un degré à l'autre de l'ancienneté dans le degré sans en fixer la durée, et ne règle que la promotion automatique au dernier degré (âge limite de 55 ans). L'ancienneté ne permet donc pas de trouver le degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "62.449",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-341",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D82",
+      "page": 14,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "62.449",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "16.584",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-342",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D82",
+      "page": 14,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "16.584",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D82",
+   "id": "TB-343",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de panier (article 48 (جديد) 2, page 14) : « ضبط مقدارها بـ250 مليما تسند للعمال المعينين للبقاء بمراكز الشغل كامل حصة العمل اليومية » : 250 millimes, sans période imprimée (par jour, par séance ou par mois). Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-344",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Population obligatoire pour le secteur CHAUSSURE (disponibles : horaires, mensuels).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "1245.074",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-345",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D83",
+      "page": 20,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "1245.074",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "3.946",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D83",
+   "id": "TB-346",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D83",
+      "page": 19,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "3.946",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "733.406",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-347",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D83",
+      "page": 18,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "733.406",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D83",
+   "id": "TB-348",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 29 ans : la grille de la convention de l'industrie des cuirs et de la tannerie s'arrête au degré 29 (28 à 29 ans) ; l'en-tête imprime 29 degrés d'un an (ligne « الاقدمية ») et l'article 49 (page 14) répartit l'ancienneté sur 29 ans ; rien n'est prévu au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 29 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "74.239",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-349",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D83",
+      "page": 13,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "74.239",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "7.359",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-350",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D83",
+      "page": 13,
+      "pdf": "صناعة الجلود و الدباغة.pdf"
+     }
+    ],
+    "montant": "7.359",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-351",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de salissure (article 45, page 13) : 2 kg de savon par mois, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-352",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 5 ans = borne commune aux degrés [5, 6] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 24,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "5.668",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-353",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 24,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "5.668",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "1428.536",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-354",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 23,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "1428.536",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "540.294",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-355",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D81",
+      "page": 20,
+      "pdf": "صناعة الدهن.pdf"
+     }
+    ],
+    "montant": "540.294",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 33,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "3.881",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-356",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D82",
+      "page": 33,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "3.881",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 30,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "579.170",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-357",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D82",
+      "page": 30,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "579.170",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 32,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "707.557",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-358",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D82",
+      "page": 32,
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf"
+     }
+    ],
+    "montant": "707.557",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-359",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Degré 14 absent de la grille PEINTURES/execution_horaires (table PEI_EXECUTION_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "403.265",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D84",
+   "id": "TB-360",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D84",
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "403.265",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "335.555",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D84",
+   "id": "TB-361",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D84",
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "335.555",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "545.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D84",
+   "id": "TB-362",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D84",
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "545.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D84",
+   "id": "TB-363",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 30 ans : la grille de la convention des clercs d'avocats s'arrête au degré 12 (27 à 30 ans) ; l'en-tête (annexe 1, page 12) imprime les durées de séjour 1, 1, 2, 2 puis 3 ans (degrés 5 à 12), soit 30 ans, et l'article 11 (pages 4-5) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D84",
+   "id": "TB-364",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille CLERCS_AVOCATS/clercs en vigueur au 2014-04-30 (première date d'effet disponible : 2014-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-365",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Indemnité pour perte d'emploi (article 44, page 11) : un jour de salaire brut par mois de travail effectif, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D6",
+   "id": "TB-366",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 2 ans = borne commune aux degrés [2, 3] : la grille ne précise pas lequel s'applique. Indiquer l'ancienneté exacte (ex. 2 ans et 1 jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "578.749",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-367",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D85",
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "578.749",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "1431.378",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D85",
+   "id": "TB-368",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D85",
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "1431.378",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "1034.943",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-369",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D85",
+      "page": 15,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "1034.943",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D85",
+   "id": "TB-370",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille vérifiée après le 2021-12-31 : l'avenant n° 16 (page 3, effet au 1er janvier 2022) a révisé les salaires (article 43) et sa grille n'est pas dans la source ; le tableau n° 2 (page 15, en vigueur à partir du 1er mai 2021) ne vaut que jusqu'au 2021-12-31. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D85",
+   "id": "TB-371",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 29 ans : la grille de la convention du personnel des pharmacies s'arrête au degré 12 (26 à 29 ans) ; l'en-tête (page 15) imprime les durées de séjour 1, 1, 2, 2, 2 puis 3 ans (degrés 6 à 12), soit 29 ans, et l'article 11 (جديد) (pages 7-8) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 29 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D85",
+   "id": "TB-372",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille PERSONNEL_PHARMACIES/personnel en vigueur au 2020-10-31 (première date d'effet disponible : 2020-11-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 9,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "10.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-373",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D85",
+      "page": 9,
+      "pdf": "مستخدمي الصيدليات.pdf"
+     }
+    ],
+    "montant": "10.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "2.445",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-374",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D86",
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "2.445",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "736.994",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-375",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D86",
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "736.994",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     },
+     {
+      "page": 8,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "1082.652",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "C",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D86",
+   "id": "TB-376",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D86",
+      "page": 20,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     },
+     {
+      "decision_ref": "D86",
+      "page": 8,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "1082.652",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D10",
+   "id": "TB-377",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Ancienneté de 26 ans = palier de l'article 15 (جديد) (page 8 : 26, 28, 30… ans) : la source ne dit pas si l'écart de ce palier est déjà dû. Indiquer l'ancienneté exacte (ex. ancienneté et un jour).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D86",
+   "id": "TB-378",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille CONSERVERIES_CONDITIONNEMENT_HUILES/mensuels en vigueur au 2019-05-31 (première date d'effet disponible : 2019-06-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "78.777",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D86",
+   "id": "TB-379",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D86",
+      "page": 16,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "78.777",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "25.166",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D86",
+   "id": "TB-380",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D86",
+      "page": 17,
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf"
+     }
+    ],
+    "montant": "25.166",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-381",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Avantages en nature (article 56 (جديد), page 17) : 8,333 kg de produits, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "557.487",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-382",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D87",
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "557.487",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "550.618",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-383",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D87",
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "550.618",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "598.450",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-384",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D87",
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "598.450",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-385",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille GROSSISTES_REPARTITEURS_MEDICAMENTS/agents en vigueur au 2010-04-30 (première date d'effet disponible : 2010-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-386",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 29 ans : la grille de la convention des grossistes et demi-grossistes répartiteurs de médicaments s'arrête au degré 15 (27 à 29 ans) ; l'en-tête (page 19) imprime la durée de séjour (1 an, puis 2 ans) et l'ancienneté effective 1, 3 … 29 ; l'article 12 (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 29 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "PARAM_INVALIDE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-387",
+   "obtenu": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "La catégorie II (agents) comporte des sous-catégories : sous_categorie obligatoire (valeurs possibles : 1, 2).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "4.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D87",
+   "id": "TB-388",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D87",
+      "page": 12,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "4.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "452.878",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D88",
+   "id": "TB-389",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "452.878",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "301.587",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-390",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "301.587",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D88",
+   "id": "TB-391",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 26 ans : la grille de la convention des salles de projection cinématographique s'arrête au degré 13 (24 à 26 ans) ; l'article 12 (جديد) (page 8) prévoit qu'au sommet de l'échelle l'agent « continue de bénéficier tous les deux ans de la valeur financière du degré », mais ne précise pas le montant de cette hausse : aucun montant n'est choisi. Aucun montant n'est renvoyé (ancienneté couverte : moins de 26 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "4.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-392",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "4.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "6.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D88",
+   "id": "TB-393",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "6.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "30.000",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D88",
+   "id": "TB-394",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 14,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "30.000",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-395",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Majoration pour deux longs métrages (article 50, page 15) : majoration de 45 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "854.523",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-396",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "854.523",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "495.526",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-397",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "495.526",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-398",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille TRANSPORT_ROUTIER_MARCHANDISES/agents en vigueur au 2017-04-30 (première date d'effet disponible : 2017-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "0.010",
+    "status": "ok",
+    "unite": "TND/km"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-399",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "0.010",
+    "status": "ok",
+    "unite": "TND/km"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "0.007",
+    "status": "ok",
+    "unite": "TND/km"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-400",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "0.007",
+    "status": "ok",
+    "unite": "TND/km"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "50.000",
+    "status": "ok",
+    "unite": "TND/versement"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-401",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 14,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "50.000",
+    "status": "ok",
+    "unite": "TND/versement"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "58.300",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-402",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 13,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "58.300",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "50.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D89",
+   "id": "TB-403",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 14,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "50.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "410.151",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-404",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D88",
+      "page": 17,
+      "pdf": "قاعات العرض السينيمائي.pdf"
+     }
+    ],
+    "montant": "410.151",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "748.830",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-405",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D89",
+      "page": 18,
+      "pdf": "نقل البضائع عبر الطرقات.pdf"
+     }
+    ],
+    "montant": "748.830",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "348.380",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-406",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D84",
+      "page": 12,
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf"
+     }
+    ],
+    "montant": "348.380",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "465.220",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-407",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D87",
+      "page": 19,
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf"
+     }
+    ],
+    "montant": "465.220",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 308,
-  "cas_verifies_par_ds5": 298,
+  "cas": 407,
+  "cas_verifies_par_ds5": 397,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "29190e68241e10df04a5414bf7d9b39696e20a0ad8056231547508fb89d66789",
+  "sha256": "40ccc31903330ec193988962eabd76c0fda06d430e1159f107124a55fde07c25",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 298,
+   "cas": 397,
    "citations_valides": {
-    "n": 174,
-    "sur": 174,
+    "n": 238,
+    "sur": 238,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 124,
+    "sur": 159,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 298,
-    "sur": 298,
+    "n": 397,
+    "sur": 397,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 298,
-    "sur": 298,
+    "n": 397,
+    "sur": 397,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 174,
-    "sur": 174,
+    "n": 238,
+    "sur": 238,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 174,
+    "sur": 238,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 124,
+    "sur": 159,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 124,
+    "sur": 159,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 124,
-    "sur": 124,
+    "n": 159,
+    "sur": 159,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 174,
+    "sur": 238,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 308,
+   "cas": 407,
    "citations_valides": {
-    "n": 174,
-    "sur": 174,
+    "n": 238,
+    "sur": 238,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 134,
+    "sur": 169,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 308,
-    "sur": 308,
+    "n": 407,
+    "sur": 407,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 308,
-    "sur": 308,
+    "n": 407,
+    "sur": 407,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 174,
-    "sur": 174,
+    "n": 238,
+    "sur": 238,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 174,
+    "sur": 238,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 134,
+    "sur": 169,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 134,
+    "sur": 169,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 134,
-    "sur": 134,
+    "n": 169,
+    "sur": 169,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 174,
+    "sur": 238,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -9180,10 +12164,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 167,
+    "cas": 231,
     "citations_valides": {
-     "n": 167,
-     "sur": 167,
+     "n": 231,
+     "sur": 231,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -9192,24 +12176,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 167,
-     "sur": 167,
+     "n": 231,
+     "sur": 231,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 167,
-     "sur": 167,
+     "n": 231,
+     "sur": 231,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 167,
-     "sur": 167,
+     "n": 231,
+     "sur": 231,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 167,
+     "sur": 231,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -9230,7 +12214,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 167,
+     "sur": 231,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -9292,7 +12276,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 128,
+    "cas": 163,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -9300,17 +12284,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 128,
+     "sur": 163,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 128,
-     "sur": 128,
+     "n": 163,
+     "sur": 163,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 128,
-     "sur": 128,
+     "n": 163,
+     "sur": 163,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -9327,17 +12311,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 128,
+     "sur": 163,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 128,
+     "sur": 163,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 128,
-     "sur": 128,
+     "n": 163,
+     "sur": 163,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -9350,10 +12334,10 @@
   },
   "par_certitude": {
    "C": {
-    "cas": 7,
+    "cas": 8,
     "citations_valides": {
-     "n": 7,
-     "sur": 7,
+     "n": 8,
+     "sur": 8,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -9362,24 +12346,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 7,
-     "sur": 7,
+     "n": 8,
+     "sur": 8,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 7,
-     "sur": 7,
+     "n": 8,
+     "sur": 8,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 7,
-     "sur": 7,
+     "n": 8,
+     "sur": 8,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 7,
+     "sur": 8,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -9400,119 +12384,119 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 7,
+     "sur": 8,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "I": {
-    "cas": 129,
+    "cas": 190,
     "citations_valides": {
-     "n": 53,
-     "sur": 53,
+     "n": 87,
+     "sur": 87,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 76,
+     "sur": 103,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 129,
-     "sur": 129,
+     "n": 190,
+     "sur": 190,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 129,
-     "sur": 129,
+     "n": 190,
+     "sur": 190,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 53,
-     "sur": 53,
+     "n": 87,
+     "sur": 87,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 53,
+     "sur": 87,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 76,
+     "sur": 103,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 76,
+     "sur": 103,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 76,
-     "sur": 76,
+     "n": 103,
+     "sur": 103,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 53,
+     "sur": 87,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 172,
+    "cas": 209,
     "citations_valides": {
-     "n": 114,
-     "sur": 114,
+     "n": 143,
+     "sur": 143,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 58,
+     "sur": 66,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 172,
-     "sur": 172,
+     "n": 209,
+     "sur": 209,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 172,
-     "sur": 172,
+     "n": 209,
+     "sur": 209,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 114,
-     "sur": 114,
+     "n": 143,
+     "sur": 143,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 114,
+     "sur": 143,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 58,
+     "sur": 66,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 58,
+     "sur": 66,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 58,
-     "sur": 58,
+     "n": 66,
+     "sur": 66,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 114,
+     "sur": 143,
      "taux": 0.0
     },
     "statut_erreur": 0

@@ -1,0 +1,482 @@
+"""Tests de `scripts/annoter_lignes.py` et `scripts/evaluer_cer_reel.py` sur des documents FICTIFS.
+
+Faux moteur d'OCR et faux lecteurs de lignes : aucun modèle chargé, aucune donnée réelle. On vérifie surtout
+qu'aucun texte lu ni aucun nom de fichier n'est affiché.
+"""
+
+from __future__ import annotations
+
+import csv
+import importlib.util
+import json
+import os
+import sys
+from pathlib import Path
+from types import ModuleType
+
+import pymupdf
+import pytest
+
+pytest.importorskip("numpy")
+pytest.importorskip("PIL")
+
+from src.document_intelligence.reading.ocr import Image3, OcrBox, OcrLang
+
+SCRIPTS = Path(__file__).resolve().parents[3] / "scripts"
+SECRET = "SECRET"
+
+
+def _load(name: str) -> ModuleType:
+    spec = importlib.util.spec_from_file_location(name, SCRIPTS / f"{name}.py")
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module  # nécessaire aux dataclasses des scripts
+    spec.loader.exec_module(module)
+    return module
+
+
+class TwoLinesEngine:
+    """Faux moteur : deux lignes par zone, une française et une arabe."""
+
+    name = "fake"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def recognize(self, image: Image3, lang: OcrLang) -> list[OcrBox]:
+        self.calls += 1
+        k = self.calls
+        return [OcrBox(f"Salaire {SECRET} {k}.000", 0.95, (10, 10, 400, 60)),
+                OcrBox(f"الأجر {k}", 0.88, (10, 120, 300, 170))]
+
+
+def _png(width: int = 600, height: int = 220) -> bytes:
+    pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, width, height), False)
+    pix.clear_with(230)
+    return bytes(pix.tobytes("png"))
+
+
+@pytest.fixture()
+def pdf_dir(tmp_path: Path) -> Path:
+    """Deux PDF fictifs ; chacun : 2 pages, une image (zone en attente) par page."""
+    folder = tmp_path / "pdfs"
+    folder.mkdir()
+    for name in ("a_fictif.pdf", "b_fictif.pdf"):
+        doc = pymupdf.open()
+        for _ in range(2):
+            doc.new_page().insert_image(pymupdf.Rect(72, 100, 372, 210), stream=_png())
+        doc.save(folder / name)
+        doc.close()
+    return folder
+
+
+def _read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return list(csv.DictReader(handle, delimiter=";"))
+
+
+# ------------------------------------------------------------ annoter_lignes.py
+
+
+def test_prepare_draws_lines_writes_images_and_an_empty_annotation_column(pdf_dir: Path, tmp_path: Path) -> None:
+    annoter = _load("annoter_lignes")
+    out = tmp_path / "out"
+    summary = annoter.prepare(pdf_dir, out, 5, 42, engine=TwoLinesEngine())
+
+    assert summary["documents"] == 2 and summary["lignes_ocr_disponibles"] == 8 and summary["lignes_tirees"] == 5
+    assert summary["lignes_ar"] + summary["lignes_fr"] + summary["lignes_mixte_ou_inconnu"] == 5
+    rows = _read_csv(out / "annotation.csv")
+    assert list(rows[0]) == list(annoter.COLUMNS)
+    assert [r["id"] for r in rows] == ["0001", "0002", "0003", "0004", "0005"]
+    assert all(r["texte_correct"] == "" for r in rows)  # à remplir à la main
+    assert {r["document"] for r in rows} <= {"doc_001", "doc_002"}  # noms d'origine jamais repris
+    for r in rows:
+        image = out / r["image"]
+        assert image.exists() and image.stat().st_size > 0
+        with pymupdf.open(image) as img:
+            assert img[0].rect.width > 0
+    assert all(0.0 <= float(r["confiance"]) <= 1.0 for r in rows)
+
+
+def test_the_draw_is_reproducible_with_the_same_seed(pdf_dir: Path, tmp_path: Path) -> None:
+    annoter = _load("annoter_lignes")
+    annoter.prepare(pdf_dir, tmp_path / "o1", 4, 7, engine=TwoLinesEngine())
+    annoter.prepare(pdf_dir, tmp_path / "o2", 4, 7, engine=TwoLinesEngine())
+    annoter.prepare(pdf_dir, tmp_path / "o3", 4, 8, engine=TwoLinesEngine())
+    first, second, other = (_read_csv(tmp_path / o / "annotation.csv") for o in ("o1", "o2", "o3"))
+    key = [(r["document"], r["page"], r["lecture_ocr"]) for r in first]
+    assert key == [(r["document"], r["page"], r["lecture_ocr"]) for r in second]
+    assert key != [(r["document"], r["page"], r["lecture_ocr"]) for r in other]
+
+
+def test_n_larger_than_available_takes_every_line_and_options_limit_the_reading(pdf_dir: Path,
+                                                                               tmp_path: Path) -> None:
+    annoter = _load("annoter_lignes")
+    assert annoter.prepare(pdf_dir, tmp_path / "all", 100, 42, engine=TwoLinesEngine())["lignes_tirees"] == 8
+    small = annoter.prepare(pdf_dir, tmp_path / "small", 100, 42, limit=1, max_pages=1, engine=TwoLinesEngine())
+    assert (small["documents"], small["lignes_tirees"]) == (1, 2)
+
+
+def test_crop_line_matches_the_line_box(pdf_dir: Path, tmp_path: Path) -> None:
+    from src.document_intelligence.intermediate import TextLine
+
+    annoter = _load("annoter_lignes")
+    line = TextLine(line_id="p1_l1", page=1, text="x", bbox=(100.0, 120.0, 244.0, 132.0), confidence=0.9,
+                    source="ocr", language="fr")
+    width, height = annoter.crop_line(pdf_dir / "a_fictif.pdf", line, tmp_path / "l.png")
+    # (144 + 2 x 2 points de marge) et (12 + 2 x 2) points, à 300 DPI
+    assert abs(width - round(148 * 300 / 72)) <= 1 and abs(height - round(16 * 300 / 72)) <= 1
+
+
+def test_a_broken_pdf_is_counted_without_stopping(pdf_dir: Path, tmp_path: Path) -> None:
+    (pdf_dir / "c_abime.pdf").write_bytes(b"pas un PDF")
+    annoter = _load("annoter_lignes")
+    summary = annoter.prepare(pdf_dir, tmp_path / "out", 3, 42, engine=TwoLinesEngine())
+    assert (summary["documents"], summary["documents_en_echec"], summary["lignes_tirees"]) == (3, 1, 3)
+
+
+def test_main_prints_numbers_only_and_refuses_unsafe_outputs(pdf_dir: Path, tmp_path: Path,
+                                                             monkeypatch: pytest.MonkeyPatch,
+                                                             capsys: pytest.CaptureFixture[str]) -> None:
+    from src.document_intelligence.reading import ocr
+
+    monkeypatch.setattr(ocr, "default_engine", TwoLinesEngine)
+    annoter = _load("annoter_lignes")
+    out = tmp_path / "out"
+    assert annoter.main([str(pdf_dir), "--out", str(out), "--n", "3"]) == 0
+    printed = capsys.readouterr().out
+    assert "Résumé agrégé" in printed and SECRET not in printed and "fictif" not in printed and "الأجر" not in printed
+
+    assert annoter.main([str(pdf_dir), "--out", str(out)]) == 2  # le CSV existe : on n'écrase pas une annotation
+    assert "existe déjà" in capsys.readouterr().out
+    assert annoter.main([str(pdf_dir), "--out", str(SCRIPTS.parent / "build" / "x")]) == 2
+    assert annoter.main([str(tmp_path / "absent"), "--out", str(tmp_path / "o")]) == 2
+    assert annoter.main([str(pdf_dir), "--out", str(tmp_path / "o"), "--n", "0"]) == 2
+
+
+# ------------------------------------------------------------ evaluer_cer_reel.py
+
+
+def _annotated_csv(folder: Path) -> Path:
+    """CSV fictif déjà annoté : 2 lignes FR, 2 AR, 1 mixte, 1 illisible, 1 non annotée."""
+    folder.mkdir(parents=True, exist_ok=True)
+    rows = [
+        ("0001", "Salaire de base 424.100", "Salaire de base 424.100"),
+        ("0002", "Prime de transport 56.000", "Prime de transport 56,000"),
+        ("0003", "الأجر الأساسي", "الأجر الأساسي"),
+        ("0004", "الصنف", "الصنف 3"),
+        ("0005", "Catégorie الصنف", "Catégorie 3 الصنف"),
+        ("0006", "???", "#ILLISIBLE"),
+        ("0007", "Net à payer", ""),
+    ]
+    path = folder / "annotation.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle, delimiter=";")
+        writer.writerow(["id", "image", "document", "page", "langue_ocr", "confiance", "lecture_ocr", "texte_correct"])
+        for i, lecture, correct in rows:
+            writer.writerow([i, f"lignes/ligne_{i}.png", "doc_001", 1, "fr", "0.9", lecture, correct])
+    return path
+
+
+def test_read_annotations_counts_skipped_and_illegible_lines(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    rows, counts = evaluer.read_annotations(_annotated_csv(tmp_path / "ann"))
+    assert counts == {"lignes_dans_le_csv": 7, "lignes_annotees": 5, "lignes_illisibles": 1, "lignes_non_annotees": 1}
+    assert rows[0].image == tmp_path / "ann" / "lignes" / "ligne_0001.png"
+
+
+def test_evaluate_compares_methods_on_the_same_lines_and_by_language(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    rows, _ = evaluer.read_annotations(_annotated_csv(tmp_path / "ann"))
+    perfect = [row.reference for row in rows]
+    results = evaluer.evaluate(rows, {"fine_tune": lambda paths: list(perfect)})
+
+    prod = results["ocr_production"]
+    assert prod["global"]["n"] == 5 and prod["global"]["cer"] > 0 and prod["global"]["lignes_exactes"] == 0.4
+    assert prod["fr"]["n"] == 2 and prod["ar"]["n"] == 2 and prod["mixte"]["n"] == 1
+    # une seule erreur (« . » au lieu de « , ») sur tous les caractères des deux références françaises
+    assert prod["fr"]["cer"] == round(1 / (len("Salaire de base 424.100") + len("Prime de transport 56,000")), 4)
+    perfect_global = results["fine_tune"]["global"]
+    assert (perfect_global["n"], perfect_global["cer"], perfect_global["wer"], perfect_global["lignes_exactes"]) \
+        == (5, 0.0, 0.0, 1.0)
+    assert perfect_global["erreurs_caracteres"] == 0 and perfect_global["nb_lignes_exactes"] == 5
+
+
+def test_totals_allow_recomputing_rates_and_languages_add_up_to_global(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    rows, _ = evaluer.read_annotations(_annotated_csv(tmp_path / "ann"))
+    results = evaluer.evaluate(rows, {})
+    prod = results["ocr_production"]
+    g = prod["global"]
+    assert g["cer"] == round(g["erreurs_caracteres"] / g["caracteres_reference"], 4)
+    assert g["wer"] == round(g["erreurs_mots"] / g["mots_reference"], 4)
+    assert g["lignes_exactes"] == round(g["nb_lignes_exactes"] / g["n"], 4)
+    for key in ("n", "caracteres_reference", "erreurs_caracteres", "mots_reference", "erreurs_mots",
+                "nb_lignes_exactes"):
+        assert sum(prod[lang][key] for lang in prod if lang != "global") == g[key], key
+
+
+def _walk_strings(value: object) -> list[str]:
+    """Toutes les chaînes d'un JSON : clés comprises, pour vérifier qu'aucun texte ne s'y trouve."""
+    if isinstance(value, dict):
+        return [s for k, v in value.items() for s in [str(k), *_walk_strings(v)]]
+    if isinstance(value, list):
+        return [s for v in value for s in _walk_strings(v)]
+    return [value] if isinstance(value, str) else []
+
+
+def test_results_json_contains_no_document_text_and_no_file_name(tmp_path: Path) -> None:
+    """Le fichier partagé entre annotatrices ne contient que des nombres : ni texte lu, ni texte corrigé, ni nom."""
+    evaluer = _load("evaluer_cer_reel")
+    folder = tmp_path / "Paie_SECRETE_societe_X"
+    folder.mkdir()
+    path = folder / "annotation.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle, delimiter=";")
+        writer.writerow(["id", "image", "document", "page", "langue_ocr", "confiance", "lecture_ocr", "texte_correct"])
+        writer.writerow(["0001", "lignes/SECRET_nom_fichier.png", "doc_001", 1, "fr", "0.9",
+                         f"Salaire {SECRET} 999.999", f"Salaire {SECRET} 999.000"])
+        writer.writerow(["0002", "lignes/ligne_0002.png", "doc_001", 1, "ar", "0.8", "الأجر السري", "الأجر السري 5"])
+        writer.writerow(["0003", "lignes/ligne_0003.png", "doc_002", 2, "inconnu", "0.7", "424.100", "424.700"])
+    assert evaluer.main([str(path)], recognizers={"fine_tune": lambda paths: [f"Ben {SECRET}"] * len(paths)}) == 0
+
+    saved = json.loads((folder / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    raw = (folder / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    for forbidden in (SECRET, "Salaire", "الأجر", "424.100", "424.700", "999", "Ben", ".png", "ligne_", "doc_00",
+                      "Paie_SECRETE", "annotation.csv"):
+        assert forbidden not in raw, forbidden
+    allowed_keys = {"format", "lignes", "resultats", "global", "fr", "ar", "mixte", "inconnu", "ocr_production",
+                    "fine_tune", "n", "cer", "wer", "lignes_exactes", "caracteres_reference", "erreurs_caracteres",
+                    "mots_reference", "erreurs_mots", "nb_lignes_exactes", "lignes_dans_le_csv", "lignes_annotees",
+                    "lignes_illisibles", "lignes_non_annotees", "lancement_fine_tune", "graine", "identifiant"}
+    assert set(_walk_strings(saved)) <= allowed_keys | {evaluer.RESULTS_FORMAT}
+
+
+def test_sans_modeles_never_loads_paddle_or_the_finetuned_model(tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+                                                                capsys: pytest.CaptureFixture[str]) -> None:
+    """Cas de Hadil : pas de modèle fine-tuné, seulement la lecture de production."""
+    evaluer = _load("evaluer_cer_reel")
+
+    def must_not_run(*args: object, **kwargs: object) -> None:
+        raise AssertionError("Paddle ne doit pas être chargé avec --sans-modeles")
+
+    monkeypatch.setattr(evaluer, "experiment_recognizers", must_not_run)
+    monkeypatch.setattr(evaluer, "find_finetuned_run", must_not_run)
+    csv_path = _annotated_csv(tmp_path / "hadil")
+    assert evaluer.main([str(csv_path), "--sans-modeles"]) == 0
+    saved = json.loads((tmp_path / "hadil" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert saved["format"] == evaluer.RESULTS_FORMAT
+    assert list(saved["resultats"]) == ["ocr_production"]
+    assert "expérience non préparée" not in capsys.readouterr().out
+
+
+def test_main_prints_numbers_only_and_writes_the_json(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    seen: list[int] = []
+
+    def fake(paths: list[Path]) -> list[str]:
+        seen.append(len(paths))
+        return ["x"] * len(paths)
+
+    assert evaluer.main([str(csv_path)], recognizers={"pre_entraine": fake, "fine_tune": fake}) == 0
+    printed = capsys.readouterr().out
+    assert seen == [5, 5]  # les deux modèles lisent les mêmes 5 lignes annotées
+    for text in ("Salaire", "الأجر", "Catégorie", "lignes/ligne"):
+        assert text not in printed
+    saved = json.loads((tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert set(saved["resultats"]) == {"ocr_production", "pre_entraine", "fine_tune"}
+    assert saved["lignes"]["lignes_annotees"] == 5
+    assert "Salaire" not in json.dumps(saved, ensure_ascii=False)
+
+
+def test_main_refuses_bad_inputs(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    assert evaluer.main([str(tmp_path / "absent.csv")], recognizers={}) == 2
+    inside = SCRIPTS.parent / "scripts" / "evaluer_cer_reel.py"  # un fichier du dépôt : refusé
+    assert evaluer.main([str(inside)], recognizers={}) == 2
+    bad = tmp_path / "bad.csv"
+    bad.write_text("id;image\n1;x.png\n", encoding="utf-8")
+    assert evaluer.main([str(bad)], recognizers={}) == 2
+    assert "colonnes manquantes" in capsys.readouterr().out
+    empty = _annotated_csv(tmp_path / "vide")  # même CSV, mais aucune ligne annotée
+    rows = _read_csv(empty)
+    with empty.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter=";")
+        writer.writeheader()
+        writer.writerows([{**r, "texte_correct": ""} for r in rows])
+    assert evaluer.main([str(empty)], recognizers={}) == 1
+
+
+def test_without_the_experiment_only_production_is_measured(tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+                                                            capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    monkeypatch.setattr(evaluer, "PPOCR_ROOT", tmp_path / "absent")
+    assert evaluer.main([str(csv_path)]) == 0
+    assert "expérience non préparée" in capsys.readouterr().out
+    saved = json.loads((tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert list(saved["resultats"]) == ["ocr_production"]
+    assert evaluer.main([str(csv_path), "--sans-modeles"]) == 0
+
+
+def test_finetuned_weights_come_from_the_full_run_never_from_the_quick_run(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    build = tmp_path / "build"
+    for name, quick, with_weights in (("rapide", True, True), ("complet", False, True), ("vide", False, False)):
+        state = build / "state" / name
+        state.mkdir(parents=True)
+        (state / "run.json").write_text(json.dumps({"config": {"quick": quick}}), encoding="utf-8")
+        if with_weights:
+            (state / evaluer.FT_FILE).write_bytes(b"poids")
+    (build / "state" / "casse").mkdir()
+    (build / "state" / "casse" / "run.json").write_text("{pas du json", encoding="utf-8")
+    run = evaluer.find_finetuned_run(build)
+    assert run is not None and run.weights == build / "state" / "complet" / evaluer.FT_FILE
+    assert evaluer.find_finetuned_run(tmp_path / "rien") is None
+
+
+def test_the_chosen_run_is_printed_and_saved_by_seed_and_id_without_any_path(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
+    """Le lancement retenu est affiché et écrit dans le JSON (graine, identifiant), sans aucun chemin."""
+    evaluer = _load("evaluer_cer_reel")
+    build = tmp_path / "exp_build"
+    for name, seed in (("seed7_aaaa", 7), ("seed42_bbbb", 42)):
+        state = build / "state" / name
+        state.mkdir(parents=True)
+        (state / "run.json").write_text(json.dumps({"config": {"quick": False, "seed": seed}}), encoding="utf-8")
+        (state / evaluer.FT_FILE).write_bytes(b"poids")
+    old = build / "state" / "seed7_aaaa" / evaluer.FT_FILE
+    os.utime(old, (1_000_000, 1_000_000))  # le plus ancien : c'est seed42 qui doit être retenu
+    run = evaluer.find_finetuned_run(build)
+    assert run is not None and (run.seed, run.run_id) == (42, "seed42_bbbb")
+
+    loaded: list[Path | None] = []
+
+    def fake_recognizers(ft: Path | None) -> dict[str, object]:
+        loaded.append(ft)
+        return {"fine_tune": lambda paths: ["x"] * len(paths)}
+
+    monkeypatch.setattr(evaluer, "PPOCR_ROOT", tmp_path)  # « expérience prête » sans Paddle
+    monkeypatch.setattr(evaluer, "PRETRAINED", build / "state" / "seed42_bbbb" / "run.json")
+    monkeypatch.setattr(evaluer, "find_finetuned_run", lambda: run)
+    monkeypatch.setattr(evaluer, "experiment_recognizers", fake_recognizers)
+    csv_path = _annotated_csv(tmp_path / "ann")
+    assert evaluer.main([str(csv_path)]) == 0
+    printed = capsys.readouterr().out
+    assert loaded == [run.weights]
+    assert "graine 42" in printed and "seed42_bbbb" in printed
+    saved_text = (tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    assert json.loads(saved_text)["lancement_fine_tune"] == {"graine": 42, "identifiant": "seed42_bbbb"}
+    for forbidden in (str(tmp_path), "exp_build", "state", evaluer.FT_FILE, ".pdparams"):
+        assert forbidden not in printed and forbidden not in saved_text
+
+    # Poids donnés à la main : ni graine ni chemin, seulement la mention de l'option.
+    assert evaluer.main([str(csv_path), "--poids-finetune", str(run.weights)]) == 0
+    saved_text = (tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    assert json.loads(saved_text)["lancement_fine_tune"] == {"graine": None,
+                                                              "identifiant": "poids fournis par --poids-finetune"}
+    assert str(tmp_path) not in capsys.readouterr().out and "exp_build" not in saved_text
+
+    # Sans modèle fine-tuné (ni trouvé, ni fourni) : rien n'est inventé.
+    monkeypatch.setattr(evaluer, "find_finetuned_run", lambda: None)
+    assert evaluer.main([str(csv_path)]) == 0
+    saved = json.loads((tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert saved["lancement_fine_tune"] is None
+    assert "introuvables" in capsys.readouterr().out
+
+
+# ------------------------------------------------------------ combiner_resultats_cer.py
+
+
+def _totals(n: int, chars: int, char_err: int, words: int, word_err: int, exact: int) -> dict[str, int]:
+    return {"n": n, "caracteres_reference": chars, "erreurs_caracteres": char_err, "mots_reference": words,
+            "erreurs_mots": word_err, "nb_lignes_exactes": exact}
+
+
+def _results_file(path: Path, resultats: dict[str, dict[str, dict[str, int]]], annotated: int) -> Path:
+    path.write_text(json.dumps({"format": "ds3.cer_reel.v2",
+                                "lignes": {"lignes_dans_le_csv": annotated + 1, "lignes_annotees": annotated,
+                                           "lignes_illisibles": 1, "lignes_non_annotees": 0},
+                                "resultats": resultats}), encoding="utf-8")
+    return path
+
+
+def test_combination_is_weighted_by_totals_not_a_simple_mean(tmp_path: Path) -> None:
+    combiner = _load("combiner_resultats_cer")
+    big = combiner.load_results(_results_file(tmp_path / "a.json", {"ocr_production": {
+        "global": _totals(300, 6000, 600, 1000, 200, 150), "ar": _totals(300, 6000, 600, 1000, 200, 150)}}, 300),
+        "fichier 1")
+    small = combiner.load_results(_results_file(tmp_path / "b.json", {"ocr_production": {
+        "global": _totals(50, 1000, 10, 200, 4, 45), "fr": _totals(50, 1000, 10, 200, 4, 45)}}, 50), "fichier 2")
+    result = combiner.combine([big, small])
+
+    g = result["resultats"]["ocr_production"]["global"]
+    assert g["n"] == 350 and g["cer"] == round(610 / 7000, 4)  # 8,71 % ; la moyenne simple donnerait 5,5 %
+    assert g["cer"] != round((600 / 6000 + 10 / 1000) / 2, 4)
+    assert g["wer"] == round(204 / 1200, 4) and g["lignes_exactes"] == round(195 / 350, 4)
+    assert result["resultats"]["ocr_production"]["ar"]["n"] == 300  # langue présente dans un seul fichier
+    assert result["resultats"]["ocr_production"]["fr"]["n"] == 50
+    assert result["lignes"]["lignes_annotees"] == 350 and result["methodes_partielles"] == {}
+
+
+def test_a_method_missing_from_one_file_is_reported_apart(tmp_path: Path,
+                                                         capsys: pytest.CaptureFixture[str]) -> None:
+    combiner = _load("combiner_resultats_cer")
+    wiem = _results_file(tmp_path / "wiem.json", {
+        "ocr_production": {"global": _totals(10, 200, 20, 40, 8, 5)},
+        "pre_entraine": {"global": _totals(10, 200, 30, 40, 10, 3)},
+        "fine_tune": {"global": _totals(10, 200, 4, 40, 2, 8)}}, 10)
+    hadil = _results_file(tmp_path / "hadil.json", {"ocr_production": {"global": _totals(30, 600, 30, 120, 12, 20)}},
+                          30)
+    out = tmp_path / "combine.json"
+    assert combiner.main([str(wiem), str(hadil), "--out", str(out)]) == 0
+    printed = capsys.readouterr().out
+    assert "« fine_tune » n'est présente que dans le(s) fichier(s) 1" in printed
+    assert "« pre_entraine » n'est présente que dans le(s) fichier(s) 1" in printed
+    assert "wiem" not in printed and "hadil" not in printed  # fichiers désignés par leur numéro seulement
+    saved = json.loads(out.read_text(encoding="utf-8"))
+    assert list(saved["resultats"]) == ["ocr_production"]
+    assert saved["resultats"]["ocr_production"]["global"]["cer"] == round(50 / 800, 4)
+    assert saved["methodes_partielles"]["fine_tune"]["fichiers"] == [1]
+    assert saved["methodes_partielles"]["fine_tune"]["resultats"]["global"]["n"] == 10
+
+
+def test_combiner_refuses_old_or_incomplete_files_and_unsafe_outputs(tmp_path: Path,
+                                                                     capsys: pytest.CaptureFixture[str]) -> None:
+    combiner = _load("combiner_resultats_cer")
+    good = _results_file(tmp_path / "ok.json", {"ocr_production": {"global": _totals(1, 10, 1, 2, 1, 0)}}, 1)
+    old = tmp_path / "ancien.json"
+    old.write_text(json.dumps({"lignes": {}, "resultats": {"ocr_production": {"global": {"n": 1, "cer": 0.1}}}}),
+                   encoding="utf-8")
+    incomplete = tmp_path / "incomplet.json"
+    incomplete.write_text(json.dumps({"format": "ds3.cer_reel.v2", "resultats": {
+        "ocr_production": {"global": {"n": 1, "cer": 0.1}}}}), encoding="utf-8")
+    broken = tmp_path / "casse.json"
+    broken.write_text("{pas du json", encoding="utf-8")
+
+    assert combiner.main([str(good)]) == 2  # une seule annotatrice : rien à combiner
+    assert combiner.main([str(good), str(old)]) == 2
+    assert "format non reconnu" in capsys.readouterr().out
+    assert combiner.main([str(good), str(incomplete)]) == 2
+    assert "totaux manquants" in capsys.readouterr().out
+    assert combiner.main([str(good), str(broken)]) == 2
+    assert combiner.main([str(good), str(good), "--out", str(SCRIPTS.parent / "build" / "c.json")]) == 2
+    assert not (SCRIPTS.parent / "build" / "c.json").exists()
+
+
+def test_end_to_end_two_annotators_with_and_without_the_finetuned_model(tmp_path: Path,
+                                                                       capsys: pytest.CaptureFixture[str]) -> None:
+    """Wiem (avec le modèle fine-tuné) et Hadil (--sans-modeles) : seuls les JSON de chiffres sont combinés."""
+    evaluer, combiner = _load("evaluer_cer_reel"), _load("combiner_resultats_cer")
+    wiem_csv, hadil_csv = _annotated_csv(tmp_path / "wiem"), _annotated_csv(tmp_path / "hadil")
+    assert evaluer.main([str(wiem_csv)], recognizers={"fine_tune": lambda paths: ["x"] * len(paths)}) == 0
+    assert evaluer.main([str(hadil_csv), "--sans-modeles"], recognizers={}) == 0
+    capsys.readouterr()
+    files = [tmp_path / "wiem" / "resultats_cer_reel.json", tmp_path / "hadil" / "resultats_cer_reel.json"]
+    assert combiner.main([str(f) for f in files]) == 0
+    printed = capsys.readouterr().out
+    one = json.loads(files[0].read_text(encoding="utf-8"))["resultats"]["ocr_production"]["global"]
+    assert f"ocr_production   global      {2 * one['n']}" in printed  # deux fois les mêmes lignes fictives
+    assert "fine_tune" in printed and "fichier(s) 1" in printed
+    assert "Salaire" not in printed and "الأجر" not in printed

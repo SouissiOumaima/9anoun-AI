@@ -1,3 +1,4 @@
+# Frontière DS3 vers DS4 : rejeter les contrats incompatibles avant consommation.
 ﻿"""Tests négatifs de conformité du contrat DS3 v2."""
 
 import copy

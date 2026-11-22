@@ -178,11 +178,12 @@ def _prime(secteur: str, code: str, date: object, params: dict, v1: bool) -> Res
         valeur = p["montant"]
         detail["effective_date"] = p.get("effective_date")
         _notes(p, detail)
-        if "montant_reduit_si_transport_assure" in p:
-            transport = _bool_obligatoire(params, "transport_assure", code)
-            detail["transport_assure"] = transport
-            if transport:
-                valeur = p["montant_reduit_si_transport_assure"]
+    if "montant_reduit_si_transport_assure" in p:
+        # Montant unique (D4) ou ligne datée, avec ou sans groupe (D80) : même montant réduit pour tous.
+        transport = _bool_obligatoire(params, "transport_assure", code)
+        detail["transport_assure"] = transport
+        if transport:
+            valeur = p["montant_reduit_si_transport_assure"]
 
     hyp = p.get("hypotheses")
     if hyp:

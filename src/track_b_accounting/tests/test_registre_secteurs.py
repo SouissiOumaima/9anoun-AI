@@ -66,10 +66,22 @@ def test_registre_actuel_identique():
         "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
         "TEXTILE": "data/processed/salary_grids/textile.json",
         "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
+        "PRODUITS_ENTRETIEN_INSECTICIDES": "data/processed/salary_grids/produits_entretien.json",
+        "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES": "data/processed/salary_grids/constructeurs_automobiles.json",
+        "MATERIAUX_CONSTRUCTION": "data/processed/salary_grids/materiaux_construction.json",
+        "PEINTURES": "data/processed/salary_grids/peintures.json",
+        "CHAUSSURE": "data/processed/salary_grids/chaussure.json",
+        "CUIRS_TANNERIE": "data/processed/salary_grids/cuirs_tannerie.json",
+        "CLERCS_AVOCATS": "data/processed/salary_grids/clercs_avocats.json",
+        "PERSONNEL_PHARMACIES": "data/processed/salary_grids/pharmacies.json",
+        "CONSERVERIES_CONDITIONNEMENT_HUILES": "data/processed/salary_grids/conserveries_huiles.json",
+        "GROSSISTES_REPARTITEURS_MEDICAMENTS": "data/processed/salary_grids/grossistes_medicaments.json",
+        "SALLES_CINEMA": "data/processed/salary_grids/salles_cinema.json",
+        "TRANSPORT_ROUTIER_MARCHANDISES": "data/processed/salary_grids/transport_routier_marchandises.json",
     }
     assert (
         list(loaders.GRILLES) == loaders.secteurs_disponibles()
-    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72, D78 à D83, D84 à D89
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -101,7 +113,9 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         "TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, "
         "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
         "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
-        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE)."
+        "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, "
+        "PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, "
+        "CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES)."
     )
 
 

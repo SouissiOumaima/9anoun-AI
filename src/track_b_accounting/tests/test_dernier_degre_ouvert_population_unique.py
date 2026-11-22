@@ -53,6 +53,18 @@ SECTEURS = {
     "BOULANGERIES": "data/processed/salary_grids/boulangeries.json",
     "TEXTILE": "data/processed/salary_grids/textile.json",
     "FONDERIE_METALLURGIE_MECANIQUE": "data/processed/salary_grids/fonderies_mecanique.json",
+    "PRODUITS_ENTRETIEN_INSECTICIDES": "data/processed/salary_grids/produits_entretien.json",
+    "CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES": "data/processed/salary_grids/constructeurs_automobiles.json",
+    "MATERIAUX_CONSTRUCTION": "data/processed/salary_grids/materiaux_construction.json",
+    "PEINTURES": "data/processed/salary_grids/peintures.json",
+    "CHAUSSURE": "data/processed/salary_grids/chaussure.json",
+    "CUIRS_TANNERIE": "data/processed/salary_grids/cuirs_tannerie.json",
+    "CLERCS_AVOCATS": "data/processed/salary_grids/clercs_avocats.json",
+    "PERSONNEL_PHARMACIES": "data/processed/salary_grids/pharmacies.json",
+    "CONSERVERIES_CONDITIONNEMENT_HUILES": "data/processed/salary_grids/conserveries_huiles.json",
+    "GROSSISTES_REPARTITEURS_MEDICAMENTS": "data/processed/salary_grids/grossistes_medicaments.json",
+    "SALLES_CINEMA": "data/processed/salary_grids/salles_cinema.json",
+    "TRANSPORT_ROUTIER_MARCHANDISES": "data/processed/salary_grids/transport_routier_marchandises.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
@@ -184,7 +196,13 @@ def test_secteurs_enregistres_avec_la_regle_ouvert():
         for s, chemin in SECTEURS.items()
         if "ouvert" in {b.get("regle", "refus") for b in lire_json(chemin)["au_dela_dernier_degre"].values()}
     ]
-    assert ouverts == ["ASSURANCE", "AGENCES_VOYAGES", "COSMETIQUES_PARFUMS", "TEINTURERIES_PRESSINGS"]
+    assert ouverts == [
+        "ASSURANCE",
+        "AGENCES_VOYAGES",
+        "COSMETIQUES_PARFUMS",
+        "TEINTURERIES_PRESSINGS",
+        "TRANSPORT_ROUTIER_MARCHANDISES",
+    ]
     assert {b["regle"] for b in lire_json(SECTEURS["ENSEIGNEMENT_PRIVE"])["au_dela_dernier_degre"].values()} == {
         "refus"
     }

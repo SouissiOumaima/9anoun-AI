@@ -171,9 +171,13 @@ def test_valide_jusqu_au_invalide_refuse_par_le_validateur(modif):
     assert e.value.code == Refus.SOURCE_MANQUANTE and "absent ou invalide" in e.value.message_fr
 
 
+# Autres grilles dont une table porte valide_jusqu_au (liste mécanique) : pharmacies, avenant n° 16 sans grille (D85).
+AUTRES_FINS_DE_TABLE = {"PERSONNEL_PHARMACIES"}
+
+
 def test_aucune_autre_grille_ne_porte_valide_jusqu_au():
     for code, chemin in loaders.GRILLES.items():
-        if code != S:
+        if code != S and code not in AUTRES_FINS_DE_TABLE:
             assert all("valide_jusqu_au" not in t for t in lire_json(chemin)["grilles"]), code
 
 
