@@ -1,0 +1,361 @@
+{
+ "_meta": {
+  "secteur_code": "PERSONNEL_PHARMACIES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لمستخدمي الصيدليات",
+  "convention_fr": "Convention collective sectorielle du personnel des pharmacies",
+  "source_file": "data/raw/pdf/مستخدمي الصيدليات.pdf",
+  "pages_sources": [
+   3,
+   7,
+   8,
+   9,
+   15
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "120 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; contrôle de hausse entre les deux tableaux : hausse de 6,5 % sur les 60 cellules, aucun écart au-delà de 1 millime ; contrôle de croissance le long des degrés et entre catégories : aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D85",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 578 à 1 431) ; durée du travail : renvoi à la loi (art. 20, p.9).",
+  "note_degres": "En-tête (p.15) : 12 degrés, durée de séjour 1, 1, 2, 2, 2, puis 3 (degrés 6 à 12) ; libellés « 0-1 » … « 26-29 » ; bornes exactes refusées (D6) ; à partir de 29 ans, refus (art. 11 (جديد), pp.7-8).",
+  "note_categories": "Catégories I à V ; population unique.",
+  "note_dates": "Tableaux n° 1 (2020-11-01) et n° 2 (2021-05-01), p.15 (page pivotée) ; l'avenant n° 16 (p.3, effet au 2022-01-01) révise l'art. 43 (salaires) mais sa grille n'est pas dans la source : le tableau n° 2 vaut jusqu'au 2021-12-31 (valide_jusqu_au, comme D47), refus ensuite ; refus avant le 2020-11-01.",
+  "remarque_pdf": "Note sous chaque tableau (p.15) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحة 15): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "personnel": {
+   "libelle_fr": "Personnel des pharmacies",
+   "libelle_ar": "مستخدمو الصيدليات",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 15,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "personnel": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-11",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "26-29",
+    "duree_imprimee": 3
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "personnel": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 29,
+   "source_pdf_page": 7,
+   "source_article": "11 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention du personnel des pharmacies s'arrête au degré 12 (26 à 29 ans) ; l'en-tête (page 15) imprime les durées de séjour 1, 1, 2, 2, 2 puis 3 ans (degrés 6 à 12), soit 29 ans, et l'article 11 (جديد) (pages 7-8) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 29 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية مستخدمي الصيدليات عند الدرجة 12 (من 26 إلى 29 سنة)؛ ويذكر رأس الجدول (الصفحة 15) مدد البقاء 1 و1 و2 و2 و2 ثم 3 سنوات (من الدرجة 6 إلى الدرجة 12)، أي 29 سنة، ولا ينص الفصل 11 (جديد) (الصفحتان 7 و8) على شيء بعد الدرجة 12. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 29 سنة)."
+  }
+ },
+ "categories": {
+  "personnel": [
+   "I",
+   "II",
+   "III",
+   "IV",
+   "V"
+  ]
+ },
+ "libelles_categories": {
+  "personnel": {
+   "I": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie I",
+    "libelle_ar": "الصنف I",
+    "libelle_ar_redige": true
+   },
+   "II": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie II",
+    "libelle_ar": "الصنف II",
+    "libelle_ar_redige": true
+   },
+   "III": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie III",
+    "libelle_ar": "الصنف III",
+    "libelle_ar_redige": true
+   },
+   "IV": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie IV",
+    "libelle_ar": "الصنف IV",
+    "libelle_ar_redige": true
+   },
+   "V": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie V",
+    "libelle_ar": "الصنف V",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "personnel": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 15) : TND/mois en hypothèse (montants de 578,749 à 1 431,378).",
+    "Promotion d'une catégorie à la suivante (article 11 (جديد) ب, page 7 : 11 ans pour la catégorie I, 8 ans pour les catégories II et III, 6 ans pour la catégorie IV) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 15): الدينار في الشهر على سبيل الافتراض (مبالغ من 578,749 à 1 431,378).",
+    "لا تُحتسب الترقية من صنف إلى الصنف الموالي (الفصل 11 (جديد) ب، الصفحة 7: 11 سنة للصنف الأول، و8 سنوات للصنفين الثاني والثالث، و6 سنوات للصنف الرابع).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    2
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_travail_nuit",
+   "label_ar": "منحة العمل الليلي",
+   "label_fr": "Prime de travail de nuit",
+   "source_article": "21 (جديد)",
+   "source_pdf_page": 9,
+   "unite": "TND/mois",
+   "montant": 10.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent d'une pharmacie de nuit (art. 21 (جديد), p.9)"
+  }
+ ],
+ "primes_non_couvertes": {},
+ "grilles": [
+  {
+   "table_id": "PHARMA_2020-11-01",
+   "numero_imprime": 1,
+   "population": "personnel",
+   "effective_date": "2020-11-01",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "valeurs": {
+    "I": [
+     578.749,
+     580.114,
+     586.821,
+     592.535,
+     596.948,
+     606.807,
+     615.360,
+     623.923,
+     632.484,
+     641.077,
+     653.023,
+     663.630
+    ],
+    "II": [
+     669.588,
+     673.869,
+     682.432,
+     690.994,
+     699.567,
+     713.788,
+     726.425,
+     739.037,
+     747.362,
+     759.756,
+     768.016,
+     789.622
+    ],
+    "III": [
+     791.642,
+     797.018,
+     809.316,
+     819.878,
+     830.441,
+     842.152,
+     857.713,
+     878.340,
+     893.913,
+     909.860,
+     917.897,
+     935.118
+    ],
+    "IV": [
+     925.225,
+     927.803,
+     940.776,
+     953.750,
+     971.778,
+     991.243,
+     1010.041,
+     1027.262,
+     1050.582,
+     1067.815,
+     1079.545,
+     1098.854
+    ],
+    "V": [
+     1161.154,
+     1178.552,
+     1192.320,
+     1203.800,
+     1215.281,
+     1237.389,
+     1255.822,
+     1273.043,
+     1292.353,
+     1309.573,
+     1326.796,
+     1344.017
+    ]
+   }
+  },
+  {
+   "table_id": "PHARMA_2021-05-01",
+   "numero_imprime": 2,
+   "population": "personnel",
+   "effective_date": "2021-05-01",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "valide_jusqu_au": {
+    "date": "2021-12-31",
+    "source_pdf_page": 3,
+    "source_article": "الملحق التعديلي عدد 16",
+    "message_fr": "Aucune grille vérifiée après le 2021-12-31 : l'avenant n° 16 (page 3, effet au 1er janvier 2022) a révisé les salaires (article 43) et sa grille n'est pas dans la source ; le tableau n° 2 (page 15, en vigueur à partir du 1er mai 2021) ne vaut que jusqu'au 2021-12-31. Aucun montant n'est renvoyé.",
+    "message_ar": "لا يوجد جدول أجور مُتحقَّق منه بعد 2021-12-31: راجع الملحق التعديلي عدد 16 (الصفحة 3، تاريخ المفعول غرة جانفي 2022) الأجور (الفصل 43) وجدوله غير موجود في المصدر؛ ولا ينطبق جدول الأجور عدد 2 (الصفحة 15، يقع العمل به بداية من 1 ماي 2021) إلا إلى غاية 2021-12-31. لا يُرجَع أي مبلغ."
+   },
+   "valeurs": {
+    "I": [
+     616.368,
+     617.821,
+     624.964,
+     631.049,
+     635.750,
+     646.250,
+     655.359,
+     664.478,
+     673.595,
+     682.747,
+     695.469,
+     706.766
+    ],
+    "II": [
+     713.111,
+     717.670,
+     726.790,
+     735.909,
+     745.039,
+     760.184,
+     773.642,
+     787.075,
+     795.940,
+     809.140,
+     817.937,
+     840.948
+    ],
+    "III": [
+     843.099,
+     848.825,
+     861.921,
+     873.170,
+     884.419,
+     896.892,
+     913.464,
+     935.432,
+     952.018,
+     969.001,
+     977.561,
+     995.901
+    ],
+    "IV": [
+     985.364,
+     988.110,
+     1001.926,
+     1015.744,
+     1034.943,
+     1055.674,
+     1075.693,
+     1094.034,
+     1118.870,
+     1137.223,
+     1149.715,
+     1170.280
+    ],
+    "V": [
+     1236.629,
+     1255.158,
+     1269.821,
+     1282.047,
+     1294.274,
+     1317.819,
+     1337.451,
+     1355.791,
+     1376.356,
+     1394.696,
+     1413.038,
+     1431.378
+    ]
+   }
+  }
+ ]
+}

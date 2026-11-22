@@ -122,7 +122,7 @@ Aucun autre champ n'est accepté à la racine.
 
 | Champ | Type | Description |
 |---|---|---|
-| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT`, `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66), `IMPRIMERIE_EDITION_CARTONNAGE`, `VERRE_MIROIRS`, `CONCESSIONNAIRES_MATERIEL_AGRICOLE`, `BOULANGERIES`, `TEXTILE` ou `FONDERIE_METALLURGIE_MECANIQUE` (vague 4, D67 à D72) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
+| `secteur` | chaîne | Code du secteur : `METALLURGIE_BATIMENT`, `BATIMENT_TRAVAUX_PUBLICS`, `ASSOCIATIONS_PERSONNES_HANDICAPEES`, `ASSURANCE`, `ENSEIGNEMENT_PRIVE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `CONFISERIE_BISCUITERIE_CHOCOLATERIE`, `PATES_ALIMENTAIRES_COUSCOUS`, `COSMETIQUES_PARFUMS` (vague 1, D49 à D54), `SAVONNERIE_RAFFINAGE_GRIGNONS`, `COMMERCE_DISTRIBUTION_PETROLE`, `PLASTURGIE`, `MINOTERIES`, `TEINTURERIES_PRESSINGS`, `BOISSONS_GAZEUSES` (vague 2, D55 à D60), `MECANIQUE_STATIONS_SERVICE`, `BOISSONS_ALCOOLISEES`, `BOIS_AMEUBLEMENT_LIEGE`, `GESTION_DECHETS`, `HABILLEMENT`, `COMMERCE_GROS_DETAIL` (vague 3, D61 à D66), `IMPRIMERIE_EDITION_CARTONNAGE`, `VERRE_MIROIRS`, `CONCESSIONNAIRES_MATERIEL_AGRICOLE`, `BOULANGERIES`, `TEXTILE`, `FONDERIE_METALLURGIE_MECANIQUE` (vague 4, D67 à D72), `PRODUITS_ENTRETIEN_INSECTICIDES`, `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES`, `MATERIAUX_CONSTRUCTION`, `PEINTURES`, `CHAUSSURE`, `CUIRS_TANNERIE` (vague 5, D78 à D83), `CLERCS_AVOCATS`, `PERSONNEL_PHARMACIES`, `CONSERVERIES_CONDITIONNEMENT_HUILES`, `GROSSISTES_REPARTITEURS_MEDICAMENTS`, `SALLES_CINEMA` ou `TRANSPORT_ROUTIER_MARCHANDISES` (vague 6, D84 à D89) ; voir §7. Obligatoire : une chaîne vide est refusée (`PARAM_INVALIDE`). |
 | `population` | chaîne, selon le secteur | **Facultative au schéma (D29).** Obligatoire pour un secteur à plusieurs populations (tous les secteurs actuels sauf `ASSURANCE`, `BANQUES`, `GARDIENNAGE_SECURITE_TRANSPORT_FONDS`, `TORREFACTION_CAFE`, `AGENCES_VOYAGES`, `HOTELS_TOURISTIQUES`, `COMMERCE_DISTRIBUTION_PETROLE`, `MECANIQUE_STATIONS_SERVICE`, `GESTION_DECHETS` et `CONCESSIONNAIRES_MATERIEL_AGRICOLE`) : omise, elle est refusée (`PARAM_INVALIDE`, refus émis par calc/). Pour un secteur à une seule population, elle peut être omise ; si elle est donnée, elle doit être celle-là (sinon `PARAM_INVALIDE`), et `detail.population` la renvoie dans les deux cas. Métallurgie : `admin_tech` (grille mensuelle) ou `execution` (grille horaire). BTP : `admin_tech` (mensuelle) ou `ouvriers_occasionnels` (horaire, sans degré d'ancienneté) ; `ouvriers_permanents` est refusé (`SOURCE_MANQUANTE`, cf. §7). Associations pour personnes handicapées (toutes mensuelles, 16 degrés) : `education_specialisee` (أعوان التربية المختصون), `sport` (أعوان الرياضة), `ouvriers_administratifs_surveillants` (العملة والأعوان الإداريين و القيمين), `techniciens` (الأعوان الفنيين), `formateurs_professionnels` (المكونين المهنيين). Assurance : une seule population, `tous_agents` (كافة أعوان شركات التأمين), qui peut être omise. Enseignement privé (toutes mensuelles, 16 degrés) : `ouvriers`, `administratifs_surveillants`, `instituteurs`, `secondaire_formateurs`, `professeurs_primaire`. Banques : une seule population, `tous_agents` (أعوان البنوك والمؤسسات المالية), qui peut être omise. Gardiennage, sécurité et transport de fonds : une seule population, `tous_agents` (أعوان مؤسسات الحراسة والسلامة ونقل العملة), qui peut être omise ; la catégorie est le numéro « 1 » à « 15 » de la classification (pages 16 à 20 de la convention), sans alias par métier. |
 | `categorie` | chaîne ou entier | Catégorie de la grille, ex. `"1B"`, `"4"`, `7`. Pour une catégorie à sous-catégories, donner la catégorie seule (ex. `6`) et préciser `sous_categorie`. Associations pour personnes handicapées : la clé est le chiffre romain imprimé sur la ligne de la grille (`"I"` à `"VI"` selon la population) ; le numéro de catégorie de l'annexe est accepté comme alias (`"1"` → `"I"`, `"2"` → `"II"`…), et `detail` renvoie `categorie` (clé) et `categorie_demandee` (alias reçu). Pour `techniciens`, seuls `"I"` (alias `"1"`) et `"III+II"` existent : `"III+II"` est une clé unique, et `"II"`, `"III"`, `"2"` ou `"3"` sont refusés (`PARAM_INVALIDE`), car l'annexe 4 ne confirme pas que les catégories 2 et 3 partagent cette ligne (D23). |
 | `sous_categorie` | chaîne, optionnel | **Nouveau.** Obligatoire si la catégorie a des sous-catégories, refusé sinon (`PARAM_INVALIDE`). Seul cas actuel, BTP `ouvriers_occasionnels` : catégorie 6 → `"I"` ou `"II"` (ouvrier hautement qualifié I/II) ; catégorie 7 → `"1"`, `"2"` ou `"3"` (chef d'équipe 1er/2e/3e degré). Le libellé exact du PDF est renvoyé dans `detail` (`libelle_fr`, `libelle_ar`). |
@@ -504,7 +504,16 @@ Draft202012Validator(schema).validate(ma_requete)
     montants), `VERRE_MIROIRS` (6, 900, salaire de base refusé), `CONCESSIONNAIRES_MATERIEL_AGRICOLE` (3, 912, dont
     8 cases illisibles refusées), `BOULANGERIES` (9, 1 014, dont 12 cases illisibles refusées), `TEXTILE` (4, 1 050,
     dont 136 cellules transcrites non servies) et `FONDERIE_METALLURGIE_MECANIQUE` (6, 1 092, dont 1 case illisible
-    refusée). Détail ci-dessous.
+    refusée). Détail ci-dessous ;
+  - vague 5 (D78 à D83, vérification humaine sur échantillon, voir les décisions) : `PRODUITS_ENTRETIEN_INSECTICIDES`
+    (12 tableaux, 1 056 montants), `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES` (3, 1 170, dont 2 cases illisibles
+    refusées), `MATERIAUX_CONSTRUCTION` (6, 1 215), `PEINTURES` (6, 1 365, salaire de base refusé par l'ancienneté),
+    `CHAUSSURE` (6, 1 980, salaire de base refusé par l'ancienneté) et `CUIRS_TANNERIE` (6, 1 668, dont 15 cellules
+    transcrites non servies). Détail ci-dessous ;
+  - vague 6 (D84 à D89, vérification humaine sur échantillon, voir les décisions) : `CLERCS_AVOCATS` (1 tableau,
+    36 montants), `PERSONNEL_PHARMACIES` (2, 120), `CONSERVERIES_CONDITIONNEMENT_HUILES` (2, 130),
+    `GROSSISTES_REPARTITEURS_MEDICAMENTS` (1, 165), `SALLES_CINEMA` (1, 169) et `TRANSPORT_ROUTIER_MARCHANDISES` (1, 260).
+    Grilles de 2010 à 2021 : hypothèse SMIG affichée (voir ci-dessous). Détail ci-dessous.
 
   Tout autre secteur répond `SOURCE_MANQUANTE` tant que son fichier n'est pas
   transcrit, vérifié et enregistré. Ce fichier doit aussi porter sa propre
@@ -786,6 +795,44 @@ Draft202012Validator(schema).validate(ma_requete)
   - `FONDERIE_METALLURGIE_MECANIQUE` (D72) : `mensuels` (`1` + `a` / `b`, `2` à `18`) et `horaires` (`1` à `7`) ;
     degré 14 (imprimé « +32 ») servi de 32 à moins de 35 ans, refus à partir de 35 ans (note de l'art. 58 contraire à
     l'en-tête) ; `prime_transport` à deux groupes, « au titre de » 2021, 2023, 2024 tel qu'imprimé.
+- **Vague 5 (D78 à D83) : particularités visibles pour DS1.** Mêmes conventions de codes de primes. Les six secteurs ne
+  figurent pas encore dans la table des secteurs (en attente DS2).
+  - `PRODUITS_ENTRETIEN_INSECTICIDES` (D78) : `javel_horaires`, `detergents_horaires` (`1` à `6`, rangs nommés),
+    `javel_mensuels`, `detergents_mensuels` (`1` à `10`), population obligatoire ; écart cumulé tous les 2 ans au-delà
+    de 20 ans, paliers exacts en `PARAM_INVALIDE`.
+  - `CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES` (D79) : `mensuels` (`1` à `16`) et `horaires` (`1` à `10`) ; écart
+    cumulé tous les 2 ans au-delà de 27 ans ; 2 cases illisibles ; Aïd el-Adha refusée (montants contradictoires).
+  - `MATERIAUX_CONSTRUCTION` (D80) : `horaires` (`1` à `11`) et `mensuels` (`1` à `16`) ; **salaire refusé du
+    2021-12-01 au 2022-11-30** (`periodes_refusees`, date de l'avenant contraire au titre) ; refus à partir de 39 ans ;
+    `prime_transport` à deux groupes (`execution_cat1`, `autres`) avec `transport_assure` obligatoire (0 si True).
+  - `PEINTURES` (D81) : `execution_horaires`, `execution_mensuels` (6 rangs nommés) et `administratifs_techniciens`
+    (`1` à `23`, TND/mois en hypothèse) ; **salaire de base refusé par l'ancienneté, servi par le degré en v1** ;
+    `prime_transport` avec la variante `complement_si_prime_superieure`.
+  - `CHAUSSURE` (D82) : `horaires` (`I` à `VI`) et `mensuels` (`1` + `a` / `b`, `2` à `15`) ; **salaire de base
+    refusé par l'ancienneté, servi par le degré en v1** ; panier refusé (sans période).
+  - `CUIRS_TANNERIE` (D83) : `mensuels` (`1` à `14`) et `horaires` (`I` à `V`) ; refus à partir de 29 ans ; colonne
+    initiale des horaires, sans numéro, jamais servie.
+- **Vague 6 (D84 à D89) : particularités visibles pour DS1.** Mêmes conventions de codes de primes. Les six secteurs ne
+  figurent pas encore dans la table des secteurs (en attente DS2). Population unique (omissible) sauf aux conserveries.
+  **Hypothèse SMIG** dans chaque réponse de salaire des clercs, grossistes, cinéma et transport : « montants de la
+  convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être
+  supérieur, ce que Track B ne compare pas » (choix provisoire).
+  - `CLERCS_AVOCATS` (D84) : catégories `1` à `3` ; date d'effet 2014-05-01 en hypothèse, refus avant ; refus à partir
+    de 30 ans ; deux anomalies imprimées conservées (ligne 1, degrés 2 et 5).
+  - `PERSONNEL_PHARMACIES` (D85) : catégories `I` à `V` ; deux tableaux (2020-11-01, 2021-05-01) ; **refus après le
+    2021-12-31** (avenant n° 16 sans grille, `valide_jusqu_au`) ; refus à partir de 29 ans.
+  - `CONSERVERIES_CONDITIONNEMENT_HUILES` (D86) : `horaires` et `mensuels` (`1` à `5`), population obligatoire ;
+    refus avant le 2019-06-01 ; écart cumulé tous les 2 ans au-delà de 24 ans, paliers exacts en `PARAM_INVALIDE` ;
+    `prime_transport` à deux groupes (`categories_1_3`, `categories_4_5`).
+  - `GROSSISTES_REPARTITEURS_MEDICAMENTS` (D87) : catégories `I` à `V` avec `sous_categorie` `1` (أ) ou `2` (ب)
+    obligatoire, et `VI` ; refus avant le 2010-05-01 et à partir de 29 ans.
+  - `SALLES_CINEMA` (D88) : postes `I_1` à `III_6` ; refus à partir de 26 ans ; prime d'encouragement en 9 codes
+    (`prime_encouragement_salle_<a|b|t>_cat<1|2|3>`).
+  - `TRANSPORT_ROUTIER_MARCHANDISES` (D89) : catégories `1` à `20` ; dernier degré ouvert ; note 2 (relèvement au SMIG)
+    citée ; `prime_kilometrique_tunisie` et `prime_kilometrique_etranger` en `TND/km` ; `prime_transport` à trois
+    groupes (`execution`, `gestion`, `cadres`).
+- **Période refusée d'une table (`periodes_refusees`, D80)** : un jour compris dans la période donne `SOURCE_MANQUANTE`
+  avec le message du fichier, en v0 comme en v1 ; avant et après, la table est servie.
 - **Trois refus lus dans les fichiers (D48), sans effet sur les autres secteurs.**
   - Case illisible (`cellules_source_manquante` d'une table, valeur `null`) : `SOURCE_MANQUANTE` avec la page et la
     raison.
@@ -839,7 +886,7 @@ Points sur lesquels l'avis de l'équipe est utile :
 ## 9. Contrat v1 (D75, D76)
 
 > **Statut : v1 — proposition Track B, à valider avec l'équipe.** La v1 s'ajoute à la v0 et ne la remplace pas :
-> les schémas v0, les 211 démos v0 et leurs réponses de référence sont inchangés à l'octet près. L'orchestrateur
+> les schémas v0 sont inchangés à l'octet près, et les 211 démos v0 du contrat v1 et leurs réponses de référence le sont aussi, à la liste des secteurs disponibles de demo-10 près (empreintes figées dans `test_contrat_v1.py`, ARRÊT 3 bis de la vague 5). L'orchestrateur
 > (DS1) reste en v0 ; son passage en v1 relève de l'équipe DS1.
 
 ### 9.1 Choix de la version

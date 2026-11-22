@@ -646,5 +646,493 @@
     ],
     "refus": null,
     "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-19-peintures-execution-horaires-degre-13",
+    "status": "ok",
+    "result": {
+      "montant": "5.668",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_horaires",
+        "categorie": "ouvrier_hautement_qualifie",
+        "degre": 13,
+        "degre_imprime": "13",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد) و 52, page 8",
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 24,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-20-peintures-administratifs-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "1428.536",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "administratifs_techniciens",
+        "categorie": "23",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Unité non imprimée pour les administratifs et techniciens : montants de 550 à 1 645 dinars, servis en TND/mois (hypothèse affichée). Les 23 lignes portent des intitulés de postes, sans numéro de catégorie : clés 1 à 23 par position imprimée.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالنسبة إلى الأعوان الإداريين والفنيين: مبالغ من 550 إلى 1645 دينارا تُرجَع بالدينار في الشهر على سبيل الافتراض. تحمل الأسطر الثلاثة والعشرون أسماء خطط دون رقم صنف: المفاتيح من 1 إلى 23 حسب الترتيب المطبوع.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_ADMINISTRATIFS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 23,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-21-peintures-execution-mensuels-degre-7",
+    "status": "ok",
+    "result": {
+      "montant": "540.294",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PEINTURES",
+        "population": "execution_mensuels",
+        "categorie": "ouvrier_manuel",
+        "degre": 7,
+        "degre_imprime": "7",
+        "degre_declare": true,
+        "hypotheses": [
+          "Chaque rang de l'exécution a une ligne « سعوي » (à l'heure, imprimé ainsi) et une ligne « شهري » (au mois) : la population choisit la ligne.",
+          "Reclassement selon l'ancienneté (art. 52, page 16) et promotion (art. 12 (جديد), page 8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد) و 52, page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لكل رتبة من أعوان التنفيذ سطر «سعوي» (بالساعة، كما هو مطبوع) وسطر «شهري» (بالشهر): تحدد فئة الأعوان السطر المعتمد.",
+          "لا تُحتسب إعادة الترتيب حسب الأقدمية (الفصل 52، الصفحة 16) ولا الترقية (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد) و 52، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "PEI_EXECUTION_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2022-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الدهن.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/peintures.json",
+        "decision_ref": "D81"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-22-chaussure-horaires-degre-30",
+    "status": "ok",
+    "result": {
+      "montant": "3.881",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "horaires",
+        "categorie": "VI",
+        "degre": 30,
+        "degre_imprime": "30",
+        "degre_declare": true,
+        "regle_au_dela_non_appliquee": "article 12 (جديد), page 8",
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_HORAIRES_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 33,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-23-chaussure-mensuels-1b-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "579.170",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "1",
+        "sous_categorie": "b",
+        "libelle_fr": "Catégorie 1 ب",
+        "libelle_ar": "الصنف 1 ب",
+        "degre": 1,
+        "degre_imprime": "1",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2021-12-01",
+        "effective_date": "2021-12-01",
+        "date_calcul": "2021-12-15",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 30,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-24-chaussure-mensuels-anomalie-degre-24",
+    "status": "ok",
+    "result": {
+      "montant": "707.557",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CHAUSSURE",
+        "population": "mensuels",
+        "categorie": "5",
+        "degre": 24,
+        "degre_imprime": "24",
+        "degre_declare": true,
+        "hypotheses": [
+          "Promotion automatique au dernier degré (art. 12 (جديد) أ, page 8), promotion d'une catégorie à la suivante et promotion deux ans avant la retraite (art. 12 (جديد) ب) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "La grille n'imprime aucune durée de degré (article 12 (جديد), page 8) : le degré déclaré n'est rattaché à aucune ancienneté."
+        ],
+        "hypotheses_ar": [
+          "لا تُحتسب الترقية الآلية عند بلوغ أقصى درجة (الفصل 12 (جديد) أ، الصفحة 8) ولا الترقية من صنف إلى صنف ولا الترقية قبل الإحالة على التقاعد بسنتين (الفصل 12 (جديد) ب).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "لا يذكر الجدول مدة أي درجة (الفصل 12 (جديد)، الصفحة 8): لا ترتبط الدرجة المصرَّح بها بأي أقدمية."
+        ],
+        "table_id": "CHA_MENSUELS_2023-01-01",
+        "effective_date": "2023-01-01",
+        "date_calcul": "2023-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الاحذية و ما شاكلها.pdf",
+        "page": 32,
+        "article": null,
+        "data_file": "data/processed/salary_grids/chaussure.json",
+        "decision_ref": "D82"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-25-refus-peintures-degre-absent",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "PARAM_INVALIDE",
+      "message_fr": "Degré 14 absent de la grille PEINTURES/execution_horaires (table PEI_EXECUTION_HORAIRES_2024-01-01) ; désignations imprimées acceptées : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.",
+      "message_ar": "الدرجة 14 غير موجودة في جدول الأجور PEINTURES/execution_horaires (الجدول PEI_EXECUTION_HORAIRES_2024-01-01)؛ التسميات المطبوعة المقبولة: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-26-cinema-projectionniste-degre-13",
+    "status": "ok",
+    "result": {
+      "montant": "410.151",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "SALLES_CINEMA",
+        "population": "agents",
+        "categorie": "III_4",
+        "degre": 13,
+        "degre_imprime": "13",
+        "degre_declare": true,
+        "libelle_degre": "24-26",
+        "regle_au_dela_non_appliquee": "article 12 (جديد), page 8",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 17) : TND/mois en hypothèse (montants de 301,587 à 452,878).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes de la grille (page 17) : postes nommés, groupés en catégories I (3 postes), II (4) et III (6) ; clé = catégorie et position du poste dans la catégorie.",
+          "Promotion automatique à la catégorie supérieure après cinq ans (article 12 (جديد), page 8) : non calculée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 26 ans ; au-delà, la convention ne fixe pas le montant (article 12 (جديد), page 8). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 17): الدينار في الشهر على سبيل الافتراض (مبالغ من 301,587 à 452,878).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجدول (الصفحة 17): خطط مسماة مجمعة في الأصناف I (3 خطط) وII (4) وIII (6)؛ المفتاح هو الصنف وترتيب الخطة داخله.",
+          "لا تُحتسب الترقية الآلية إلى الصنف الأعلى بعد خمس سنوات (الفصل 12 (جديد)، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 26 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 12 (جديد)، الصفحة 8). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "CINEMA_2011-05-01",
+        "effective_date": "2011-05-01",
+        "date_calcul": "2020-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/قاعات العرض السينيمائي.pdf",
+        "page": 17,
+        "article": null,
+        "data_file": "data/processed/salary_grids/salles_cinema.json",
+        "decision_ref": "D88"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-27-transport-categorie-15-degre-13",
+    "status": "ok",
+    "result": {
+      "montant": "748.830",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+        "population": "agents",
+        "categorie": "15",
+        "degre": 13,
+        "degre_imprime": "13",
+        "degre_declare": true,
+        "libelle_degre": "24+",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 18) : TND/mois en hypothèse (montants de 397,893 à 854,523).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Note 2 sous le tableau n° 2 (page 18) : si, après une hausse du SMIG (régime de 48 heures), le salaire d'un degré de la grille lui devient inférieur, il est relevé automatiquement au nouveau montant du SMIG ; ce relèvement n'est pas calculé ici.",
+          "Dernier degré ouvert (« 24+ ») : au-delà, l'agent poursuit sa progression dans l'échelle suivante (article 13, page 8) ; ce passage n'est pas calculé.",
+          "Promotion au choix dans l'échelle (article 13 ب, page 7) : non calculée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 18): الدينار في الشهر على سبيل الافتراض (مبالغ من 397,893 à 854,523).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الملاحظة 2 تحت جدول الأجور عدد 2 (الصفحة 18): «في الحالة التي تصير فيها أجور بعض الدرجات بهذا الجدول أقل من الأجر الأدنى (نظام 48 ساعة) على إثر الزيادة فيه فإنه يتمّ الترفيع آليا في تلك الأجور لتكون متطابقة تماما مع المقدار الجديد للأجر الادنى»؛ لا يُحتسب هذا الترفيع هنا.",
+          "آخر درجة مفتوحة («24+»): بعدها يتابع العون تقدمه داخل السلم الموالي (الفصل 13، الصفحة 8)؛ لا يُحتسب هذا الانتقال.",
+          "لا تُحتسب الترقية بالاختيار في السلم (الفصل 13 ب، الصفحة 7).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية."
+        ],
+        "table_id": "TRANSPORT_2017-05-01",
+        "effective_date": "2017-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/نقل البضائع عبر الطرقات.pdf",
+        "page": 18,
+        "article": null,
+        "data_file": "data/processed/salary_grids/transport_routier_marchandises.json",
+        "decision_ref": "D89"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-28-clercs-anomalie-degre-5",
+    "status": "ok",
+    "result": {
+      "montant": "348.380",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLERCS_AVOCATS",
+        "population": "clercs",
+        "categorie": "1",
+        "degre": 5,
+        "degre_imprime": "5",
+        "degre_declare": true,
+        "libelle_degre": "6-9",
+        "hypotheses": [
+          "Aucune date d'effet n'est imprimée sur la grille (annexe 1, page 12) : date d'effet retenue en hypothèse, le 1er mai 2014, entrée en vigueur de la convention (article 47, page 11) ; aucun montant n'est renvoyé avant cette date.",
+          "Unité non imprimée sur la grille (page 12) : TND/mois en hypothèse (montants de 335,555 à 545,736).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Promotion automatique d'une catégorie à la suivante (article 11 ب, pages 4-5) : non calculée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر جدول الأجور (الملحق عدد 1، الصفحة 12) تاريخ نفاذ: يُعتمد على سبيل الافتراض تاريخ 1 ماي 2014، تاريخ دخول الاتفاقية حيز التنفيذ (الفصل 47، الصفحة 11)؛ لا يُرجَع أي مبلغ قبل هذا التاريخ.",
+          "الوحدة غير مطبوعة بالجدول (الصفحة 12): الدينار في الشهر على سبيل الافتراض (مبالغ من 335,555 à 545,736).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب الترقية الآلية من صنف إلى الصنف الموالي (الفصل 11 ب، الصفحتان 4 و5).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية."
+        ],
+        "table_id": "CLERCS_2014-05-01",
+        "effective_date": "2014-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+        "page": 12,
+        "article": null,
+        "data_file": "data/processed/salary_grids/clercs_avocats.json",
+        "decision_ref": "D84"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-29-grossistes-ii-a-degre-15",
+    "status": "ok",
+    "result": {
+      "montant": "465.220",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+        "population": "agents",
+        "categorie": "II",
+        "sous_categorie": "1",
+        "libelle_fr": "Catégorie II, première sous-ligne (أ)",
+        "libelle_ar": "الصنف II أ",
+        "degre": 15,
+        "degre_imprime": "15",
+        "degre_declare": true,
+        "anciennete_imprimee": "29",
+        "libelle_degre": "27-29",
+        "regle_au_dela_non_appliquee": "article 12, page 6",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 351,255 à 714,112).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Sous-lignes أ et ب des catégories I à V numérotées par position (1 = أ, 2 = ب), sans libellé sur la grille (page 19) : la sous-ligne est donnée par l'appelant.",
+          "Promotion à la catégorie supérieure après cinq ans d'ancienneté, par examen (article 12 ب, page 6) : non calculée.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 19) : « 29 ».",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 29 ans ; au-delà, la convention ne fixe pas le montant (article 12, page 6). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 351,255 à 714,112).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "السطران الفرعيان أ وب للأصناف من I إلى V مرقمان حسب الترتيب (1 = أ، 2 = ب) دون تسمية بالجدول (الصفحة 19): يحدد الطالب السطر الفرعي.",
+          "لا تُحتسب الترقية إلى الصنف الأعلى بعد خمس سنوات أقدمية عن طريق امتحان مهني (الفصل 12 ب، الصفحة 6).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 19): «29».",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 29 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 12، الصفحة 6). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "GROSS_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2020-01-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/موزعي الأدوية بالجملة و نصف الجملة.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/grossistes_medicaments.json",
+        "decision_ref": "D87"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]

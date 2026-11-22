@@ -5,6 +5,7 @@ réponse (hors contract_version), sauf les écarts listés. Lancer depuis la rac
 """
 
 import copy
+import datetime
 import hashlib
 import io
 import json
@@ -73,19 +74,60 @@ def _empreinte(chemin: str) -> str:
             "data/mock_cards/schemas/track_b_response.v0.schema.json",
             "3dacaa34622da5b814d13dcd1864bea96cd324e2f6db718bc076a1ab6e9fe285",
         ),
-        (
-            "data/mock_cards/track_b_requests_demo.json",
-            "f520beccde3505b39667bc59635fc7897f3162a3fc0ed72ae456e7d81bb355c3",
-        ),
-        (
-            "src/track_b_accounting/tests/references/track_b_responses_demo.json",
-            "63cfcf731acacc12ac02dfe83cbb33675e981947c799f805cfc118034612b04d",
-        ),
     ],
 )
 def test_fichiers_v0_identiques_a_l_octet(chemin, empreinte):
-    """Schémas v0, 211 démos v0 et leurs réponses de référence : contenu inchangé (fins de ligne normalisées)."""
+    """Schémas v0 : contenu inchangé (fins de ligne normalisées)."""
     assert _empreinte(chemin) == empreinte
+
+
+# 211 démos v0 figées au contrat v1 (D75) : requêtes et réponses de référence, valables quand des démos ou des secteurs
+# s'ajoutent. Empreinte = SHA-256 du JSON canonique (clés triées, UTF-8) ; seule demo-10 change avec les secteurs.
+N_DEMOS_FIGEES = 211
+D10 = "demo-10-refus-secteur-non-couvert"
+EMPREINTE_REQUETES_FIGEES = "a0fc6e2fdbe123062bab4e9c3cd0184eade26f2deb0313c390dfe0ed929579d0"
+EMPREINTE_REPONSES_FIGEES_HORS_D10 = "e2431c7a2b4de0ce0e22cfedebd15be2a9e8120f3dcd63fb1f450901f61dee98"
+EMPREINTE_D10_SANS_LISTE = "e65e5b6f451f6abea5aeced35cffd04722188b05ad846a0203af9ac1a5bef0c2"
+SECTEURS_D10_FIGES = (
+    "METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, "
+    "BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, "
+    "CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, "
+    "COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
+    "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, "
+    "COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, "
+    "TEXTILE, FONDERIE_METALLURGIE_MECANIQUE"
+).split(", ")
+LISTE_SECTEURS = re.compile(r"\((disponibles : |المتوفر: )([A-Z_, ]+)\)\.$")
+REPONSES_REF = json.loads(
+    (REPO_ROOT / "src/track_b_accounting/tests/references/track_b_responses_demo.json").read_text(encoding="utf-8")
+)
+
+
+def _empreinte_json(objet) -> str:
+    return hashlib.sha256(json.dumps(objet, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def test_211_premieres_demos_v0_inchangees():
+    assert len(DEMO) >= N_DEMOS_FIGEES and len(REPONSES_REF) == len(DEMO)
+    assert _empreinte_json(DEMO[:N_DEMOS_FIGEES]) == EMPREINTE_REQUETES_FIGEES
+    figees = [r for r in REPONSES_REF[:N_DEMOS_FIGEES] if r["request_id"] != D10]
+    assert len(figees) == N_DEMOS_FIGEES - 1
+    assert _empreinte_json(figees) == EMPREINTE_REPONSES_FIGEES_HORS_D10
+
+
+def test_demo_10_ne_differe_que_par_la_liste_des_secteurs():
+    """Réponse de demo-10 = réponse figée, liste des secteurs disponibles mise à part ; chaque secteur figé y est encore,
+    dans les deux langues, avec la même liste en FR et en AR."""
+    rep = copy.deepcopy(next(r for r in REPONSES_REF[:N_DEMOS_FIGEES] if r["request_id"] == D10))
+    listes = []
+    for k in ("message_fr", "message_ar"):
+        m = LISTE_SECTEURS.search(rep["refus"][k])
+        assert m, k
+        listes.append(m[2].split(", "))
+        rep["refus"][k] = LISTE_SECTEURS.sub(r"(\1…).", rep["refus"][k])
+    assert _empreinte_json(rep) == EMPREINTE_D10_SANS_LISTE
+    assert listes[0] == listes[1] and len(set(listes[0])) == len(listes[0])
+    assert set(SECTEURS_D10_FIGES) <= set(listes[0])
 
 
 # Démos v0 rejouées en v1 : seules différences admises (D76) ; la CNSS nomme la version dans son message.
@@ -259,6 +301,16 @@ def test_bilan_demo_v1():
         "demo-v1-16-bois-aide-deces-4-decimales": ("466.6666", "TND/versement"),
         "demo-v1-17-fonderie-prime-panier-millimes": ("706.666", "millimes/jour"),
         "demo-v1-18-sans-degre-identique-a-v0": ("593.873", "TND/mois"),
+        "demo-v1-19-peintures-execution-horaires-degre-13": ("5.668", "TND/heure"),
+        "demo-v1-20-peintures-administratifs-degre-1": ("1428.536", "TND/mois"),
+        "demo-v1-21-peintures-execution-mensuels-degre-7": ("540.294", "TND/mois"),
+        "demo-v1-22-chaussure-horaires-degre-30": ("3.881", "TND/heure"),
+        "demo-v1-23-chaussure-mensuels-1b-degre-1": ("579.170", "TND/mois"),
+        "demo-v1-24-chaussure-mensuels-anomalie-degre-24": ("707.557", "TND/mois"),
+        "demo-v1-26-cinema-projectionniste-degre-13": ("410.151", "TND/mois"),
+        "demo-v1-27-transport-categorie-15-degre-13": ("748.830", "TND/mois"),
+        "demo-v1-28-clercs-anomalie-degre-5": ("348.380", "TND/mois"),
+        "demo-v1-29-grossistes-ii-a-degre-15": ("465.220", "TND/mois"),
     }
     codes = {k: r["refus"]["code"] for k, r in reps.items() if r["status"] == "refus"}
     assert codes == {
@@ -267,6 +319,7 @@ def test_bilan_demo_v1():
         "demo-v1-10-refus-degre-et-anciennete": "PARAM_INVALIDE",
         "demo-v1-11-refus-ni-degre-ni-anciennete": "PARAM_INVALIDE",
         "demo-v1-12-refus-confiserie-cellule-illisible": "SOURCE_MANQUANTE",
+        "demo-v1-25-refus-peintures-degre-absent": "PARAM_INVALIDE",
     }
 
 
@@ -285,9 +338,9 @@ def test_demo_affiche_la_serie_v1_apres_la_serie_v0():
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 18
-    assert texte.index("Bilan : 109 ok, 102 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/18")
-    assert texte.rstrip().endswith("Bilan v1 : 13 ok, 5 refus, 0 erreur(s).")
+    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 29
+    assert texte.index("Bilan : 163 ok, 136 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/29")
+    assert texte.rstrip().endswith("Bilan v1 : 23 ok, 6 refus, 0 erreur(s).")
 
 
 # --- demande par degré : chaque cellule imprimée ----------------------------------------------------------------------
@@ -316,6 +369,10 @@ def test_chaque_cellule_atteinte_par_son_degre_imprime():
                 continue
             noms = loaders.designations_degres(degres)
             manquantes = {(c["categorie"], c["degre"]): c for c in t.get("cellules_source_manquante", [])}
+            jour = t["effective_date"]
+            for p in t.get("periodes_refusees", []):  # date d'effet refusée (D80) : lendemain de la période
+                if p["du"] <= jour <= p["au"]:
+                    jour = (datetime.date.fromisoformat(p["au"]) + datetime.timedelta(days=1)).isoformat()
             ns = t.get("colonnes_non_servies") if t.get("colonnes_non_servies", {}).get("servies_par_degre") else None
             for cle, vals in t["valeurs"].items():
                 cat, sous = _requete_categorie(g, pop, cle)
@@ -325,7 +382,7 @@ def test_chaque_cellule_atteinte_par_son_degre_imprime():
                 for nom, v, deg in cases:
                     vus += 1
                     try:
-                        r = salaire_base(secteur, pop, cat, None, t["effective_date"], None, sous, degre=nom)
+                        r = salaire_base(secteur, pop, cat, None, jour, None, sous, degre=nom)
                     except Refus as e:
                         c = manquantes.get((cle, deg))
                         assert v is None and c is not None and not c.get("servie_par_degre"), (secteur, cle, nom)
@@ -613,8 +670,8 @@ def test_chemin_par_l_anciennete_affiche_toujours_ces_hypotheses():
 
 
 def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
-    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (52 phrases,
-    27 fichiers), avec leur traduction arabe au même rang."""
+    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (74 phrases,
+    39 fichiers), avec leur traduction arabe au même rang."""
     fichiers = phrases = 0
     for chemin in loaders.GRILLES.values():
         g = lire_json(chemin)
@@ -626,7 +683,7 @@ def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
             phrases += len(rangs)
             vu = vu or bool(rangs)
         fichiers += vu
-    assert (fichiers, phrases) == (27, 52)
+    assert (fichiers, phrases) == (39, 74)
 
 
 @pytest.mark.parametrize("rangs", [[], [5], [0, 0], ["1"], [True], "1"])
@@ -796,9 +853,22 @@ def test_jeu_de_reference_cas_v1():
         (REPO_ROOT / "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json").read_text(encoding="utf-8")
     )
     v1 = [c for c in golden["cases"] if c["requete"].get("contract_version") == V1]
-    assert [c["id"] for c in v1] == [f"TB-{i}" for i in range(291, 309)]
-    assert all(c["verification_humaine"] for c in v1)  # VERIFIES par DS5, 2026-11-21
-    assert all(c["justification"]["pdf"] and c["justification"]["page"] for c in v1)
+    ids = [c["id"] for c in v1]
+    assert len(ids) == len(set(ids)) and len({c["id"] for c in golden["cases"]}) == len(golden["cases"])
+    # Cas du contrat v1 (D75 à D77) : présents et VÉRIFIÉS par DS5, 2026-11-21.
+    premiers = {c["id"]: c for c in v1 if c["id"] in {f"TB-{i}" for i in range(291, 309)}}
+    assert sorted(premiers, key=lambda x: int(x[3:])) == [f"TB-{i}" for i in range(291, 309)]
+    assert all(c["verification_humaine"] for c in premiers.values())
+    assert all(c["justification"]["pdf"] and c["justification"]["page"] for c in premiers.values())
+    # Cas v1 ajoutés ensuite (vagues de grilles) : page, ligne, colonne et rendu ; vérification libre (false ou true).
+    for c in v1:
+        if c["id"] in premiers:
+            continue
+        j = c["justification"]
+        assert (
+            j["pdf"] and j["page"] and j["ligne"] not in (None, "") and j["colonne"] not in (None, "") and j["rendu"]
+        ), c["id"]
+        assert isinstance(c["verification_humaine"], bool)
     assert not any("contract_version" in c["requete"] for c in golden["cases"] if c not in v1)
 
 
