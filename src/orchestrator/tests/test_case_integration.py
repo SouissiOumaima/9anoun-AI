@@ -164,19 +164,29 @@ def test_ds3_error_messages_and_retry_reach_web_api(setup_flow, monkeypatch, cod
 
     flow.ds3 = unavailable
     monkeypatch.setattr(web_app, '_CASE_WORKFLOW', flow)
-    result = web_app.case_integration_action({'language': 'ar'})
-    assert result['status'] == ('retry_later' if retryable else 'blocked')
-    assert result['retryable'] is retryable
-    assert result['code'] == f'DS3_{code}'
-    assert result['message_fr'] == 'Lecture en cours. Réessayez.'
-    assert result['message_ar'] == 'القراءة جارية. أعد المحاولة.'
-    assert calls == ['ds3']
-    assert not flow._sessions
+    for attempt in range(2):
+        result = web_app.case_integration_action({'language': 'ar'})
+        assert result['status'] == ('retry_later' if retryable else 'blocked')
+        assert result['retryable'] is retryable
+        assert result['code'] == f'DS3_{code}'
+        assert result['message_fr'] == 'Lecture en cours. Réessayez.'
+        assert result['message_ar'] == 'القراءة جارية. أعد المحاولة.'
+        assert calls == ['ds3'] * (attempt + 1)
+        assert not flow._sessions
+        assert 'facts' not in result and 'review_id' not in result
     flow.ds3 = original
     prepared = web_app.case_integration_action({'language': 'ar'})
     assert prepared['status'] == 'pending_confirmation'
-    assert calls == ['ds3', 'ds3']
+    assert calls == ['ds3'] * 3
     assert all(not f['user_confirmed'] for f in prepared['facts'])
+    completed = web_app.case_integration_action({
+        'review_id': prepared['review_id'],
+        'confirmed_fact_ids': [next(f['fact_id'] for f in prepared['facts'] if f['selectable'])],
+        'confirm_document_link': True,
+    }, complete=True)
+    assert completed['status'] == 'completed'
+    assert calls == ['ds3'] * 3 + ['ds2']
+    assert completed['analysis']['legal_conclusion'] is None
 
 
 def test_ds3_refusal_preserves_messages_without_retry(setup_flow, monkeypatch):
