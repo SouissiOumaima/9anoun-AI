@@ -108,6 +108,8 @@ def ocr_available(ocr_engine: Any | None = None, ocr_backend: OcrBackend | None 
 
     Oui si un backend ou un moteur est fourni, si le backend en arrière-plan est configuré (PaddleOCR installé et
     DS3_CACHE_DIR défini), ou si PaddleOCR est installé et autorisé dans le processus (DS3_OCR_INPROCESS=1).
+    Ce n'est qu'une disponibilité : `read_document` prend toujours le backend du serveur avant l'OCR dans le
+    processus ; celui-ci ne sert que sans DS3_CACHE_DIR (ou avec un moteur passé en paramètre, pour les tests).
     """
     return (ocr_backend is not None or ocr_engine is not None or default_backend() is not None
             or (paddle_installed() and ocr_inprocess_enabled()))
@@ -116,7 +118,8 @@ def ocr_available(ocr_engine: Any | None = None, ocr_backend: OcrBackend | None 
 def _check_image(path: Path) -> None:
     """Refuse une image corrompue AVANT l'OCR (elle doit donner FILE_EMPTY_OR_CORRUPTED, pas SOURCE_MANQUANTE).
 
-    Signature du format d'abord (sans dépendance), puis contrôle complet par Pillow quand il est installé.
+    Signature du format d'abord (sans dépendance), puis décodage complet par Pillow quand il est installé :
+    `verify()` seul ne lit pas les pixels (un JPEG tronqué le passe), `load()` décode toute l'image.
     """
     with path.open("rb") as handle:
         head = handle.read(8)
@@ -127,7 +130,9 @@ def _check_image(path: Path) -> None:
     except ImportError:  # sans Pillow, le processus OCR échouera de lui-même (état echec)
         return
     with Image.open(path) as image:
-        image.verify()
+        image.verify()  # structure du fichier (sommes de contrôle PNG)
+    with Image.open(path) as image:  # verify() rend l'objet inutilisable : on rouvre
+        image.load()  # pixels : un fichier tronqué lève OSError
 
 
 def _read_with_backend(path: Path, document_id: str, card_id: str, backend: OcrBackend,

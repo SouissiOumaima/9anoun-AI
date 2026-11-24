@@ -9,6 +9,8 @@ il tourne avec ou sans requirements-ocr.txt.
 from __future__ import annotations
 
 import copy
+import sys
+import types
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -202,6 +204,38 @@ def test_broken_image_is_corrupted_and_never_reaches_the_backend(tmp_path: Path)
     resp = analyze_payslip_pdf(fake, request_for(SCAN), client=FakeClient("{}"), ocr_backend=backend)
     assert resp["status"] == "refus" and resp["ds3_code"] == "FILE_EMPTY_OR_CORRUPTED"
     assert backend.calls == []
+
+
+def test_truncated_jpeg_is_corrupted_and_never_reaches_the_backend(tmp_path: Path) -> None:
+    """Un JPEG coupé passe `Image.verify()` : seul le décodage complet le détecte (relecture Graphify, #58)."""
+    image_module = pytest.importorskip("PIL.Image")
+    full = tmp_path / "complet.jpg"
+    image_module.frombytes("RGB", (600, 400), bytes(range(256)) * 2812 + bytes(128)).save(full, "JPEG")
+    cut = tmp_path / "coupe.jpg"
+    cut.write_bytes(full.read_bytes()[: int(full.stat().st_size * 0.6)])
+    backend = FakeBackend(EN_COURS)
+    resp = analyze_payslip_pdf(cut, request_for(SCAN), client=FakeClient("{}"), ocr_backend=backend)
+    assert resp["status"] == "refus" and resp["ds3_code"] == "FILE_EMPTY_OR_CORRUPTED"
+    assert backend.calls == []
+    assert_timeout(analyze_payslip_pdf(full, request_for(SCAN), client=FakeClient("{}"), ocr_backend=backend))
+
+
+def test_server_backend_wins_over_in_process_ocr(monkeypatch: pytest.MonkeyPatch) -> None:
+    """DS3_CACHE_DIR configuré ET DS3_OCR_INPROCESS=1 : c'est le backend en arrière-plan qui lit, jamais l'OCR
+    dans le processus (relecture Graphify, #58)."""
+    monkeypatch.setattr(pipeline, "paddle_installed", lambda: True)
+    monkeypatch.setenv(pipeline.INPROCESS_ENV, "1")
+    backend = FakeBackend(EN_COURS)
+    monkeypatch.setattr(ocr_cache, "default_backend", lambda: backend)
+
+    def in_process_ocr(*args: Any, **kwargs: Any) -> None:
+        raise AssertionError("OCR lancé dans le processus du service")
+
+    # faux module reading.ocr (sans numpy ni Paddle) : l'appeler ferait échouer le test
+    fake_ocr = types.SimpleNamespace(ocr_pending_zones=in_process_ocr, read_image=in_process_ocr)
+    monkeypatch.setitem(sys.modules, "src.document_intelligence.reading.ocr", fake_ocr)
+    assert_timeout(analyze_payslip_pdf(SCAN_PATH, request_for(SCAN), client=FakeClient("{}")))
+    assert backend.calls
 
 
 def test_without_ocr_a_scan_behaves_as_before() -> None:

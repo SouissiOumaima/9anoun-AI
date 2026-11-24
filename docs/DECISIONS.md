@@ -2095,7 +2095,8 @@ renvoie jamais un résultat incomplet ; DS1 n'a qu'un cas à gérer (`TIMEOUT` r
 **Statut** : ✅ appliquée à la fusion de la PR qui la contient ; prouvée par
 `test_document_intelligence_ocr_d42.py` (scan lu depuis le cache et cité avec la confiance de l'OCR, PDF natif
 sans appel au backend, `TIMEOUT` à chaque essai puis réponse du cache, échec sur un scan et sur un PDF mixte,
-image valide en échec, image corrompue avant l'OCR, OCR non disponible, refus d'accès du cache, backend
+image valide en échec, image corrompue ou JPEG tronqué refusés avant l'OCR (décodage complet par Pillow), OCR non
+disponible, backend du serveur prioritaire sur l'OCR dans le processus, refus d'accès du cache, backend
 prioritaire sur un moteur, backend du serveur pris par défaut, PaddleOCR installé sans `DS3_CACHE_DIR` (refus D41
 au service et au pipeline), image lue par le service, formats refusés, et le vrai `OcrCache` de bout en bout avec
 un faux processus OCR : `TIMEOUT`, un seul OCR lancé, réponse `ok`, échec non relancé).
