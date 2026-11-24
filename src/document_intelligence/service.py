@@ -10,6 +10,7 @@ Ce que fait le service, dans l'ordre :
 2. retrouve le fichier à partir de `document.storage_ref` (voir « Stockage » ci-dessous) ;
 3. vérifie ce qui est disponible en live aujourd'hui : fiches de paie en PDF, PNG ou JPG (images lues par
    l'OCR de la partie A quand il est disponible, D41), opération `analyze_document` ;
+   l'OCR tourne en arrière-plan (D42) : tant qu'il n'a pas fini, la réponse est `erreur` TIMEOUT réessayable ;
 4. appelle la chaîne d'extraction (lecture, Gemini, vérification, normalisation, réponse citée).
 Il ne lève jamais d'exception : tout problème devient une réponse `refus` ou `erreur`.
 
@@ -52,6 +53,7 @@ from src.document_intelligence.extraction.pipeline import (
     OCR_IMAGE_FR,
     analyze_payslip_pdf,
 )
+from src.document_intelligence.reading.ocr_cache import OcrBackend
 
 log = logging.getLogger(__name__)
 
@@ -148,15 +150,15 @@ def resolve_storage_ref(req: DS3Request, root: Path) -> Path:
 
 def handle_request(request: dict[str, Any], *, storage_root_dir: Path | str | None = None,
                    client: Any | None = None, model: str | None = None,
-                   ocr_engine: Any | None = None) -> dict[str, Any]:
+                   ocr_engine: Any | None = None, ocr_backend: OcrBackend | None = None) -> dict[str, Any]:
     """Point d'entrée unique DS3 en live. Reçoit et renvoie du JSON (dict), jamais d'exception.
 
     `client` et `model` permettent aux tests de remplacer Gemini (aucun appel réseau) ;
-    `ocr_engine` permet de remplacer PaddleOCR (aucun modèle chargé).
+    `ocr_backend` remplace le cache et le processus OCR (D42), `ocr_engine` PaddleOCR (aucun modèle chargé).
     """
     started = time.perf_counter()
     try:
-        return _handle(request, storage_root_dir, client, model, ocr_engine, started)
+        return _handle(request, storage_root_dir, client, model, ocr_engine, ocr_backend, started)
     except Exception:  # le contrat interdit de propager une exception à DS1
         log.exception("Erreur interne DS3")
         raw_id = request.get("request_id") if isinstance(request, dict) else None
@@ -166,7 +168,7 @@ def handle_request(request: dict[str, Any], *, storage_root_dir: Path | str | No
 
 
 def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | None, model: str | None,
-            ocr_engine: Any | None, started: float) -> dict[str, Any]:
+            ocr_engine: Any | None, ocr_backend: OcrBackend | None, started: float) -> dict[str, Any]:
     raw_id = request.get("request_id")
     operation = str(request.get("operation", "unknown"))
     env = _envelope(raw_id if isinstance(raw_id, str) and raw_id else None, operation, None, None, None, started)
@@ -194,7 +196,7 @@ def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | 
         return _refus(env, "UNSUPPORTED_FORMAT",
                       live_fr="Format pas encore pris en charge en live : seuls les PDF, PNG et JPG le sont.",
                       live_ar="هذه الصيغة غير مدعومة بعد في الخدمة الفعلية: ملفات PDF وPNG وJPG فقط حاليا.")
-    if suffix in IMAGE_EXTENSIONS and not pipeline.ocr_available(ocr_engine):
+    if suffix in IMAGE_EXTENSIONS and not pipeline.ocr_available(ocr_engine, ocr_backend):
         # D41 : refus clair, décidé avant toute lecture du fichier.
         return _refus(env, "UNSUPPORTED_FORMAT", live_fr=OCR_IMAGE_FR, live_ar=OCR_IMAGE_AR)
     if req.options.expected_type not in LIVE_DOCUMENT_TYPES:
@@ -215,7 +217,8 @@ def _handle(request: dict[str, Any], root_dir: Path | str | None, client: Any | 
             return _refus(env, "ACCESS_DENIED")
         return _refus(env, exc.code, exc.detail)
 
-    return analyze_payslip_pdf(path, req, client=client, model=model, ocr_engine=ocr_engine)
+    return analyze_payslip_pdf(path, req, client=client, model=model, ocr_engine=ocr_engine,
+                               ocr_backend=ocr_backend)
 
 
 # ------------------------------------------------------------------ démonstration en ligne de commande

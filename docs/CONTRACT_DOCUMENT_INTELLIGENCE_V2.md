@@ -164,11 +164,18 @@ Même entrée et même sortie que le mock : seules les valeurs changent (`mode =
 **Disponible en live aujourd'hui :** `analyze_document` sur une **fiche de paie en PDF, PNG ou JPG** (D41). Le
 texte natif du PDF est lu d'abord ; les zones image, les pages scannées et les images sont lues par l'OCR de la
 partie A (PaddleOCR PP-OCRv5, arabe et français), seulement s'il reste quelque chose à lire et si l'OCR est
-disponible sur le serveur (aujourd'hui : PaddleOCR installé et `DS3_OCR_INPROCESS=1`, réservé aux démonstrations ;
-ensuite : backend OCR en arrière-plan, D42). Une ligne lue par
+disponible sur le serveur (PaddleOCR installé et `DS3_CACHE_DIR` défini : backend en arrière-plan, D42 ; pour les
+démonstrations seulement, `DS3_OCR_INPROCESS=1`). Une ligne lue par
 l'OCR porte sa confiance réelle, sans seuil : sous 0,90, DS1 l'affiche mais ne permet pas de l'utiliser pour un
 calcul. Pour une image, les `bbox`
 sont en points d'une page virtuelle de `pixels × 72 / dpi` points (300 DPI par défaut).
+
+**Lecture OCR en arrière-plan (D42).** À la première question sur un document qui demande l'OCR, la réponse est
+`erreur` `TIMEOUT` avec `retryable = true` (« Lecture du document en cours : réessayez dans quelques instants. ») :
+l'OCR tourne en arrière-plan, dans un processus séparé (environ 30 s par page sur CPU). DS1 repose la question plus
+tard (bouton Réessayer). **Tant que la lecture n'est pas terminée, chaque nouvel essai reçoit la même réponse
+`TIMEOUT` réessayable** (l'OCR n'est pas relancé). Le résultat gardé en cache n'est servi **qu'une fois la lecture
+achevée** : jamais de résultat partiel. Un PDF entièrement natif ne passe jamais par l'OCR.
 
 **Limite de l'OCR.** Un chiffre **perdu** par l'OCR est attrapé par la vérification (le champ reste à `null`). Un
 chiffre **remplacé** (424,700 lu au lieu de 424,100) ne l'est pas, puisqu'il figure dans la ligne lue. Ce qui
@@ -183,7 +190,10 @@ Le reste donne un refus clair, en français et en arabe :
 | fichier autre que PDF, PNG, JPG | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
 | image alors que l'OCR n'est pas disponible sur le serveur | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`), message « OCR non installé ou pas activé », décidé avant toute lecture |
 | `expected_type` autre que `fiche_de_paie` | `refus` `HORS_SCOPE` (`UNSUPPORTED_FORMAT`) |
+| lecture OCR en cours (première question, et chaque nouvel essai tant qu'elle n'est pas terminée) | `erreur` `TIMEOUT`, `retryable = true` (D42) |
 | document où ni la couche texte ni l'OCR ne lisent rien | `refus` `SOURCE_MANQUANTE` (Gemini n'est pas appelé) |
+| lecture OCR en échec : PDF | lecture native seule, avertissement « OCR interrompu » (`SOURCE_MANQUANTE` si rien n'est lisible) |
+| lecture OCR en échec : image valide | `refus` `SOURCE_MANQUANTE` (`UNREADABLE_DOCUMENT`), jamais `FILE_EMPTY_OR_CORRUPTED` |
 | image corrompue | `refus` `PARAM_INVALIDE` (`FILE_EMPTY_OR_CORRUPTED`) |
 | Gemini indisponible | `erreur` `INTERNAL_ERROR`, `retryable = true` |
 
