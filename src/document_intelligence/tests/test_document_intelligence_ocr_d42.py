@@ -252,6 +252,45 @@ def test_cache_access_refusal_is_a_neutral_access_denied() -> None:
     assert resp["document_id"] is None  # comme le stockage (D40) : rien n'est confirmé
 
 
+@pytest.mark.parametrize("error", [PermissionError("DS3_CACHE_DIR non accessible"), OSError("disque plein")])
+def test_cache_incident_is_never_reported_as_a_corrupted_file(tmp_path: Path, error: Exception) -> None:
+    """Relecture Graphify (#58) : un cache du serveur inutilisable n'est jamais FILE_EMPTY_OR_CORRUPTED.
+    PDF : lecture native seule, avec l'avertissement ; image valide : `erreur` INTERNAL_ERROR (incident serveur)."""
+    pdf = mixed_pdf(tmp_path / "mixte.pdf")
+    native = read_pdf(pdf, document_id="doc_mixte")
+    line = next(line for p in native.pages for line in p.lines)
+    answer = GeminiPayslipAnswer(document_type="fiche_de_paie",
+                                 fields={"base_salary": RawField(raw="424,100", line_id=line.line_id)})
+    resp = analyze_payslip_pdf(pdf, request_for(NATIVE), client=FakeClient(_output_json(answer)),
+                               ocr_backend=FakeBackend(error=error))
+    assert resp["status"] == "ok" and pipeline.OCR_FAILED_WARNING in resp["warnings"]
+
+    png = tmp_path / "paie.png"
+    png.write_bytes(png_bytes())
+    resp = analyze_payslip_pdf(png, request_for(SCAN), client=FakeClient("{}"), ocr_backend=FakeBackend(error=error))
+    DS3Response.model_validate(resp)
+    assert resp["status"] == "erreur" and resp["ds3_code"] == "INTERNAL_ERROR"
+    assert resp["ds3_code"] != "FILE_EMPTY_OR_CORRUPTED"
+
+
+def test_broken_image_never_reaches_in_process_ocr(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """Relecture Graphify (#58) : avec DS3_OCR_INPROCESS (démonstrations), une image corrompue est refusée avant
+    PaddleOCR, qui pourrait planter le service."""
+    sent_to_paddle: list[Path] = []
+
+    def in_process_ocr(path: Path, *args: Any, **kwargs: Any) -> None:
+        sent_to_paddle.append(path)
+        raise RuntimeError("PaddleOCR a reçu l'image")
+
+    monkeypatch.setitem(sys.modules, "src.document_intelligence.reading.ocr",
+                        types.SimpleNamespace(read_image=in_process_ocr, ocr_pending_zones=in_process_ocr))
+    fake = tmp_path / "casse.png"
+    fake.write_bytes(b"ceci n'est pas une image")
+    resp = analyze_payslip_pdf(fake, request_for(SCAN), client=FakeClient("{}"), ocr_engine=object())
+    assert resp["status"] == "refus" and resp["ds3_code"] == "FILE_EMPTY_OR_CORRUPTED"
+    assert sent_to_paddle == []
+
+
 def test_given_backend_takes_priority_over_an_engine() -> None:
     class Engine:
         calls = 0

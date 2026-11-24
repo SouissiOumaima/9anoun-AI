@@ -194,6 +194,7 @@ Le reste donne un refus clair, en français et en arabe :
 | document où ni la couche texte ni l'OCR ne lisent rien | `refus` `SOURCE_MANQUANTE` (Gemini n'est pas appelé) |
 | lecture OCR en échec : PDF | lecture native seule, avertissement « OCR interrompu » (`SOURCE_MANQUANTE` si rien n'est lisible) |
 | lecture OCR en échec : image valide | `refus` `SOURCE_MANQUANTE` (`UNREADABLE_DOCUMENT`), jamais `FILE_EMPTY_OR_CORRUPTED` |
+| cache OCR du serveur inutilisable (incident serveur) | PDF : lecture native seule, avertissement ; image : `erreur` `INTERNAL_ERROR` |
 | image corrompue | `refus` `PARAM_INVALIDE` (`FILE_EMPTY_OR_CORRUPTED`) |
 | Gemini indisponible | `erreur` `INTERNAL_ERROR`, `retryable = true` |
 

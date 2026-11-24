@@ -2064,6 +2064,9 @@ PaddleOCR est installé et que `DS3_CACHE_DIR` est défini** ; c'est le fonction
   l'avertissement « OCR interrompu » (`SOURCE_MANQUANTE` si rien n'est lisible) ; une **image valide** reçoit
   `refus` `SOURCE_MANQUANTE` (`UNREADABLE_DOCUMENT`), jamais `FILE_EMPTY_OR_CORRUPTED`. Une image corrompue est
   refusée **avant** l'OCR (`FILE_EMPTY_OR_CORRUPTED`).
+- **Cache du serveur inutilisable** (dossier non accessible, disque plein) : incident du serveur, jamais
+  `FILE_EMPTY_OR_CORRUPTED` ; un PDF garde sa lecture native (avertissement « OCR interrompu »), une image reçoit
+  `erreur` `INTERNAL_ERROR`. Une image corrompue n'atteint jamais PaddleOCR, même dans le processus (option B).
 - **Carte ou document refusé par le cache** (pas un simple nom) : `refus` `ACCES_REFUSE` (`ACCESS_DENIED`),
   `document_id` non renvoyé, comme pour le stockage (D40).
 - **Disponibilité (D41)** : `pipeline.ocr_available()` est la seule fonction utilisée par le service et par le
@@ -2096,7 +2099,8 @@ renvoie jamais un résultat incomplet ; DS1 n'a qu'un cas à gérer (`TIMEOUT` r
 `test_document_intelligence_ocr_d42.py` (scan lu depuis le cache et cité avec la confiance de l'OCR, PDF natif
 sans appel au backend, `TIMEOUT` à chaque essai puis réponse du cache, échec sur un scan et sur un PDF mixte,
 image valide en échec, image corrompue ou JPEG tronqué refusés avant l'OCR (décodage complet par Pillow), OCR non
-disponible, backend du serveur prioritaire sur l'OCR dans le processus, refus d'accès du cache, backend
+disponible, cache du serveur inutilisable (PDF et image), image corrompue jamais envoyée à l'OCR dans le
+processus, backend du serveur prioritaire sur l'OCR dans le processus, refus d'accès du cache, backend
 prioritaire sur un moteur, backend du serveur pris par défaut, PaddleOCR installé sans `DS3_CACHE_DIR` (refus D41
 au service et au pipeline), image lue par le service, formats refusés, et le vrai `OcrCache` de bout en bout avec
 un faux processus OCR : `TIMEOUT`, un seul OCR lancé, réponse `ok`, échec non relancé).

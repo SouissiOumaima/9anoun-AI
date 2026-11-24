@@ -33,7 +33,7 @@ import time
 from pathlib import Path
 from typing import Any, Final
 
-from src.document_intelligence.contract.v2.mock import _REFUS
+from src.document_intelligence.contract.v2.mock import _ERREURS, _REFUS
 from src.document_intelligence.contract.v2.models import (
     DS3Request,
     DS3Response,
@@ -84,6 +84,13 @@ class OcrFailed(Exception):
 
 class OcrAccessDenied(Exception):
     """Carte ou document refusé par les contrôles d'accès du cache OCR (pas un simple nom)."""
+
+
+class OcrBackendError(Exception):
+    """Le cache OCR du serveur ne répond pas (dossier non accessible, disque plein...) pour une image.
+
+    C'est un incident du serveur : jamais présenté comme un fichier vide ou endommagé.
+    """
 
 
 def paddle_installed() -> bool:
@@ -144,6 +151,12 @@ def _read_with_backend(path: Path, document_id: str, card_id: str, backend: OcrB
         state = backend.lookup_or_start(path, card_id=card_id, document_id=document_id)
     except CacheAccessError as exc:
         raise OcrAccessDenied(str(exc)) from exc
+    except Exception as exc:  # cache du serveur inutilisable : incident serveur, pas un fichier endommagé
+        log.exception("Cache OCR indisponible pour %s", path.name)
+        if native is None:
+            raise OcrBackendError() from exc
+        native.warnings.append(OCR_FAILED_WARNING)  # PDF : lecture native seule
+        return native
     if state.status == "pret" and state.document is not None:
         return state.document
     if state.status == "en_cours":
@@ -188,6 +201,7 @@ def read_document(path: Path, document_id: str, ocr_engine: Any | None = None, *
             from src.document_intelligence.reading.ocr import read_image
         except ImportError as exc:  # numpy / Pillow absents
             raise OcrUnavailable(OCR_UNAVAILABLE_WARNING) from exc
+        _check_image(path)  # une image corrompue n'arrive jamais à PaddleOCR, même dans le processus
         return read_image(path, engine=ocr_engine, document_id=document_id)
 
     doc = native
@@ -246,6 +260,12 @@ def analyze_payslip_pdf(pdf_path: Path, req: DS3Request, client: Any | None = No
         return DS3Response(
             **{**_envelope(req, started), "document_id": None}, status="refus", ds3_code="ACCESS_DENIED",
             refus=Refus(code=refus_code, message_fr=fr, message_ar=ar),
+        ).to_json()
+    except OcrBackendError:  # incident du serveur (cache OCR), jamais « fichier endommagé »
+        fr, ar, retryable = _ERREURS["INTERNAL_ERROR"]
+        return DS3Response(
+            **_envelope(req, started), status="erreur", refus=None, ds3_code="INTERNAL_ERROR",
+            retryable=retryable, erreur=Erreur(type="INTERNAL_ERROR", message_fr=fr, message_ar=ar),
         ).to_json()
     except OcrUnavailable:  # image sans OCR disponible (le service la refuse normalement avant, D41)
         return DS3Response(
