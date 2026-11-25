@@ -207,3 +207,111 @@ def test_original_response_is_not_modified(live_response):
     convert(live_response)
 
     assert live_response == original
+
+
+@pytest.mark.parametrize("currency", ["EUR", "USD"])
+def test_v1_rejects_foreign_currency(live_response, currency):
+    """Track A v1 ne doit pas perdre une devise etrangere."""
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["currency"] = currency
+
+    facts = convert(response)
+
+    # Exclure le montant etranger et conserver les autres faits TND.
+    assert {fact["field_name"] for fact in facts} == {
+        "gross_salary",
+        "cnss_employee",
+    }
+
+
+def test_provenance_preserves_original_metadata(live_response):
+    """Preserve monetary and period metadata without inference."""
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    provenance = build_document_provenance(live_response, "P1")
+    fields = live_response["result"]["fields"]
+    citations = {
+        item["citation_id"]: item
+        for item in live_response["citations"]
+    }
+
+    assert len(provenance) == 3
+
+    for field_name in ("base_salary", "gross_salary", "cnss_employee"):
+        fact_id = f"{live_response['document_id']}:{field_name}"
+        item = provenance[fact_id]
+
+        assert item["fact_id"] == fact_id
+        assert item["subject_id"] == "P1"
+        assert item["document_id"] == live_response["document_id"]
+        assert item["currency"] == fields[field_name]["currency"]
+        assert item["period"] == (
+            f"{fields['period_start']['value']}/"
+            f"{fields['period_end']['value']}"
+        )
+
+        # Compare each preserved field with its original citation.
+        for key, name in (
+            ("monetary_source", field_name),
+            ("period_start_source", "period_start"),
+            ("period_end_source", "period_end"),
+        ):
+            assert item[key]["field"] == fields[name]
+            assert item[key]["citation"] == citations[
+                fields[name]["citation_id"]
+            ]
+
+        assert item["contract_version"] == "ds3.v2"
+        assert item["mode"] == "live"
+        assert item["computed_by"] == live_response["computed_by"]
+        assert item["user_confirmed"] is False
+        assert item["official_authenticity_confirmed"] is False
+
+
+def test_provenance_does_not_mutate_original(live_response):
+    """Ensure that preserved metadata are independent copies."""
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    original = copy.deepcopy(live_response)
+    provenance = build_document_provenance(live_response, "P1")
+
+    item = next(iter(provenance.values()))
+    item["monetary_source"]["field"]["value"] = "999.999"
+    item["period_start_source"]["citation"]["excerpt"] = "Modified"
+
+    assert live_response == original
+
+
+def test_provenance_rejects_mock_response(live_response):
+    """Reject provenance originating from mock responses."""
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    live_response["mode"] = "mock"
+
+    assert build_document_provenance(live_response, "P1") == {}
+
+
+def test_provenance_rejects_missing_citations(live_response):
+    """Reject facts without documentary citations."""
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    live_response["citations"] = []
+
+    assert build_document_provenance(live_response, "P1") == {}
+
+
+def test_provenance_rejects_invalid_subject(live_response):
+    """Reject missing subject identifiers."""
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    assert build_document_provenance(live_response, "") == {}

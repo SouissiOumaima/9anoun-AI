@@ -9,11 +9,15 @@ from jsonschema import Draft202012Validator, FormatChecker
 from src.track_a_legal.v1_document_fact_validation import (
     assess_document_fact,
 )
+from src.track_a_legal.tools.documentary_pdf_adapter import (
+    verify_local_pdf,
+)
 from src.track_a_legal.v1_legal_source_validation import (
     assess_legal_source,
     assess_legal_source_temporally,
 )
 from src.track_a_legal.v1_legal_version_validation import (
+    classify_version_diagnostics,
     validate_legal_versions,
 )
 from src.track_a_legal.v1_temporal_consistency import (
@@ -42,7 +46,11 @@ VALIDATOR = Draft202012Validator(
 )
 
 
-def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
+def analyze_case_v1(
+    request: dict[str, Any],
+    *,
+    pdf_root: str | None = None,
+) -> dict[str, Any]:
     """Analyser un dossier v1 sans produire de conclusion juridique."""
 
     # Étape 1 : valider le contrat d'entrée.
@@ -86,6 +94,14 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         for item in legal_sources
     ]
 
+    documentary_assessments = []
+
+    if pdf_root is not None:
+        documentary_assessments = [
+            verify_local_pdf(item, pdf_root)
+            for item in legal_sources
+        ]
+
     # Keep temporal assessments separate from textual checks.
     legal_temporal_assessments = [
         assess_legal_source_temporally(item, reference_date)
@@ -97,6 +113,17 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         validate_legal_versions(legal_sources, reference_date)
         if legal_sources
         else []
+    )
+
+    # Separate informational and blocking version diagnostics.
+    version_classification = (
+        classify_version_diagnostics(
+            legal_sources,
+            reference_date,
+            diagnostics=legal_version_errors,
+        )
+        if legal_sources
+        else {"informational": [], "blocking": []}
     )
 
     # Preserve temporal findings for each source.
@@ -120,7 +147,11 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         or reference_errors
         or unqualified_facts
         or unqualified_legal_sources
-        or legal_version_errors
+        or any(
+            item["status"] != "text_matched"
+            for item in documentary_assessments
+        )
+        or version_classification["blocking"]
         or any(
             item["reasons"]
             for item in legal_temporal_assessments
@@ -155,5 +186,8 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
 
     # S5 remains internal: the official Response v1 is unchanged.
     result["five_pillars"] = build_five_pillars(result)
+
+    if pdf_root is not None:
+        result["documentary_assessments"] = documentary_assessments
 
     return result

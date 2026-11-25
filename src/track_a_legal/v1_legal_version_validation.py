@@ -125,7 +125,20 @@ def validate_legal_versions(
                 ),
             })
 
-        # Contr?ler les versions du m?me groupe juridique.
+        # Une version déclarée applicable doit couvrir la date du dossier.
+        if (
+            applicable is True
+            and reference is not None
+            and (
+                (start is not None and start > reference)
+                or (end is not None and end < reference)
+            )
+        ):
+            errors.append({
+                "code": "APPLICABILITY_DATE_CONTRADICTION",
+                "path": f"{path}.applicable_at_reference_date",
+            })
+        # Contrôler les versions du même groupe juridique.
         group = source.get("version_group")
 
         if applicable is True and isinstance(group, str) and group:
@@ -138,3 +151,90 @@ def validate_legal_versions(
                 applicable_groups[group] = source_id
 
     return errors
+
+
+def classify_version_diagnostics(
+    sources: list[dict[str, Any]],
+    reference_date: str | None,
+    *,
+    diagnostics: list[dict[str, str]] | None = None,
+) -> dict[str, list[dict[str, str]]]:
+    """Classify version diagnostics without certifying legal applicability."""
+
+    # Reuse existing diagnostics when supplied by the orchestrator.
+    if diagnostics is None:
+        diagnostics = validate_legal_versions(sources, reference_date)
+    reference, valid_reference = _parse_date(reference_date)
+
+    # Identify groups with exactly one declared applicable version.
+    groups: dict[str, list[dict[str, Any]]] = {}
+
+    for source in sources:
+        group = source.get("version_group")
+
+        if isinstance(group, str) and group:
+            groups.setdefault(group, []).append(source)
+
+    coherent_groups: set[str] = set()
+
+    if reference is not None and valid_reference:
+        for group, versions in groups.items():
+            applicable = [
+                item for item in versions
+                if item.get("applicable_at_reference_date") is True
+            ]
+
+            if len(applicable) != 1:
+                continue
+
+            candidate = applicable[0]
+            start, start_valid = _parse_date(
+                candidate.get("effective_from")
+            )
+            end, end_valid = _parse_date(
+                candidate.get("effective_to")
+            )
+
+            # Require a coherent declared validity period.
+            if (
+                start_valid
+                and end_valid
+                and start is not None
+                and start <= reference
+                and (end is None or reference <= end)
+            ):
+                coherent_groups.add(group)
+
+    informational: list[dict[str, str]] = []
+    blocking: list[dict[str, str]] = []
+
+    # Preserve every diagnostic and its original structure.
+    for diagnostic in diagnostics:
+        is_informational = False
+
+        if diagnostic["code"] in {
+            "NOT_YET_EFFECTIVE",
+            "NO_LONGER_EFFECTIVE",
+        }:
+            for index, source in enumerate(sources):
+                if diagnostic["path"] != f"legal_sources[{index}]":
+                    continue
+
+                group = source.get("version_group")
+
+                is_informational = (
+                    source.get("applicable_at_reference_date") is False
+                    and isinstance(group, str)
+                    and group in coherent_groups
+                )
+                break
+
+        if is_informational:
+            informational.append(diagnostic)
+        else:
+            blocking.append(diagnostic)
+
+    return {
+        "informational": informational,
+        "blocking": blocking,
+    }

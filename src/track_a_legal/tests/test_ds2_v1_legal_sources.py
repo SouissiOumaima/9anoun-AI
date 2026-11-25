@@ -80,3 +80,29 @@ def test_mapping_rejects_invalid_response():
             "status": "ok",
             "mode": "mock",
         })
+
+def test_mapping_preserves_missing_page_without_inventing_citation(
+    valid_ds2_response,
+):
+    """Une page absente ne doit pas devenir une citation juridiquement exploitable."""
+    from src.track_a_legal.v1_legal_source_validation import (
+        assess_legal_source,
+    )
+
+    response = deepcopy(valid_ds2_response)
+
+    # DS2 ne fournit aucun numéro de page.
+    response["results"][0]["citation"]["page"] = None
+    response["citations"][0]["page"] = None
+
+    sources = map_ds2_to_v1_legal_sources(response)
+
+    # DS4 conserve l'information sans inventer une page.
+    assert len(sources) == 1
+    assert sources[0]["citation"]["page"] is None
+
+    # Une citation sans page ne peut pas soutenir une conclusion.
+    assessment = assess_legal_source(sources[0])
+
+    assert assessment["eligible_for_legal_support"] is False
+    assert "MISSING_CITATION_PAGE" in assessment["reasons"]
