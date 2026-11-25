@@ -359,7 +359,7 @@ def test_rejects_missing_or_invalid_currency():
         if item["name"] == "01_ok_fiche_paie"
     )
 
-    for currency in (None, "", "EUR"):
+    for currency in (None, "", " ", 42, "tnd", "TND/mois"):
         response = copy.deepcopy(original)
         response["mode"] = "live"
         response["computed_by"] = "document_intelligence.service"

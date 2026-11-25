@@ -207,3 +207,18 @@ def test_original_response_is_not_modified(live_response):
     convert(live_response)
 
     assert live_response == original
+
+
+@pytest.mark.parametrize("currency", ["EUR", "USD"])
+def test_v1_rejects_foreign_currency(live_response, currency):
+    """Track A v1 ne doit pas perdre une devise etrangere."""
+    response = copy.deepcopy(live_response)
+    response["result"]["fields"]["base_salary"]["currency"] = currency
+
+    facts = convert(response)
+
+    # Exclure le montant etranger et conserver les autres faits TND.
+    assert {fact["field_name"] for fact in facts} == {
+        "gross_salary",
+        "cnss_employee",
+    }
