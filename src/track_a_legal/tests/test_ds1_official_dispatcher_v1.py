@@ -79,4 +79,3 @@ def test_official_ds1_case_card_to_ds4_v1_e2e():
 
     # Garantir que la Case Card source n'a pas été modifiée.
     assert card == original
-
