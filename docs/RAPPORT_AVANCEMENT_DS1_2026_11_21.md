@@ -126,3 +126,13 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 - Nouvelle suite globale `python -m pytest -q src` : **5227 réussis, 4 ignorés, aucun échec**. Services distants injectés dans les tests ; cela ne constitue pas une nouvelle revue juridique ni une recette Gemini réelle.
 - Suite DS4 indépendante : **339 réussis**. Les 14 rapports préparatoires S7/S8 sont conservés comme instantané pour la revue, explicitement sans validation juridique. Les tests de contrat DS3 conservés dans DS4 documentent la frontière du consommateur.
 - Partie DS4 isolée dans #53 ; sa revue et son accord par Ghofrane restent requis. #47 garde sa base temporaire DS4. Après fusion #53 : actualiser DS1 avec main, remettre la base sur main et refaire les vérifications. Fusion squash proposée par Oumaima ; aucune fusion ni fermeture de #38 effectuée ici.
+
+
+## Synchronisation DS4 du 26 novembre 2026
+
+- PR #59 intégrée dans la branche de livraison de #53, sans fusion dans main : merge `f3db81c`. Les 13 commits DS4 et leur attribution sont conservés.
+- Défaut S9 signalé par Graphify confirmé puis corrigé dans `00b0981` : des entrées de revue non objets, sans identifiants, avec identifiants vides ou non textuels sont refusées par ValueError ; neuf cas de régression ajoutés.
+- DS4 indépendant : **452 tests réussis**. Combinaison exacte avec DS1 : **5340 réussis, 4 ignorés, aucun échec**. L’arbre de la branche DS1 après intégration est identique à celui testé, avant cette mise à jour documentaire.
+- Schémas, routage v0/v1, mapping Case Card, temporalité et provenance testés. Le filtre v1 accepte seulement TND faute de champ devise dans le contrat, sans conversion ; politique collective encore à confirmer. La provenance détaillée et la vérification PDF sont optionnelles et ne sont pas activées implicitement dans DS1.
+- Une citation retrouvée dans un PDF ne certifie ni l’authenticité officielle ni l’applicabilité juridique. Aucun nouvel accord juridique ni changement des schémas partagés n’est déclaré par ces tests.
+- #47 reste une PR de 23 fichiers DS1, basée temporairement sur la livraison DS4. La consolidation finale de #53, puis son intégration à main, restent séparées de cette fusion #59. Ne pas intégrer #47 à la branche DS4.
