@@ -605,3 +605,214 @@ def test_orchestrator_reuses_version_diagnostics(monkeypatch):
     # Classification must be called exactly once.
     assert len(calls) == 1
     assert len(calls[0]) == 2
+
+
+def make_documentary_request(page=1):
+    """Build a valid request with a synthetic legal citation."""
+    request = make_valid_request()
+
+    request["legal_sources"] = [
+        {
+            "article_id": "ART-DOC-001",
+            "source_id": "SRC-DOC-001",
+            "reference": "Reference fictive",
+            "text": "Article fictif.",
+            "citation": {
+                "citation_id": "CIT-DOC-001",
+                "document": "test.pdf",
+                "page": page,
+                "exact_excerpt": "Article fictif.",
+            },
+        }
+    ]
+
+    return request
+
+
+def create_documentary_test_pdf(root, text):
+    """Create an independent synthetic PDF."""
+    import pytest
+
+    pymupdf = pytest.importorskip("pymupdf")
+
+    with pymupdf.open() as pdf:
+        page = pdf.new_page()
+        page.insert_text((72, 72), text)
+        pdf.save(root / "test.pdf")
+
+
+def test_documentary_integration_default_compatibility():
+    """Preserve the existing default response."""
+    result = analyze_case_v1(make_documentary_request())
+
+    assert "documentary_assessments" not in result
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_match(tmp_path):
+    """Verify an actual PDF through the DS4 engine."""
+    create_documentary_test_pdf(tmp_path, "Article fictif.")
+
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "text_matched"
+    assert assessment["pdf_sha256"]
+    assert assessment["official_authenticity_confirmed"] is False
+    assert assessment["legal_applicability_confirmed"] is False
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_mismatch(tmp_path):
+    """Flag a non-matching documentary citation."""
+    create_documentary_test_pdf(tmp_path, "Autre article.")
+
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assert result["documentary_assessments"][0]["status"] == "not_matched"
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_missing_page(tmp_path):
+    """Never invent missing page metadata."""
+    result = analyze_case_v1(
+        make_documentary_request(page=None),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "not_verifiable"
+    assert assessment["reason"] == "MISSING_CITATION_PAGE"
+    assert result["analysis_status"] == "insufficient_evidence"
+
+
+def test_documentary_integration_missing_pdf(tmp_path):
+    """Handle an unavailable original PDF."""
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "not_verifiable"
+    assert assessment["reason"] == "DOCUMENT_UNAVAILABLE"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_empty_sources(tmp_path):
+    """Preserve preparatory analysis without legal sources."""
+    result = analyze_case_v1(
+        make_valid_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assert result["documentary_assessments"] == []
+    assert result["analysis_status"] == "preparatory"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_handler_match(tmp_path):
+    """Preserve a textually qualified and matched source."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    create_documentary_test_pdf(tmp_path, "Article fictif.")
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == ["ART-DOC-001"]
+    assert response["result"]["legal_conclusion"] is None
+    assert "documentary_assessments" not in response["result"]
+
+
+def test_documentary_handler_mismatch(tmp_path):
+    """Exclude a source that does not match its PDF."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    create_documentary_test_pdf(tmp_path, "Autre article.")
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+    assert response["result"]["analysis_status"] == "insufficient_evidence"
+    assert response["result"]["legal_conclusion"] is None
+
+
+def test_documentary_handler_missing_page(tmp_path):
+    """Exclude citations without declared pages."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(
+        make_documentary_request(page=None),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+    assert response["result"]["analysis_status"] == "insufficient_evidence"
+
+
+def test_documentary_handler_missing_pdf(tmp_path):
+    """Exclude sources whose original PDF is unavailable."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+
+
+def test_documentary_handler_default_compatibility():
+    """Preserve historical behavior without documentary mode."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(make_documentary_request())
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == ["ART-DOC-001"]
+    assert response["result"]["legal_conclusion"] is None

@@ -24,12 +24,20 @@ _RESPONSE_VALIDATOR = Draft202012Validator(
 )
 
 
-def handle_v1(request: dict[str, Any]) -> dict[str, Any]:
+def handle_v1(
+    request: dict[str, Any],
+    *,
+    pdf_root: str | None = None,
+) -> dict[str, Any]:
     """Convert a valid Request v1 into a schema-compliant response."""
 
     # Run the existing DS4 analysis engine.
     try:
-        analysis = analyze_case_v1(request)
+        analysis = (
+            analyze_case_v1(request)
+            if pdf_root is None
+            else analyze_case_v1(request, pdf_root=pdf_root)
+        )
     except ValueError:
         # Preserve request_id only when it is a valid string.
         request_id = (
@@ -148,7 +156,17 @@ def handle_v1(request: dict[str, Any]) -> dict[str, Any]:
             "legal_conclusion": None,
             "legal_sources_used": [
                 source["article_id"]
-                for source in request.get("legal_sources", [])
+                for index, source in enumerate(
+                    request.get("legal_sources", [])
+                )
+                if pdf_root is None or (
+                    analysis["legal_source_assessments"][index][
+                        "eligible_for_legal_support"
+                    ]
+                    and analysis["documentary_assessments"][index][
+                        "status"
+                    ] == "text_matched"
+                )
             ],
             "analysis_status": analysis["analysis_status"],
             "uncertain_information": [
