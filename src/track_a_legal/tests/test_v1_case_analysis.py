@@ -455,3 +455,153 @@ def test_applicability_flag_contradicts_expired_period():
 
     assert "NO_LONGER_EFFECTIVE" in codes
     assert "APPLICABILITY_DATE_CONTRADICTION" in codes
+
+def test_historical_and_future_versions_declared_not_applicable_are_valid():
+    """Preserve temporal diagnostics for non-applicable versions."""
+    from src.track_a_legal.v1_legal_version_validation import (
+        validate_legal_versions,
+    )
+
+    sources = [
+        {
+            "source_id": "SRC-HISTORICAL",
+            "version_group": "GROUP-1",
+            "version": 1,
+            "effective_from": "2020-01-01",
+            "effective_to": "2024-12-31",
+            "applicable_at_reference_date": False,
+        },
+        {
+            "source_id": "SRC-FUTURE",
+            "version_group": "GROUP-1",
+            "version": 3,
+            "effective_from": "2028-01-01",
+            "effective_to": None,
+            "applicable_at_reference_date": False,
+        },
+    ]
+
+    errors = validate_legal_versions(
+        sources,
+        reference_date="2026-03-01",
+    )
+
+    # Preserve temporal diagnostics without declaring a contradiction.
+    assert errors == [
+        {
+            "code": "NO_LONGER_EFFECTIVE",
+            "path": "legal_sources[0]",
+        },
+        {
+            "code": "NOT_YET_EFFECTIVE",
+            "path": "legal_sources[1]",
+        },
+    ]
+
+
+def test_integrated_legal_version_history() -> None:
+    """Preserve legal version history without certifying applicability."""
+    request = make_valid_request()
+    request["reference_date"] = "2026-03-01"
+
+    # Define historical, current and future versions.
+    versions = [
+        (1, "2020-01-01", "2024-12-31", False),
+        (2, "2025-01-01", "2027-12-31", True),
+        (3, "2028-01-01", None, False),
+    ]
+
+    request["legal_sources"] = []
+
+    # Build fictitious sources with traceable citations.
+    for version, start, end, applicable in versions:
+        text = f"Disposition fictive version {version}."
+
+        request["legal_sources"].append({
+            "article_id": "ART-HISTORY",
+            "reference": f"Reference fictive V{version}",
+            "source_id": f"SRC-HISTORY-V{version}",
+            "text": text,
+            "citation": {
+                "citation_id": f"CIT-HISTORY-V{version}",
+                "document": "Document juridique fictif",
+                "page": version,
+                "exact_excerpt": text,
+            },
+            "effective_date": start,
+            "effective_from": start,
+            "effective_to": end,
+            "version_group": "GROUP-HISTORY",
+            "version": version,
+            "applicable_at_reference_date": applicable,
+        })
+
+    # Execute the integrated DS4 analysis.
+    result = analyze_case_v1(request)
+
+    # Preserve all three sources.
+    assert len(result["legal_source_assessments"]) == 3
+    assert len(result["legal_temporal_assessments"]) == 3
+
+    # All textual citations must be structurally valid.
+    assert all(
+        item["eligible_for_legal_support"]
+        for item in result["legal_source_assessments"]
+    )
+
+    # Preserve historical and future diagnostics only.
+    assert result["legal_version_errors"] == [
+        {
+            "code": "NO_LONGER_EFFECTIVE",
+            "path": "legal_sources[0]",
+        },
+        {
+            "code": "NOT_YET_EFFECTIVE",
+            "path": "legal_sources[2]",
+        },
+    ]
+
+    # No contradictory temporal metadata.
+    assert all(
+        not item["findings"]
+        for item in result["temporal_consistency_findings"]
+    )
+
+    # Never certify legal applicability automatically.
+    assert all(
+        not item["eligible_for_legal_conclusion"]
+        for item in result["legal_temporal_assessments"]
+    )
+
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_orchestrator_reuses_version_diagnostics(monkeypatch):
+    """Verify that Case Analysis uses precomputed diagnostics."""
+    from src.track_a_legal import v1_case_analysis as module
+
+    original = module.classify_version_diagnostics
+    calls = []
+
+    def spy(sources, reference_date, *, diagnostics=None):
+        # Require diagnostics already computed by the orchestrator.
+        assert diagnostics is not None
+        calls.append(diagnostics)
+
+        return original(
+            sources,
+            reference_date,
+            diagnostics=diagnostics,
+        )
+
+    monkeypatch.setattr(
+        module, "classify_version_diagnostics", spy
+    )
+
+    # Reuse the existing integrated multiversion scenario.
+    test_integrated_legal_version_history()
+
+    # Classification must be called exactly once.
+    assert len(calls) == 1
+    assert len(calls[0]) == 2
