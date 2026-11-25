@@ -83,7 +83,30 @@ def run_ds2_ds3_ds4_v1_pipeline(
             fact["fact_id"] for fact in document_facts
         }
 
-        if set(provenance) != expected_ids:
+        # Reject missing provenance or unexpected TND facts.
+        if not expected_ids.issubset(provenance):
+            raise ValueError("Inconsistent document provenance.")
+
+        unexpected_ids = set(provenance) - expected_ids
+
+        if any(
+            provenance[fact_id].get("currency") in (None, "TND")
+            for fact_id in unexpected_ids
+        ):
+            raise ValueError("Inconsistent document provenance.")
+
+        # Preserve only facts accepted by the v1 converter.
+        provenance = {
+            fact_id: item
+            for fact_id, item in provenance.items()
+            if fact_id in expected_ids
+        }
+
+        # Enforce the v1 currency restriction.
+        if any(
+            item.get("currency") != "TND"
+            for item in provenance.values()
+        ):
             raise ValueError("Inconsistent document provenance.")
 
         # Preserve the explicit evidence association.

@@ -301,3 +301,143 @@ def test_pipeline_provenance_rejects_inconsistent_ids(
             **pipeline_inputs,
             include_provenance=True,
         )
+
+
+@pytest.mark.parametrize("currency", ["EUR", "USD"])
+def test_pipeline_provenance_mixed_currency(
+    pipeline_inputs,
+    valid_ds2_response,
+    monkeypatch,
+    currency,
+):
+    """Preserve only TND facts in the v1 provenance."""
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        lambda request, *, live=True: deepcopy(valid_ds2_response),
+    )
+
+    inputs = deepcopy(pipeline_inputs)
+    fields = inputs["ds3_response"]["result"]["fields"]
+    fields["base_salary"]["currency"] = currency
+
+    original = deepcopy(inputs)
+
+    # Compare the default and enriched responses.
+    default = run_ds2_ds3_ds4_v1_pipeline(**inputs)
+
+    enriched = run_ds2_ds3_ds4_v1_pipeline(
+        **inputs,
+        include_provenance=True,
+    )
+
+    assert default == enriched["analysis"]
+    assert enriched["analysis"]["status"] == "ok"
+    assert enriched["analysis"]["result"]["legal_conclusion"] is None
+
+    document_id = inputs["ds3_response"]["document_id"]
+    provenance = enriched["document_provenance"]
+
+    # Exclude foreign currency without losing valid TND facts.
+    assert set(provenance) == {
+        f"{document_id}:gross_salary",
+        f"{document_id}:cnss_employee",
+    }
+
+    assert all(
+        item["currency"] == "TND"
+        for item in provenance.values()
+    )
+
+    assert inputs == original
+
+
+@pytest.mark.parametrize("include_provenance", [False, True])
+def test_pipeline_rejects_all_foreign_currency(
+    pipeline_inputs,
+    monkeypatch,
+    include_provenance,
+):
+    """Reject documents without usable TND monetary facts."""
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    inputs = deepcopy(pipeline_inputs)
+    fields = inputs["ds3_response"]["result"]["fields"]
+
+    for name in ("base_salary", "gross_salary", "cnss_employee"):
+        fields[name]["currency"] = "EUR"
+
+    with pytest.raises(
+        ValueError,
+        match="No usable DS3 document facts",
+    ):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **inputs,
+            include_provenance=include_provenance,
+        )
+
+
+@pytest.mark.parametrize(
+    "scenario",
+    ["missing_fact", "unexpected_tnd", "wrong_currency"],
+)
+def test_pipeline_provenance_integrity_after_filtering(
+    pipeline_inputs,
+    monkeypatch,
+    scenario,
+):
+    """Reject inconsistent provenance despite currency filtering."""
+
+    from src.track_a_legal.tools import ds2_ds3_v1_pipeline
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    provenance = build_document_provenance(
+        pipeline_inputs["ds3_response"],
+        pipeline_inputs["subject_id"],
+    )
+
+    fact_id = next(iter(provenance))
+
+    if scenario == "missing_fact":
+        provenance.pop(fact_id)
+
+    elif scenario == "unexpected_tnd":
+        provenance["UNKNOWN-FACT"] = {"currency": "TND"}
+
+    elif scenario == "wrong_currency":
+        provenance[fact_id]["currency"] = "EUR"
+
+    monkeypatch.setattr(
+        ds2_ds3_v1_pipeline,
+        "build_document_provenance",
+        lambda *args, **kwargs: deepcopy(provenance),
+    )
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Inconsistent document provenance",
+    ):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **pipeline_inputs,
+            include_provenance=True,
+        )
