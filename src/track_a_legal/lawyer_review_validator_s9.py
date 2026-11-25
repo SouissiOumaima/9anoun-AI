@@ -17,6 +17,13 @@ def validate_review_pairs(reviews, require_complete=False):
     if not isinstance(reviews, list):
         raise ValueError("reviews must be a list")
 
+    for review in reviews:
+        if not isinstance(review, dict) or any(
+            not isinstance(review.get(key), str) or not review[key].strip()
+            for key in ("case_id", "criterion_id")
+        ):
+            raise ValueError("Each review must contain case_id and criterion_id strings")
+
     pairs = [
         (review["case_id"], review["criterion_id"])
         for review in reviews

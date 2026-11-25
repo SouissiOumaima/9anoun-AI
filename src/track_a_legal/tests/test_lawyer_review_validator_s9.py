@@ -71,3 +71,15 @@ def test_invalid_type_rejected():
     """Une valeur non-list doit être refusée."""
     with pytest.raises(ValueError, match="must be a list"):
         validate_review_pairs("invalid")
+
+
+@pytest.mark.parametrize("review", [
+    {}, {"case_id": "CASE-A-001"}, {"criterion_id": "S6-C02"},
+    None, [], "invalid",
+    {"case_id": [], "criterion_id": "S6-C02"},
+    {"case_id": "CASE-A-001", "criterion_id": {}},
+    {"case_id": "", "criterion_id": "S6-C02"},
+])
+def test_malformed_review_is_rejected_with_value_error(review):
+    with pytest.raises(ValueError, match="case_id and criterion_id"):
+        validate_review_pairs([review])
