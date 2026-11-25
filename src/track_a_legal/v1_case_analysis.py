@@ -14,6 +14,7 @@ from src.track_a_legal.v1_legal_source_validation import (
     assess_legal_source_temporally,
 )
 from src.track_a_legal.v1_legal_version_validation import (
+    classify_version_diagnostics,
     validate_legal_versions,
 )
 from src.track_a_legal.v1_temporal_consistency import (
@@ -99,6 +100,17 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         else []
     )
 
+    # Separate informational and blocking version diagnostics.
+    version_classification = (
+        classify_version_diagnostics(
+            legal_sources,
+            reference_date,
+            diagnostics=legal_version_errors,
+        )
+        if legal_sources
+        else {"informational": [], "blocking": []}
+    )
+
     # Preserve temporal findings for each source.
     temporal_consistency_findings = [
         {
@@ -120,7 +132,7 @@ def analyze_case_v1(request: dict[str, Any]) -> dict[str, Any]:
         or reference_errors
         or unqualified_facts
         or unqualified_legal_sources
-        or legal_version_errors
+        or version_classification["blocking"]
         or any(
             item["reasons"]
             for item in legal_temporal_assessments
