@@ -147,3 +147,297 @@ def test_combined_pipeline_rejects_unsafe_inputs(
     # Tous les sc?narios doivent produire un refus explicite.
     with pytest.raises(ValueError):
         run_ds2_ds3_ds4_v1_pipeline(**inputs)
+
+
+def test_pipeline_provenance_complete(
+    pipeline_inputs,
+    valid_ds2_response,
+    monkeypatch,
+):
+    """Preserve documentary metadata and explicit evidence links."""
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        lambda request, *, live=True: deepcopy(valid_ds2_response),
+    )
+
+    original = deepcopy(pipeline_inputs)
+
+    result = run_ds2_ds3_ds4_v1_pipeline(
+        **pipeline_inputs,
+        include_provenance=True,
+    )
+
+    analysis = result["analysis"]
+    provenance = result["document_provenance"]
+
+    assert analysis["status"] == "ok"
+    assert analysis["result"]["legal_conclusion"] is None
+    assert len(provenance) == 3
+
+    document_id = pipeline_inputs["ds3_response"]["document_id"]
+    fields = pipeline_inputs["ds3_response"]["result"]["fields"]
+
+    expected_ids = {
+        f"{document_id}:{name}"
+        for name in ("base_salary", "gross_salary", "cnss_employee")
+    }
+
+    assert set(provenance) == expected_ids
+
+    for item in provenance.values():
+        assert item["document_id"] == document_id
+        assert item["evidence_id"] == "EV-DS3-001"
+        assert item["subject_id"] == "P1"
+        assert item["currency"] == "TND"
+        assert item["user_confirmed"] is False
+        assert item["official_authenticity_confirmed"] is False
+
+        assert item["period_start_source"]["field"] == fields["period_start"]
+        assert item["period_end_source"]["field"] == fields["period_end"]
+
+    # Preserve all original inputs.
+    assert pipeline_inputs == original
+
+
+def test_pipeline_provenance_backward_compatibility(
+    pipeline_inputs,
+    valid_ds2_response,
+    monkeypatch,
+):
+    """Keep the official response unchanged by default."""
+
+    from src.track_a_legal.v1_handler import _RESPONSE_VALIDATOR
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        lambda request, *, live=True: deepcopy(valid_ds2_response),
+    )
+
+    default = run_ds2_ds3_ds4_v1_pipeline(**pipeline_inputs)
+
+    enriched = run_ds2_ds3_ds4_v1_pipeline(
+        **pipeline_inputs,
+        include_provenance=True,
+    )
+
+    assert default == enriched["analysis"]
+    assert "document_provenance" not in default
+
+    # Validate the official response, not the internal envelope.
+    _RESPONSE_VALIDATOR.validate(default)
+    _RESPONSE_VALIDATOR.validate(enriched["analysis"])
+
+
+@pytest.mark.parametrize(
+    "scenario",
+    ["missing_link", "unknown_evidence", "mock_response"],
+)
+def test_pipeline_provenance_rejects_unsafe_inputs(
+    pipeline_inputs,
+    monkeypatch,
+    scenario,
+):
+    """Never preserve provenance for rejected documentary inputs."""
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    inputs = deepcopy(pipeline_inputs)
+
+    if scenario == "missing_link":
+        inputs["document_links"] = {}
+
+    elif scenario == "unknown_evidence":
+        document_id = inputs["ds3_response"]["document_id"]
+        inputs["document_links"] = {document_id: "EV-UNKNOWN"}
+
+    elif scenario == "mock_response":
+        inputs["ds3_response"]["mode"] = "mock"
+
+    with pytest.raises(ValueError):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **inputs,
+            include_provenance=True,
+        )
+
+
+def test_pipeline_provenance_rejects_inconsistent_ids(
+    pipeline_inputs,
+    monkeypatch,
+):
+    """Reject provenance that does not match converted fact IDs."""
+
+    from src.track_a_legal.tools import ds2_ds3_v1_pipeline
+
+    monkeypatch.setattr(
+        ds2_ds3_v1_pipeline,
+        "build_document_provenance",
+        lambda *args, **kwargs: {"UNKNOWN-FACT": {}},
+    )
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Inconsistent document provenance",
+    ):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **pipeline_inputs,
+            include_provenance=True,
+        )
+
+
+@pytest.mark.parametrize("currency", ["EUR", "USD"])
+def test_pipeline_provenance_mixed_currency(
+    pipeline_inputs,
+    valid_ds2_response,
+    monkeypatch,
+    currency,
+):
+    """Preserve only TND facts in the v1 provenance."""
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        lambda request, *, live=True: deepcopy(valid_ds2_response),
+    )
+
+    inputs = deepcopy(pipeline_inputs)
+    fields = inputs["ds3_response"]["result"]["fields"]
+    fields["base_salary"]["currency"] = currency
+
+    original = deepcopy(inputs)
+
+    # Compare the default and enriched responses.
+    default = run_ds2_ds3_ds4_v1_pipeline(**inputs)
+
+    enriched = run_ds2_ds3_ds4_v1_pipeline(
+        **inputs,
+        include_provenance=True,
+    )
+
+    assert default == enriched["analysis"]
+    assert enriched["analysis"]["status"] == "ok"
+    assert enriched["analysis"]["result"]["legal_conclusion"] is None
+
+    document_id = inputs["ds3_response"]["document_id"]
+    provenance = enriched["document_provenance"]
+
+    # Exclude foreign currency without losing valid TND facts.
+    assert set(provenance) == {
+        f"{document_id}:gross_salary",
+        f"{document_id}:cnss_employee",
+    }
+
+    assert all(
+        item["currency"] == "TND"
+        for item in provenance.values()
+    )
+
+    assert inputs == original
+
+
+@pytest.mark.parametrize("include_provenance", [False, True])
+def test_pipeline_rejects_all_foreign_currency(
+    pipeline_inputs,
+    monkeypatch,
+    include_provenance,
+):
+    """Reject documents without usable TND monetary facts."""
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    inputs = deepcopy(pipeline_inputs)
+    fields = inputs["ds3_response"]["result"]["fields"]
+
+    for name in ("base_salary", "gross_salary", "cnss_employee"):
+        fields[name]["currency"] = "EUR"
+
+    with pytest.raises(
+        ValueError,
+        match="No usable DS3 document facts",
+    ):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **inputs,
+            include_provenance=include_provenance,
+        )
+
+
+@pytest.mark.parametrize(
+    "scenario",
+    ["missing_fact", "unexpected_tnd", "wrong_currency"],
+)
+def test_pipeline_provenance_integrity_after_filtering(
+    pipeline_inputs,
+    monkeypatch,
+    scenario,
+):
+    """Reject inconsistent provenance despite currency filtering."""
+
+    from src.track_a_legal.tools import ds2_ds3_v1_pipeline
+    from src.track_a_legal.tools.ds3_document_provenance import (
+        build_document_provenance,
+    )
+
+    provenance = build_document_provenance(
+        pipeline_inputs["ds3_response"],
+        pipeline_inputs["subject_id"],
+    )
+
+    fact_id = next(iter(provenance))
+
+    if scenario == "missing_fact":
+        provenance.pop(fact_id)
+
+    elif scenario == "unexpected_tnd":
+        provenance["UNKNOWN-FACT"] = {"currency": "TND"}
+
+    elif scenario == "wrong_currency":
+        provenance[fact_id]["currency"] = "EUR"
+
+    monkeypatch.setattr(
+        ds2_ds3_v1_pipeline,
+        "build_document_provenance",
+        lambda *args, **kwargs: deepcopy(provenance),
+    )
+
+    def forbidden_ds2_handle(*args, **kwargs):
+        pytest.fail("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline,
+        "ds2_handle",
+        forbidden_ds2_handle,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Inconsistent document provenance",
+    ):
+        run_ds2_ds3_ds4_v1_pipeline(
+            **pipeline_inputs,
+            include_provenance=True,
+        )

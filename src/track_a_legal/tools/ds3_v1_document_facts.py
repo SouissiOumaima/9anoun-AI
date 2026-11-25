@@ -49,6 +49,10 @@ def convert_ds3_facts_to_v1(
     converted = []
 
     for fact in facts:
+        # Track A v1 ne conserve pas la devise monetaire.
+        if fact["unit"] != "TND":
+            continue
+
         field_name = fact["property"]
         original_field = fields[field_name]
         original_citation = citations[fact["citation_id"]]

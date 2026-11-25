@@ -233,3 +233,43 @@ def test_pillar_assessments_reject_invalid_metadata(invalid_data):
     # Invalid structures must never produce legal assessments.
     with pytest.raises(ValueError):
         build_ds2_pillar_assessments(invalid_data)
+
+def test_adapter_preserves_historical_and_applicable_versions(valid_ds2_response):
+    """Conserver toutes les versions sans certifier une conclusion juridique."""
+    response = deepcopy(valid_ds2_response)
+
+    historical = response["results"][0]
+    historical["article_id"] = "TEST-ART-1-v1"
+    historical["version"] = 1
+    historical["version_group"] = "GROUP-1"
+    historical["effective_from"] = "2020-01-01"
+    historical["effective_to"] = "2024-12-31"
+    historical["applicable_at_reference_date"] = False
+
+    current = deepcopy(historical)
+    current["article_id"] = "TEST-ART-1-v2"
+    current["version"] = 2
+    current["effective_from"] = "2025-01-01"
+    current["effective_to"] = None
+    current["applicable_at_reference_date"] = True
+
+    response["results"].append(current)
+    response["citations"].append(deepcopy(current["citation"]))
+
+    adapted = adapt_ds2_to_ds4(
+        response,
+        reference_date="2026-03-01",
+    )
+
+    versions = adapted["legal_temporal_sources"]
+
+    assert len(versions) == 2
+    assert [item["version"] for item in versions] == [1, 2]
+    assert [item["applicable_at_reference_date"] for item in versions] == [
+        False, True,
+    ]
+    assert adapted["legal_sources_used"] == [
+        "TEST-ART-1-v1",
+        "TEST-ART-1-v2",
+    ]
+    assert adapted["legal_conclusion"] is None
