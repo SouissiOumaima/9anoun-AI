@@ -166,3 +166,12 @@ Le schéma Case Card propre à DS1 accepte maintenant le champ optionnel `date_r
 ## Régression complète des dates inconnues avant fusion de PR 47
 
 Le parcours officiel du chat DS1 utilise bien le mapper corrigé dans `9342e87`. Deux tests E2E supplémentaires FR/AR traversent le planner DS1, son adaptateur et le handler DS4 v1 : la timeline finale conserve date=null, date_precision=unknown et le motif d’origine sans mutation. La conclusion juridique reste null et aucune citation finale n’est inventée. La régression v0 stricte est conservée. Validation ciblée : 33 tests réussis ; suites DS1/DS4/shared : **1058 réussis, aucun échec**.
+
+
+## Fusion DS4 et préparation finale DS1
+
+- PR #53 fusionnée dans main au commit `0781063`, après confirmation des approbations techniques de Ghofrane et Hadil et 472 tests DS4 réussis. Le brouillon a été passé Ready sans contourner ni retirer de revue.
+- Branche #47 actualisée avec ce main sans conflit. Son diff vers main contient 24 fichiers DS1 et aucun fichier DS4 ou extraction DS3. Base de #47 remise à main pour la revue finale.
+- Nouvelle recette globale sur cette combinaison : **5377 tests réussis, 4 ignorés, aucun échec**. Aucun nouveau service LIVE ni validation juridique humaine revendiqué.
+- La demande de modifications d’Oumaima sur #47 doit faire l’objet de sa relecture finale ; aucune fusion de #47 ni fermeture de #38 effectuée ici. Le squash proposé pour #47 reste à réaliser après les approbations.
+- Les contrôles PDF restent désactivés par défaut. La politique TND, les métadonnées DS2 et le dossier Ahmed ainsi que les validations humaines S6/S9 demeurent des suivis distincts.
