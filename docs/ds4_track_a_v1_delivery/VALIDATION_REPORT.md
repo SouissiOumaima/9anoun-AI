@@ -20,7 +20,8 @@ limites restant a traiter avant validation finale.
 | Suite globale, commit a33821e | 5293 | 1 | 0 |
 | DS4, PR #65, commit e0238ac | 472 | 0 | 0 |
 | Suite globale, PR #65 | 5302 | 1 | 0 |
-| Integration combinee rapportee par Achref | 5364 | 4 | 0 |
+| Integration combinee DS1 73e7df5 | 5364 | 4 | 0 |
+| Integration combinee DS1 8b05c0f et DS4 91be72a | 5375 | 4 | 0 |
 
 Les resultats correspondent a des revisions distinctes.
 Ils ne doivent pas etre additionnes.
@@ -40,7 +41,7 @@ ccache/PaddleOCR non bloquant.
 - Integration finale de la PR #47 encore en attente.
 
 Les corrections DS1 ont ete examinees cote DS4.
-Les 5364 tests combines sont rapportes par Achref.
+Les 5364 tests combines sont rapportes par Achref sur la revision DS1 73e7df5. La recette suivante avec le raccordement PDF (DS1 8b05c0f et DS4 91be72a) rapporte 5375 tests reussis et 4 ignores, sans echec.
 
 ## 4. Integration DS2 et DS3
 
@@ -95,14 +96,16 @@ La politique monetaire TND reste a confirmer collectivement.
 La verification textuelle PDF optionnelle est disponible
 dans la livraison DS4.
 
-Son raccordement aux adaptateurs est propose dans la
-PR #65, commit e0238ac, encore soumise a revue.
+Son raccordement aux adaptateurs a ete integre par la
+PR #65, commit e0238ac, merge 42af1e9 dans la branche de #53.
+Aucune fusion dans main ni activation dans le serveur reel.
 
 - Configuration explicite par pdf_root.
 - Desactivation par defaut.
 - Aucun chemin extrait des requetes client par les adaptateurs.
 - Tests sur PDF synthetiques.
 - Configuration du serveur DS1 reel restant a valider.
+- Le client ne peut pas activer le controle via params ou context : tests DS1 du commit 8b05c0f.
 
 Une correspondance textuelle ne prouve ni authenticite,
 ni pertinence, ni applicabilite juridique.
@@ -136,7 +139,7 @@ src/track_a_legal/
 |---|---|
 | #59 | Integree dans la livraison DS4 |
 | #64 | Integree par e45a421 |
-| #65 | En attente de revue |
+| #65 | Integree dans la livraison par 42af1e9 |
 | #47 | Integration finale en attente |
 | #53 | Revue technique finale en cours |
 

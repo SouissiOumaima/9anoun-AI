@@ -136,3 +136,38 @@ with the team before integration.
 - Clarify how detailed contradictions should be exposed.
 - Complete domain-specific golden sets and evaluation metrics.
 - Review and merge the v1 implementation through a Pull Request.
+
+## Optional server-side PDF verification
+
+PDF verification is disabled by default.
+
+The trusted PDF directory must be configured by the server,
+never by the end-user request.
+
+    from src.track_a_legal.tools.ds1_v1_adapter import DS1TrackAV1Adapter
+    from src.track_a_legal.tools.ds2_v1_pipeline import run_ds2_ds4_v1_pipeline
+
+    adapter = DS1TrackAV1Adapter(pdf_root=trusted_pdf_directory)
+    response = adapter(ds1_payload)
+
+    response = run_ds2_ds4_v1_pipeline(
+        ds4_request,
+        ds2_request,
+        pdf_root=trusted_pdf_directory,
+    )
+
+Document identifiers must be safe local filenames.
+
+Missing pages, unavailable documents, unsafe identifiers
+and unmatched excerpts are reported through uncertain_information.
+
+Sources failing documentary verification are excluded from
+legal_sources_used when PDF verification is enabled.
+
+A textual match does not establish official authenticity,
+legal relevance or temporal applicability.
+
+No automatic legal conclusion is authorized.
+
+The shared Track A v1 JSON contracts remain unchanged.
+Production activation requires coordination with DS1 and DS2.

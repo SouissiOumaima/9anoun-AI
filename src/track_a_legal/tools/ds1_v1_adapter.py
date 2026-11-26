@@ -20,9 +20,12 @@ class DS1TrackAV1Adapter:
 
     def __init__(
         self,
-        handler: Callable[[dict[str, Any]], dict[str, Any]] = handle_v1,
+        handler: Callable[..., dict[str, Any]] = handle_v1,
+        *,
+        pdf_root: str | None = None,
     ) -> None:
         self._handler = handler
+        self._pdf_root = pdf_root
 
         # Déterminer la racine du dépôt.
         self._root = Path(__file__).resolve().parents[3]
@@ -135,7 +138,12 @@ class DS1TrackAV1Adapter:
 
         # Étape 5 : transmettre une copie indépendante au handler.
         # Les données originales fournies par DS1 restent intactes.
-        response = self._handler(deepcopy(request))
+        if self._pdf_root is None:
+            response = self._handler(deepcopy(request))
+        else:
+            response = self._handler(
+                deepcopy(request), pdf_root=self._pdf_root
+            )
 
         if not isinstance(response, dict):
             raise DS1V1ContractError(

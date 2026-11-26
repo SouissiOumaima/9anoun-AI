@@ -48,12 +48,15 @@ conversion monetaire. La politique collective reste a confirmer.
 | Suite globale, commit a33821e | 5293 | 1 |
 | DS4, PR #65, commit e0238ac | 472 | 0 |
 | Suite globale, PR #65 | 5302 | 1 |
-| Integration combinee DS1/DS4, selon Achref | 5364 | 4 |
+| Integration combinee DS1/DS4, DS1 73e7df5 | 5364 | 4 |
+| Integration combinee DS1 8b05c0f et DS4 91be72a | 5375 | 4 |
 
 Aucun echec rapporte dans ces executions.
 
 Les resultats correspondent a des revisions distinctes
-et ne doivent pas etre additionnes.
+et ne doivent pas etre additionnes. La derniere recette combinee
+rapporte 5375 tests reussis et 4 ignores ; elle ne remplace pas
+une nouvelle execution LIVE ni une revue juridique humaine.
 
 ## 5. Etat de l'integration
 
@@ -62,7 +65,9 @@ et ne doivent pas etre additionnes.
 - Correctif DS1 des dates inconnues : 9342e87.
 - Restitution des diagnostics dans DS1 : 73e7df5.
 - PR #47 : integration finale en attente.
-- PR #65 : raccordement PDF optionnel soumis a revue.
+- PR #65 : raccordement PDF optionnel integre par 42af1e9.
+- Protection DS1 contre une activation par donnees client : 8b05c0f.
+- Formatage du document de conception corrige par 91be72a.
 - PR #53 : revue technique finale en cours.
 
 La verification PDF et la provenance optionnelle ne sont
