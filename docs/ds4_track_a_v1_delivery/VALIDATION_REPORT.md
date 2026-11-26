@@ -1,119 +1,156 @@
-# Rapport de validation technique — DS4 Lawyer Track A v1
+# Rapport de validation technique - DS4 Lawyer Track A v1
 
 **Projet :** 9anoun-AI
-**Module :** DS4 — Lawyer Track A
+**Module :** DS4 - Lawyer Track A
 **Version :** track_a.v1
-**Date :** 20 novembre 2026
-**Destinataire :** Achref — DS1 Orchestration
-
----
+**Date :** 26 novembre 2026
+**Destinataire :** Achref - DS1 Orchestration
 
 ## 1. Objectif
 
-Ce rapport présente les résultats des validations techniques réalisées sur le module DS4 Lawyer Track A v1.
+Documenter la validation technique consolidee de DS4,
+son integration avec DS1, DS2 et DS3, ainsi que les
+limites restant a traiter avant validation finale.
 
-L'objectif est de préparer son intégration dans l'orchestrateur DS1, en garantissant la conformité des contrats JSON, la traçabilité des preuves et l'absence de conclusions juridiques non vérifiées.
+## 2. Resultats des tests automatises
 
-## 2. Tests automatisés
+| Revision ou perimetre | Reussis | Ignores | Echecs |
+|---|---:|---:|---:|
+| DS4, commit a33821e | 463 | 0 | 0 |
+| Suite globale, commit a33821e | 5293 | 1 | 0 |
+| DS4, PR #65, commit e0238ac | 472 | 0 | 0 |
+| Suite globale, PR #65 | 5302 | 1 | 0 |
+| Integration combinee DS1 73e7df5 | 5364 | 4 | 0 |
+| Integration combinee DS1 8b05c0f et DS4 91be72a | 5375 | 4 | 0 |
 
-| Vérification | Résultat |
+Les resultats correspondent a des revisions distinctes.
+Ils ne doivent pas etre additionnes.
+
+La suite globale de la PR #65 presente un avertissement
+ccache/PaddleOCR non bloquant.
+
+## 3. Integration DS1
+
+- Routage Track A v0/v1 valide.
+- Versions inconnues rejetees.
+- Preservation des dates inconnues en v1 : commit 9342e87.
+- Comportement strict v0 conserve.
+- Diagnostics officiels DS4 integres par la PR #64.
+- Restitution dans le chat et le parcours complet DS1 :
+  commit 73e7df5.
+- Integration finale de la PR #47 encore en attente.
+
+Les corrections DS1 ont ete examinees cote DS4.
+Les 5364 tests combines sont rapportes par Achref sur la revision DS1 73e7df5. La recette suivante avec le raccordement PDF (DS1 8b05c0f et DS4 91be72a) rapporte 5375 tests reussis et 4 ignores, sans echec.
+
+## 4. Integration DS2 et DS3
+
+Le scenario historique DS2 LIVE, DS3 simule et DS4 v1
+a valide le fonctionnement du pipeline preparatoire.
+
+Le dossier fictif Ahmed Ben Salah constitue un scenario
+distinct, dedie a la validation DS4.
+
+Trois reponses DS2 LIVE sauvegardees ont ete rejouees
+avec les diagnostics officiels DS4.
+
+| Indicateur | Resultat |
 |---|---|
-| Suite de tests DS4 | 322 tests réussis |
-| Validation des exemples JSON | 0 erreur |
-| Validation du schéma E2E | 0 erreur |
-| Intégrité des schémas livrés | SHA-256 identiques |
+| Reponses DS2 rejouees | 3 |
+| Diagnostics par reponse | 44 |
+| Diagnostics cumules | 132 |
+| Statut DS4 | ok |
+| Statut analyse | insufficient_evidence |
+| Conclusion juridique | null |
+| Citations finales | 0 |
+| Conformite du schema | Validee |
 
-**Statut :** PASSED
+Ces relectures ne constituent pas de nouveaux appels LIVE.
 
-## 3. Intégration DS1
+Sur les 29 sources DS2 distinctes examinees, les pages
+et dates de debut de validite restent manquantes.
 
-Le routeur local DS1/DS4 a été testé avec les résultats suivants :
+Le secteur, les references applicables et la date de
+reference juridique restent a confirmer avec Mouhib.
 
-- `track_a.v1` : routage réussi.
-- `track_a.v0` : routage réussi vers l'adaptateur v0 injecté.
-- Version inconnue : rejet explicite.
-- Requête d'entrée : préservée.
-- Réponse DS4 v1 : conforme au contrat attendu.
+La reponse DS3 LIVE dediee au dossier reste attendue.
+Aucun resultat simule ne doit etre presente comme LIVE.
 
-**Statut :** PASSED — intégration locale.
+## 5. Garanties techniques et documentaires
 
-L'intégration avec l'orchestrateur officiel d'Achref reste à réaliser.
+- Validation des contrats JSON.
+- Preservation des donnees originales.
+- Traçabilite des preuves et des demandes.
+- Validation des references et de la coherence temporelle.
+- Preservation des versions juridiques.
+- Deduplication des diagnostics uncertain_information.
+- Absence de confirmation automatique des faits DS3.
+- Filtrage TND sans conversion monetaire.
+- Provenance documentaire optionnelle.
+- Absence de conclusion juridique definitive automatique.
 
-## 4. Intégration DS2 + DS3 + DS4
+La politique monetaire TND reste a confirmer collectivement.
 
-Un scénario de rupture de contrat fictif a été exécuté avec :
+## 6. Verification documentaire PDF
 
-- DS2 LIVE : recherche dans le corpus juridique local.
-- DS3 : extraction documentaire simulée avec un client fictif.
-- DS4 v1 : analyse juridique préparatoire.
+La verification textuelle PDF optionnelle est disponible
+dans la livraison DS4.
 
-### Résultats
+Son raccordement aux adaptateurs a ete integre par la
+PR #65, commit e0238ac, merge 42af1e9 dans la branche de #53.
+Aucune fusion dans main ni activation dans le serveur reel.
 
-| Indicateur | Valeur |
+- Configuration explicite par pdf_root.
+- Desactivation par defaut.
+- Aucun chemin extrait des requetes client par les adaptateurs.
+- Tests sur PDF synthetiques.
+- Configuration du serveur DS1 reel restant a valider.
+- Le client ne peut pas activer le controle via params ou context : tests DS1 du commit 8b05c0f.
+
+Une correspondance textuelle ne prouve ni authenticite,
+ni pertinence, ni applicabilite juridique.
+
+## 7. Validation humaine S6/S9
+
+Le protocole S9, les schemas de revue et les rapports
+preparatoires S7/S8 sont disponibles.
+
+Sept cas et six criteres par cas sont prevus.
+
+- Decisions humaines attendues : 42.
+- Decisions humaines validees : 0.
+- Validation juridique officielle : en attente.
+
+Les tests structurels ne remplacent pas une revue
+effectuee par un professionnel du droit.
+
+## 8. Livrables et etat Git
+
+Schemas canoniques :
+data/mock_cards/schemas/
+
+Documentation de livraison :
+docs/ds4_track_a_v1_delivery/
+
+Implementation et tests :
+src/track_a_legal/
+
+| PR | Etat au 26 novembre 2026 |
 |---|---|
-| DS3_STATUS | ok |
-| DS3_DOCUMENT_ID | doc_7f3a |
-| DS4_STATUS | ok |
-| ANALYSIS_STATUS | insufficient_evidence |
-| LEGAL_CONCLUSION | None |
-| FINAL_CITATIONS | 0 |
-| SCHEMA_ERRORS | 0 |
-| DS4_INPUT_UNCHANGED | True |
-| DS2_INPUT_UNCHANGED | True |
-| DS3_INPUT_UNCHANGED | True |
+| #59 | Integree dans la livraison DS4 |
+| #64 | Integree par e45a421 |
+| #65 | Integree dans la livraison par 42af1e9 |
+| #47 | Integration finale en attente |
+| #53 | Revue technique finale en cours |
 
-**Statut :** PASSED — pipeline local.
+Aucune fusion dans main n'est revendiquee.
 
-Le résultat `insufficient_evidence` est cohérent avec l'absence de preuves juridiques suffisamment vérifiées.
+## 9. Conclusion
 
-## 5. Traçabilité et sécurité juridique
+La validation technique des revisions testees est reussie.
 
-Les contrôles techniques réalisés confirment :
+Restent necessaires : integration finale DS1, revue PDF,
+validation des sources DS2, extraction DS3 LIVE,
+validation E2E dediee et revue juridique humaine.
 
-- La préservation des données d'entrée.
-- Le refus du remplacement silencieux des faits documentaires.
-- L'absence de confirmation automatique des faits DS3.
-- La validation des contrats JSON.
-- L'absence de conclusion juridique définitive.
-- L'absence de citations finales non justifiées dans le scénario testé.
-
-Ces contrôles ne constituent pas une validation juridique du fond du dossier.
-
-## 6. Limites identifiées
-
-1. Les références DS2 du scénario n'ont pas été vérifiées manuellement dans les documents PDF originaux.
-2. Les numéros de page sont indisponibles pour les cinq références DS2 examinées.
-3. L'applicabilité sectorielle des références doit être confirmée.
-4. Les évaluations juridiques humaines du Golden Set DS4 restent à compléter.
-5. L'orchestrateur officiel DS1 n'a pas encore été testé avec ce module.
-6. Le scénario DS3 utilise un client fictif, sans appel à une API externe réelle.
-
-## 7. Livrables
-
-Le dossier `docs/ds4_track_a_v1_delivery/` contient :
-
-- `track_a_request.v1.schema.json`
-- `track_a_response.v1.schema.json`
-- `example_request_v1.json`
-- `example_response_v1.json`
-- `example_refusal_v1.json`
-- `README.md`
-- `VALIDATION_REPORT.md`
-
-Les modules Python d'intégration sont conserv
-## 8. Conclusion
-
-**Résultat global : validation technique locale réussie.**
-
-Le module DS4 Lawyer Track A v1 a passé les 322 tests automatisés et les vérifications locales d'intégration avec DS1, DS2 et DS3.
-
-Le module est prêt pour une revue technique et une intégration dans l'orchestrateur DS1.
-
-Les validations suivantes restent nécessaires :
-- Intégration avec l'orchestrateur officiel d'Achref.
-- Vérification juridique humaine des références.
-- Validation du Golden Set DS4.
-
-Aucune conclusion juridique définitive n'est générée automatiquement.
-
-**Statut final : READY FOR DS1 TECHNICAL REVIEW — LEGAL VALIDATION PENDING.**
+**Statut : TECHNICAL REVIEW IN PROGRESS - LEGAL VALIDATION PENDING**
