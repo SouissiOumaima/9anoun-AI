@@ -119,6 +119,34 @@ def test_v0_still_rejects_unknown_date_even_with_valid_v1_metadata():
         mapped_case(card, 'track_a.v0')
 
 
+@pytest.mark.parametrize('language,message,reason', [
+    ('fr', 'Analyse les preuves de ce dossier', 'Date non précisée dans la pièce.'),
+    ('ar', 'حلل أدلة هذه القضية.', 'التاريخ غير مذكور في الوثيقة.'),
+])
+def test_official_ds1_to_ds4_v1_unknown_date_is_preserved_end_to_end(monkeypatch, language, message, reason):
+    from src.orchestrator import web_app
+
+    cards = deepcopy(web_app._demo_cards())
+    card = next(c for c in cards if c['card_id'] == 'case-demo-001')
+    event = card['data']['events'][0]
+    event.update(date=None, date_precision='unknown', date_reason=reason)
+    saved = deepcopy(cards)
+    monkeypatch.setattr(web_app, '_demo_cards', lambda: cards)
+
+    response = chat({'message': message, 'language': language, 'card_id': card['card_id']})
+    assert response['user_response']['status'] == 'success'
+    answer = response['answer']
+    assert answer['kind'] == 'case_preparatory'
+    received = next(item for item in answer['timeline'] if item['event_id'] == event['event_id'])
+    assert received['date'] is None
+    assert received['date_precision'] == 'unknown'
+    assert received['date_reason'] == reason
+    assert received['source_ids'] == event['evidence_ids']
+    assert answer['legal_conclusion'] is None
+    assert response['citations'] == []
+    assert cards == saved
+
+
 @pytest.mark.parametrize('metadata', [
     {}, {'date_precision': 'unknown'}, {'date_reason': 'Date absente.'},
     {'date_precision': 'exact', 'date_reason': 'Date absente.'},

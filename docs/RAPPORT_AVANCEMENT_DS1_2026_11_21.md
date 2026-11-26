@@ -161,3 +161,8 @@ Le schéma Case Card propre à DS1 accepte maintenant le champ optionnel `date_r
 - Tests ciblés adaptateurs PDF et frontière DS1 : **55 réussis**. Combinaison globale avec DS1 : **5375 réussis, 4 ignorés, aucun échec**. Les PDF utilisés dans ces essais sont synthétiques ; aucune authenticité officielle ni applicabilité juridique certifiée.
 - Les trois anomalies de formatage du document de conception sont corrigées dans #53 par `91be72a` ; git diff --check sur le diff complet de livraison ne signale plus d’anomalie.
 - Aucun merge dans main. La revue finale de Ghofrane, la politique TND et les validations humaines S6/S9 restent ouvertes ; le dossier Ahmed attend les références DS2 confirmées.
+
+
+## Régression complète des dates inconnues avant fusion de PR 47
+
+Le parcours officiel du chat DS1 utilise bien le mapper corrigé dans `9342e87`. Deux tests E2E supplémentaires FR/AR traversent le planner DS1, son adaptateur et le handler DS4 v1 : la timeline finale conserve date=null, date_precision=unknown et le motif d’origine sans mutation. La conclusion juridique reste null et aucune citation finale n’est inventée. La régression v0 stricte est conservée. Validation ciblée : 33 tests réussis ; suites DS1/DS4/shared : **1058 réussis, aucun échec**.
