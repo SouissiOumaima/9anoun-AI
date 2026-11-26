@@ -149,3 +149,28 @@ def test_v1_does_not_accept_an_invalid_exact_date():
     card['data']['events'][0].update(date='2026-02-30', date_precision='exact')
     with pytest.raises(ValueError, match='schema-valid'):
         mapped_case(card, 'track_a.v1')
+
+
+def test_official_chat_preserves_missing_information_and_declared_contradictions(monkeypatch):
+    from src.orchestrator import web_app
+
+    cards = deepcopy(web_app._demo_cards())
+    card = next(c for c in cards if c['card_id'] == 'case-demo-001')
+    evidence_ids = [e['evidence_id'] for e in card['data']['evidence']]
+    card['data']['missing_information'] = [{
+        'missing_id': 'missing-sector', 'field_name': 'sector', 'reason': 'Secteur à confirmer.',
+    }]
+    card['data']['contradictions'] = [{
+        'contradiction_id': 'declared-salary-gap', 'description': 'Montants déclarés différents.',
+        'source_ids': evidence_ids[:2],
+    }]
+    monkeypatch.setattr(web_app, '_demo_cards', lambda: cards)
+    response = chat({'message': 'Analyse les preuves de ce dossier', 'language': 'fr', 'card_id': 'case-demo-001'})
+    assert response['user_response']['status'] == 'success'
+    answer = response['answer']
+    assert answer['legal_conclusion'] is None
+    assert response['citations'] == []
+    assert {'reference_id': 'missing-sector', 'reason': 'MISSING_INFORMATION: sector: Secteur à confirmer.'} in answer['uncertain_information']
+    assert {'reference_id': 'declared-salary-gap', 'reason': 'DECLARED_CONTRADICTION: Montants déclarés différents.'} in answer['uncertain_information']
+    pairs = [(i['reference_id'], i['reason']) for i in answer['uncertain_information']]
+    assert len(pairs) == len(set(pairs))

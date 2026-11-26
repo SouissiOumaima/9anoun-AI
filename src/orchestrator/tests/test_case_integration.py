@@ -75,6 +75,11 @@ def test_full_flow_transmits_only_selected_confirmed_facts_and_is_idempotent(set
     assert len(result['confirmed_facts']) == 1
     assert result['confirmed_facts'][0]['user_confirmed'] is True
     assert result['analysis']['legal_conclusion'] is None
+    diagnostics = result['analysis']['uncertain_information']
+    assert diagnostics  # Missing legal-source metadata must reach the E2E UI.
+    pairs = [(item['reference_id'], item['reason']) for item in diagnostics]
+    assert len(pairs) == len(set(pairs))
+    assert all(isinstance(ref, str) and isinstance(reason, str) for ref, reason in pairs)
     assert result['legal_sources']
     assert flow.complete(**kwargs) == result
     assert calls == ['ds3', 'ds2']

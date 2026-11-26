@@ -179,6 +179,7 @@
       html += data.legal_sources.map(s=>`<li>${escapeHtml(s.reference)} · page ${escapeHtml(s.citation?.page ?? 'manquante')} · effet ${escapeHtml(s.effective_from ?? 'inconnu')} · ${escapeHtml(s.validity_status ?? 'inconnu')}</li>`).join('') + '</ul>';
       html += `<p class="citation">Citations documentaires : ${escapeHtml(data.document_citations.length)} · citations de recherche : ${escapeHtml(data.retrieval_citations.length)} · citations finales DS4 : ${escapeHtml(data.final_citations.length)}.</p>`;
       if (data.review_required.length) html += '<h4>Validations restantes</h4><ul>' + data.review_required.map(w=>`<li>${escapeHtml(w)}</li>`).join('') + '</ul>';
+      html += renderUncertainInformation(data.analysis.uncertain_information);
       $('caseCompletionStatus').innerHTML = html;
       refreshHistory();
       $('caseIntegrationResult').querySelectorAll('input').forEach(e=>e.disabled=true);
@@ -186,6 +187,10 @@
   });
   let cards = [];
   const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function renderUncertainInformation(items) {
+    if (!Array.isArray(items) || !items.length) return '';
+    return '<h4>Informations à vérifier</h4><ul>' + items.map(item => `<li>${escapeHtml(item.reference_id)} : ${escapeHtml(item.reason)}</li>`).join('') + '</ul>';
+  }
   async function loadCards() {
     const response = await fetch('/api/cards');
     cards = (await response.json()).cards || [];
@@ -245,7 +250,7 @@
       const summary = answer.case_summary || {};
       html += `<p>${escapeHtml(summary.number_of_parties ?? 0)} parties · ${escapeHtml(summary.number_of_events ?? 0)} événements · ${escapeHtml(summary.number_of_claims ?? 0)} demandes · ${escapeHtml(summary.number_of_evidence ?? 0)} pièces</p>`;
       if (answer.timeline?.length) html += '<h4>Chronologie déclarée</h4><ul>' + answer.timeline.map(item => `<li>${escapeHtml(item.date ?? 'Date inconnue')} — ${escapeHtml(item.description ?? item.event_id ?? '')}</li>`).join('') + '</ul>';
-      if (answer.uncertain_information?.length) html += '<h4>Informations à vérifier</h4><ul>' + answer.uncertain_information.map(item => `<li>${escapeHtml(item.reference_id)} : ${escapeHtml(item.reason)}</li>`).join('') + '</ul>';
+      html += renderUncertainInformation(answer.uncertain_information);
     }
     if (answer?.kind === 'case') html += `<p>Faits : ${escapeHtml(answer.facts.join('; ') || '—')}</p><p>Risques : ${escapeHtml(answer.risks.join('; ') || '—')}</p>`;
     if (answer?.kind === 'document') {

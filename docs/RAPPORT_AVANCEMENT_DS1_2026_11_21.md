@@ -143,3 +143,12 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 Le mapper officiel `build_track_a_request_from_case_card` réserve désormais le contrôle strict de date à Track A v0. Pour v1, il conserve explicitement `date=None`, `date_precision=unknown` et le motif fourni, puis valide toute la requête contre le schéma officiel v1 avec contrôle des formats. Aucun motif ni date ne sont fabriqués. Une date inconnue sans métadonnées conformes et une date exacte invalide sont refusées.
 
 Le schéma Case Card propre à DS1 accepte maintenant le champ optionnel `date_reason` ; le schéma partagé Track A v1 reste inchangé. Tests de non-régression v0/v1, motifs FR/AR, absence de mutation et dates invalides : 28 tests ciblés réussis. Suites DS1, DS4 et shared : **1033 tests réussis, aucun échec**. Correctif livré uniquement côté DS1 dans #47.
+
+
+## Restitution des diagnostics du 26 novembre 2026
+
+- PR #64 intégrée dans la branche de livraison de #53 par merge `e45a421`, sans fusion dans main. Les changements se limitent aux diagnostics officiels DS4 ; le commit de configuration PDF `02cce48` reste hors périmètre.
+- DS1 préservait déjà uncertain_information dans la réponse du chat. L’affichage du résultat du parcours complet DS3 puis DS2 puis DS4 le restitue désormais aussi, avec échappement HTML des identifiants et raisons.
+- Tests d’intégration : informations manquantes et contradictions déclarées atteignent la réponse du chat ; diagnostics du parcours complet non vides et sans doublons ; conclusion juridique toujours null et absence de citations injustifiées conservées.
+- Combinaison avec la dernière correction des dates inconnues DS1 : **5364 tests réussis, 4 ignorés, aucun échec**. Tests ciblés diagnostics et parcours : **53 réussis**. Syntaxe JavaScript et échappement du rendu vérifiés.
+- Les essais sur réponses DS2 LIVE sauvegardées restent des relectures de données sauvegardées, sans nouvel appel LIVE. Aucun contrôle PDF ni traitement de provenance optionnel n’est activé implicitement. Revue finale de #53, politique TND et validation humaine S6/S9 restent distinctes.
