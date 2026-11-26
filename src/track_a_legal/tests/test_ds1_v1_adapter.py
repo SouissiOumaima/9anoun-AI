@@ -203,3 +203,108 @@ def test_invalid_language_rejected_before_handler(payload):
 
     # Le handler ne doit jamais être appelé.
     assert calls == []
+
+
+def test_pdf_root_forwarded_to_handler(payload, tmp_path):
+    original = deepcopy(payload)
+    calls = []
+
+    def handler(request, *, pdf_root):
+        calls.append(pdf_root)
+        return handle_v1(request, pdf_root=pdf_root)
+
+    response = DS1TrackAV1Adapter(
+        handler=handler, pdf_root=str(tmp_path)
+    )(payload)
+
+    assert calls == [str(tmp_path)]
+    assert response["status"] == "success"
+    assert response["data"]["result"]["legal_conclusion"] is None
+    assert payload == original
+
+
+def test_payload_cannot_override_server_pdf_root(payload, tmp_path):
+    trusted = str(tmp_path / "trusted")
+    trusted_path = tmp_path / "trusted"
+    trusted_path.mkdir()
+
+    payload["params"]["pdf_root"] = str(tmp_path / "untrusted")
+    original = deepcopy(payload)
+    calls = []
+
+    def handler(request, *, pdf_root):
+        calls.append(pdf_root)
+        return handle_v1(request, pdf_root=pdf_root)
+
+    response = DS1TrackAV1Adapter(
+        handler=handler, pdf_root=trusted
+    )(payload)
+
+    assert calls == [trusted]
+    assert response["status"] == "success"
+    assert payload == original
+
+
+@pytest.mark.parametrize(
+    "scenario, expected_reason, expected_sources",
+    [
+        ("match", None, ["ART-DOC-001"]),
+        ("mismatch", "EXCERPT_NOT_FOUND_ON_DECLARED_PAGE", []),
+        ("missing_pdf", "DOCUMENT_UNAVAILABLE", []),
+        ("missing_page", "MISSING_CITATION_PAGE", []),
+        ("unsafe_path", "UNSAFE_DOCUMENT_IDENTIFIER", []),
+    ],
+)
+def test_documentary_e2e_via_ds1(
+    payload, tmp_path, scenario, expected_reason, expected_sources
+):
+    from src.track_a_legal.tests.test_v1_case_analysis import (
+        make_documentary_request,
+        create_documentary_test_pdf,
+    )
+
+    # Construire une requete documentaire synthetique.
+    request = make_documentary_request(
+        page=None if scenario == "missing_page" else 1
+    )
+
+    request["request_id"] = payload["request_id"]
+    request["case_id"] = payload["context"]["card_id"]
+
+    if scenario == "match":
+        create_documentary_test_pdf(tmp_path, "Article fictif.")
+    elif scenario == "mismatch":
+        create_documentary_test_pdf(tmp_path, "Autre article.")
+    elif scenario == "unsafe_path":
+        request["legal_sources"][0]["citation"]["document"] = (
+            "../test.pdf"
+        )
+
+    payload["params"]["track_a_request"] = request
+    original = deepcopy(payload)
+
+    # Executer le vrai adaptateur et le vrai handler DS4.
+    response = DS1TrackAV1Adapter(
+        pdf_root=str(tmp_path)
+    )(payload)
+
+    assert response["status"] == "success"
+    result = response["data"]["result"]
+
+    assert result["legal_sources_used"] == expected_sources
+    assert result["legal_conclusion"] is None
+    assert response["citations"] == []
+    assert payload == original
+
+    reasons = {
+        item["reason"]
+        for item in result["uncertain_information"]
+    }
+
+    if expected_reason is not None:
+        assert expected_reason in reasons
+        assert result["analysis_status"] == "insufficient_evidence"
+    else:
+        assert "EXCERPT_NOT_FOUND_ON_DECLARED_PAGE" not in reasons
+        assert "DOCUMENT_UNAVAILABLE" not in reasons
+        assert "EXCERPT_FOUND_ON_DECLARED_PAGE" not in reasons

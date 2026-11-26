@@ -79,3 +79,60 @@ def test_pipeline_rejects_invalid_ds2_response(monkeypatch):
         ds2_v1_pipeline.run_ds2_ds4_v1_pipeline(
             make_valid_request(), {"query": "test"}
         )
+
+
+def test_pipeline_forwards_pdf_root(
+    monkeypatch, valid_ds2_response, tmp_path
+):
+    calls = []
+    real_handler = ds2_v1_pipeline.handle_v1
+
+    def fake_ds2_handle(request, *, live=True):
+        assert live is True
+        return deepcopy(valid_ds2_response)
+
+    def tracked_handler(request, *, pdf_root):
+        calls.append(pdf_root)
+        return real_handler(request, pdf_root=pdf_root)
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline, "ds2_handle", fake_ds2_handle
+    )
+    monkeypatch.setattr(
+        ds2_v1_pipeline, "handle_v1", tracked_handler
+    )
+
+    ds4_request = make_valid_request()
+    ds2_request = {"query": "test"}
+    original_ds4 = deepcopy(ds4_request)
+    original_ds2 = deepcopy(ds2_request)
+
+    response = ds2_v1_pipeline.run_ds2_ds4_v1_pipeline(
+        ds4_request, ds2_request, pdf_root=str(tmp_path)
+    )
+
+    assert calls == [str(tmp_path)]
+    assert response["status"] == "ok"
+    assert response["result"]["legal_conclusion"] is None
+    assert response["citations"] == []
+    assert ds4_request == original_ds4
+    assert ds2_request == original_ds2
+
+
+def test_pipeline_pdf_mode_rejects_existing_sources(
+    monkeypatch, tmp_path
+):
+    def forbidden_ds2_handle(*args, **kwargs):
+        raise AssertionError("DS2 must not be called.")
+
+    monkeypatch.setattr(
+        ds2_v1_pipeline, "ds2_handle", forbidden_ds2_handle
+    )
+
+    request = make_valid_request()
+    request["legal_sources"] = [{"article_id": "EXISTING"}]
+
+    with pytest.raises(ValueError, match="already contains"):
+        ds2_v1_pipeline.run_ds2_ds4_v1_pipeline(
+            request, {"query": "test"}, pdf_root=str(tmp_path)
+        )
