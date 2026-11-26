@@ -1,11 +1,23 @@
-"""Construction sûre des requêtes DS1 vers le contrat DS4 Track A v0."""
+"""Construction sûre des requêtes DS1 vers les contrats DS4 Track A v0 et v1."""
 
 from __future__ import annotations
 
 from typing import Any, Mapping
 from copy import deepcopy
+from functools import lru_cache
+import json
+from pathlib import Path
+
+from jsonschema import Draft202012Validator, FormatChecker, ValidationError
 
 from .case_card import validate_case_card_references
+
+
+@lru_cache(maxsize=1)
+def _v1_validator() -> Draft202012Validator:
+    schema_path = Path(__file__).resolve().parents[2] / "data/mock_cards/schemas/track_a_request.v1.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8-sig"))
+    return Draft202012Validator(schema, format_checker=FormatChecker())
 
 
 def build_track_a_request(*, request_id: str, case_id: str, language: str) -> dict[str, Any]:
@@ -37,7 +49,7 @@ def build_track_a_request_from_case_card(
     *, request_id: str, case_id: str, language: str, case_card: Mapping[str, Any],
     contract_version: str = "track_a.v0",
 ) -> dict[str, Any]:
-    """Map a validated DS1 Case Card into the accepted DS4 v0 request.
+    """Map a validated DS1 Case Card into the requested DS4 contract.
 
     DS4 v0 cannot carry confidence scores or rich citation objects. DS1 keeps
     those values in the Case Card and transports each evidence item through a
@@ -56,7 +68,7 @@ def build_track_a_request_from_case_card(
     events: list[dict[str, Any]] = []
     for event in data["events"]:
         date = event["date"]
-        if not isinstance(date, str):
+        if contract_version == "track_a.v0" and not isinstance(date, str):
             raise ValueError(f"event {event['event_id']} has no exact date for Track A v0")
         events.append({
             "event_id": event["event_id"], "date": date, "description": event["description"],
@@ -92,6 +104,10 @@ def build_track_a_request_from_case_card(
     if contract_version == "track_a.v1":
         for mapped, original in zip(request["events"], data["events"]):
             mapped["evidence_ids"] = list(original["evidence_ids"])
+            # Preserve declared uncertainty without manufacturing a date or reason.
+            for name in ("date_precision", "date_reason"):
+                if name in original:
+                    mapped[name] = deepcopy(original[name])
         for mapped, original in zip(request["claims"], data["claims"]):
             mapped["event_ids"] = list(original["event_ids"])
             mapped["evidence_ids"] = list(original["evidence_ids"])
@@ -99,4 +115,8 @@ def build_track_a_request_from_case_card(
         for name in ("document_facts", "legal_sources", "missing_information", "contradictions", "reference_date"):
             if name in data:
                 request[name] = deepcopy(data[name])
+        try:
+            _v1_validator().validate(request)
+        except ValidationError as error:
+            raise ValueError("Case Card cannot produce a schema-valid Track A v1 request") from error
     return request

@@ -10,6 +10,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 from src.orchestrator.track_a_adapter import TrackAAdapter
 from src.orchestrator.tool_contracts import ToolContractError
 from src.orchestrator.web_app import chat
+from src.orchestrator.track_a_requests import build_track_a_request_from_case_card
 from src.track_a_legal.v1_handler import handle_v1
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -80,3 +81,71 @@ def test_delivery_examples_match_corrected_official_schemas(kind):
     example = json.loads((folder / f'example_{kind}_v1.json').read_text(encoding='utf-8-sig'))
     Draft202012Validator(schema, format_checker=FormatChecker()).validate(example)
     assert schema['$id'] == f'track_a_{schema_kind}.v1.schema.json'
+
+
+def case_card():
+    cards = json.loads((ROOT / 'data/mock_cards/orchestrator_cards_demo.json').read_text(encoding='utf-8'))
+    return next(card for card in cards if card['card_id'] == 'case-demo-001')
+
+
+def mapped_case(card, version):
+    return build_track_a_request_from_case_card(
+        request_id='date-boundary', case_id=card['card_id'], language='fr',
+        case_card=card, contract_version=version,
+    )
+
+
+@pytest.mark.parametrize('reason', ['Date non précisée dans la pièce.', 'التاريخ غير مذكور في الوثيقة.'])
+def test_v1_unknown_date_preserves_uncertainty_and_matches_official_schemas(reason):
+    card = case_card()
+    card['data']['events'][0].update(date=None, date_precision='unknown', date_reason=reason)
+    saved = deepcopy(card)
+    card_schema = json.loads((ROOT / 'data/mock_cards/schemas/orchestrator_case_card.v0.schema.json').read_text(encoding='utf-8'))
+    Draft202012Validator(card_schema, format_checker=FormatChecker()).validate(card)
+    request = mapped_case(card, 'track_a.v1')
+    schema = json.loads((ROOT / 'data/mock_cards/schemas/track_a_request.v1.schema.json').read_text(encoding='utf-8-sig'))
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(request)
+    assert request['events'][0]['date'] is None
+    assert request['events'][0]['date_precision'] == 'unknown'
+    assert request['events'][0]['date_reason'] == reason
+    assert request['events'][0]['evidence_ids'] == card['data']['events'][0]['evidence_ids']
+    assert card == saved
+
+
+def test_v0_still_rejects_unknown_date_even_with_valid_v1_metadata():
+    card = case_card()
+    card['data']['events'][0].update(date=None, date_precision='unknown', date_reason='Pièce non datée.')
+    with pytest.raises(ValueError, match='no exact date for Track A v0'):
+        mapped_case(card, 'track_a.v0')
+
+
+@pytest.mark.parametrize('metadata', [
+    {}, {'date_precision': 'unknown'}, {'date_reason': 'Date absente.'},
+    {'date_precision': 'exact', 'date_reason': 'Date absente.'},
+    {'date_precision': 'unknown', 'date_reason': None},
+    {'date_precision': 'unknown', 'date_reason': '   '},
+])
+def test_v1_unknown_date_requires_explicit_valid_metadata(metadata):
+    card = case_card()
+    event = card['data']['events'][0]
+    event.pop('date_precision', None)
+    event.pop('date_reason', None)
+    event.update(date=None, **metadata)
+    with pytest.raises(ValueError, match='schema-valid'):
+        mapped_case(card, 'track_a.v1')
+
+
+@pytest.mark.parametrize('version', ['track_a.v0', 'track_a.v1'])
+def test_exact_dates_remain_unchanged_for_both_contracts(version):
+    card = case_card()
+    request = mapped_case(card, version)
+    assert [e['date'] for e in request['events']] == [e['date'] for e in card['data']['events']]
+    if version == 'track_a.v0':
+        assert all('date_precision' not in e and 'date_reason' not in e for e in request['events'])
+
+
+def test_v1_does_not_accept_an_invalid_exact_date():
+    card = case_card()
+    card['data']['events'][0].update(date='2026-02-30', date_precision='exact')
+    with pytest.raises(ValueError, match='schema-valid'):
+        mapped_case(card, 'track_a.v1')

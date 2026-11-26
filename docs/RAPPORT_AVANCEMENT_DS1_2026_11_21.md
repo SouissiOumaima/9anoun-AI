@@ -136,3 +136,10 @@ la migration officielle des 56 secteurs ni une validation métier finale.
 - Schémas, routage v0/v1, mapping Case Card, temporalité et provenance testés. Le filtre v1 accepte seulement TND faute de champ devise dans le contrat, sans conversion ; politique collective encore à confirmer. La provenance détaillée et la vérification PDF sont optionnelles et ne sont pas activées implicitement dans DS1.
 - Une citation retrouvée dans un PDF ne certifie ni l’authenticité officielle ni l’applicabilité juridique. Aucun nouvel accord juridique ni changement des schémas partagés n’est déclaré par ces tests.
 - #47 reste une PR de 23 fichiers DS1, basée temporairement sur la livraison DS4. La consolidation finale de #53, puis son intégration à main, restent séparées de cette fusion #59. Ne pas intégrer #47 à la branche DS4.
+
+
+## Correction DS1 des dates inconnues du 26 novembre 2026
+
+Le mapper officiel `build_track_a_request_from_case_card` réserve désormais le contrôle strict de date à Track A v0. Pour v1, il conserve explicitement `date=None`, `date_precision=unknown` et le motif fourni, puis valide toute la requête contre le schéma officiel v1 avec contrôle des formats. Aucun motif ni date ne sont fabriqués. Une date inconnue sans métadonnées conformes et une date exacte invalide sont refusées.
+
+Le schéma Case Card propre à DS1 accepte maintenant le champ optionnel `date_reason` ; le schéma partagé Track A v1 reste inchangé. Tests de non-régression v0/v1, motifs FR/AR, absence de mutation et dates invalides : 28 tests ciblés réussis. Suites DS1, DS4 et shared : **1033 tests réussis, aucun échec**. Correctif livré uniquement côté DS1 dans #47.
