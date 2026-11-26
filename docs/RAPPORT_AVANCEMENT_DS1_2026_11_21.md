@@ -152,3 +152,12 @@ Le schéma Case Card propre à DS1 accepte maintenant le champ optionnel `date_r
 - Tests d’intégration : informations manquantes et contradictions déclarées atteignent la réponse du chat ; diagnostics du parcours complet non vides et sans doublons ; conclusion juridique toujours null et absence de citations injustifiées conservées.
 - Combinaison avec la dernière correction des dates inconnues DS1 : **5364 tests réussis, 4 ignorés, aucun échec**. Tests ciblés diagnostics et parcours : **53 réussis**. Syntaxe JavaScript et échappement du rendu vérifiés.
 - Les essais sur réponses DS2 LIVE sauvegardées restent des relectures de données sauvegardées, sans nouvel appel LIVE. Aucun contrôle PDF ni traitement de provenance optionnel n’est activé implicitement. Revue finale de #53, politique TND et validation humaine S6/S9 restent distinctes.
+
+
+## Vérification PDF optionnelle du 26 novembre 2026
+
+- PR #65 revue puis intégrée uniquement dans la branche de livraison de #53, merge `42af1e9`. Le raccordement des adaptateurs DS4 transmet un pdf_root explicite de configuration serveur ; aucun chemin n’est extrait de l’enveloppe client.
+- Le véritable adaptateur DS1 reste sans activation implicite. Deux tests supplémentaires vérifient qu’un pdf_root placé dans params ou context par le client n’est pas transmis au handler. La configuration réelle du serveur reste à valider conjointement avant toute activation.
+- Tests ciblés adaptateurs PDF et frontière DS1 : **55 réussis**. Combinaison globale avec DS1 : **5375 réussis, 4 ignorés, aucun échec**. Les PDF utilisés dans ces essais sont synthétiques ; aucune authenticité officielle ni applicabilité juridique certifiée.
+- Les trois anomalies de formatage du document de conception sont corrigées dans #53 par `91be72a` ; git diff --check sur le diff complet de livraison ne signale plus d’anomalie.
+- Aucun merge dans main. La revue finale de Ghofrane, la politique TND et les validations humaines S6/S9 restent ouvertes ; le dossier Ahmed attend les références DS2 confirmées.

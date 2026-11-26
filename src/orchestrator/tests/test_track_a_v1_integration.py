@@ -174,3 +174,21 @@ def test_official_chat_preserves_missing_information_and_declared_contradictions
     assert {'reference_id': 'declared-salary-gap', 'reason': 'DECLARED_CONTRADICTION: Montants déclarés différents.'} in answer['uncertain_information']
     pairs = [(i['reference_id'], i['reason']) for i in answer['uncertain_information']]
     assert len(pairs) == len(set(pairs))
+
+
+@pytest.mark.parametrize('location', ['params', 'context'])
+def test_client_cannot_activate_pdf_verification_in_official_ds1_adapter(location):
+    envelope = payload()
+    envelope[location]['pdf_root'] = '/client-controlled-directory'
+    saved = deepcopy(envelope)
+    calls = []
+
+    def handler(request, **kwargs):
+        calls.append(kwargs)
+        return handle_v1(request)
+
+    response = TrackAAdapter(handler)(envelope)
+    assert response['status'] == 'success'
+    assert calls == [{}]  # No server-side PDF option can come from the client envelope.
+    assert response['data']['result']['legal_conclusion'] is None
+    assert envelope == saved
