@@ -2,8 +2,8 @@
 # DS4 — Lawyer Track v1
 ## Document de conception
 
-**Projet :** 9anoun-AI  
-**Branche :** DS4_Lawyer_Track_v1  
+**Projet :** 9anoun-AI\
+**Branche :** DS4_Lawyer_Track_v1\
 **Statut :** En préparation — contrat technique non finalisé
 
 ## 1. Objectif
@@ -173,4 +173,3 @@ Avant l'implementation de track_a.v1, confirmer avec Achref :
 - Les comportements de refus et les codes d'erreur.
 
 Aucune modification du contrat track_a.v0 sans validation.
-

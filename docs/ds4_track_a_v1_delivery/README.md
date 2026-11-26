@@ -1,85 +1,97 @@
-# DS4 — Lawyer Track A v1
+# DS4 - Lawyer Track A v1
 
 ## 1. Objectif
 
-Livraison technique du module DS4 Lawyer Track A v1 pour intégration dans l'orchestrateur DS1 du projet 9anoun-AI.
+Livraison technique du module DS4 Lawyer Track A v1
+pour integration dans l'orchestrateur DS1 de 9anoun-AI.
 
-Le module produit une analyse juridique préparatoire, sans générer automatiquement de conclusion juridique définitive.
+Le module produit une analyse juridique preparatoire,
+sans conclusion juridique definitive automatique.
 
-## 2. Fichiers livrés
+## 2. Contrats et livrables
 
 | Fichier | Description |
 |---|---|
-| [track_a_request.v1.schema.json](../../data/mock_cards/schemas/track_a_request.v1.schema.json) | Contrat d'entrée DS4 v1 |
-| [track_a_response.v1.schema.json](../../data/mock_cards/schemas/track_a_response.v1.schema.json) | Contrat de sortie DS4 v1 |
-| `example_request_v1.json` | Exemple de requête fictive |
-| `example_response_v1.json` | Exemple de réponse DS4 |
-| `example_refusal_v1.json` | Exemple de refus `PARAM_INVALIDE` |
+| [track_a_request.v1.schema.json](../../data/mock_cards/schemas/track_a_request.v1.schema.json) | Contrat d'entree |
+| [track_a_response.v1.schema.json](../../data/mock_cards/schemas/track_a_response.v1.schema.json) | Contrat de sortie |
+| example_request_v1.json | Requete fictive |
+| example_response_v1.json | Reponse preparatoire |
+| example_refusal_v1.json | Exemple de refus |
+| VALIDATION_REPORT.md | Rapport de validation technique |
 
-Les schémas canoniques sont conservés uniquement dans `data/mock_cards/schemas/`. Les trois exemples JSON sont validés contre ces fichiers, sans copie dans la livraison documentaire.
+Les schemas canoniques sont centralises dans
+data/mock_cards/schemas/.
 
-## 3. Architecture et intégration
+## 3. Architecture et fonctionnalites
 
-**Handler DS4 :**
-`src.track_a_legal.v1_handler.handle_v1`
+- Handler officiel : src.track_a_legal.v1_handler.handle_v1.
+- Routage DS1 compatible avec Track A v0 et v1.
+- Integration DS2 et preservation des versions juridiques.
+- Integration des faits documentaires DS3.
+- Validation des references et coherence temporelle.
+- Analyse preparatoire selon les cinq piliers.
+- Livrables S7 et rapport juridique preparatoire S8.
+- Protocole et validation structurelle des revues humaines S9.
+- Diagnostics officiels dedupliques dans uncertain_information.
+- Verification documentaire PDF optionnelle.
+- Preservation optionnelle de la provenance documentaire DS3.
 
-**Intégration DS1 :**
-- `DS1TrackAV1Adapter`
-- `DS1TrackAVersionRouter`
+Les faits DS3 ne sont jamais automatiquement confirmes.
+Le filtrage TND a la frontiere v1 est implemente sans
+conversion monetaire. La politique collective reste a confirmer.
 
-Le routeur prend en charge `track_a.v0` et `track_a.v1`. Les versions inconnues sont rejetées.
+## 4. Validation technique au 26 novembre 2026
 
-**Intégration DS2 :**
-`run_ds2_ds4_v1_pipeline`
+| Perimetre | Tests reussis | Tests ignores |
+|---|---:|---:|
+| DS4 avec diagnostics, commit a33821e | 463 | 0 |
+| Suite globale, commit a33821e | 5293 | 1 |
+| DS4, PR #65, commit e0238ac | 472 | 0 |
+| Suite globale, PR #65 | 5302 | 1 |
+| Integration combinee DS1/DS4, selon Achref | 5364 | 4 |
 
-**Intégration DS2 + DS3 :**
-`run_ds2_ds3_ds4_v1_pipeline`
+Aucun echec rapporte dans ces executions.
 
-Les faits documentaires DS3 doivent être associés à des preuves identifiables. Ils ne sont pas automatiquement considérés comme confirmés.
+Les resultats correspondent a des revisions distinctes
+et ne doivent pas etre additionnes.
 
-## 4. Résultats des tests
+## 5. Etat de l'integration
 
-| Vérification | Résultat |
-|---|---|
-| Tests automatisés DS4 | 322 réussis |
-| Routage local DS1 v0/v1 | Réussi |
-| Pipeline DS2 LIVE + DS3 fictif + DS4 v1 | Réussi |
-| Erreurs JSON Schema E2E | 0 |
-| Modification des données d'entrée E2E | Aucune |
-| Référence des schémas | Une seule version canonique dans data/mock_cards/schemas |
+- PR #59 : integree dans la livraison DS4.
+- PR #64 : integree par le merge e45a421.
+- Correctif DS1 des dates inconnues : 9342e87.
+- Restitution des diagnostics dans DS1 : 73e7df5.
+- PR #47 : integration finale en attente.
+- PR #65 : raccordement PDF optionnel soumis a revue.
+- PR #53 : revue technique finale en cours.
 
-**Résultat du scénario E2E :**
+La verification PDF et la provenance optionnelle ne sont
+pas activees implicitement dans DS1.
 
-- `status: ok`
-- `analysis_status: insufficient_evidence`
-- `legal_conclusion: null`
-- `citations: []`
+## 6. Garanties et limites
 
-Ce résultat est attendu : les preuves disponibles ne permettent pas de produire une conclusion juridique vérifiée.
+- Preservation des donnees d'entree.
+- Absence de conclusion juridique definitive automatique.
+- Absence de citations finales injustifiees dans les scenarios testes.
+- Conservation des incertitudes et des references.
+- Les relectures de reponses DS2 LIVE sauvegardees ne constituent
+  pas de nouveaux appels LIVE.
+- La verification textuelle PDF ne garantit ni authenticite,
+  ni pertinence, ni applicabilite juridique.
+- Le dossier Ahmed Ben Salah reste en attente de confirmation
+  sectorielle, documentaire et juridique.
+- La validation humaine S6/S9 reste a realiser.
+- Les 42 decisions humaines S9 restent en attente.
 
-## 5. Limites et validations restantes
+## 7. Commande de validation
 
-- Validation juridique humaine des références en attente.
-- Vérification des extraits juridiques dans les PDF originaux non effectuée.
-- Numéros de page indisponibles pour les cinq références DS2 du scénario testé.
-- Applicabilité des conventions
-## 6. Commande de validation
+Depuis la racine du depot :
 
-Depuis la racine du projet 9anoun-AI, exécuter :
+    python -m pytest src/track_a_legal/tests -q
 
-`python -m pytest src/track_a_legal/tests -q -p no:cacheprovider`
+## 8. Statut de livraison
 
-Résultat de la dernière exécution complète : **322 tests réussis**.
+**TECHNICAL REVIEW IN PROGRESS - LEGAL VALIDATION PENDING**
 
-## 7. Statut de livraison
-
-**DS4 Lawyer Track A v1 : prêt pour revue technique et intégration par DS1.**
-
-Les schémas JSON, les exemples de requêtes et de réponses, les adaptateurs DS1, DS2 et DS3 ainsi que le pipeline d'intégration sont disponibles.
-
-Les validations restantes concernent :
-- L'intégration avec l'orchestrateur officiel DS1.
-- La vérification juridique humaine des références.
-- La validation du Golden Set DS4.
-
-Aucune conclusion juridique définitive n'est générée automatiquement.
+La validation technique ne constitue pas une validation
+juridique humaine ni une autorisation de fusion dans main.
