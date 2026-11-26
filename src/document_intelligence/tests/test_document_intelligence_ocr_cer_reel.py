@@ -11,6 +11,7 @@ import importlib.util
 import json
 import os
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from types import ModuleType
 
@@ -633,3 +634,112 @@ def test_a_readings_file_with_a_bom_is_still_read_as_utf8(tmp_path: Path) -> Non
     readings.write_text(readings.read_text(encoding="utf-8"), encoding="utf-8-sig")
     rows, _ = evaluer.read_annotations(csv_path)
     assert rows[2].lecture_ocr == "الأجر الأساسي"
+
+
+# ------------------------------------------------------------ relecture de la PR #61
+
+
+def _rewrite_csv(path: Path, change: Callable[[list[dict[str, str]]], list[dict[str, str]]]) -> None:
+    """Réécrit le CSV comme le ferait une annotatrice (mêmes colonnes, contenu modifié)."""
+    rows = _read_csv(path)
+    columns = list(rows[0])
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, delimiter=";")
+        writer.writeheader()
+        writer.writerows(change(rows))
+
+
+def test_ids_match_even_after_excel_removed_the_leading_zeros(tmp_path: Path) -> None:
+    """Excel enregistre « 0001 » comme le nombre 1 : le CSV contient alors « 1 », « 2 »…, le JSON « 0001 »…"""
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    expected, _ = evaluer.read_annotations(csv_path)
+    _rewrite_csv(csv_path, lambda rows: [{**r, "id": str(int(r["id"]))} for r in rows])
+    assert [r["id"] for r in _read_csv(csv_path)][:3] == ["1", "2", "3"]
+
+    rows, counts = evaluer.read_annotations(csv_path)
+    assert [r.lecture_ocr for r in rows] == [r.lecture_ocr for r in expected]
+    assert counts["lignes_annotees"] == 5
+    assert evaluer.main([str(csv_path), "--sans-modeles"], recognizers={}) == 0
+
+
+def test_id_normalization_ignores_leading_zeros_and_spaces_only() -> None:
+    evaluer = _load("evaluer_cer_reel")
+    assert {evaluer.normalize_id(v) for v in ("0001", "001", "1", " 1 ", "1\t")} == {"1"}
+    assert evaluer.normalize_id("0010") == "10" and evaluer.normalize_id("0") == "0"
+    assert evaluer.normalize_id("L0001") == "L0001"  # un id non numérique est gardé tel quel
+    assert evaluer.normalize_id("٠١") == "٠١"  # chiffres arabes : pas convertis en nombre
+    assert evaluer.normalize_id(None) == "" and evaluer.normalize_id("") == ""
+
+
+def test_duplicate_ids_in_the_csv_are_refused_without_quoting_any_text(tmp_path: Path,
+                                                                       capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    # deux lignes copiées-collées sous l'id « 0001 » et deux sous « 0003 » (dont une écrite « 3 » par Excel)
+    _rewrite_csv(csv_path, lambda rows: [{**r, "id": {"0002": "0001", "0004": "3"}.get(r["id"], r["id"])}
+                                         for r in rows])
+    with pytest.raises(ValueError, match="2 id en double dans le CSV"):
+        evaluer.read_annotations(csv_path)
+    assert evaluer.main([str(csv_path)], recognizers={}) == 2
+    printed = capsys.readouterr().out
+    assert "2 id en double" in printed and "Salaire" not in printed and "الأجر" not in printed
+
+
+def test_duplicate_ids_in_the_readings_file_are_refused(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    readings = tmp_path / "ann" / "lectures_ocr.json"
+    data = json.loads(readings.read_text(encoding="utf-8"))
+    data["lectures"]["1"] = "autre"  # même ligne que « 0001 » une fois les zéros ignorés
+    readings.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="1 id en double"):
+        evaluer.read_annotations(csv_path)
+
+
+def test_an_empty_image_cell_on_an_annotated_line_gives_a_clear_message(tmp_path: Path,
+                                                                        capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    # image effacée sur une ligne annotée (0001) et sur une ligne non annotée (0007, sans effet)
+    _rewrite_csv(csv_path, lambda rows: [{**r, "image": "  "} if r["id"] in {"0001", "0007"} else r for r in rows])
+    with pytest.raises(ValueError, match="1 ligne\\(s\\) annotée\\(s\\) sans image"):
+        evaluer.read_annotations(csv_path)
+    assert evaluer.main([str(csv_path)], recognizers={}) == 2
+    assert "sans image (colonne image vide)" in capsys.readouterr().out
+
+    short = tmp_path / "court"  # ligne coupée : la cellule image manque complètement (None, plus de TypeError)
+    short.mkdir()
+    (short / "annotation.csv").write_text("id;texte_correct;image\n0001;Salaire\n", encoding="utf-8")
+    (short / "lectures_ocr.json").write_text(
+        json.dumps({"format": "ds3.lectures_ocr.v1", "lectures": {"0001": "Salaire"}}), encoding="utf-8")
+    with pytest.raises(ValueError, match="sans image"):
+        evaluer.read_annotations(short / "annotation.csv")
+
+    old = _annotated_csv(tmp_path / "ancien", legacy=True)  # même contrôle pour un ancien CSV
+    _rewrite_csv(old, lambda rows: [{**r, "image": ""} if r["id"] == "0002" else r for r in rows])
+    with pytest.raises(ValueError, match="sans image"):
+        evaluer.read_annotations(old)
+
+
+def test_a_failed_readings_write_removes_the_csv(pdf_dir: Path, tmp_path: Path,
+                                                 monkeypatch: pytest.MonkeyPatch) -> None:
+    """Disque plein (ou autre erreur) en écrivant lectures_ocr.json : pas de dossier à moitié écrit."""
+    annoter = _load("annoter_lignes")
+    out = tmp_path / "out"
+    real_write_text = Path.write_text
+
+    def failing_write_text(self: Path, data: str, *args: object, **kwargs: object) -> int:
+        if self.name == "lectures_ocr.json":
+            real_write_text(self, data[:10], encoding="utf-8")  # écrit à moitié, puis échoue
+            raise OSError("disque plein")
+        return real_write_text(self, data, *args, **kwargs)  # type: ignore[arg-type]
+
+    monkeypatch.setattr(Path, "write_text", failing_write_text)
+    with pytest.raises(OSError, match="disque plein"):
+        annoter.prepare(pdf_dir, out, 3, 42, engine=TwoLinesEngine())
+    assert not (out / "annotation.csv").exists() and not (out / "lectures_ocr.json").exists()
+
+    monkeypatch.setattr(Path, "write_text", real_write_text)  # le relancement dans le même dossier marche
+    assert annoter.prepare(pdf_dir, out, 3, 42, engine=TwoLinesEngine())["lignes_tirees"] == 3
+    assert sorted(_lectures(out)) == [r["id"] for r in _read_csv(out / "annotation.csv")]

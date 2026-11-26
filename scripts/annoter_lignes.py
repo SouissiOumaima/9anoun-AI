@@ -132,9 +132,16 @@ def prepare(source: Path, out_dir: Path, n: int, seed: int, *, limit: int | None
         writer.writeheader()
         writer.writerows(rows)
     # À part, pour annoter sans voir la lecture de l'OCR ; UTF-8 sans BOM, arabe écrit tel quel (pas de \uXXXX).
-    (out_dir / LECTURES_NAME).write_text(
-        json.dumps({"format": LECTURES_FORMAT, "lectures": lectures}, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8")
+    # Si cette écriture échoue, le CSV est supprimé aussi : jamais de dossier à moitié écrit (un CSV sans lectures
+    # serait annoté pour rien, et bloquerait un nouveau lancement dans le même dossier).
+    try:
+        (out_dir / LECTURES_NAME).write_text(
+            json.dumps({"format": LECTURES_FORMAT, "lectures": lectures}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
+    except BaseException:
+        (out_dir / CSV_NAME).unlink(missing_ok=True)
+        (out_dir / LECTURES_NAME).unlink(missing_ok=True)
+        raise
 
     langs = Counter(row["langue_ocr"] for row in rows)
     return {

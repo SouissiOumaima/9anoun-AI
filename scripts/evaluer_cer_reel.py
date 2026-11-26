@@ -28,6 +28,7 @@ import importlib
 import json
 import os
 import sys
+from collections import Counter
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -95,7 +96,20 @@ def read_lectures(path: Path) -> dict[str, str]:
     if not isinstance(lectures, dict) or not all(isinstance(k, str) and isinstance(v, str)
                                                  for k, v in lectures.items()):
         raise ValueError(f"{LECTURES_NAME} : format non reconnu (attendu : {LECTURES_FORMAT}).")
-    return lectures
+    by_id = {normalize_id(k): v for k, v in lectures.items()}
+    if len(by_id) != len(lectures):
+        raise ValueError(f"{LECTURES_NAME} : {len(lectures) - len(by_id)} id en double.")
+    return by_id
+
+
+def normalize_id(value: str | None) -> str:
+    """Id de ligne comparable entre le CSV et `lectures_ocr.json`, sans dépendre des zéros de tête.
+
+    Excel enregistre « 0001 » comme le nombre 1 : un id fait seulement de chiffres est donc comparé comme un
+    nombre (« 0001 », « 001 » et « 1 » donnent « 1 »). Un autre id est seulement débarrassé de ses espaces.
+    """
+    text = (value or "").strip()
+    return str(int(text)) if text.isascii() and text.isdigit() else text
 
 
 def read_annotations(csv_path: Path) -> tuple[list[Row], dict[str, int]]:
@@ -119,20 +133,31 @@ def read_annotations(csv_path: Path) -> tuple[list[Row], dict[str, int]]:
         lectures: dict[str, str] = {}
     else:
         lectures = read_lectures(csv_path.parent / LECTURES_NAME)
+    if "id" in columns:
+        seen = Counter(normalize_id(record.get("id")) for record in raw)
+        duplicated = sum(1 for line_id, count in seen.items() if line_id and count > 1)
+        if duplicated:
+            raise ValueError(f"{duplicated} id en double dans le CSV : chaque ligne doit garder son id d'origine.")
     rows: list[Row] = []
-    illegible = skipped = without_reading = 0
+    illegible = skipped = without_reading = without_image = 0
     for record in raw:
         reference = (record.get("texte_correct") or "").strip()
+        image = (record.get("image") or "").strip()
         if not reference:
             skipped += 1
         elif reference.upper() == ILLEGIBLE:
             illegible += 1
+        elif not image:
+            without_image += 1
         elif legacy:
-            rows.append(Row(csv_path.parent / record["image"], record.get(LEGACY_COLUMN) or "", reference))
-        elif (line_id := (record.get("id") or "").strip()) in lectures:
-            rows.append(Row(csv_path.parent / record["image"], lectures[line_id], reference))
+            rows.append(Row(csv_path.parent / image, record.get(LEGACY_COLUMN) or "", reference))
+        elif (line_id := normalize_id(record.get("id"))) in lectures:
+            rows.append(Row(csv_path.parent / image, lectures[line_id], reference))
         else:
             without_reading += 1
+    if without_image:
+        raise ValueError(f"{without_image} ligne(s) annotée(s) sans image (colonne image vide) : remettez le nom "
+                         "de l'image de chaque ligne, sans rien deviner.")
     if without_reading:  # jamais deviner : une ligne sans lecture fausserait la comparaison
         raise ValueError(f"{without_reading} ligne(s) annotée(s) sans lecture dans {LECTURES_NAME} "
                          "(CSV et fichier de lectures de deux préparations différentes ?).")
