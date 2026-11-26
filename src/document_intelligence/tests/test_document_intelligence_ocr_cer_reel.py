@@ -75,6 +75,12 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter=";"))
 
 
+def _lectures(folder: Path) -> dict[str, str]:
+    data = json.loads((folder / "lectures_ocr.json").read_text(encoding="utf-8"))
+    assert data["format"] == "ds3.lectures_ocr.v1"
+    return dict(data["lectures"])
+
+
 # ------------------------------------------------------------ annoter_lignes.py
 
 
@@ -103,10 +109,12 @@ def test_the_draw_is_reproducible_with_the_same_seed(pdf_dir: Path, tmp_path: Pa
     annoter.prepare(pdf_dir, tmp_path / "o1", 4, 7, engine=TwoLinesEngine())
     annoter.prepare(pdf_dir, tmp_path / "o2", 4, 7, engine=TwoLinesEngine())
     annoter.prepare(pdf_dir, tmp_path / "o3", 4, 8, engine=TwoLinesEngine())
-    first, second, other = (_read_csv(tmp_path / o / "annotation.csv") for o in ("o1", "o2", "o3"))
-    key = [(r["document"], r["page"], r["lecture_ocr"]) for r in first]
-    assert key == [(r["document"], r["page"], r["lecture_ocr"]) for r in second]
-    assert key != [(r["document"], r["page"], r["lecture_ocr"]) for r in other]
+    def key(out: str) -> list[tuple[str, str, str]]:
+        lectures = _lectures(tmp_path / out)
+        return [(r["document"], r["page"], lectures[r["id"]]) for r in _read_csv(tmp_path / out / "annotation.csv")]
+
+    assert key("o1") == key("o2")
+    assert key("o1") != key("o3")
 
 
 def test_n_larger_than_available_takes_every_line_and_options_limit_the_reading(pdf_dir: Path,
@@ -157,9 +165,30 @@ def test_main_prints_numbers_only_and_refuses_unsafe_outputs(pdf_dir: Path, tmp_
 # ------------------------------------------------------------ evaluer_cer_reel.py
 
 
-def _annotated_csv(folder: Path) -> Path:
-    """CSV fictif déjà annoté : 2 lignes FR, 2 AR, 1 mixte, 1 illisible, 1 non annotée."""
+def _write_annotation(folder: Path, rows: list[tuple[str, str, str]], *, legacy: bool = False) -> Path:
+    """Écrit `annotation.csv` et, sauf ancien format (`legacy`), `lectures_ocr.json` : (id, lecture, correct)."""
     folder.mkdir(parents=True, exist_ok=True)
+    path = folder / "annotation.csv"
+    header = ["id", "image", "document", "page", "langue_ocr", "confiance", "texte_correct"]
+    if legacy:
+        header.insert(6, "lecture_ocr")  # ancien CSV : lecture de l'OCR visible pendant l'annotation
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle, delimiter=";")
+        writer.writerow(header)
+        for i, lecture, correct in rows:
+            cells = [i, f"lignes/ligne_{i}.png", "doc_001", 1, "fr", "0.9", correct]
+            if legacy:
+                cells.insert(6, lecture)
+            writer.writerow(cells)
+    if not legacy:
+        (folder / "lectures_ocr.json").write_text(
+            json.dumps({"format": "ds3.lectures_ocr.v1", "lectures": {i: lecture for i, lecture, _ in rows}},
+                       ensure_ascii=False), encoding="utf-8")
+    return path
+
+
+def _annotated_csv(folder: Path, *, legacy: bool = False) -> Path:
+    """CSV fictif déjà annoté : 2 lignes FR, 2 AR, 1 mixte, 1 illisible, 1 non annotée."""
     rows = [
         ("0001", "Salaire de base 424.100", "Salaire de base 424.100"),
         ("0002", "Prime de transport 56.000", "Prime de transport 56,000"),
@@ -169,13 +198,7 @@ def _annotated_csv(folder: Path) -> Path:
         ("0006", "???", "#ILLISIBLE"),
         ("0007", "Net à payer", ""),
     ]
-    path = folder / "annotation.csv"
-    with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.writer(handle, delimiter=";")
-        writer.writerow(["id", "image", "document", "page", "langue_ocr", "confiance", "lecture_ocr", "texte_correct"])
-        for i, lecture, correct in rows:
-            writer.writerow([i, f"lignes/ligne_{i}.png", "doc_001", 1, "fr", "0.9", lecture, correct])
-    return path
+    return _write_annotation(folder, rows, legacy=legacy)
 
 
 def test_read_annotations_counts_skipped_and_illegible_lines(tmp_path: Path) -> None:
@@ -229,15 +252,9 @@ def test_results_json_contains_no_document_text_and_no_file_name(tmp_path: Path)
     """Le fichier partagé entre annotatrices ne contient que des nombres : ni texte lu, ni texte corrigé, ni nom."""
     evaluer = _load("evaluer_cer_reel")
     folder = tmp_path / "Paie_SECRETE_societe_X"
-    folder.mkdir()
-    path = folder / "annotation.csv"
-    with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.writer(handle, delimiter=";")
-        writer.writerow(["id", "image", "document", "page", "langue_ocr", "confiance", "lecture_ocr", "texte_correct"])
-        writer.writerow(["0001", "lignes/SECRET_nom_fichier.png", "doc_001", 1, "fr", "0.9",
-                         f"Salaire {SECRET} 999.999", f"Salaire {SECRET} 999.000"])
-        writer.writerow(["0002", "lignes/ligne_0002.png", "doc_001", 1, "ar", "0.8", "الأجر السري", "الأجر السري 5"])
-        writer.writerow(["0003", "lignes/ligne_0003.png", "doc_002", 2, "inconnu", "0.7", "424.100", "424.700"])
+    path = _write_annotation(folder, [("0001", f"Salaire {SECRET} 999.999", f"Salaire {SECRET} 999.000"),
+                                      ("0002", "الأجر السري", "الأجر السري 5"),
+                                      ("0003", "424.100", "424.700")])
     assert evaluer.main([str(path)], recognizers={"fine_tune": lambda paths: [f"Ben {SECRET}"] * len(paths)}) == 0
 
     saved = json.loads((folder / "resultats_cer_reel.json").read_text(encoding="utf-8"))
@@ -480,3 +497,139 @@ def test_end_to_end_two_annotators_with_and_without_the_finetuned_model(tmp_path
     assert f"ocr_production   global      {2 * one['n']}" in printed  # deux fois les mêmes lignes fictives
     assert "fine_tune" in printed and "fichier(s) 1" in printed
     assert "Salaire" not in printed and "الأجر" not in printed
+
+
+# ------------------------------------------------------------ annotation sans biais : lecture OCR à part
+
+
+def test_the_csv_contains_no_ocr_text_and_the_readings_are_in_a_separate_utf8_json(pdf_dir: Path,
+                                                                                  tmp_path: Path) -> None:
+    annoter = _load("annoter_lignes")
+    out = tmp_path / "out"
+    annoter.prepare(pdf_dir, out, 8, 42, engine=TwoLinesEngine())
+
+    csv_text = (out / "annotation.csv").read_text(encoding="utf-8-sig")
+    assert "lecture_ocr" not in csv_text and SECRET not in csv_text and "الأجر" not in csv_text
+    rows = _read_csv(out / "annotation.csv")
+    assert list(rows[0]) == ["id", "image", "document", "page", "langue_ocr", "confiance", "texte_correct"]
+
+    raw = (out / "lectures_ocr.json").read_bytes()
+    assert not raw.startswith(b"\xef\xbb\xbf")  # UTF-8 sans BOM
+    assert "الأجر".encode() in raw  # arabe écrit tel quel, pas en \uXXXX
+    lectures = _lectures(out)
+    assert sorted(lectures) == [r["id"] for r in rows]  # une lecture par id de ligne du CSV
+    assert sum(SECRET in text for text in lectures.values()) == 4 and sum("الأجر" in t for t in lectures.values()) == 4
+
+
+def test_annoter_docstring_says_to_look_only_at_the_image() -> None:
+    annoter = _load("annoter_lignes")
+    assert annoter.__doc__ is not None and "annoter en regardant seulement l'image" in annoter.__doc__.lower()
+    assert "lectures_ocr.json" in annoter.__doc__ and "Excel" in annoter.__doc__
+
+
+def test_main_refuses_an_existing_readings_file_and_says_not_to_open_it(pdf_dir: Path, tmp_path: Path,
+                                                                        monkeypatch: pytest.MonkeyPatch,
+                                                                        capsys: pytest.CaptureFixture[str]) -> None:
+    from src.document_intelligence.reading import ocr
+
+    monkeypatch.setattr(ocr, "default_engine", TwoLinesEngine)
+    annoter = _load("annoter_lignes")
+    out = tmp_path / "out"
+    assert annoter.main([str(pdf_dir), "--out", str(out), "--n", "2"]) == 0
+    printed = capsys.readouterr().out
+    assert "seulement l'image" in printed and "N'ouvrez pas lectures_ocr.json" in printed
+    (out / "annotation.csv").unlink()  # seul le fichier de lectures reste : on ne l'écrase pas non plus
+    assert annoter.main([str(pdf_dir), "--out", str(out)]) == 2
+    assert "lectures_ocr.json existe déjà" in capsys.readouterr().out
+
+
+def test_evaluation_reads_the_ocr_reading_from_the_json_by_line_id(tmp_path: Path,
+                                                                   capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    rows, counts = evaluer.read_annotations(_annotated_csv(tmp_path / "ann"))
+    assert [row.lecture_ocr for row in rows] == ["Salaire de base 424.100", "Prime de transport 56.000",
+                                                 "الأجر الأساسي", "الصنف", "Catégorie الصنف"]
+    assert counts["lignes_annotees"] == 5
+    assert "Avertissement" not in capsys.readouterr().out
+
+
+def test_prepare_then_evaluate_end_to_end(pdf_dir: Path, tmp_path: Path) -> None:
+    """Chaîne complète sur données fictives : préparation, annotation « parfaite », évaluation."""
+    annoter, evaluer = _load("annoter_lignes"), _load("evaluer_cer_reel")
+    out = tmp_path / "out"
+    annoter.prepare(pdf_dir, out, 4, 42, engine=TwoLinesEngine())
+    lectures = _lectures(out)
+    rows = _read_csv(out / "annotation.csv")
+    with (out / "annotation.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter=";")
+        writer.writeheader()
+        writer.writerows([{**r, "texte_correct": lectures[r["id"]]} for r in rows])
+    assert evaluer.main([str(out / "annotation.csv"), "--sans-modeles"], recognizers={}) == 0
+    saved = json.loads((out / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert saved["resultats"]["ocr_production"]["global"]["cer"] == 0.0
+    assert saved["lignes"]["lignes_annotees"] == 4
+
+
+def test_an_old_csv_with_the_ocr_column_still_works_with_a_warning(tmp_path: Path,
+                                                                   capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    old = _annotated_csv(tmp_path / "ancien", legacy=True)
+    assert not (tmp_path / "ancien" / "lectures_ocr.json").exists()
+    new_rows, _ = evaluer.read_annotations(_annotated_csv(tmp_path / "nouveau"))
+    capsys.readouterr()
+
+    old_rows, counts = evaluer.read_annotations(old)
+    printed = capsys.readouterr().out
+    assert "Avertissement" in printed and "lecture_ocr" in printed and "trop optimiste" in printed
+    assert "Salaire" not in printed and "الأجر" not in printed  # l'avertissement ne cite aucun texte
+    assert [r.lecture_ocr for r in old_rows] == [r.lecture_ocr for r in new_rows]
+    assert counts["lignes_annotees"] == 5
+    assert evaluer.main([str(old), "--sans-modeles"], recognizers={}) == 0
+    old_results = json.loads((tmp_path / "ancien" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert evaluer.main([str(tmp_path / "nouveau" / "annotation.csv"), "--sans-modeles"], recognizers={}) == 0
+    new_results = json.loads((tmp_path / "nouveau" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
+    assert old_results["resultats"] == new_results["resultats"]  # mêmes chiffres, ancien ou nouveau format
+
+
+def test_missing_or_bad_readings_file_is_refused_without_quoting_any_text(tmp_path: Path,
+                                                                          capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    readings = tmp_path / "ann" / "lectures_ocr.json"
+    good = readings.read_text(encoding="utf-8")
+
+    readings.unlink()
+    assert evaluer.main([str(csv_path)], recognizers={}) == 2
+    assert "lectures_ocr.json introuvable" in capsys.readouterr().out
+
+    for content in ("{pas du json", json.dumps({"lectures": {"0001": "x"}}),
+                    json.dumps({"format": "ds3.lectures_ocr.v1", "lectures": ["x"]}),
+                    json.dumps({"format": "ds3.lectures_ocr.v1", "lectures": {"0001": 3}})):
+        readings.write_text(content, encoding="utf-8")
+        assert evaluer.main([str(csv_path)], recognizers={}) == 2
+        assert "lectures_ocr.json" in capsys.readouterr().out
+    readings.write_bytes("Salaire".encode("utf-16"))  # pas de l'UTF-8 (fichier réenregistré par un autre outil)
+    assert evaluer.main([str(csv_path)], recognizers={}) == 2
+    assert "UTF-8 attendu" in capsys.readouterr().out
+
+    data = json.loads(good)
+    del data["lectures"]["0003"]  # une ligne annotée sans lecture : refus, jamais de devinette
+    readings.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    assert evaluer.main([str(csv_path)], recognizers={}) == 2
+    printed = capsys.readouterr().out
+    assert "1 ligne(s) annotée(s) sans lecture" in printed and "الأجر" not in printed
+
+    no_id = tmp_path / "sans_id"
+    no_id.mkdir()
+    (no_id / "annotation.csv").write_text("image;texte_correct\nx.png;y\n", encoding="utf-8")
+    assert evaluer.main([str(no_id / "annotation.csv")], recognizers={}) == 2
+    assert "colonnes manquantes" in capsys.readouterr().out
+
+
+def test_a_readings_file_with_a_bom_is_still_read_as_utf8(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    csv_path = _annotated_csv(tmp_path / "ann")
+    readings = tmp_path / "ann" / "lectures_ocr.json"
+    readings.write_text(readings.read_text(encoding="utf-8"), encoding="utf-8-sig")
+    rows, _ = evaluer.read_annotations(csv_path)
+    assert rows[2].lecture_ocr == "الأجر الأساسي"

@@ -7,19 +7,28 @@
 - lit chaque PDF : texte natif (partie B) puis OCR des zones en attente (partie A) ;
 - tire au hasard N lignes lues par l'OCR (graine fixée : même tirage à chaque lancement) ;
 - enregistre l'image de chaque ligne (`lignes/ligne_0001.png`…) et un fichier `annotation.csv` dans `--out` :
-  `id ; image ; document ; page ; langue_ocr ; confiance ; lecture_ocr ; texte_correct` (colonne
-  `texte_correct` vide, à remplir à la main : le texte exact imprimé, sans rien deviner ; `#ILLISIBLE` si la ligne
-  ne se lit pas ; laisser vide pour sauter la ligne) ;
+  `id ; image ; document ; page ; langue_ocr ; confiance ; texte_correct` (colonne `texte_correct` vide, à
+  remplir à la main : le texte exact imprimé, sans rien deviner ; `#ILLISIBLE` si la ligne ne se lit pas ; laisser
+  vide pour sauter la ligne). Le CSV ne contient AUCUN texte lu par l'OCR ;
+- écrit la lecture de l'OCR à part, dans `lectures_ocr.json` (même dossier `--out`), par id de ligne. Ce fichier
+  sert seulement à `scripts/evaluer_cer_reel.py` ;
 - `--out` doit être EN DEHORS du dépôt (le script refuse sinon) ; les documents sont nommés `doc_001`… ;
 - n'affiche QUE des chiffres agrégés. Aucun texte, aucun nom de fichier n'est affiché.
 
+**Annoter en regardant seulement l'image** : recopier ce qui est imprimé sur `lignes/ligne_XXXX.png`, sans ouvrir
+`lectures_ocr.json`. Voir la lecture de l'OCR pousserait à la recopier, et le CER mesuré serait trop optimiste
+(suggestion de Hadil).
+
 Le CSV est en UTF-8 avec BOM et séparateur « ; » : Excel l'ouvre directement, arabe compris.
+`lectures_ocr.json` est en UTF-8 (sans BOM). Il n'est pas fait pour Excel : il est lu en UTF-8 par
+`evaluer_cer_reel.py`, sans passer par Excel (un enregistrement par Excel risquerait d'abîmer l'arabe).
 """
 
 from __future__ import annotations
 
 import argparse
 import csv
+import json
 import random
 import sys
 from collections import Counter
@@ -39,8 +48,11 @@ from src.document_intelligence.reading.ocr import OcrEngine
 from src.document_intelligence.reading.pdf_natif import read_pdf
 
 CSV_NAME: Final = "annotation.csv"
+LECTURES_NAME: Final = "lectures_ocr.json"
+LECTURES_FORMAT: Final = "ds3.lectures_ocr.v1"
 IMAGES_DIR: Final = "lignes"
-COLUMNS: Final = ("id", "image", "document", "page", "langue_ocr", "confiance", "lecture_ocr", "texte_correct")
+COLUMNS: Final = ("id", "image", "document", "page", "langue_ocr", "confiance", "texte_correct")
+"""Colonnes du CSV à annoter : aucune ne contient le texte lu par l'OCR (il est dans `lectures_ocr.json`)."""
 CROP_DPI: Final = 300
 MARGIN_PT: Final = 2.0
 """Marge autour de la ligne lue, en points PDF, pour ne pas couper les accents ni les points arabes."""
@@ -93,7 +105,10 @@ def crop_line(pdf: Path, line: TextLine, target: Path) -> tuple[int, int]:
 
 def prepare(source: Path, out_dir: Path, n: int, seed: int, *, limit: int | None = None,
             max_pages: int | None = None, engine: OcrEngine | None = None) -> dict[str, int | float]:
-    """Tire N lignes OCR au hasard et écrit les images et le CSV à annoter. Renvoie des chiffres agrégés."""
+    """Tire N lignes OCR au hasard ; écrit les images, le CSV à annoter et, à part, les lectures de l'OCR.
+
+    Renvoie des chiffres agrégés.
+    """
     pdfs = sorted(p for p in source.iterdir() if p.suffix.lower() == ".pdf")
     if limit is not None:
         pdfs = pdfs[:limit]
@@ -103,18 +118,23 @@ def prepare(source: Path, out_dir: Path, n: int, seed: int, *, limit: int | None
     images = out_dir / IMAGES_DIR
     images.mkdir(parents=True, exist_ok=True)
     rows = []
+    lectures: dict[str, str] = {}
     for i, cand in enumerate(drawn, start=1):
-        name = f"ligne_{i:04d}.png"
+        line_id, name = f"{i:04d}", f"ligne_{i:04d}.png"
         crop_line(cand.pdf, cand.line, images / name)
         rows.append({
-            "id": f"{i:04d}", "image": f"{IMAGES_DIR}/{name}", "document": cand.document, "page": cand.line.page,
-            "langue_ocr": cand.line.language, "confiance": f"{cand.line.confidence:.4f}",
-            "lecture_ocr": cand.line.text, "texte_correct": "",
+            "id": line_id, "image": f"{IMAGES_DIR}/{name}", "document": cand.document, "page": cand.line.page,
+            "langue_ocr": cand.line.language, "confiance": f"{cand.line.confidence:.4f}", "texte_correct": "",
         })
+        lectures[line_id] = cand.line.text
     with (out_dir / CSV_NAME).open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=COLUMNS, delimiter=";")
         writer.writeheader()
         writer.writerows(rows)
+    # À part, pour annoter sans voir la lecture de l'OCR ; UTF-8 sans BOM, arabe écrit tel quel (pas de \uXXXX).
+    (out_dir / LECTURES_NAME).write_text(
+        json.dumps({"format": LECTURES_FORMAT, "lectures": lectures}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8")
 
     langs = Counter(row["langue_ocr"] for row in rows)
     return {
@@ -145,16 +165,18 @@ def main(argv: list[str] | None = None) -> int:
         if value is not None and value < 1:
             print(f"Erreur : --{name.replace('_', '-')} doit être au moins 1.")
             return 2
-    if (args.out / CSV_NAME).exists():
-        print(f"Erreur : {CSV_NAME} existe déjà dans le dossier de sortie (annotation en cours ?) : "
-              "choisissez un autre dossier pour ne rien écraser.")
-        return 2
+    for name in (CSV_NAME, LECTURES_NAME):
+        if (args.out / name).exists():
+            print(f"Erreur : {name} existe déjà dans le dossier de sortie (annotation en cours ?) : "
+                  "choisissez un autre dossier pour ne rien écraser.")
+            return 2
 
     summary = prepare(args.source, args.out, args.n, args.seed, limit=args.limit, max_pages=args.max_pages)
     print("\nRésumé agrégé :")
     for key, value in summary.items():
         print(f"  {key:<26} {value}")
-    print(f"\nÀ annoter : colonne texte_correct de {CSV_NAME}, dans le dossier de sortie.")
+    print(f"\nÀ annoter : colonne texte_correct de {CSV_NAME}, dans le dossier de sortie, en regardant seulement "
+          f"l'image de chaque ligne. N'ouvrez pas {LECTURES_NAME} (lecture de l'OCR, pour evaluer_cer_reel.py).")
     return 0
 
 
