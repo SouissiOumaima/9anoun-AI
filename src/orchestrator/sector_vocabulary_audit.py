@@ -15,7 +15,13 @@ def audit_vocabulary(data: dict, *, expected_sectors: int | None = None) -> dict
     schema = json.loads((ROOT / 'data/mock_cards/schemas/legal_retrieval_vocabulary.v0.schema.json').read_text(encoding='utf-8'))
     errors = [f'{"/".join(map(str, e.path))}: {e.message}' for e in Draft202012Validator(schema).iter_errors(data)]
     if errors:
-        return {'passed': False, 'errors': errors}
+        sectors = data.get('sectors') if isinstance(data, dict) else None
+        return {
+            'passed': False, 'errors': errors,
+            'sector_count': len(sectors) if isinstance(sectors, list) else 0,
+            'shared_aliases_require_clarification': [],
+            'note': 'Invalid vocabulary schema: aliases were not assessed. D30 is not modified.',
+        }
     sectors = data['sectors']
     codes = [s['code'] for s in sectors]
     if len(codes) != len(set(codes)):

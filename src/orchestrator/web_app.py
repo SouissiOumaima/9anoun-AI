@@ -60,19 +60,19 @@ def _demo_cards() -> list[Mapping[str, Any]]:
 
 def case_integration_action(payload: Mapping[str, Any], *, complete: bool = False) -> dict[str, Any]:
     """Local fictitious-session entry point; callers cannot supply facts or service responses."""
-    scenario = json.loads(_E2E_SCENARIO.read_text(encoding='utf-8'))
-    card = scenario['card']
-    actor = UserIdentity('org-demo', 'local-web-user', 'lawyer', frozenset({card['card_id']}))
-    document = card['data']['documents'][0]
-    context = ActiveContext('org-demo', card['card_id'], CardType.CASE, {
-        'document_id': document['document_id'], 'document_file_name': document['file_name'],
-        'document_mime_type': document['mime_type'], 'document_storage_ref': document['storage_ref'],
-    })
-    repository = MockCardRepository.from_payload([card])
     language = payload.get('language', 'fr')
-    if language not in {'fr', 'ar'}:
+    if not isinstance(language, str) or language not in {'fr', 'ar'}:
         return {'status': 'blocked', 'code': 'INVALID_LANGUAGE'}
     try:
+        scenario = json.loads(_E2E_SCENARIO.read_text(encoding='utf-8'))
+        card = scenario['card']
+        actor = UserIdentity('org-demo', 'local-web-user', 'lawyer', frozenset({card['card_id']}))
+        document = card['data']['documents'][0]
+        context = ActiveContext('org-demo', card['card_id'], CardType.CASE, {
+            'document_id': document['document_id'], 'document_file_name': document['file_name'],
+            'document_mime_type': document['mime_type'], 'document_storage_ref': document['storage_ref'],
+        })
+        repository = MockCardRepository.from_payload([card])
         if complete:
             return _CASE_WORKFLOW.complete(
                 actor=actor, context=context, repository=repository,

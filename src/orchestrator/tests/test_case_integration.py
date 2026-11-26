@@ -245,3 +245,35 @@ def test_unexpected_error_is_logged_without_document_or_exception_content(monkey
     assert response['code'] == 'INTEGRATION_ERROR'
     assert 'Case integration failed (ValueError)' in caplog.text
     assert 'PRIVATE_DOCUMENT_TEXT_AND_TOKEN' not in caplog.text
+
+
+@pytest.mark.parametrize('contents', [None, '{invalid json', '{}', 'empty_documents'])
+def test_unavailable_or_invalid_scenario_returns_a_safe_error(tmp_path, monkeypatch, caplog, contents):
+    from src.orchestrator import web_app
+
+    scenario = tmp_path / 'private_scenario.json'
+    if contents == 'empty_documents':
+        data = json.loads(web_app._E2E_SCENARIO.read_text(encoding='utf-8'))
+        data['card']['data']['documents'] = []
+        contents = json.dumps(data)
+    if contents is not None:
+        scenario.write_text(contents, encoding='utf-8')
+    monkeypatch.setattr(web_app, '_E2E_SCENARIO', scenario)
+    calls = []
+    monkeypatch.setattr(web_app._CASE_WORKFLOW, 'prepare', lambda **kwargs: calls.append(kwargs))
+    response = web_app.case_integration_action({})
+    assert response['status'] == 'blocked'
+    assert response['code'] == 'INTEGRATION_ERROR'
+    assert response['message_fr'] and response['message_ar']
+    assert not calls
+    assert str(scenario) not in caplog.text
+    assert str(scenario) not in json.dumps(response)
+
+
+@pytest.mark.parametrize('language', [None, [], {}, 42, 'en'])
+def test_invalid_language_is_refused_without_reading_the_scenario(tmp_path, monkeypatch, language):
+    from src.orchestrator import web_app
+
+    monkeypatch.setattr(web_app, '_E2E_SCENARIO', tmp_path / 'absent.json')
+    response = web_app.case_integration_action({'language': language})
+    assert response == {'status': 'blocked', 'code': 'INVALID_LANGUAGE'}

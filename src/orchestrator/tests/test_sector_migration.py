@@ -115,6 +115,16 @@ def test_acceptance_audit_reports_alias_collisions_without_rejecting_56_sectors(
     assert any(item['alias'] == 'boissons' for item in result['shared_aliases_require_clarification'])
 
 
+@pytest.mark.parametrize('data,count', [(None, 0), ({}, 0), ({'sectors': [{}]}, 1)])
+def test_invalid_vocabulary_keeps_a_complete_failed_audit_report(data, count):
+    report = audit_vocabulary(data)
+    assert report['passed'] is False
+    assert report['errors']
+    assert report['sector_count'] == count
+    assert report['shared_aliases_require_clarification'] == []
+    assert 'not assessed' in report['note']
+
+
 def test_acceptance_audit_rejects_missing_sectors_duplicates_and_dangling_ambiguities():
     data = vocabulary56()
     data['sectors'][-1]['code'] = data['sectors'][0]['code']

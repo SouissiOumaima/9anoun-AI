@@ -175,3 +175,12 @@ Le parcours officiel du chat DS1 utilise bien le mapper corrigé dans `9342e87`.
 - Nouvelle recette globale sur cette combinaison : **5377 tests réussis, 4 ignorés, aucun échec**. Aucun nouveau service LIVE ni validation juridique humaine revendiqué.
 - La demande de modifications d’Oumaima sur #47 doit faire l’objet de sa relecture finale ; aucune fusion de #47 ni fermeture de #38 effectuée ici. Le squash proposé pour #47 reste à réaliser après les approbations.
 - Les contrôles PDF restent désactivés par défaut. La politique TND, les métadonnées DS2 et le dossier Ahmed ainsi que les validations humaines S6/S9 demeurent des suivis distincts.
+
+
+## Derniers contrôles de robustesse avant relecture finale de PR 47
+
+- Vérification distante : #47 reste ouverte vers main, sans conflit ; demande de modifications d’Oumaima encore présente. Aucun remplacement d’approbation, aucune fusion de #47 et aucune fermeture de #38.
+- Chargement et préparation du dossier de démonstration déplacés dans la frontière de traitement des erreurs : fichier absent, JSON corrompu, carte incomplète ou liste de documents vide donnent une réponse technique bilingue contrôlée, sans appel aux spécialistes ni exposition du chemin privé. Une langue invalide est refusée avant de lire le dossier.
+- Rapport d’audit vocabulaire désormais de forme stable même si le JSON ne respecte pas le schéma : passed=false, erreurs, nombre de secteurs observables et liste vide des ambiguïtés non évaluées. Aucun routage ni activation de secteur ne découle de ce rapport invalide.
+- Tests ciblés : 76 réussis. Nouvelle suite globale `python -m pytest -q src` : **5389 réussis, 4 ignorés, aucun échec**. Seules des corrections DS1 sont publiées ; aucune nouvelle validation LIVE ni juridique.
+- Les prochaines étapes externes restent la relecture finale d’Oumaima, les références sectorielles et leur date confirmées par Mouhib, les pièces et la réponse DS3 LIVE dédiée avec Hadil/Ghofrane et la désignation des validateurs humains S9.
