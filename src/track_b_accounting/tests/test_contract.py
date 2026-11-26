@@ -119,9 +119,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_135_ok_120_refus():
+def test_bilan_demo_163_ok_136_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 135 and list(statuts.values()).count("refus") == 120
+    assert list(statuts.values()).count("ok") == 163 and list(statuts.values()).count("refus") == 136
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -244,6 +244,22 @@ def test_bilan_demo_135_ok_120_refus():
         "demo-251-refus-cuirs-29-ans": "SOURCE_MANQUANTE",
         "demo-254-refus-cuirs-prime-salissure": "SOURCE_MANQUANTE",
         "demo-255-refus-cuirs-borne-exacte": "PARAM_INVALIDE",
+        "demo-259-refus-clercs-30-ans": "SOURCE_MANQUANTE",
+        "demo-260-refus-clercs-avant-entree-en-vigueur": "SOURCE_MANQUANTE",
+        "demo-261-refus-clercs-perte-emploi": "SOURCE_MANQUANTE",
+        "demo-262-refus-clercs-borne-exacte": "PARAM_INVALIDE",
+        "demo-266-refus-pharmacies-avenant-16": "SOURCE_MANQUANTE",
+        "demo-267-refus-pharmacies-29-ans": "SOURCE_MANQUANTE",
+        "demo-268-refus-pharmacies-avant-tableau-1": "SOURCE_MANQUANTE",
+        "demo-273-refus-conserveries-palier-26-ans": "PARAM_INVALIDE",
+        "demo-274-refus-conserveries-avant-tableau": "SOURCE_MANQUANTE",
+        "demo-277-refus-conserveries-avantages-nature": "SOURCE_MANQUANTE",
+        "demo-281-refus-grossistes-avant-tableau-3": "SOURCE_MANQUANTE",
+        "demo-282-refus-grossistes-29-ans": "SOURCE_MANQUANTE",
+        "demo-283-refus-grossistes-sous-ligne-manquante": "PARAM_INVALIDE",
+        "demo-287-refus-cinema-26-ans": "SOURCE_MANQUANTE",
+        "demo-291-refus-cinema-deux-longs-metrages": "SOURCE_MANQUANTE",
+        "demo-294-refus-transport-avant-tableau-2": "SOURCE_MANQUANTE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -260,7 +276,8 @@ def test_demo_10_secteur_fictif():
         "SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, "
         "MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, "
         "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, "
-        "PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE)."
+        "PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, "
+        "CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES)."
     )
 
 
@@ -381,7 +398,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 255 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 299 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()  # ensure_ascii=False
 
 
@@ -421,10 +438,10 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_255_echanges():
+def test_demo_affiche_299_echanges():
     from track_b_accounting.demo import main
 
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 255 and "Bilan : 135 ok, 120 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 299 and "Bilan : 163 ok, 136 refus, 0 erreur(s)." in texte

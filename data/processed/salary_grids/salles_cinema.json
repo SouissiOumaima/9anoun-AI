@@ -1,0 +1,877 @@
+{
+ "_meta": {
+  "secteur_code": "SALLES_CINEMA",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لقاعات العرض السينمائي",
+  "convention_fr": "Convention collective sectorielle des salles de projection cinématographique",
+  "source_file": "data/raw/pdf/قاعات العرض السينيمائي.pdf",
+  "pages_sources": [
+   3,
+   7,
+   8,
+   9,
+   14,
+   15,
+   17
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "169 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; une seule table datée : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D88",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 301 à 453).",
+  "note_degres": "En-tête (p.17) : 13 degrés ; la ligne intitulée « الأقدمية الفعلية » imprime « 2 » sous chaque degré (durées ; art. 43, p.14 : 13 degrés sur 26 ans) ; libellés « 0-2 » … « 24-26 » ; bornes exactes refusées (D6) ; à partir de 26 ans, refus (art. 12 (جديد), p.8 : hausse tous les deux ans sans montant précisé).",
+  "note_categories": "13 postes nommés, en lignes, groupés en catégories I (I_1 à I_3), II (II_1 à II_4) et III (III_1 à III_6) ; population unique.",
+  "note_dates": "Tableau unique (p.17), en vigueur à partir du 2011-05-01 (avenant n° 10, p.3) ; refus avant cette date.",
+  "remarque_pdf": "Note sous chaque tableau (p.17) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحة 17): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "agents": {
+   "libelle_fr": "Agents des salles de cinéma",
+   "libelle_ar": "أعوان قاعات العرض السينمائي",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 17,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "agents": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 26,
+   "source_pdf_page": 8,
+   "source_article": "12 (جديد)",
+   "texte_source_ar": "وعند الوصول إلى أعلى السلم يواصل العامل الانتفاع كل سنتين بالقيمة المالية للدرجة بنفس السلم.",
+   "texte_source_saisi_depuis_image": true,
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des salles de projection cinématographique s'arrête au degré 13 (24 à 26 ans) ; l'article 12 (جديد) (page 8) prévoit qu'au sommet de l'échelle l'agent « continue de bénéficier tous les deux ans de la valeur financière du degré », mais ne précise pas le montant de cette hausse : aucun montant n'est choisi. Aucun montant n'est renvoyé (ancienneté couverte : moins de 26 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية قاعات العرض السينمائي عند الدرجة 13 (من 24 إلى 26 سنة)؛ وينص الفصل 12 (جديد) (الصفحة 8) على أنه «عند الوصول إلى أعلى السلم يواصل العامل الانتفاع كل سنتين بالقيمة المالية للدرجة بنفس السلم» دون تحديد مقدار هذه الزيادة: لا يقع اختيار أي مبلغ. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 26 سنة)."
+  }
+ },
+ "categories": {
+  "agents": [
+   "I_1",
+   "I_2",
+   "I_3",
+   "II_1",
+   "II_2",
+   "II_3",
+   "II_4",
+   "III_1",
+   "III_2",
+   "III_3",
+   "III_4",
+   "III_5",
+   "III_6"
+  ]
+ },
+ "libelles_categories": {
+  "agents": {
+   "I_1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie I : Ouvrier",
+    "libelle_ar": "شغال",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "I_2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie I : Gardien",
+    "libelle_ar": "حارس",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "I_3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie I : Ouvrière",
+    "libelle_ar": "عاملة",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "II_1": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie II : Placeur",
+    "libelle_ar": "منظف",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "II_2": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie II : Placeur principal",
+    "libelle_ar": "منظف رئيس",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "II_3": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie II : Agent d'accueil",
+    "libelle_ar": "عون استقبال",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "II_4": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie II : Contrôleur",
+    "libelle_ar": "مراقب",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_1": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie III : Contrôleur principal",
+    "libelle_ar": "مراقب رئيس",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_2": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie III : Caissier",
+    "libelle_ar": "قابض",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_3": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie III : Aide-projectionniste",
+    "libelle_ar": "مساعد عون بث أو عرض",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_4": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie III : Projectionniste",
+    "libelle_ar": "عون بث أو عرض",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_5": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie III : Chef de centre",
+    "libelle_ar": "رئيس مركز",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   },
+   "III_6": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie III : Directeur",
+    "libelle_ar": "مدير",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     17
+    ]
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "agents": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 17) : TND/mois en hypothèse (montants de 301,587 à 452,878).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Lignes de la grille (page 17) : postes nommés, groupés en catégories I (3 postes), II (4) et III (6) ; clé = catégorie et position du poste dans la catégorie.",
+    "Promotion automatique à la catégorie supérieure après cinq ans (article 12 (جديد), page 8) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 17): الدينار في الشهر على سبيل الافتراض (مبالغ من 301,587 à 452,878).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "أسطر الجدول (الصفحة 17): خطط مسماة مجمعة في الأصناف I (3 خطط) وII (4) وIII (6)؛ المفتاح هو الصنف وترتيب الخطة داخله.",
+    "لا تُحتسب الترقية الآلية إلى الصنف الأعلى بعد خمس سنوات (الفصل 12 (جديد)، الصفحة 8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_caisse",
+   "label_ar": "منحة الصندوق",
+   "label_fr": "Prime de caisse",
+   "source_article": "45",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 4.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « أربعة دنانير في الشهر » (art. 45, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la caisse (art. 45, p.14)"
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "غرامة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "46",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 2.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « بدينارين في الشهر » (art. 46, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_lait_salete",
+   "label_ar": "منحة الحليب والوسخ",
+   "label_fr": "Prime de lait et de saleté",
+   "source_article": "47",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 4.500,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « بأربعة دنانير ونصف في الشهر » (art. 47, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent des cabines de projection (art. 47, p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_a_cat1",
+   "label_ar": "منحة تشجيع (القاعات صنف أ، صنف 1)",
+   "label_fr": "Prime d'encouragement : salle de classe أ, catégorie 1",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 7.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe أ et travailleur de la catégorie 1 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_a_cat2",
+   "label_ar": "منحة تشجيع (القاعات صنف أ، صنف 2)",
+   "label_fr": "Prime d'encouragement : salle de classe أ, catégorie 2",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 8.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe أ et travailleur de la catégorie 2 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_a_cat3",
+   "label_ar": "منحة تشجيع (القاعات صنف أ، صنف 3)",
+   "label_fr": "Prime d'encouragement : salle de classe أ, catégorie 3",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 9.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe أ et travailleur de la catégorie 3 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_b_cat1",
+   "label_ar": "منحة تشجيع (القاعات صنف ب، صنف 1)",
+   "label_fr": "Prime d'encouragement : salle de classe ب, catégorie 1",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 5.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ب et travailleur de la catégorie 1 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_b_cat2",
+   "label_ar": "منحة تشجيع (القاعات صنف ب، صنف 2)",
+   "label_fr": "Prime d'encouragement : salle de classe ب, catégorie 2",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 6.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ب et travailleur de la catégorie 2 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_b_cat3",
+   "label_ar": "منحة تشجيع (القاعات صنف ب، صنف 3)",
+   "label_fr": "Prime d'encouragement : salle de classe ب, catégorie 3",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 7.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ب et travailleur de la catégorie 3 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_t_cat1",
+   "label_ar": "منحة تشجيع (القاعات صنف ت، صنف 1)",
+   "label_fr": "Prime d'encouragement : salle de classe ت, catégorie 1",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 4.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ت et travailleur de la catégorie 1 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_t_cat2",
+   "label_ar": "منحة تشجيع (القاعات صنف ت، صنف 2)",
+   "label_fr": "Prime d'encouragement : salle de classe ت, catégorie 2",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 5.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ت et travailleur de la catégorie 2 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_encouragement_salle_t_cat3",
+   "label_ar": "منحة تشجيع (القاعات صنف ت، صنف 3)",
+   "label_fr": "Prime d'encouragement : salle de classe ت, catégorie 3",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 6.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "salle de classe ت et travailleur de la catégorie 3 (art. 47 مكرر (جديد), p.14)"
+  },
+  {
+   "code": "prime_scolaire_creche_ecole",
+   "label_ar": "المنحة المدرسية (محاضن ومدارس)",
+   "label_fr": "Prime scolaire : crèches et écoles",
+   "source_article": "47 ثالثا",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 20.000,
+   "effective_date": null,
+   "note": "Imprimé « 20 دينارا » par enfant (art. 47 ثالثا, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "La convention n'imprime pas la fréquence du versement : montant servi par versement, sans période annuelle."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "لا تذكر الاتفاقية دورية الصرف: يُرجَع المبلغ عن كل صرف، دون اعتبار فترة سنوية."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_preparatoire_secondaire",
+   "label_ar": "المنحة المدرسية (إعدادي وثانوي)",
+   "label_fr": "Prime scolaire : préparatoire et secondaire",
+   "source_article": "47 ثالثا",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 30.000,
+   "effective_date": null,
+   "note": "Imprimé « 30 دينارا » par élève (art. 47 ثالثا, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "La convention n'imprime pas la fréquence du versement : montant servi par versement, sans période annuelle."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "لا تذكر الاتفاقية دورية الصرف: يُرجَع المبلغ عن كل صرف، دون اعتبار فترة سنوية."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_superieur",
+   "label_ar": "المنحة المدرسية (تعليم عالي)",
+   "label_fr": "Prime scolaire : enseignement supérieur",
+   "source_article": "47 ثالثا",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 50.000,
+   "effective_date": null,
+   "note": "Imprimé « 50 دينارا » par étudiant (art. 47 ثالثا, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "La convention n'imprime pas la fréquence du versement : montant servi par versement, sans période annuelle."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "لا تذكر الاتفاقية دورية الصرف: يُرجَع المبلغ عن كل صرف، دون اعتبار فترة سنوية."
+    ]
+   }
+  },
+  {
+   "code": "prime_aid_fitr",
+   "label_ar": "منحة عيد الفطر",
+   "label_fr": "Prime de l'Aïd el-Fitr",
+   "source_article": "47 سادسا",
+   "source_pdf_page": 14,
+   "unite": "TND/versement",
+   "montant": 10.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_repas",
+   "label_ar": "مصاريف الأكل",
+   "label_fr": "Frais de repas",
+   "source_article": "48 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/repas",
+   "montant": 2.000,
+   "effective_date": null,
+   "note": "Imprimé en lettres et en chiffres : « بدينارين (2.000د) » (art. 48 (جديد), p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent de projection en séance continue et de nuit, sans le temps de dîner chez lui (art. 48 (جديد), p.14)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_13e_mois": {
+   "source_pdf_page": 14,
+   "source_article": "44 (جديد)",
+   "message_fr": "Prime du treizième mois (article 44 (جديد), page 14) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الشهر الثالث عشر (الفصل 44 (جديد)، الصفحة 14): أجرة شهر عمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_retraite": {
+   "source_pdf_page": 14,
+   "source_article": "47 رابعا",
+   "message_fr": "Prime de départ à la retraite (article 47 رابعا, page 14) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التقاعد (الفصل 47 رابعا، الصفحة 14): أجرة شهر عمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_deces": {
+   "source_pdf_page": 14,
+   "source_article": "47 خامسا",
+   "message_fr": "Prime de décès (article 47 خامسا, page 14) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الوفاة (الفصل 47 خامسا، الصفحة 14): أجرة شهر عمل، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 8,
+   "source_article": "16 (جديد)",
+   "message_fr": "Indemnité de fin de service (article 16 (جديد), page 8) : un jour de salaire par mois de travail effectif, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 16 (جديد)، الصفحة 8): أجر يوم عن كل شهر من العمل الفعلي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_deux_longs_metrages": {
+   "source_pdf_page": 15,
+   "source_article": "50",
+   "message_fr": "Majoration pour deux longs métrages (article 50, page 15) : majoration de 45 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "عرض فيلمين طويلين في الحصة الواحدة (الفصل 50، الصفحة 15): زيادة بـ45 بالمائة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CINEMA_2011-05-01",
+   "numero_imprime": 1,
+   "population": "agents",
+   "effective_date": "2011-05-01",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "valeurs": {
+    "I_1": [
+     301.587,
+     303.522,
+     305.457,
+     307.392,
+     309.327,
+     311.262,
+     313.197,
+     315.132,
+     317.067,
+     319.002,
+     320.937,
+     322.872,
+     324.807
+    ],
+    "I_2": [
+     302.289,
+     304.491,
+     306.693,
+     308.895,
+     311.097,
+     313.299,
+     315.501,
+     317.703,
+     319.905,
+     322.107,
+     324.309,
+     326.511,
+     328.713
+    ],
+    "I_3": [
+     302.990,
+     305.192,
+     307.395,
+     309.597,
+     311.799,
+     314.001,
+     316.203,
+     318.405,
+     320.607,
+     322.808,
+     325.010,
+     327.213,
+     329.415
+    ],
+    "II_1": [
+     319.000,
+     321.270,
+     323.540,
+     325.810,
+     328.080,
+     330.350,
+     332.620,
+     334.890,
+     337.160,
+     339.430,
+     341.700,
+     343.970,
+     346.240
+    ],
+    "II_2": [
+     322.972,
+     325.243,
+     327.514,
+     329.785,
+     332.056,
+     334.327,
+     336.598,
+     338.869,
+     341.140,
+     343.411,
+     345.682,
+     347.953,
+     350.224
+    ],
+    "II_3": [
+     325.872,
+     328.150,
+     330.428,
+     332.706,
+     334.984,
+     337.262,
+     339.540,
+     341.818,
+     344.096,
+     346.374,
+     348.652,
+     350.930,
+     353.208
+    ],
+    "II_4": [
+     329.844,
+     332.122,
+     334.400,
+     336.678,
+     338.956,
+     341.234,
+     343.512,
+     345.790,
+     348.068,
+     350.346,
+     352.624,
+     354.902,
+     357.180
+    ],
+    "III_1": [
+     338.648,
+     341.226,
+     343.804,
+     346.382,
+     348.960,
+     351.538,
+     354.116,
+     356.694,
+     359.272,
+     361.850,
+     364.428,
+     367.006,
+     369.584
+    ],
+    "III_2": [
+     341.745,
+     344.493,
+     347.241,
+     349.989,
+     352.737,
+     355.485,
+     358.233,
+     360.981,
+     363.729,
+     366.477,
+     369.225,
+     371.973,
+     374.721
+    ],
+    "III_3": [
+     344.677,
+     347.537,
+     350.397,
+     353.257,
+     356.117,
+     358.977,
+     361.837,
+     364.697,
+     367.557,
+     370.417,
+     373.277,
+     376.137,
+     378.997
+    ],
+    "III_4": [
+     363.903,
+     367.757,
+     371.611,
+     375.465,
+     379.319,
+     383.173,
+     387.027,
+     390.881,
+     394.735,
+     398.589,
+     402.443,
+     406.297,
+     410.151
+    ],
+    "III_5": [
+     383.129,
+     386.983,
+     390.837,
+     394.691,
+     398.545,
+     402.399,
+     406.253,
+     410.107,
+     413.961,
+     417.815,
+     421.669,
+     425.523,
+     429.377
+    ],
+    "III_6": [
+     391.210,
+     396.349,
+     401.488,
+     406.627,
+     411.766,
+     416.905,
+     422.044,
+     427.183,
+     432.322,
+     437.461,
+     442.600,
+     447.739,
+     452.878
+    ]
+   }
+  }
+ ]
+}

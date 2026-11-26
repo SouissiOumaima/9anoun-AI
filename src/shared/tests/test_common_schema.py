@@ -82,8 +82,8 @@ def _reponses_track_b():
 REPONSES = _reponses_track_b()
 
 
-def test_deux_cent_cinquante_cinq_requetes_de_demo():
-    assert len(DEMO) == 255
+def test_deux_cent_quatre_vingt_dix_neuf_requetes_de_demo():
+    assert len(DEMO) == 299
     assert {rep["status"] for _, rep in REPONSES} == {"ok", "refus", "erreur"}
 
 

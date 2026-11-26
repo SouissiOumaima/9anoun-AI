@@ -1,0 +1,969 @@
+{
+ "_meta": {
+  "secteur_code": "TRANSPORT_ROUTIER_MARCHANDISES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لنقل البضائع عبر الطرقات",
+  "convention_fr": "Convention collective sectorielle du transport routier de marchandises",
+  "source_file": "data/raw/pdf/نقل البضائع عبر الطرقات.pdf",
+  "pages_sources": [
+   3,
+   7,
+   8,
+   13,
+   14,
+   18
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "260 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; une seule table datée : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D89",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 397 à 855) ; régime de 48 heures (note 2 sous le tableau, p.18).",
+  "note_degres": "En-tête (p.18) : 13 degrés, durée de séjour 1 (degrés 1 à 4), 2 (5 à 8), 3 (9 à 12), degré 13 sans durée ; libellés « 0-1 » … « 21-24 », « 24+ » ; bornes exactes refusées (D6) ; dernier degré ouvert (règle « ouvert », D29), passage dans l'échelle suivante (art. 13, p.8) non calculé.",
+  "note_categories": "Catégories 1 à 20 ; population unique.",
+  "note_dates": "Tableau n° 2 seul (p.18), en vigueur à partir du 2017-05-01 ; l'avenant n° 9 (p.3) a effet au 2016-08-01 et le tableau n° 1 n'est pas dans la source : salaire refusé avant le 2017-05-01 ; les primes datées sont servies à leurs propres dates (2016-08-01, 2017-05-01).",
+  "remarque_pdf": "Note sous chaque tableau (p.18) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul. Note 2 : relèvement automatique au SMIG (régime de 48 heures) des degrés devenus inférieurs, non calculé (hypothèse affichée).",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحة 18): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982. الملاحظة 2: الترفيع الآلي في أجور الدرجات التي تصير أقل من الأجر الأدنى (نظام 48 ساعة)، لا يُحتسب."
+ },
+ "populations": {
+  "agents": {
+   "libelle_fr": "Agents du transport routier de marchandises",
+   "libelle_ar": "أعوان نقل البضائع عبر الطرقات",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 18,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-4",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "12-15",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24+"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "agents": {
+   "regle": "ouvert",
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "texte_source_ar": "يتابع العون الذي وصل إلى الدرجة الأخيرة من السلم الموجود به تقدمه داخل السلم الموالي بداية من الدرجة المطابقة لأجره وإن تعذر فبداية من الدرجة التي تليها مباشرة في الارتفاع.",
+   "texte_source_saisi_depuis_image": true,
+   "regle_fr": "Degré 13 sans durée de séjour imprimée (p.18) : servi tel qu'imprimé à partir de 24 ans (D29) ; le passage dans l'échelle suivante de l'art. 13 (p.8) n'est pas calculé."
+  }
+ },
+ "categories": {
+  "agents": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19",
+   "20"
+  ]
+ },
+ "libelles_categories": {
+  "agents": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Catégorie 16",
+    "libelle_ar": "الصنف 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 17,
+    "libelle_fr": "Catégorie 17",
+    "libelle_ar": "الصنف 17",
+    "libelle_ar_redige": true
+   },
+   "18": {
+    "ligne": 18,
+    "libelle_fr": "Catégorie 18",
+    "libelle_ar": "الصنف 18",
+    "libelle_ar_redige": true
+   },
+   "19": {
+    "ligne": 19,
+    "libelle_fr": "Catégorie 19",
+    "libelle_ar": "الصنف 19",
+    "libelle_ar_redige": true
+   },
+   "20": {
+    "ligne": 20,
+    "libelle_fr": "Catégorie 20",
+    "libelle_ar": "الصنف 20",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "agents": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 18) : TND/mois en hypothèse (montants de 397,893 à 854,523).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Note 2 sous le tableau n° 2 (page 18) : si, après une hausse du SMIG (régime de 48 heures), le salaire d'un degré de la grille lui devient inférieur, il est relevé automatiquement au nouveau montant du SMIG ; ce relèvement n'est pas calculé ici.",
+    "Dernier degré ouvert (« 24+ ») : au-delà, l'agent poursuit sa progression dans l'échelle suivante (article 13, page 8) ; ce passage n'est pas calculé.",
+    "Promotion au choix dans l'échelle (article 13 ب, page 7) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 18): الدينار في الشهر على سبيل الافتراض (مبالغ من 397,893 à 854,523).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "الملاحظة 2 تحت جدول الأجور عدد 2 (الصفحة 18): «في الحالة التي تصير فيها أجور بعض الدرجات بهذا الجدول أقل من الأجر الأدنى (نظام 48 ساعة) على إثر الزيادة فيه فإنه يتمّ الترفيع آليا في تلك الأجور لتكون متطابقة تماما مع المقدار الجديد للأجر الادنى»؛ لا يُحتسب هذا الترفيع هنا.",
+    "آخر درجة مفتوحة («24+»): بعدها يتابع العون تقدمه داخل السلم الموالي (الفصل 13، الصفحة 8)؛ لا يُحتسب هذا الانتقال.",
+    "لا تُحتسب الترقية بالاختيار في السلم (الفصل 13 ب، الصفحة 7).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    5
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_kilometrique_tunisie",
+   "label_ar": "المنحة الكيلومترية (داخل تراب الجمهورية)",
+   "label_fr": "Prime kilométrique : en Tunisie",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/km",
+   "montant": 0.010,
+   "effective_date": null,
+   "note": "Imprimé « بعشرة مليمات (10 مليمات) » par kilomètre parcouru en Tunisie ; minimum de 30 dinars par mois (« ثلاثين دينارا (30 د) ») : non appliqué (art. 44 (جديد), p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur (art. 44 (جديد), p.13)"
+  },
+  {
+   "code": "prime_kilometrique_etranger",
+   "label_ar": "المنحة الكيلومترية (خارج تراب الجمهورية)",
+   "label_fr": "Prime kilométrique : à l'étranger",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/km",
+   "montant": 0.007,
+   "effective_date": null,
+   "note": "Imprimé « بسبعة مليمات (7 مليمات) » par kilomètre parcouru hors de Tunisie ; minimum de 30 dinars par mois : non appliqué (art. 44 (جديد), p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur (art. 44 (جديد), p.13)"
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "46 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2016-08-01",
+     "execution": 47.700,
+     "gestion": 53.000,
+     "cadres": 58.300
+    },
+    {
+     "effective_date": "2017-05-01",
+     "execution": 50.562,
+     "gestion": 56.180,
+     "cadres": 61.798
+    }
+   ],
+   "libelles_groupes": {
+    "execution": {
+     "fr": "Agents d'exécution",
+     "ar": "أعوان التنفيذ"
+    },
+    "gestion": {
+     "fr": "Agents de gestion",
+     "ar": "أعوان التسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "note": "Elle inclut la prime du décret n° 503 du 16 mars 1982 ; le montant de 2016 est servi même si la grille de salaires de 2016 n'est pas dans la source (art. 46 (جديد), p.13)."
+  },
+  {
+   "code": "prime_deplacement_dejeuner",
+   "label_ar": "منحة التنقل (وجبة الفطور)",
+   "label_fr": "Prime de déplacement : déjeuner",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/repas",
+   "montant": 5.000,
+   "effective_date": null,
+   "note": "Imprimé « خمسة دنانير (5 د) » (art. 47 (جديد), p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur ou aide travaillant hors du siège cinq heures consécutives, au-delà de 13 heures (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_deplacement_diner",
+   "label_ar": "منحة التنقل (وجبة العشاء)",
+   "label_fr": "Prime de déplacement : dîner",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/repas",
+   "montant": 5.000,
+   "effective_date": null,
+   "note": "Imprimé « خمسة دنانير (5 د) » (art. 47 (جديد), p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur ou aide travaillant hors du siège cinq heures consécutives, au-delà de 20 heures (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_deplacement_nuitee",
+   "label_ar": "منحة التنقل (المبيت)",
+   "label_fr": "Prime de déplacement : nuitée",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/nuitee",
+   "montant": 10.000,
+   "effective_date": null,
+   "note": "Imprimé « 10 دنانير (10 د) » (art. 47 (جديد), p.13).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur ou aide obligé de passer la nuit hors du domicile (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_travail_sans_accompagnateur",
+   "label_ar": "منحة العمل بدون مرافق",
+   "label_fr": "Prime de travail sans accompagnateur",
+   "source_article": "47 مكرر",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 50.000,
+   "effective_date": null,
+   "note": "Minimum pour un mois de travail effectif de 26 jours ; en deçà ou au-delà de 26 jours : 50 dinars ÷ 26 jours × jours de travail effectif (règle citée, non calculée) (art. 47 مكرر, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chauffeur travaillant seul, sans accompagnateur (art. 47 مكرر, p.14)"
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "48 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2016-08-01",
+     "montant": 8.480
+    },
+    {
+     "effective_date": "2017-05-01",
+     "montant": 8.988
+    }
+   ]
+  },
+  {
+   "code": "prime_fonction_directeur",
+   "label_ar": "المنحة الوظيفية (مدير)",
+   "label_fr": "Prime de fonction : directeur",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 207.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la fonction de directeur (art. 49 (جديد), p.14)"
+  },
+  {
+   "code": "prime_fonction_sous_directeur",
+   "label_ar": "المنحة الوظيفية (كاهية مدير)",
+   "label_fr": "Prime de fonction : sous-directeur",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 157.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la fonction de sous-directeur (art. 49 (جديد), p.14)"
+  },
+  {
+   "code": "prime_fonction_chef_service",
+   "label_ar": "المنحة الوظيفية (رئيس مصلحة)",
+   "label_fr": "Prime de fonction : chef de service",
+   "source_article": "49 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 137.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la fonction de chef de service (art. 49 (جديد), p.14)"
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "50",
+   "source_pdf_page": 14,
+   "unite": "TND/jour",
+   "montant": 3.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « بثلاث دنانير في اليوم » (art. 50, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "ouvrier d'atelier (exécution et gestion) désigné pour rester pendant le déjeuner, ou séance de sept heures consécutives (art. 50, p.14)"
+  },
+  {
+   "code": "prime_aid_fitr",
+   "label_ar": "منحة عيد الفطر",
+   "label_fr": "Prime de l'Aïd el-Fitr",
+   "source_article": "51 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/versement",
+   "montant": 44.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_aid_adha",
+   "label_ar": "منحة عيد الإضحى",
+   "label_fr": "Prime de l'Aïd el-Adha",
+   "source_article": "52 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/versement",
+   "montant": 50.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « خمسون دينارا » (art. 52 (جديد), p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_base",
+   "label_ar": "المنحة المدرسية (التعليم الأساسي)",
+   "label_fr": "Prime scolaire : enseignement de base",
+   "source_article": "53",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 15.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « خمسة عشر دينارا » ; versée en septembre de chaque année (art. 53, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_secondaire",
+   "label_ar": "المنحة المدرسية (التعليم الثانوي)",
+   "label_fr": "Prime scolaire : enseignement secondaire",
+   "source_article": "53",
+   "source_pdf_page": 14,
+   "unite": "TND/enfant",
+   "montant": 20.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « عشرون دينارا » ; versée en septembre de chaque année (art. 53, p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production_annuelle": {
+   "source_pdf_page": 13,
+   "source_article": "45",
+   "message_fr": "Prime de production annuelle (article 45, page 13) : entre un et deux mois de salaire selon une note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج السنوية (الفصل 45، الصفحة 13): بين أجرة شهر وأجرة شهرين حسب عدد مرقم، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "aide_deces": {
+   "source_pdf_page": 14,
+   "source_article": "54 (جديد)",
+   "message_fr": "Aide en cas de décès (article 54 (جديد), page 14) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المساعدة في حالة الوفاة (الفصل 54 (جديد)، الصفحة 14): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 8,
+   "source_article": "17",
+   "message_fr": "Indemnité de fin de service (article 17, page 8) : un jour de salaire par mois de travail effectif, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 17، الصفحة 8): أجر يوم عن كل شهر عمل فعلي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "TRANSPORT_2017-05-01",
+   "numero_imprime": 2,
+   "population": "agents",
+   "effective_date": "2017-05-01",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     397.893,
+     399.699,
+     401.505,
+     402.810,
+     408.062,
+     413.471,
+     419.042,
+     424.781,
+     430.692,
+     436.780,
+     443.050,
+     449.509,
+     456.162
+    ],
+    "2": [
+     399.847,
+     402.421,
+     404.995,
+     410.298,
+     415.760,
+     421.385,
+     427.180,
+     433.148,
+     439.295,
+     445.627,
+     452.148,
+     458.865,
+     465.784
+    ],
+    "3": [
+     402.064,
+     407.262,
+     412.617,
+     418.131,
+     423.812,
+     429.662,
+     435.688,
+     441.895,
+     448.288,
+     454.873,
+     461.656,
+     468.641,
+     475.837
+    ],
+    "4": [
+     411.289,
+     416.695,
+     422.264,
+     427.999,
+     433.906,
+     439.991,
+     446.258,
+     452.713,
+     459.362,
+     466.210,
+     473.264,
+     480.529,
+     488.013
+    ],
+    "5": [
+     442.881,
+     448.504,
+     454.295,
+     460.259,
+     466.403,
+     472.731,
+     479.249,
+     485.962,
+     492.877,
+     499.999,
+     507.335,
+     514.891,
+     522.674
+    ],
+    "6": [
+     452.860,
+     458.707,
+     464.730,
+     470.933,
+     477.322,
+     483.904,
+     490.682,
+     497.664,
+     504.855,
+     512.262,
+     519.892,
+     527.750,
+     535.844
+    ],
+    "7": [
+     463.240,
+     469.321,
+     475.585,
+     482.036,
+     488.681,
+     495.526,
+     502.575,
+     509.836,
+     517.315,
+     525.019,
+     532.953,
+     541.126,
+     549.544
+    ],
+    "8": [
+     474.039,
+     480.364,
+     486.878,
+     493.587,
+     500.498,
+     507.616,
+     514.948,
+     522.500,
+     530.278,
+     538.289,
+     546.541,
+     555.040,
+     563.795
+    ],
+    "9": [
+     485.273,
+     491.850,
+     498.625,
+     505.603,
+     512.790,
+     520.193,
+     527.818,
+     535.671,
+     543.761,
+     552.093,
+     560.675,
+     569.514,
+     578.619
+    ],
+    "10": [
+     528.278,
+     535.118,
+     542.164,
+     549.421,
+     556.895,
+     564.594,
+     572.524,
+     580.692,
+     589.105,
+     597.770,
+     606.695,
+     615.888,
+     625.357
+    ],
+    "11": [
+     540.421,
+     547.535,
+     554.863,
+     562.410,
+     570.184,
+     578.191,
+     586.438,
+     594.932,
+     603.682,
+     612.694,
+     621.976,
+     631.536,
+     641.384
+    ],
+    "12": [
+     553.054,
+     560.452,
+     568.073,
+     575.922,
+     584.007,
+     592.334,
+     600.911,
+     609.745,
+     618.845,
+     628.217,
+     637.870,
+     647.814,
+     658.055
+    ],
+    "13": [
+     566.195,
+     573.890,
+     581.815,
+     589.978,
+     598.387,
+     607.047,
+     615.967,
+     625.155,
+     634.618,
+     644.365,
+     654.405,
+     664.746,
+     675.397
+    ],
+    "14": [
+     579.866,
+     587.868,
+     596.111,
+     604.600,
+     613.345,
+     622.351,
+     631.628,
+     641.183,
+     651.025,
+     661.162,
+     671.604,
+     682.358,
+     693.435
+    ],
+    "15": [
+     630.718,
+     639.040,
+     647.612,
+     656.441,
+     665.536,
+     674.903,
+     684.551,
+     694.488,
+     704.723,
+     715.266,
+     726.125,
+     737.310,
+     748.830
+    ],
+    "16": [
+     645.500,
+     654.155,
+     663.070,
+     672.253,
+     681.711,
+     691.452,
+     701.486,
+     711.821,
+     722.466,
+     733.431,
+     744.724,
+     756.356,
+     768.337
+    ],
+    "17": [
+     660.878,
+     669.879,
+     679.151,
+     688.700,
+     698.537,
+     708.668,
+     719.103,
+     729.852,
+     740.922,
+     752.325,
+     764.070,
+     776.168,
+     788.628
+    ],
+    "18": [
+     676.873,
+     686.234,
+     695.877,
+     705.808,
+     716.038,
+     726.575,
+     737.427,
+     748.606,
+     760.119,
+     771.978,
+     784.193,
+     796.774,
+     809.733
+    ],
+    "19": [
+     693.513,
+     703.249,
+     713.277,
+     723.606,
+     734.245,
+     745.203,
+     756.490,
+     768.115,
+     780.089,
+     792.423,
+     805.126,
+     818.210,
+     831.687
+    ],
+    "20": [
+     710.821,
+     720.947,
+     731.376,
+     742.118,
+     753.183,
+     764.579,
+     776.317,
+     788.408,
+     800.861,
+     813.687,
+     826.899,
+     840.507,
+     854.523
+    ]
+   }
+  }
+ ]
+}
