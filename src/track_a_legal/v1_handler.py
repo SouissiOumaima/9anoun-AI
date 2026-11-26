@@ -10,6 +10,10 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from src.track_a_legal.v1_case_analysis import analyze_case_v1
 
+from src.track_a_legal.v1_uncertain_information import (
+    build_uncertain_information,
+)
+
 
 # Load the official response contract.
 _SCHEMA_PATH = Path(__file__).resolve().parents[2] / "data/mock_cards/schemas/track_a_response.v1.schema.json"
@@ -167,15 +171,7 @@ def handle_v1(
                 )
             ],
             "analysis_status": analysis["analysis_status"],
-            "uncertain_information": [
-                {
-                    "reference_id": str(error["reference_id"]),
-                    "reason": (
-                        f"{error['code']} at {error['path']}"
-                    ),
-                }
-                for error in analysis["reference_errors"]
-            ],
+            "uncertain_information": build_uncertain_information(request, analysis),
         }
 
         # Do not invent legal citations.
