@@ -13,6 +13,8 @@ from src.track_a_legal.v1_handler import handle_v1
 def run_ds2_ds4_v1_pipeline(
     ds4_request: dict[str, Any],
     ds2_request: dict[str, Any],
+    *,
+    pdf_root: str | None = None,
 ) -> dict[str, Any]:
     """Ex?cuter DS2 LIVE puis DS4 v1 sans conclusion juridique."""
 
@@ -43,4 +45,6 @@ def run_ds2_ds4_v1_pipeline(
     prepared_request["legal_sources"] = legal_sources
 
     # Ne pas inventer reference_date : conserver la valeur initiale.
-    return handle_v1(prepared_request)
+    if pdf_root is None:
+        return handle_v1(prepared_request)
+    return handle_v1(prepared_request, pdf_root=pdf_root)
