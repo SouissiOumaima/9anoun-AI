@@ -9,8 +9,9 @@ Pour chaque page retenue :
 1. rend l'image de la page du PDF indiqué par `source_file` (300 DPI) ;
 2. la lit avec notre OCR (PaddleOCR PP-OCRv5, modèle arabe par défaut) ;
 3. prend le texte Tradrly de la même page dans `pages_content` ;
-4. normalise les deux textes (NFC, tatweel, voyelles et signes coraniques, chiffres arabes-indiens et persans en
-   chiffres ASCII, espaces) et calcule le CER et le WER, avec le texte Tradrly comme référence.
+4. normalise les deux textes (formes de présentation arabes ramenées aux lettres de base, NFC, tatweel, voyelles et
+   signes coraniques, chiffres arabes-indiens et persans en chiffres ASCII, espaces) et calcule le CER et le WER,
+   avec le texte Tradrly comme référence.
 
 Choix des pages : `--pages "<nom>:<page>,..."` (liste explicite, numéros de page à partir de 1), ou
 `--echantillon N --seed S` (tirage reproductible ; avec `--strate "<nom1>,<nom2>"`, le tirage est réparti à parts
@@ -28,7 +29,10 @@ Limite à connaître : le CER d'une page entière dépend aussi de l'ordre des l
 d'ordre (CER élevé, rappel élevé) d'un vrai écart de texte (les deux mauvais). `cer_lettres` (CER sans chiffres ni
 ponctuation) sépare le défaut connu de notre modèle arabe, qui perd souvent les chiffres et la ponctuation dans les
 lignes arabes (« الفصل 1 : » lu « الفصل »), d'un écart de transcription : CER élevé et CER lettres bas = surtout des
-chiffres ou de la ponctuation perdus par notre OCR, pas une erreur de Tradrly.
+chiffres ou de la ponctuation perdus par notre OCR, pas une erreur de Tradrly. `cer_souple` (même calcul que le CER,
+après avoir ramené أ / إ / آ à ا, ى à ي et ة à ه) sépare les variantes d'orthographe courantes, que l'arabe tolère, des
+vraies erreurs de lettres : CER élevé et CER souple bas = surtout des hamzas, des alif maqsura ou des ta marbuta écrits
+autrement.
 """
 
 from __future__ import annotations
@@ -65,13 +69,37 @@ VERIFICATION_SUFFIX: Final = ".verification.json"
 _TATWEEL: Final = "ـ"
 _HARAKAT: Final = re.compile("[ؐ-ًؚ-ٰٟۖ-ۭ]")
 _DIGITS: Final = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹", "01234567890123456789")
+_PRESENTATION_FORMS: Final = re.compile("[ﭐ-﷿ﹰ-﻿]")
+"""Formes de présentation arabes A (U+FB50–U+FDFF) et B (U+FE70–U+FEFF) : glyphes positionnels (ﺍﻟﻔﺼﻞ), ligatures
+(ﻻ, ﷲ) que certains PDF ou OCR produisent à la place des lettres de base."""
+_ZWNBSP: Final = "﻿"
+_SOFT_LETTERS: Final = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ى": "ي", "ة": "ه"})
+"""Variantes d'orthographe ramenées à une seule lettre pour `cer_souple` (un caractère pour un caractère)."""
 
 
 # ---------------------------------------------------------------- normalisation et métriques
 
 
+def _base_letters(match: re.Match[str]) -> str:
+    """Une forme de présentation -> ses lettres de base (NFKC sur ce seul caractère).
+
+    Une voyelle isolée (par ex. U+FE70) devient « espace + voyelle » en NFKC : l'espace est retiré, pour ne pas couper
+    un mot (la voyelle est ensuite supprimée comme les autres). U+FEFF (espace insécable invisible) est supprimé.
+    """
+    char = match.group()
+    if char == _ZWNBSP:
+        return ""
+    base = unicodedata.normalize("NFKC", char)
+    if base.startswith(" ") and all(unicodedata.combining(c) for c in base[1:]):
+        return base[1:]
+    return base
+
+
 def normalize(text: str) -> str:
-    """NFC, sans tatweel ni voyelles / signes coraniques, chiffres en ASCII, espaces fusionnés."""
+    """Formes de présentation arabes -> lettres de base, NFC, sans tatweel ni voyelles / signes coraniques, chiffres
+    en ASCII, espaces fusionnés. Seuls les caractères des formes de présentation passent par NFKC : le reste du texte
+    (chiffres arabes-indiens compris) est traité comme avant."""
+    text = _PRESENTATION_FORMS.sub(_base_letters, text)
     text = unicodedata.normalize("NFC", text)
     text = text.replace(_TATWEEL, "")
     text = _HARAKAT.sub("", text)
@@ -87,6 +115,15 @@ def letters_only(text: str) -> str:
     """
     kept = "".join(c for c in normalize(text) if c.isspace() or unicodedata.category(c).startswith(("L", "M")))
     return " ".join(kept.split())
+
+
+def soft_normalize(text: str) -> str:
+    """Texte normalisé où أ / إ / آ deviennent ا, ى devient ي et ة devient ه : sert à `cer_souple`.
+
+    Ces variantes d'orthographe sont courantes et tolérées en arabe (hamza souvent omise, ى / ي et ة / ه confondus) :
+    un CER après les avoir unifiées sépare ces écarts des vraies erreurs de lettres.
+    """
+    return normalize(text).translate(_SOFT_LETTERS)
 
 
 def edit_distance(a: Sequence[Any], b: Sequence[Any]) -> int:
@@ -119,10 +156,13 @@ def page_scores(reference: str, hypothesis: str) -> dict[str, float | int]:
     common = sum((Counter(ref_words) & Counter(hyp_words)).values())
     ref_letters, hyp_letters = letters_only(reference), letters_only(hypothesis)
     letter_errors = edit_distance(ref_letters, hyp_letters)
+    ref_soft, hyp_soft = soft_normalize(reference), soft_normalize(hypothesis)
+    soft_errors = edit_distance(ref_soft, hyp_soft)
     return {
         "cer": round(char_errors / len(ref), 4) if ref else (0.0 if not hyp else 1.0),
         "cer_lettres": (round(letter_errors / len(ref_letters), 4) if ref_letters
                         else (0.0 if not hyp_letters else 1.0)),
+        "cer_souple": round(soft_errors / len(ref_soft), 4) if ref_soft else (0.0 if not hyp_soft else 1.0),
         "wer": round(word_errors / len(ref_words), 4) if ref_words else (0.0 if not hyp_words else 1.0),
         "rappel_mots": round(common / len(ref_words), 4) if ref_words else 0.0,
         "caracteres_reference": len(ref),
@@ -130,6 +170,7 @@ def page_scores(reference: str, hypothesis: str) -> dict[str, float | int]:
         "mots_reference": len(ref_words),
         "mots_ocr": len(hyp_words),
         "erreurs_caracteres": char_errors,
+        "erreurs_caracteres_souple": soft_errors,
         "erreurs_mots": word_errors,
     }
 
@@ -498,6 +539,7 @@ def summarize(results: list[PageResult], conventions: list[Convention], top: int
     chars = sum(int(r.scores["caracteres_reference"]) for r in scored if r.scores)
     words = sum(int(r.scores["mots_reference"]) for r in scored if r.scores)
     char_err = sum(int(r.scores["erreurs_caracteres"]) for r in scored if r.scores)
+    soft_err = sum(int(r.scores["erreurs_caracteres_souple"]) for r in scored if r.scores)
     word_err = sum(int(r.scores["erreurs_mots"]) for r in scored if r.scores)
     cers = sorted(float(r.scores["cer"]) for r in scored if r.scores)
     worst = sorted(scored, key=lambda r: float(r.scores["cer"]) if r.scores else 0.0, reverse=True)[:top]
@@ -506,10 +548,13 @@ def summarize(results: list[PageResult], conventions: list[Convention], top: int
         "pages_controlees": len(scored),
         "pages_non_controlees": len(results) - len(scored),
         "cer_global_pondere": round(char_err / chars, 4) if chars else 0.0,
+        # même dénominateur : ramener une variante à une seule lettre ne change pas la longueur du texte
+        "cer_souple_global_pondere": round(soft_err / chars, 4) if chars else 0.0,
         "wer_global_pondere": round(word_err / words, 4) if words else 0.0,
         "cer_median": round(statistics.median(cers), 4) if cers else 0.0,  # pair : moyenne des 2 du milieu
         "pages_a_relire": [{"convention": r.convention, "page": r.page, "cer": r.scores["cer"],
-                            "cer_lettres": r.scores["cer_lettres"], "rappel_mots": r.scores["rappel_mots"]}
+                            "cer_lettres": r.scores["cer_lettres"], "cer_souple": r.scores["cer_souple"],
+                            "rappel_mots": r.scores["rappel_mots"]}
                            for r in worst if r.scores],
         "conventions_signalees": [{"convention": c.name, "problemes": c.problems} for c in conventions if c.problems],
         "conventions": [{"convention": c.name, "association": c.association, "pages_pdf": c.pdf_pages,
@@ -562,22 +607,22 @@ def print_report(report: dict[str, Any]) -> None:
     s = report["resume"]
     print("\nRésumé (chiffres seulement) :")
     for key in ("pages_demandees", "pages_controlees", "pages_non_controlees", "cer_global_pondere",
-                "wer_global_pondere", "cer_median"):
-        print(f"  {key:<22} {s[key]}")
-    print("\n  convention / page                         CER  CER lettres     WER   rappel  car.réf")
+                "cer_souple_global_pondere", "wer_global_pondere", "cer_median"):
+        print(f"  {key:<26} {s[key]}")
+    print("\n  convention / page                         CER  CER lettres  CER souple     WER   rappel  car.réf")
     for p in report["pages"]:
         label = f"{p['convention']} p.{p['page']}"
         kind = f"  [page_type : {p['page_type']}]" if p.get("page_type") else ""
         if "cer" in p:
-            print(f"  {label:<38} {p['cer']:>7.2%} {p['cer_lettres']:>12.2%} {p['wer']:>7.2%} "
-                  f"{p['rappel_mots']:>7.2%} {p['caracteres_reference']:>8}{kind}")
+            print(f"  {label:<38} {p['cer']:>7.2%} {p['cer_lettres']:>12.2%} {p['cer_souple']:>11.2%} "
+                  f"{p['wer']:>7.2%} {p['rappel_mots']:>7.2%} {p['caracteres_reference']:>8}{kind}")
         else:
             print(f"  {label:<38} non contrôlée : {p.get('probleme')}{kind}")
     if s["pages_a_relire"]:
         print("\nPages les plus divergentes, à relire sur l'image :")
         for p in s["pages_a_relire"]:
             print(f"  {p['convention']} p.{p['page']} : CER {p['cer']:.2%}, CER lettres {p['cer_lettres']:.2%}, "
-                  f"rappel des mots {p['rappel_mots']:.2%}")
+                  f"CER souple {p['cer_souple']:.2%}, rappel des mots {p['rappel_mots']:.2%}")
     print("\nAssociation page ↔ texte Tradrly :")
     for c in s["conventions"]:
         print(f"  {c['convention']} : {c['association'] or '-'} ; {c['pages_avec_contenu']} pages avec contenu, "

@@ -175,7 +175,8 @@ def test_run_scores_pages_and_flags_unusable_ones(archive: tuple[Path, Path]) ->
     summary = report["resume"]
     assert (summary["pages_demandees"], summary["pages_controlees"]) == (6, 2)
     assert summary["pages_a_relire"][0] == {"convention": "conv_a", "page": 3, "cer": pages[("conv_a", 3)]["cer"],
-                                            "cer_lettres": 0.0, "rappel_mots": 0.5}
+                                            "cer_lettres": 0.0, "cer_souple": pages[("conv_a", 3)]["cer"],
+                                            "rappel_mots": 0.5}
     assert {c["convention"] for c in summary["conventions_signalees"]} == {"conv_c", "casse"}
 
 
@@ -327,3 +328,72 @@ def test_main_sampling_mode_and_argument_errors(archive: tuple[Path, Path], tmp_
     assert "Erreur" in capsys.readouterr().out
     with pytest.raises(SystemExit):  # --pages et --echantillon ensemble : refusé par argparse
         script.main([*base, "--out", str(out), "--pages", "a:1", "--echantillon", "2"], engine=PageTextEngine([]))
+
+
+# ------------------------------------------------------------ formes de présentation et CER souple (#49, Hadil)
+
+# « الفصل » écrit en formes de présentation B : alef isolé, lam initial, feh médian, sad médian, lam final
+PRESENTATION_FASL = "ﺍﻟﻔﺼﻞ"
+
+
+def test_presentation_forms_become_base_letters() -> None:
+    script = _load()
+    assert script.normalize(PRESENTATION_FASL) == "الفصل"
+    assert script.normalize("ﻻ ﻷ") == "لا لأ"  # ligatures lam-alef (forme B)
+    assert script.normalize("ﷲ") == "الله"  # ligature (forme A)
+    assert script.normalize("ﮎﮑ") == "کک"  # keheh (forme A) : lettre de base ک
+    assert script.normalize("كﹶتب") == "كتب"  # voyelle isolée : ni espace ajouté, ni mot coupé
+    assert script.normalize("﻿الأجر") == "الأجر"  # U+FEFF invisible supprimé
+    assert script.page_scores("الفصل الأول", f"{PRESENTATION_FASL} ﺍﻷﻮﻝ")["cer"] == 0.0
+
+
+def test_presentation_forms_keep_digits_and_leave_other_characters_alone() -> None:
+    script = _load()
+    assert script.normalize(f"{PRESENTATION_FASL} ١٢٣ ۴٥") == "الفصل 123 45"  # chiffres arabes-indiens et persans
+    assert script.normalize("ﻻ ٣٠") == "لا 30"  # ligature puis chiffres arabes-indiens
+    # seules les formes de présentation passent par NFKC : pas de NFKC sur le reste du texte
+    assert script.normalize("x² ﬁn ½") == "x² ﬁn ½"
+    assert script.normalize("الأجـــر  الأَسَاسِيّ\n١٢٣٫۴") == "الأجر الأساسي 123٫4"  # comportement d'avant
+
+
+def test_soft_cer_ignores_common_spelling_variants_only() -> None:
+    script = _load()
+    assert script.soft_normalize("أإآ ى ة") == "ااا ي ه"
+    variants = script.page_scores("الأجر الأساسي إلى آخر المؤسسة", "الاجر الاساسي الي اخر المؤسسه")
+    assert variants["cer"] > 0 and variants["cer_souple"] == 0.0 and variants["erreurs_caracteres_souple"] == 0
+    real = script.page_scores("الأجر الأساسي", "الأمر الأساسي")  # vraie erreur de lettre : pas cachée
+    assert real["cer_souple"] == real["cer"] > 0
+    both = script.page_scores("المؤسسة", "الموسسه")  # ؤ → و n'est pas une variante retenue
+    assert both["cer_souple"] == round(1 / len("المؤسسة"), 4) < both["cer"]
+    for ref, hyp in (("إلى", "الى"), ("abc", "abd"), ("", "")):  # même longueur : même dénominateur que le CER
+        assert len(script.soft_normalize(ref)) == len(script.normalize(ref))
+        assert script.page_scores(ref, hyp)["caracteres_reference"] == len(script.soft_normalize(ref))
+    assert script.page_scores("", "")["cer_souple"] == 0.0 and script.page_scores("", "ة")["cer_souple"] == 1.0
+
+
+def test_soft_cer_is_shown_and_saved_as_numbers_only(archive: tuple[Path, Path], tmp_path: Path,
+                                                     capsys: pytest.CaptureFixture[str]) -> None:
+    script = _load()
+    out = tmp_path / "sortie"
+    engine = PageTextEngine([f"{PRESENTATION_FASL} الاول {SECRET} ١٢٣",  # formes de présentation + hamza omise
+                             "الفصل الثاني : الاجر الاساسي",  # hamzas omises : CER souple nul
+                             "Annexe 3"])
+    assert script.main([str(archive[0]), str(archive[1]), "--out", str(out), "--pages",
+                        "conv_a:1,conv_a:2,conv_a:3"], engine=engine) == 0
+    printed = capsys.readouterr().out
+    raw = (out / "controle_tradrly.json").read_text(encoding="utf-8")
+    report = json.loads(raw)
+
+    pages = {p["page"]: p for p in report["pages"]}
+    assert pages[1]["cer"] > 0 and pages[1]["cer_souple"] == 0.0  # seule la hamza diffère
+    assert pages[2]["cer"] > 0 and pages[2]["cer_souple"] == 0.0
+    assert pages[3]["cer_souple"] == pages[3]["cer"] == 0.0
+    resume = report["resume"]
+    assert resume["cer_souple_global_pondere"] == 0.0 < resume["cer_global_pondere"]
+    assert all("cer_souple" in p for p in resume["pages_a_relire"])
+    assert "cer_souple_global_pondere" in printed and "CER souple" in printed
+
+    for forbidden in (SECRET, "الفصل", "الاول", "الأول", "الاجر", "الأجر", "الاساسي", "Annexe", PRESENTATION_FASL,
+                      "ﺍ", "ﻞ", ".pdf"):
+        assert forbidden not in printed, forbidden
+        assert forbidden not in raw, forbidden
