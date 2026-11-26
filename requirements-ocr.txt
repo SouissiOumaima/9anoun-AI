@@ -12,6 +12,8 @@ opencv-python==5.0.0.93
 pillow==12.3.0
 matplotlib==3.11.2
 mypy==2.4.1
-# couverture des tests : python -m pytest --cov=src/document_intelligence/reading --cov=scripts
+# outils de test (couverture) : python -m pytest --cov=src/document_intelligence/reading --cov=scripts
+# Laissés ici : pytest n'est épinglé que dans les requirements de DS2 (src/legal_retrieval) et de DS5
+# (src/track_b_accounting), qui ne sont pas à DS3 ; à déplacer à côté de pytest si un fichier commun est créé.
 pytest-cov==7.1.0
 coverage==7.17.2

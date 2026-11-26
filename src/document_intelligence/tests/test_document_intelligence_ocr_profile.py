@@ -159,37 +159,55 @@ def test_broken_pdf_is_counted_as_failed_without_stopping(pdf_dir: Path, tmp_pat
 # ------------------------------------------------------------ instrumentation de PaddleOCR (sans Paddle)
 
 
-class _FakePredictor:
+class _SimClock:
+    """Horloge simulée : remplace `time.perf_counter` du script ; seuls les faux modèles la font avancer."""
+
     def __init__(self) -> None:
+        self.now = 1000.0
+
+    def __call__(self) -> float:
+        return self.now
+
+
+class _FakePredictor:
+    def __init__(self, clock: _SimClock, cost_s: float) -> None:
         self.calls = 0
+        self.clock, self.cost_s = clock, cost_s
 
     def process(self, batch: object) -> str:
         self.calls += 1
+        self.clock.now += self.cost_s  # durée simulée d'un lot (aucun vrai sleep)
         return "lot traité"
 
 
 class _FakePipeline:
     """Même imbrication que PaddleOCR 3.x : pipeline.paddlex_pipeline._pipeline.text_det_model / text_rec_model."""
 
-    def __init__(self) -> None:
+    def __init__(self, clock: _SimClock) -> None:
         inner = type("Inner", (), {})()
-        inner.text_det_model = _FakePredictor()
-        inner.text_rec_model = _FakePredictor()
+        inner.text_det_model = _FakePredictor(clock, 2.0)
+        inner.text_rec_model = _FakePredictor(clock, 3.0)
         self.inner = inner
         self.paddlex_pipeline = type("Outer", (), {"_pipeline": inner})()
 
 
-def test_instrument_paddle_times_loading_detection_and_recognition() -> None:
+def test_instrument_paddle_times_loading_detection_and_recognition(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Les trois durées sont bien mesurées : le test échoue si une mesure est cassée (durée restée à 0)."""
+    from types import SimpleNamespace
+
     from src.document_intelligence.reading.ocr import PaddleEngine
 
     script = _load_script()
+    clock = _SimClock()
+    monkeypatch.setattr(script, "time", SimpleNamespace(perf_counter=clock))
     engine = PaddleEngine()
     built: list[str] = []
 
     def fake_pipeline(lang: OcrLang) -> _FakePipeline:
         if lang not in engine._pipelines:
             built.append(lang)
-            engine._pipelines[lang] = _FakePipeline()
+            clock.now += 8.5  # chargement simulé des modèles
+            engine._pipelines[lang] = _FakePipeline(clock)
         return engine._pipelines[lang]  # type: ignore[no-any-return]
 
     engine._pipeline = fake_pipeline  # type: ignore[method-assign]
@@ -198,10 +216,13 @@ def test_instrument_paddle_times_loading_detection_and_recognition() -> None:
 
     pipe = engine._pipeline("ar")
     assert engine._pipeline("ar") is pipe and built == ["ar"]  # chargé une seule fois
+    assert profile.chargement_modeles_s == 8.5  # le second appel (déjà chargé) n'ajoute rien
+    assert pipe.inner.text_det_model.process("lot") == "lot traité"
     assert pipe.inner.text_det_model.process("lot") == "lot traité"
     assert pipe.inner.text_rec_model.process("lot") == "lot traité"
-    assert pipe.inner.text_det_model.calls == 1 and pipe.inner.text_rec_model.calls == 1
-    assert profile.chargement_modeles_s >= 0 and profile.detection_s >= 0 and profile.reconnaissance_s >= 0
+    assert pipe.inner.text_det_model.calls == 2 and pipe.inner.text_rec_model.calls == 1
+    assert profile.chargement_modeles_s > 0 and profile.detection_s > 0 and profile.reconnaissance_s > 0
+    assert (profile.chargement_modeles_s, profile.detection_s, profile.reconnaissance_s) == (8.5, 4.0, 3.0)
 
 
 def test_timed_counts_time_even_when_the_function_fails() -> None:
