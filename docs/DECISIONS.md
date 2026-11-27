@@ -2349,6 +2349,8 @@ jeu de référence TB-126 à TB-131.
 (« LOTS VALIDÉS », 2026-11-10) ; primes lues deux fois et relues par DS5. Cas du jeu de référence : en attente de
 vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D50 — Grille salariale AGENCES_VOYAGES (pages 2-3, 8, 15-19)
@@ -2390,6 +2392,8 @@ tableau n° 1 a ensuite été relue à 400 dpi ; décision de DS5 :
 
 Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D51 — Grille salariale HOTELS_TOURISTIQUES (pages 2-3, 8-9, 15-18, 42-44)
@@ -2419,6 +2423,8 @@ espace de milliers ; ancienneté effective imprimée 1, 3, …, 27, 30.
 
 **Statut de vérification** : 260 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2463,6 +2469,8 @@ saisie. Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules
 est aussi signalée par ce contrôle, mais l'image l'imprime nettement : elle reste une anomalie imprimée (point 4) et
 figure dans la liste nommée des exceptions du test.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D53 — Grille salariale PATES_ALIMENTAIRES_COUSCOUS (pages 2-3, 8-9, 15-21)
@@ -2491,6 +2499,8 @@ figure dans la liste nommée des exceptions du test.
 
 **Statut de vérification** : 504 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2532,6 +2542,8 @@ attente de validation DS2 (noms, codes et alias) ; seule exemption du test `test
 messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux (décrets 437/1981 et 501/1982) reprise en
 remarque, sans calcul.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D55 — Grille salariale SAVONNERIE_RAFFINAGE_GRIGNONS (pages 2-3, 12-22)
@@ -2570,6 +2582,8 @@ D69 (vérifié avec `git fetch origin` le 2026-11-11). D55 à D60 forment la vag
 **Statut de vérification** : 468 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D56 — Grille salariale COMMERCE_DISTRIBUTION_PETROLE (pages 2-3, 7-10, 15-17, 19-20)
@@ -2600,6 +2614,8 @@ rangs) × 14 colonnes (« - » puis degrés 1 à 13) = 588 montants, imprimés �
 **Statut de vérification** : 588 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D57 — Grille salariale PLASTURGIE (pages 2-3, 8-10, 14-16, 22-24)
@@ -2627,6 +2643,8 @@ l'heure 6 × 16 = 672 montants, imprimés à la virgule.
 
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2658,6 +2676,8 @@ imprimés 0 à 13 = 672 montants.
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D59 — Grille salariale TEINTURERIES_PRESSINGS (pages 2-3, 9-12, 14, 17, 19-22)
@@ -2685,6 +2705,8 @@ administratifs et techniciens (10 catégories, mensuels) × 14 degrés = 672 mon
 
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2723,6 +2745,8 @@ activés dans le registre DS5 sans entrée dans la table des secteurs, en attent
 `EN_ATTENTE_DS2` du test `test_chaque_secteur_ds5_disponible_figure_une_fois`) ; titres des conventions repris des pages
 de titre (p.1) ; libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux
 (décrets 437/1981 et 501/1982) reprise en remarque, sans calcul.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
