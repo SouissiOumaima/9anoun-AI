@@ -65,6 +65,12 @@ SECTEURS = {
     "GROSSISTES_REPARTITEURS_MEDICAMENTS": "data/processed/salary_grids/grossistes_medicaments.json",
     "SALLES_CINEMA": "data/processed/salary_grids/salles_cinema.json",
     "TRANSPORT_ROUTIER_MARCHANDISES": "data/processed/salary_grids/transport_routier_marchandises.json",
+    "JARDINS_ENFANTS_CRECHES": "data/processed/salary_grids/jardins_enfants_creches.json",
+    "CLINIQUES_PRIVEES": "data/processed/salary_grids/cliniques_privees.json",
+    "LOCATION_VOITURES": "data/processed/salary_grids/location_voitures.json",
+    "COMMERCE_MATERIAUX_BOIS_ACIER": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+    "CAFES_RESTAURANTS_BARS": "data/processed/salary_grids/cafes_restaurants_bars.json",
+    "PORTS_CHARGEMENT_DECHARGEMENT": "data/processed/salary_grids/ports_chargement_dechargement.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 
@@ -202,6 +208,7 @@ def test_secteurs_enregistres_avec_la_regle_ouvert():
         "COSMETIQUES_PARFUMS",
         "TEINTURERIES_PRESSINGS",
         "TRANSPORT_ROUTIER_MARCHANDISES",
+        "CAFES_RESTAURANTS_BARS",
     ]
     assert {b["regle"] for b in lire_json(SECTEURS["ENSEIGNEMENT_PRIVE"])["au_dela_dernier_degre"].values()} == {
         "refus"

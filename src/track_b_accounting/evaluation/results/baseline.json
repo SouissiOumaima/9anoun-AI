@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -11980,128 +11980,2123 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "386.185",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-408",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 20,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "386.185",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "408.763",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-409",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "408.763",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "458.808",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-410",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "458.808",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "452.996",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-411",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 20,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "452.996",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-412",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 36 ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-413",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille JARDINS_ENFANTS_CRECHES/ouvriers en vigueur au 2011-06-30 (première date d'effet disponible : 2011-07-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "51.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-414",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 15,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "51.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "6.080",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-415",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 13,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "6.080",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D91",
+   "id": "TB-416",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime pédagogique : agent chargé de l'animation de premier rang (article 46, page 15) : montants 16.900 (juillet 2002), « 25.7000 » (juillet 2003, imprimé à quatre décimales) et 34.200 (juillet 2004) : le montant de 2003 ne peut pas être servi arrondi au millime, et le contrat v1 ne sert pas un montant exact dans une série datée. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "21.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-417",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 16,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "21.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "1916.763",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D92",
+   "id": "TB-418",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "1916.763",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "457.215",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-419",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "457.215",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "1215.735",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-420",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 16,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "1215.735",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D92",
+   "id": "TB-421",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 30 ans : la grille de la convention des cliniques privées s'arrête au degré 15 (27 à 30 ans) ; l'en-tête (page 16) imprime les durées de séjour 1 (degrés 1 à 5), 2 (6 à 10) puis 3 ans (11 à 15), soit 30 ans, et l'article 13 (جديد) (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D92",
+   "id": "TB-422",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille CLINIQUES_PRIVEES/cliniques en vigueur au 2019-04-30 (première date d'effet disponible : 2019-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "57.945",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D92",
+   "id": "TB-423",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 13,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "57.945",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 9,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "3.666",
+    "status": "ok",
+    "unite": "TND/nuit"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-424",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 9,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "3.666",
+    "status": "ok",
+    "unite": "TND/nuit"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 13,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D92",
+   "id": "TB-425",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D92",
+      "page": 13,
+      "pdf": "مصحات الخاصة.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1723.405",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-426",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1723.405",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "521.240",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-427",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "521.240",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1549.933",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-428",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1549.933",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-429",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 31 ans : l'en-tête du tableau n° 2 (page 19) imprime 20 degrés (jusqu'à 38 ans), alors que l'article 17 ب (page 8) dit que chaque catégorie compte 16 degrés (un an pour les degrés 1 et 2, deux ans pour les degrés 3 à 16), soit 30 ans. Les deux textes se contredisent de 30 ans exclus à 38 ans inclus (degrés 17 à 20). Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-430",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille LOCATION_VOITURES/agents en vigueur au 2019-04-30 (première date d'effet disponible : 2019-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "12.061",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-431",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 15,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "12.061",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-432",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 15,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "20.000",
+    "status": "ok",
+    "unite": "TND/enfant"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-433",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Treizième mois (article 57, page 15) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "3.005",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-434",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "3.005",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 20,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "514.431",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-435",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 20,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "514.431",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "1435.788",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D94",
+   "id": "TB-436",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "1435.788",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "786.298",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-437",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "786.298",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D94",
+   "id": "TB-438",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 27 ans : la grille de la convention du commerce des matériaux de construction, du bois et de l'acier s'arrête au degré 12 (24 à 27 ans) ; l'en-tête (pages 20-21) imprime les durées de séjour 1 (degrés 1 à 3), 2 (4 à 6) puis 3 ans (7 à 12), soit 27 ans, et l'article 13 (page 8) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 27 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D94",
+   "id": "TB-439",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille COMMERCE_MATERIAUX_BOIS_ACIER/horaires en vigueur au 2018-04-30 (première date d'effet disponible : 2018-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 10,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "64.996",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-440",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 10,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "64.996",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 11,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "0.433",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-441",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 11,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "0.433",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "301.770",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-442",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "301.770",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "477.332",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-443",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "477.332",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "388.045",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-444",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "388.045",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-445",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 2 ans : l'en-tête des tableaux (page 31) place la colonne du recrutement (« الانتداب ») jusqu'à 3 ans, alors que l'article 53 (جديد) (page 14) ne laisse hors de l'échelle que la première année de recrutement. Les deux textes se contredisent de 1 an exclu à 3 ans inclus. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-446",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille CAFES_RESTAURANTS_BARS/moyens_petits en vigueur au 2010-06-30 (première date d'effet disponible : 2010-07-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "13.200",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-447",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "13.200",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-448",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "prime_transport_cat4_6_petits : aucun montant en vigueur au 2008-08-01 (première date d'effet : 2008-09-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "10.700",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D95",
+   "id": "TB-449",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "10.700",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "7.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-450",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 14,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "7.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "394.990",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-451",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 25,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "394.990",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "383.085",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-452",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 25,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "383.085",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 26,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "557.784",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-453",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 26,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "557.784",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 27,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "668.535",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-454",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 27,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "668.535",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-455",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents de manutention, catégorie 2, degré 11 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 368.706 ou 368.705 : dernier chiffre 6 ou 5, non séparé au zoom (lectures « 368.706? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-456",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 1, degré 1 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 276.909 ou 275.909 : troisième chiffre non séparé au zoom (lectures « 276.909? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-457",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 56 ans : la grille de la convention du chargement et du déchargement dans les ports maritimes de commerce s'arrête au degré 20 (53 à 56 ans) ; l'en-tête des tableaux (pages 25-27) imprime l'ancienneté dans l'entreprise 1, 3, 5, 8 … 56 en fin de degré, comme l'article 12 أ (page 7), qui ne prévoit rien au-delà du degré 20. Aucun montant n'est renvoyé (ancienneté couverte : moins de 56 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-458",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille PORTS_CHARGEMENT_DECHARGEMENT/manutention en vigueur au 2010-04-30 (première date d'effet disponible : 2010-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 22,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "52.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-459",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 22,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "52.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-460",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de logement de l'article 43 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_logement_titularises_2005 ; le montant de l'article 43 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 22,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "71.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-461",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 22,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "71.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-462",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de risque (conducteurs, chefs d'équipe, surveillants) de l'article 47 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_risque_titularises_2005_conducteurs_chefs ; le montant de l'article 47 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "32.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-463",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 15,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "32.736",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "7.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-464",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 18,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "7.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "12.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-465",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 16,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "12.500",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "423.227",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-466",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "423.227",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "388.635",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-467",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D95",
+      "page": 31,
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf"
+     }
+    ],
+    "montant": "388.635",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 27,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "1076.610",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-468",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D96",
+      "page": 27,
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf"
+     }
+    ],
+    "montant": "1076.610",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D96",
+   "id": "TB-469",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents de manutention, catégorie 16, degré 7 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 779.656 ou 779.655 : dernier chiffre non séparé au zoom (lectures « 779.656? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "467.429",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-470",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D91",
+      "page": 21,
+      "pdf": "رياض الأطفال.pdf"
+     }
+    ],
+    "montant": "467.429",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "3.209",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-471",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D94",
+      "page": 21,
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf"
+     }
+    ],
+    "montant": "3.209",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1761.853",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D93",
+   "id": "TB-472",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D93",
+      "page": 19,
+      "pdf": "كراء السيارات.pdf"
+     }
+    ],
+    "montant": "1761.853",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": false
   }
  ],
- "date": "2026-11-22",
+ "date": "2026-11-27",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 407,
-  "cas_verifies_par_ds5": 397,
+  "cas": 472,
+  "cas_verifies_par_ds5": 461,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "40ccc31903330ec193988962eabd76c0fda06d430e1159f107124a55fde07c25",
+  "sha256": "75e9750d13cb74293fc7fa67fbef488043bd980ccc044775731956fc2d26954a",
   "version": "track_b_golden.v0"
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 397,
+   "cas": 461,
    "citations_valides": {
-    "n": 238,
-    "sur": 238,
+    "n": 282,
+    "sur": 282,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 159,
+    "sur": 179,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 397,
-    "sur": 397,
+    "n": 461,
+    "sur": 461,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 397,
-    "sur": 397,
+    "n": 461,
+    "sur": 461,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 238,
-    "sur": 238,
+    "n": 282,
+    "sur": 282,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 238,
+    "sur": 282,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 159,
+    "sur": 179,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 159,
+    "sur": 179,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 159,
-    "sur": 159,
+    "n": 179,
+    "sur": 179,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 238,
+    "sur": 282,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 407,
+   "cas": 472,
    "citations_valides": {
-    "n": 238,
-    "sur": 238,
+    "n": 283,
+    "sur": 283,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 169,
+    "sur": 189,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 407,
-    "sur": 407,
+    "n": 472,
+    "sur": 472,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 407,
-    "sur": 407,
+    "n": 472,
+    "sur": 472,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 238,
-    "sur": 238,
+    "n": 283,
+    "sur": 283,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 238,
+    "sur": 283,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 169,
+    "sur": 189,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 169,
+    "sur": 189,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 169,
-    "sur": 169,
+    "n": 189,
+    "sur": 189,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 238,
+    "sur": 283,
     "taux": 0.0
    },
    "statut_erreur": 0
@@ -12164,10 +14159,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 231,
+    "cas": 276,
     "citations_valides": {
-     "n": 231,
-     "sur": 231,
+     "n": 276,
+     "sur": 276,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -12176,24 +14171,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 231,
-     "sur": 231,
+     "n": 276,
+     "sur": 276,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 231,
-     "sur": 231,
+     "n": 276,
+     "sur": 276,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 231,
-     "sur": 231,
+     "n": 276,
+     "sur": 276,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 231,
+     "sur": 276,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -12214,7 +14209,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 231,
+     "sur": 276,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -12276,7 +14271,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 163,
+    "cas": 183,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -12284,17 +14279,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 163,
+     "sur": 183,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 163,
-     "sur": 163,
+     "n": 183,
+     "sur": 183,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 163,
-     "sur": 163,
+     "n": 183,
+     "sur": 183,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -12311,17 +14306,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 163,
+     "sur": 183,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 163,
+     "sur": 183,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 163,
-     "sur": 163,
+     "n": 183,
+     "sur": 183,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -12390,113 +14385,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 190,
+    "cas": 236,
     "citations_valides": {
-     "n": 87,
-     "sur": 87,
+     "n": 114,
+     "sur": 114,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 103,
+     "sur": 122,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 190,
-     "sur": 190,
+     "n": 236,
+     "sur": 236,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 190,
-     "sur": 190,
+     "n": 236,
+     "sur": 236,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 87,
-     "sur": 87,
+     "n": 114,
+     "sur": 114,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 87,
+     "sur": 114,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 103,
+     "sur": 122,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 103,
+     "sur": 122,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 103,
-     "sur": 103,
+     "n": 122,
+     "sur": 122,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 87,
+     "sur": 114,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 209,
+    "cas": 228,
     "citations_valides": {
-     "n": 143,
-     "sur": 143,
+     "n": 161,
+     "sur": 161,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 66,
+     "sur": 67,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 209,
-     "sur": 209,
+     "n": 228,
+     "sur": 228,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 209,
-     "sur": 209,
+     "n": 228,
+     "sur": 228,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 143,
-     "sur": 143,
+     "n": 161,
+     "sur": 161,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 143,
+     "sur": 161,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 66,
+     "sur": 67,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 66,
+     "sur": 67,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 66,
-     "sur": 66,
+     "n": 67,
+     "sur": 67,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 143,
+     "sur": 161,
      "taux": 0.0
     },
     "statut_erreur": 0

@@ -1,0 +1,2108 @@
+{
+ "_meta": {
+  "secteur_code": "JARDINS_ENFANTS_CRECHES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لرياض الأطفال",
+  "convention_fr": "Convention collective sectorielle des jardins d'enfants et crèches",
+  "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+  "pages_sources": [
+   2,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   16,
+   18,
+   19,
+   20,
+   21
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "288 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse ; ports n° 8 et 9 à 300 et 400 dpi), comparées par script : 0 écart ni doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5) : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »",
+  "decision_ref": "D91",
+  "currency": "TND",
+  "note_unite": "Unité imprimée pour le tableau n° 1 (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 ; 40 heures, crèches 35 heures (art. 25, pp.9-10).",
+  "note_degres": "En-tête (pp.20-21) : 16 degrés, durée de séjour 1, 1, 2 (degrés 3 à 10), puis 3 (degrés 11 à 16) ; ancienneté imprimée en fin de degré 1, 2, 4 … 36 ; libellés « 0-1 » … « 33-36 » ; bornes exactes refusées (D6) ; à partir de 36 ans, refus (art. 15 ب, p.7).",
+  "note_categories": "Ouvriers (tableau n° 1, 5 lignes), administratifs (n° 2, 2 lignes), crèches (n° 3, 4 lignes), jardins d'enfants (n° 4, 7 lignes) ; lignes par position ; population obligatoire.",
+  "note_dates": "Tableaux n° 1 à 4 (pp.20-21), en vigueur à partir du 2011-07-01 (avenant n° 3) ; les avenants n° 1 (2005-07-01) et n° 2 (2008-07-01) révisent les salaires sans grille dans la source : salaire refusé avant le 2011-07-01 ; les primes datées sont servies à leurs propres dates (2002 à 2004)."
+ },
+ "populations": {
+  "ouvriers": {
+   "libelle_fr": "Ouvriers payés au mois",
+   "libelle_ar": "العمال الخالصون بالشهر",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 20,
+   "note": "Tableau n° 1 ; population obligatoire."
+  },
+  "administratifs": {
+   "libelle_fr": "Agents administratifs",
+   "libelle_ar": "الأعوان الإداريون",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 20,
+   "note": "Tableau n° 2 ; population obligatoire."
+  },
+  "creches": {
+   "libelle_fr": "Agents des crèches",
+   "libelle_ar": "أعوان دور الحضانة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 21,
+   "note": "Tableau n° 3 ; population obligatoire."
+  },
+  "jardins": {
+   "libelle_fr": "Agents des jardins d'enfants",
+   "libelle_ar": "أعوان رياض الأطفال",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 21,
+   "note": "Tableau n° 4 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "ouvriers": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "administratifs": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "creches": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ],
+  "jardins": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 4
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 6
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 10
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 12
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 16
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 18
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 21
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 24
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 27
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 30
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "30-33",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 33
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "33-36",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 36
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "ouvriers": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 7,
+   "source_article": "15 ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية رياض الأطفال عند الدرجة 16 (من 33 إلى 36 سنة)؛ ويذكر رأس الجداول (الصفحتان 20 و21) مدد البقاء 1 و1 و2 (من الدرجة 3 إلى الدرجة 10) ثم 3 سنوات (من الدرجة 11 إلى الدرجة 16) والأقدمية 36 عند الدرجة 16؛ ولا ينص الفصل 15 ب (الصفحة 7) على شيء بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "administratifs": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 7,
+   "source_article": "15 ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية رياض الأطفال عند الدرجة 16 (من 33 إلى 36 سنة)؛ ويذكر رأس الجداول (الصفحتان 20 و21) مدد البقاء 1 و1 و2 (من الدرجة 3 إلى الدرجة 10) ثم 3 سنوات (من الدرجة 11 إلى الدرجة 16) والأقدمية 36 عند الدرجة 16؛ ولا ينص الفصل 15 ب (الصفحة 7) على شيء بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "creches": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 7,
+   "source_article": "15 ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية رياض الأطفال عند الدرجة 16 (من 33 إلى 36 سنة)؛ ويذكر رأس الجداول (الصفحتان 20 و21) مدد البقاء 1 و1 و2 (من الدرجة 3 إلى الدرجة 10) ثم 3 سنوات (من الدرجة 11 إلى الدرجة 16) والأقدمية 36 عند الدرجة 16؛ ولا ينص الفصل 15 ب (الصفحة 7) على شيء بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  },
+  "jardins": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 36,
+   "source_pdf_page": 7,
+   "source_article": "15 ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية رياض الأطفال عند الدرجة 16 (من 33 إلى 36 سنة)؛ ويذكر رأس الجداول (الصفحتان 20 و21) مدد البقاء 1 و1 و2 (من الدرجة 3 إلى الدرجة 10) ثم 3 سنوات (من الدرجة 11 إلى الدرجة 16) والأقدمية 36 عند الدرجة 16؛ ولا ينص الفصل 15 ب (الصفحة 7) على شيء بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+  }
+ },
+ "categories": {
+  "ouvriers": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "administratifs": [
+   "1",
+   "2"
+  ],
+  "creches": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "jardins": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ]
+ },
+ "libelles_categories": {
+  "ouvriers": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Tableau n° 1, ligne 1 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 1، السطر 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Tableau n° 1, ligne 2 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 1، السطر 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Tableau n° 1, ligne 3 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 1، السطر 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Tableau n° 1, ligne 4 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 1، السطر 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Tableau n° 1, ligne 5 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 1، السطر 5",
+    "libelle_ar_redige": true
+   }
+  },
+  "administratifs": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Tableau n° 2, ligne 1 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 2، السطر 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Tableau n° 2, ligne 2 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 2، السطر 2",
+    "libelle_ar_redige": true
+   }
+  },
+  "creches": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Tableau n° 3, ligne 1 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 3، السطر 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Tableau n° 3, ligne 2 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 3، السطر 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Tableau n° 3, ligne 3 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 3، السطر 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Tableau n° 3, ligne 4 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 3، السطر 4",
+    "libelle_ar_redige": true
+   }
+  },
+  "jardins": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Tableau n° 4, ligne 1 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Tableau n° 4, ligne 2 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Tableau n° 4, ligne 3 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Tableau n° 4, ligne 4 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Tableau n° 4, ligne 5 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Tableau n° 4, ligne 6 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Tableau n° 4, ligne 7 (position depuis le haut)",
+    "libelle_ar": "جدول الأجور عدد 4، السطر 7",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "ouvriers": {
+   "fr": [
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+    "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+    "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "administratifs": {
+   "fr": [
+    "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+    "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+    "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    5
+   ]
+  },
+  "creches": {
+   "fr": [
+    "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+    "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+    "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    5
+   ]
+  },
+  "jardins": {
+   "fr": [
+    "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+    "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+    "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    5
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_presence_ouvriers",
+   "label_ar": "منحة الحضور (العمال)",
+   "label_fr": "Prime de présence des ouvriers",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 4.080
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 6.080
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 8.080
+    }
+   ],
+   "hypotheses": {
+    "fr": [
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_ouvriers_ligne_1",
+   "label_ar": "منحة النقل (عامل عادي)",
+   "label_fr": "Prime de transport des ouvriers : Ouvrier ordinaire",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 11.711,
+   "effective_date": null,
+   "note": "Ligne 1 du tableau n° 1 (page 20). Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_ouvriers_ligne_2",
+   "label_ar": "منحة النقل (عامل له بعض الكفاءة)",
+   "label_fr": "Prime de transport des ouvriers : Ouvrier ayant quelque compétence",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 15.212,
+   "effective_date": null,
+   "note": "Ligne 2 du tableau n° 1 (page 20). Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_ouvriers_ligne_3",
+   "label_ar": "منحة النقل (عامل ذو كفاءة)",
+   "label_fr": "Prime de transport des ouvriers : Ouvrier compétent",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 18.160,
+   "effective_date": null,
+   "note": "Ligne 3 du tableau n° 1 (page 20). Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_ouvriers_ligne_4",
+   "label_ar": "منحة النقل (عامل ذو كفاءة عالية)",
+   "label_fr": "Prime de transport des ouvriers : Ouvrier hautement compétent",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 24.664,
+   "effective_date": null,
+   "note": "Ligne 4 du tableau n° 1 (page 20). Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_ouvriers_ligne_5",
+   "label_ar": "منحة النقل (عامل مختص)",
+   "label_fr": "Prime de transport des ouvriers : Ouvrier spécialisé",
+   "source_article": "44 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 35.613,
+   "effective_date": null,
+   "note": "Ligne 5 du tableau n° 1 (page 20). Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_admin_dactylo_commis_aide_comptable",
+   "label_ar": "منحة النقل (راقن ناسخ، مستكتب، محتسب مساعد)",
+   "label_fr": "Prime de transport des administratifs : dactylographe, commis, aide-comptable",
+   "source_article": "45 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 27.500,
+   "effective_date": null,
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_admin_comptable",
+   "label_ar": "منحة النقل (محتسب)",
+   "label_fr": "Prime de transport des administratifs : comptable",
+   "source_article": "45 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 39.000,
+   "effective_date": null,
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_specifique_admin",
+   "label_ar": "منحة خصوصية (الأعوان الإداريون)",
+   "label_fr": "Prime spécifique des administratifs",
+   "source_article": "45 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "dactylo_commis_aide_comptable": 5.000,
+     "comptable": 21.400
+    },
+    {
+     "effective_date": "2003-07-01",
+     "dactylo_commis_aide_comptable": 15.000,
+     "comptable": 31.400
+    },
+    {
+     "effective_date": "2004-07-01",
+     "dactylo_commis_aide_comptable": 25.000,
+     "comptable": 41.400
+    }
+   ],
+   "libelles_groupes": {
+    "dactylo_commis_aide_comptable": {
+     "fr": "Dactylographe, commis, aide-comptable",
+     "ar": "راقن، مستكتب، محتسب مساعد"
+    },
+    "comptable": {
+     "fr": "Comptable",
+     "ar": "محتسب"
+    }
+   },
+   "hypotheses": {
+    "fr": [
+     "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+    ],
+    "ar": [
+     "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_production_jardins",
+   "label_ar": "منحة الإنتاج (أعوان رياض الأطفال)",
+   "label_fr": "Prime de production des agents des jardins d'enfants",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 24.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 26.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 28.000
+    }
+   ],
+   "note": "Montant fixe par mois, malgré le nom de la prime (art. 46, p.15).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_1",
+   "label_ar": "منحة بيداغوجية (أستاذ)",
+   "label_fr": "Prime pédagogique : Professeur",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 25.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 38.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 51.000
+    }
+   ],
+   "note": "Rang 1 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_2",
+   "label_ar": "منحة بيداغوجية (أستاذ، مربي طفولة رتبة أولى)",
+   "label_fr": "Prime pédagogique : Professeur, éducateur de l'enfance de premier rang",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 24.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 36.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 48.000
+    }
+   ],
+   "note": "Rang 2 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_3",
+   "label_ar": "منحة بيداغوجية (مربي طفولة)",
+   "label_fr": "Prime pédagogique : Éducateur de l'enfance",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 23.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 34.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 45.000
+    }
+   ],
+   "note": "Rang 3 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_4",
+   "label_ar": "منحة بيداغوجية (منشط رتبة أولى)",
+   "label_fr": "Prime pédagogique : Animateur de premier rang",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 20.800
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 30.800
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 40.800
+    }
+   ],
+   "note": "Rang 4 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_5",
+   "label_ar": "منحة بيداغوجية (منشط)",
+   "label_fr": "Prime pédagogique : Animateur",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 18.600
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 27.600
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 36.600
+    }
+   ],
+   "note": "Rang 5 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_pedagogique_rang_7",
+   "label_ar": "منحة بيداغوجية (عون مكلف بالتنشيط)",
+   "label_fr": "Prime pédagogique : Agent chargé de l'animation",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 14.700
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 22.200
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 29.900
+    }
+   ],
+   "note": "Rang 7 du tableau de l'article 46 (p.15), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_1",
+   "label_ar": "منحة النقل (أستاذ)",
+   "label_fr": "Prime de transport des jardins d'enfants : Professeur",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 23.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 24.500
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 25.500
+    }
+   ],
+   "note": "Rang 1 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_2",
+   "label_ar": "منحة النقل (أستاذ، مربي طفولة رتبة أولى)",
+   "label_fr": "Prime de transport des jardins d'enfants : Professeur, éducateur de l'enfance de premier rang",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 23.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 24.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 25.000
+    }
+   ],
+   "note": "Rang 2 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_3",
+   "label_ar": "منحة النقل (مربي طفولة)",
+   "label_fr": "Prime de transport des jardins d'enfants : Éducateur de l'enfance",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 22.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 23.500
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 24.500
+    }
+   ],
+   "note": "Rang 3 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_4",
+   "label_ar": "منحة النقل (منشط رتبة أولى)",
+   "label_fr": "Prime de transport des jardins d'enfants : Animateur de premier rang",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 22.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 23.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 24.000
+    }
+   ],
+   "note": "Rang 4 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_5",
+   "label_ar": "منحة النقل (منشط)",
+   "label_fr": "Prime de transport des jardins d'enfants : Animateur",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 19.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 20.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 21.000
+    }
+   ],
+   "note": "Rang 5 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_6",
+   "label_ar": "منحة النقل (عون مكلف بالتنشيط رتبة أولى)",
+   "label_fr": "Prime de transport des jardins d'enfants : Agent chargé de l'animation de premier rang",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 16.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 17.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 18.000
+    }
+   ],
+   "note": "Rang 6 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_jardins_rang_7",
+   "label_ar": "منحة النقل (عون مكلف بالتنشيط)",
+   "label_fr": "Prime de transport des jardins d'enfants : Agent chargé de l'animation",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 13.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 14.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 15.000
+    }
+   ],
+   "note": "Rang 7 du tableau de l'article 46 (p.15), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_production_creches",
+   "label_ar": "منحة الإنتاج (أعوان دور الحضانة)",
+   "label_fr": "Prime de production des agents des crèches",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 24.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 26.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 28.000
+    }
+   ],
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_creches_rang_1",
+   "label_ar": "منحة نقل (عون رعاية وتربية رتبة أولى)",
+   "label_fr": "Prime de transport des crèches : Agent de soins et d'éducation de premier rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 35.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 36.500
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 37.500
+    }
+   ],
+   "note": "Rang 1 du tableau de l'article 47 (p.16), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_creches_rang_2",
+   "label_ar": "منحة نقل (عون رعاية وتربية رتبة ثانية)",
+   "label_fr": "Prime de transport des crèches : Agent de soins et d'éducation de second rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 22.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 23.500
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 24.500
+    }
+   ],
+   "note": "Rang 2 du tableau de l'article 47 (p.16), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_creches_rang_3",
+   "label_ar": "منحة نقل (مساعد عون رعاية وتربية رتبة أولى)",
+   "label_fr": "Prime de transport des crèches : Aide-agent de soins et d'éducation de premier rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 19.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 20.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 21.000
+    }
+   ],
+   "note": "Rang 3 du tableau de l'article 47 (p.16), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport_creches_rang_4",
+   "label_ar": "منحة نقل (مساعد عون رعاية وتربية رتبة ثانية)",
+   "label_fr": "Prime de transport des crèches : Aide-agent de soins et d'éducation de second rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 13.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 14.500
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 15.500
+    }
+   ],
+   "note": "Rang 4 du tableau de l'article 47 (p.16), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_specifique_creches_rang_1",
+   "label_ar": "منحة خصوصية (عون رعاية وتربية رتبة أولى)",
+   "label_fr": "Prime spécifique des crèches : Agent de soins et d'éducation de premier rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 12.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 24.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 36.000
+    }
+   ],
+   "note": "Rang 1 du tableau de l'article 47 (p.16), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_specifique_creches_rang_2",
+   "label_ar": "منحة خصوصية (عون رعاية وتربية رتبة ثانية)",
+   "label_fr": "Prime spécifique des crèches : Agent de soins et d'éducation de second rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 10.500
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 21.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 31.500
+    }
+   ],
+   "note": "Rang 2 du tableau de l'article 47 (p.16), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_specifique_creches_rang_3",
+   "label_ar": "منحة خصوصية (مساعد عون رعاية وتربية رتبة أولى)",
+   "label_fr": "Prime spécifique des crèches : Aide-agent de soins et d'éducation de premier rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 10.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 20.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 30.000
+    }
+   ],
+   "note": "Rang 3 du tableau de l'article 47 (p.16), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_specifique_creches_rang_4",
+   "label_ar": "منحة خصوصية (مساعد عون رعاية وتربية رتبة ثانية)",
+   "label_fr": "Prime spécifique des crèches : Aide-agent de soins et d'éducation de second rang",
+   "source_article": "47",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2002-07-01",
+     "montant": 8.000
+    },
+    {
+     "effective_date": "2003-07-01",
+     "montant": 16.000
+    },
+    {
+     "effective_date": "2004-07-01",
+     "montant": 24.000
+    }
+   ],
+   "note": "Rang 4 du tableau de l'article 47 (p.16), par position.",
+   "hypotheses": {
+    "fr": [
+     "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+    ],
+    "ar": [
+     "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+    ]
+   }
+  },
+  {
+   "code": "prime_directeur_moins_100_enfants",
+   "label_ar": "منحة المدير (أقل من 100 طفل)",
+   "label_fr": "Prime de directeur : moins de 100 enfants",
+   "source_article": "48",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 70.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "directeur d'un établissement de moins de 100 enfants (art. 48, p.16)"
+  },
+  {
+   "code": "prime_directeur_100_enfants_et_plus",
+   "label_ar": "منحة المدير (100 طفل فما فوق)",
+   "label_fr": "Prime de directeur : 100 enfants et plus",
+   "source_article": "48",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 100.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "directeur d'un établissement de 100 enfants et plus (art. 48, p.16)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_pedagogique_rang_6": {
+   "source_pdf_page": 15,
+   "source_article": "46",
+   "message_fr": "Prime pédagogique : agent chargé de l'animation de premier rang (article 46, page 15) : montants 16.900 (juillet 2002), « 25.7000 » (juillet 2003, imprimé à quatre décimales) et 34.200 (juillet 2004) : le montant de 2003 ne peut pas être servi arrondi au millime, et le contrat v1 ne sert pas un montant exact dans une série datée. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة بيداغوجية (عون مكلف بالتنشيط رتبة أولى) (الفصل 46، الصفحة 15): المبالغ 16.900 (جويلية 2002) و«25.7000» (جويلية 2003، مطبوع بأربعة أرقام بعد الفاصل) و34.200 (جويلية 2004): لا يُرجَع مبلغ 2003 مدوَّرا إلى المليم. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant à plus de trois décimales"
+  },
+  "prime_production_ouvriers": {
+   "source_pdf_page": 13,
+   "source_article": "44 (جديد)",
+   "message_fr": "Prime de production des ouvriers (article 44 (جديد), page 13) : pourcentage du salaire (230 %), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (العمال) (الفصل 44 (جديد)، الصفحة 13): نسبة من الأجر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_production_admin": {
+   "source_pdf_page": 14,
+   "source_article": "45 (جديد)",
+   "message_fr": "Prime de production des administratifs (article 45 (جديد), page 14) : pourcentage du salaire (60 %), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الأعوان الإداريون) (الفصل 45 (جديد)، الصفحة 14): نسبة من الأجر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 9,
+   "source_article": "19",
+   "message_fr": "Indemnité de fin de service (article 19, page 9) : 26 jours de salaire par année, plafond de six mois, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 19، الصفحة 9): صيغة حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_mutation": {
+   "source_pdf_page": 9,
+   "source_article": "23",
+   "message_fr": "Indemnité de mutation (article 23, page 9) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "النقلة (الفصل 23، الصفحة 9): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "garde_enfants_personnel": {
+   "source_pdf_page": 16,
+   "source_article": "49",
+   "message_fr": "Garde des enfants du personnel (article 49, page 16) : avantage en nature, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "امتيازات لفائدة أبناء العاملين بالمحاضن ورياض الأطفال (الفصل 49، الصفحة 16): امتياز عيني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "JARDINS_OUVRIERS_2011-07-01",
+   "numero_imprime": 1,
+   "population": "ouvriers",
+   "effective_date": "2011-07-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     342.000,
+     345.121,
+     351.267,
+     354.387,
+     357.508,
+     360.629,
+     364.976,
+     369.324,
+     373.671,
+     378.019,
+     382.366,
+     386.714,
+     391.061,
+     395.409,
+     399.757,
+     404.105
+    ],
+    "2": [
+     352.829,
+     356.477,
+     360.125,
+     363.773,
+     367.421,
+     371.971,
+     376.520,
+     381.070,
+     385.620,
+     390.169,
+     394.719,
+     399.268,
+     403.818,
+     408.368,
+     412.918,
+     417.468
+    ],
+    "3": [
+     362.438,
+     367.188,
+     371.937,
+     376.686,
+     381.435,
+     386.185,
+     390.934,
+     395.683,
+     400.432,
+     405.182,
+     412.956,
+     417.705,
+     422.454,
+     427.204,
+     431.954,
+     436.704
+    ],
+    "4": [
+     371.447,
+     376.474,
+     381.502,
+     386.529,
+     391.557,
+     396.585,
+     401.612,
+     406.640,
+     411.667,
+     419.720,
+     424.747,
+     429.775,
+     434.802,
+     439.830,
+     444.858,
+     449.886
+    ],
+    "5": [
+     415.406,
+     421.153,
+     426.899,
+     435.670,
+     441.416,
+     447.163,
+     452.909,
+     458.655,
+     464.402,
+     470.148,
+     475.894,
+     481.640,
+     487.387,
+     493.133,
+     498.879,
+     504.625
+    ]
+   }
+  },
+  {
+   "table_id": "JARDINS_ADMINISTRATIFS_2011-07-01",
+   "numero_imprime": 2,
+   "population": "administratifs",
+   "effective_date": "2011-07-01",
+   "source_pdf_page": 20,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     378.253,
+     383.008,
+     387.763,
+     392.519,
+     397.274,
+     402.029,
+     406.785,
+     411.540,
+     419.320,
+     424.075,
+     428.831,
+     433.586,
+     438.341,
+     443.097,
+     447.853,
+     452.609
+    ],
+    "2": [
+     397.572,
+     402.819,
+     408.067,
+     413.314,
+     418.562,
+     426.759,
+     432.007,
+     437.254,
+     442.501,
+     447.749,
+     452.996,
+     458.244,
+     463.491,
+     468.739,
+     473.987,
+     479.235
+    ]
+   }
+  },
+  {
+   "table_id": "JARDINS_CRECHES_2011-07-01",
+   "numero_imprime": 3,
+   "population": "creches",
+   "effective_date": "2011-07-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 35,
+   "valeurs": {
+    "1": [
+     505.610,
+     512.900,
+     520.590,
+     527.480,
+     537.796,
+     545.086,
+     552.376,
+     559.666,
+     566.957,
+     574.247,
+     584.562,
+     591.852,
+     599.143,
+     606.433,
+     613.723,
+     621.013
+    ],
+    "2": [
+     458.808,
+     464.915,
+     474.047,
+     480.154,
+     486.261,
+     492.368,
+     498.475,
+     504.581,
+     510.688,
+     519.820,
+     525.927,
+     535.059,
+     541.166,
+     547.273,
+     553.380,
+     559.487
+    ],
+    "3": [
+     448.288,
+     454.207,
+     460.126,
+     469.071,
+     474.990,
+     480.909,
+     486.829,
+     492.748,
+     498.667,
+     504.587,
+     513.531,
+     522.475,
+     528.395,
+     534.314,
+     540.233,
+     546.152
+    ],
+    "4": [
+     387.315,
+     392.050,
+     396.786,
+     401.522,
+     406.258,
+     410.994,
+     415.730,
+     420.466,
+     428.227,
+     432.963,
+     437.699,
+     448.485,
+     453.221,
+     457.957,
+     462.693,
+     467.429
+    ]
+   }
+  },
+  {
+   "table_id": "JARDINS_JARDINS_2011-07-01",
+   "numero_imprime": 4,
+   "population": "jardins",
+   "effective_date": "2011-07-01",
+   "source_pdf_page": 21,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     498.112,
+     504.112,
+     510.112,
+     516.112,
+     522.112,
+     528.112,
+     534.112,
+     540.112,
+     546.112,
+     552.112,
+     558.112,
+     564.112,
+     570.112,
+     576.112,
+     582.112,
+     588.112
+    ],
+    "2": [
+     478.749,
+     484.749,
+     490.749,
+     496.749,
+     502.749,
+     508.749,
+     514.749,
+     520.749,
+     526.749,
+     532.749,
+     538.749,
+     544.749,
+     550.749,
+     556.749,
+     562.749,
+     568.749
+    ],
+    "3": [
+     459.387,
+     465.343,
+     474.248,
+     480.204,
+     486.159,
+     492.115,
+     498.070,
+     504.026,
+     509.981,
+     518.887,
+     524.842,
+     530.797,
+     536.753,
+     542.708,
+     548.663,
+     554.618
+    ],
+    "4": [
+     440.027,
+     445.679,
+     451.332,
+     459.934,
+     465.586,
+     471.238,
+     476.890,
+     482.543,
+     488.195,
+     493.847,
+     499.499,
+     508.101,
+     513.754,
+     519.406,
+     525.058,
+     530.710
+    ],
+    "5": [
+     411.230,
+     416.456,
+     421.682,
+     426.909,
+     432.135,
+     440.311,
+     445.537,
+     450.763,
+     455.990,
+     461.216,
+     466.442,
+     474.618,
+     479.845,
+     485.071,
+     490.297,
+     495.523
+    ],
+    "6": [
+     398.477,
+     403.398,
+     408.320,
+     413.242,
+     418.164,
+     423.086,
+     430.957,
+     435.879,
+     440.801,
+     445.723,
+     450.645,
+     458.516,
+     463.438,
+     468.360,
+     473.282,
+     478.204
+    ],
+    "7": [
+     348.763,
+     352.763,
+     356.763,
+     360.763,
+     364.763,
+     368.763,
+     372.763,
+     376.763,
+     380.763,
+     384.763,
+     388.763,
+     392.763,
+     396.763,
+     400.763,
+     404.763,
+     408.763
+    ]
+   }
+  }
+ ]
+}

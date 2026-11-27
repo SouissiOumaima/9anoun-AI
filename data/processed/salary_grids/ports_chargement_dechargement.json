@@ -1,0 +1,2953 @@
+{
+ "_meta": {
+  "secteur_code": "PORTS_CHARGEMENT_DECHARGEMENT",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للشحن والتفريغ بالموانئ البحرية التجارية التونسية",
+  "convention_fr": "Convention collective sectorielle du chargement et du déchargement dans les ports maritimes de commerce tunisiens",
+  "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+  "pages_sources": [
+   7,
+   8,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "1060 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse ; ports n° 8 et 9 à 300 et 400 dpi), comparées par script : 0 écart ; 24 cellules douteuses vues au zoom à 400 dpi : 13 tranchées, 11 non tranchées et déclarées SOURCE_MANQUANTE (cellules_source_manquante) ; une seule date : contrôle de croissance le long des degrés, aucune cellule signalée ; entre catégories, 8 cellules signalées au tableau n° 7 (lignes 2 et 6), conservées (observations_imprimees) ; montants des primes lus sur l'image. Vérification humaine (DS5) : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »",
+  "decision_ref": "D96",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur les grilles : TND/mois en hypothèse affichée (montants de 276 à 1 077) ; 40 heures, gardiens 48 heures (art. 14, p.8).",
+  "note_degres": "En-tête (pp.25-27) : 20 degrés, durée de séjour 1, 2, 2, puis 3 (degrés 4 à 20) ; ancienneté dans l'entreprise imprimée en fin de degré 1, 3, 5, 8 … 56 (art. 12 أ, p.7) ; libellés « 0-1 » … « 53-56 » ; bornes exactes refusées (D6) ; à partir de 56 ans, refus (art. 12, p.7).",
+  "note_categories": "Agents de manutention (tableau n° 7, échelles 1 à 19), agents d'exploitation et d'administration (n° 8, échelles 1 à 24), agents de manutention titularisés au premier trimestre 2005 (n° 9, échelles 10 à 19) ; catégorie = numéro d'échelle imprimé ; population obligatoire.",
+  "note_dates": "Article 75 (جديد) (p.22) : tableaux n° 1 à 3 au 2008-05-01, n° 4 à 6 au 2009-05-01, n° 7 à 9 au 2010-05-01 ; seuls les n° 7 à 9 sont dans la source (pp.25-27) : salaire refusé avant le 2010-05-01 ; les primes de transport sont servies à leurs propres dates (2008, 2009).",
+  "note_observations": "Tableau n° 7 (p.25) : la ligne 2 est plus basse que la ligne 1 aux degrés 16 à 20, la ligne 6 plus basse que la ligne 5 aux degrés 18 à 20 ; nettement imprimées, conservées (observations_imprimees de la table)."
+ },
+ "populations": {
+  "manutention": {
+   "libelle_fr": "Agents de manutention",
+   "libelle_ar": "أعوان الشحن والتفريغ",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 23,
+   "note": "Tableau n° 7 ; population obligatoire."
+  },
+  "exploitation_administration": {
+   "libelle_fr": "Agents d'exploitation et d'administration",
+   "libelle_ar": "أعوان الاستغلال والإدارة",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 24,
+   "note": "Tableau n° 8 ; population obligatoire."
+  },
+  "titularises_2005": {
+   "libelle_fr": "Agents de manutention titularisés au premier trimestre 2005",
+   "libelle_ar": "أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 27,
+   "note": "Tableau n° 9 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "manutention": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 3
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 5
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-8",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-11",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 11
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 17
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 20
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 23
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 26
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "26-29",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 29
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "29-32",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 32
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "32-35",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 35
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "35-38",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 38
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "38-41",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 41
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "41-44",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 44
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "44-47",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 47
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "47-50",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 50
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "50-53",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 53
+   },
+   {
+    "degre": 20,
+    "anciennete_label": "53-56",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 56
+   }
+  ],
+  "exploitation_administration": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 3
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 5
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-8",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-11",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 11
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 17
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 20
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 23
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 26
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "26-29",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 29
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "29-32",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 32
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "32-35",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 35
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "35-38",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 38
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "38-41",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 41
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "41-44",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 44
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "44-47",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 47
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "47-50",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 50
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "50-53",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 53
+   },
+   {
+    "degre": 20,
+    "anciennete_label": "53-56",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 56
+   }
+  ],
+  "titularises_2005": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1,
+    "anciennete_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-3",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 3
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": 5
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "5-8",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 8
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-11",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 11
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-14",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 14
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "14-17",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 17
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "17-20",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 20
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "20-23",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 23
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "23-26",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 26
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "26-29",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 29
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "29-32",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 32
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "32-35",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 35
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "35-38",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 38
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "38-41",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 41
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "41-44",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 44
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "44-47",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 47
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "47-50",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 50
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "50-53",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 53
+   },
+   {
+    "degre": 20,
+    "anciennete_label": "53-56",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": 56
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "manutention": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 56,
+   "source_pdf_page": 7,
+   "source_article": "12",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention du chargement et du déchargement dans les ports maritimes de commerce s'arrête au degré 20 (53 à 56 ans) ; l'en-tête des tableaux (pages 25-27) imprime l'ancienneté dans l'entreprise 1, 3, 5, 8 … 56 en fin de degré, comme l'article 12 أ (page 7), qui ne prévoit rien au-delà du degré 20. Aucun montant n'est renvoyé (ancienneté couverte : moins de 56 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الشحن والتفريغ بالموانئ البحرية التجارية عند الدرجة 20 (من 53 إلى 56 سنة)؛ ويذكر رأس الجداول (الصفحات من 25 إلى 27) الأقدمية بالمؤسسة 1 و3 و5 و8 ... 56 في آخر الدرجة، كما في الفصل 12 أ (الصفحة 7) الذي لا ينص على شيء بعد الدرجة 20. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 56 سنة)."
+  },
+  "exploitation_administration": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 56,
+   "source_pdf_page": 7,
+   "source_article": "12",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention du chargement et du déchargement dans les ports maritimes de commerce s'arrête au degré 20 (53 à 56 ans) ; l'en-tête des tableaux (pages 25-27) imprime l'ancienneté dans l'entreprise 1, 3, 5, 8 … 56 en fin de degré, comme l'article 12 أ (page 7), qui ne prévoit rien au-delà du degré 20. Aucun montant n'est renvoyé (ancienneté couverte : moins de 56 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الشحن والتفريغ بالموانئ البحرية التجارية عند الدرجة 20 (من 53 إلى 56 سنة)؛ ويذكر رأس الجداول (الصفحات من 25 إلى 27) الأقدمية بالمؤسسة 1 و3 و5 و8 ... 56 في آخر الدرجة، كما في الفصل 12 أ (الصفحة 7) الذي لا ينص على شيء بعد الدرجة 20. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 56 سنة)."
+  },
+  "titularises_2005": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 56,
+   "source_pdf_page": 7,
+   "source_article": "12",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention du chargement et du déchargement dans les ports maritimes de commerce s'arrête au degré 20 (53 à 56 ans) ; l'en-tête des tableaux (pages 25-27) imprime l'ancienneté dans l'entreprise 1, 3, 5, 8 … 56 en fin de degré, comme l'article 12 أ (page 7), qui ne prévoit rien au-delà du degré 20. Aucun montant n'est renvoyé (ancienneté couverte : moins de 56 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الشحن والتفريغ بالموانئ البحرية التجارية عند الدرجة 20 (من 53 إلى 56 سنة)؛ ويذكر رأس الجداول (الصفحات من 25 إلى 27) الأقدمية بالمؤسسة 1 و3 و5 و8 ... 56 في آخر الدرجة، كما في الفصل 12 أ (الصفحة 7) الذي لا ينص على شيء بعد الدرجة 20. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 56 سنة)."
+  }
+ },
+ "categories": {
+  "manutention": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19"
+  ],
+  "exploitation_administration": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
+   "22",
+   "23",
+   "24"
+  ],
+  "titularises_2005": [
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18",
+   "19"
+  ]
+ },
+ "libelles_categories": {
+  "manutention": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Échelle 1",
+    "libelle_ar": "السلم 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Échelle 2",
+    "libelle_ar": "السلم 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Échelle 3",
+    "libelle_ar": "السلم 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Échelle 4",
+    "libelle_ar": "السلم 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Échelle 5",
+    "libelle_ar": "السلم 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Échelle 6",
+    "libelle_ar": "السلم 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Échelle 7",
+    "libelle_ar": "السلم 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Échelle 8",
+    "libelle_ar": "السلم 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Échelle 9",
+    "libelle_ar": "السلم 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Échelle 10",
+    "libelle_ar": "السلم 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Échelle 11",
+    "libelle_ar": "السلم 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Échelle 12",
+    "libelle_ar": "السلم 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Échelle 13",
+    "libelle_ar": "السلم 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Échelle 14",
+    "libelle_ar": "السلم 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Échelle 15",
+    "libelle_ar": "السلم 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Échelle 16",
+    "libelle_ar": "السلم 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 17,
+    "libelle_fr": "Échelle 17",
+    "libelle_ar": "السلم 17",
+    "libelle_ar_redige": true
+   },
+   "18": {
+    "ligne": 18,
+    "libelle_fr": "Échelle 18",
+    "libelle_ar": "السلم 18",
+    "libelle_ar_redige": true
+   },
+   "19": {
+    "ligne": 19,
+    "libelle_fr": "Échelle 19",
+    "libelle_ar": "السلم 19",
+    "libelle_ar_redige": true
+   }
+  },
+  "exploitation_administration": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Échelle 1",
+    "libelle_ar": "السلم 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Échelle 2",
+    "libelle_ar": "السلم 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Échelle 3",
+    "libelle_ar": "السلم 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Échelle 4",
+    "libelle_ar": "السلم 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Échelle 5",
+    "libelle_ar": "السلم 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Échelle 6",
+    "libelle_ar": "السلم 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Échelle 7",
+    "libelle_ar": "السلم 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Échelle 8",
+    "libelle_ar": "السلم 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Échelle 9",
+    "libelle_ar": "السلم 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Échelle 10",
+    "libelle_ar": "السلم 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Échelle 11",
+    "libelle_ar": "السلم 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Échelle 12",
+    "libelle_ar": "السلم 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Échelle 13",
+    "libelle_ar": "السلم 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Échelle 14",
+    "libelle_ar": "السلم 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Échelle 15",
+    "libelle_ar": "السلم 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Échelle 16",
+    "libelle_ar": "السلم 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 17,
+    "libelle_fr": "Échelle 17",
+    "libelle_ar": "السلم 17",
+    "libelle_ar_redige": true
+   },
+   "18": {
+    "ligne": 18,
+    "libelle_fr": "Échelle 18",
+    "libelle_ar": "السلم 18",
+    "libelle_ar_redige": true
+   },
+   "19": {
+    "ligne": 19,
+    "libelle_fr": "Échelle 19",
+    "libelle_ar": "السلم 19",
+    "libelle_ar_redige": true
+   },
+   "20": {
+    "ligne": 20,
+    "libelle_fr": "Échelle 20",
+    "libelle_ar": "السلم 20",
+    "libelle_ar_redige": true
+   },
+   "21": {
+    "ligne": 21,
+    "libelle_fr": "Échelle 21",
+    "libelle_ar": "السلم 21",
+    "libelle_ar_redige": true
+   },
+   "22": {
+    "ligne": 22,
+    "libelle_fr": "Échelle 22",
+    "libelle_ar": "السلم 22",
+    "libelle_ar_redige": true
+   },
+   "23": {
+    "ligne": 23,
+    "libelle_fr": "Échelle 23",
+    "libelle_ar": "السلم 23",
+    "libelle_ar_redige": true
+   },
+   "24": {
+    "ligne": 24,
+    "libelle_fr": "Échelle 24",
+    "libelle_ar": "السلم 24",
+    "libelle_ar_redige": true
+   }
+  },
+  "titularises_2005": {
+   "10": {
+    "ligne": 1,
+    "libelle_fr": "Échelle 10",
+    "libelle_ar": "السلم 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 2,
+    "libelle_fr": "Échelle 11",
+    "libelle_ar": "السلم 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 3,
+    "libelle_fr": "Échelle 12",
+    "libelle_ar": "السلم 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 4,
+    "libelle_fr": "Échelle 13",
+    "libelle_ar": "السلم 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 5,
+    "libelle_fr": "Échelle 14",
+    "libelle_ar": "السلم 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 6,
+    "libelle_fr": "Échelle 15",
+    "libelle_ar": "السلم 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 7,
+    "libelle_fr": "Échelle 16",
+    "libelle_ar": "السلم 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 8,
+    "libelle_fr": "Échelle 17",
+    "libelle_ar": "السلم 17",
+    "libelle_ar_redige": true
+   },
+   "18": {
+    "ligne": 9,
+    "libelle_fr": "Échelle 18",
+    "libelle_ar": "السلم 18",
+    "libelle_ar_redige": true
+   },
+   "19": {
+    "ligne": 10,
+    "libelle_fr": "Échelle 19",
+    "libelle_ar": "السلم 19",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "manutention": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 25) : TND/mois en hypothèse (montants de 276 à 1 077).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 25): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    3
+   ]
+  },
+  "exploitation_administration": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 26) : TND/mois en hypothèse (montants de 276 à 1 077).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 26): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    3
+   ]
+  },
+  "titularises_2005": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 27) : TND/mois en hypothèse (montants de 276 à 1 077).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Tableau n° 9 (page 27) : agents de manutention titularisés au premier trimestre 2005, échelles 10 à 19 ; leurs primes de logement et de risque sont celles de l'article 75 (جديد) (page 22), pas celles des articles 43 et 47.",
+    "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 27): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "جدول الأجور عدد 9 (الصفحة 27): أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005، السلالم من 10 إلى 19؛ منحتا السكن والخطر الخاصتان بهم هما المنصوص عليهما بالفصل 75 (جديد) (الصفحة 22) لا بالفصلين 43 و47.",
+    "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_logement",
+   "label_ar": "منحة السكن",
+   "label_fr": "Prime de logement (agents de manutention)",
+   "source_article": "43",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 32.736,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent de manutention qui n'appartient pas à la population du tableau n° 9 (agents titularisés au premier trimestre 2005) : pour celle-ci, l'article 75 (جديد) (page 22) fixe un montant propre (prime_logement_titularises_2005)"
+  },
+  {
+   "code": "prime_marchandises_dangereuses",
+   "label_ar": "منحة البضائع الخطرة",
+   "label_fr": "Prime de marchandises dangereuses (agents de manutention)",
+   "source_article": "44",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 13.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_rendement",
+   "label_ar": "منحة المردود",
+   "label_fr": "Prime de rendement (agents de manutention)",
+   "source_article": "45",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 18.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_rendement_complementaire",
+   "label_ar": "منحة المردود التكميلية",
+   "label_fr": "Prime de rendement complémentaire (agents de manutention)",
+   "source_article": "46",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 12.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_risque_conducteurs_chefs",
+   "label_ar": "منحة الخطر (سائق الأوناش، كبران العمال، الناظر)",
+   "label_fr": "Prime de risque : conducteurs d'engins, chefs d'équipe, surveillants",
+   "source_article": "47",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 51.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "conducteur d'engins, chef d'équipe ou surveillant, agent de manutention qui n'appartient pas à la population du tableau n° 9 (agents titularisés au premier trimestre 2005) : pour celle-ci, l'article 75 (جديد) (page 22) fixe un montant propre (prime_risque_titularises_2005_conducteurs_chefs)"
+  },
+  {
+   "code": "prime_risque_autres",
+   "label_ar": "منحة الخطر (بقية الأعوان)",
+   "label_fr": "Prime de risque : autres agents de manutention",
+   "source_article": "47",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 29.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent autre que conducteur d'engins, chef d'équipe ou surveillant, agent de manutention qui n'appartient pas à la population du tableau n° 9 (agents titularisés au premier trimestre 2005) : pour celle-ci, l'article 75 (جديد) (page 22) fixe un montant propre (prime_risque_titularises_2005_autres)"
+  },
+  {
+   "code": "prime_transport_manutention",
+   "label_ar": "منحة النقل (أعوان الشحن والتفريغ)",
+   "label_fr": "Prime de transport (agents de manutention)",
+   "source_article": "48 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-05-01",
+     "execution_maitrise": 7.500,
+     "encadrement": 12.500
+    },
+    {
+     "effective_date": "2009-05-01",
+     "execution_maitrise": 10.000,
+     "encadrement": 15.000
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise": {
+     "fr": "Agents d'exécution et de maîtrise",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "encadrement": {
+     "fr": "Agents d'encadrement",
+     "ar": "أعوان التأطير"
+    }
+   },
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants de 2008 et 2009, servis même si les grilles de ces années ne sont pas dans la source (art. 48 (جديد), p.16)."
+  },
+  {
+   "code": "prime_pollution_manutention",
+   "label_ar": "منحة التلوث",
+   "label_fr": "Prime de pollution (agents de manutention)",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 3.000,
+   "effective_date": null,
+   "note": "Sauf les agents des ports de Sfax et Gabès (prime_pollution_manutention_sfax_gabes) (art. 50 (جديد), p.16).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_pollution_manutention_sfax_gabes",
+   "label_ar": "منحة التلوث (ميناءا صفاقس وقابس)",
+   "label_fr": "Prime de pollution (agents de manutention des ports de Sfax et Gabès)",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 8.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent de manutention travaillant aux ports de Sfax ou de Gabès (art. 50 (جديد), p.16)"
+  },
+  {
+   "code": "prime_pollution_titularises_2005_entreprises_privees",
+   "label_ar": "منحة التلوث (الأعوان المدمجون بالمؤسسات الخاصة خلال الثلاثية الأولى من سنة 2005)",
+   "label_fr": "Prime de pollution (agents titularisés en 2005 dans les entreprises privées de Sfax et Gabès)",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 29.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent titularisé au premier trimestre 2005 dans une entreprise privée de chargement et de déchargement des ports de Sfax ou de Gabès (art. 50 (جديد), p.16)"
+  },
+  {
+   "code": "prime_entretien",
+   "label_ar": "منحة الصيانة",
+   "label_fr": "Prime d'entretien (conducteurs d'engins)",
+   "source_article": "52",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 6.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "conducteur d'engins (سائقي الأوناش) (art. 52, p.16)"
+  },
+  {
+   "code": "prime_chef_equipe",
+   "label_ar": "منحة الكبران",
+   "label_fr": "Prime de chef d'équipe",
+   "source_article": "53",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "montant": 5.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chef d'équipe ou surveillant (كبران العمال والناظر) (art. 53, p.16)"
+  },
+  {
+   "code": "prime_logement_titularises_2005",
+   "label_ar": "منحة السكن (الأعوان المرسمون سنة 2005)",
+   "label_fr": "Prime de logement (agents du tableau n° 9)",
+   "source_article": "75 (جديد)",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "montant": 52.736,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 75 (جديد) (page 22) : « ينتفع بصفة استثنائية … بالمنح التالية » ; montant servi à la population du tableau n° 9 à la place de celui de l'article 43 ou 47 : le texte ne dit pas s'il le remplace ou s'y ajoute.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 75 (جديد) (الصفحة 22): «ينتفع بصفة استثنائية ... بالمنح التالية»؛ يُرجَع هذا المبلغ لأعوان جدول الأجور عدد 9 عوضا عن مبلغ الفصل 43 أو 47: لا يحدد النص إن كان يعوضه أو يضاف إليه.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent de manutention titularisé au premier trimestre 2005 (tableau n° 9, page 27)"
+  },
+  {
+   "code": "prime_risque_titularises_2005_conducteurs_chefs",
+   "label_ar": "منحة الخطر (الأعوان المرسمون سنة 2005: السواق والكبران والناظر)",
+   "label_fr": "Prime de risque (agents du tableau n° 9) : conducteurs, chefs d'équipe, surveillants",
+   "source_article": "75 (جديد)",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "montant": 71.500,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 75 (جديد) (page 22) : « ينتفع بصفة استثنائية … بالمنح التالية » ; montant servi à la population du tableau n° 9 à la place de celui de l'article 43 ou 47 : le texte ne dit pas s'il le remplace ou s'y ajoute.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 75 (جديد) (الصفحة 22): «ينتفع بصفة استثنائية ... بالمنح التالية»؛ يُرجَع هذا المبلغ لأعوان جدول الأجور عدد 9 عوضا عن مبلغ الفصل 43 أو 47: لا يحدد النص إن كان يعوضه أو يضاف إليه.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "conducteur, chef d'équipe ou surveillant, agent de manutention titularisé au premier trimestre 2005 (tableau n° 9, page 27)"
+  },
+  {
+   "code": "prime_risque_titularises_2005_autres",
+   "label_ar": "منحة الخطر (الأعوان المرسمون سنة 2005: بقية الأعوان)",
+   "label_fr": "Prime de risque (agents du tableau n° 9) : autres agents",
+   "source_article": "75 (جديد)",
+   "source_pdf_page": 22,
+   "unite": "TND/mois",
+   "montant": 49.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 75 (جديد) (page 22) : « ينتفع بصفة استثنائية … بالمنح التالية » ; montant servi à la population du tableau n° 9 à la place de celui de l'article 43 ou 47 : le texte ne dit pas s'il le remplace ou s'y ajoute.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 75 (جديد) (الصفحة 22): «ينتفع بصفة استثنائية ... بالمنح التالية»؛ يُرجَع هذا المبلغ لأعوان جدول الأجور عدد 9 عوضا عن مبلغ الفصل 43 أو 47: لا يحدد النص إن كان يعوضه أو يضاف إليه.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent autre que conducteur, chef d'équipe ou surveillant, agent de manutention titularisé au premier trimestre 2005 (tableau n° 9, page 27)"
+  },
+  {
+   "code": "prime_transport_exploitation",
+   "label_ar": "منحة النقل (أعوان الاستغلال والإدارة)",
+   "label_fr": "Prime de transport (agents d'exploitation et d'administration)",
+   "source_article": "57",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-05-01",
+     "execution_maitrise": 7.500,
+     "cadres": 12.500
+    },
+    {
+     "effective_date": "2009-05-01",
+     "execution_maitrise": 10.000,
+     "cadres": 15.000
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise": {
+     "fr": "Agents d'exécution et de maîtrise",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants de 2008 et 2009 (art. 57, p.18)."
+  },
+  {
+   "code": "prime_presence_exploitation",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence (agents d'exploitation et d'administration)",
+   "source_article": "58",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 2.080,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_pollution_exploitation",
+   "label_ar": "منحة التلوث",
+   "label_fr": "Prime de pollution (agents d'exploitation et d'administration)",
+   "source_article": "59 (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 8.000,
+   "effective_date": null,
+   "note": "Imprimé « 8 دنانير » (art. 59 (جديد), p.18).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_productivite_exploitation",
+   "label_ar": "منحة الإنتاجية",
+   "label_fr": "Prime de productivité (agents d'exploitation et d'administration)",
+   "source_article": "60",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 7.500,
+   "effective_date": null,
+   "note": "Imprimé en chiffres et en lettres : « 7 دنانير ونصف » (art. 60, p.18).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_descente_en_cale",
+   "label_ar": "منحة النزول إلى العنبر",
+   "label_fr": "Prime de descente en cale",
+   "source_article": "61",
+   "source_pdf_page": 18,
+   "unite": "TND/operation",
+   "montant": 4.000,
+   "effective_date": null,
+   "note": "Imprimé « 4 دنانير عن كل عملية نزول » (art. 61, p.18).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "conducteur d'engins (agents d'exploitation), par opération de descente en cale (art. 61, p.18)"
+  },
+  {
+   "code": "prime_garde_outils",
+   "label_ar": "منحة حراسة المعدات",
+   "label_fr": "Prime de garde des outils",
+   "source_article": "62",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 15.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent désigné pour la garde des outils (art. 62, p.18)"
+  },
+  {
+   "code": "prime_tresorerie_chef",
+   "label_ar": "منحة الخزينة (رئيس الخزينة)",
+   "label_fr": "Prime de trésorerie : chef de trésorerie",
+   "source_article": "64",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "montant": 30.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chef de trésorerie (art. 64, p.19)"
+  },
+  {
+   "code": "prime_tresorerie_agent",
+   "label_ar": "منحة الخزينة (أمين الخزينة)",
+   "label_fr": "Prime de trésorerie : agent de trésorerie",
+   "source_article": "64",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent de trésorerie (art. 64, p.19)"
+  },
+  {
+   "code": "aide_deces",
+   "label_ar": "المساعدة عند الوفاة",
+   "label_fr": "Aide en cas de décès",
+   "source_article": "71",
+   "source_pdf_page": 21,
+   "unite": "TND/versement",
+   "montant": 300.000,
+   "effective_date": null,
+   "note": "Imprimé en lettres et en chiffres : « بثلاث مائة دينار (300 د) » (art. 71, p.21).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "décès de l'agent : aide versée au conjoint survivant ou aux enfants à sa charge (art. 71, p.21)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_logement_art43_titularises_2005": {
+   "source_pdf_page": 22,
+   "source_article": "75 (جديد)",
+   "message_fr": "Prime de logement de l'article 43 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_logement_titularises_2005 ; le montant de l'article 43 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة السكن (الفصل 43) لأعوان جدول الأجور عدد 9 (الفصل 75 (جديد)، الصفحة 22): بالنسبة إلى أعوان الشحن والتفريغ المرسمين خلال الثلاثية الأولى من سنة 2005 (جدول الأجور عدد 9)، يضبط الفصل 75 (جديد) (الصفحة 22) مبلغا خاصا يُرجَع بالرمز prime_logement_titularises_2005؛ ولا يُرجَع لهم مبلغ الفصل 43. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "population couverte par l'article 75"
+  },
+  "prime_risque_art47_titularises_2005_conducteurs_chefs": {
+   "source_pdf_page": 22,
+   "source_article": "75 (جديد)",
+   "message_fr": "Prime de risque (conducteurs, chefs d'équipe, surveillants) de l'article 47 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_risque_titularises_2005_conducteurs_chefs ; le montant de l'article 47 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الخطر (السواق والكبران والناظر) (الفصل 47) لأعوان جدول الأجور عدد 9 (الفصل 75 (جديد)، الصفحة 22): بالنسبة إلى أعوان الشحن والتفريغ المرسمين خلال الثلاثية الأولى من سنة 2005 (جدول الأجور عدد 9)، يضبط الفصل 75 (جديد) (الصفحة 22) مبلغا خاصا يُرجَع بالرمز prime_risque_titularises_2005_conducteurs_chefs؛ ولا يُرجَع لهم مبلغ الفصل 47. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "population couverte par l'article 75"
+  },
+  "prime_risque_art47_titularises_2005_autres": {
+   "source_pdf_page": 22,
+   "source_article": "75 (جديد)",
+   "message_fr": "Prime de risque (autres agents) de l'article 47 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_risque_titularises_2005_autres ; le montant de l'article 47 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الخطر (بقية الأعوان) (الفصل 47) لأعوان جدول الأجور عدد 9 (الفصل 75 (جديد)، الصفحة 22): بالنسبة إلى أعوان الشحن والتفريغ المرسمين خلال الثلاثية الأولى من سنة 2005 (جدول الأجور عدد 9)، يضبط الفصل 75 (جديد) (الصفحة 22) مبلغا خاصا يُرجَع بالرمز prime_risque_titularises_2005_autres؛ ولا يُرجَع لهم مبلغ الفصل 47. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "population couverte par l'article 75"
+  },
+  "prime_production_complementaire": {
+   "source_pdf_page": 16,
+   "source_article": "49",
+   "message_fr": "Prime de production complémentaire (article 49, page 16) : 28 dinars plus un pourcentage du salaire selon la note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج التكميلية (الفصل 49، الصفحة 16): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "lait": {
+   "source_pdf_page": 16,
+   "source_article": "51",
+   "message_fr": "Lait (article 51, page 16) : un demi-litre de lait par jour de travail effectif, en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "قسط الحليب (الفصل 51، الصفحة 16): نصف لتر من الحليب، عينا. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  },
+  "complement_bon_repas": {
+   "source_pdf_page": 16,
+   "source_article": "54 (جديد)",
+   "message_fr": "Complément au bon de repas (article 54 (جديد), page 16) : 500 millimes ajoutés à la valeur du bon de repas, dont la valeur n'est pas imprimée. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مصاريف الأكل (الفصل 54 (جديد)، الصفحة 16): 500 مي تضاف إلى قيمة الوصل، وقيمته غير مطبوعة. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "complément d'un avantage sans valeur imprimée"
+  },
+  "prime_13e_mois_manutention": {
+   "source_pdf_page": 16,
+   "source_article": "55",
+   "message_fr": "Treizième mois (agents de manutention) (article 55, page 16) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الشهر الثالث عشر (الفصل 55، الصفحة 16): أجرة شهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_production_manutention": {
+   "source_pdf_page": 17,
+   "source_article": "56",
+   "message_fr": "Prime de production (agents de manutention) (article 56, page 17) : pourcentage du salaire selon la note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 56، الصفحة 17): نسبة من الأجر حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_forfaitaire_compensatoire": {
+   "source_pdf_page": 17,
+   "source_article": "أحكام انتقالية أ",
+   "message_fr": "Prime forfaitaire compensatoire (article أحكام انتقالية أ, page 17) : 7 montants (10 à 90 dinars) par groupes définis par l'équivalent d'une échelle de la grille de la STAM, grille extérieure à la convention : groupe non défini. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المنحة الجزافية التعويضية (الفصل أحكام انتقالية أ، الصفحة 17): مبالغ حسب أصناف معرفة بما يوازي سلم نظام تأجير الشركة التونسية للشحن والترصيف، وهو خارج الاتفاقية. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "groupe non défini"
+  },
+  "promotion_exceptionnelle_2006": {
+   "source_pdf_page": 17,
+   "source_article": "أحكام انتقالية ب",
+   "message_fr": "Promotion exceptionnelle de 2006 (article أحكام انتقالية ب, page 17) : mesure transitoire de reclassement, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الترقية الاستثنائية (الفصل أحكام انتقالية ب، الصفحة 17): إجراء انتقالي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "transitoire"
+  },
+  "prime_amarrage_navire": {
+   "source_pdf_page": 19,
+   "source_article": "63",
+   "message_fr": "Prime d'amarrage du navire (article 63, page 19) : entre 6 et 20 dinars par navire, montant non fixé. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة رسوء السفينة (الفصل 63، الصفحة 19): بين 6 و20 دينارا، مبلغ غير محدد. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "fourchette"
+  },
+  "prime_responsabilite": {
+   "source_pdf_page": 19,
+   "source_article": "65",
+   "message_fr": "Prime de responsabilité (article 65, page 19) : entre 20 et 200 dinars par mois, montant non fixé. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة المسؤولية (الفصل 65، الصفحة 19): بين 20 و200 دينار، مبلغ غير محدد. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "fourchette"
+  },
+  "prime_fonction": {
+   "source_pdf_page": 19,
+   "source_article": "66",
+   "message_fr": "Prime de fonction (article 66, page 19) : entre 20 et 200 dinars par mois, montant non fixé. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الوظيفة (الفصل 66، الصفحة 19): بين 20 و200 دينار، مبلغ غير محدد. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "fourchette"
+  },
+  "repas_exploitation": {
+   "source_pdf_page": 19,
+   "source_article": "67",
+   "message_fr": "Repas (agents d'exploitation et d'administration) (article 67, page 19) : avantage en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مصاريف الأكل (الفصل 67، الصفحة 19): امتياز عيني. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  },
+  "prime_13e_mois_exploitation": {
+   "source_pdf_page": 19,
+   "source_article": "68",
+   "message_fr": "Treizième mois (agents d'exploitation et d'administration) (article 68, page 19) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الشهر الثالث عشر (الفصل 68، الصفحة 19): أجرة شهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_production_exploitation": {
+   "source_pdf_page": 19,
+   "source_article": "69",
+   "message_fr": "Prime de production (agents d'exploitation et d'administration) (article 69, page 19) : pourcentage du salaire selon la note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 69، الصفحة 19): نسبة من الأجر حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "prime_anciennete_exploitation": {
+   "source_pdf_page": 20,
+   "source_article": "أحكام انتقالية أ",
+   "message_fr": "Prime d'ancienneté transitoire (agents d'exploitation et d'administration) (article أحكام انتقالية أ, page 20) : 50 % d'un montant de reclassement, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الأقدمية (الفصل أحكام انتقالية أ، الصفحة 20): 50 بالمائة من مبلغ، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "lait_transitoire_2006": {
+   "source_pdf_page": 20,
+   "source_article": "أحكام انتقالية ب",
+   "message_fr": "Lait transitoire (agents d'exploitation et d'administration) (article أحكام انتقالية ب, page 20) : droit acquis des agents qui touchaient le lait en 2006, ajouté à une prime de raccordement en formule. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الحليب (الفصل أحكام انتقالية ب، الصفحة 20): حق مكتسب يضاف إلى منحة الإحالة، وهي صيغة. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "transitoire"
+  },
+  "prime_raccordement": {
+   "source_pdf_page": 20,
+   "source_article": "أحكام انتقالية ج",
+   "message_fr": "Prime de raccordement (article أحكام انتقالية ج, page 20) : différence entre deux montants, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة (الفصل أحكام انتقالية ج، الصفحة 20): الفارق بين مبلغين، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_reclassement": {
+   "source_pdf_page": 20,
+   "source_article": "أحكام انتقالية هـ",
+   "message_fr": "Prime de reclassement (article أحكام انتقالية هـ, page 20) : montant selon la sous-catégorie et l'ancienneté à l'entrée en vigueur, mesure transitoire. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة إعادة ترتيب أعوان الاستغلال والإدارة (الفصل أحكام انتقالية هـ، الصفحة 20): مبلغ حسب الصنف الفرعي والأقدمية عند دخول الاتفاقية حيز التنفيذ، إجراء انتقالي. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "transitoire"
+  },
+  "prime_retraite": {
+   "source_pdf_page": 21,
+   "source_article": "70",
+   "message_fr": "Prime de départ à la retraite (article 70, page 21) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 70، الصفحة 21): أجرة شهر خام، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "assurance_groupe": {
+   "source_pdf_page": 21,
+   "source_article": "72",
+   "message_fr": "Assurance groupe (article 72, page 21) : répartition en pourcentage, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "التأمين الجماعي (الفصل 72، الصفحة 21): نسب مساهمة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "PORTS_MANUTENTION_2010-05-01",
+   "numero_imprime": 7,
+   "population": "manutention",
+   "effective_date": "2010-05-01",
+   "source_pdf_page": 25,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     351.775,
+     353.260,
+     354.745,
+     356.230,
+     357.715,
+     359.200,
+     360.685,
+     362.170,
+     363.655,
+     365.140,
+     366.625,
+     368.110,
+     369.595,
+     371.080,
+     375.065,
+     379.050,
+     383.035,
+     387.020,
+     391.005,
+     394.990
+    ],
+    "2": [
+     353.855,
+     355.340,
+     356.825,
+     358.310,
+     359.795,
+     361.280,
+     362.765,
+     364.250,
+     365.735,
+     367.220,
+     null,
+     370.190,
+     371.675,
+     375.660,
+     377.145,
+     378.630,
+     380.115,
+     381.600,
+     383.085,
+     384.570
+    ],
+    "3": [
+     355.935,
+     357.420,
+     358.905,
+     360.390,
+     361.875,
+     363.360,
+     364.845,
+     366.330,
+     367.815,
+     369.300,
+     370.785,
+     374.770,
+     376.255,
+     377.740,
+     379.225,
+     380.710,
+     382.195,
+     383.680,
+     385.165,
+     386.650
+    ],
+    "4": [
+     438.880,
+     441.405,
+     443.930,
+     446.455,
+     448.980,
+     454.005,
+     456.890,
+     459.050,
+     461.280,
+     463.805,
+     466.330,
+     468.855,
+     471.380,
+     473.905,
+     476.430,
+     478.955,
+     481.480,
+     484.005,
+     486.530,
+     489.055
+    ],
+    "5": [
+     444.920,
+     447.345,
+     452.370,
+     454.895,
+     457.420,
+     459.945,
+     462.470,
+     464.990,
+     467.220,
+     469.745,
+     472.270,
+     474.795,
+     477.320,
+     479.845,
+     484.870,
+     489.895,
+     494.920,
+     499.945,
+     504.970,
+     509.995
+    ],
+    "6": [
+     453.260,
+     455.785,
+     458.250,
+     460.725,
+     463.360,
+     465.885,
+     468.410,
+     470.930,
+     473.160,
+     475.685,
+     478.210,
+     483.225,
+     485.750,
+     488.275,
+     490.800,
+     493.325,
+     495.850,
+     498.375,
+     500.900,
+     503.425
+    ],
+    "7": [
+     525.465,
+     529.475,
+     533.485,
+     537.495,
+     541.500,
+     548.010,
+     552.020,
+     556.030,
+     560.040,
+     563.830,
+     568.060,
+     572.070,
+     576.080,
+     582.590,
+     586.600,
+     590.610,
+     594.620,
+     598.630,
+     602.640,
+     606.650
+    ],
+    "8": [
+     532.295,
+     536.305,
+     540.315,
+     544.325,
+     550.830,
+     554.840,
+     558.850,
+     562.860,
+     566.870,
+     570.880,
+     574.890,
+     581.400,
+     585.410,
+     589.420,
+     593.430,
+     597.440,
+     601.450,
+     605.460,
+     609.470,
+     613.480
+    ],
+    "9": [
+     539.125,
+     543.135,
+     null,
+     553.655,
+     557.670,
+     561.670,
+     565.680,
+     569.690,
+     572.700,
+     580.210,
+     584.220,
+     588.230,
+     592.240,
+     596.250,
+     600.260,
+     604.270,
+     608.280,
+     612.290,
+     616.300,
+     620.310
+    ],
+    "10": [
+     586.995,
+     592.935,
+     598.875,
+     604.815,
+     611.195,
+     619.195,
+     625.135,
+     631.075,
+     637.015,
+     642.955,
+     648.895,
+     654.835,
+     660.775,
+     666.715,
+     672.655,
+     678.595,
+     684.535,
+     690.475,
+     696.415,
+     702.355
+    ],
+    "11": [
+     594.125,
+     600.065,
+     606.005,
+     611.945,
+     620.385,
+     626.325,
+     632.265,
+     637.845,
+     644.145,
+     650.085,
+     656.025,
+     661.965,
+     667.905,
+     673.845,
+     679.785,
+     685.725,
+     691.665,
+     697.605,
+     703.545,
+     709.485
+    ],
+    "12": [
+     600.955,
+     606.895,
+     612.835,
+     621.275,
+     627.215,
+     633.155,
+     639.095,
+     645.035,
+     650.975,
+     656.915,
+     662.855,
+     668.795,
+     674.735,
+     680.675,
+     686.615,
+     692.555,
+     698.495,
+     704.435,
+     710.375,
+     716.315
+    ],
+    "13": [
+     633.370,
+     643.890,
+     651.910,
+     659.925,
+     667.945,
+     675.965,
+     683.985,
+     692.000,
+     700.020,
+     708.040,
+     716.060,
+     724.080,
+     732.100,
+     740.120,
+     748.140,
+     756.160,
+     764.180,
+     772.200,
+     780.220,
+     788.240
+    ],
+    "14": [
+     643.890,
+     651.910,
+     659.930,
+     667.945,
+     675.965,
+     683.985,
+     692.005,
+     700.020,
+     708.040,
+     716.060,
+     724.080,
+     732.100,
+     740.120,
+     748.140,
+     756.160,
+     764.180,
+     772.200,
+     780.220,
+     788.240,
+     796.260
+    ],
+    "15": [
+     651.910,
+     659.930,
+     667.950,
+     675.965,
+     683.985,
+     692.005,
+     700.025,
+     708.040,
+     716.060,
+     724.080,
+     732.100,
+     740.180,
+     748.200,
+     756.220,
+     764.240,
+     772.260,
+     780.280,
+     788.300,
+     796.320,
+     804.340
+    ],
+    "16": [
+     719.070,
+     729.165,
+     739.265,
+     749.365,
+     759.460,
+     769.525,
+     null,
+     null,
+     799.855,
+     809.950,
+     820.050,
+     830.145,
+     840.240,
+     850.335,
+     860.430,
+     870.525,
+     880.620,
+     890.715,
+     900.810,
+     910.950
+    ],
+    "17": [
+     727.940,
+     738.075,
+     748.175,
+     758.275,
+     768.370,
+     778.470,
+     788.565,
+     798.665,
+     808.765,
+     818.860,
+     828.960,
+     839.055,
+     849.150,
+     859.245,
+     869.340,
+     879.435,
+     889.530,
+     899.625,
+     909.720,
+     919.815
+    ],
+    "18": [
+     736.890,
+     746.985,
+     757.085,
+     767.185,
+     777.280,
+     787.380,
+     797.475,
+     null,
+     817.675,
+     827.770,
+     837.870,
+     847.965,
+     858.060,
+     868.155,
+     878.250,
+     888.345,
+     898.440,
+     908.535,
+     918.630,
+     928.725
+    ],
+    "19": [
+     749.065,
+     761.250,
+     773.815,
+     786.190,
+     798.665,
+     811.140,
+     823.615,
+     836.090,
+     848.560,
+     860.835,
+     873.510,
+     885.985,
+     898.460,
+     910.935,
+     923.410,
+     935.885,
+     948.360,
+     960.835,
+     973.310,
+     985.785
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "2",
+     "degre": 11,
+     "source_pdf_page": 25,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 368.706 ou 368.705 : dernier chiffre 6 ou 5, non séparé au zoom (lectures « 368.706? »)",
+     "message_fr": "Salaire des agents de manutention, catégorie 2, degré 11 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 368.706 ou 368.705 : dernier chiffre 6 ou 5, non séparé au zoom (lectures « 368.706? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 2، الدرجة 11 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "9",
+     "degre": 3,
+     "source_pdf_page": 25,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 549.865 ou 549.866 : dernier chiffre non séparé au zoom (lectures « 549.865? »)",
+     "message_fr": "Salaire des agents de manutention, catégorie 9, degré 3 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 549.865 ou 549.866 : dernier chiffre non séparé au zoom (lectures « 549.865? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 9، الدرجة 3 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 7,
+     "source_pdf_page": 25,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 779.656 ou 779.655 : dernier chiffre non séparé au zoom (lectures « 779.656? »)",
+     "message_fr": "Salaire des agents de manutention, catégorie 16, degré 7 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 779.656 ou 779.655 : dernier chiffre non séparé au zoom (lectures « 779.656? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 16، الدرجة 7 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "16",
+     "degre": 8,
+     "source_pdf_page": 25,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 789.766 ou 789.765 : dernier chiffre non séparé au zoom (lectures « 789.766? »)",
+     "message_fr": "Salaire des agents de manutention, catégorie 16, degré 8 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 789.766 ou 789.765 : dernier chiffre non séparé au zoom (lectures « 789.766? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 16، الدرجة 8 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "18",
+     "degre": 8,
+     "source_pdf_page": 25,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 807.576 ou 807.575 : dernier chiffre non séparé au zoom (lectures « 807.576? »)",
+     "message_fr": "Salaire des agents de manutention, catégorie 18, degré 8 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 807.576 ou 807.575 : dernier chiffre non séparé au zoom (lectures « 807.576? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 18، الدرجة 8 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ],
+   "observations_imprimees": [
+    {
+     "ligne": 2,
+     "colonne": 16,
+     "categorie": "2",
+     "degre": 16,
+     "valeur_imprimee": 378.630,
+     "valeur_ligne_precedente": 379.050,
+     "constat": "ligne 2 (378.630) plus basse que la ligne 1 (379.050) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 2,
+     "colonne": 17,
+     "categorie": "2",
+     "degre": 17,
+     "valeur_imprimee": 380.115,
+     "valeur_ligne_precedente": 383.035,
+     "constat": "ligne 2 (380.115) plus basse que la ligne 1 (383.035) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 2,
+     "colonne": 18,
+     "categorie": "2",
+     "degre": 18,
+     "valeur_imprimee": 381.600,
+     "valeur_ligne_precedente": 387.020,
+     "constat": "ligne 2 (381.600) plus basse que la ligne 1 (387.020) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 2,
+     "colonne": 19,
+     "categorie": "2",
+     "degre": 19,
+     "valeur_imprimee": 383.085,
+     "valeur_ligne_precedente": 391.005,
+     "constat": "ligne 2 (383.085) plus basse que la ligne 1 (391.005) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 2,
+     "colonne": 20,
+     "categorie": "2",
+     "degre": 20,
+     "valeur_imprimee": 384.570,
+     "valeur_ligne_precedente": 394.990,
+     "constat": "ligne 2 (384.570) plus basse que la ligne 1 (394.990) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 6,
+     "colonne": 18,
+     "categorie": "6",
+     "degre": 18,
+     "valeur_imprimee": 498.375,
+     "valeur_ligne_precedente": 499.945,
+     "constat": "ligne 6 (498.375) plus basse que la ligne 5 (499.945) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 6,
+     "colonne": 19,
+     "categorie": "6",
+     "degre": 19,
+     "valeur_imprimee": 500.900,
+     "valeur_ligne_precedente": 504.970,
+     "constat": "ligne 6 (500.900) plus basse que la ligne 5 (504.970) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    },
+    {
+     "ligne": 6,
+     "colonne": 20,
+     "categorie": "6",
+     "degre": 20,
+     "valeur_imprimee": 503.425,
+     "valeur_ligne_precedente": 509.995,
+     "constat": "ligne 6 (503.425) plus basse que la ligne 5 (509.995) au même degré",
+     "note": "Valeurs imprimées conservées, aucune correction (proposition de l'ARRÊT 2 de la vague 7, question 1) : lues de façon identique aux deux lectures, nettement imprimées, pas réguliers à l'intérieur de chaque ligne ; liste nommée ANOMALIES_IMPRIMEES_CONNUES de tests/test_vague7.py."
+    }
+   ]
+  },
+  {
+   "table_id": "PORTS_EXPLOITATION_ADMINISTRATION_2010-05-01",
+   "numero_imprime": 8,
+   "population": "exploitation_administration",
+   "effective_date": "2010-05-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     null,
+     277.909,
+     279.909,
+     281.909,
+     283.909,
+     285.909,
+     287.909,
+     289.909,
+     291.909,
+     293.909,
+     295.909,
+     297.909,
+     299.909,
+     301.909,
+     303.909,
+     305.909,
+     307.909,
+     309.909,
+     311.909,
+     313.909
+    ],
+    "2": [
+     277.909,
+     279.909,
+     281.909,
+     283.909,
+     285.909,
+     287.909,
+     289.909,
+     291.909,
+     293.909,
+     295.909,
+     297.909,
+     299.909,
+     301.909,
+     303.909,
+     305.909,
+     307.909,
+     309.909,
+     311.909,
+     313.909,
+     315.909
+    ],
+    "3": [
+     279.909,
+     281.909,
+     283.909,
+     285.909,
+     287.909,
+     289.909,
+     291.909,
+     293.909,
+     295.909,
+     297.909,
+     299.909,
+     301.909,
+     303.909,
+     305.909,
+     307.909,
+     309.909,
+     311.909,
+     313.909,
+     315.909,
+     317.909
+    ],
+    "4": [
+     296.301,
+     298.801,
+     301.301,
+     303.801,
+     306.301,
+     308.801,
+     311.301,
+     313.801,
+     316.301,
+     318.801,
+     321.301,
+     323.801,
+     326.301,
+     328.801,
+     331.301,
+     333.801,
+     336.301,
+     338.801,
+     341.301,
+     343.801
+    ],
+    "5": [
+     299.301,
+     301.801,
+     304.301,
+     306.801,
+     309.301,
+     311.801,
+     314.301,
+     316.801,
+     319.301,
+     321.801,
+     324.301,
+     326.801,
+     329.301,
+     331.801,
+     334.301,
+     336.801,
+     339.301,
+     341.801,
+     344.301,
+     346.801
+    ],
+    "6": [
+     302.301,
+     304.801,
+     307.301,
+     309.801,
+     312.301,
+     314.801,
+     317.301,
+     319.801,
+     322.301,
+     324.801,
+     327.301,
+     329.801,
+     332.301,
+     334.801,
+     337.301,
+     339.801,
+     342.301,
+     344.801,
+     347.301,
+     349.801
+    ],
+    "7": [
+     320.486,
+     323.486,
+     326.486,
+     329.486,
+     332.486,
+     335.486,
+     338.486,
+     341.486,
+     344.486,
+     347.486,
+     350.486,
+     353.486,
+     356.486,
+     359.486,
+     362.486,
+     365.486,
+     368.486,
+     371.486,
+     374.486,
+     377.486
+    ],
+    "8": [
+     324.486,
+     327.486,
+     330.486,
+     333.486,
+     336.486,
+     339.486,
+     342.486,
+     345.486,
+     348.486,
+     351.486,
+     354.486,
+     357.486,
+     360.486,
+     363.486,
+     366.486,
+     369.486,
+     372.486,
+     375.486,
+     378.486,
+     381.486
+    ],
+    "9": [
+     328.486,
+     331.486,
+     334.486,
+     337.486,
+     340.486,
+     343.486,
+     346.486,
+     349.486,
+     352.486,
+     355.486,
+     358.486,
+     361.486,
+     364.486,
+     367.486,
+     370.486,
+     373.486,
+     376.486,
+     379.486,
+     382.486,
+     385.486
+    ],
+    "10": [
+     363.764,
+     367.264,
+     370.764,
+     374.264,
+     377.764,
+     381.264,
+     384.764,
+     388.264,
+     391.764,
+     395.264,
+     398.764,
+     402.264,
+     405.764,
+     409.264,
+     412.764,
+     416.264,
+     419.764,
+     423.264,
+     426.764,
+     430.264
+    ],
+    "11": [
+     368.764,
+     372.264,
+     375.764,
+     379.264,
+     382.764,
+     386.264,
+     389.764,
+     393.264,
+     396.764,
+     400.264,
+     403.764,
+     407.264,
+     410.764,
+     414.264,
+     417.764,
+     421.264,
+     424.764,
+     428.264,
+     431.764,
+     435.264
+    ],
+    "12": [
+     null,
+     377.264,
+     380.764,
+     384.264,
+     387.764,
+     391.264,
+     394.764,
+     398.264,
+     401.764,
+     405.264,
+     408.764,
+     412.264,
+     415.764,
+     419.264,
+     422.764,
+     426.264,
+     429.764,
+     433.264,
+     436.764,
+     440.264
+    ],
+    "13": [
+     396.465,
+     400.465,
+     404.465,
+     408.465,
+     412.465,
+     416.465,
+     420.465,
+     424.465,
+     428.465,
+     432.465,
+     436.465,
+     440.465,
+     444.465,
+     448.465,
+     452.465,
+     456.465,
+     460.465,
+     464.465,
+     468.465,
+     472.465
+    ],
+    "14": [
+     402.465,
+     406.465,
+     410.465,
+     414.465,
+     418.465,
+     422.465,
+     426.465,
+     430.465,
+     434.465,
+     438.465,
+     442.465,
+     446.465,
+     450.465,
+     454.465,
+     458.465,
+     462.465,
+     466.465,
+     470.465,
+     474.465,
+     478.465
+    ],
+    "15": [
+     408.465,
+     412.465,
+     416.465,
+     420.465,
+     424.465,
+     428.465,
+     432.465,
+     436.465,
+     440.465,
+     444.465,
+     448.465,
+     452.465,
+     456.465,
+     460.465,
+     464.465,
+     468.465,
+     472.465,
+     476.465,
+     480.465,
+     484.465
+    ],
+    "16": [
+     448.943,
+     453.443,
+     457.943,
+     462.443,
+     466.943,
+     471.443,
+     475.943,
+     480.443,
+     484.943,
+     489.443,
+     493.943,
+     498.443,
+     502.943,
+     507.443,
+     511.943,
+     516.443,
+     520.943,
+     525.443,
+     529.943,
+     534.443
+    ],
+    "17": [
+     null,
+     460.443,
+     464.943,
+     469.443,
+     473.943,
+     478.443,
+     482.943,
+     487.443,
+     491.943,
+     496.443,
+     500.943,
+     505.443,
+     509.943,
+     514.443,
+     518.943,
+     523.443,
+     527.943,
+     532.443,
+     536.943,
+     541.443
+    ],
+    "18": [
+     462.943,
+     467.443,
+     471.943,
+     476.443,
+     480.943,
+     485.443,
+     489.943,
+     494.443,
+     498.943,
+     503.443,
+     507.943,
+     512.443,
+     516.943,
+     521.443,
+     525.943,
+     530.443,
+     534.943,
+     539.443,
+     543.943,
+     548.443
+    ],
+    "19": [
+     491.678,
+     496.678,
+     501.678,
+     506.678,
+     511.678,
+     516.678,
+     521.678,
+     526.678,
+     531.678,
+     536.678,
+     541.678,
+     546.678,
+     551.678,
+     556.678,
+     561.678,
+     566.678,
+     571.678,
+     576.678,
+     581.678,
+     586.678
+    ],
+    "20": [
+     499.678,
+     504.678,
+     509.678,
+     514.678,
+     519.678,
+     524.678,
+     529.678,
+     534.678,
+     539.678,
+     544.678,
+     549.678,
+     554.678,
+     559.678,
+     564.678,
+     569.678,
+     574.678,
+     579.678,
+     584.678,
+     589.678,
+     594.678
+    ],
+    "21": [
+     507.678,
+     512.678,
+     517.678,
+     522.678,
+     527.678,
+     532.678,
+     537.678,
+     542.678,
+     547.678,
+     552.678,
+     557.678,
+     562.678,
+     567.678,
+     572.678,
+     577.678,
+     582.678,
+     587.678,
+     592.678,
+     597.678,
+     602.678
+    ],
+    "22": [
+     539.784,
+     545.284,
+     550.784,
+     556.284,
+     561.784,
+     567.284,
+     572.784,
+     578.284,
+     583.784,
+     589.284,
+     594.784,
+     600.284,
+     605.784,
+     611.284,
+     616.784,
+     622.284,
+     627.784,
+     633.284,
+     638.784,
+     644.284
+    ],
+    "23": [
+     548.784,
+     554.284,
+     559.784,
+     565.284,
+     570.784,
+     576.284,
+     581.784,
+     587.284,
+     592.784,
+     598.284,
+     603.784,
+     609.284,
+     614.784,
+     620.284,
+     null,
+     631.284,
+     636.784,
+     642.284,
+     647.784,
+     653.284
+    ],
+    "24": [
+     557.784,
+     563.284,
+     568.784,
+     574.284,
+     579.784,
+     585.284,
+     590.784,
+     596.284,
+     601.784,
+     607.284,
+     612.784,
+     618.284,
+     623.784,
+     629.284,
+     634.784,
+     640.284,
+     645.784,
+     651.284,
+     656.784,
+     662.284
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "1",
+     "degre": 1,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 276.909 ou 275.909 : troisième chiffre non séparé au zoom (lectures « 276.909? »)",
+     "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 1, degré 1 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 276.909 ou 275.909 : troisième chiffre non séparé au zoom (lectures « 276.909? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الاستغلال والإدارة، الصنف 1، الدرجة 1 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2010-05-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "12",
+     "degre": 1,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 373.764 ou 373.754 : chiffre des centièmes non séparé au zoom (lectures « 373.764? »)",
+     "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 12, degré 1 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 373.764 ou 373.754 : chiffre des centièmes non séparé au zoom (lectures « 373.764? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الاستغلال والإدارة، الصنف 12، الدرجة 1 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2010-05-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "17",
+     "degre": 1,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 455.943 lu deux fois, 465.943 au zoom : deuxième chiffre incertain (lectures « 455.943? »)",
+     "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 17, degré 1 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 455.943 lu deux fois, 465.943 au zoom : deuxième chiffre incertain (lectures « 455.943? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الاستغلال والإدارة، الصنف 17، الدرجة 1 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2010-05-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "23",
+     "degre": 15,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 626.784 lu deux fois et au zoom, 625.784 non exclu : troisième chiffre 6 ou 5 (lectures « 626.784? »)",
+     "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 23, degré 15 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 626.784 lu deux fois et au zoom, 625.784 non exclu : troisième chiffre 6 ou 5 (lectures « 626.784? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الاستغلال والإدارة، الصنف 23، الدرجة 15 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2010-05-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "PORTS_TITULARISES_2005_2010-05-01",
+   "numero_imprime": 9,
+   "population": "titularises_2005",
+   "effective_date": "2010-05-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "10": [
+     662.595,
+     668.535,
+     674.475,
+     680.415,
+     686.795,
+     694.795,
+     700.735,
+     706.675,
+     712.615,
+     718.555,
+     724.495,
+     730.435,
+     736.375,
+     742.315,
+     748.255,
+     754.195,
+     760.135,
+     766.075,
+     772.015,
+     777.955
+    ],
+    "11": [
+     669.725,
+     675.665,
+     681.605,
+     687.545,
+     695.985,
+     701.925,
+     707.865,
+     713.445,
+     719.745,
+     725.685,
+     731.625,
+     737.565,
+     743.505,
+     749.445,
+     755.385,
+     761.325,
+     767.265,
+     773.205,
+     779.145,
+     785.085
+    ],
+    "12": [
+     676.555,
+     682.495,
+     688.435,
+     696.875,
+     702.815,
+     708.755,
+     714.695,
+     720.635,
+     726.575,
+     732.515,
+     738.455,
+     744.395,
+     750.335,
+     756.275,
+     762.215,
+     768.155,
+     774.095,
+     780.035,
+     785.975,
+     791.915
+    ],
+    "13": [
+     713.320,
+     723.840,
+     731.860,
+     739.875,
+     747.895,
+     755.915,
+     763.935,
+     771.950,
+     779.970,
+     787.990,
+     796.010,
+     804.030,
+     812.050,
+     820.070,
+     828.090,
+     836.110,
+     844.130,
+     852.150,
+     860.170,
+     868.190
+    ],
+    "14": [
+     723.840,
+     731.860,
+     739.880,
+     747.895,
+     755.915,
+     763.935,
+     771.955,
+     779.970,
+     787.990,
+     796.010,
+     804.030,
+     812.050,
+     820.070,
+     828.090,
+     836.110,
+     844.130,
+     852.150,
+     860.170,
+     868.190,
+     876.210
+    ],
+    "15": [
+     731.860,
+     739.880,
+     747.900,
+     755.915,
+     763.935,
+     771.955,
+     779.975,
+     787.990,
+     796.010,
+     804.030,
+     812.050,
+     820.130,
+     828.150,
+     836.170,
+     844.190,
+     852.210,
+     860.230,
+     868.250,
+     876.270,
+     884.290
+    ],
+    "16": [
+     809.895,
+     819.990,
+     830.090,
+     840.190,
+     850.285,
+     860.350,
+     870.480,
+     880.580,
+     890.680,
+     900.775,
+     910.875,
+     920.970,
+     931.065,
+     941.160,
+     951.255,
+     961.350,
+     971.445,
+     981.540,
+     991.635,
+     null
+    ],
+    "17": [
+     818.765,
+     828.900,
+     839.000,
+     849.100,
+     859.195,
+     869.295,
+     879.390,
+     889.490,
+     899.590,
+     909.685,
+     919.785,
+     929.880,
+     939.975,
+     950.070,
+     960.165,
+     970.260,
+     980.355,
+     990.450,
+     1000.545,
+     1010.640
+    ],
+    "18": [
+     827.715,
+     837.810,
+     847.910,
+     858.010,
+     868.105,
+     878.205,
+     888.300,
+     898.401,
+     908.500,
+     918.595,
+     928.695,
+     938.790,
+     948.885,
+     958.980,
+     969.075,
+     979.170,
+     989.265,
+     999.360,
+     1009.455,
+     1019.550
+    ],
+    "19": [
+     839.890,
+     852.075,
+     864.640,
+     877.015,
+     889.490,
+     901.965,
+     914.440,
+     926.915,
+     939.385,
+     951.660,
+     964.335,
+     976.810,
+     989.285,
+     1001.760,
+     null,
+     1026.710,
+     1039.185,
+     1051.660,
+     1064.135,
+     1076.610
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "16",
+     "degre": 20,
+     "source_pdf_page": 27,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 1001.776 lu deux fois, 1001.775 au zoom (petits caractères) (lectures « 1001.776? »)",
+     "message_fr": "Salaire des agents de manutention titularisés au premier trimestre 2005, catégorie 16, degré 20 (tableau n° 9, en vigueur à partir du 2010-05-01, page 27) : cellule non tranchée au zoom à 400 dpi : 1001.776 lu deux fois, 1001.775 au zoom (petits caractères) (lectures « 1001.776? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005، الصنف 16، الدرجة 20 (جدول الأجور عدد 9 الذي يقع العمل به بداية من 2010-05-01، الصفحة 27): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "19",
+     "degre": 15,
+     "source_pdf_page": 27,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : 1014.236 lu deux fois, 1014.235 au zoom (petits caractères) (lectures « 1014.236? »)",
+     "message_fr": "Salaire des agents de manutention titularisés au premier trimestre 2005, catégorie 19, degré 15 (tableau n° 9, en vigueur à partir du 2010-05-01, page 27) : cellule non tranchée au zoom à 400 dpi : 1014.236 lu deux fois, 1014.235 au zoom (petits caractères) (lectures « 1014.236? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005، الصنف 19، الدرجة 15 (جدول الأجور عدد 9 الذي يقع العمل به بداية من 2010-05-01، الصفحة 27): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  }
+ ]
+}
