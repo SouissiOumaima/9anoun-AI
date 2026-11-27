@@ -778,3 +778,75 @@ def test_the_background_thread_never_blocks_the_service_shutdown() -> None:
 
     start_thread(job)
     assert done.wait(5.0) and seen == [True]
+
+
+# ------------------------------------------------------------ relecture de la PR #60
+
+
+def test_two_processes_recovering_the_same_expired_slot_start_only_one_ocr(tmp_path: Path) -> None:
+    """Deux processus voient le même verrou global expiré. A le récupère et démarre un OCR ; B, qui avait lu le
+    verrou expiré juste avant, ne doit pas supprimer le nouveau verrou de A (sinon deux OCR tournent à la fois)."""
+    clock, process, launcher = Clock(), FakeProcess(_doc_json()), Deferred()
+    first, second = _sources(tmp_path, 2)
+    a = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=clock)
+    a.cache_dir.mkdir(parents=True)
+    a.slot.write_text(json.dumps({"since": clock.now, "token": "mort", "pid": 1}), encoding="utf-8")  # lecteur actif
+    assert a.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"  # en attente
+    clock.now += 1
+    assert a.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"  # en attente
+    assert launcher.jobs == []  # le verrou global est encore récent : rien ne démarre
+    clock.now += 120  # le lecteur actif est mort : verrou global expiré
+
+    armed = [True]
+
+    def b_clock() -> float:
+        """Appelée par B juste après avoir lu le verrou expiré : A fait toute sa récupération à ce moment-là."""
+        if armed[0]:
+            armed[0] = False
+            a.pump()
+        return clock.now
+
+    b = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=b_clock)
+    b.pump()
+
+    assert armed == [False]  # l'entrelacement a bien eu lieu
+    assert len(launcher.jobs) == 1  # un seul OCR démarré
+    slot = json.loads(a.slot.read_text(encoding="utf-8"))
+    assert slot["token"] != "mort" and slot["lock"].endswith(".lock")  # le nouveau verrou de A est intact
+    _, _, b_lock = a.paths(second, card_id=CARD, document_id="b")
+    assert a.lock_info(b_lock).stage == "attente"  # la 2e demande attend son tour
+    assert [p.name for p in a.cache_dir.iterdir() if p.name.startswith("ocr_actif")] == ["ocr_actif.lock"]
+
+    launcher.run_all()  # A finit, puis la demande suivante démarre : toujours une à la fois
+    assert len(process.calls) == 2 and not a.slot.exists()
+    assert a.lookup_or_start(second, card_id=CARD, document_id="b").status == "pret"
+
+
+def test_an_expired_slot_is_still_recovered_by_a_single_process(tmp_path: Path) -> None:
+    clock, launcher = Clock(), Deferred()
+    cache = _cache(tmp_path, FakeProcess(_doc_json()), launcher, lock_max_age_s=60.0, clock=clock)
+    cache.cache_dir.mkdir(parents=True)
+    cache.slot.write_text(json.dumps({"since": clock.now, "token": "mort"}), encoding="utf-8")
+    source = _sources(tmp_path, 1)[0]
+    assert cache.lookup_or_start(source, card_id=CARD, document_id="a").status == "en_cours"
+    clock.now += 61
+    cache.pump()
+    assert len(launcher.jobs) == 1
+    assert json.loads(cache.slot.read_text(encoding="utf-8"))["token"] != "mort"
+    assert [p.name for p in cache.cache_dir.iterdir() if p.name.startswith("ocr_actif")] == ["ocr_actif.lock"]
+
+
+@pytest.mark.parametrize("raw", ["nan", "NaN", "inf", "-inf", "Infinity"])
+def test_non_finite_settings_fall_back_to_the_documented_defaults(tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+                                                                  caplog: pytest.LogCaptureFixture,
+                                                                  raw: str) -> None:
+    monkeypatch.setenv(ocr_cache.CACHE_DIR_ENV, str(tmp_path))
+    monkeypatch.setattr(ocr_cache.importlib.util, "find_spec", lambda name: object())
+    monkeypatch.setenv(ocr_cache.RETRY_DELAY_ENV, raw)
+    monkeypatch.setenv(ocr_cache.MAX_ATTEMPTS_ENV, raw)
+    with caplog.at_level(logging.WARNING):
+        backend = default_backend()  # pas de plantage (int(nan) lèverait ValueError, int(inf) OverflowError)
+    assert backend is not None
+    assert (backend.retry_delay_s, backend.max_attempts) == (ocr_cache.DEFAULT_RETRY_DELAY_S,
+                                                             ocr_cache.DEFAULT_MAX_ATTEMPTS) == (600.0, 3)
+    assert caplog.text.count("invalide") == 2

@@ -36,6 +36,7 @@ import hashlib
 import importlib.util
 import json
 import logging
+import math
 import os
 import subprocess
 import sys
@@ -450,18 +451,48 @@ class OcrCache:
     def _slot_abandoned(self) -> bool:
         """Verrou global plus vieux que `lock_max_age_s` : la lecture active est morte (redémarrage, plantage).
 
-        Sa lecture est marquée en échec (si son verrou est encore là) et le verrou global est supprimé.
+        Plusieurs processus peuvent voir le même verrou expiré en même temps. Le premier qui le récupère crée aussitôt
+        son propre verrou : un autre processus ne doit pas supprimer ce nouveau verrou. La récupération est donc
+        atomique : le verrou est d'abord renommé vers un nom unique (`os.replace`), puis on vérifie que c'est bien le
+        verrou expiré lu (même contenu, donc même token). Seul ce processus marque alors la lecture morte en échec et
+        supprime le verrou expiré. Sinon, c'est le nouveau verrou d'un autre processus : il est remis en place, et on
+        ne touche à rien.
         """
-        data = read_json(self.slot) or {}
         try:
-            since = float(data["since"])
+            raw = self.slot.read_bytes()
+        except FileNotFoundError:
+            return True  # supprimé entre-temps : on peut réessayer de le prendre
+        except OSError:
+            return False  # occupé un instant (Windows) : on réessaiera à la question suivante
+        try:
+            data = json.loads(raw.decode("utf-8"))
+            since = float(data["since"]) if isinstance(data, dict) else float("nan")
         except (KeyError, TypeError, ValueError):
+            data = {}
             try:
                 since = self.slot.stat().st_mtime
             except OSError:
-                return True  # supprimé entre-temps : on peut réessayer de le prendre
+                return True
+        if not isinstance(data, dict) or not math.isfinite(since):
+            data, since = {}, self.clock()  # contenu inattendu : traité comme récent, jamais supprimé à tort
         if self.clock() - since <= self.lock_max_age_s:
             return False
+
+        claimed = self.slot.with_name(f"{SLOT_NAME}.{uuid.uuid4().hex[:TEMP_SUFFIX_CHARS]}.abandon")
+        try:
+            os.replace(self.slot, claimed)  # atomique : un seul processus récupère ce fichier
+        except FileNotFoundError:
+            return True  # un autre processus l'a déjà récupéré : on peut réessayer de prendre le verrou
+        except OSError:
+            return False
+        try:
+            same = claimed.read_bytes() == raw
+        except OSError:
+            same = False
+        if not same:  # ce n'est plus le verrou expiré lu : c'est le nouveau verrou d'un autre processus
+            self._put_slot_back(claimed)
+            return False
+
         log.warning("OCR : verrou global abandonné (plus de %.0f s).", self.lock_max_age_s)
         name = data.get("lock")
         if isinstance(name, str):
@@ -470,8 +501,23 @@ class OcrCache:
                 info = self.lock_info(lock)
                 if info.stage == "lecture":
                     self._abandon(lock, info)
-        remove_file(self.slot)
+        remove_file(claimed)
         return True
+
+    def _put_slot_back(self, claimed: Path) -> None:
+        """Remet en place le verrou d'un autre processus récupéré par erreur, sans jamais écraser un verrou plus récent
+        (`os.link` échoue si le nom existe déjà)."""
+        try:
+            os.link(claimed, self.slot)
+        except FileExistsError:
+            log.warning("OCR : verrou global recréé entre-temps ; le verrou récupéré par erreur est retiré.")
+        except OSError:
+            try:
+                os.rename(claimed, self.slot)  # sous Windows, échoue aussi si le nom existe déjà
+                return
+            except OSError:
+                log.warning("OCR : verrou global impossible à remettre en place pour l'instant.")
+        remove_file(claimed)
 
     def _release_slot(self, token: str) -> None:
         """Rend le verrou global, seulement s'il est toujours à nous (il a pu être déclaré abandonné et repris)."""
@@ -515,6 +561,8 @@ class OcrCache:
 
 
 def _env_number(name: str, default: float, minimum: float) -> float:
+    """Réglage numérique lu dans l'environnement. Valeur illisible, non finie (`nan`, `inf`) ou trop petite : la
+    valeur par défaut documentée est utilisée, avec un avertissement (jamais de plantage au démarrage)."""
     raw = os.getenv(name)
     if raw is None:
         return default
@@ -522,7 +570,7 @@ def _env_number(name: str, default: float, minimum: float) -> float:
         value = float(raw)
     except ValueError:
         value = minimum - 1
-    if value < minimum:
+    if not math.isfinite(value) or value < minimum:
         log.warning("%s invalide (%r) : valeur par défaut %s utilisée.", name, raw, default)
         return default
     return value
