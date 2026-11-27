@@ -11528,6 +11528,1713 @@
     "rendu": "claude-docs/vague5/verification/cas.html, cas TB-359"
    },
    "note": "Vague 5 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague5/verification/cas.html, 2026-11-21) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-360",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D84",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "2",
+     "anciennete_annees": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "403.265",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+      "page": 12
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "annexe 1 (p.12), ligne 2 (كاتب), col. degré 4 depuis la droite (durée 2, 4 à 6 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "403.265",
+    "ligne": 2,
+    "colonne": 4,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-360"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-361",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D84",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "1",
+     "anciennete_annees": 1.5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "335.555",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+      "page": 12
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "annexe 1 (p.12), ligne 1 (مساعد كاتب), col. degré 2 : 335.555, plus bas que le degré 1 (337.758), nettement imprimé",
+    "valeur_imprimee": "335.555",
+    "ligne": 1,
+    "colonne": 2,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-361"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-362",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D84",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "3",
+     "anciennete_annees": 29.5,
+     "date": "2014-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "545.736",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+      "page": 12
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "annexe 1 (p.12), ligne 3 (كاتب أول), col. degré 12 (27 à 30 ans) ; date d'effet 2014-05-01 en hypothèse (art. 47, p.11)",
+    "valeur_imprimee": "545.736",
+    "ligne": 3,
+    "colonne": 12,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-362"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-363",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D84",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "3",
+     "anciennete_annees": 30,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "en-tête de l'annexe 1 (p.12) : durées 1, 1, 2, 2, puis 3 jusqu'au degré 12, soit 30 ans ; rien au-delà (art. 11)",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-363"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-364",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D84",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "1",
+     "anciennete_annees": 3,
+     "date": "2014-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 11,
+    "emplacement": "art. 47 (p.11) : entrée en vigueur « بداية من الأول من ماي 2014 » ; grille sans date",
+    "ligne": "ligne de texte de l'article (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-364"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-365",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "code": "indemnite_perte_emploi",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 11,
+    "emplacement": "art. 44 (p.11) : un jour de salaire brut par mois de travail effectif, formule",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-365"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-366",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D6",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "1",
+     "anciennete_annees": 2,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "en-tête (p.12) : 2 ans = fin du degré 2 et début du degré 3",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-366"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-367",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "I",
+     "anciennete_annees": 0.5,
+     "date": "2021-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "578.749",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مستخدمي الصيدليات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 15,
+    "emplacement": "tableau n° 1 (p.15, 2020-11-01), ligne 1 (I), col. degré 1",
+    "valeur_imprimee": "578.749",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-367"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-368",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D85",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "V",
+     "anciennete_annees": 28,
+     "date": "2021-12-31"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1431.378",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مستخدمي الصيدليات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 15,
+    "emplacement": "tableau n° 2 (p.15, 2021-05-01), ligne 5 (V), col. degré 12 (26 à 29 ans), dernier jour de validité",
+    "valeur_imprimee": "1431.378",
+    "ligne": 5,
+    "colonne": 12,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-368"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-369",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "IV",
+     "anciennete_annees": 7,
+     "date": "2021-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1034.943",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مستخدمي الصيدليات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 15,
+    "emplacement": "tableau n° 2 (p.15, 2021-05-01), ligne 4 (IV), col. degré 5 (6 à 8 ans)",
+    "valeur_imprimee": "1034.943",
+    "ligne": 4,
+    "colonne": 5,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-369"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-370",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D85",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "III",
+     "anciennete_annees": 10,
+     "date": "2022-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 3,
+    "emplacement": "avenant n° 16 (p.3) : effet « غرة جانفي 2022 », article 43 révisé, grille absente",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-370"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-371",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D85",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "II",
+     "anciennete_annees": 29,
+     "date": "2021-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 15,
+    "emplacement": "en-tête (p.15) : durées 1, 1, 2, 2, 2, puis 3 jusqu'au degré 12, soit 29 ans ; rien au-delà (art. 11 (جديد))",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-371"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-372",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D85",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "categorie": "I",
+     "anciennete_annees": 1.5,
+     "date": "2020-10-31"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 15,
+    "emplacement": "titre du tableau n° 1 (p.15) : « يقع العمل به بداية من 1 نوفمبر 2020 »",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-372"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-373",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PERSONNEL_PHARMACIES",
+     "code": "prime_travail_nuit",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "10.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مستخدمي الصيدليات.pdf",
+      "page": 9
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مستخدمي الصيدليات.pdf",
+    "page": 9,
+    "emplacement": "art. 21 (جديد) : 10 dinars par mois, agents des pharmacies de nuit",
+    "valeur_imprimee": "10.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-373"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-374",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "population": "horaires",
+     "categorie": "1",
+     "anciennete_annees": 1,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.445",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 3 (p.20, 2019-06-01), ligne 1, col. degré 1 (0 à 2 ans)",
+    "valeur_imprimee": "2.445",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-374"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-375",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "population": "mensuels",
+     "categorie": "3",
+     "anciennete_annees": 15,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "736.994",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 4 (p.20, 2019-06-01), ligne 3, col. degré 8 (14 à 16 ans)",
+    "valeur_imprimee": "736.994",
+    "ligne": 3,
+    "colonne": 8,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-375"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-376",
+   "categorie": "ok",
+   "certitude": "C",
+   "decision": "D86",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "population": "mensuels",
+     "categorie": "5",
+     "anciennete_annees": 27,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1082.652",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 20
+     },
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 8
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 4 (p.20), ligne 5 : degré 13 (1 069,021) + 1 écart (degré 13 − degré 12 = 13,631), art. 15 (جديد) p.8, 27 ans",
+    "valeur_imprimee": "1069.021",
+    "ligne": 5,
+    "colonne": 13,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-376"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-377",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D10",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "population": "horaires",
+     "categorie": "3",
+     "anciennete_annees": 26,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 8,
+    "emplacement": "art. 15 (جديد) (p.8) : écart « كل سنتين » au degré 13 ; 26 ans = premier palier",
+    "ligne": "ligne de texte de l'article (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-377"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-378",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D86",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "population": "mensuels",
+     "categorie": "2",
+     "anciennete_annees": 3,
+     "date": "2019-05-31"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 20,
+    "emplacement": "titres des tableaux n° 3 et 4 (p.20) : « يقع العمل به بداية من 01 جوان 2019 »",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-378"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-379",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D86",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "code": "prime_transport",
+     "date": "2018-07-01",
+     "groupe": "categories_4_5"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "78.777",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 16,
+    "emplacement": "art. 54 (جديد) : 78,777 d pour les catégories 4 et 5 à partir du 1er juin 2018 (avant la grille)",
+    "valeur_imprimee": "78.777",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-379"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-380",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D86",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "code": "prime_etudes",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "25.166",
+    "unite": "TND/enfant",
+    "citations": [
+     {
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 17,
+    "emplacement": "art. 55 (جديد) : 25,166 par enfant, dans la limite de quatre enfants ; fréquence non imprimée",
+    "valeur_imprimee": "25.166",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-380"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-381",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONSERVERIES_CONDITIONNEMENT_HUILES",
+     "code": "avantages_nature",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+    "page": 17,
+    "emplacement": "art. 56 (جديد) : 8,333 kg de produits, en nature",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-381"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-382",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "IV",
+     "sous_categorie": "2",
+     "anciennete_annees": 17.5,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "557.487",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 3 (p.19), ligne 8 (IV ب), col. degré 10 (17 à 19 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "557.487",
+    "ligne": 8,
+    "colonne": 10,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-382"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-383",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "IV",
+     "sous_categorie": "2",
+     "anciennete_annees": 16,
+     "date": "2020-01-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "550.618",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 3 (p.19), ligne 8 (IV ب), col. degré 9 : 550.618, hors de la régularité des sous-lignes, nettement imprimé",
+    "valeur_imprimee": "550.618",
+    "ligne": 8,
+    "colonne": 9,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-383"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-384",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "VI",
+     "anciennete_annees": 0.5,
+     "date": "2010-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "598.450",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 3 (p.19, 2010-05-01), ligne 11 (VI), col. degré 1",
+    "valeur_imprimee": "598.450",
+    "ligne": 11,
+    "colonne": 1,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-384"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-385",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "I",
+     "sous_categorie": "1",
+     "anciennete_annees": 2,
+     "date": "2010-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "titre du tableau n° 3 (p.19) : « يقع العمل به بداية من 1 ماي 2010 » ; tableaux n° 1 et 2 absents",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-385"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-386",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "V",
+     "sous_categorie": "1",
+     "anciennete_annees": 29,
+     "date": "2020-01-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "en-tête (p.19) : ancienneté effective 29 au degré 15 ; rien au-delà (art. 12)",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-386"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-387",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "II",
+     "anciennete_annees": 2,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE"
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "catégorie II imprimée en deux sous-lignes أ et ب (p.19) : sous_categorie obligatoire",
+    "ligne": 3,
+    "colonne": 2,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-387"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-388",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D87",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "code": "prime_transport",
+     "date": "2008-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "page": 12
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 12,
+    "emplacement": "art. 47 (جديد) : 4 dinars à partir du 1er mai 2008 (avant la grille)",
+    "valeur_imprimee": "4.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-388"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-389",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D88",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "categorie": "III_6",
+     "anciennete_annees": 25,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "452.878",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 17,
+    "emplacement": "tableau (p.17, 2011-05-01), ligne 13 (مدير), col. degré 13 (24 à 26 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "452.878",
+    "ligne": 13,
+    "colonne": 13,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-389"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-390",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "categorie": "I_1",
+     "anciennete_annees": 1,
+     "date": "2011-05-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "301.587",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 17,
+    "emplacement": "tableau (p.17, 2011-05-01), ligne 1 (شغال), col. degré 1",
+    "valeur_imprimee": "301.587",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-390"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-391",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D88",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "categorie": "II_2",
+     "anciennete_annees": 26,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 8,
+    "emplacement": "art. 12 (جديد) (p.8) : hausse « كل سنتين » au sommet de l'échelle, sans montant précisé",
+    "ligne": "ligne de texte de l'article (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-391"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-392",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "code": "prime_caisse",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "4.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 14,
+    "emplacement": "art. 45 : « أربعة دنانير في الشهر », en lettres seulement",
+    "valeur_imprimee": "4.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-392"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-393",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D88",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "code": "prime_encouragement_salle_b_cat2",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "6.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 14,
+    "emplacement": "art. 47 مكرر (جديد), tableau : salles de classe ب, catégorie 2",
+    "valeur_imprimee": "6.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-393"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-394",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D88",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "code": "prime_scolaire_preparatoire_secondaire",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "30.000",
+    "unite": "TND/enfant",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 14,
+    "emplacement": "art. 47 ثالثا : 30 dinars par élève du préparatoire et du secondaire ; fréquence non imprimée",
+    "valeur_imprimee": "30.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-394"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-395",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "code": "majoration_deux_longs_metrages",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 15,
+    "emplacement": "art. 50 (p.15) : majoration de 45 %",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-395"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-396",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "categorie": "20",
+     "anciennete_annees": 40,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "854.523",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 18,
+    "emplacement": "tableau n° 2 (p.18), ligne 20, col. degré 13 (« 24+ », sans durée) servi au-delà de 24 ans ; note 2 citée",
+    "valeur_imprimee": "854.523",
+    "ligne": 20,
+    "colonne": 13,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-396"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-397",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "categorie": "7",
+     "anciennete_annees": 7,
+     "date": "2020-01-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "495.526",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 18,
+    "emplacement": "tableau n° 2 (p.18), ligne 7, col. degré 6 (6 à 8 ans)",
+    "valeur_imprimee": "495.526",
+    "ligne": 7,
+    "colonne": 6,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-397"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-398",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2017-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 18,
+    "emplacement": "titre du tableau n° 2 (p.18) : « يقع العمل به بداية من أول ماي 2017 » ; tableau n° 1 absent",
+    "ligne": "en-tête ou titre du tableau",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou un paramètre)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-398"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-399",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "code": "prime_kilometrique_tunisie",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.010",
+    "unite": "TND/km",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 13,
+    "emplacement": "art. 44 (جديد) : « بعشرة مليمات (10 مليمات) » par km en Tunisie ; minimum de 30 d en note, non appliqué",
+    "valeur_imprimee": "0.010",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-399"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-400",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "code": "prime_kilometrique_etranger",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.007",
+    "unite": "TND/km",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 13,
+    "emplacement": "art. 44 (جديد) : « بسبعة مليمات (7 مليمات) » par km à l'étranger",
+    "valeur_imprimee": "0.007",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-400"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-401",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "code": "prime_aid_adha",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "50.000",
+    "unite": "TND/versement",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 14,
+    "emplacement": "art. 52 (جديد) : « خمسون دينارا », en lettres seulement",
+    "valeur_imprimee": "50.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-401"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-402",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "code": "prime_transport",
+     "date": "2016-09-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "58.300",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 13,
+    "emplacement": "art. 46 (جديد) : cadres, 58,300 d à partir du 1er août 2016 (avant la grille)",
+    "valeur_imprimee": "58.300",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-402"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-403",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D89",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "code": "prime_travail_sans_accompagnateur",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "50.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 14,
+    "emplacement": "art. 47 مكرر : 50 d par mois (minimum pour 26 jours) ; prorata en note, non calculé",
+    "valeur_imprimee": "50.000",
+    "ligne": "ligne de texte du montant (encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-403"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-404",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "SALLES_CINEMA",
+     "categorie": "III_4",
+     "degre": 13,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "410.151",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "قاعات العرض السينيمائي.pdf",
+    "page": 17,
+    "emplacement": "tableau (p.17), ligne 11 (عون بث أو عرض), col. degré 13",
+    "valeur_imprimee": "410.151",
+    "ligne": 11,
+    "colonne": 13,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-404"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-405",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "TRANSPORT_ROUTIER_MARCHANDISES",
+     "categorie": "15",
+     "degre": 13,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "748.830",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "نقل البضائع عبر الطرقات.pdf",
+    "page": 18,
+    "emplacement": "tableau n° 2 (p.18), ligne 15, col. degré 13 (« 24+ »)",
+    "valeur_imprimee": "748.830",
+    "ligne": 15,
+    "colonne": 13,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-405"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-406",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLERCS_AVOCATS",
+     "categorie": "1",
+     "degre": 5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "348.380",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+      "page": 12
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+    "page": 12,
+    "emplacement": "annexe 1 (p.12), ligne 1, col. degré 5 : 348.380, plus bas que le degré 4, nettement imprimé",
+    "valeur_imprimee": "348.380",
+    "ligne": 1,
+    "colonne": 5,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-406"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-407",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+     "categorie": "II",
+     "sous_categorie": "1",
+     "degre": 15,
+     "date": "2020-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "465.220",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 3 (p.19), ligne 3 (II أ), col. degré 15",
+    "valeur_imprimee": "465.220",
+    "ligne": 3,
+    "colonne": 15,
+    "rendu": "claude-docs/vague6/verification/cas.html, cas TB-407"
+   },
+   "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
   }
  ]
 }

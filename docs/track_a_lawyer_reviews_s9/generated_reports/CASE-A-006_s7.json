@@ -1,0 +1,105 @@
+{
+  "deliverable_version": "track_a_legal_deliverables_s7.v1",
+  "case_id": "CASE-A-006",
+  "document_status": "preparatory",
+  "lawyer_validated": false,
+  "sections": [
+    {
+      "section_id": "S7-01",
+      "title": "Faits du dossier",
+      "content": []
+    },
+    {
+      "section_id": "S7-02",
+      "title": "Declarations et demandes",
+      "content": [
+        {
+          "reference_coverage": {
+            "has_event_links": false,
+            "has_evidence_links": false,
+            "has_legal_source_links": false,
+            "missing_link_types": [
+              "events",
+              "evidence",
+              "legal_sources"
+            ]
+          },
+          "claim_id": "C1",
+          "party_id": "P1",
+          "text": "Le salarié affirme ne pas avoir reçu de préavis.",
+          "status": "unverified",
+          "event_ids": [],
+          "evidence_ids": [],
+          "legal_source_ids": []
+        },
+        {
+          "reference_coverage": {
+            "has_event_links": false,
+            "has_evidence_links": false,
+            "has_legal_source_links": false,
+            "missing_link_types": [
+              "events",
+              "evidence",
+              "legal_sources"
+            ]
+          },
+          "claim_id": "C2",
+          "party_id": "P2",
+          "text": "L'employeur affirme que le licenciement est motivé par une faute grave.",
+          "status": "unverified",
+          "event_ids": [],
+          "evidence_ids": [],
+          "legal_source_ids": []
+        }
+      ]
+    },
+    {
+      "section_id": "S7-03",
+      "title": "Regles et sources juridiques",
+      "content": [
+        {
+          "source_id": "mock://legal/unverified_article_006",
+          "eligible_for_legal_support": false,
+          "reasons": [
+            "MISSING_CITATION"
+          ],
+          "temporal_eligibility": "not_confirmed",
+          "validity_status_reported": null,
+          "temporal_reasons": [
+            "MISSING_CITATION",
+            "REFERENCE_DATE_MISSING",
+            "EFFECTIVE_DATE_UNKNOWN",
+            "TEMPORAL_VALIDITY_UNKNOWN"
+          ],
+          "status": "pending_applicability_verification",
+          "eligible_for_legal_conclusion": false
+        }
+      ]
+    },
+    {
+      "section_id": "S7-04",
+      "title": "Interpretation juridique",
+      "content": [
+        {
+          "status": "pending_verification",
+          "reason": "additional_legal_verification_required",
+          "legal_conclusion": null,
+          "citation_ids": []
+        }
+      ]
+    },
+    {
+      "section_id": "S7-05",
+      "title": "Strategie juridique",
+      "content": [
+        {
+          "status": "blocked",
+          "reason": "verified_interpretation_unavailable",
+          "recommendations": [],
+          "legal_conclusion": null
+        }
+      ]
+    }
+  ],
+  "legal_conclusion": null
+}

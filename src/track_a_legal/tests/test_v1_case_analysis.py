@@ -1,0 +1,818 @@
+"""Tests unitaires du moteur Case Analysis v1."""
+
+import copy
+
+import pytest
+
+from src.track_a_legal.v1_case_analysis import analyze_case_v1
+
+
+def make_valid_request() -> dict:
+    """Créer un dossier fictif minimal conforme au contrat v1."""
+    return {
+        "contract_version": "track_a.v1",
+        "request_id": "REQ-TEST-001",
+        "case_id": "CASE-TEST-001",
+        "lang": "fr",
+        "parties": [],
+        "events": [],
+        "claims": [],
+        "evidence": [],
+    }
+
+
+def test_valid_request_is_preparatory() -> None:
+    """Un dossier minimal valide doit rester préparatoire."""
+    result = analyze_case_v1(make_valid_request())
+
+    assert result["case_id"] == "CASE-TEST-001"
+    assert result["timeline"] == []
+    assert result["reference_errors"] == []
+    assert result["analysis_status"] == "preparatory"
+    assert result["legal_conclusion"] is None
+
+
+def test_invalid_contract_version_is_rejected() -> None:
+    """Une version de contrat incorrecte doit être refusée."""
+    request = copy.deepcopy(make_valid_request())
+    request["contract_version"] = "track_a.v0"
+
+    with pytest.raises(ValueError, match="Invalid Request v1"):
+        analyze_case_v1(request)
+
+
+def make_document_fact() -> dict:
+    """Construire un fait DS3 fictif avec une citation traçable."""
+    return {
+        "fact_id": "FACT-001",
+        "subject_id": "PARTY-001",
+        "evidence_id": "EVID-001",
+        "document_id": "DOC-001",
+        "field_name": "salary",
+        "value": "1500",
+        "confidence": 0.95,
+        "user_confirmed": True,
+        "citation": {
+            "citation_id": "CIT-001",
+            "document_id": "DOC-001",
+            "exact_excerpt": "Salaire mensuel : 1500",
+            "page": 1,
+        },
+        "warnings": [],
+    }
+
+
+def test_confirmed_document_fact() -> None:
+    """Un fait confirmé et correctement cité est éligible."""
+    request = make_valid_request()
+
+    # Déclarer les références internes utilisées par le fait.
+    request["parties"] = [
+        {
+            "party_id": "PARTY-001",
+            "name": "Personne fictive",
+            "role": "employee",
+        }
+    ]
+    request["evidence"] = [
+        {
+            "evidence_id": "EVID-001",
+            "type": "document",
+            "description": "Document fictif",
+            "source": "DOC-001",
+        }
+    ]
+    request["document_facts"] = [make_document_fact()]
+
+    result = analyze_case_v1(request)
+
+    assessment = result["document_fact_assessments"][0]
+    assert assessment["fact_id"] == "FACT-001"
+    assert assessment["eligible_for_established_fact"] is True
+    assert assessment["reasons"] == []
+    assert result["analysis_status"] == "preparatory"
+    assert result["legal_conclusion"] is None
+
+
+def test_unconfirmed_document_fact() -> None:
+    """Un fait non confirmé doit rester insuffisamment justifié."""
+    request = make_valid_request()
+
+    request["parties"] = [
+        {
+            "party_id": "PARTY-001",
+            "name": "Personne fictive",
+            "role": "employee",
+        }
+    ]
+    request["evidence"] = [
+        {
+            "evidence_id": "EVID-001",
+            "type": "document",
+            "description": "Document fictif",
+            "source": "DOC-001",
+        }
+    ]
+
+    fact = make_document_fact()
+    fact["user_confirmed"] = False
+    request["document_facts"] = [fact]
+
+    result = analyze_case_v1(request)
+
+    assessment = result["document_fact_assessments"][0]
+    assert assessment["eligible_for_established_fact"] is False
+    assert "USER_NOT_CONFIRMED" in assessment["reasons"]
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_legal_source_without_citation() -> None:
+    """A legal source without citation cannot support analysis."""
+    request = make_valid_request()
+
+    # Explicit reference date for temporal checks.
+    request["reference_date"] = "2026-11-17"
+
+    # Fictitious legal source with deliberately missing citation.
+    request["legal_sources"] = [
+        {
+            "article_id": "ART-001",
+            "reference": "Reference fictive",
+            "source_id": "SRC-001",
+            "text": "Texte juridique fictif pour test.",
+        }
+    ]
+
+    result = analyze_case_v1(request)
+
+    # Verify textual source qualification.
+    assessment = result["legal_source_assessments"][0]
+
+    assert assessment["source_id"] == "SRC-001"
+    assert assessment["eligible_for_legal_support"] is False
+    assert "MISSING_CITATION" in assessment["reasons"]
+
+    # No legal conclusion may be generated.
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_future_legal_version_is_flagged() -> None:
+    """A future legal version must not support an earlier case."""
+    request = make_valid_request()
+
+    # The case predates the legal source's effective period.
+    request["reference_date"] = "2026-01-15"
+
+    # Fictitious source with a traceable textual citation.
+    request["legal_sources"] = [
+        {
+            "article_id": "ART-002",
+            "reference": "Reference juridique fictive",
+            "source_id": "SRC-002",
+            "text": "Disposition fictive pour test temporel.",
+            "citation": {
+                "citation_id": "CIT-002",
+                "document": "Document juridique fictif",
+                "exact_excerpt": "Disposition fictive",
+                "page": 1,
+            },
+            "effective_from": "2026-06-01",
+            "effective_to": None,
+            "version_group": "GROUP-002",
+            "version": 2,
+            "applicable_at_reference_date": False,
+        }
+    ]
+
+    result = analyze_case_v1(request)
+
+    # The text may be correctly cited, but the version is future.
+    assert (
+        result["legal_source_assessments"][0][
+            "eligible_for_legal_support"
+        ]
+        is True
+    )
+
+    # Check both temporal validators independently.
+    temporal = result["legal_temporal_assessments"][0]
+    assert temporal["eligible_for_legal_conclusion"] is False
+
+    version_codes = {
+        error["code"]
+        for error in result["legal_version_errors"]
+    }
+    assert "NOT_YET_EFFECTIVE" in version_codes
+
+    # The engine must not produce a legal conclusion.
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_multiple_applicable_legal_versions() -> None:
+    """Flag two versions declared applicable to the same case date."""
+    request = make_valid_request()
+
+    # Use an explicit reference date.
+    request["reference_date"] = "2026-11-17"
+
+    # Both fictitious versions claim applicability to the same date.
+    request["legal_sources"] = [
+        {
+            "article_id": "ART-003",
+            "reference": "Reference fictive - version 1",
+            "source_id": "SRC-003-V1",
+            "text": "Disposition fictive version un.",
+            "citation": {
+                "citation_id": "CIT-003-V1",
+                "document": "Document juridique fictif",
+                "page": 1,
+                "exact_excerpt": "Disposition fictive version un.",
+            },
+            "effective_from": "2025-01-01",
+            "effective_to": None,
+            "version_group": "GROUP-003",
+            "version": 1,
+            "applicable_at_reference_date": True,
+        },
+        {
+            "article_id": "ART-003",
+            "reference": "Reference fictive - version 2",
+            "source_id": "SRC-003-V2",
+            "text": "Disposition fictive version deux.",
+            "citation": {
+                "citation_id": "CIT-003-V2",
+                "document": "Document juridique fictif",
+                "page": 2,
+                "exact_excerpt": "Disposition fictive version deux.",
+            },
+            "effective_from": "2026-01-01",
+            "effective_to": None,
+            "version_group": "GROUP-003",
+            "version": 2,
+            "applicable_at_reference_date": True,
+        },
+    ]
+
+    # Execute the integrated Case Analysis v1 engine.
+    result = analyze_case_v1(request)
+
+    # Both sources have traceable textual citations.
+    assert all(
+        item["eligible_for_legal_support"]
+        for item in result["legal_source_assessments"]
+    )
+
+    # Detect contradictory applicability declarations.
+    codes = {
+        error["code"]
+        for error in result["legal_version_errors"]
+    }
+    assert "MULTIPLE_APPLICABLE_VERSIONS" in codes
+
+    # Do not infer a legal conclusion from conflicting versions.
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+
+def test_explicit_contradiction_takes_priority():
+    """Preserve reference errors while flagging explicit contradictions."""
+    from src.track_a_legal.v1_case_analysis import analyze_case_v1
+
+    # Construct a valid fictitious request with an unknown party.
+    request = {
+        "contract_version": "track_a.v1",
+        "request_id": "REQ-PRIORITY-001",
+        "case_id": "CASE-PRIORITY-001",
+        "lang": "fr",
+        "parties": [],
+        "events": [],
+        "claims": [
+            {
+                "claim_id": "CLM-001",
+                "party_id": "PARTY-UNKNOWN",
+                "text": "Demande fictive pour tester les references.",
+            }
+        ],
+        "evidence": [],
+        "contradictions": [
+            {
+                "contradiction_id": "CONTRA-001",
+                "description": "Deux sources sont contradictoires.",
+                "source_ids": ["SRC-001", "SRC-002"],
+            }
+        ],
+    }
+
+    # Both conditions must be preserved in the internal analysis.
+    result = analyze_case_v1(request)
+
+    assert result["reference_errors"]
+    assert result["analysis_status"] == "contradictory_evidence"
+
+    # No legal conclusion is permitted from this unresolved case.
+    assert result["legal_conclusion"] is None
+
+
+def test_case_analysis_integrates_five_pillars() -> None:
+    """Integrate S5 internally without producing legal conclusions."""
+
+    request = make_valid_request()
+
+    # Run the official Request v1 validation and internal analysis.
+    result = analyze_case_v1(request)
+
+    # The internal analysis must contain the S5 engine output.
+    assert "five_pillars" in result
+
+    pillars = result["five_pillars"]["pillars"]
+
+    # Verify all five expected pillars.
+    assert set(pillars) == {
+        "faits",
+        "declarations",
+        "regles",
+        "interpretation",
+        "strategie",
+    }
+
+    # No sources: interpretation and strategy must abstain.
+    assert pillars["interpretation"][0]["status"] == "blocked"
+    assert pillars["strategie"][0]["status"] == "blocked"
+
+    # No legal conclusion may be inferred.
+    assert result["legal_conclusion"] is None
+    assert result["five_pillars"]["legal_conclusion"] is None
+
+def test_duplicate_claim_id_is_reported_in_v1_analysis() -> None:
+    """Duplicate claim IDs must be reported without legal conclusions."""
+
+    # Start from a valid fictitious Request v1.
+    request = make_valid_request()
+
+    # Declare the party referenced by both claims.
+    request["parties"] = [
+        {
+            "party_id": "PARTY-001",
+            "name": "Personne fictive",
+            "role": "employee",
+        }
+    ]
+
+    # Intentionally duplicate the claim identifier.
+    request["claims"] = [
+        {
+            "claim_id": "CLAIM-001",
+            "party_id": "PARTY-001",
+            "text": "Première déclaration fictive.",
+        },
+        {
+            "claim_id": "CLAIM-001",
+            "party_id": "PARTY-001",
+            "text": "Deuxième déclaration fictive.",
+        },
+    ]
+
+    # Run the complete internal analysis.
+    result = analyze_case_v1(request)
+
+    # Verify the explicit duplicate-ID error.
+    assert any(
+        error["code"] == "DUPLICATE_ID"
+        and error["path"] == "claims/1/claim_id"
+        and error["reference_id"] == "CLAIM-001"
+        for error in result["reference_errors"]
+    )
+
+    # An ambiguous case cannot remain preparatory.
+    assert result["analysis_status"] == "insufficient_evidence"
+
+    # Never generate a legal conclusion.
+    assert result["legal_conclusion"] is None
+    assert result["five_pillars"]["legal_conclusion"] is None
+
+    # S5 must keep every declaration unverified.
+    declarations = result["five_pillars"]["pillars"]["declarations"]
+    assert len(declarations) == 2
+    assert all(
+        declaration["status"] == "unverified"
+        for declaration in declarations
+    )
+
+
+def test_explicit_missing_information_marks_case_insufficient():
+    """An explicitly missing item must affect analysis completeness."""
+
+    import json
+    from pathlib import Path
+
+    from src.track_a_legal.v1_case_analysis import analyze_case_v1
+
+    # Load the fictitious reference case containing missing information.
+    cards_path = Path(
+        "data/mock_cards/track_a_case_cards_v1.json"
+    )
+    cards = json.loads(cards_path.read_text(encoding="utf-8-sig"))
+
+    matches = [
+        case for case in cards
+        if case["case_id"] == "CASE-A-003"
+    ]
+    assert len(matches) == 1
+
+    # Analyze without inventing missing evidence or legal conclusions.
+    result = analyze_case_v1(matches[0])
+
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+def test_applicability_flag_contradicts_expired_period():
+    """Une version expirée ne peut pas être déclarée applicable."""
+    from src.track_a_legal.v1_legal_version_validation import (
+        validate_legal_versions,
+    )
+
+    sources = [
+        {
+            "source_id": "SRC-EXPIRED",
+            "version_group": "GROUP-EXPIRED",
+            "version": 1,
+            "effective_from": "2020-01-01",
+            "effective_to": "2024-12-31",
+            "applicable_at_reference_date": True,
+        }
+    ]
+
+    errors = validate_legal_versions(
+        sources,
+        reference_date="2026-03-01",
+    )
+
+    codes = {error["code"] for error in errors}
+
+    assert "NO_LONGER_EFFECTIVE" in codes
+    assert "APPLICABILITY_DATE_CONTRADICTION" in codes
+
+def test_historical_and_future_versions_declared_not_applicable_are_valid():
+    """Preserve temporal diagnostics for non-applicable versions."""
+    from src.track_a_legal.v1_legal_version_validation import (
+        validate_legal_versions,
+    )
+
+    sources = [
+        {
+            "source_id": "SRC-HISTORICAL",
+            "version_group": "GROUP-1",
+            "version": 1,
+            "effective_from": "2020-01-01",
+            "effective_to": "2024-12-31",
+            "applicable_at_reference_date": False,
+        },
+        {
+            "source_id": "SRC-FUTURE",
+            "version_group": "GROUP-1",
+            "version": 3,
+            "effective_from": "2028-01-01",
+            "effective_to": None,
+            "applicable_at_reference_date": False,
+        },
+    ]
+
+    errors = validate_legal_versions(
+        sources,
+        reference_date="2026-03-01",
+    )
+
+    # Preserve temporal diagnostics without declaring a contradiction.
+    assert errors == [
+        {
+            "code": "NO_LONGER_EFFECTIVE",
+            "path": "legal_sources[0]",
+        },
+        {
+            "code": "NOT_YET_EFFECTIVE",
+            "path": "legal_sources[1]",
+        },
+    ]
+
+
+def test_integrated_legal_version_history() -> None:
+    """Preserve legal version history without certifying applicability."""
+    request = make_valid_request()
+    request["reference_date"] = "2026-03-01"
+
+    # Define historical, current and future versions.
+    versions = [
+        (1, "2020-01-01", "2024-12-31", False),
+        (2, "2025-01-01", "2027-12-31", True),
+        (3, "2028-01-01", None, False),
+    ]
+
+    request["legal_sources"] = []
+
+    # Build fictitious sources with traceable citations.
+    for version, start, end, applicable in versions:
+        text = f"Disposition fictive version {version}."
+
+        request["legal_sources"].append({
+            "article_id": "ART-HISTORY",
+            "reference": f"Reference fictive V{version}",
+            "source_id": f"SRC-HISTORY-V{version}",
+            "text": text,
+            "citation": {
+                "citation_id": f"CIT-HISTORY-V{version}",
+                "document": "Document juridique fictif",
+                "page": version,
+                "exact_excerpt": text,
+            },
+            "effective_date": start,
+            "effective_from": start,
+            "effective_to": end,
+            "version_group": "GROUP-HISTORY",
+            "version": version,
+            "applicable_at_reference_date": applicable,
+        })
+
+    # Execute the integrated DS4 analysis.
+    result = analyze_case_v1(request)
+
+    # Preserve all three sources.
+    assert len(result["legal_source_assessments"]) == 3
+    assert len(result["legal_temporal_assessments"]) == 3
+
+    # All textual citations must be structurally valid.
+    assert all(
+        item["eligible_for_legal_support"]
+        for item in result["legal_source_assessments"]
+    )
+
+    # Preserve historical and future diagnostics only.
+    assert result["legal_version_errors"] == [
+        {
+            "code": "NO_LONGER_EFFECTIVE",
+            "path": "legal_sources[0]",
+        },
+        {
+            "code": "NOT_YET_EFFECTIVE",
+            "path": "legal_sources[2]",
+        },
+    ]
+
+    # No contradictory temporal metadata.
+    assert all(
+        not item["findings"]
+        for item in result["temporal_consistency_findings"]
+    )
+
+    # Never certify legal applicability automatically.
+    assert all(
+        not item["eligible_for_legal_conclusion"]
+        for item in result["legal_temporal_assessments"]
+    )
+
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_orchestrator_reuses_version_diagnostics(monkeypatch):
+    """Verify that Case Analysis uses precomputed diagnostics."""
+    from src.track_a_legal import v1_case_analysis as module
+
+    original = module.classify_version_diagnostics
+    calls = []
+
+    def spy(sources, reference_date, *, diagnostics=None):
+        # Require diagnostics already computed by the orchestrator.
+        assert diagnostics is not None
+        calls.append(diagnostics)
+
+        return original(
+            sources,
+            reference_date,
+            diagnostics=diagnostics,
+        )
+
+    monkeypatch.setattr(
+        module, "classify_version_diagnostics", spy
+    )
+
+    # Reuse the existing integrated multiversion scenario.
+    test_integrated_legal_version_history()
+
+    # Classification must be called exactly once.
+    assert len(calls) == 1
+    assert len(calls[0]) == 2
+
+
+def make_documentary_request(page=1):
+    """Build a valid request with a synthetic legal citation."""
+    request = make_valid_request()
+
+    request["legal_sources"] = [
+        {
+            "article_id": "ART-DOC-001",
+            "source_id": "SRC-DOC-001",
+            "reference": "Reference fictive",
+            "text": "Article fictif.",
+            "citation": {
+                "citation_id": "CIT-DOC-001",
+                "document": "test.pdf",
+                "page": page,
+                "exact_excerpt": "Article fictif.",
+            },
+        }
+    ]
+
+    return request
+
+
+def create_documentary_test_pdf(root, text):
+    """Create an independent synthetic PDF."""
+    import pytest
+
+    pymupdf = pytest.importorskip("pymupdf")
+
+    with pymupdf.open() as pdf:
+        page = pdf.new_page()
+        page.insert_text((72, 72), text)
+        pdf.save(root / "test.pdf")
+
+
+def test_documentary_integration_default_compatibility():
+    """Preserve the existing default response."""
+    result = analyze_case_v1(make_documentary_request())
+
+    assert "documentary_assessments" not in result
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_match(tmp_path):
+    """Verify an actual PDF through the DS4 engine."""
+    create_documentary_test_pdf(tmp_path, "Article fictif.")
+
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "text_matched"
+    assert assessment["pdf_sha256"]
+    assert assessment["official_authenticity_confirmed"] is False
+    assert assessment["legal_applicability_confirmed"] is False
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_mismatch(tmp_path):
+    """Flag a non-matching documentary citation."""
+    create_documentary_test_pdf(tmp_path, "Autre article.")
+
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assert result["documentary_assessments"][0]["status"] == "not_matched"
+    assert result["analysis_status"] == "insufficient_evidence"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_missing_page(tmp_path):
+    """Never invent missing page metadata."""
+    result = analyze_case_v1(
+        make_documentary_request(page=None),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "not_verifiable"
+    assert assessment["reason"] == "MISSING_CITATION_PAGE"
+    assert result["analysis_status"] == "insufficient_evidence"
+
+
+def test_documentary_integration_missing_pdf(tmp_path):
+    """Handle an unavailable original PDF."""
+    result = analyze_case_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assessment = result["documentary_assessments"][0]
+
+    assert assessment["status"] == "not_verifiable"
+    assert assessment["reason"] == "DOCUMENT_UNAVAILABLE"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_integration_empty_sources(tmp_path):
+    """Preserve preparatory analysis without legal sources."""
+    result = analyze_case_v1(
+        make_valid_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    assert result["documentary_assessments"] == []
+    assert result["analysis_status"] == "preparatory"
+    assert result["legal_conclusion"] is None
+
+
+def test_documentary_handler_match(tmp_path):
+    """Preserve a textually qualified and matched source."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    create_documentary_test_pdf(tmp_path, "Article fictif.")
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == ["ART-DOC-001"]
+    assert response["result"]["legal_conclusion"] is None
+    assert "documentary_assessments" not in response["result"]
+
+
+def test_documentary_handler_mismatch(tmp_path):
+    """Exclude a source that does not match its PDF."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    create_documentary_test_pdf(tmp_path, "Autre article.")
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+    assert response["result"]["analysis_status"] == "insufficient_evidence"
+    assert response["result"]["legal_conclusion"] is None
+
+
+def test_documentary_handler_missing_page(tmp_path):
+    """Exclude citations without declared pages."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(
+        make_documentary_request(page=None),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+    assert response["result"]["analysis_status"] == "insufficient_evidence"
+
+
+def test_documentary_handler_missing_pdf(tmp_path):
+    """Exclude sources whose original PDF is unavailable."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(
+        make_documentary_request(),
+        pdf_root=str(tmp_path),
+    )
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == []
+
+
+def test_documentary_handler_default_compatibility():
+    """Preserve historical behavior without documentary mode."""
+    from src.track_a_legal.v1_handler import (
+        handle_v1,
+        _RESPONSE_VALIDATOR,
+    )
+
+    response = handle_v1(make_documentary_request())
+
+    _RESPONSE_VALIDATOR.validate(response)
+
+    assert response["status"] == "ok"
+    assert response["result"]["legal_sources_used"] == ["ART-DOC-001"]
+    assert response["result"]["legal_conclusion"] is None

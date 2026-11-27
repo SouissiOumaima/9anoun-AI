@@ -486,6 +486,12 @@ def test_b1_secteur_charge():
         "PEINTURES",
         "CHAUSSURE",
         "CUIRS_TANNERIE",
+        "CLERCS_AVOCATS",
+        "PERSONNEL_PHARMACIES",
+        "CONSERVERIES_CONDITIONNEMENT_HUILES",
+        "GROSSISTES_REPARTITEURS_MEDICAMENTS",
+        "SALLES_CINEMA",
+        "TRANSPORT_ROUTIER_MARCHANDISES",
     }
 
 

@@ -19,6 +19,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker
 
 from src.track_a_legal.tools.case_analysis import analyze_case
+from src.track_a_legal.tools.case_integrity import validate_case_integrity
 
 
 # Chemin vers la racine du projet
@@ -121,6 +122,19 @@ def handle(request: dict) -> dict:
     else:
         try:
             # 4. Exécuter l'analyse préparatoire
+            # Verifier la coherence semantique du dossier.
+            # Une incoherence connue produit un refus PARAM_INVALIDE.
+            try:
+                validate_case_integrity(request)
+            except ValueError:
+                return make_refus(
+                    request_id,
+                    case_id,
+                    "PARAM_INVALIDE",
+                    "Le dossier contient des identifiants ou references incoherents.",
+                    "الملف يحتوي على معرفات أو مراجع غير متسقة.",
+                )
+
             analysis = analyze_case(request)
 
             # 5. Vérifier sa structure

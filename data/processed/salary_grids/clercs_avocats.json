@@ -1,0 +1,260 @@
+{
+ "_meta": {
+  "secteur_code": "CLERCS_AVOCATS",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لكتبة المحامين",
+  "convention_fr": "Convention collective sectorielle des clercs d'avocats",
+  "source_file": "data/raw/pdf/كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+  "pages_sources": [
+   4,
+   5,
+   6,
+   11,
+   12
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "36 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse), comparées par script : 0 écart ni doute ; une seule table datée : contrôle de croissance le long des degrés et entre catégories, 2 cellules signalées, les deux anomalies imprimées connues de la ligne 1 (degrés 2 et 5), conservées ; montants des primes lus sur l'image. Vérification humaine (DS5, 21/11/2026) : « J'ai vérifié les 42 points de claude-docs/vague6/verification/page.html, tous conformes : 12 montants de primes écrits en toutes lettres (7 en lettres seulement, 5 en lettres et en chiffres), les 2 anomalies des clercs et les 3 observations des grossistes au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et, pour les pharmacies, sur le contrôle de hausse. »",
+  "decision_ref": "D84",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 335 à 546) ; durée du travail : 40 heures (art. 20, p.6).",
+  "note_degres": "En-tête (annexe 1, p.12) : 12 degrés, durée de séjour 1, 1, 2, 2, puis 3 (degrés 5 à 12) ; libellés « 0-1 » … « 27-30 » ; bornes exactes refusées (D6) ; à partir de 30 ans, refus (art. 11, pp.4-5).",
+  "note_categories": "Catégories 1 à 3 (annexe 2, p.12) : assistant clerc, clerc, premier clerc ; population unique.",
+  "note_dates": "Grille sans date (annexe 1, p.12, page imprimée 17 ; art. 42, p.11) : date d'effet 2014-05-01 en hypothèse affichée (entrée en vigueur, art. 47, p.11) ; refus avant cette date ; aucun avenant.",
+  "note_anomalies": "Ligne 1 (assistant clerc) : degré 2 (335.555) plus bas que le degré 1 (337.758), degré 5 (348.380) plus bas que le degré 4 (348.804) ; nettement imprimés, conservés et déclarés en anomalies imprimées connues (anomalies_imprimees de la table)."
+ },
+ "populations": {
+  "clercs": {
+   "libelle_fr": "Clercs d'avocats",
+   "libelle_ar": "كتبة المحامين",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 12,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "clercs": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-9",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "9-12",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-15",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "clercs": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 4,
+   "source_article": "11",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des clercs d'avocats s'arrête au degré 12 (27 à 30 ans) ; l'en-tête (annexe 1, page 12) imprime les durées de séjour 1, 1, 2, 2 puis 3 ans (degrés 5 à 12), soit 30 ans, et l'article 11 (pages 4-5) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية كتبة المحامين عند الدرجة 12 (من 27 إلى 30 سنة)؛ ويذكر رأس الجدول (الملحق عدد 1، الصفحة 12) مدد البقاء 1 و1 و2 و2 ثم 3 سنوات (من الدرجة 5 إلى الدرجة 12)، أي 30 سنة، ولا ينص الفصل 11 (الصفحتان 4 و5) على شيء بعد الدرجة 12. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  }
+ },
+ "categories": {
+  "clercs": [
+   "1",
+   "2",
+   "3"
+  ]
+ },
+ "libelles_categories": {
+  "clercs": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1 : Assistant clerc",
+    "libelle_ar": "مساعد كاتب",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     12
+    ]
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2 : Clerc",
+    "libelle_ar": "كاتب",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     12
+    ]
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3 : Premier clerc",
+    "libelle_ar": "كاتب أول",
+    "libelle_ar_redige": false,
+    "classification_pages": [
+     12
+    ]
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "clercs": {
+   "fr": [
+    "Aucune date d'effet n'est imprimée sur la grille (annexe 1, page 12) : date d'effet retenue en hypothèse, le 1er mai 2014, entrée en vigueur de la convention (article 47, page 11) ; aucun montant n'est renvoyé avant cette date.",
+    "Unité non imprimée sur la grille (page 12) : TND/mois en hypothèse (montants de 335,555 à 545,736).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Promotion automatique d'une catégorie à la suivante (article 11 ب, pages 4-5) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "لا يذكر جدول الأجور (الملحق عدد 1، الصفحة 12) تاريخ نفاذ: يُعتمد على سبيل الافتراض تاريخ 1 ماي 2014، تاريخ دخول الاتفاقية حيز التنفيذ (الفصل 47، الصفحة 11)؛ لا يُرجَع أي مبلغ قبل هذا التاريخ.",
+    "الوحدة غير مطبوعة بالجدول (الصفحة 12): الدينار في الشهر على سبيل الافتراض (مبالغ من 335,555 à 545,736).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "لا تُحتسب الترقية الآلية من صنف إلى الصنف الموالي (الفصل 11 ب، الصفحتان 4 و5).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [],
+ "primes_non_couvertes": {
+  "indemnite_licenciement": {
+   "source_pdf_page": 5,
+   "source_article": "15",
+   "message_fr": "Indemnité de licenciement (article 15, page 5) : fixée selon l'ancienneté par renvoi au code du travail (articles 22, 23 et 23 مكرر), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "غرامة الفصل عن العمل (الفصل 15، الصفحة 5): تُضبط حسب الأقدمية بالإحالة على مجلة الشغل (الفصول 22 و23 و23 مكرر)، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "indemnite_perte_emploi": {
+   "source_pdf_page": 11,
+   "source_article": "44",
+   "message_fr": "Indemnité pour perte d'emploi (article 44, page 11) : un jour de salaire brut par mois de travail effectif, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "التعويض عن فقدان موطن العمل (الفصل 44، الصفحة 11): بأجرة يوم عمل خام عن كل شهر عمل فعلي، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CLERCS_2014-05-01",
+   "numero_imprime": 1,
+   "population": "clercs",
+   "effective_date": "2014-05-01",
+   "source_pdf_page": 12,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     337.758,
+     335.555,
+     342.469,
+     348.804,
+     348.380,
+     354.133,
+     359.125,
+     364.122,
+     369.118,
+     374.133,
+     381.105,
+     387.295
+    ],
+    "2": [
+     390.772,
+     393.270,
+     398.268,
+     403.265,
+     408.268,
+     416.567,
+     423.942,
+     431.303,
+     436.161,
+     443.394,
+     448.215,
+     460.824
+    ],
+    "3": [
+     462.003,
+     465.141,
+     472.317,
+     478.482,
+     484.646,
+     491.481,
+     500.562,
+     512.600,
+     521.689,
+     530.995,
+     535.686,
+     545.736
+    ]
+   },
+   "anomalies_imprimees": [
+    {
+     "ligne": 1,
+     "colonne": 2,
+     "categorie": "1",
+     "degre": 2,
+     "valeur_imprimee": 335.555,
+     "valeur_degre_precedent": 337.758,
+     "constat": "plus basse que le degré précédent de la même ligne",
+     "note": "Valeur imprimée conservée, aucune correction ; anomalie imprimée connue : lue de façon identique aux deux lectures, nettement imprimée et vérifiée sur l'image au zoom à 400 dpi par DS5 (page de vérification, groupe 2)."
+    },
+    {
+     "ligne": 1,
+     "colonne": 5,
+     "categorie": "1",
+     "degre": 5,
+     "valeur_imprimee": 348.380,
+     "valeur_degre_precedent": 348.804,
+     "constat": "plus basse que le degré précédent de la même ligne",
+     "note": "Valeur imprimée conservée, aucune correction ; anomalie imprimée connue : lue de façon identique aux deux lectures, nettement imprimée et vérifiée sur l'image au zoom à 400 dpi par DS5 (page de vérification, groupe 2)."
+    }
+   ]
+  }
+ ]
+}

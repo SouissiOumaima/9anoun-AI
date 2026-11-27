@@ -1,0 +1,313 @@
+{
+  "report_version": "track_a_business_validation_s6_report.v1",
+  "generated_at_utc": "2026-11-19T19:52:31.315945+00:00",
+  "validation_level": "automated_business_readiness",
+  "lawyer_validated": false,
+  "summary": {
+    "total_cases": 7,
+    "passed": 5,
+    "issues_found": 2,
+    "blocked": 0
+  },
+  "known_contract_limitations": [
+    {
+      "case_id": "CASE-A-003",
+      "criterion": "S6-C05",
+      "reason": "missing_evidence constrained to an empty array"
+    },
+    {
+      "case_id": "CASE-A-004",
+      "criterion": "S6-C05",
+      "reason": "contradictions constrained to an empty array"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "CASE-A-001",
+      "automated_status": "passed",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": true,
+          "input_missing_count": 0,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-002",
+      "automated_status": "passed",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 1,
+          "expected_reference_error_count": 1,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": true,
+          "input_missing_count": 0,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-003",
+      "automated_status": "issues_found",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": false,
+          "input_missing_count": 1,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-004",
+      "automated_status": "issues_found",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": false,
+          "input_missing_count": 0,
+          "input_contradiction_count": 1,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-005",
+      "automated_status": "passed",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": true,
+          "input_missing_count": 0,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-006",
+      "automated_status": "passed",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": true,
+          "input_missing_count": 0,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    },
+    {
+      "case_id": "CASE-A-007",
+      "automated_status": "passed",
+      "checks": {
+        "S6-C01": {
+          "passed": true
+        },
+        "S6-C02": {
+          "passed": true,
+          "scope": "structural_only"
+        },
+        "S6-C03": {
+          "passed": true
+        },
+        "S6-C04": {
+          "passed": true,
+          "reference_error_count": 0,
+          "expected_reference_error_count": 0,
+          "scope": "technical_reference_regression"
+        },
+        "S6-C05": {
+          "passed": true,
+          "input_missing_count": 0,
+          "input_contradiction_count": 0,
+          "scope": "response_explainability"
+        },
+        "S6-C06": {
+          "passed": null,
+          "status": "requires_legal_review"
+        },
+        "S6-C07": {
+          "passed": true,
+          "scope": "automated_abstention"
+        },
+        "S6-C08": {
+          "passed": null,
+          "status": "requires_lawyer_review"
+        }
+      },
+      "lawyer_status": "pending"
+    }
+  ]
+}
