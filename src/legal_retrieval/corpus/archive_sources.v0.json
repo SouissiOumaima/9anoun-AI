@@ -1,0 +1,566 @@
+{
+  "schema": "archive_sources.v0",
+  "decision_ref": "D75",
+  "sources": [
+    {
+      "digest": "الاتفاقية الإطارية",
+      "source_id": "CC-CADRE",
+      "ds2_code": "cadre",
+      "type": "framework_convention",
+      "pdf": "الاطارية.pdf",
+      "label_fr": "Convention collective cadre",
+      "label_ar": "الاتفاقيّة المشتركة الاطـاريّــة (محيّنة 2022)",
+      "articles": 53
+    },
+    {
+      "digest": "الاتفاقية الإطارية الفلاحية",
+      "source_id": "CC-CADRE-AGRICOLE",
+      "ds2_code": "cadre_agricole",
+      "type": "framework_convention",
+      "pdf": "فلاحي الاتفاقية المشتركة الإطارية.pdf",
+      "label_fr": "Convention collective cadre du secteur agricole",
+      "label_ar": "الاتفاقية المشتركة الإطارية في القطاع الفلاحي",
+      "articles": 43
+    },
+    {
+      "digest": "وكالات الأسفار",
+      "source_id": "CCS-AGENCES-VOYAGES",
+      "ds2_code": "agences_voyages",
+      "type": "sectoral_convention",
+      "pdf": "وكالات الاسفار.pdf",
+      "label_fr": "Agences de voyages",
+      "label_ar": "الاتفاقية المشتركة القطاعية لوكالات الأسفار",
+      "articles": 61
+    },
+    {
+      "digest": "جمعيات رعاية ذوي الإعاقة",
+      "source_id": "CCS-ASSOCIATIONS",
+      "ds2_code": "associations_personnes_handicapees",
+      "type": "sectoral_convention",
+      "pdf": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقيـن.pdf",
+      "label_fr": "Associations de personnes handicapées",
+      "label_ar": "الاتفاقيّة المشتركة القطاعيّة لأعوان جمعيّات رعاية الأشخاص المعوّقين",
+      "articles": 46
+    },
+    {
+      "digest": "التأمين",
+      "source_id": "CCS-ASSURANCE",
+      "ds2_code": "assurance",
+      "type": "sectoral_convention",
+      "pdf": "الاتفاقية المشتركة القطاعية للتأميـن.pdf",
+      "label_fr": "Assurance",
+      "label_ar": "الاتفاقية المشتركة القطاعية للتأمين",
+      "articles": 53
+    },
+    {
+      "digest": "مصنّعو وتجار السيارات",
+      "source_id": "CCS-AUTOMOBILE",
+      "ds2_code": "constructeurs_concessionnaires_automobiles",
+      "type": "sectoral_convention",
+      "pdf": "صانعي و وكلاء السيارات.pdf",
+      "label_fr": "Constructeurs et concessionnaires automobiles",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصانعي و وكلاء السيارات",
+      "articles": 70
+    },
+    {
+      "digest": "بنوك",
+      "source_id": "CCS-BANQUES",
+      "ds2_code": "banques",
+      "type": "sectoral_convention",
+      "pdf": "البنوك.pdf",
+      "label_fr": "Banques et établissements financiers",
+      "label_ar": "الاتفاقية المشتركة القطاعية لأعوان البنوك",
+      "articles": 58
+    },
+    {
+      "digest": "صناعة الخشب والموبيليا",
+      "source_id": "CCS-BOIS-MEUBLES",
+      "ds2_code": "bois_meubles_chaussons",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الخشب والموبيليا والخفاف.pdf",
+      "label_fr": "Bois, ameublement et chaussons",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الخشب والموبيليا والخفاف",
+      "articles": 68
+    },
+    {
+      "digest": "المشروبات الكحولية",
+      "source_id": "CCS-BOISSONS-ALCOOLISEES",
+      "ds2_code": "boissons_alcoolisees",
+      "type": "sectoral_convention",
+      "pdf": "صناعة وتجارة المشروبات الكحولية.pdf",
+      "label_fr": "Fabrication et commerce des boissons alcoolisées",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة وتجارة المشروبات الكحولية",
+      "articles": 60
+    },
+    {
+      "digest": "المشروبات الغازية",
+      "source_id": "CCS-BOISSONS-GAZEUSES",
+      "ds2_code": "boissons_gazeuses_jus_eaux_minerales",
+      "type": "sectoral_convention",
+      "pdf": "معامل المشروبات الغازية غير الكحولية.pdf",
+      "label_fr": "Boissons gazeuses non alcoolisées, jus de fruits et eaux minérales",
+      "label_ar": "الاتفاقية القطاعية المشتركة لمعامل المشروبات الغازية غير الكحولية وعصير الغلال والمياه المعدنية",
+      "articles": 61
+    },
+    {
+      "digest": "مخابز",
+      "source_id": "CCS-BOULANGERIES",
+      "ds2_code": "boulangeries",
+      "type": "sectoral_convention",
+      "pdf": "المخابز.pdf",
+      "label_fr": "Boulangeries",
+      "label_ar": "الاتفاقية المشتركة القطاعية للمخابز",
+      "articles": 58
+    },
+    {
+      "digest": "البناء والأشغال العامة",
+      "source_id": "CCS-BTP",
+      "ds2_code": "btp",
+      "type": "sectoral_convention",
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء والأشغال العامة.pdf",
+      "label_fr": "Bâtiment et travaux publics",
+      "label_ar": "الاتفاقية المشتركة القطاعية للبناء والأشغال العامة",
+      "articles": 61
+    },
+    {
+      "digest": "المقاهي والمطاعم والحانات",
+      "source_id": "CCS-CAFES-RESTAURANTS",
+      "ds2_code": "cafes_restaurants_bars",
+      "type": "sectoral_convention",
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "label_fr": "Cafés, bars, restaurants et établissements similaires",
+      "label_ar": "الاتفاقية القطاعية المشتركة للمقاهي والحانات والمطاعم والمؤسسات المشابهة لها",
+      "articles": 56
+    },
+    {
+      "digest": "صناعة الأحذية",
+      "source_id": "CCS-CHAUSSURES",
+      "ds2_code": "chaussures",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الاحذية و ما شاكلها.pdf",
+      "label_fr": "Fabrication de chaussures et articles similaires",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الأحذية وما شاكلها",
+      "articles": 53
+    },
+    {
+      "digest": "كتبة المحامين",
+      "source_id": "CCS-CLERCS-AVOCATS",
+      "ds2_code": "clercs_avocats",
+      "type": "sectoral_convention",
+      "pdf": "كتبة المحامين الاتفاقيّة المشتركة القطاعيّة.pdf",
+      "label_fr": "Clercs d'avocats",
+      "label_ar": "الاتفاقية المشتركة القطاعية لكتبة المحامين",
+      "articles": 47
+    },
+    {
+      "digest": "المصحات الخاصة",
+      "source_id": "CCS-CLINIQUES-PRIVEES",
+      "ds2_code": "cliniques_privees",
+      "type": "sectoral_convention",
+      "pdf": "مصحات الخاصة.pdf",
+      "label_fr": "Cliniques privées",
+      "label_ar": "الاتفاقية المشتركة القطاعية للمصحات الخاصة",
+      "articles": 53
+    },
+    {
+      "digest": "تجارة الجملة والتفصيل",
+      "source_id": "CCS-COMMERCE-GROS-DETAIL",
+      "ds2_code": "commerce_gros_demi_gros_detail",
+      "type": "sectoral_convention",
+      "pdf": "تجارة الجملة ونصف الجملة و التفصيل.pdf",
+      "label_fr": "Commerce de gros, demi-gros et détail",
+      "label_ar": "الاتفاقية المشتركة القطاعية لتجارة الجملة ونصف الجملة والتفصيل",
+      "articles": 59
+    },
+    {
+      "digest": "تجارة مواد البناء والخشب والحديد",
+      "source_id": "CCS-COMMERCE-MATERIAUX",
+      "ds2_code": "commerce_materiaux_bois_acier",
+      "type": "sectoral_convention",
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "label_fr": "Commerce des matériaux de construction, du bois et des produits sidérurgiques",
+      "label_ar": "الاتفاقية المشتركة القطاعية لتجارة مواد البناء والخشب والمواد الفولاذية",
+      "articles": 61
+    },
+    {
+      "digest": "صناعة الملابس",
+      "source_id": "CCS-CONFECTION",
+      "ds2_code": "confection_vetements",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الملابس المنسوجة و الجاهزة.pdf",
+      "label_fr": "Confection de vêtements tissés et prêt-à-porter",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الملابس المنسوجة والجاهزة",
+      "articles": 58
+    },
+    {
+      "digest": "صناعة الحلويات والبسكويت",
+      "source_id": "CCS-CONFISERIE-BISCUITERIE-CHOCOLATERIE",
+      "ds2_code": "confiserie_biscuiterie_chocolaterie",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الحلويات و البسكوي والشكلاطة والمرطبات.pdf",
+      "label_fr": "Confiserie, biscuiterie, chocolaterie et rafraîchissements",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الحلويات والبسكوي والشكلاطة والمرطبات",
+      "articles": 60
+    },
+    {
+      "digest": "المصبرات الغذائية",
+      "source_id": "CCS-CONSERVES",
+      "ds2_code": "conserves_alimentaires_huiles",
+      "type": "sectoral_convention",
+      "pdf": "معامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت.pdf",
+      "label_fr": "Conserves et semi-conserves alimentaires, conditionnement des huiles",
+      "label_ar": "الاتفاقية المشتركة القطاعية لمعامل المصبرات وشبه المصبرات الغذائية وتعليب الزيوت",
+      "articles": 65
+    },
+    {
+      "digest": "البناء المعدني",
+      "source_id": "CCS-CONSTRUCTION-METALLIQUE",
+      "ds2_code": "construction_metallique",
+      "type": "sectoral_convention",
+      "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+      "label_fr": "Construction métallique",
+      "label_ar": "الاتفاقية المشتركة القطاعية للبناء المعدني",
+      "articles": 62
+    },
+    {
+      "digest": "صناعة مواد التجميل والعطورات",
+      "source_id": "CCS-COSMETIQUES-PARFUMS",
+      "ds2_code": "cosmetiques_parfums",
+      "type": "sectoral_convention",
+      "pdf": "صناعة مواد التجميل والعطورات.pdf",
+      "label_fr": "Cosmétiques et parfums",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة مواد التجميل والعطورات",
+      "articles": 69
+    },
+    {
+      "digest": "صناعة الجلود والدباغة",
+      "source_id": "CCS-CUIR-TANNERIE",
+      "ds2_code": "cuir_tannerie",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الجلود و الدباغة.pdf",
+      "label_fr": "Cuir et tannerie",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الجلود و الدباغة",
+      "articles": 54
+    },
+    {
+      "digest": "إدارة النفايات الصلبة",
+      "source_id": "CCS-DECHETS",
+      "ds2_code": "dechets_solides_liquides",
+      "type": "sectoral_convention",
+      "pdf": "التصرف في النفايات الصلبة.pdf",
+      "label_fr": "Gestion des déchets solides et liquides",
+      "label_ar": "الاتفاقية المشتركة القطاعية للتصرف في النفايات الصلبة والسائلة",
+      "articles": 43
+    },
+    {
+      "digest": "موزعو الأدوية",
+      "source_id": "CCS-DISTRIBUTEURS-MEDICAMENTS",
+      "ds2_code": "distributeurs_medicaments",
+      "type": "sectoral_convention",
+      "pdf": "موزعي الأدوية بالجملة و نصف الجملة.pdf",
+      "label_fr": "Distributeurs de médicaments en gros et demi-gros",
+      "label_ar": "الاتفاقية المشتركة القطاعية لموزعي الأدوية بالجملة ونصف الجملة",
+      "articles": 52
+    },
+    {
+      "digest": "توزيع المحروقات",
+      "source_id": "CCS-DISTRIBUTION-PETROLE",
+      "ds2_code": "distribution_petrole",
+      "type": "sectoral_convention",
+      "pdf": "تجارة و توزيع النفط و جميع مشتقاته.pdf",
+      "label_fr": "Commerce et distribution du pétrole et de ses dérivés",
+      "label_ar": "الإتفاقية المشتركة القطاعية لتجارة و توزيع النفط و جميع مشتقاته",
+      "articles": 51
+    },
+    {
+      "digest": "الكهرباء والإلكترونيات",
+      "source_id": "CCS-ELECTRICITE-ELECTRONIQUE",
+      "ds2_code": "electricite_electronique",
+      "type": "sectoral_convention",
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "label_fr": "Électricité et électronique",
+      "label_ar": "الاتفاقية المشتركة القطاعية للكهرباء والإلكترونيك",
+      "articles": 66
+    },
+    {
+      "digest": "مستخدمو الصيدليات",
+      "source_id": "CCS-EMPLOYES-PHARMACIE",
+      "ds2_code": "employes_pharmacie",
+      "type": "sectoral_convention",
+      "pdf": "مستخدمي الصيدليات.pdf",
+      "label_fr": "Employés de pharmacie",
+      "label_ar": "الاتفاقية القطاعية المشتركة لمستخدمي الصيدليات",
+      "articles": 49
+    },
+    {
+      "digest": "التعليم الخاص",
+      "source_id": "CCS-ENSEIGNEMENT-PRIVE",
+      "ds2_code": "enseignement_prive",
+      "type": "sectoral_convention",
+      "pdf": "الاتفاقية المشتركة القطاعية للتعليم الخا ص.pdf",
+      "label_fr": "Enseignement privé",
+      "label_ar": "الاتفاقية المشتركة القطاعية للتعليم الخاص",
+      "articles": 65
+    },
+    {
+      "digest": "المفرقعات",
+      "source_id": "CCS-EXPLOSIFS",
+      "ds2_code": "explosifs",
+      "type": "sectoral_convention",
+      "pdf": "مفرقعات.pdf",
+      "label_fr": "Explosifs et articles pyrotechniques",
+      "label_ar": "الاتفاقية المشتركة لقطاع المفرقعات",
+      "articles": 60
+    },
+    {
+      "digest": "المسابك والتعدين والبناءات الميكانيكية",
+      "source_id": "CCS-FONDERIES-METALLURGIE",
+      "ds2_code": "fonderies_metallurgie_constructions_mecaniques",
+      "type": "sectoral_convention",
+      "pdf": "مسابك و التعدين و البناءات الميكانيكية.pdf",
+      "label_fr": "Fonderies, métallurgie et constructions mécaniques",
+      "label_ar": "الاتفاقية المشتركة القطاعية للمسابك والتعدين والبناءات الميكانيكية",
+      "articles": 67
+    },
+    {
+      "digest": "الحراسة ونقل الأموال",
+      "source_id": "CCS-GARDIENNAGE",
+      "ds2_code": "gardiennage_securite_transport_fonds",
+      "type": "sectoral_convention",
+      "pdf": "أعوان مؤسسات الحراسة والسلامة ونقل العملة.pdf",
+      "label_fr": "Gardiennage, sécurité et transport de fonds",
+      "label_ar": "الاتفاقية المشتركة القطاعية لأعوان مؤسسات الحراسة والسلامة ونقل العملة",
+      "articles": 61
+    },
+    {
+      "digest": "النزل السياحية",
+      "source_id": "CCS-HOTELS-TOURISTIQUES",
+      "ds2_code": "hotels_touristiques",
+      "type": "sectoral_convention",
+      "pdf": "النزل السياحية والمؤسسات المشابهة لها2.pdf",
+      "label_fr": "Hôtels et établissements touristiques",
+      "label_ar": "الاتفاقية المشتركة القطاعية للنزل السياحية والمؤسسات المشابهة لها",
+      "articles": 57
+    },
+    {
+      "digest": "الطباعة والنشر والورق المقوى والتصوير",
+      "source_id": "CCS-IMPRIMERIE-EDITION",
+      "ds2_code": "imprimerie_edition_carton_photographie",
+      "type": "sectoral_convention",
+      "pdf": "الطباعة و النقاشة و التسفير و النشرو تحويل الكردونة و التصوير الشمسي.pdf",
+      "label_fr": "Imprimerie, reliure, édition, carton et photographie",
+      "label_ar": "الاتفاقية المشتركة القومية للطباعة و النقاشة و التسفير و النشر و تحويل الكردونة و التصوير الشمسي",
+      "articles": 58
+    },
+    {
+      "digest": "رياض الأطفال",
+      "source_id": "CCS-JARDINS-ENFANTS",
+      "ds2_code": "jardins_enfants_creches",
+      "type": "sectoral_convention",
+      "pdf": "رياض الأطفال.pdf",
+      "label_fr": "Jardins d'enfants et crèches",
+      "label_ar": "الاتفاقية المشتركة القطاعية لرياض الأطفال",
+      "articles": 54
+    },
+    {
+      "digest": "صناعة الحليب ومشتقاته",
+      "source_id": "CCS-LAIT",
+      "ds2_code": "lait_derives",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "label_fr": "Lait et produits dérivés",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الحليب ومشتقاته",
+      "articles": 67
+    },
+    {
+      "digest": "كراء السيارات",
+      "source_id": "CCS-LOCATION-VOITURES",
+      "ds2_code": "location_voitures",
+      "type": "sectoral_convention",
+      "pdf": "كراء السيارات.pdf",
+      "label_fr": "Location de voitures",
+      "label_ar": "الاتفاقية المشتركة القطاعية لقطاع كراء السيارات",
+      "articles": 63
+    },
+    {
+      "digest": "شحن وتفريغ الموانئ",
+      "source_id": "CCS-MANUTENTION-PORTUAIRE",
+      "ds2_code": "manutention_portuaire",
+      "type": "sectoral_convention",
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "label_fr": "Manutention dans les ports maritimes de commerce",
+      "label_ar": "الاتفاقية المشتركة القطاعية للشحن والتفريغ بالموانئ البحرية التجارية التونسية",
+      "articles": 77
+    },
+    {
+      "digest": "صناعة مواد البناء",
+      "source_id": "CCS-MATERIAUX-CONSTRUCTION",
+      "ds2_code": "materiaux_construction",
+      "type": "sectoral_convention",
+      "pdf": "صناعة مواد البناء.pdf",
+      "label_fr": "Fabrication de matériaux de construction",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة مواد البناء",
+      "articles": 57
+    },
+    {
+      "digest": "وكلاء التجهيزات الفلاحية",
+      "source_id": "CCS-MATERIEL-AGRICOLE",
+      "ds2_code": "materiel_agricole_genie_civil",
+      "type": "sectoral_convention",
+      "pdf": "وكلاء التجهيزات الفلاحية.pdf",
+      "label_fr": "Concessionnaires de matériel agricole et de génie civil",
+      "label_ar": "الاتفاقية المشتركة القطاعية لوكلاء التجهيزات الفلاحية والهندسة المدنية",
+      "articles": 68
+    },
+    {
+      "digest": "الميكانيك العام ومحطات الوقود",
+      "source_id": "CCS-MECANIQUE-STATIONS",
+      "ds2_code": "mecanique_generale_stations_service",
+      "type": "sectoral_convention",
+      "pdf": "ميكانيك العام و محطات بيع الوقود.pdf",
+      "label_fr": "Mécanique générale et stations-service",
+      "label_ar": "الاتفاقية المشتركة القطاعية للميكانيك العام و محطات بيع الوقود",
+      "articles": 62
+    },
+    {
+      "digest": "المطاحن",
+      "source_id": "CCS-MINOTERIES",
+      "ds2_code": "minoteries",
+      "type": "sectoral_convention",
+      "pdf": "مطاحن.pdf",
+      "label_fr": "Minoteries",
+      "label_ar": "الاتفاقية المشتركة القطاعية للمطاحن",
+      "articles": 62
+    },
+    {
+      "digest": "المعكرونة والكسكسي",
+      "source_id": "CCS-PATES-ALIMENTAIRES-COUSCOUS",
+      "ds2_code": "pates_alimentaires_couscous",
+      "type": "sectoral_convention",
+      "pdf": "العجين الغذائي و الكسكسي.pdf",
+      "label_fr": "Pâtes alimentaires et couscous",
+      "label_ar": "الاتفاقية المشتركة القطاعية للعجين الغذائي والكسكسي",
+      "articles": 64
+    },
+    {
+      "digest": "صناعة الدهن",
+      "source_id": "CCS-PEINTURE",
+      "ds2_code": "peinture",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الدهن.pdf",
+      "label_fr": "Fabrication de peinture",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الدهن",
+      "articles": 63
+    },
+    {
+      "digest": "صناعة البلاستيك",
+      "source_id": "CCS-PLASTIQUE",
+      "ds2_code": "plastique",
+      "type": "sectoral_convention",
+      "pdf": "صناعة وتحويل البلاستيك.pdf",
+      "label_fr": "Fabrication et transformation du plastique",
+      "label_ar": "الاتفاقية المشتركة الوطنية لصناعة و تحويل البلاستيك",
+      "articles": 57
+    },
+    {
+      "digest": "الصحافة المكتوبة",
+      "source_id": "CCS-PRESSE-ECRITE",
+      "ds2_code": "presse_ecrite",
+      "type": "sectoral_convention",
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "label_fr": "Entreprises de presse écrite",
+      "label_ar": "الاتفاقية المشتركة القطاعية لمؤسسات الصحافة المكتوبة",
+      "articles": 67
+    },
+    {
+      "digest": "صناعة مواد التنظيف",
+      "source_id": "CCS-PRODUITS-NETTOYAGE",
+      "ds2_code": "produits_nettoyage_insecticides",
+      "type": "sectoral_convention",
+      "pdf": "صناعة مواد التنظيف ومبيدات الحشرات.pdf",
+      "label_fr": "Produits de nettoyage et insecticides",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة مواد التنظيف ومبيدات الحشرات",
+      "articles": 68
+    },
+    {
+      "digest": "الملاحات",
+      "source_id": "CCS-SALINES",
+      "ds2_code": "salines",
+      "type": "sectoral_convention",
+      "pdf": "ملاحات.pdf",
+      "label_fr": "Salines",
+      "label_ar": "الاتفاقية المشتركة القطاعية للملاحات",
+      "articles": 84
+    },
+    {
+      "digest": "قاعات العرض السينمائي",
+      "source_id": "CCS-SALLES-CINEMA",
+      "ds2_code": "salles_cinema",
+      "type": "sectoral_convention",
+      "pdf": "قاعات العرض السينيمائي.pdf",
+      "label_fr": "Salles de cinéma",
+      "label_ar": "الاتفاقية المشتركة القطاعية لقاعات العرض السينمائي",
+      "articles": 60
+    },
+    {
+      "digest": "صناعة الصابون والتكرير",
+      "source_id": "CCS-SAVON-RAFFINAGE",
+      "ds2_code": "savon_raffinage_grignons",
+      "type": "sectoral_convention",
+      "pdf": "صناعة الصابون والتكرير واستخراج الزيت من الفيتورة.pdf",
+      "label_fr": "Savon, raffinage et extraction d'huile de grignons",
+      "label_ar": "الاتفاقية المشتركة القطاعية لصناعة الصابون والتكرير واستخراج الزيت من الفيتورة",
+      "articles": 55
+    },
+    {
+      "digest": "المصابغ ومعامل التنظيف",
+      "source_id": "CCS-TEINTURERIES",
+      "ds2_code": "teintureries_blanchisseries",
+      "type": "sectoral_convention",
+      "pdf": "مصابغ ومعامل التنظيف.pdf",
+      "label_fr": "Teintureries et blanchisseries",
+      "label_ar": "الاتفاقية المشتركة القطاعية للمصابغ ومعامل التنظيف",
+      "articles": 67
+    },
+    {
+      "digest": "النسيج",
+      "source_id": "CCS-TEXTILE",
+      "ds2_code": "textile",
+      "type": "sectoral_convention",
+      "pdf": "النسيج.pdf",
+      "label_fr": "Textile",
+      "label_ar": "الاتفاقية المشتركة القطاعية للنسيج",
+      "articles": 57
+    },
+    {
+      "digest": "قلي القهوة",
+      "source_id": "CCS-TORREFACTION-CAFE",
+      "ds2_code": "torrefaction_cafe",
+      "type": "sectoral_convention",
+      "pdf": "قلي القهوة.pdf",
+      "label_fr": "Torréfaction du café",
+      "label_ar": "الاتفاقية المشتركة القطاعية لقلي القهوة",
+      "articles": 61
+    },
+    {
+      "digest": "نقل البضائع عبر الطرقات",
+      "source_id": "CCS-TRANSPORT-MARCHANDISES",
+      "ds2_code": "transport_routier_marchandises",
+      "type": "sectoral_convention",
+      "pdf": "نقل البضائع عبر الطرقات.pdf",
+      "label_fr": "Transport routier de marchandises",
+      "label_ar": "الاتفاقية المشتركة القطاعية لنقل البضائع عبر الطرقات",
+      "articles": 60
+    },
+    {
+      "digest": "صناعة الزجاج والمرايا",
+      "source_id": "CCS-VERRE-MIROIR",
+      "ds2_code": "verre_miroir",
+      "type": "sectoral_convention",
+      "pdf": "تحويل البلّور والمرآة.pdf",
+      "label_fr": "Transformation du verre et du miroir",
+      "label_ar": "الاتفاقية المشتركة القطاعية لتحويل البلّور والمرآة",
+      "articles": 60
+    }
+  ]
+}
