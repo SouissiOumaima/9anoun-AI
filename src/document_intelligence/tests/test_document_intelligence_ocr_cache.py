@@ -1,7 +1,8 @@
 """Tests du cache OCR en arrière-plan (`reading/ocr_cache.py`) sur des documents FICTIFS.
 
 Aucun vrai modèle : le processus OCR est remplacé par une fonction qui écrit (ou non) le JSON attendu, et le
-lancement en arrière-plan par un appel direct ou différé. Seuls deux tests lancent un vrai sous-processus Python,
+lancement en arrière-plan par un appel direct ou différé. Le temps est simulé (horloge remplaçable) :
+aucun test n'attend un vrai délai. Seuls deux tests lancent un vrai sous-processus Python,
 minuscule (`python -c ...`), pour vérifier `run_cli` : aucun OCR n'y tourne.
 """
 
@@ -82,9 +83,11 @@ class Deferred:
         self.jobs.append(job)
 
     def run_all(self) -> None:
-        for job in self.jobs:
-            job()
-        self.jobs.clear()
+        while self.jobs:  # une lecture qui se termine lance la suivante de la file (ajoutée ici)
+            self.jobs.pop(0)()
+
+    def run_one(self) -> None:
+        self.jobs.pop(0)()
 
 
 @pytest.fixture()
@@ -438,3 +441,412 @@ def test_background_thread_end_to_end_with_a_fake_process(tmp_path: Path, source
     while _leftovers(cache.folder(CARD, DOC), ".lock") and time.monotonic() < deadline:
         time.sleep(0.05)
     assert _leftovers(cache.folder(CARD, DOC), ".lock", ".part") == []
+
+
+# ------------------------------------------------------------ D42 : échec non définitif (délai, nombre d'essais)
+
+
+class Clock:
+    """Horloge simulée : le temps n'avance que quand le test le décide (aucun vrai sleep)."""
+
+    def __init__(self, now: float = 1000.0) -> None:
+        self.now = now
+
+    def __call__(self) -> float:
+        return self.now
+
+
+def _marker(cache: OcrCache, source: Path) -> dict[str, object]:
+    _, failed, _ = cache.paths(source, card_id=CARD, document_id=DOC)
+    text = failed.read_text(encoding="utf-8")
+    assert SECRET not in text  # jamais de texte du document dans le marqueur
+    data = json.loads(text)
+    assert set(data) == {"reason", "at", "attempts"}
+    return data
+
+
+def test_a_failure_is_retried_after_the_delay_at_most_max_attempts(tmp_path: Path, source: Path) -> None:
+    clock, process = Clock(), FakeProcess("{pas du json " + SECRET, code=0)
+    cache = _cache(tmp_path, process, retry_delay_s=600.0, max_attempts=3, clock=clock)
+
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert _marker(cache, source)["attempts"] == 1 and len(process.calls) == 1
+
+    clock.now += 599  # délai pas encore passé : echec, rien n'est relancé
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 1
+
+    clock.now += 1  # délai passé : 2e essai, qui échoue aussi
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 2 and _marker(cache, source) == {"reason": "ocr", "at": 1600.0, "attempts": 2}
+
+    clock.now += 600  # 3e et dernier essai
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 3 and _marker(cache, source)["attempts"] == 3
+
+    clock.now += 10 * 86400  # échec définitif, même longtemps après
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 3
+    assert all(not part.exists() for part in process.parts_seen)
+    assert _leftovers(cache.folder(CARD, DOC), ".part", ".lock", ".tmp", ".json") == []
+
+
+def test_a_successful_retry_is_cached_and_removes_the_failure_marker(tmp_path: Path, source: Path) -> None:
+    clock, process = Clock(), FakeProcess(None, code=1)
+    cache = _cache(tmp_path, process, clock=clock)
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+
+    process.content, process.code = _doc_json(), 0  # la panne était passagère
+    clock.now += ocr_cache.DEFAULT_RETRY_DELAY_S  # délai par défaut : 10 min
+    state = cache.lookup_or_start(source, card_id=CARD, document_id=DOC)
+    assert state.status == "pret" and state.document is not None
+    assert [p.suffix for p in cache.folder(CARD, DOC).iterdir()] == [".json"]  # marqueur supprimé
+
+
+def test_the_retry_counter_and_delay_survive_a_restart(tmp_path: Path, source: Path) -> None:
+    clock, process = Clock(), FakeProcess(None, code=1)
+    first = _cache(tmp_path, process, clock=clock, max_attempts=2)
+    assert first.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+
+    # redémarrage du service : nouvel objet, rien en mémoire, seul le marqueur sur disque compte
+    restarted = _cache(tmp_path, process, clock=clock, max_attempts=2)
+    clock.now += 300
+    assert restarted.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 1  # le délai a été lu dans le marqueur
+    clock.now += 300
+    assert restarted.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 2 and _marker(restarted, source)["attempts"] == 2
+
+    again = _cache(tmp_path, process, clock=clock, max_attempts=2)
+    clock.now += 3600
+    assert again.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert len(process.calls) == 2  # le compteur a été lu dans le marqueur : plus d'essai
+
+
+def test_a_retry_in_progress_is_en_cours_not_echec(tmp_path: Path, source: Path) -> None:
+    clock, process, launcher = Clock(), FakeProcess(None, code=1), Deferred()
+    cache = _cache(tmp_path, process, launcher, clock=clock)
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
+    launcher.run_all()
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+
+    clock.now += 600
+    process.content, process.code = _doc_json(), 0
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"  # 2e essai lancé
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"  # pas de 3e
+    assert len(launcher.jobs) == 1
+    launcher.run_all()
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "pret"
+    assert len(process.calls) == 2
+
+
+def test_an_abandoned_lock_counts_as_one_attempt_and_can_be_retried(tmp_path: Path, source: Path) -> None:
+    clock, process, launcher = Clock(), FakeProcess(_doc_json()), Deferred()
+    cache = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=clock)
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
+    launcher.jobs.clear()  # le processus meurt sans jamais terminer
+    clock.now += 61
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    marker = _marker(cache, source)
+    assert marker["reason"] == "verrou_abandonne" and marker["attempts"] == 1
+    clock.now += 600
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "en_cours"
+    launcher.run_all()
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "pret"
+
+
+def test_an_old_marker_without_counter_is_one_attempt(tmp_path: Path, source: Path) -> None:
+    clock, process = Clock(), FakeProcess(_doc_json())
+    cache = _cache(tmp_path, process, clock=clock)
+    _, failed, _ = cache.paths(source, card_id=CARD, document_id=DOC)
+    failed.parent.mkdir(parents=True)
+    failed.write_text(json.dumps({"reason": "ocr", "at": 1000.0}), encoding="utf-8")  # format de la PR #46
+    assert cache.failure(failed) == ocr_cache.Failure(1, 1000.0)
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    clock.now += 600
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "pret"
+
+
+@pytest.mark.parametrize("content", ["", "abîmé", "[]", '{"attempts": 1}', '{"at": "hier"}'])
+def test_an_unreadable_marker_is_a_final_failure(tmp_path: Path, source: Path, content: str) -> None:
+    clock, process = Clock(), FakeProcess(_doc_json())
+    cache = _cache(tmp_path, process, clock=clock)
+    _, failed, _ = cache.paths(source, card_id=CARD, document_id=DOC)
+    failed.parent.mkdir(parents=True)
+    failed.write_text(content, encoding="utf-8")
+    clock.now += 10 * 86400
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "echec"
+    assert process.calls == []  # jamais de relance sur un état qu'on ne sait pas lire
+
+
+def test_a_failure_time_in_the_future_does_not_block_the_retry(tmp_path: Path) -> None:
+    clock = Clock()
+    cache = OcrCache(tmp_path, clock=clock)
+    assert cache.can_retry(ocr_cache.Failure(1, clock.now + 86400))  # horloge du serveur reculée
+    assert not cache.can_retry(ocr_cache.Failure(3, clock.now + 86400))  # toujours borné par max_attempts
+
+
+@pytest.mark.parametrize(("delay", "attempts"), [(-1.0, 3), (600.0, 0)])
+def test_invalid_retry_settings_are_refused(tmp_path: Path, delay: float, attempts: int) -> None:
+    with pytest.raises(ValueError):
+        OcrCache(tmp_path, retry_delay_s=delay, max_attempts=attempts)
+
+
+def test_default_backend_reads_the_retry_settings(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv(ocr_cache.CACHE_DIR_ENV, str(tmp_path))
+    monkeypatch.delenv(ocr_cache.RETRY_DELAY_ENV, raising=False)
+    monkeypatch.delenv(ocr_cache.MAX_ATTEMPTS_ENV, raising=False)
+    monkeypatch.setattr(ocr_cache.importlib.util, "find_spec", lambda name: object())
+    backend = default_backend()
+    assert backend is not None and (backend.retry_delay_s, backend.max_attempts) == (600.0, 3)
+    monkeypatch.setenv(ocr_cache.RETRY_DELAY_ENV, "120")
+    monkeypatch.setenv(ocr_cache.MAX_ATTEMPTS_ENV, "5")
+    backend = default_backend()
+    assert backend is not None and (backend.retry_delay_s, backend.max_attempts) == (120.0, 5)
+    monkeypatch.setenv(ocr_cache.RETRY_DELAY_ENV, "dix")
+    monkeypatch.setenv(ocr_cache.MAX_ATTEMPTS_ENV, "0")
+    backend = default_backend()
+    assert backend is not None and (backend.retry_delay_s, backend.max_attempts) == (600.0, 3)
+
+
+# ------------------------------------------------------------ D42 : un seul OCR à la fois (file d'attente)
+
+
+def _sources(tmp_path: Path, count: int) -> list[Path]:
+    paths = []
+    for i in range(count):
+        path = tmp_path / "stockage" / f"scan_{i}.pdf"
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(f"%PDF fictif {i}".encode())
+        paths.append(path)
+    return paths
+
+
+def test_only_one_ocr_runs_for_the_whole_cache_and_the_queue_is_first_come_first_served(tmp_path: Path) -> None:
+    clock, process, launcher = Clock(), FakeProcess(_doc_json()), Deferred()
+    cache = _cache(tmp_path, process, launcher, clock=clock)
+    docs = _sources(tmp_path, 3)
+    cards = [CARD, CARD, "company_999"]  # trois documents, dont un d'une autre carte
+    for i, path in enumerate(docs):
+        clock.now += 1
+        assert cache.lookup_or_start(path, card_id=cards[i], document_id=f"doc_{i}").status == "en_cours"
+    assert len(launcher.jobs) == 1 and cache.slot.exists()  # un seul OCR lancé ; les deux autres attendent
+
+    order: list[str] = []
+    for _ in range(3):
+        assert len(launcher.jobs) == 1  # jamais deux lectures à la fois
+        launcher.run_one()  # la lecture se termine et lance la suivante de la file
+        order.append(Path(process.calls[-1][3]).name)
+    assert order == ["scan_0.pdf", "scan_1.pdf", "scan_2.pdf"]
+    assert launcher.jobs == [] and not cache.slot.exists()
+    for i, path in enumerate(docs):
+        assert cache.lookup_or_start(path, card_id=cards[i], document_id=f"doc_{i}").status == "pret"
+
+
+def test_a_failure_does_not_block_the_queue(tmp_path: Path) -> None:
+    process, launcher = FakeProcess(None, code=1), Deferred()
+    cache = _cache(tmp_path, process, launcher)
+    first, second = _sources(tmp_path, 2)
+    assert cache.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"
+    assert cache.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"
+    launcher.run_one()  # échec de la première lecture
+    process.content, process.code = _doc_json(), 0
+    assert len(launcher.jobs) == 1  # la seconde a démarré quand même
+    launcher.run_all()
+    assert cache.lookup_or_start(first, card_id=CARD, document_id="a").status == "echec"
+    assert cache.lookup_or_start(second, card_id=CARD, document_id="b").status == "pret"
+
+
+def test_the_queue_survives_a_restart_and_an_abandoned_slot_is_released(tmp_path: Path) -> None:
+    clock, process = Clock(), FakeProcess(_doc_json())
+    first, second = _sources(tmp_path, 2)
+    before = _cache(tmp_path, process, Deferred(), lock_max_age_s=60.0, clock=clock)
+    assert before.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"  # lecture active
+    clock.now += 1
+    assert before.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"  # en attente
+    # le service s'arrête : la lecture active meurt, la demande en attente reste sur disque
+
+    after = _cache(tmp_path, process, _sync, lock_max_age_s=60.0, clock=clock)
+    clock.now += 30  # verrou global encore récent : la lecture tourne peut-être ailleurs, on attend
+    assert after.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"
+    assert process.calls == []
+    clock.now += 31  # verrou global abandonné : la lecture « a » est en échec, « b » démarre
+    assert after.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"
+    assert len(process.calls) == 1
+    assert after.lookup_or_start(second, card_id=CARD, document_id="b").status == "pret"
+    assert after.lookup_or_start(first, card_id=CARD, document_id="a").status == "echec"
+    marker = json.loads(next(after.folder(CARD, "a").glob("*.echec")).read_text(encoding="utf-8"))
+    assert marker["reason"] == "verrou_abandonne" and not after.slot.exists()
+    clock.now += 600  # puis nouvel essai de « a »
+    assert after.lookup_or_start(first, card_id=CARD, document_id="a").status == "pret"
+
+
+def test_a_waiting_request_never_expires_it_starts_when_the_active_one_is_abandoned(tmp_path: Path) -> None:
+    clock, process, launcher = Clock(), FakeProcess(_doc_json()), Deferred()
+    cache = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=clock)
+    first, second = _sources(tmp_path, 2)
+    assert cache.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"
+    assert cache.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"
+    launcher.jobs.clear()  # la lecture active « a » ne se termine jamais
+    clock.now += 3600  # « b » attend depuis une heure, bien au-delà de lock_max_age_s
+    assert cache.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"  # jamais en échec
+    _, b_failed, b_lock = cache.paths(second, card_id=CARD, document_id="b")
+    assert cache.lock_info(b_lock).stage == "lecture" and not b_failed.exists()  # « b » a démarré
+    assert len(launcher.jobs) == 1
+    assert cache.lookup_or_start(first, card_id=CARD, document_id="a").status == "echec"  # « a » abandonnée
+
+
+def test_waiting_request_for_a_changed_or_deleted_file_is_dropped(tmp_path: Path) -> None:
+    process, launcher = FakeProcess(_doc_json()), Deferred()
+    cache = _cache(tmp_path, process, launcher)
+    first, second, third = _sources(tmp_path, 3)
+    assert cache.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"
+    assert cache.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"
+    assert cache.lookup_or_start(third, card_id=CARD, document_id="c").status == "en_cours"
+    second.write_bytes(b"%PDF fictif, autre version")  # modifié pendant l'attente
+    third.unlink()  # supprimé pendant l'attente
+    launcher.run_all()
+    assert len(process.calls) == 1  # seule « a » a été lue ; « b » et « c » abandonnées sans OCR
+    for doc in ("b", "c"):
+        assert _leftovers(cache.folder(CARD, doc), ".lock", ".echec", ".json", ".part") == []
+    assert not cache.slot.exists()
+
+
+def test_a_slot_pointing_outside_the_cache_is_only_removed(tmp_path: Path, source: Path) -> None:
+    clock = Clock()
+    cache = _cache(tmp_path, FakeProcess(_doc_json()), clock=clock, lock_max_age_s=60.0)
+    outside = tmp_path / "ailleurs.lock"
+    outside.write_text("{}", encoding="utf-8")
+    cache.cache_dir.mkdir(parents=True)
+    cache.slot.write_text(json.dumps({"since": 0.0, "token": "x", "lock": "../ailleurs.lock"}), encoding="utf-8")
+    assert cache.lookup_or_start(source, card_id=CARD, document_id=DOC).status == "pret"
+    assert outside.exists() and not (tmp_path / "ailleurs.echec").exists()
+
+
+def test_a_slot_held_by_someone_else_is_never_released_by_us(tmp_path: Path) -> None:
+    cache = OcrCache(tmp_path)
+    cache.slot.write_text(json.dumps({"since": 0, "token": "autre"}), encoding="utf-8")
+    cache._release_slot("moi")
+    assert cache.slot.exists()
+
+
+def test_real_threads_never_run_two_ocr_at_once(tmp_path: Path) -> None:
+    """Vrais fils, faux processus, synchronisés par des événements (aucun sleep)."""
+    active, peak, guard = [0], [0], threading.Lock()
+    gate, finished = threading.Event(), threading.Semaphore(0)
+
+    class CountingProcess(FakeProcess):
+        def __call__(self, cmd: list[str], timeout_s: float) -> int:
+            with guard:
+                active[0] += 1
+                peak[0] = max(peak[0], active[0])
+            gate.wait(5.0)
+            try:
+                return super().__call__(cmd, timeout_s)
+            finally:
+                with guard:
+                    active[0] -= 1
+
+    def launcher(job: Callable[[], None]) -> None:
+        def wrapped() -> None:
+            try:
+                job()
+            finally:
+                finished.release()
+        start_thread(wrapped)
+
+    process = CountingProcess(_doc_json())
+    cache = OcrCache(tmp_path / "cache", run_process=process, launcher=launcher)
+    docs = _sources(tmp_path, 3)
+    for i, path in enumerate(docs):
+        assert cache.lookup_or_start(path, card_id=CARD, document_id=f"d{i}").status == "en_cours"
+    gate.set()
+    for _ in range(3):
+        assert finished.acquire(timeout=10.0)
+    assert peak[0] == 1 and len(process.calls) == 3
+    assert all(cache.lookup_or_start(p, card_id=CARD, document_id=f"d{i}").status == "pret"
+               for i, p in enumerate(docs))
+
+
+def test_the_background_thread_never_blocks_the_service_shutdown() -> None:
+    seen: list[bool] = []
+    done = threading.Event()
+
+    def job() -> None:
+        seen.append(threading.current_thread().daemon)
+        done.set()
+
+    start_thread(job)
+    assert done.wait(5.0) and seen == [True]
+
+
+# ------------------------------------------------------------ relecture de la PR #60
+
+
+def test_two_processes_recovering_the_same_expired_slot_start_only_one_ocr(tmp_path: Path) -> None:
+    """Deux processus voient le même verrou global expiré. A le récupère et démarre un OCR ; B, qui avait lu le
+    verrou expiré juste avant, ne doit pas supprimer le nouveau verrou de A (sinon deux OCR tournent à la fois)."""
+    clock, process, launcher = Clock(), FakeProcess(_doc_json()), Deferred()
+    first, second = _sources(tmp_path, 2)
+    a = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=clock)
+    a.cache_dir.mkdir(parents=True)
+    a.slot.write_text(json.dumps({"since": clock.now, "token": "mort", "pid": 1}), encoding="utf-8")  # lecteur actif
+    assert a.lookup_or_start(first, card_id=CARD, document_id="a").status == "en_cours"  # en attente
+    clock.now += 1
+    assert a.lookup_or_start(second, card_id=CARD, document_id="b").status == "en_cours"  # en attente
+    assert launcher.jobs == []  # le verrou global est encore récent : rien ne démarre
+    clock.now += 120  # le lecteur actif est mort : verrou global expiré
+
+    armed = [True]
+
+    def b_clock() -> float:
+        """Appelée par B juste après avoir lu le verrou expiré : A fait toute sa récupération à ce moment-là."""
+        if armed[0]:
+            armed[0] = False
+            a.pump()
+        return clock.now
+
+    b = _cache(tmp_path, process, launcher, lock_max_age_s=60.0, clock=b_clock)
+    b.pump()
+
+    assert armed == [False]  # l'entrelacement a bien eu lieu
+    assert len(launcher.jobs) == 1  # un seul OCR démarré
+    slot = json.loads(a.slot.read_text(encoding="utf-8"))
+    assert slot["token"] != "mort" and slot["lock"].endswith(".lock")  # le nouveau verrou de A est intact
+    _, _, b_lock = a.paths(second, card_id=CARD, document_id="b")
+    assert a.lock_info(b_lock).stage == "attente"  # la 2e demande attend son tour
+    assert [p.name for p in a.cache_dir.iterdir() if p.name.startswith("ocr_actif")] == ["ocr_actif.lock"]
+
+    launcher.run_all()  # A finit, puis la demande suivante démarre : toujours une à la fois
+    assert len(process.calls) == 2 and not a.slot.exists()
+    assert a.lookup_or_start(second, card_id=CARD, document_id="b").status == "pret"
+
+
+def test_an_expired_slot_is_still_recovered_by_a_single_process(tmp_path: Path) -> None:
+    clock, launcher = Clock(), Deferred()
+    cache = _cache(tmp_path, FakeProcess(_doc_json()), launcher, lock_max_age_s=60.0, clock=clock)
+    cache.cache_dir.mkdir(parents=True)
+    cache.slot.write_text(json.dumps({"since": clock.now, "token": "mort"}), encoding="utf-8")
+    source = _sources(tmp_path, 1)[0]
+    assert cache.lookup_or_start(source, card_id=CARD, document_id="a").status == "en_cours"
+    clock.now += 61
+    cache.pump()
+    assert len(launcher.jobs) == 1
+    assert json.loads(cache.slot.read_text(encoding="utf-8"))["token"] != "mort"
+    assert [p.name for p in cache.cache_dir.iterdir() if p.name.startswith("ocr_actif")] == ["ocr_actif.lock"]
+
+
+@pytest.mark.parametrize("raw", ["nan", "NaN", "inf", "-inf", "Infinity"])
+def test_non_finite_settings_fall_back_to_the_documented_defaults(tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+                                                                  caplog: pytest.LogCaptureFixture,
+                                                                  raw: str) -> None:
+    monkeypatch.setenv(ocr_cache.CACHE_DIR_ENV, str(tmp_path))
+    monkeypatch.setattr(ocr_cache.importlib.util, "find_spec", lambda name: object())
+    monkeypatch.setenv(ocr_cache.RETRY_DELAY_ENV, raw)
+    monkeypatch.setenv(ocr_cache.MAX_ATTEMPTS_ENV, raw)
+    with caplog.at_level(logging.WARNING):
+        backend = default_backend()  # pas de plantage (int(nan) lèverait ValueError, int(inf) OverflowError)
+    assert backend is not None
+    assert (backend.retry_delay_s, backend.max_attempts) == (ocr_cache.DEFAULT_RETRY_DELAY_S,
+                                                             ocr_cache.DEFAULT_MAX_ATTEMPTS) == (600.0, 3)
+    assert caplog.text.count("invalide") == 2
