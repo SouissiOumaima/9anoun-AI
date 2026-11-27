@@ -2,6 +2,9 @@
 
 Assistant juridique bilingue arabe / français sur le droit du travail tunisien.
 
+Livraison DS1 du 21 novembre 2026 :
+[rapport d'avancement, validations et éléments attendus de l'équipe](docs/RAPPORT_AVANCEMENT_DS1_2026_11_21.md).
+
 ## Vision : 5 rôles (DS1-DS5), couplage faible
 
 Le dépôt est partagé entre **5 rôles (DS1-DS5)**. Chacun possède son dossier
