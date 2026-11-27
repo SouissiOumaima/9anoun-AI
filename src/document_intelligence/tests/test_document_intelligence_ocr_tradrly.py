@@ -390,7 +390,12 @@ def test_soft_cer_is_shown_and_saved_as_numbers_only(archive: tuple[Path, Path],
     assert pages[3]["cer_souple"] == pages[3]["cer"] == 0.0
     resume = report["resume"]
     assert resume["cer_souple_global_pondere"] == 0.0 < resume["cer_global_pondere"]
-    assert all("cer_souple" in p for p in resume["pages_a_relire"])
+    to_review = resume["pages_a_relire"]
+    # une liste vide ferait passer la boucle sans rien vérifier : les 3 pages contrôlées doivent y être (--top 10)
+    assert resume["pages_controlees"] == 3 and len(to_review) == 3
+    assert sorted(p["page"] for p in to_review) == [1, 2, 3]
+    assert all("cer_souple" in p for p in to_review)
+    assert all(p["cer_souple"] == pages[p["page"]]["cer_souple"] for p in to_review)  # même valeur que par page
     assert "cer_souple_global_pondere" in printed and "CER souple" in printed
 
     for forbidden in (SECRET, "الفصل", "الاول", "الأول", "الاجر", "الأجر", "الاساسي", "Annexe", PRESENTATION_FASL,
