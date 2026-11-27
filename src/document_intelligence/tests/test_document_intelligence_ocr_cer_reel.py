@@ -237,7 +237,8 @@ def test_totals_allow_recomputing_rates_and_languages_add_up_to_global(tmp_path:
     assert g["lignes_exactes"] == round(g["nb_lignes_exactes"] / g["n"], 4)
     for key in ("n", "caracteres_reference", "erreurs_caracteres", "mots_reference", "erreurs_mots",
                 "nb_lignes_exactes"):
-        assert sum(prod[lang][key] for lang in prod if lang != "global") == g[key], key
+        assert sum(prod[lang][key] for lang in evaluer.LANGS if lang in prod) == g[key], key
+        assert sum(prod[t][key] for t in evaluer.TRANCHES if t in prod) == g[key], key  # tranches aussi
 
 
 def _walk_strings(value: object) -> list[str]:
@@ -266,7 +267,8 @@ def test_results_json_contains_no_document_text_and_no_file_name(tmp_path: Path)
     allowed_keys = {"format", "lignes", "resultats", "global", "fr", "ar", "mixte", "inconnu", "ocr_production",
                     "fine_tune", "n", "cer", "wer", "lignes_exactes", "caracteres_reference", "erreurs_caracteres",
                     "mots_reference", "erreurs_mots", "nb_lignes_exactes", "lignes_dans_le_csv", "lignes_annotees",
-                    "lignes_illisibles", "lignes_non_annotees", "lancement_fine_tune", "graine", "identifiant"}
+                    "lignes_illisibles", "lignes_non_annotees", "lancement_fine_tune", "graine", "identifiant",
+                    "parametres", "largeur_max_px", "tranche_caracteres", "<=44c", ">44c"}
     assert set(_walk_strings(saved)) <= allowed_keys | {evaluer.RESULTS_FORMAT}
 
 
@@ -278,7 +280,8 @@ def test_sans_modeles_never_loads_paddle_or_the_finetuned_model(tmp_path: Path, 
     def must_not_run(*args: object, **kwargs: object) -> None:
         raise AssertionError("Paddle ne doit pas être chargé avec --sans-modeles")
 
-    monkeypatch.setattr(evaluer, "experiment_recognizers", must_not_run)
+    monkeypatch.setattr(evaluer, "experiment_models", must_not_run)
+    monkeypatch.setattr(evaluer, "production_models", must_not_run)
     monkeypatch.setattr(evaluer, "find_finetuned_run", must_not_run)
     csv_path = _annotated_csv(tmp_path / "hadil")
     assert evaluer.main([str(csv_path), "--sans-modeles"]) == 0
@@ -331,8 +334,10 @@ def test_without_the_experiment_only_production_is_measured(tmp_path: Path, monk
     evaluer = _load("evaluer_cer_reel")
     csv_path = _annotated_csv(tmp_path / "ann")
     monkeypatch.setattr(evaluer, "PPOCR_ROOT", tmp_path / "absent")
+    monkeypatch.setattr(evaluer, "paddleocr_available", lambda: False)  # jamais de vrai Paddle dans les tests
     assert evaluer.main([str(csv_path)]) == 0
-    assert "expérience non préparée" in capsys.readouterr().out
+    printed = capsys.readouterr().out
+    assert "expérience non préparée" in printed and "PaddleOCR absent" in printed
     saved = json.loads((tmp_path / "ann" / "resultats_cer_reel.json").read_text(encoding="utf-8"))
     assert list(saved["resultats"]) == ["ocr_production"]
     assert evaluer.main([str(csv_path), "--sans-modeles"]) == 0
@@ -371,14 +376,15 @@ def test_the_chosen_run_is_printed_and_saved_by_seed_and_id_without_any_path(
 
     loaded: list[Path | None] = []
 
-    def fake_recognizers(ft: Path | None) -> dict[str, object]:
+    def fake_models(ft: Path | None) -> tuple[dict[str, object], dict[str, object]]:
         loaded.append(ft)
-        return {"fine_tune": lambda paths: ["x"] * len(paths)}
+        return {"fine_tune": lambda paths: ["x"] * len(paths)}, {}
 
     monkeypatch.setattr(evaluer, "PPOCR_ROOT", tmp_path)  # « expérience prête » sans Paddle
     monkeypatch.setattr(evaluer, "PRETRAINED", build / "state" / "seed42_bbbb" / "run.json")
     monkeypatch.setattr(evaluer, "find_finetuned_run", lambda: run)
-    monkeypatch.setattr(evaluer, "experiment_recognizers", fake_recognizers)
+    monkeypatch.setattr(evaluer, "experiment_models", fake_models)
+    monkeypatch.setattr(evaluer, "paddleocr_available", lambda: False)
     csv_path = _annotated_csv(tmp_path / "ann")
     assert evaluer.main([str(csv_path)]) == 0
     printed = capsys.readouterr().out
@@ -743,3 +749,213 @@ def test_a_failed_readings_write_removes_the_csv(pdf_dir: Path, tmp_path: Path,
     monkeypatch.setattr(Path, "write_text", real_write_text)  # le relancement dans le même dossier marche
     assert annoter.prepare(pdf_dir, out, 3, 42, engine=TwoLinesEngine())["lignes_tirees"] == 3
     assert sorted(_lectures(out)) == [r["id"] for r in _read_csv(out / "annotation.csv")]
+
+
+# ------------------------------------------------------------ comparaison équitable (lignes entières / morceaux)
+
+
+def _line_images(folder: Path, ids: list[str], size: tuple[int, int] = (600, 60),
+                 color: tuple[int, int, int] = (230, 230, 230)) -> None:
+    """Images fictives des lignes (`lignes/ligne_<id>.png`), unies : aucun texte réel."""
+    from PIL import Image
+
+    (folder / "lignes").mkdir(parents=True, exist_ok=True)
+    for i in ids:
+        Image.new("RGB", size, color).save(folder / "lignes" / f"ligne_{i}.png")
+
+
+def _box(text: str, bbox: tuple[float, float, float, float], score: float = 0.9) -> OcrBox:
+    return OcrBox(text, score, bbox)
+
+
+class WidthReader:
+    """Faux lecteur de morceaux : le texte dépend seulement de la largeur du morceau (aucun modèle)."""
+
+    def __init__(self, by_width: dict[int, str]) -> None:
+        self.by_width = by_width
+        self.calls: list[list[tuple[int, ...]]] = []
+
+    def __call__(self, pieces: list[object]) -> list[str]:
+        shapes = [tuple(p.shape) for p in pieces]  # type: ignore[attr-defined]
+        self.calls.append(shapes)
+        return [self.by_width.get(s[1], "?") for s in shapes]
+
+
+def test_cer_is_also_given_by_length_tranche(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    assert evaluer.TRANCHE_CHARS == 44 and evaluer.EVAL_MAX_W == 3200
+    import vocab  # experiments/ocr_transfer_finetune/vocab.py (sans dépendance lourde)
+
+    assert evaluer.TRANCHE_CHARS == vocab.MAX_LEN  # même limite que les lignes d'entraînement
+    long_ref = "الفصل الأول تنطبق هذه الاتفاقية على جميع العمال" + " والمؤسسات"  # plus de 44 caractères
+    assert len(long_ref) > 44
+    path = _write_annotation(tmp_path / "ann", [("0001", "الأجر", "الأجر"), ("0002", "x" * 44, "x" * 44),
+                                                ("0003", long_ref[:30], long_ref)])
+    rows, _ = evaluer.read_annotations(path)
+    prod = evaluer.evaluate(rows, {})["ocr_production"]
+    assert (prod["<=44c"]["n"], prod[">44c"]["n"]) == (2, 1)  # 44 caractères tout juste : tranche courte
+    assert prod["<=44c"]["cer"] == 0.0 and prod[">44c"]["cer"] > 0
+    assert evaluer.tranche(" " + "x" * 44 + "  ") == "<=44c"  # longueur après normalisation (espaces)
+
+
+def test_pieces_are_cropped_read_once_and_assembled_right_to_left(tmp_path: Path) -> None:
+    """Le détecteur donne deux morceaux arabes : ils sont lus en un seul appel, puis assemblés de droite à gauche."""
+    evaluer = _load("evaluer_cer_reel")
+    folder = tmp_path / "ann"
+    path = _write_annotation(folder, [("0001", "lecture d'origine", "الأجر الأساسي")])
+    _line_images(folder, ["0001"])
+    seen_paths: list[list[Path]] = []
+
+    def detector(paths: list[Path]) -> list[list[OcrBox]]:
+        seen_paths.append(list(paths))
+        # « الأجر » à droite (x 300-500), « الأساسي » à gauche (x 0-150) ; un doublon contenu dans le premier
+        return [[_box("الأجر", (300, 5, 500, 55)), _box("الأساسي", (0, 5, 150, 55)), _box("ء", (350, 5, 360, 15))]]
+
+    good, bad = WidthReader({200: "الأجر", 150: "الأساسي"}), WidthReader({200: "الامر", 150: "الأساسي"})
+    rows, _ = evaluer.read_annotations(path)
+    results = evaluer.evaluate(rows, {}, detector=detector, piece_recognizers={"pre_entraine": good,
+                                                                              "fine_tune": bad})
+    assert seen_paths == [[folder / "lignes" / "ligne_0001.png"]]  # mêmes images de ligne entière
+    assert results["production_relue"]["global"]["cer"] == 0.0
+    assert results["pre_entraine_morceaux"]["global"]["cer"] == 0.0  # ordre droite-gauche respecté
+    assert results["fine_tune_morceaux"]["global"]["cer"] > 0
+    assert results["ocr_production"]["global"]["cer"] > 0  # la lecture d'origine reste mesurée à part
+    assert good.calls == [[(50, 200), (50, 150)]]  # un seul appel, morceaux en niveaux de gris, doublon retiré
+    assert "pre_entraine" not in results and "production_rec_seule" not in results
+
+
+def test_crop_pieces_clamps_boxes_and_skips_empty_ones(tmp_path: Path) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    _line_images(tmp_path, ["0001"], size=(100, 50))
+    image = tmp_path / "lignes" / "ligne_0001.png"
+    pieces = evaluer.crop_pieces(image, [_box("a", (-10.0, -10.0, 20.4, 20.0)), _box("b", (200, 0, 300, 10)),
+                                         _box("c", (10.2, 10.0, 10.2, 30.0)), _box("d", (0.5, 0.5, 99.5, 49.5))])
+    assert [p.shape for p in pieces] == [(20, 21), (0, 0), (0, 0), (50, 100)]
+    assert all(p.ndim == 2 and str(p.dtype) == "uint8" for p in pieces)
+
+    reader = WidthReader({21: "الأجر"})
+    texts = evaluer.read_pieces([[_box("a", (-10.0, -10.0, 20.4, 20.0)), _box("b", (200, 0, 300, 10))]], [image],
+                                reader)
+    assert texts == ["الأجر"] and reader.calls == [[(20, 21)]]  # le morceau vide n'est pas lu
+    assert evaluer.read_pieces([[]], [image], reader) == [""]  # aucune boîte détectée : texte vide
+
+
+def test_main_writes_the_fair_comparison_as_numbers_only(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    evaluer = _load("evaluer_cer_reel")
+    folder = tmp_path / "Paie_SECRETE"
+    path = _write_annotation(folder, [("0001", f"Salaire {SECRET}", f"Salaire {SECRET} 424.100"),
+                                      ("0002", "الأجر السري", "الأجر السري 5")])
+    _line_images(folder, ["0001", "0002"])
+
+    def detector(paths: list[Path]) -> list[list[OcrBox]]:
+        return [[_box(f"Salaire {SECRET}", (0, 5, 300, 55))], [_box("الأجر السري", (100, 5, 400, 55))]]
+
+    lines = {"production_rec_seule": lambda paths: [f"Ben {SECRET}"] * len(paths),
+             "pre_entraine": lambda paths: ["x"] * len(paths)}
+    assert evaluer.main([str(path)], recognizers=lines, detector=detector,
+                        piece_recognizers={"pre_entraine": WidthReader({300: "الأجر"})}) == 0
+    printed = capsys.readouterr().out
+    raw = (folder / "resultats_cer_reel.json").read_text(encoding="utf-8")
+    saved = json.loads(raw)
+    assert list(saved["resultats"]) == ["ocr_production", "production_rec_seule", "pre_entraine",
+                                        "production_relue", "pre_entraine_morceaux"]
+    assert saved["parametres"] == {"largeur_max_px": 3200, "tranche_caracteres": 44}
+    assert all("<=44c" in entry for entry in saved["resultats"].values())
+    for name in ("production_rec_seule", "production_relue", "pre_entraine_morceaux", "<=44c"):
+        assert name in printed
+    for forbidden in (SECRET, "Salaire", "الأجر", "424.100", "Ben", ".png", "ligne_", "Paie_SECRETE"):
+        assert forbidden not in printed, forbidden
+        assert forbidden not in raw, forbidden
+
+
+def test_production_models_use_the_paddlex_recognizer_alone_and_the_production_pipeline(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Branchement vérifié avec de faux modules : aucun modèle n'est chargé."""
+    from types import SimpleNamespace
+
+    from src.document_intelligence.reading import ocr
+
+    evaluer = _load("evaluer_cer_reel")
+    created: list[dict[str, object]] = []
+    predicted: list[tuple[list[str], int]] = []
+
+    class FakeTextRecognition:
+        def __init__(self, **kwargs: object) -> None:
+            created.append(kwargs)
+
+        def predict(self, inputs: list[str], batch_size: int) -> list[dict[str, object]]:
+            predicted.append((inputs, batch_size))
+            return [{"rec_text": "الأجر", "rec_score": 0.9} for _ in inputs]
+
+    seen: list[tuple[tuple[int, ...], int, OcrLang]] = []
+
+    class FakeEngine:
+        name = "fake"
+
+        def recognize(self, image: Image3, lang: OcrLang) -> list[OcrBox]:
+            seen.append((tuple(image.shape), int(image[0, 0, 2]), lang))
+            return [_box("الأجر", (0, 0, 50, 20)), _box(" ", (60, 0, 70, 20))]
+
+    monkeypatch.setitem(sys.modules, "paddleocr", SimpleNamespace(TextRecognition=FakeTextRecognition))
+    monkeypatch.setattr(ocr, "default_engine", FakeEngine)
+    _line_images(tmp_path, ["0001"], size=(80, 30), color=(255, 0, 0))  # rouge en RGB
+    image = tmp_path / "lignes" / "ligne_0001.png"
+
+    recognize, detect = evaluer.production_models()
+    assert created == [{"model_name": "arabic_PP-OCRv5_mobile_rec", "device": "cpu", "enable_mkldnn": False}]
+    assert recognize([image]) == ["الأجر"] and predicted == [([str(image)], 1)]  # reconnaissance seule, ligne entière
+    boxes = detect([image])
+    assert seen == [((30, 80, 3), 255, "ar")]  # image BGR (rouge dans le 3e canal), langue « auto » : arabe d'abord
+    assert [b.text for b in boxes[0]] == ["الأجر"]  # boîtes nettoyées comme en production
+
+
+def test_experiment_models_lift_the_width_cap_and_share_the_networks(tmp_path: Path,
+                                                                    monkeypatch: pytest.MonkeyPatch) -> None:
+    """Faux modules `model` et `paddle` : vérifie le plafond de 3200 px et le partage des réseaux."""
+    from types import SimpleNamespace
+
+    import numpy as np
+
+    evaluer = _load("evaluer_cer_reel")
+    built: list[object] = []
+    widths_seen: list[int] = []
+    loaded: list[str] = []
+
+    class Net:
+        def __init__(self) -> None:
+            self.state: object = None
+
+        def set_state_dict(self, state: object) -> None:
+            self.state = state
+
+    fake_model = SimpleNamespace(MAX_W=640, DICT_REL=Path("dict.txt"), Charset=lambda path: "charset")
+
+    def build(root: Path, weights: Path, charset: object) -> Net:
+        net = Net()
+        built.append(net)
+        return net
+
+    def preprocess(gray: object) -> object:
+        widths_seen.append(fake_model.MAX_W)
+        return gray
+
+    def predict(net: Net, images: list[object], charset: object) -> list[str]:
+        return [f"lu {'ft' if net.state else 'pre'}" for _ in images]
+
+    fake_model.build, fake_model.preprocess, fake_model.predict = build, preprocess, predict
+    fake_model.read_gray = lambda path: np.zeros((48, 100), dtype=np.uint8)
+    monkeypatch.setitem(sys.modules, "model", fake_model)
+    def load(weights: str) -> dict[str, int]:
+        loaded.append(weights)
+        return {"w": 1}
+
+    monkeypatch.setitem(sys.modules, "paddle", SimpleNamespace(load=load))
+
+    lines, pieces = evaluer.experiment_models(tmp_path / "ft.pdparams")
+    assert fake_model.MAX_W == 3200  # plafond relevé avant toute lecture
+    assert set(lines) == set(pieces) == {"pre_entraine", "fine_tune"} and len(built) == 2  # chargés une fois
+    assert lines["pre_entraine"]([tmp_path / "a.png", tmp_path / "b.png"]) == ["lu pre", "lu pre"]
+    assert pieces["fine_tune"]([np.zeros((20, 30), dtype=np.uint8)]) == ["lu ft"]
+    assert widths_seen and set(widths_seen) == {3200} and loaded == [str(tmp_path / "ft.pdparams")]
+    lines_only, _ = evaluer.experiment_models(None)
+    assert set(lines_only) == {"pre_entraine"}
