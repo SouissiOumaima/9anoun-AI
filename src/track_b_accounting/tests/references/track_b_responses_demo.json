@@ -228,8 +228,8 @@
     "citations": [],
     "refus": {
       "code": "SOURCE_MANQUANTE",
-      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES).",
-      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES)."
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT)."
     },
     "computed_by": "track_b_accounting.calc.salaire_base"
   },
@@ -8291,6 +8291,1843 @@
         "article": "47 مكرر",
         "data_file": "data/processed/salary_grids/transport_routier_marchandises.json",
         "decision_ref": "D89"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-300-salaire-jardins-ouvriers-3",
+    "status": "ok",
+    "result": {
+      "montant": "386.185",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "population": "ouvriers",
+        "categorie": "3",
+        "degre": 6,
+        "anciennete_annees": "9",
+        "hypotheses": [
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+          "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+          "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "JARDINS_OUVRIERS_2011-07-01",
+        "effective_date": "2011-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-301-salaire-jardins-jardins-7-degre-16",
+    "status": "ok",
+    "result": {
+      "montant": "408.763",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "population": "jardins",
+        "categorie": "7",
+        "degre": 16,
+        "anciennete_annees": "35",
+        "hypotheses": [
+          "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+          "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+          "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "JARDINS_JARDINS_2011-07-01",
+        "effective_date": "2011-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-302-salaire-jardins-creches-date-tableau",
+    "status": "ok",
+    "result": {
+      "montant": "458.808",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "population": "creches",
+        "categorie": "2",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+          "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+          "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "JARDINS_CRECHES_2011-07-01",
+        "effective_date": "2011-07-01",
+        "date_calcul": "2011-07-01",
+        "regime_hebdomadaire_heures": 35,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-303-salaire-jardins-administratifs-2",
+    "status": "ok",
+    "result": {
+      "montant": "452.996",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "population": "administratifs",
+        "categorie": "2",
+        "degre": 11,
+        "anciennete_annees": "20",
+        "hypotheses": [
+          "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+          "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+          "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "JARDINS_ADMINISTRATIFS_2011-07-01",
+        "effective_date": "2011-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-304-refus-jardins-36-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 36 ans : la grille de la convention des jardins d'enfants et crèches s'arrête au degré 16 (33 à 36 ans) ; l'en-tête des tableaux (pages 20-21) imprime les durées de séjour 1, 1, 2 (degrés 3 à 10) puis 3 ans (degrés 11 à 16) et l'ancienneté 36 au degré 16 ; l'article 15 ب (page 7) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 36 ans).",
+      "message_ar": "أقدمية 36 سنة: ينتهي جدول أجور اتفاقية رياض الأطفال عند الدرجة 16 (من 33 إلى 36 سنة)؛ ويذكر رأس الجداول (الصفحتان 20 و21) مدد البقاء 1 و1 و2 (من الدرجة 3 إلى الدرجة 10) ثم 3 سنوات (من الدرجة 11 إلى الدرجة 16) والأقدمية 36 عند الدرجة 16؛ ولا ينص الفصل 15 ب (الصفحة 7) على شيء بعد ذلك. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 36 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-305-refus-jardins-avant-tableau",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille JARDINS_ENFANTS_CRECHES/ouvriers en vigueur au 2011-06-30 (première date d'effet disponible : 2011-07-01).",
+      "message_ar": "لا يوجد جدول أجور JARDINS_ENFANTS_CRECHES/ouvriers ساري المفعول بتاريخ 2011-06-30 (أول تاريخ نفاذ متوفر: 2011-07-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-306-prime-pedagogique-jardins-rang-1",
+    "status": "ok",
+    "result": {
+      "montant": "51.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "code": "prime_pedagogique_rang_1",
+        "label_fr": "Prime pédagogique : Professeur",
+        "label_ar": "منحة بيداغوجية (أستاذ)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2004-07-01",
+        "note": "Rang 1 du tableau de l'article 46 (p.15), par position.",
+        "hypotheses": [
+          "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+        ],
+        "hypotheses_ar": [
+          "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 15,
+        "article": "46",
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-307-prime-presence-jardins-2003",
+    "status": "ok",
+    "result": {
+      "montant": "6.080",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "code": "prime_presence_ouvriers",
+        "label_fr": "Prime de présence des ouvriers",
+        "label_ar": "منحة الحضور (العمال)",
+        "date_calcul": "2003-08-01",
+        "regles": "D6",
+        "effective_date": "2003-07-01",
+        "hypotheses": [
+          "Montants du texte consolidé après l'avenant n° 3 (effet au 1er juillet 2011) ; aucune date postérieure n'est imprimée : le dernier montant est servi sans date de fin."
+        ],
+        "hypotheses_ar": [
+          "مبالغ النص المحيّن بعد الملحق التعديلي عدد 3 (بداية من 1 جويلية 2011)؛ لا يوجد تاريخ لاحق مطبوع: يُرجَع آخر مبلغ دون تاريخ نهاية."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 13,
+        "article": "44 (جديد)",
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-308-refus-jardins-pedagogique-quatre-decimales",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime pédagogique : agent chargé de l'animation de premier rang (article 46, page 15) : montants 16.900 (juillet 2002), « 25.7000 » (juillet 2003, imprimé à quatre décimales) et 34.200 (juillet 2004) : le montant de 2003 ne peut pas être servi arrondi au millime, et le contrat v1 ne sert pas un montant exact dans une série datée. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة بيداغوجية (عون مكلف بالتنشيط رتبة أولى) (الفصل 46، الصفحة 15): المبالغ 16.900 (جويلية 2002) و«25.7000» (جويلية 2003، مطبوع بأربعة أرقام بعد الفاصل) و34.200 (جويلية 2004): لا يُرجَع مبلغ 2003 مدوَّرا إلى المليم. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-309-prime-transport-creches-rang-3",
+    "status": "ok",
+    "result": {
+      "montant": "21.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "code": "prime_transport_creches_rang_3",
+        "label_fr": "Prime de transport des crèches : Aide-agent de soins et d'éducation de premier rang",
+        "label_ar": "منحة نقل (مساعد عون رعاية وتربية رتبة أولى)",
+        "date_calcul": "2004-07-01",
+        "regles": "D6",
+        "effective_date": "2004-07-01",
+        "note": "Rang 3 du tableau de l'article 47 (p.16), par position. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée).",
+        "hypotheses": [
+          "Article jamais révisé par un avenant (liste des avenants, page 2) : le montant de juillet 2004 est servi sans date de fin."
+        ],
+        "hypotheses_ar": [
+          "فصل لم يُنقَّح بأي ملحق تعديلي (قائمة الملاحق، الصفحة 2): يُرجَع مبلغ جويلية 2004 دون تاريخ نهاية."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 16,
+        "article": "47",
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-310-salaire-cliniques-c2-degre-15",
+    "status": "ok",
+    "result": {
+      "montant": "1916.763",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "population": "cliniques",
+        "categorie": "C2",
+        "degre": 15,
+        "anciennete_annees": "29",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 16) : TND/mois en hypothèse (montants de 457 à 1 917).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Avenant n° 4 (page 2) : les hausses de 2011 s'appliquent aussi aux agents payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Promotion automatique après dix ans dans la catégorie (article 13 (جديد), page 7) : non calculée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 16): الدينار في الشهر على سبيل الافتراض (مبالغ من 457 à 1 917).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الملحق التعديلي عدد 4 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا تُحتسب الترقية الآلية بعد عشر سنوات في الصنف (الفصل 13 (جديد)، الصفحة 7).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CLINIQUES_HORS_DIALYSE_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 16,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-311-salaire-cliniques-dialyse-e1",
+    "status": "ok",
+    "result": {
+      "montant": "457.215",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "population": "centres_dialyse",
+        "categorie": "E1",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 16) : TND/mois en hypothèse (montants de 457 à 1 917).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Avenant n° 4 (page 2) : les hausses de 2011 s'appliquent aussi aux agents payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Promotion automatique après dix ans dans la catégorie (article 13 (جديد), page 7) : non calculée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 16): الدينار في الشهر على سبيل الافتراض (مبالغ من 457 à 1 917).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الملحق التعديلي عدد 4 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا تُحتسب الترقية الآلية بعد عشر سنوات في الصنف (الفصل 13 (جديد)، الصفحة 7).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CLINIQUES_DIALYSE_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 16,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-312-salaire-cliniques-m3",
+    "status": "ok",
+    "result": {
+      "montant": "1215.735",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "population": "cliniques",
+        "categorie": "M3",
+        "degre": 9,
+        "anciennete_annees": "12",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 16) : TND/mois en hypothèse (montants de 457 à 1 917).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Avenant n° 4 (page 2) : les hausses de 2011 s'appliquent aussi aux agents payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Promotion automatique après dix ans dans la catégorie (article 13 (جديد), page 7) : non calculée.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 16): الدينار في الشهر على سبيل الافتراض (مبالغ من 457 à 1 917).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الملحق التعديلي عدد 4 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا تُحتسب الترقية الآلية بعد عشر سنوات في الصنف (الفصل 13 (جديد)، الصفحة 7).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CLINIQUES_HORS_DIALYSE_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": null,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 16,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-313-refus-cliniques-30-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 30 ans : la grille de la convention des cliniques privées s'arrête au degré 15 (27 à 30 ans) ; l'en-tête (page 16) imprime les durées de séjour 1 (degrés 1 à 5), 2 (6 à 10) puis 3 ans (11 à 15), soit 30 ans, et l'article 13 (جديد) (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+      "message_ar": "أقدمية 30 سنة: ينتهي جدول أجور اتفاقية المصحات الخاصة عند الدرجة 15 (من 27 إلى 30 سنة)؛ ويذكر رأس الجدول (الصفحة 16) مدد البقاء سنة (من الدرجة 1 إلى 5) وسنتين (من 6 إلى 10) ثم 3 سنوات (من 11 إلى 15)، أي 30 سنة، ولا ينص الفصل 13 (جديد) (الصفحتان 6 و7) على شيء بعد الدرجة 15. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-314-refus-cliniques-avant-tableau",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille CLINIQUES_PRIVEES/cliniques en vigueur au 2019-04-30 (première date d'effet disponible : 2019-05-01).",
+      "message_ar": "لا يوجد جدول أجور CLINIQUES_PRIVEES/cliniques ساري المفعول بتاريخ 2019-04-30 (أول تاريخ نفاذ متوفر: 2019-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-315-prime-transport-cliniques-2016",
+    "status": "ok",
+    "result": {
+      "montant": "57.945",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2016-09-01",
+        "regles": "D6",
+        "groupe": "maitrise",
+        "groupe_libelle": "Agents de maîtrise",
+        "groupe_libelle_ar": "أعوان التسيير",
+        "effective_date": "2016-08-01",
+        "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; les montants de 2016 et 2017 sont servis même si les grilles de ces années ne sont pas dans la source (art. 45 (جديد), p.13)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 13,
+        "article": "45 (جديد)",
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-316-prime-nuit-cliniques",
+    "status": "ok",
+    "result": {
+      "montant": "3.666",
+      "unite": "TND/nuit",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "code": "prime_travail_nuit",
+        "label_fr": "Prime de travail de nuit",
+        "label_ar": "منحة العمل الليلي",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "note": "Imprimé « عن كل ليلة عمل » (art. 25 (جديد), p.9).",
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 9,
+        "article": "25 (جديد)",
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-317-prime-specialite-dialyse-technicien",
+    "status": "ok",
+    "result": {
+      "montant": "20.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CLINIQUES_PRIVEES",
+        "code": "prime_specialite_dialyse_technicien_superieur_sante",
+        "label_fr": "Prime de spécialité (dialyse) : technicien supérieur de la santé",
+        "label_ar": "منحة الاختصاص (تصفية الدم، فني سامي للصحة)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "technicien supérieur de la santé d'un centre de dialyse (art. 47 (جديد), p.13)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+        "page": 13,
+        "article": "47 (جديد)",
+        "data_file": "data/processed/salary_grids/cliniques_privees.json",
+        "decision_ref": "D92"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-318-salaire-location-17-degre-16",
+    "status": "ok",
+    "result": {
+      "montant": "1723.405",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "population": "agents",
+        "categorie": "17",
+        "degre": 16,
+        "anciennete_annees": "29",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 521 à 1 800).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Degrés 17 à 20 (30 à 38 ans) : l'art. 17 ب ne prévoit que 16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête (demande par le degré, D75) ; par l'ancienneté, de 30 ans exclus à 38 ans inclus, refus (article 17 ب, page 8).",
+          "Passage dans la catégorie suivante au dernier degré (article 17 ب, page 8) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 521 à 1 800).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الدرجات من 17 إلى 20 (من 30 إلى 38 سنة): لا ينص الفصل 17 ب إلا على 16 درجة؛ تُرجَع الدرجات من 17 إلى 20 لأنها مطبوعة برأس الجدول (الطلب حسب الدرجة، D75)؛ أما حسب الأقدمية فيقع الرفض من أكثر من 30 سنة إلى 38 سنة (الفصل 17 ب، الصفحة 8).",
+          "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 17 ب، الصفحة 8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "LOCATION_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-319-salaire-location-1-degre-1",
+    "status": "ok",
+    "result": {
+      "montant": "521.240",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "population": "agents",
+        "categorie": "1",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 521 à 1 800).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Degrés 17 à 20 (30 à 38 ans) : l'art. 17 ب ne prévoit que 16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête (demande par le degré, D75) ; par l'ancienneté, de 30 ans exclus à 38 ans inclus, refus (article 17 ب, page 8).",
+          "Passage dans la catégorie suivante au dernier degré (article 17 ب, page 8) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 521 à 1 800).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الدرجات من 17 إلى 20 (من 30 إلى 38 سنة): لا ينص الفصل 17 ب إلا على 16 درجة؛ تُرجَع الدرجات من 17 إلى 20 لأنها مطبوعة برأس الجدول (الطلب حسب الدرجة، D75)؛ أما حسب الأقدمية فيقع الرفض من أكثر من 30 سنة إلى 38 سنة (الفصل 17 ب، الصفحة 8).",
+          "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 17 ب، الصفحة 8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "LOCATION_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2019-05-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-320-salaire-location-pas-irregulier",
+    "status": "ok",
+    "result": {
+      "montant": "1549.933",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "population": "agents",
+        "categorie": "17",
+        "degre": 7,
+        "anciennete_annees": "11",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 521 à 1 800).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Degrés 17 à 20 (30 à 38 ans) : l'art. 17 ب ne prévoit que 16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête (demande par le degré, D75) ; par l'ancienneté, de 30 ans exclus à 38 ans inclus, refus (article 17 ب, page 8).",
+          "Passage dans la catégorie suivante au dernier degré (article 17 ب, page 8) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 521 à 1 800).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الدرجات من 17 إلى 20 (من 30 إلى 38 سنة): لا ينص الفصل 17 ب إلا على 16 درجة؛ تُرجَع الدرجات من 17 إلى 20 لأنها مطبوعة برأس الجدول (الطلب حسب الدرجة، D75)؛ أما حسب الأقدمية فيقع الرفض من أكثر من 30 سنة إلى 38 سنة (الفصل 17 ب، الصفحة 8).",
+          "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 17 ب، الصفحة 8).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "LOCATION_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-321-refus-location-31-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 31 ans : l'en-tête du tableau n° 2 (page 19) imprime 20 degrés (jusqu'à 38 ans), alors que l'article 17 ب (page 8) dit que chaque catégorie compte 16 degrés (un an pour les degrés 1 et 2, deux ans pour les degrés 3 à 16), soit 30 ans. Les deux textes se contredisent de 30 ans exclus à 38 ans inclus (degrés 17 à 20). Aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 31 سنة: يذكر رأس جدول الأجور عدد 2 (الصفحة 19) 20 درجة (إلى 38 سنة)، في حين ينص الفصل 17 ب (الصفحة 8) على أن كل صنف يحتوي على 16 درجة (سنة للدرجتين 1 و2 وسنتان للدرجات من 3 إلى 16)، أي 30 سنة. يتعارض النصان من أكثر من 30 سنة إلى 38 سنة (الدرجات من 17 إلى 20). لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-322-refus-location-avant-tableau",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille LOCATION_VOITURES/agents en vigueur au 2019-04-30 (première date d'effet disponible : 2019-05-01).",
+      "message_ar": "لا يوجد جدول أجور LOCATION_VOITURES/agents ساري المفعول بتاريخ 2019-04-30 (أول تاريخ نفاذ متوفر: 2019-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-323-prime-presence-location-cadres-2018",
+    "status": "ok",
+    "result": {
+      "montant": "12.061",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "code": "prime_presence",
+        "label_fr": "Prime de présence",
+        "label_ar": "منحة الحضور",
+        "date_calcul": "2018-06-01",
+        "regles": "D6",
+        "groupe": "cadres",
+        "groupe_libelle": "Cadres",
+        "groupe_libelle_ar": "الإطارات",
+        "effective_date": "2018-05-01"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 15,
+        "article": "56 (جديد)",
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-324-prime-scolaire-location-secondaire",
+    "status": "ok",
+    "result": {
+      "montant": "20.000",
+      "unite": "TND/enfant",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "code": "prime_scolaire_secondaire",
+        "label_fr": "Prime scolaire : secondaire",
+        "label_ar": "المنحة المدرسية (ثانوي)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "note": "Par enfant inscrit, à la rentrée scolaire (art. 58 ثالثا, p.15).",
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 15,
+        "article": "58 ثالثا",
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-325-refus-location-13e-mois",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Treizième mois (article 57, page 15) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "الشهر الثالث عشر (الفصل 57، الصفحة 15): أجرة شهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-326-salaire-materiaux-horaires-1",
+    "status": "ok",
+    "result": {
+      "montant": "3.005",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "population": "horaires",
+        "categorie": "1",
+        "degre": 3,
+        "anciennete_annees": "2.5",
+        "hypotheses": [
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Reclassement de l'article 54 (page 18 : un à trois degrés selon l'ancienneté à l'entrée en vigueur) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب إعادة الترتيب المنصوص عليها بالفصل 54 (الصفحة 18: من درجة إلى ثلاث درجات حسب الأقدمية).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "MATERIAUX_COMMERCE_HORAIRES_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-327-salaire-materiaux-mensuels-2-2018",
+    "status": "ok",
+    "result": {
+      "montant": "514.431",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "population": "mensuels",
+        "categorie": "2",
+        "degre": 7,
+        "anciennete_annees": "10",
+        "hypotheses": [
+          "Unité imprimée pour les catégories 1 et 2 (« الشهري ») ; TND/mois en hypothèse pour les catégories 3 à 20 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Reclassement de l'article 54 (page 18 : un à trois degrés selon l'ancienneté à l'entrée en vigueur) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة للصنفين 1 و2 («الشهري»)؛ الدينار في الشهر على سبيل الافتراض للأصناف من 3 إلى 20 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب إعادة الترتيب المنصوص عليها بالفصل 54 (الصفحة 18: من درجة إلى ثلاث درجات حسب الأقدمية).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "MATERIAUX_COMMERCE_MENSUELS_2018-05-01",
+        "effective_date": "2018-05-01",
+        "date_calcul": "2018-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 20,
+        "article": null,
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-328-salaire-materiaux-mensuels-20",
+    "status": "ok",
+    "result": {
+      "montant": "1435.788",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "population": "mensuels",
+        "categorie": "20",
+        "degre": 12,
+        "anciennete_annees": "26",
+        "hypotheses": [
+          "Unité imprimée pour les catégories 1 et 2 (« الشهري ») ; TND/mois en hypothèse pour les catégories 3 à 20 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Reclassement de l'article 54 (page 18 : un à trois degrés selon l'ancienneté à l'entrée en vigueur) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة للصنفين 1 و2 («الشهري»)؛ الدينار في الشهر على سبيل الافتراض للأصناف من 3 إلى 20 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب إعادة الترتيب المنصوص عليها بالفصل 54 (الصفحة 18: من درجة إلى ثلاث درجات حسب الأقدمية).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "MATERIAUX_COMMERCE_MENSUELS_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-329-salaire-materiaux-maitrise-1",
+    "status": "ok",
+    "result": {
+      "montant": "786.298",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "population": "mensuels",
+        "categorie": "10",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité imprimée pour les catégories 1 et 2 (« الشهري ») ; TND/mois en hypothèse pour les catégories 3 à 20 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Reclassement de l'article 54 (page 18 : un à trois degrés selon l'ancienneté à l'entrée en vigueur) : non calculé.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة للصنفين 1 و2 («الشهري»)؛ الدينار في الشهر على سبيل الافتراض للأصناف من 3 إلى 20 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب إعادة الترتيب المنصوص عليها بالفصل 54 (الصفحة 18: من درجة إلى ثلاث درجات حسب الأقدمية).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "MATERIAUX_COMMERCE_MENSUELS_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2019-05-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-330-refus-materiaux-27-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 27 ans : la grille de la convention du commerce des matériaux de construction, du bois et de l'acier s'arrête au degré 12 (24 à 27 ans) ; l'en-tête (pages 20-21) imprime les durées de séjour 1 (degrés 1 à 3), 2 (4 à 6) puis 3 ans (7 à 12), soit 27 ans, et l'article 13 (page 8) ne prévoit rien au-delà du degré 12. Aucun montant n'est renvoyé (ancienneté couverte : moins de 27 ans).",
+      "message_ar": "أقدمية 27 سنة: ينتهي جدول أجور اتفاقية تجارة مواد البناء والخشب والمواد الفولاذية عند الدرجة 12 (من 24 إلى 27 سنة)؛ ويذكر رأس الجدولين (الصفحتان 20 و21) مدد البقاء سنة (من الدرجة 1 إلى 3) وسنتين (من 4 إلى 6) ثم 3 سنوات (من 7 إلى 12)، أي 27 سنة، ولا ينص الفصل 13 (الصفحة 8) على شيء بعد الدرجة 12. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 27 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-331-refus-materiaux-avant-tableau-1",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille COMMERCE_MATERIAUX_BOIS_ACIER/horaires en vigueur au 2018-04-30 (première date d'effet disponible : 2018-05-01).",
+      "message_ar": "لا يوجد جدول أجور COMMERCE_MATERIAUX_BOIS_ACIER/horaires ساري المفعول بتاريخ 2018-04-30 (أول تاريخ نفاذ متوفر: 2018-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-332-prime-transport-materiaux-2019",
+    "status": "ok",
+    "result": {
+      "montant": "64.996",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "code": "prime_transport",
+        "label_fr": "Prime de transport",
+        "label_ar": "منحة النقل",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": "2019-05-01",
+        "note": "Réduite pour chaque jour d'absence : montant de base servi, réduction non calculée (art. 26 أ (جديد), p.10)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 10,
+        "article": "26 أ (جديد)",
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-333-prime-panier-materiaux",
+    "status": "ok",
+    "result": {
+      "montant": "0.433",
+      "unite": "TND/jour",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "code": "prime_panier",
+        "label_fr": "Prime de panier",
+        "label_ar": "منحة القفة",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "travail continu de plus de sept heures, ou hors du périmètre communal (art. 26 ج (جديد), p.11)",
+        "effective_date": null,
+        "note": "Imprimé « 433 مي » ; exclue si la prime de déplacement est perçue (art. 26 ج (جديد), p.11).",
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 11,
+        "article": "26 ج (جديد)",
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-334-salaire-cafes-grands-recrutement",
+    "status": "ok",
+    "result": {
+      "montant": "301.770",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "population": "grands",
+        "categorie": "8",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CAFES_GRANDS_2010-07-01",
+        "effective_date": "2010-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-335-salaire-cafes-cat1-degre-ouvert",
+    "status": "ok",
+    "result": {
+      "montant": "477.332",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "population": "cafes_categorie_1",
+        "categorie": "1",
+        "degre": 13,
+        "anciennete_annees": "40",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "La convention ne définit pas les « cafés de première catégorie » (« المقاهي صنف 1 », tableau n° 7, page 31) ; l'article 2 (جديد) (page 5) ne définit que les petits (8 travailleurs permanents au plus), moyens (9 à 14) et grands (plus de 14) établissements : la population est celle déclarée par l'appelant.",
+          "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تعرّف الاتفاقية «المقاهي صنف 1» (جدول الأجور عدد 7، الصفحة 31)؛ ولا يعرّف الفصل 2 (جديد) (الصفحة 5) إلا المؤسسات الصغرى (8 عمال قارين على الأكثر) والمتوسطة (من 9 إلى 14) والكبرى (أكثر من 14): الفئة هي التي يصرح بها الطالب.",
+          "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CAFES_CAFES_CATEGORIE_1_2010-07-01",
+        "effective_date": "2010-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-336-salaire-cafes-moyens-petits-4",
+    "status": "ok",
+    "result": {
+      "montant": "388.045",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "population": "moyens_petits",
+        "categorie": "4",
+        "degre": 3,
+        "anciennete_annees": "6",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "La convention ne définit pas les « cafés de première catégorie » (« المقاهي صنف 1 », tableau n° 7, page 31) ; l'article 2 (جديد) (page 5) ne définit que les petits (8 travailleurs permanents au plus), moyens (9 à 14) et grands (plus de 14) établissements : la population est celle déclarée par l'appelant.",
+          "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تعرّف الاتفاقية «المقاهي صنف 1» (جدول الأجور عدد 7، الصفحة 31)؛ ولا يعرّف الفصل 2 (جديد) (الصفحة 5) إلا المؤسسات الصغرى (8 عمال قارين على الأكثر) والمتوسطة (من 9 إلى 14) والكبرى (أكثر من 14): الفئة هي التي يصرح بها الطالب.",
+          "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "CAFES_MOYENS_PETITS_2010-07-01",
+        "effective_date": "2010-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-337-refus-cafes-entre-1-et-3-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 2 ans : l'en-tête des tableaux (page 31) place la colonne du recrutement (« الانتداب ») jusqu'à 3 ans, alors que l'article 53 (جديد) (page 14) ne laisse hors de l'échelle que la première année de recrutement. Les deux textes se contredisent de 1 an exclu à 3 ans inclus. Aucun montant n'est renvoyé.",
+      "message_ar": "أقدمية 2 سنة: يضع رأس الجداول (الصفحة 31) عمود الانتداب إلى غاية 3 سنوات، في حين لا يعتبر الفصل 53 (جديد) (الصفحة 14) خارج السلم إلا السنة الأولى لانتداب العامل. يتعارض النصان من أكثر من سنة إلى 3 سنوات. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-338-refus-cafes-avant-tableau",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille CAFES_RESTAURANTS_BARS/moyens_petits en vigueur au 2010-06-30 (première date d'effet disponible : 2010-07-01).",
+      "message_ar": "لا يوجد جدول أجور CAFES_RESTAURANTS_BARS/moyens_petits ساري المفعول بتاريخ 2010-06-30 (أول تاريخ نفاذ متوفر: 2010-07-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-339-prime-transport-cafes-petits-2008",
+    "status": "ok",
+    "result": {
+      "montant": "13.200",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "code": "prime_transport_cat4_6_petits",
+        "label_fr": "Prime de transport : catégories 4 à 6, petits établissements",
+        "label_ar": "منحة النقل (الأصناف الرابع والخامس والسادس، المؤسسات الصغرى)",
+        "date_calcul": "2008-10-01",
+        "regles": "D6",
+        "effective_date": "2008-09-01",
+        "note": "Par mois de travail effectif ; premier montant à partir du 2008-09-01 pour les petits établissements, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 14,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-340-refus-cafes-transport-petits-aout-2008",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "prime_transport_cat4_6_petits : aucun montant en vigueur au 2008-08-01 (première date d'effet : 2008-09-01).",
+      "message_ar": "prime_transport_cat4_6_petits: لا يوجد مبلغ ساري المفعول بتاريخ 2008-08-01 (أول تاريخ نفاذ: 2008-09-01)."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-341-prime-transport-cafes-moyens-grands-2008",
+    "status": "ok",
+    "result": {
+      "montant": "10.700",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "code": "prime_transport_cat7_8_moyens_grands",
+        "label_fr": "Prime de transport : catégories 7 et 8, établissements moyens et grands",
+        "label_ar": "منحة النقل (الصنفان السابع والثامن، المؤسسات المتوسطة والكبرى)",
+        "date_calcul": "2008-08-01",
+        "regles": "D6",
+        "effective_date": "2008-07-01",
+        "note": "Par mois de travail effectif ; premier montant à partir du 2008-07-01 pour les établissements moyens et grands, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 14,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-342-prime-caisse-cafes-en-lettres",
+    "status": "ok",
+    "result": {
+      "montant": "7.000",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "code": "prime_caisse_grands",
+        "label_fr": "Prime de caisse : grands établissements",
+        "label_ar": "منحة الصندوق (المؤسسات الكبرى)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "note": "Montant imprimé en lettres seulement : « سبعة دنانير شهريا » ; par mois de travail effectif, caissier chargé de l'encaissement (art. 52 (جديد), p.14).",
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 14,
+        "article": "52 (جديد)",
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-343-salaire-ports-manutention-ligne-croisee",
+    "status": "ok",
+    "result": {
+      "montant": "394.990",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "population": "manutention",
+        "categorie": "1",
+        "degre": 20,
+        "anciennete_annees": "55",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 25) : TND/mois en hypothèse (montants de 276 à 1 077).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 25): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "PORTS_MANUTENTION_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-344-salaire-ports-manutention-2-degre-19",
+    "status": "ok",
+    "result": {
+      "montant": "383.085",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "population": "manutention",
+        "categorie": "2",
+        "degre": 19,
+        "anciennete_annees": "52",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 25) : TND/mois en hypothèse (montants de 276 à 1 077).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 25): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "PORTS_MANUTENTION_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-345-salaire-ports-exploitation-24",
+    "status": "ok",
+    "result": {
+      "montant": "557.784",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "population": "exploitation_administration",
+        "categorie": "24",
+        "degre": 1,
+        "anciennete_annees": "0.5",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 26) : TND/mois en hypothèse (montants de 276 à 1 077).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 26): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "PORTS_EXPLOITATION_ADMINISTRATION_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 26,
+        "article": null,
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-346-salaire-ports-titularises-10",
+    "status": "ok",
+    "result": {
+      "montant": "668.535",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "population": "titularises_2005",
+        "categorie": "10",
+        "degre": 2,
+        "anciennete_annees": "2",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 27) : TND/mois en hypothèse (montants de 276 à 1 077).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Tableau n° 9 (page 27) : agents de manutention titularisés au premier trimestre 2005, échelles 10 à 19 ; leurs primes de logement et de risque sont celles de l'article 75 (جديد) (page 22), pas celles des articles 43 et 47.",
+          "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+          "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 27): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "جدول الأجور عدد 9 (الصفحة 27): أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005، السلالم من 10 إلى 19؛ منحتا السكن والخطر الخاصتان بهم هما المنصوص عليهما بالفصل 75 (جديد) (الصفحة 22) لا بالفصلين 43 و47.",
+          "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+          "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+        ],
+        "table_id": "PORTS_TITULARISES_2005_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2010-05-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D6"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 27,
+        "article": null,
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-347-refus-ports-cellule-non-tranchee",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents de manutention, catégorie 2, degré 11 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 368.706 ou 368.705 : dernier chiffre 6 ou 5, non séparé au zoom (lectures « 368.706? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 2، الدرجة 11 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-348-refus-ports-exploitation-1-degre-1",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents d'exploitation et d'administration, catégorie 1, degré 1 (tableau n° 8, en vigueur à partir du 2010-05-01, page 26) : cellule non tranchée au zoom à 400 dpi : 276.909 ou 275.909 : troisième chiffre non séparé au zoom (lectures « 276.909? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر أعوان الاستغلال والإدارة، الصنف 1، الدرجة 1 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2010-05-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-349-refus-ports-56-ans",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Ancienneté de 56 ans : la grille de la convention du chargement et du déchargement dans les ports maritimes de commerce s'arrête au degré 20 (53 à 56 ans) ; l'en-tête des tableaux (pages 25-27) imprime l'ancienneté dans l'entreprise 1, 3, 5, 8 … 56 en fin de degré, comme l'article 12 أ (page 7), qui ne prévoit rien au-delà du degré 20. Aucun montant n'est renvoyé (ancienneté couverte : moins de 56 ans).",
+      "message_ar": "أقدمية 56 سنة: ينتهي جدول أجور اتفاقية الشحن والتفريغ بالموانئ البحرية التجارية عند الدرجة 20 (من 53 إلى 56 سنة)؛ ويذكر رأس الجداول (الصفحات من 25 إلى 27) الأقدمية بالمؤسسة 1 و3 و5 و8 ... 56 في آخر الدرجة، كما في الفصل 12 أ (الصفحة 7) الذي لا ينص على شيء بعد الدرجة 20. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 56 سنة)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-350-refus-ports-avant-tableau",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille PORTS_CHARGEMENT_DECHARGEMENT/manutention en vigueur au 2010-04-30 (première date d'effet disponible : 2010-05-01).",
+      "message_ar": "لا يوجد جدول أجور PORTS_CHARGEMENT_DECHARGEMENT/manutention ساري المفعول بتاريخ 2010-04-30 (أول تاريخ نفاذ متوفر: 2010-05-01)."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-351-prime-logement-ports-art-75",
+    "status": "ok",
+    "result": {
+      "montant": "52.736",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "code": "prime_logement_titularises_2005",
+        "label_fr": "Prime de logement (agents du tableau n° 9)",
+        "label_ar": "منحة السكن (الأعوان المرسمون سنة 2005)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "agent de manutention titularisé au premier trimestre 2005 (tableau n° 9, page 27)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Article 75 (جديد) (page 22) : « ينتفع بصفة استثنائية … بالمنح التالية » ; montant servi à la population du tableau n° 9 à la place de celui de l'article 43 ou 47 : le texte ne dit pas s'il le remplace ou s'y ajoute.",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "الفصل 75 (جديد) (الصفحة 22): «ينتفع بصفة استثنائية ... بالمنح التالية»؛ يُرجَع هذا المبلغ لأعوان جدول الأجور عدد 9 عوضا عن مبلغ الفصل 43 أو 47: لا يحدد النص إن كان يعوضه أو يضاف إليه.",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 22,
+        "article": "75 (جديد)",
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-352-refus-ports-logement-art-43-tableau-9",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de logement de l'article 43 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_logement_titularises_2005 ; le montant de l'article 43 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة السكن (الفصل 43) لأعوان جدول الأجور عدد 9 (الفصل 75 (جديد)، الصفحة 22): بالنسبة إلى أعوان الشحن والتفريغ المرسمين خلال الثلاثية الأولى من سنة 2005 (جدول الأجور عدد 9)، يضبط الفصل 75 (جديد) (الصفحة 22) مبلغا خاصا يُرجَع بالرمز prime_logement_titularises_2005؛ ولا يُرجَع لهم مبلغ الفصل 43. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-353-prime-risque-ports-art-75-conducteurs",
+    "status": "ok",
+    "result": {
+      "montant": "71.500",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "code": "prime_risque_titularises_2005_conducteurs_chefs",
+        "label_fr": "Prime de risque (agents du tableau n° 9) : conducteurs, chefs d'équipe, surveillants",
+        "label_ar": "منحة الخطر (الأعوان المرسمون سنة 2005: السواق والكبران والناظر)",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "conducteur, chef d'équipe ou surveillant, agent de manutention titularisé au premier trimestre 2005 (tableau n° 9, page 27)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Article 75 (جديد) (page 22) : « ينتفع بصفة استثنائية … بالمنح التالية » ; montant servi à la population du tableau n° 9 à la place de celui de l'article 43 ou 47 : le texte ne dit pas s'il le remplace ou s'y ajoute.",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "الفصل 75 (جديد) (الصفحة 22): «ينتفع بصفة استثنائية ... بالمنح التالية»؛ يُرجَع هذا المبلغ لأعوان جدول الأجور عدد 9 عوضا عن مبلغ الفصل 43 أو 47: لا يحدد النص إن كان يعوضه أو يضاف إليه.",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 22,
+        "article": "75 (جديد)",
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-354-refus-ports-risque-art-47-tableau-9",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Prime de risque (conducteurs, chefs d'équipe, surveillants) de l'article 47 pour les agents du tableau n° 9 (article 75 (جديد), page 22) : pour les agents de manutention titularisés au premier trimestre 2005 (tableau n° 9), l'article 75 (جديد) (page 22) fixe un montant propre, servi par le code prime_risque_titularises_2005_conducteurs_chefs ; le montant de l'article 47 ne leur est pas servi. Prime non exposée ; aucun montant n'est renvoyé.",
+      "message_ar": "منحة الخطر (السواق والكبران والناظر) (الفصل 47) لأعوان جدول الأجور عدد 9 (الفصل 75 (جديد)، الصفحة 22): بالنسبة إلى أعوان الشحن والتفريغ المرسمين خلال الثلاثية الأولى من سنة 2005 (جدول الأجور عدد 9)، يضبط الفصل 75 (جديد) (الصفحة 22) مبلغا خاصا يُرجَع بالرمز prime_risque_titularises_2005_conducteurs_chefs؛ ولا يُرجَع لهم مبلغ الفصل 47. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-355-prime-logement-ports-art-43",
+    "status": "ok",
+    "result": {
+      "montant": "32.736",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "code": "prime_logement",
+        "label_fr": "Prime de logement (agents de manutention)",
+        "label_ar": "منحة السكن",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "condition": "agent de manutention qui n'appartient pas à la population du tableau n° 9 (agents titularisés au premier trimestre 2005) : pour celle-ci, l'article 75 (جديد) (page 22) fixe un montant propre (prime_logement_titularises_2005)",
+        "effective_date": null,
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+          "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+          "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 15,
+        "article": "43",
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-356-prime-productivite-ports-en-lettres",
+    "status": "ok",
+    "result": {
+      "montant": "7.500",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "code": "prime_productivite_exploitation",
+        "label_fr": "Prime de productivité (agents d'exploitation et d'administration)",
+        "label_ar": "منحة الإنتاجية",
+        "date_calcul": "2024-06-01",
+        "regles": "D6",
+        "effective_date": null,
+        "note": "Imprimé en chiffres et en lettres : « 7 دنانير ونصف » (art. 60, p.18).",
+        "hypotheses": [
+          "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+        ],
+        "hypotheses_ar": [
+          "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+        ]
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 18,
+        "article": "60",
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.prime"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-357-prime-transport-ports-2008",
+    "status": "ok",
+    "result": {
+      "montant": "12.500",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "code": "prime_transport_manutention",
+        "label_fr": "Prime de transport (agents de manutention)",
+        "label_ar": "منحة النقل (أعوان الشحن والتفريغ)",
+        "date_calcul": "2008-06-01",
+        "regles": "D6",
+        "groupe": "encadrement",
+        "groupe_libelle": "Agents d'encadrement",
+        "groupe_libelle_ar": "أعوان التأطير",
+        "effective_date": "2008-05-01",
+        "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants de 2008 et 2009, servis même si les grilles de ces années ne sont pas dans la source (art. 48 (جديد), p.16)."
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 16,
+        "article": "48 (جديد)",
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
       }
     ],
     "refus": null,

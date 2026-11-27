@@ -2349,6 +2349,8 @@ jeu de référence TB-126 à TB-131.
 (« LOTS VALIDÉS », 2026-11-10) ; primes lues deux fois et relues par DS5. Cas du jeu de référence : en attente de
 vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D50 — Grille salariale AGENCES_VOYAGES (pages 2-3, 8, 15-19)
@@ -2390,6 +2392,8 @@ tableau n° 1 a ensuite été relue à 400 dpi ; décision de DS5 :
 
 Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D51 — Grille salariale HOTELS_TOURISTIQUES (pages 2-3, 8-9, 15-18, 42-44)
@@ -2419,6 +2423,8 @@ espace de milliers ; ancienneté effective imprimée 1, 3, …, 27, 30.
 
 **Statut de vérification** : 260 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2463,6 +2469,8 @@ saisie. Aucune démo ni aucun cas du jeu de référence n'utilisait ces cellules
 est aussi signalée par ce contrôle, mais l'image l'imprime nettement : elle reste une anomalie imprimée (point 4) et
 figure dans la liste nommée des exceptions du test.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D53 — Grille salariale PATES_ALIMENTAIRES_COUSCOUS (pages 2-3, 8-9, 15-21)
@@ -2491,6 +2499,8 @@ figure dans la liste nommée des exceptions du test.
 
 **Statut de vérification** : 504 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-10). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2532,6 +2542,8 @@ attente de validation DS2 (noms, codes et alias) ; seule exemption du test `test
 messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux (décrets 437/1981 et 501/1982) reprise en
 remarque, sans calcul.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D55 — Grille salariale SAVONNERIE_RAFFINAGE_GRIGNONS (pages 2-3, 12-22)
@@ -2570,6 +2582,8 @@ D69 (vérifié avec `git fetch origin` le 2026-11-11). D55 à D60 forment la vag
 **Statut de vérification** : 468 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D56 — Grille salariale COMMERCE_DISTRIBUTION_PETROLE (pages 2-3, 7-10, 15-17, 19-20)
@@ -2600,6 +2614,8 @@ rangs) × 14 colonnes (« - » puis degrés 1 à 13) = 588 montants, imprimés �
 **Statut de vérification** : 588 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D57 — Grille salariale PLASTURGIE (pages 2-3, 8-10, 14-16, 22-24)
@@ -2627,6 +2643,8 @@ l'heure 6 × 16 = 672 montants, imprimés à la virgule.
 
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2658,6 +2676,8 @@ imprimés 0 à 13 = 672 montants.
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
 
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
+
 ---
 
 ### D59 — Grille salariale TEINTURERIES_PRESSINGS (pages 2-3, 9-12, 14, 17, 19-22)
@@ -2685,6 +2705,8 @@ administratifs et techniciens (10 catégories, mensuels) × 14 degrés = 672 mon
 
 **Statut de vérification** : 672 cellules en double lecture (0 écart), lots validés par DS5 (2026-11-11). Cas du jeu de
 référence : en attente de vérification humaine.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -2723,6 +2745,8 @@ activés dans le registre DS5 sans entrée dans la table des secteurs, en attent
 `EN_ATTENTE_DS2` du test `test_chaque_secteur_ds5_disponible_figure_une_fois`) ; titres des conventions repris des pages
 de titre (p.1) ; libellés de catégorie, messages et hypothèses rédigés (`libelle_ar_redige`) ; note des tableaux
 (décrets 437/1981 et 501/1982) reprise en remarque, sans calcul.
+
+Mise à jour : Cas du jeu de référence TB-126 à TB-201 vérifiés par DS5 sur les images.
 
 ---
 
@@ -4089,18 +4113,375 @@ art. 47 مكرر à 54 p.14, grille et notes p.18.
   `src/shared/tests/test_sectors_table.py` (`EN_ATTENTE_DS2`).
 - Le test des démos v0 (211 premières requêtes et demo-10) passe sans modification.
 
-**Numérotation** : la vague 7 prendra D90 et suivants.
+**Numérotation** : la vague 7 prendra D91 et suivants.
+
+### D90 — Ce qu'une note de bas de page désigne par un numéro
+
+**Contexte.** Les notes de bas de page des 56 condensés citent les textes qui ont modifié
+un article sous une forme unique : « عدد <n> ». Le même gabarit sert aux avenants, aux
+décrets et aux lois, et le lecteur d'origine retenait tous ces numéros comme des avenants.
+Sur 3 487 documents citables, la correction en change 145 : 65 reçoivent une date
+différente ou perdent la leur, et 80 gardent la même date mais portent désormais la marque
+d'une incertitude qui n'était pas signalée. Une date fausse accompagnée d'une citation
+d'article est le pire cas pour un assistant juridique : elle a l'apparence de la précision.
+
+**1. La lecture est séquentielle, pas globale.** Le type d'un numéro est donné par le mot
+qui le précède, dans le segment compris entre la mention précédente et lui. Une recherche
+par expression régulière sur toute la note ne peut pas le voir.
+
+**2. Une continuation hérite, sauf si elle porte son propre marqueur.** « ثم عدد <n> » et
+« و عدد <n> » reprennent le type de la mention précédente : dans « نقح بالمرسوم عدد 11 ثم
+عدد 12 », le 12 est un décret. Mais si le segment contient lui-même un marqueur, c'est le
+marqueur qui tranche, et c'est le plus proche de « عدد » qui l'emporte.
+
+**3. Un avenant exige deux racines.** Une graphie de ملحق — y compris les fautes de frappe
+relevées dans la livraison — **suivie** de la racine تعديل. C'est تعديل qui fait l'avenant.
+Les deux racines sont exigées parce qu'elles sont le discriminant juridique, et non parce
+qu'une liste de graphies aurait été relevée : une liste fermée se casserait à la prochaine
+convention.
+
+**4. « الملحق عدد <n> » sans التعديلي n'est pas un avenant.** Signalé par DS5 le 21/11 :
+dans la grille du BTP, « الملحق عدد 4 » désigne l'**annexe** n° 4. La forme reste donc non reconnue,
+et elle est comptée : 23 mentions dans la livraison. Son sort est une question de droit,
+soumise à DS4 et DS5, et non une question de code.
+
+**5. Les décrets et les lois sont reconnus puis exclus.** Ils reçoivent une origine propre,
+`decret` et `loi`, plutôt que d'être fondus dans les mentions non reconnues : le jour où
+leurs dates sont fournies, chaque groupe se récupère d'un coup.
+
+**6. Aucune date n'est inventée, et aucune date ne sort nue.** Deux règles distinctes :
+
+   - **Retrait.** Si une mention non reconnue suit le dernier avenant retenu, dans l'ordre
+     de toutes les notes du document, la date est retirée : `None`, origine
+     `mention_non_reconnue_posterieure`. On ignore ce qui a modifié l'article ensuite, et
+     une date périmée est une date inventée. Ici la position décide, d'où un nom
+     positionnel. 19 documents.
+   - **Marque.** Sinon la date est gardée, mais l'origine porte une marque pour chaque
+     élément que le document cite sans qu'on ait su le lire, **où qu'il se trouve** :
+     `:mention_non_reconnue`, `:nombre_orphelin`, `:decret_ou_loi`. La position n'est pas
+     retenue ici, parce que l'ordre du texte n'est pas l'ordre chronologique :
+     `CCS-PLASTIQUE-ART-48` cite les avenants 10 à 15 dans sa première note et l'avenant 9
+     dans la seconde. 3, 70 et 44 documents respectivement.
+
+   Les marques suivent aussi les branches `:introuvable` et `:sans_date` : une incertitude
+   qui disparaîtrait selon la branche ne se retrouverait plus le jour où la date manquante
+   est fournie.
+
+**7. Les trois marques sont provisoires.** Elles attendent l'arbitrage de la juriste sur
+77 mentions non reconnues et 72 numéros orphelins. L'indice est fort : **les 77 portent un
+numéro qui figure dans l'index des avenants de leur propre convention**, et pour les 65
+numéros orphelins qui suivent le dernier avenant, la date d'effet de l'avenant ainsi
+désigné est postérieure à celle qu'on sert. Si DS4 et DS5 confirment que ces formes
+désignent des avenants, les reconnaître rendra une date plus juste à ces documents ; en
+attendant, on préfère une date marquée à une date affirmée.
+
+**8. Le rapport d'ingestion ne contient aucun texte du corpus.** Les mentions y sont
+comptées par forme typée — nature, continuation, présence de chaque racine, alarme — en
+clés ASCII. `ingestion_report.json` est écrit dans `data/processed/legal_corpus/` et sera
+versionné : ce qui est committé sort du cercle des personnes qui détiennent l'archive, ce
+qui est imprimé en console n'en sort pas. Un test vérifie qu'aucun caractère arabe ne sort
+du rapport d'un condensé d'essai qui en contient, numéro d'article compris. Trois champs
+antérieurs à cette décision — `digest`, `sections_inconnues` et `doublons` — en contiennent
+encore ; ils relèvent de l'étape qui remplacera le corpus committé.
+
+**Conséquence mesurée** sur la livraison du 21/11, par rapport au lecteur d'origine :
+documents citables sans date d'effet 69 → 89 ; articles `modified=True` portant la date de
+signature de leur convention **13, inchangé**. Ce second chiffre est le critère
+d'acceptation : un article déclaré modifié qui porte la date du texte d'origine est une
+date fausse, et le correctif ne doit pas en créer.
+
+**Conséquence pour DS4.** Le champ `effective_from_origin` prend des valeurs nouvelles :
+`decret`, `loi`, `mention_non_reconnue_posterieure`, et les trois marques en suffixe. Le
+commentaire de `models.py` ne les liste pas encore. Toute lecture de ce champ qui en
+analyse la valeur plutôt que de l'afficher doit être revue.
+
+## Vague 7 — jardins d'enfants, cliniques, location de voitures, commerce des matériaux, cafés, ports (D91 à D96)
+
+**Vague 7, règles communes (réponses aux ARRÊT 1 et 2 de la vague 7)** : règles communes de la vague 6 reprises (unité non
+imprimée en hypothèse ; au-delà du dernier degré sans règle, refus avec l'article et la page ; promotions, reclassements et
+avancement accéléré non calculés ; un code par montant ; primes en formule, en pourcentage, en nature, à fourchette ou
+transitoires : non couvertes, texte cité ; primes datées servies à leurs propres dates, même avant la grille ; prime jamais
+révisée : dernier montant sans date de fin ; cellule anormale mais nette : conservée et déclarée ; une régularité observée
+sert à signaler une cellule, jamais à la remplir). Toutes les grilles datent de 2010 à 2019 : **Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Dates antérieures au tableau imprimé** : salaire refusé avant la date d'effet du premier tableau imprimé, avec le message
+générique du moteur ; l'avenant et le numéro du tableau sont cités dans `_meta.note_dates` et dans la décision du secteur
+(besoin n° 8 de `evolutions_moteur`, comme à la vague 6).
+
+**En-tête contre article** (location, cafés) : on suit l'en-tête imprimé ; l'intervalle d'ancienneté où les deux textes se
+contredisent est refusé (`anciennetes_refusees`), article cité.
+
+### D91 — Jardins d'enfants et crèches : quatre tableaux, primes des avenants servies sur le texte consolidé
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/jardins_enfants_creches.json`, secteur `JARDINS_ENFANTS_CRECHES`.
+1. Tableaux n° 1 (ouvriers payés au mois, 5 lignes) et n° 2 (administratifs, 2 lignes), p.20 ; n° 3 (crèches, 4 lignes) et
+   n° 4 (jardins d'enfants, 7 lignes), p.21 ; tous au 2011-07-01 (avenant n° 3). Populations `ouvriers`, `administratifs`,
+   `creches`, `jardins`, obligatoires ; lignes numérotées par position. Unité imprimée pour le n° 1 seulement (« بالشهر ») :
+   TND/mois en hypothèse pour les n° 2 à 4 ; 40 heures, crèches 35 heures (art. 25).
+2. **Dates** : les avenants n° 1 (2005-07-01) et n° 2 (2008-07-01) révisent les salaires sans grille dans la source :
+   salaire refusé avant le 2011-07-01. Avenant n° 3 : hausses étendues aux agents payés au-dessus des tableaux, en note.
+3. 16 degrés : durées 1, 1, 2 (degrés 3 à 10), 3 (11 à 16) ; ancienneté imprimée 1, 2, 4 … 36 ; **refus à partir de 36 ans**
+   (art. 15 ب, p.7). Avancement accéléré (note ≥ 17) et promotions (art. 15 ج) non calculés.
+4. **Primes (90 montants imprimés, 87 servis)** :
+   - art. 44 et 45 (réponse Q6 de l'ARRÊT 1) : montants servis tels qu'imprimés, **hypothèse : texte consolidé après
+     l'avenant n° 3, aucune date postérieure imprimée** ; présence des ouvriers (2002 à 2004), transport des ouvriers (une
+     valeur par ligne du tableau n° 1, 5 codes), transport des administratifs (2 codes), prime spécifique (2 groupes × 3 dates) ;
+   - art. 46 et 47, jamais révisés : dernier montant (juillet 2004) sans date de fin, hypothèse affichée ; production,
+     prime pédagogique (rangs 1 à 7, par position), transport des jardins (7 rangs), transport et prime spécifique des
+     crèches (4 rangs) ; art. 48 : directeurs (70 et 100, condition) ;
+   - **« 25.7000 » (art. 46, prime pédagogique, rang 6, juillet 2003)** : imprimé à quatre décimales. Le code
+     `prime_pedagogique_rang_6` est **non couvert, en v0 comme en v1** (3 montants) : le service exact de D76 ne vaut que
+     pour un montant unique, pas pour une série datée. Besoin noté hors du dépôt (évolution du moteur n° 9).
+   - Non couvertes : production des ouvriers (230 %) et des administratifs (60 %), fin de service, mutation, garde des
+     enfants du personnel (en nature).
+
+**Alternatives écartées** : refuser les primes des art. 44 et 45 à partir du 2011-07-01 ; servir les deux autres montants du
+rang 6 en laissant le montant de 2003 de côté (le moteur servirait alors le montant de 2002 en 2003).
+
+**Raison** : les renvois de bas de page confirment le texte consolidé ; une série datée ne peut pas être servie avec un trou.
+
+**Source PDF + page** : `رياض الأطفال.pdf`, avenants p.2, art. 15 pp.7-8, art. 19 et 23 p.9, art. 25 pp.9-10, art. 44 à 49
+pp.13-16, annexes pp.18-19, grilles pp.20-21.
+
+**Mise en œuvre** : `jardins_enfants_creches.json` ; `tests/test_vague7.py` (les six secteurs) ; démos 300 à 309, démo v1 34 ;
+cas TB-408 à TB-417 et TB-470.
+
+**Statut de vérification** :
+- 288 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-408 à TB-417 et TB-470 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true`.
+
+### D92 — Cliniques privées : tableaux n° 3 et 4 seuls, refus à partir de 30 ans, déduction de l'art. 47 en note
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/cliniques_privees.json`, secteur `CLINIQUES_PRIVEES`.
+1. Tableaux n° 3 (cliniques hors dialyse) et n° 4 (centres de dialyse), p.16, au 2019-05-01 : populations `cliniques` et
+   `centres_dialyse`, obligatoires ; lignes E1 à E4 (exécution), M1 à M4 (maîtrise), C1 et C2 (cadres). Unité non imprimée :
+   TND/mois en hypothèse.
+2. **Dates** : dernier avenant n° 8 (p.2, effet 2016-08-01), tableaux n° 1 et 2 absents : salaire refusé avant le
+   2019-05-01 ; transport, présence et risque de contagion servis à leurs dates (2016, 2017).
+3. 15 degrés : durées 1 (degrés 1 à 5), 2 (6 à 10), 3 (11 à 15) ; **refus à partir de 30 ans** (art. 13 (جديد), pp.6-7).
+   Promotion après dix ans non calculée ; avenant n° 4 (hausses étendues) en note.
+4. Primes (22 montants) : nuit (3,666 par nuit) ; transport (3 groupes × 2 dates) ; présence (2 dates) ; fonction (directeur
+   50, surveillant 20) ; spécialité (dialyse 2 postes, autres 7 postes, condition) : **montant conventionnel servi, règle de
+   déduction des primes non conventionnelles en hypothèse, non calculée** (réponse Q4 de l'ARRÊT 1) ; risque de contagion.
+   Non couvertes : production (50 % à 100 %), fin de service.
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : calculer la déduction de l'art. 47.
+
+**Raison** : la déduction dépend de primes hors convention, que la requête ne donne pas.
+
+**Source PDF + page** : `مصحات الخاصة.pdf`, avenants p.2, art. 13 (جديد) pp.6-7, art. 17 pp.7-8, art. 25 p.9, art. 44 à 47
+مكرر pp.12-14, grilles p.16.
+
+**Mise en œuvre** : `cliniques_privees.json` ; démos 310 à 317 ; cas TB-418 à TB-425.
+
+**Statut de vérification** :
+- 300 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-418 à TB-425 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true`.
+
+### D93 — Location de voitures : degrés 17 à 20 transcrits, 30 à 38 ans refusés (en-tête contre art. 17 ب)
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/location_voitures.json`, secteur `LOCATION_VOITURES`.
+1. Tableau n° 2 (p.19, 2019-05-01) : catégories 1 à 17 (exécution 1-7, maîtrise 8-13, cadres 14-17), population unique
+   `agents`. Unité non imprimée : TND/mois en hypothèse ; 40 heures (art. 27).
+2. **Dates** : avenant n° 12 (p.3, effet 2018-05-01), tableau n° 1 absent : salaire refusé avant le 2019-05-01 ; transport et
+   présence servis aussi au 2018-05-01.
+3. 20 degrés : durées 1, 1, puis 2 ; intervalles imprimés 0-1 … 36-38. **En-tête contre article** : l'art. 17 ب (p.8) compte
+   16 degrés (30 ans) ; **de 30 ans exclus à 38 ans inclus, refus** (`anciennetes_refusees`), article cité ; à partir de
+   38 ans, refus. Les degrés 17 à 20 restent transcrits. Passage à la catégorie suivante non calculé.
+   **Par le degré (contrat v1, D75)**, les degrés 17 à 20 sont servis ; hypothèse affichée : « l'art. 17 ب ne prévoit que
+   16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête » (réponse à l'ARRÊT 4).
+4. **Pas irréguliers nettement imprimés, conservés sans signalement** (ARRÊT 2, question 3 ; aucun contrôle ne les relève,
+   la ligne reste croissante) : ligne 17, degrés 6-7 (écart rond de 20) et 14 ; ligne 7, degré 15 ; ligne 6, degré 12 ;
+   ligne 11, degrés 8 à 10.
+5. Primes (18 montants) : fonction (4 codes, condition), transport (2 groupes × 2 dates), présence (3 groupes × 2 dates),
+   Aïd el-Adha (30 par versement), scolaire (10, 15, 20 par enfant, à la rentrée). Non couvertes : production et équilibre,
+   13e mois, décès, retraite, majoration de nuit (50 %).
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : suivre l'article et ne pas transcrire les degrés 17 à 20 ; corriger les pas irréguliers.
+
+**Raison** : les cellules sont imprimées ; seule la plage contredite est refusée.
+
+**Source PDF + page** : `كراء السيارات.pdf`, avenant n° 12 p.3, art. 17 p.8, art. 27 et 29 p.10, art. 51 et 52 p.14,
+art. 54 à 58 p.15, grille p.19.
+
+**Mise en œuvre** : `location_voitures.json` ; démos 318 à 325, démo v1 36 ; cas TB-426 à TB-433 et TB-472.
+
+**Statut de vérification** :
+- 340 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-426 à TB-433 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true` ;
+  cas TB-472 (degré 18 par le degré, ajouté à l'ARRÊT 4) : `verification_humaine` à `false`.
+
+### D94 — Commerce des matériaux de construction, du bois et de l'acier : horaires et mensuels, deux tableaux
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/commerce_materiaux_bois_acier.json`, secteur
+`COMMERCE_MATERIAUX_BOIS_ACIER` (distinct de l'industrie des matériaux de construction, `MATERIAUX_CONSTRUCTION`, D80).
+1. Tableaux n° 1 (2018-05-01, p.20) et n° 2 (2019-05-01, p.21) : population `horaires` (lignes « السعوي » des catégories 1
+   et 2, TND/heure) et `mensuels` (lignes « الشهري » des catégories 1 et 2, puis catégories 3 à 20 : ت 1-7, م 1-4, س 1-7),
+   obligatoires. Unité imprimée pour les catégories 1 et 2 ; TND/mois en hypothèse pour les catégories 3 à 20 ; 40 heures.
+2. **Dates** : avenant n° 15 (p.3, effet 2018-05-01) = tableau n° 1 ; refus avant le 2018-05-01.
+3. 12 degrés : durées 1 (degrés 1 à 3), 2 (4 à 6), 3 (7 à 12) ; **refus à partir de 27 ans** (art. 13, p.8). Reclassement
+   de l'art. 54 non calculé.
+4. **Contrôle de hausse 2018 → 2019** : 528 cellules en hausse ; hausse en dinars identique sur les 12 degrés de chacune
+   des 22 lignes (6,5 % du degré 1).
+5. Primes (12 montants) : transport (2 dates ; réduction par jour d'absence en note, non calculée), déplacement (repas
+   1,466 ; nuitée 2,700 ; condition), panier (« 433 مي » par jour, condition ; exclusion en note), présence (2 dates),
+   représentation (4 codes, condition), rentrée scolaire (20 par enfant). Non couvertes : 13e mois et production, décès,
+   retraite, majoration de nuit.
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : une seule population mêlant les lignes horaires et mensuelles.
+
+**Raison** : les catégories 1 et 2 ont deux montants imprimés de nature différente.
+
+**Source PDF + page** : `تجارة مواد البناء والخشب والمواد الفولاذية.pdf`, avenant n° 15 p.3, art. 13 p.8, art. 23 à 27
+pp.10-11, art. 51 à 52 مكرر pp.16-17, art. 54 p.18, grilles pp.20-21.
+
+**Mise en œuvre** : `commerce_materiaux_bois_acier.json` ; démos 326 à 333, démo v1 35 ; cas TB-434 à TB-441 et TB-471.
+
+**Statut de vérification** :
+- 528 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; contrôle de hausse entre les deux tableaux : 528 cellules en hausse, hausse constante par ligne ; contrôle de croissance : aucune cellule signalée ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-434 à TB-441 et TB-471 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true`.
+
+### D95 — Cafés, restaurants, bars : colonne de recrutement, dernier degré ouvert, transport 2008 selon la taille
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/cafes_restaurants_bars.json`, secteur `CAFES_RESTAURANTS_BARS`.
+1. Tableaux n° 7 (cafés de première catégorie), n° 8 (établissements moyens et petits, sauf ces cafés) et n° 9 (grands
+   établissements), p.31, au 2010-07-01 : populations `cafes_categorie_1`, `moyens_petits`, `grands`, obligatoires ;
+   catégories 1 à 8. **La convention ne définit pas les « cafés de première catégorie »** (réponse Q1 de l'ARRÊT 1) : les
+   trois tableaux sont servis sur la population déclarée, hypothèse affichée. Unité non imprimée : TND/mois en hypothèse ;
+   48 heures.
+2. **Dates** : dernier avenant n° 9 (p.3, effet 2008-07-01), tableaux n° 1 à 6 absents : salaire refusé avant le 2010-07-01.
+3. **Degrés** : colonne du recrutement (« الانتداب », degré 1 du moteur, désignation imprimée servie en v1) puis degrés
+   imprimés 1 à 12 (degrés 2 à 13 du moteur), durée 2 ; **dernier degré ouvert** (« حتى التقاعد », règle « ouvert », D29).
+   **En-tête contre article** : l'art. 53 (جديد) (p.14) ne laisse hors de l'échelle que la première année ; l'en-tête
+   place le recrutement jusqu'à 3 ans : **de 1 an exclu à 3 ans inclus, refus**, article cité.
+4. Primes (12 montants imprimés) : **transport par groupe de catégories et par taille d'établissement** (réponse Q5 de
+   l'ARRÊT 1) : le montant de 2008 a deux dates selon la taille (petits : 2008-09-01 ; moyens et grands : 2008-07-01), puis
+   2009-07-01 et 2010-07-01 pour tous. Le moteur n'ayant pas de date de fin de montant, chaque groupe a deux codes datés,
+   un par taille (`prime_transport_cat1_3_petits`, `…_moyens_grands`, etc., 6 codes), qui portent aussi les montants de
+   2009 et 2010 ; caisse (5 et 7, en lettres seulement ; petits : 3, en lettres, si un caissier spécialisé est employé).
+   Non couvertes : retraite, productivité et fin d'année, repas (en nature), licenciement, majoration de nuit.
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : refuser le tableau n° 7 ; suivre l'article pour la colonne de recrutement ; un code par année
+(le moteur servirait le montant de 2008 après 2009).
+
+**Raison** : la taille de l'établissement est définie (art. 2) et déclarée ; la catégorie de café ne l'est pas, d'où
+l'hypothèse.
+
+**Source PDF + page** : `المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf`, avenant n° 9 p.3, art. 2 (جديد) p.5,
+art. 18 p.9, art. 24 et 26 p.10, art. 48 à 53 pp.13-14, grilles p.31.
+
+**Mise en œuvre** : `cafes_restaurants_bars.json` ; `tests/test_dernier_degre_ouvert_population_unique.py` (les cafés
+rejoignent la règle « ouvert ») ; démos 334 à 342, démos v1 30 et 31 ; cas TB-442 à TB-450, TB-466 et TB-467.
+
+**Statut de vérification** :
+- 312 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-442 à TB-450, TB-466 et TB-467 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true`.
+
+### D96 — Ports : trois tableaux, 11 cellules non tranchées, lignes croisées conservées, primes de l'art. 75
+
+**Décision** (DS5, vague 7) : `data/processed/salary_grids/ports_chargement_dechargement.json`, secteur
+`PORTS_CHARGEMENT_DECHARGEMENT`.
+1. Tableaux n° 7 (agents de manutention, échelles 1 à 19, p.25), n° 8 (agents d'exploitation et d'administration, échelles
+   1 à 24, p.26) et n° 9 (agents de manutention titularisés au premier trimestre 2005, échelles 10 à 19, p.27), au
+   2010-05-01 : populations `manutention`, `exploitation_administration`, `titularises_2005`, obligatoires ; catégorie =
+   numéro d'échelle imprimé. Unité non imprimée : TND/mois en hypothèse ; 40 heures, gardiens 48 heures (art. 14).
+2. **Dates** : art. 75 (جديد) (p.22) : tableaux n° 1-3 au 2008-05-01, n° 4-6 au 2009-05-01, n° 7-9 au 2010-05-01 ; seuls les
+   n° 7 à 9 sont dans la source : salaire refusé avant le 2010-05-01.
+3. 20 degrés : durées 1, 2, 2, puis 3 ; ancienneté dans l'entreprise imprimée 1, 3, 5, 8 … 56 (art. 12 أ) ; **refus à partir
+   de 56 ans** (art. 12, p.7). Mesures transitoires de 2006 non calculées.
+4. **Cellules non tranchées (11)** : le scan ne sépare pas 5 et 6, ou le zoom contredit les deux lectures ; valeur `null` et
+   `cellules_source_manquante` (D48), raison et lectures citées : n° 7, ligne 2 degré 11, ligne 9 degré 3, ligne 16
+   degrés 7 et 8, ligne 18 degré 8 ; n° 8, lignes 1, 12 et 17 degré 1, ligne 23 degré 15 ; n° 9, ligne 7 degré 20, ligne 10
+   degré 15.
+5. **Lignes croisées, conservées** (ARRÊT 2, question 1) : tableau n° 7, ligne 2 plus basse que la ligne 1 aux degrés 16 à
+   20, ligne 6 plus basse que la ligne 5 aux degrés 18 à 20 ; nettement imprimées, pas réguliers dans chaque ligne ;
+   `observations_imprimees` de la table et liste nommée `ANOMALIES_IMPRIMEES_CONNUES` de `tests/test_vague7.py`.
+6. **Primes de l'art. 75 (جديد)** (p.22, accord de DS5 à la construction) : « ينتفع بصفة استثنائية … بالمنح التالية » :
+   logement 52,736 ; risque 71,500 (conducteurs, chefs d'équipe, surveillants) et 49 (autres) pour la population du
+   tableau n° 9.
+   - Codes propres à cette population : `prime_logement_titularises_2005`, `prime_risque_titularises_2005_conducteurs_chefs`,
+     `prime_risque_titularises_2005_autres` (condition : agent du tableau n° 9), hypothèse affichée : servis à la place des
+     montants des art. 43 et 47, le texte ne disant pas s'ils les remplacent ou s'y ajoutent.
+   - Les codes des art. 43 et 47 (`prime_logement`, `prime_risque_conducteurs_chefs`, `prime_risque_autres`) portent une
+     condition qui exclut la population du tableau n° 9, en renvoyant à l'art. 75.
+   - Les variantes des art. 43 et 47 pour cette population (`prime_logement_art43_titularises_2005`,
+     `prime_risque_art47_titularises_2005_conducteurs_chefs`, `prime_risque_art47_titularises_2005_autres`) sont refusées
+     en `SOURCE_MANQUANTE`, art. 75 cité.
+7. Autres primes (30 montants en tout) : agents de manutention : marchandises dangereuses, rendement, rendement
+   complémentaire, transport (2 groupes × 2 dates, 2008 et 2009), pollution (3 ; Sfax et Gabès 8 ; titularisés en 2005 dans
+   les entreprises privées 29,500 ; condition), entretien, chef d'équipe ; agents d'exploitation et d'administration :
+   transport (art. 57, p.18), présence, pollution, productivité (« 7 دنانير ونصف »), descente en cale (4 par opération),
+   garde des outils, trésorerie (30 et 20), aide au décès (300, en lettres et en chiffres). Non couvertes, texte cité :
+   formules (production, 13e mois, retraite, raccordement), fourchettes (amarrage, responsabilité, fonction), en nature
+   (lait, repas), complément de 500 millimes au bon de repas (réponse Q2 de l'ARRÊT 1), assurance groupe, dispositions
+   transitoires (prime forfaitaire compensatoire par équivalent d'échelle de la STAM, promotion exceptionnelle de 2006, lait
+   transitoire de 2006 (réponse Q3), ancienneté, reclassement).
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : servir les montants de l'art. 75 en plus de ceux des art. 43 et 47 ; corriger une cellule non
+tranchée d'après le pas de la ligne ; corriger les lignes croisées.
+
+**Raison** : Citation ou Silence ; la régularité sert à signaler, jamais à remplir.
+
+**Source PDF + page** : `الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf`, art. 12 p.7, art. 14 p.8, art. 43 à 47 p.15,
+art. 48 à 55 p.16, art. 56 et dispositions transitoires p.17, art. 57 à 62 p.18, art. 63 à 69 p.19, dispositions
+transitoires pp.20-21, art. 70 à 72 p.21, art. 75 (جديد) p.22, grilles pp.25-27.
+
+**Mise en œuvre** : `ports_chargement_dechargement.json` ; démos 343 à 357, démos v1 32 et 33 ; cas TB-451 à TB-465, TB-468
+et TB-469.
+
+**Statut de vérification** :
+- 1060 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes
+  différentes, dans l'ordre inverse), comparées par script : 0 écart ; 24 cellules douteuses vues au zoom à 400 dpi : 13 tranchées, 11 non tranchées (point 4) ; une seule date : contrôle de croissance le long des degrés, aucune cellule signalée ; entre catégories, 8 cellules signalées au tableau n° 7, conservées (point 5) ; montants des primes lus sur
+  l'image.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »
+- Cas TB-451 à TB-465, TB-468 et TB-469 : vérifiés par DS5 sur les images (claude-docs/vague7/verification/cas.html), `verification_humaine` à `true`.
+
+**Tests existants modifiés (vague 7)** : listes et comptes mécaniques seulement.
+- `test_controle_hausse.py` : `GRILLES_UNE_SEULE_TABLE` reçoit les jardins, les cliniques, la location, les cafés et les
+  ports (le commerce des matériaux a deux dates et passe au contrôle de hausse) ;
+- `test_dernier_degre_ouvert_population_unique.py` : les cafés rejoignent la règle « ouvert » ; registre recopié ;
+- `test_contrat_v1.py` : 89 phrases « L'ancienneté reçue… » dans 45 fichiers ;
+- listes de secteurs : `test_calc_btp.py`, `test_contract.py`, `test_populations_ambigues.py`, `test_registre_secteurs.py`,
+  `src/shared/tests/test_sectors_table.py` (`EN_ATTENTE_DS2`).
+- Le test des démos v0 (211 premières requêtes et demo-10) passe sans modification.
+
+**Numérotation** : D90 est à DS2 ; la vague 7 prend D91 à D96 ; la vague 8 prendra D97 et suivants.
 
 ---
 
-### D100 — OCR DS3 (partie A) : modèle PaddleOCR PP-OCRv5 arabe
+### D102 — OCR DS3 (partie A) : modèle PaddleOCR PP-OCRv5 arabe
 
-**Numéro** : D100 à D105 = décisions de la partie A de DS3 (OCR). Proposées d'abord sous les numéros D75 à D80,
-pris depuis par d'autres décisions sur `origin/main` (qui va jusqu'à D89). D90 et suivants sont réservés à la vague 7
-de DS5, et D90 est déjà utilisé par DS2 sur une branche distante : ce bloc commence donc à D100, et laisse D90 à D99
-libres pour eux. D100 à D105 ne sont utilisés sur aucune branche distante (vérifié avec `git fetch origin` le
-2026-11-26). Le branchement de l'OCR dans le service live a ses propres numéros, dans la plage réservée à DS3 :
-D41 (appliquée, PR #44) et D42 (en cours, voir D105).
+**Numéro** : D102 à D107 = décisions de la partie A de DS3 (OCR). Proposées d'abord sous les numéros D75 à D80,
+pris depuis par d'autres décisions sur `origin/main`, puis sous D100 à D105. D90 est à DS2, D91 à D96 à la vague 7 de
+DS5, et D97 à D101 sont pris par la vague 8 de DS5 : à la demande d'Oumaima, D102 à D107 sont réservés à DS3 pour ce
+bloc (renumérotation du 2026-11-28 ; `origin/main` s'arrête à D96, et aucune branche distante n'utilise D102 à D107).
+Le branchement de l'OCR dans le service live a ses propres numéros, dans la plage réservée à DS3 : D41 (appliquée,
+PR #44) et D42 (en cours, voir D107).
 
 **Décision** : l'OCR de `src/document_intelligence/reading/ocr.py` utilise PaddleOCR 3.7 (PP-OCRv5) sur CPU, avec la
 reconnaissance `arabic_PP-OCRv5_mobile_rec` (arabe ; son dictionnaire contient aussi les lettres latines et les
@@ -4135,9 +4516,9 @@ le CPU, et ses poids d'entraînement sont publics, ce qui permet de l'adapter. S
 
 ---
 
-### D101 — OCR DS3 : détecteur `PP-OCRv5_mobile_det` au lieu de `PP-OCRv5_server_det`
+### D103 — OCR DS3 : détecteur `PP-OCRv5_mobile_det` au lieu de `PP-OCRv5_server_det`
 
-**Numéro** : D101 (voir D100 pour la numérotation).
+**Numéro** : D103 (voir D102 pour la numérotation).
 
 **Décision** : la détection de texte utilise `PP-OCRv5_mobile_det` (constante `DET_MODEL` de `ocr.py`), sans
 réglage de taille d'entrée.
@@ -4160,9 +4541,9 @@ environ 27 s d'OCR par page, aucun plantage.
 
 ---
 
-### D102 — Expérience OCR : BatchNorm gelée pendant le Fine-Tuning
+### D104 — Expérience OCR : BatchNorm gelée pendant le Fine-Tuning
 
-**Numéro** : D102 (voir D100 pour la numérotation).
+**Numéro** : D104 (voir D102 pour la numérotation).
 
 **Décision** : dans l'expérience `experiments/ocr_transfer_finetune/`, le Fine-Tuning (variante `bn_frozen`, par
 défaut) entraîne tout le chemin CTC (backbone, encodeur, tête) **sauf** les 151 couches BatchNorm : leurs paramètres
@@ -4187,9 +4568,9 @@ l'expérience reproductible.
 
 ---
 
-### D103 — OCR DS3 : choix de la langue `lang="auto"`
+### D105 — OCR DS3 : choix de la langue `lang="auto"`
 
-**Numéro** : D103 (voir D100 pour la numérotation).
+**Numéro** : D105 (voir D102 pour la numérotation).
 
 **Décision** : par défaut, chaque zone est lue d'abord avec le modèle arabe (son dictionnaire contient aussi les
 lettres latines et les chiffres, mais il perd souvent les chiffres dans les lignes arabes : voir la limite connue).
@@ -4198,8 +4579,8 @@ dont la confiance moyenne est la plus haute. `lang="ar"` ou `lang="fr"` restent 
 
 **Limite connue** : une zone surtout arabe n'est jamais relue avec le modèle latin, donc ses chiffres restent ceux du
 modèle arabe, qui en perd presque tous (3 chiffres latins lus sur 162 sur un lot réel de 50 lignes arabes ; CER
-10,82 %, 4,32 % sans les chiffres : voir D100). Critique pour les montants des fiches scannées ; même protection
-que dans D100 (vérification DS3, puis seuil 0,90 et confirmation côté DS1).
+10,82 %, 4,32 % sans les chiffres : voir D102). Critique pour les montants des fiches scannées ; même protection
+que dans D102 (vérification DS3, puis seuil 0,90 et confirmation côté DS1).
 
 **Alternatives envisagées** :
 - Modèle arabe seul → rejeté : moins bon sur les accents français (« Échelon » lu « Echelon »).
@@ -4215,9 +4596,9 @@ fois.
 
 ---
 
-### D104 — Expérience OCR : données fictives, données réelles jamais dans le dépôt
+### D106 — Expérience OCR : données fictives, données réelles jamais dans le dépôt
 
-**Numéro** : D104 (voir D100 pour la numérotation).
+**Numéro** : D106 (voir D102 pour la numérotation).
 
 **Décision** : l'expérience Transfer Learning / Fine-Tuning s'entraîne et se mesure uniquement sur des lignes
 **fictives** générées (`vocab.py`, `data_gen.py` : vocabulaire inventé de fiches de paie et de conventions, 4
@@ -4242,9 +4623,9 @@ Fine-Tuning est à confirmer sur plus de lignes.
 
 ---
 
-### D105 — OCR DS3 : seulement sur les zones en attente
+### D107 — OCR DS3 : seulement sur les zones en attente
 
-**Numéro** : D105 (voir D100 pour la numérotation).
+**Numéro** : D107 (voir D102 pour la numérotation).
 
 **Décision** : `ocr_pending_zones` ne lit que les `PendingZone` laissées par le lecteur natif (`pdf_natif.py`, D35) :
 images, scans, texte natif illisible. Le texte natif lisible n'est jamais repassé à l'OCR. Une zone où l'OCR ne lit

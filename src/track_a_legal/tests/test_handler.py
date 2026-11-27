@@ -106,3 +106,102 @@ def test_handler_technical_error():
     # La réponse doit respecter le contrat JSON.
     schema = load_schema(RESPONSE_SCHEMA)
     Draft202012Validator(schema).validate(response)
+def test_handler_accepts_case_without_evidence():
+    """Un dossier sans preuves est accepté, sans conclusion inventée."""
+
+    # Charger un dossier fictif valide
+    request = load_demo_case()
+
+    # Supprimer les preuves
+    request["evidence"] = []
+
+    # Supprimer les références aux preuves absentes
+    for event in request["events"]:
+        event["source_ids"] = []
+
+    # Envoyer le dossier au handler DS4
+    response = handle(request)
+
+    # Vérifier la réponse
+    assert response["status"] == "refus"
+    assert response["refus"]["code"] == "SOURCE_MANQUANTE"
+    assert response["result"] is None
+    assert response["citations"] == []
+def test_handler_rejects_nonexistent_evidence_reference():
+    """Une reference vers une preuve inexistante ne doit pas etre acceptee."""
+
+    # Charger un dossier fictif valide
+    request = load_demo_case()
+
+    # Ajouter une reference vers une preuve inexistante
+    request["events"][0]["source_ids"] = ["E99"]
+
+    # Envoyer le dossier au handler
+    response = handle(request)
+
+    # Le handler v0 doit signaler une erreur
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+
+    # Aucune conclusion ni citation ne doit etre inventee
+    assert response["result"] is None
+    assert response["citations"] == []
+
+def test_handler_schema_loading_error_hides_internal_details() -> None:
+    """
+    Vérifie qu'une erreur de chargement du schéma JSON
+    ne divulgue pas d'informations techniques internes.
+    """
+
+    # Préparer une requête fictive valide.
+    request = load_demo_case()
+
+    # Simuler une erreur contenant une information sensible fictive.
+    internal_message = "SECRET_INTERNAL_SCHEMA_PATH"
+
+    with patch(
+        "src.track_a_legal.handler.load_schema",
+        side_effect=OSError(internal_message),
+    ):
+        response = handle(request)
+
+    # Le Handler doit retourner une erreur technique sécurisée.
+    assert response["status"] == "erreur"
+    assert response["erreur"]["type"] == "INTERNAL_ERROR"
+
+    # Aucun résultat ni citation ne doit être inventé.
+    assert response["result"] is None
+    assert response["citations"] == []
+    assert response["refus"] is None
+
+    # Le détail interne ne doit jamais apparaître dans la réponse.
+    assert internal_message not in str(response)
+
+    # Les identifiants du dossier doivent être conservés.
+    assert response["request_id"] == request["request_id"]
+    assert response["case_id"] == request["case_id"]
+
+def test_handler_rejects_unknown_claim_party() -> None:
+    """Une partie inconnue doit produire PARAM_INVALIDE."""
+
+    # Charger un dossier fictif conforme au JSON Schema.
+    request = load_demo_case()
+
+    # Remplacer la partie d'une affirmation par un identifiant inconnu.
+    request["claims"][0]["party_id"] = "P99-UNKNOWN"
+
+    # Envoyer le dossier au Handler DS4.
+    response = handle(request)
+
+    # Une incoherence des donnees doit produire un refus,
+    # et non une erreur technique interne.
+    assert response["status"] == "refus"
+    assert response["refus"]["code"] == "PARAM_INVALIDE"
+
+    # Ne produire aucune conclusion ni citation juridique.
+    assert response["result"] is None
+    assert response["citations"] == []
+
+    # Conserver la conformite du contrat de reponse.
+    schema = load_schema(RESPONSE_SCHEMA)
+    Draft202012Validator(schema).validate(response)

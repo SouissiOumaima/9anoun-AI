@@ -201,5 +201,54 @@
     "operation": "salaire_base",
     "params": {"secteur": "GROSSISTES_REPARTITEURS_MEDICAMENTS", "categorie": "II", "sous_categorie": "1", "degre": 15, "date": "2020-01-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-30-cafes-grands-colonne-recrutement",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "grands", "categorie": "3", "degre": "الانتداب", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-31-cafes-categorie-1-degre-12",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "cafes_categorie_1", "categorie": "5", "degre": "12", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-32-ports-titularises-19-degre-20",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "titularises_2005", "categorie": "19", "degre": 20, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-33-ports-manutention-cellule-non-tranchee",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "manutention", "categorie": "16", "degre": 7, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-34-jardins-creches-4-degre-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "creches", "categorie": "4", "degre": 16, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-35-materiaux-horaires-2-degre-12",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "horaires", "categorie": "2", "degre": 12, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-36-location-17-degre-18",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "17", "degre": 18, "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]

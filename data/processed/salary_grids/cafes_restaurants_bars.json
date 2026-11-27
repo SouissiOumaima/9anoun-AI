@@ -1,0 +1,1257 @@
+{
+ "_meta": {
+  "secteur_code": "CAFES_RESTAURANTS_BARS",
+  "convention_ar": "الاتفاقية القطاعية المشتركة للمقاهي والحانات والمطاعم والمؤسسات المشابهة لها",
+  "convention_fr": "Convention collective sectorielle des cafés, bars, restaurants et établissements similaires",
+  "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+  "pages_sources": [
+   3,
+   5,
+   9,
+   10,
+   13,
+   14,
+   31
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "312 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse ; ports n° 8 et 9 à 300 et 400 dpi), comparées par script : 0 écart ni doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5) : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »",
+  "decision_ref": "D95",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 291 à 493) ; 48 heures (art. 24 (جديد), p.10).",
+  "note_degres": "En-tête (p.31) : colonne du recrutement (« الانتداب », durée « - ») puis degrés 1 à 12, durée 2 (degrés 1 à 11) ; ancienneté en fin de degré 3, 5 … 25, puis « حتى التقاعد » ; degrés du moteur 1 (recrutement, « 0-3 ») à 13 (« 25+ », règle « ouvert », D29) ; de 1 an exclu à 3 ans inclus, refus (en-tête contre art. 53 (جديد), p.14) ; bornes exactes refusées (D6).",
+  "note_categories": "Cafés de première catégorie (tableau n° 7), établissements moyens et petits sauf ces cafés (n° 8), grands établissements (n° 9) : catégories 1 à 8 ; population obligatoire, déclarée par l'appelant (catégorie de café non définie par la convention).",
+  "note_dates": "Tableaux n° 7 à 9 seuls (p.31), en vigueur à partir du 2010-07-01 ; le dernier avenant listé (n° 9, p.3) a effet au 2008-07-01 et les tableaux n° 1 à 6 ne sont pas dans la source : salaire refusé avant le 2010-07-01 ; la prime de transport est servie à ses propres dates (2008 à 2010)."
+ },
+ "populations": {
+  "cafes_categorie_1": {
+   "libelle_fr": "Cafés de première catégorie",
+   "libelle_ar": "المقاهي صنف 1",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 31,
+   "note": "Tableau n° 7 ; population obligatoire."
+  },
+  "moyens_petits": {
+   "libelle_fr": "Établissements moyens et petits, sauf les cafés de première catégorie",
+   "libelle_ar": "المؤسسات المتوسطة والصغرى باستثناء المقاهي صنف 1",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 31,
+   "note": "Tableau n° 8 ; population obligatoire."
+  },
+  "grands": {
+   "libelle_fr": "Grands établissements",
+   "libelle_ar": "المؤسسات الكبرى",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 31,
+   "note": "Tableau n° 9 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "cafes_categorie_1": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-3",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "الانتداب",
+    "colonne_imprimee": "الانتداب"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "3",
+    "colonne_imprimee": "1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5",
+    "colonne_imprimee": "2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7",
+    "colonne_imprimee": "3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9",
+    "colonne_imprimee": "4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11",
+    "colonne_imprimee": "5"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "13",
+    "colonne_imprimee": "6"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-17",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "15",
+    "colonne_imprimee": "7"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "17-19",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "17",
+    "colonne_imprimee": "8"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "19-21",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "19",
+    "colonne_imprimee": "9"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "21-23",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "21",
+    "colonne_imprimee": "10"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-25",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "23",
+    "colonne_imprimee": "11"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "25+",
+    "anciennete_imprimee": "حتى التقاعد",
+    "colonne_imprimee": "12"
+   }
+  ],
+  "moyens_petits": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-3",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "الانتداب",
+    "colonne_imprimee": "الانتداب"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "3",
+    "colonne_imprimee": "1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5",
+    "colonne_imprimee": "2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7",
+    "colonne_imprimee": "3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9",
+    "colonne_imprimee": "4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11",
+    "colonne_imprimee": "5"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "13",
+    "colonne_imprimee": "6"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-17",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "15",
+    "colonne_imprimee": "7"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "17-19",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "17",
+    "colonne_imprimee": "8"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "19-21",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "19",
+    "colonne_imprimee": "9"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "21-23",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "21",
+    "colonne_imprimee": "10"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-25",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "23",
+    "colonne_imprimee": "11"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "25+",
+    "anciennete_imprimee": "حتى التقاعد",
+    "colonne_imprimee": "12"
+   }
+  ],
+  "grands": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-3",
+    "duree_imprimee": 3,
+    "anciennete_imprimee": "الانتداب",
+    "colonne_imprimee": "الانتداب"
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "3-5",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "3",
+    "colonne_imprimee": "1"
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "5",
+    "colonne_imprimee": "2"
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "7",
+    "colonne_imprimee": "3"
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "9",
+    "colonne_imprimee": "4"
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "11",
+    "colonne_imprimee": "5"
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "13",
+    "colonne_imprimee": "6"
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "15-17",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "15",
+    "colonne_imprimee": "7"
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "17-19",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "17",
+    "colonne_imprimee": "8"
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "19-21",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "19",
+    "colonne_imprimee": "9"
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "21-23",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "21",
+    "colonne_imprimee": "10"
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "23-25",
+    "duree_imprimee": 2,
+    "anciennete_imprimee": "23",
+    "colonne_imprimee": "11"
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "25+",
+    "anciennete_imprimee": "حتى التقاعد",
+    "colonne_imprimee": "12"
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "cafes_categorie_1": {
+   "regle": "ouvert",
+   "source_pdf_page": 14,
+   "source_article": "53 (جديد)",
+   "texte_source_ar": "يكون سلم الأجور المنصوص عليه بالملحق الثالث لهذه الاتفاقية مبنيا على أساس التدرج بالأجر الأصلي لكل صنف من أصناف العملة حسب أقدميتهم بحساب سنتين من الأقدمية في كل درجة من درجات السلم مع اعتبار السنة الأولى لانتداب العامل خارجة عن السلم. بحيث يبلغ العامل أقصى درجات الأقدمية بعد قضاء خمس وعشرين سنة من العمل في نفس المؤسسة.",
+   "texte_source_saisi_depuis_image": true,
+   "regle_fr": "Degré 12 imprimé « حتى التقاعد » (jusqu'à la retraite, p.31) : servi tel qu'imprimé à partir de 25 ans (D29) ; l'article 53 (جديد) (p.14) place le sommet de l'échelle après 25 ans."
+  },
+  "moyens_petits": {
+   "regle": "ouvert",
+   "source_pdf_page": 14,
+   "source_article": "53 (جديد)",
+   "texte_source_ar": "يكون سلم الأجور المنصوص عليه بالملحق الثالث لهذه الاتفاقية مبنيا على أساس التدرج بالأجر الأصلي لكل صنف من أصناف العملة حسب أقدميتهم بحساب سنتين من الأقدمية في كل درجة من درجات السلم مع اعتبار السنة الأولى لانتداب العامل خارجة عن السلم. بحيث يبلغ العامل أقصى درجات الأقدمية بعد قضاء خمس وعشرين سنة من العمل في نفس المؤسسة.",
+   "texte_source_saisi_depuis_image": true,
+   "regle_fr": "Degré 12 imprimé « حتى التقاعد » (jusqu'à la retraite, p.31) : servi tel qu'imprimé à partir de 25 ans (D29) ; l'article 53 (جديد) (p.14) place le sommet de l'échelle après 25 ans."
+  },
+  "grands": {
+   "regle": "ouvert",
+   "source_pdf_page": 14,
+   "source_article": "53 (جديد)",
+   "texte_source_ar": "يكون سلم الأجور المنصوص عليه بالملحق الثالث لهذه الاتفاقية مبنيا على أساس التدرج بالأجر الأصلي لكل صنف من أصناف العملة حسب أقدميتهم بحساب سنتين من الأقدمية في كل درجة من درجات السلم مع اعتبار السنة الأولى لانتداب العامل خارجة عن السلم. بحيث يبلغ العامل أقصى درجات الأقدمية بعد قضاء خمس وعشرين سنة من العمل في نفس المؤسسة.",
+   "texte_source_saisi_depuis_image": true,
+   "regle_fr": "Degré 12 imprimé « حتى التقاعد » (jusqu'à la retraite, p.31) : servi tel qu'imprimé à partir de 25 ans (D29) ; l'article 53 (جديد) (p.14) place le sommet de l'échelle après 25 ans."
+  }
+ },
+ "anciennetes_refusees": {
+  "cafes_categorie_1": [
+   {
+    "au_dela_de": 1,
+    "jusqu_a_inclus": 3,
+    "source_pdf_page": 14,
+    "source_article": "53 (جديد)",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête des tableaux (page 31) place la colonne du recrutement (« الانتداب ») jusqu'à 3 ans, alors que l'article 53 (جديد) (page 14) ne laisse hors de l'échelle que la première année de recrutement. Les deux textes se contredisent de 1 an exclu à 3 ans inclus. Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يضع رأس الجداول (الصفحة 31) عمود الانتداب إلى غاية 3 سنوات، في حين لا يعتبر الفصل 53 (جديد) (الصفحة 14) خارج السلم إلا السنة الأولى لانتداب العامل. يتعارض النصان من أكثر من سنة إلى 3 سنوات. لا يُرجَع أي مبلغ."
+   }
+  ],
+  "moyens_petits": [
+   {
+    "au_dela_de": 1,
+    "jusqu_a_inclus": 3,
+    "source_pdf_page": 14,
+    "source_article": "53 (جديد)",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête des tableaux (page 31) place la colonne du recrutement (« الانتداب ») jusqu'à 3 ans, alors que l'article 53 (جديد) (page 14) ne laisse hors de l'échelle que la première année de recrutement. Les deux textes se contredisent de 1 an exclu à 3 ans inclus. Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يضع رأس الجداول (الصفحة 31) عمود الانتداب إلى غاية 3 سنوات، في حين لا يعتبر الفصل 53 (جديد) (الصفحة 14) خارج السلم إلا السنة الأولى لانتداب العامل. يتعارض النصان من أكثر من سنة إلى 3 سنوات. لا يُرجَع أي مبلغ."
+   }
+  ],
+  "grands": [
+   {
+    "au_dela_de": 1,
+    "jusqu_a_inclus": 3,
+    "source_pdf_page": 14,
+    "source_article": "53 (جديد)",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête des tableaux (page 31) place la colonne du recrutement (« الانتداب ») jusqu'à 3 ans, alors que l'article 53 (جديد) (page 14) ne laisse hors de l'échelle que la première année de recrutement. Les deux textes se contredisent de 1 an exclu à 3 ans inclus. Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يضع رأس الجداول (الصفحة 31) عمود الانتداب إلى غاية 3 سنوات، في حين لا يعتبر الفصل 53 (جديد) (الصفحة 14) خارج السلم إلا السنة الأولى لانتداب العامل. يتعارض النصان من أكثر من سنة إلى 3 سنوات. لا يُرجَع أي مبلغ."
+   }
+  ]
+ },
+ "categories": {
+  "cafes_categorie_1": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "moyens_petits": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "grands": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ]
+ },
+ "libelles_categories": {
+  "cafes_categorie_1": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   }
+  },
+  "moyens_petits": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   }
+  },
+  "grands": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "cafes_categorie_1": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "La convention ne définit pas les « cafés de première catégorie » (« المقاهي صنف 1 », tableau n° 7, page 31) ; l'article 2 (جديد) (page 5) ne définit que les petits (8 travailleurs permanents au plus), moyens (9 à 14) et grands (plus de 14) établissements : la population est celle déclarée par l'appelant.",
+    "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "لا تعرّف الاتفاقية «المقاهي صنف 1» (جدول الأجور عدد 7، الصفحة 31)؛ ولا يعرّف الفصل 2 (جديد) (الصفحة 5) إلا المؤسسات الصغرى (8 عمال قارين على الأكثر) والمتوسطة (من 9 إلى 14) والكبرى (أكثر من 14): الفئة هي التي يصرح بها الطالب.",
+    "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "moyens_petits": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "La convention ne définit pas les « cafés de première catégorie » (« المقاهي صنف 1 », tableau n° 7, page 31) ; l'article 2 (جديد) (page 5) ne définit que les petits (8 travailleurs permanents au plus), moyens (9 à 14) et grands (plus de 14) établissements : la population est celle déclarée par l'appelant.",
+    "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "لا تعرّف الاتفاقية «المقاهي صنف 1» (جدول الأجور عدد 7، الصفحة 31)؛ ولا يعرّف الفصل 2 (جديد) (الصفحة 5) إلا المؤسسات الصغرى (8 عمال قارين على الأكثر) والمتوسطة (من 9 إلى 14) والكبرى (أكثر من 14): الفئة هي التي يصرح بها الطالب.",
+    "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "grands": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    3
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_transport_cat1_3_petits",
+   "label_ar": "منحة النقل (الأصناف الأول والثاني والثالث، المؤسسات الصغرى)",
+   "label_fr": "Prime de transport : catégories 1 à 3, petits établissements",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-09-01",
+     "montant": 15.700
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 16.400
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 17.100
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-09-01 pour les petits établissements, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_transport_cat1_3_moyens_grands",
+   "label_ar": "منحة النقل (الأصناف الأول والثاني والثالث، المؤسسات المتوسطة والكبرى)",
+   "label_fr": "Prime de transport : catégories 1 à 3, établissements moyens et grands",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-07-01",
+     "montant": 15.700
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 16.400
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 17.100
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-07-01 pour les établissements moyens et grands, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_transport_cat4_6_petits",
+   "label_ar": "منحة النقل (الأصناف الرابع والخامس والسادس، المؤسسات الصغرى)",
+   "label_fr": "Prime de transport : catégories 4 à 6, petits établissements",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-09-01",
+     "montant": 13.200
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 13.900
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 14.600
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-09-01 pour les petits établissements, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_transport_cat4_6_moyens_grands",
+   "label_ar": "منحة النقل (الأصناف الرابع والخامس والسادس، المؤسسات المتوسطة والكبرى)",
+   "label_fr": "Prime de transport : catégories 4 à 6, établissements moyens et grands",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-07-01",
+     "montant": 13.200
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 13.900
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 14.600
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-07-01 pour les établissements moyens et grands, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_transport_cat7_8_petits",
+   "label_ar": "منحة النقل (الصنفان السابع والثامن، المؤسسات الصغرى)",
+   "label_fr": "Prime de transport : catégories 7 et 8, petits établissements",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-09-01",
+     "montant": 10.700
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 11.400
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 12.100
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-09-01 pour les petits établissements, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_transport_cat7_8_moyens_grands",
+   "label_ar": "منحة النقل (الصنفان السابع والثامن، المؤسسات المتوسطة والكبرى)",
+   "label_fr": "Prime de transport : catégories 7 et 8, établissements moyens et grands",
+   "source_article": "50 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2008-07-01",
+     "montant": 10.700
+    },
+    {
+     "effective_date": "2009-07-01",
+     "montant": 11.400
+    },
+    {
+     "effective_date": "2010-07-01",
+     "montant": 12.100
+    }
+   ],
+   "note": "Par mois de travail effectif ; premier montant à partir du 2008-07-01 pour les établissements moyens et grands, puis 2009-07-01 et 2010-07-01 pour tous les établissements ; taille de l'établissement (art. 2 (جديد), p.5) déclarée par l'appelant. Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants servis aussi avant la grille (2010-07-01) (art. 50 (جديد), p.14)."
+  },
+  {
+   "code": "prime_caisse_moyens",
+   "label_ar": "منحة الصندوق (المؤسسات المتوسطة)",
+   "label_fr": "Prime de caisse : établissements moyens",
+   "source_article": "52 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 5.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « خمسة دنانير شهريا » ; par mois de travail effectif, caissier chargé de l'encaissement (art. 52 (جديد), p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse_grands",
+   "label_ar": "منحة الصندوق (المؤسسات الكبرى)",
+   "label_fr": "Prime de caisse : grands établissements",
+   "source_article": "52 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 7.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « سبعة دنانير شهريا » ; par mois de travail effectif, caissier chargé de l'encaissement (art. 52 (جديد), p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_caisse_petits",
+   "label_ar": "منحة الصندوق (المؤسسات الصغرى)",
+   "label_fr": "Prime de caisse : petits établissements",
+   "source_article": "52 (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montant": 3.000,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « ثلاثة دنانير » ; versée une fois par mois (art. 52 (جديد), p.14).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "petit établissement qui emploie un caissier spécialisé (art. 52 (جديد), p.14)"
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_retraite": {
+   "source_pdf_page": 13,
+   "source_article": "48 (جديد)",
+   "message_fr": "Prime de départ à la retraite (article 48 (جديد), page 13) : un à trois mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التقاعد (الفصل 48 (جديد)، الصفحة 13): من أجرة شهر إلى ثلاثة أشهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_productivite_fin_annee": {
+   "source_pdf_page": 13,
+   "source_article": "49 (جديد)",
+   "message_fr": "Prime de productivité et de fin d'année (article 49 (جديد), page 13) : jours de salaire selon la note, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاجية وآخر السنة (الفصل 49 (جديد)، الصفحة 13): أيام أجر حسب العدد، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "repas": {
+   "source_pdf_page": 14,
+   "source_article": "51",
+   "message_fr": "Repas (article 51, page 14) : avantage en nature. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الطعام (الفصل 51، الصفحة 14): امتياز عيني. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "nature"
+  },
+  "indemnite_licenciement": {
+   "source_pdf_page": 9,
+   "source_article": "18 (جديد)",
+   "message_fr": "Indemnité de licenciement (article 18 (جديد), page 9) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الفصل عن العمل (الفصل 18 (جديد)، الصفحة 9): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_travail_nuit": {
+   "source_pdf_page": 10,
+   "source_article": "26 (جديد)",
+   "message_fr": "Majoration du travail de nuit (article 26 (جديد), page 10) : majoration de 50 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "تأجير العمل الليلي (الفصل 26 (جديد)، الصفحة 10): زيادة بـ50 بالمائة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CAFES_CAFES_CATEGORIE_1_2010-07-01",
+   "numero_imprime": 7,
+   "population": "cafes_categorie_1",
+   "effective_date": "2010-07-01",
+   "source_pdf_page": 31,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     436.558,
+     439.751,
+     442.939,
+     446.128,
+     449.316,
+     452.504,
+     455.697,
+     458.886,
+     462.074,
+     467.762,
+     470.951,
+     474.144,
+     477.332
+    ],
+    "2": [
+     425.011,
+     430.467,
+     433.423,
+     436.379,
+     439.335,
+     442.291,
+     445.247,
+     448.204,
+     451.160,
+     454.116,
+     457.072,
+     462.528,
+     465.484
+    ],
+    "3": [
+     408.515,
+     411.239,
+     416.458,
+     419.182,
+     421.906,
+     424.630,
+     427.353,
+     430.072,
+     432.796,
+     435.520,
+     438.244,
+     440.968,
+     443.687
+    ],
+    "4": [
+     374.571,
+     377.058,
+     379.549,
+     382.036,
+     387.028,
+     389.515,
+     392.001,
+     394.493,
+     396.980,
+     399.471,
+     401.958,
+     404.445,
+     406.936
+    ],
+    "5": [
+     357.977,
+     359.889,
+     362.381,
+     364.868,
+     367.355,
+     369.841,
+     372.328,
+     374.821,
+     379.427,
+     381.867,
+     384.121,
+     386.376,
+     388.635
+    ],
+    "6": [
+     348.285,
+     348.824,
+     349.381,
+     349.910,
+     352.791,
+     354.990,
+     357.189,
+     359.389,
+     361.588,
+     363.787,
+     365.986,
+     370.685,
+     372.885
+    ],
+    "7": [
+     307.112,
+     307.639,
+     308.166,
+     308.694,
+     309.219,
+     309.750,
+     310.464,
+     312.506,
+     314.422,
+     316.337,
+     318.252,
+     320.162,
+     322.077
+    ],
+    "8": [
+     291.282,
+     298.776,
+     299.270,
+     299.764,
+     300.244,
+     300.737,
+     301.225,
+     301.714,
+     302.208,
+     302.723,
+     303.303,
+     304.958,
+     306.641
+    ]
+   }
+  },
+  {
+   "table_id": "CAFES_MOYENS_PETITS_2010-07-01",
+   "numero_imprime": 8,
+   "population": "moyens_petits",
+   "effective_date": "2010-07-01",
+   "source_pdf_page": 31,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     446.458,
+     449.651,
+     452.839,
+     456.028,
+     459.216,
+     462.404,
+     465.597,
+     468.786,
+     471.974,
+     477.662,
+     480.851,
+     484.044,
+     487.232
+    ],
+    "2": [
+     434.650,
+     440.106,
+     443.062,
+     446.018,
+     448.974,
+     451.930,
+     454.886,
+     457.843,
+     460.799,
+     463.755,
+     466.711,
+     472.167,
+     475.123
+    ],
+    "3": [
+     417.779,
+     420.503,
+     425.722,
+     428.446,
+     431.170,
+     433.894,
+     436.617,
+     439.336,
+     442.060,
+     444.784,
+     447.508,
+     450.232,
+     452.951
+    ],
+    "4": [
+     383.067,
+     385.554,
+     388.045,
+     390.532,
+     395.524,
+     398.011,
+     400.497,
+     402.989,
+     405.476,
+     407.967,
+     410.454,
+     412.941,
+     415.432
+    ],
+    "5": [
+     366.095,
+     368.007,
+     370.499,
+     372.986,
+     375.473,
+     377.959,
+     380.446,
+     382.939,
+     387.545,
+     389.985,
+     392.239,
+     394.494,
+     396.753
+    ],
+    "6": [
+     356.184,
+     356.723,
+     357.280,
+     357.809,
+     360.690,
+     362.889,
+     365.088,
+     367.288,
+     369.487,
+     371.686,
+     373.885,
+     378.584,
+     380.784
+    ],
+    "7": [
+     314.075,
+     314.602,
+     315.129,
+     315.657,
+     316.182,
+     316.713,
+     317.427,
+     319.469,
+     321.385,
+     323.300,
+     325.215,
+     327.125,
+     329.040
+    ],
+    "8": [
+     297.885,
+     305.379,
+     305.873,
+     306.367,
+     306.847,
+     307.340,
+     307.828,
+     308.317,
+     308.811,
+     309.326,
+     309.906,
+     311.561,
+     313.244
+    ]
+   }
+  },
+  {
+   "table_id": "CAFES_GRANDS_2010-07-01",
+   "numero_imprime": 9,
+   "population": "grands",
+   "effective_date": "2010-07-01",
+   "source_pdf_page": 31,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "1": [
+     452.281,
+     455.474,
+     458.662,
+     461.851,
+     465.039,
+     468.227,
+     471.420,
+     474.609,
+     477.797,
+     483.485,
+     486.674,
+     489.867,
+     493.055
+    ],
+    "2": [
+     440.317,
+     445.773,
+     448.729,
+     451.685,
+     454.641,
+     457.597,
+     460.553,
+     463.510,
+     466.466,
+     469.422,
+     472.378,
+     477.834,
+     480.790
+    ],
+    "3": [
+     423.227,
+     425.951,
+     431.170,
+     433.894,
+     436.618,
+     439.342,
+     442.065,
+     444.784,
+     447.508,
+     450.232,
+     452.956,
+     455.680,
+     458.399
+    ],
+    "4": [
+     388.062,
+     390.549,
+     393.040,
+     395.527,
+     400.519,
+     403.006,
+     405.492,
+     407.984,
+     410.471,
+     412.962,
+     415.449,
+     417.936,
+     420.427
+    ],
+    "5": [
+     370.871,
+     372.783,
+     375.275,
+     377.762,
+     380.249,
+     382.735,
+     385.222,
+     387.715,
+     392.321,
+     394.761,
+     397.015,
+     399.270,
+     401.529
+    ],
+    "6": [
+     360.831,
+     361.370,
+     361.927,
+     362.456,
+     365.337,
+     367.536,
+     369.735,
+     371.935,
+     374.134,
+     376.333,
+     378.532,
+     383.231,
+     385.431
+    ],
+    "7": [
+     318.173,
+     318.700,
+     319.227,
+     319.755,
+     320.280,
+     320.811,
+     321.525,
+     323.567,
+     325.483,
+     327.398,
+     329.313,
+     331.223,
+     333.138
+    ],
+    "8": [
+     301.770,
+     309.264,
+     309.758,
+     310.252,
+     310.732,
+     311.225,
+     311.713,
+     312.202,
+     312.696,
+     313.211,
+     313.791,
+     315.446,
+     317.129
+    ]
+   }
+  }
+ ]
+}

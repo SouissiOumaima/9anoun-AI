@@ -1,0 +1,964 @@
+{
+ "_meta": {
+  "secteur_code": "LOCATION_VOITURES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية لقطاع كراء السيارات",
+  "convention_fr": "Convention collective sectorielle de la location de voitures",
+  "source_file": "data/raw/pdf/كراء السيارات.pdf",
+  "pages_sources": [
+   3,
+   8,
+   10,
+   14,
+   15,
+   19
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "340 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse ; ports n° 8 et 9 à 300 et 400 dpi), comparées par script : 0 écart ni doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5) : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »",
+  "decision_ref": "D93",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 521 à 1 800) ; 40 heures (art. 27 (جديد), p.10).",
+  "note_degres": "En-tête (p.19) : 20 degrés, durée de séjour 1, 1, puis 2 ; ancienneté imprimée par intervalle 0-1 … 36-38 ; bornes exactes refusées (D6) ; de 30 ans exclus à 38 ans inclus, refus (en-tête contre art. 17 ب, p.8 : 16 degrés) ; à partir de 38 ans, refus.",
+  "note_categories": "Catégories 1 à 17 (exécution 1-7, maîtrise 8-13, cadres 14-17) ; population unique.",
+  "note_dates": "Tableau n° 2 seul (p.19), en vigueur à partir du 2019-05-01 ; l'avenant n° 12 (p.3) a effet au 2018-05-01 et le tableau n° 1 n'est pas dans la source : salaire refusé avant le 2019-05-01 ; les primes datées sont servies à leurs propres dates (2018-05-01, 2019-05-01)."
+ },
+ "populations": {
+  "agents": {
+   "libelle_fr": "Agents de la location de voitures",
+   "libelle_ar": "أعوان قطاع كراء السيارات",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 19,
+   "note": "Population unique ; elle peut être omise."
+  }
+ },
+ "degres": {
+  "agents": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 16,
+    "anciennete_label": "28-30",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 17,
+    "anciennete_label": "30-32",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 18,
+    "anciennete_label": "32-34",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 19,
+    "anciennete_label": "34-36",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 20,
+    "anciennete_label": "36-38",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "agents": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 38,
+   "source_pdf_page": 8,
+   "source_article": "17 ب",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de la location de voitures s'arrête au degré 20 (36 à 38 ans) ; l'en-tête (page 19) s'arrête à 38 ans ; au-delà, l'article 17 ب (page 8) fait passer l'agent dans la catégorie suivante, promotion non calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 38 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية قطاع كراء السيارات عند الدرجة 20 (من 36 إلى 38 سنة)؛ ينتهي رأس الجدول (الصفحة 19) عند 38 سنة؛ وبعدها ينقل الفصل 17 ب (الصفحة 8) العون إلى الصنف الموالي، ولا تُحتسب هذه الترقية. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 38 سنة)."
+  }
+ },
+ "anciennetes_refusees": {
+  "agents": [
+   {
+    "au_dela_de": 30,
+    "jusqu_a_inclus": 38,
+    "source_pdf_page": 8,
+    "source_article": "17 ب",
+    "message_fr": "Ancienneté de {a} ans : l'en-tête du tableau n° 2 (page 19) imprime 20 degrés (jusqu'à 38 ans), alors que l'article 17 ب (page 8) dit que chaque catégorie compte 16 degrés (un an pour les degrés 1 et 2, deux ans pour les degrés 3 à 16), soit 30 ans. Les deux textes se contredisent de 30 ans exclus à 38 ans inclus (degrés 17 à 20). Aucun montant n'est renvoyé.",
+    "message_ar": "أقدمية {a} سنة: يذكر رأس جدول الأجور عدد 2 (الصفحة 19) 20 درجة (إلى 38 سنة)، في حين ينص الفصل 17 ب (الصفحة 8) على أن كل صنف يحتوي على 16 درجة (سنة للدرجتين 1 و2 وسنتان للدرجات من 3 إلى 16)، أي 30 سنة. يتعارض النصان من أكثر من 30 سنة إلى 38 سنة (الدرجات من 17 إلى 20). لا يُرجَع أي مبلغ."
+   }
+  ]
+ },
+ "categories": {
+  "agents": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17"
+  ]
+ },
+ "libelles_categories": {
+  "agents": {
+   "1": {
+    "ligne": 1,
+    "libelle_fr": "Catégorie 1",
+    "libelle_ar": "الصنف 1",
+    "libelle_ar_redige": true
+   },
+   "2": {
+    "ligne": 2,
+    "libelle_fr": "Catégorie 2",
+    "libelle_ar": "الصنف 2",
+    "libelle_ar_redige": true
+   },
+   "3": {
+    "ligne": 3,
+    "libelle_fr": "Catégorie 3",
+    "libelle_ar": "الصنف 3",
+    "libelle_ar_redige": true
+   },
+   "4": {
+    "ligne": 4,
+    "libelle_fr": "Catégorie 4",
+    "libelle_ar": "الصنف 4",
+    "libelle_ar_redige": true
+   },
+   "5": {
+    "ligne": 5,
+    "libelle_fr": "Catégorie 5",
+    "libelle_ar": "الصنف 5",
+    "libelle_ar_redige": true
+   },
+   "6": {
+    "ligne": 6,
+    "libelle_fr": "Catégorie 6",
+    "libelle_ar": "الصنف 6",
+    "libelle_ar_redige": true
+   },
+   "7": {
+    "ligne": 7,
+    "libelle_fr": "Catégorie 7",
+    "libelle_ar": "الصنف 7",
+    "libelle_ar_redige": true
+   },
+   "8": {
+    "ligne": 8,
+    "libelle_fr": "Catégorie 8",
+    "libelle_ar": "الصنف 8",
+    "libelle_ar_redige": true
+   },
+   "9": {
+    "ligne": 9,
+    "libelle_fr": "Catégorie 9",
+    "libelle_ar": "الصنف 9",
+    "libelle_ar_redige": true
+   },
+   "10": {
+    "ligne": 10,
+    "libelle_fr": "Catégorie 10",
+    "libelle_ar": "الصنف 10",
+    "libelle_ar_redige": true
+   },
+   "11": {
+    "ligne": 11,
+    "libelle_fr": "Catégorie 11",
+    "libelle_ar": "الصنف 11",
+    "libelle_ar_redige": true
+   },
+   "12": {
+    "ligne": 12,
+    "libelle_fr": "Catégorie 12",
+    "libelle_ar": "الصنف 12",
+    "libelle_ar_redige": true
+   },
+   "13": {
+    "ligne": 13,
+    "libelle_fr": "Catégorie 13",
+    "libelle_ar": "الصنف 13",
+    "libelle_ar_redige": true
+   },
+   "14": {
+    "ligne": 14,
+    "libelle_fr": "Catégorie 14",
+    "libelle_ar": "الصنف 14",
+    "libelle_ar_redige": true
+   },
+   "15": {
+    "ligne": 15,
+    "libelle_fr": "Catégorie 15",
+    "libelle_ar": "الصنف 15",
+    "libelle_ar_redige": true
+   },
+   "16": {
+    "ligne": 16,
+    "libelle_fr": "Catégorie 16",
+    "libelle_ar": "الصنف 16",
+    "libelle_ar_redige": true
+   },
+   "17": {
+    "ligne": 17,
+    "libelle_fr": "Catégorie 17",
+    "libelle_ar": "الصنف 17",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "agents": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 521 à 1 800).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Degrés 17 à 20 (30 à 38 ans) : l'art. 17 ب ne prévoit que 16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête (demande par le degré, D75) ; par l'ancienneté, de 30 ans exclus à 38 ans inclus, refus (article 17 ب, page 8).",
+    "Passage dans la catégorie suivante au dernier degré (article 17 ب, page 8) : non calculé.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 521 à 1 800).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "الدرجات من 17 إلى 20 (من 30 إلى 38 سنة): لا ينص الفصل 17 ب إلا على 16 درجة؛ تُرجَع الدرجات من 17 إلى 20 لأنها مطبوعة برأس الجدول (الطلب حسب الدرجة، D75)؛ أما حسب الأقدمية فيقع الرفض من أكثر من 30 سنة إلى 38 سنة (الفصل 17 ب، الصفحة 8).",
+    "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 17 ب، الصفحة 8).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_fonction_directeur_general",
+   "label_ar": "منحة الوظيف (مدير عام)",
+   "label_fr": "Prime de fonction : directeur général",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 110.000,
+   "effective_date": null,
+   "note": "Perdue en cas de retrait des fonctions ; elle exclut les heures supplémentaires (art. 54 (جديد), p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de directeur général (art. 54 (جديد), p.15)"
+  },
+  {
+   "code": "prime_fonction_directeur",
+   "label_ar": "منحة الوظيف (مدير)",
+   "label_fr": "Prime de fonction : directeur",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 90.000,
+   "effective_date": null,
+   "note": "Perdue en cas de retrait des fonctions ; elle exclut les heures supplémentaires (art. 54 (جديد), p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de directeur (art. 54 (جديد), p.15)"
+  },
+  {
+   "code": "prime_fonction_chef_service_principal",
+   "label_ar": "منحة الوظيف (رئيس مصلحة رئيسي)",
+   "label_fr": "Prime de fonction : chef de service principal",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 70.000,
+   "effective_date": null,
+   "note": "Perdue en cas de retrait des fonctions ; elle exclut les heures supplémentaires (art. 54 (جديد), p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de chef de service principal (art. 54 (جديد), p.15)"
+  },
+  {
+   "code": "prime_fonction_chef_service",
+   "label_ar": "منحة الوظيف (رئيس مصلحة)",
+   "label_fr": "Prime de fonction : chef de service",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montant": 60.000,
+   "effective_date": null,
+   "note": "Perdue en cas de retrait des fonctions ; elle exclut les heures supplémentaires (art. 54 (جديد), p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de chef de service (art. 54 (جديد), p.15)"
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "55 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2018-05-01",
+     "execution_maitrise": 47.865,
+     "cadres": 53.850
+    },
+    {
+     "effective_date": "2019-05-01",
+     "execution_maitrise": 50.977,
+     "cadres": 57.350
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise": {
+     "fr": "Agents d'exécution et de maîtrise",
+     "ar": "أعوان التنفيذ والتسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; le montant de 2018 est servi même si la grille de 2018 n'est pas dans la source (art. 55 (جديد), p.15)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "56 (جديد)",
+   "source_pdf_page": 15,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2018-05-01",
+     "execution": 9.667,
+     "maitrise": 10.865,
+     "cadres": 12.061
+    },
+    {
+     "effective_date": "2019-05-01",
+     "execution": 10.295,
+     "maitrise": 11.571,
+     "cadres": 12.845
+    }
+   ],
+   "libelles_groupes": {
+    "execution": {
+     "fr": "Agents d'exécution",
+     "ar": "أعوان التنفيذ"
+    },
+    "maitrise": {
+     "fr": "Agents de maîtrise",
+     "ar": "أعوان التسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   }
+  },
+  {
+   "code": "aide_aid_el_adha",
+   "label_ar": "منحة عيد الإضحى",
+   "label_fr": "Aide de l'Aïd el-Adha",
+   "source_article": "58 ثانيا",
+   "source_pdf_page": 15,
+   "unite": "TND/versement",
+   "montant": 30.000,
+   "effective_date": null,
+   "note": "Non remboursable (art. 58 ثانيا, p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_creche_jardin",
+   "label_ar": "المنحة المدرسية (محضنة أو روضة)",
+   "label_fr": "Prime scolaire : crèche ou jardin d'enfants",
+   "source_article": "58 ثالثا",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 10.000,
+   "effective_date": null,
+   "note": "Par enfant inscrit, à la rentrée scolaire (art. 58 ثالثا, p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_primaire",
+   "label_ar": "المنحة المدرسية (ابتدائي)",
+   "label_fr": "Prime scolaire : primaire",
+   "source_article": "58 ثالثا",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 15.000,
+   "effective_date": null,
+   "note": "Par enfant inscrit, à la rentrée scolaire (art. 58 ثالثا, p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_scolaire_secondaire",
+   "label_ar": "المنحة المدرسية (ثانوي)",
+   "label_fr": "Prime scolaire : secondaire",
+   "source_article": "58 ثالثا",
+   "source_pdf_page": 15,
+   "unite": "TND/enfant",
+   "montant": 20.000,
+   "effective_date": null,
+   "note": "Par enfant inscrit, à la rentrée scolaire (art. 58 ثالثا, p.15).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production_equilibre": {
+   "source_pdf_page": 14,
+   "source_article": "52 (جديد)",
+   "message_fr": "Prime de production et d'équilibre (article 52 (جديد), page 14) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج والموازنة (الفصل 52 (جديد)، الصفحة 14): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "salaire_13e_mois": {
+   "source_pdf_page": 15,
+   "source_article": "57",
+   "message_fr": "Treizième mois (article 57, page 15) : un mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الشهر الثالث عشر (الفصل 57، الصفحة 15): أجرة شهر، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "aide_deces": {
+   "source_pdf_page": 15,
+   "source_article": "58 أولا",
+   "message_fr": "Aide en cas de décès (article 58 أولا, page 15) : un ou deux mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "المساعدة عند الوفاة (الفصل 58 أولا، الصفحة 15): أجرة شهر أو شهرين، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_retraite": {
+   "source_pdf_page": 14,
+   "source_article": "51",
+   "message_fr": "Prime de départ à la retraite (article 51, page 14) : deux mois de salaire et deux degrés, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "الإحالة على التقاعد (الفصل 51، الصفحة 14): أجرة شهرين ودرجتان، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "majoration_travail_nuit": {
+   "source_pdf_page": 10,
+   "source_article": "29 (جديد)",
+   "message_fr": "Majoration du travail de nuit (article 29 (جديد), page 10) : majoration de 50 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "تأجير العمل الليلي (الفصل 29 (جديد)، الصفحة 10): زيادة بـ50 بالمائة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "LOCATION_2019-05-01",
+   "numero_imprime": 2,
+   "population": "agents",
+   "effective_date": "2019-05-01",
+   "source_pdf_page": 19,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "1": [
+     521.240,
+     522.449,
+     523.658,
+     529.977,
+     533.552,
+     537.128,
+     540.703,
+     544.278,
+     547.853,
+     551.429,
+     555.004,
+     558.579,
+     564.654,
+     568.230,
+     571.805,
+     575.390,
+     578.975,
+     582.560,
+     586.145,
+     589.730
+    ],
+    "2": [
+     523.584,
+     530.865,
+     534.716,
+     538.567,
+     542.418,
+     546.269,
+     550.120,
+     553.971,
+     557.822,
+     564.173,
+     568.025,
+     571.876,
+     575.727,
+     579.578,
+     583.429,
+     587.290,
+     591.151,
+     595.012,
+     598.873,
+     602.734
+    ],
+    "3": [
+     535.326,
+     539.465,
+     543.603,
+     547.742,
+     551.881,
+     556.019,
+     560.158,
+     564.297,
+     570.935,
+     575.074,
+     579.213,
+     583.351,
+     587.490,
+     591.549,
+     595.433,
+     599.327,
+     603.221,
+     607.115,
+     611.009,
+     614.903
+    ],
+    "4": [
+     545.658,
+     550.140,
+     554.622,
+     559.103,
+     563.585,
+     568.067,
+     575.048,
+     579.530,
+     584.012,
+     588.479,
+     592.673,
+     596.867,
+     601.061,
+     605.256,
+     609.460,
+     617.654,
+     621.858,
+     626.062,
+     630.266,
+     634.470
+    ],
+    "5": [
+     555.995,
+     560.820,
+     565.644,
+     570.469,
+     577.803,
+     582.618,
+     587.436,
+     591.941,
+     596.445,
+     600.949,
+     605.454,
+     609.958,
+     614.462,
+     618.967,
+     623.471,
+     627.986,
+     632.501,
+     637.016,
+     641.531,
+     646.046
+    ],
+    "6": [
+     581.685,
+     586.912,
+     594.638,
+     599.865,
+     604.762,
+     609.628,
+     614.494,
+     619.360,
+     624.227,
+     629.093,
+     633.959,
+     638.959,
+     643.691,
+     648.558,
+     653.424,
+     658.300,
+     663.176,
+     668.052,
+     672.928,
+     677.804
+    ],
+    "7": [
+     602.843,
+     608.226,
+     613.609,
+     618.992,
+     624.375,
+     629.758,
+     635.141,
+     640.524,
+     645.907,
+     651.290,
+     656.673,
+     662.056,
+     667.439,
+     672.822,
+     678.822,
+     683.599,
+     688.992,
+     694.385,
+     699.778,
+     705.171
+    ],
+    "8": [
+     774.587,
+     780.806,
+     787.024,
+     793.243,
+     799.461,
+     805.680,
+     811.899,
+     818.117,
+     824.336,
+     830.555,
+     836.773,
+     842.992,
+     849.210,
+     855.429,
+     861.648,
+     867.871,
+     874.094,
+     880.317,
+     886.540,
+     892.763
+    ],
+    "9": [
+     790.167,
+     796.909,
+     803.644,
+     810.380,
+     817.115,
+     823.851,
+     830.586,
+     837.312,
+     844.057,
+     850.793,
+     857.528,
+     864.264,
+     870.999,
+     877.735,
+     884.470,
+     891.211,
+     897.952,
+     904.693,
+     911.434,
+     918.175
+    ],
+    "10": [
+     805.885,
+     813.137,
+     820.390,
+     827.642,
+     834.894,
+     842.147,
+     849.399,
+     856.652,
+     863.904,
+     871.156,
+     878.409,
+     885.661,
+     892.913,
+     900.166,
+     907.418,
+     914.676,
+     921.934,
+     929.192,
+     936.450,
+     943.708
+    ],
+    "11": [
+     826.011,
+     833.781,
+     841.550,
+     849.319,
+     858.088,
+     864.858,
+     872.627,
+     880.316,
+     888.345,
+     895.935,
+     903.704,
+     911.473,
+     919.242,
+     927.012,
+     934.781,
+     942.555,
+     950.329,
+     958.103,
+     965.877,
+     973.651
+    ],
+    "12": [
+     857.337,
+     866.140,
+     874.943,
+     883.741,
+     892.549,
+     901.352,
+     910.155,
+     918.958,
+     927.761,
+     936.564,
+     945.367,
+     954.170,
+     962.983,
+     971.776,
+     980.579,
+     989.387,
+     998.195,
+     1007.003,
+     1015.811,
+     1024.619
+    ],
+    "13": [
+     889.772,
+     898.809,
+     908.646,
+     918.483,
+     928.319,
+     938.156,
+     947.993,
+     957.830,
+     967.666,
+     977.503,
+     987.340,
+     997.177,
+     1007.043,
+     1016.850,
+     1026.687,
+     1036.529,
+     1046.371,
+     1056.213,
+     1066.055,
+     1075.897
+    ],
+    "14": [
+     1147.896,
+     1160.711,
+     1173.524,
+     1186.336,
+     1199.149,
+     1211.961,
+     1224.774,
+     1237.587,
+     1250.399,
+     1263.212,
+     1276.024,
+     1288.837,
+     1301.649,
+     1314.482,
+     1327.275,
+     1340.097,
+     1352.919,
+     1365.741,
+     1378.563,
+     1391.385
+    ],
+    "15": [
+     1210.380,
+     1225.260,
+     1240.140,
+     1255.020,
+     1269.900,
+     1284.780,
+     1299.660,
+     1314.540,
+     1329.420,
+     1344.300,
+     1359.180,
+     1374.060,
+     1388.940,
+     1403.820,
+     1418.701,
+     1433.591,
+     1448.681,
+     1463.771,
+     1478.861,
+     1493.951
+    ],
+    "16": [
+     1265.075,
+     1281.764,
+     1298.433,
+     1315.142,
+     1331.831,
+     1348.521,
+     1365.210,
+     1381.899,
+     1398.588,
+     1415.277,
+     1431.966,
+     1448.655,
+     1465.344,
+     1482.035,
+     1498.723,
+     1515.422,
+     1532.121,
+     1548.820,
+     1565.519,
+     1582.218
+    ],
+    "17": [
+     1434.792,
+     1453.566,
+     1472.839,
+     1492.113,
+     1511.386,
+     1529.933,
+     1549.933,
+     1569.207,
+     1588.480,
+     1607.754,
+     1627.027,
+     1646.301,
+     1665.574,
+     1686.848,
+     1704.121,
+     1723.405,
+     1742.629,
+     1761.853,
+     1781.077,
+     1800.301
+    ]
+   }
+  }
+ ]
+}

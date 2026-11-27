@@ -1,0 +1,110 @@
+{
+  "contract_version": "track_a.v1",
+  "request_id": "REQ-DS1-DS4-DEMO-001",
+  "case_id": "CASE-FICTIF-RUPTURE-001",
+  "status": "ok",
+  "result": {
+    "case_id": "CASE-FICTIF-RUPTURE-001",
+    "case_summary": {
+      "number_of_parties": 2,
+      "number_of_events": 2,
+      "number_of_claims": 2,
+      "number_of_evidence": 3
+    },
+    "parties": [
+      {
+        "party_id": "P1",
+        "name": "Salma Test",
+        "role": "employee"
+      },
+      {
+        "party_id": "P2",
+        "name": "Entreprise Fictive SARL",
+        "role": "employer"
+      }
+    ],
+    "timeline": [
+      {
+        "event_id": "EV1",
+        "date": "2026-01-05",
+        "description": "D?but du contrat d?clar? par la salari?e.",
+        "source_ids": [
+          "E1"
+        ],
+        "date_precision": "exact",
+        "date_reason": null,
+        "evidence_ids": [
+          "E1"
+        ]
+      },
+      {
+        "event_id": "EV2",
+        "date": "2026-09-15",
+        "description": "Notification de rupture d?clar?e par la salari?e.",
+        "source_ids": [
+          "E2"
+        ],
+        "date_precision": "exact",
+        "date_reason": null,
+        "evidence_ids": [
+          "E2"
+        ]
+      }
+    ],
+    "claims_analysis": [
+      {
+        "claim_id": "CL1",
+        "party_id": "P1",
+        "text": "La salari?e conteste les conditions de rupture du contrat.",
+        "status": "unverified"
+      },
+      {
+        "claim_id": "CL2",
+        "party_id": "P1",
+        "text": "La salari?e demande une v?rification des sommes vers?es.",
+        "status": "unverified"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E1",
+        "type": "contrat",
+        "description": "Contrat de travail fictif ? v?rifier.",
+        "source": "case://CASE-FICTIF-RUPTURE-001/documents/contrat-fictif"
+      },
+      {
+        "evidence_id": "E2",
+        "type": "notification",
+        "description": "Notification de rupture fictive ? v?rifier.",
+        "source": "case://CASE-FICTIF-RUPTURE-001/documents/notification-fictive"
+      },
+      {
+        "evidence_id": "E3",
+        "type": "fiche_paie",
+        "description": "Fiche de paie fictive destin?e au sc?nario DS3.",
+        "source": "case://CASE-FICTIF-RUPTURE-001/documents/paie-fictive"
+      }
+    ],
+    "evidence_mapping": [
+      {
+        "event_id": "EV1",
+        "evidence_id": "E1",
+        "relation": "source"
+      },
+      {
+        "event_id": "EV2",
+        "evidence_id": "E2",
+        "relation": "source"
+      }
+    ],
+    "contradictions": [],
+    "missing_evidence": [],
+    "legal_conclusion": null,
+    "legal_sources_used": [],
+    "analysis_status": "insufficient_evidence",
+    "uncertain_information": []
+  },
+  "citations": [],
+  "refus": null,
+  "computed_by": "DS4_Lawyer_Track_v1"
+}

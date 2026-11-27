@@ -2110,5 +2110,411 @@
     "operation": "prime",
     "params": {"secteur": "TRANSPORT_ROUTIER_MARCHANDISES", "code": "prime_travail_sans_accompagnateur", "date": "2024-06-01", "condition_remplie": true},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-300-salaire-jardins-ouvriers-3",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "ouvriers", "categorie": "3", "anciennete_annees": 9, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-301-salaire-jardins-jardins-7-degre-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "jardins", "categorie": "7", "anciennete_annees": 35, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-302-salaire-jardins-creches-date-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "creches", "categorie": "2", "anciennete_annees": 0.5, "date": "2011-07-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-303-salaire-jardins-administratifs-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "administratifs", "categorie": "2", "anciennete_annees": 20, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-304-refus-jardins-36-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "jardins", "categorie": "1", "anciennete_annees": 36, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-305-refus-jardins-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "population": "ouvriers", "categorie": "1", "anciennete_annees": 3, "date": "2011-06-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-306-prime-pedagogique-jardins-rang-1",
+    "operation": "prime",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "code": "prime_pedagogique_rang_1", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-307-prime-presence-jardins-2003",
+    "operation": "prime",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "code": "prime_presence_ouvriers", "date": "2003-08-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-308-refus-jardins-pedagogique-quatre-decimales",
+    "operation": "prime",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "code": "prime_pedagogique_rang_6", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-309-prime-transport-creches-rang-3",
+    "operation": "prime",
+    "params": {"secteur": "JARDINS_ENFANTS_CRECHES", "code": "prime_transport_creches_rang_3", "date": "2004-07-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-310-salaire-cliniques-c2-degre-15",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "population": "cliniques", "categorie": "C2", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-311-salaire-cliniques-dialyse-e1",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "population": "centres_dialyse", "categorie": "E1", "anciennete_annees": 0.5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-312-salaire-cliniques-m3",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "population": "cliniques", "categorie": "M3", "anciennete_annees": 12, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-313-refus-cliniques-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "population": "centres_dialyse", "categorie": "C1", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-314-refus-cliniques-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "population": "cliniques", "categorie": "E2", "anciennete_annees": 3.5, "date": "2019-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-315-prime-transport-cliniques-2016",
+    "operation": "prime",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "code": "prime_transport", "date": "2016-09-01", "groupe": "maitrise"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-316-prime-nuit-cliniques",
+    "operation": "prime",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "code": "prime_travail_nuit", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-317-prime-specialite-dialyse-technicien",
+    "operation": "prime",
+    "params": {"secteur": "CLINIQUES_PRIVEES", "code": "prime_specialite_dialyse_technicien_superieur_sante", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-318-salaire-location-17-degre-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "17", "anciennete_annees": 29, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-319-salaire-location-1-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "1", "anciennete_annees": 0.5, "date": "2019-05-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-320-salaire-location-pas-irregulier",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "17", "anciennete_annees": 11, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-321-refus-location-31-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "5", "anciennete_annees": 31, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-322-refus-location-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "LOCATION_VOITURES", "categorie": "8", "anciennete_annees": 4.5, "date": "2019-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-323-prime-presence-location-cadres-2018",
+    "operation": "prime",
+    "params": {"secteur": "LOCATION_VOITURES", "code": "prime_presence", "date": "2018-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-324-prime-scolaire-location-secondaire",
+    "operation": "prime",
+    "params": {"secteur": "LOCATION_VOITURES", "code": "prime_scolaire_secondaire", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-325-refus-location-13e-mois",
+    "operation": "prime",
+    "params": {"secteur": "LOCATION_VOITURES", "code": "salaire_13e_mois", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-326-salaire-materiaux-horaires-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "horaires", "categorie": "1", "anciennete_annees": 2.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-327-salaire-materiaux-mensuels-2-2018",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "mensuels", "categorie": "2", "anciennete_annees": 10, "date": "2018-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-328-salaire-materiaux-mensuels-20",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "mensuels", "categorie": "20", "anciennete_annees": 26, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-329-salaire-materiaux-maitrise-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "mensuels", "categorie": "10", "anciennete_annees": 0.5, "date": "2019-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-330-refus-materiaux-27-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "mensuels", "categorie": "5", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-331-refus-materiaux-avant-tableau-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "population": "horaires", "categorie": "2", "anciennete_annees": 1.5, "date": "2018-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-332-prime-transport-materiaux-2019",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "code": "prime_transport", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-333-prime-panier-materiaux",
+    "operation": "prime",
+    "params": {"secteur": "COMMERCE_MATERIAUX_BOIS_ACIER", "code": "prime_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-334-salaire-cafes-grands-recrutement",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "grands", "categorie": "8", "anciennete_annees": 0.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-335-salaire-cafes-cat1-degre-ouvert",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "cafes_categorie_1", "categorie": "1", "anciennete_annees": 40, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-336-salaire-cafes-moyens-petits-4",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "moyens_petits", "categorie": "4", "anciennete_annees": 6, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-337-refus-cafes-entre-1-et-3-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "grands", "categorie": "2", "anciennete_annees": 2, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-338-refus-cafes-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "population": "moyens_petits", "categorie": "1", "anciennete_annees": 5.5, "date": "2010-06-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-339-prime-transport-cafes-petits-2008",
+    "operation": "prime",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "code": "prime_transport_cat4_6_petits", "date": "2008-10-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-340-refus-cafes-transport-petits-aout-2008",
+    "operation": "prime",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "code": "prime_transport_cat4_6_petits", "date": "2008-08-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-341-prime-transport-cafes-moyens-grands-2008",
+    "operation": "prime",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "code": "prime_transport_cat7_8_moyens_grands", "date": "2008-08-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-342-prime-caisse-cafes-en-lettres",
+    "operation": "prime",
+    "params": {"secteur": "CAFES_RESTAURANTS_BARS", "code": "prime_caisse_grands", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-343-salaire-ports-manutention-ligne-croisee",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "manutention", "categorie": "1", "anciennete_annees": 55, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-344-salaire-ports-manutention-2-degre-19",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "manutention", "categorie": "2", "anciennete_annees": 52, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-345-salaire-ports-exploitation-24",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "exploitation_administration", "categorie": "24", "anciennete_annees": 0.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-346-salaire-ports-titularises-10",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "titularises_2005", "categorie": "10", "anciennete_annees": 2, "date": "2010-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-347-refus-ports-cellule-non-tranchee",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "manutention", "categorie": "2", "anciennete_annees": 27, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-348-refus-ports-exploitation-1-degre-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "exploitation_administration", "categorie": "1", "anciennete_annees": 0.5, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-349-refus-ports-56-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "titularises_2005", "categorie": "15", "anciennete_annees": 56, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-350-refus-ports-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "population": "manutention", "categorie": "3", "anciennete_annees": 4, "date": "2010-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-351-prime-logement-ports-art-75",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_logement_titularises_2005", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-352-refus-ports-logement-art-43-tableau-9",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_logement_art43_titularises_2005", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-353-prime-risque-ports-art-75-conducteurs",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_risque_titularises_2005_conducteurs_chefs", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-354-refus-ports-risque-art-47-tableau-9",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_risque_art47_titularises_2005_conducteurs_chefs", "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-355-prime-logement-ports-art-43",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_logement", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-356-prime-productivite-ports-en-lettres",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_productivite_exploitation", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-357-prime-transport-ports-2008",
+    "operation": "prime",
+    "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_transport_manutention", "date": "2008-06-01", "groupe": "encadrement"},
+    "lang": "fr"
   }
 ]

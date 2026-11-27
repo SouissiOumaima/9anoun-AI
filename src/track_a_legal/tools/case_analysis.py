@@ -18,7 +18,9 @@ Une affirmation ("claim") n'est jamais automatiquement
 considérée comme un fait établi.
 """
 
+
 from src.track_a_legal.tools.timeline import build_timeline
+from src.track_a_legal.tools.case_integrity import validate_case_integrity
 from src.track_a_legal.tools.evidence_mapping import map_event_evidence
 
 def analyze_case(case: dict) -> dict:
@@ -40,6 +42,10 @@ def analyze_case(case: dict) -> dict:
     # ----------------------------------------------------------
     # 1. Identification du dossier
     # ----------------------------------------------------------
+
+    # Verifier la coherence interne avant toute analyse.
+    # Refuser les identifiants dupliques et les parties inconnues.
+    validate_case_integrity(case)
 
     case_id = case["case_id"]
 
@@ -100,7 +106,6 @@ def analyze_case(case: dict) -> dict:
         case["events"],
         evidence,
     )
-
     # ----------------------------------------------------------
     # 6. Construction du résultat
     # ----------------------------------------------------------
@@ -119,6 +124,7 @@ def analyze_case(case: dict) -> dict:
         "evidence": evidence,
         "evidence_mapping": evidence_mapping,
         "contradictions": [],
+        # Le contrat Track A v0 impose une liste vide.
         "missing_evidence": [],
         "legal_conclusion": None,
     }

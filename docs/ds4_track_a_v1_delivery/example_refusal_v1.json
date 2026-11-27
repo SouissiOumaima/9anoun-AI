@@ -1,0 +1,13 @@
+{
+  "contract_version": "track_a.v1",
+  "request_id": "REQ-DS1-DS4-DEMO-001",
+  "status": "refus",
+  "result": null,
+  "citations": [],
+  "refus": {
+    "code": "PARAM_INVALIDE",
+    "message_fr": "Requete invalide.",
+    "message_ar": "طلب غير صالح."
+  },
+  "computed_by": "DS4_Lawyer_Track_v1"
+}
