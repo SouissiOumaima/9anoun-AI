@@ -13235,6 +13235,2344 @@
     "rendu": "claude-docs/vague6/verification/cas.html, cas TB-407"
    },
    "note": "Vague 6 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur l'image (claude-docs/vague6/verification/cas.html, 2026-11-22) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-408",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "ouvriers",
+     "categorie": "3",
+     "anciennete_annees": 9,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "386.185",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 1 (p.20, ouvriers), ligne 3, col. degré 6 (8 à 10 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "386.185",
+    "ligne": 3,
+    "colonne": 6,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-408"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-409",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "jardins",
+     "categorie": "7",
+     "anciennete_annees": 35,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "408.763",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 4 (p.21, jardins d'enfants), ligne 7, col. degré 16 (33 à 36 ans)",
+    "valeur_imprimee": "408.763",
+    "ligne": 7,
+    "colonne": 16,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-409"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-410",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "creches",
+     "categorie": "2",
+     "anciennete_annees": 0.5,
+     "date": "2011-07-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "458.808",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 3 (p.21, crèches, 2011-07-01), ligne 2, col. degré 1",
+    "valeur_imprimee": "458.808",
+    "ligne": 2,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-410"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-411",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "administratifs",
+     "categorie": "2",
+     "anciennete_annees": 20,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "452.996",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 2 (p.20, administratifs), ligne 2 (محتسب), col. degré 11 (18 à 21 ans)",
+    "valeur_imprimee": "452.996",
+    "ligne": 2,
+    "colonne": 11,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-411"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-412",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "jardins",
+     "categorie": "1",
+     "anciennete_annees": 36,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 21,
+    "emplacement": "en-tête du tableau n° 4 (p.21) : ancienneté 36 au degré 16 ; rien au-delà (art. 15 ب, p.7)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-412"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-413",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "ouvriers",
+     "categorie": "1",
+     "anciennete_annees": 3,
+     "date": "2011-06-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 20,
+    "emplacement": "titre du tableau n° 1 (p.20) : « يقع العمل به بداية من 1 جويلية 2011 »",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-413"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-414",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "code": "prime_pedagogique_rang_1",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "51.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 15,
+    "emplacement": "art. 46, prime pédagogique, rang 1 (أستاذ), colonne juillet 2004 : 51 ; servie sans date de fin (article jamais révisé)",
+    "valeur_imprimee": "51.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-414"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-415",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "code": "prime_presence_ouvriers",
+     "date": "2003-08-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "6.080",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 13,
+    "emplacement": "art. 44 (جديد), présence des ouvriers : 6,080 à partir de juillet 2003",
+    "valeur_imprimee": "6.080",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-415"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-416",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D91",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "code": "prime_pedagogique_rang_6",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 15,
+    "emplacement": "art. 46, prime pédagogique, rang 6 (عون مكلف بالتنشيط رتبة أولى), juillet 2003 : « 25.7000 » (quatre décimales)",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-416"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-417",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "code": "prime_transport_creches_rang_3",
+     "date": "2004-07-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "21.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 16,
+    "emplacement": "art. 47, prime de transport des crèches, rang 3 (مساعد عون رعاية وتربية رتبة أولى), juillet 2004 : 21.000",
+    "valeur_imprimee": "21.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-417"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-418",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D92",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "population": "cliniques",
+     "categorie": "C2",
+     "anciennete_annees": 29,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1916.763",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 16,
+    "emplacement": "tableau n° 3 (p.16, hors dialyse), ligne 10 (cadres 2), col. degré 15 (27 à 30 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "1916.763",
+    "ligne": 10,
+    "colonne": 15,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-418"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-419",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "population": "centres_dialyse",
+     "categorie": "E1",
+     "anciennete_annees": 0.5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "457.215",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 16,
+    "emplacement": "tableau n° 4 (p.16, dialyse), ligne 1 (exécution 1), col. degré 1",
+    "valeur_imprimee": "457.215",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-419"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-420",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "population": "cliniques",
+     "categorie": "M3",
+     "anciennete_annees": 12,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1215.735",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 16,
+    "emplacement": "tableau n° 3 (p.16), ligne 7 (maîtrise 3), col. degré 9 (11 à 13 ans)",
+    "valeur_imprimee": "1215.735",
+    "ligne": 7,
+    "colonne": 9,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-420"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-421",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D92",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "population": "centres_dialyse",
+     "categorie": "C1",
+     "anciennete_annees": 30,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 16,
+    "emplacement": "en-tête (p.16) : durées 1, 2, 3 jusqu'au degré 15, soit 30 ans ; rien au-delà (art. 13 (جديد))",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-421"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-422",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D92",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "population": "cliniques",
+     "categorie": "E2",
+     "anciennete_annees": 3.5,
+     "date": "2019-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 16,
+    "emplacement": "titres des tableaux n° 3 et 4 (p.16) : « 01 ماي 2019 » ; tableaux n° 1 et 2 absents",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-422"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-423",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D92",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "code": "prime_transport",
+     "date": "2016-09-01",
+     "groupe": "maitrise"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "57.945",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 13,
+    "emplacement": "art. 45 (جديد) : maîtrise, 57,945 à partir du 1er août 2016 (avant la grille)",
+    "valeur_imprimee": "57.945",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-423"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-424",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "code": "prime_travail_nuit",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.666",
+    "unite": "TND/nuit",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 9
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 9,
+    "emplacement": "art. 25 (جديد) : 3,666 « عن كل ليلة عمل »",
+    "valeur_imprimee": "3.666",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-424"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-425",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D92",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CLINIQUES_PRIVEES",
+     "code": "prime_specialite_dialyse_technicien_superieur_sante",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "20.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مصحات الخاصة.pdf",
+      "page": 13
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مصحات الخاصة.pdf",
+    "page": 13,
+    "emplacement": "art. 47 (جديد) : dialyse, فني سامي للصحة 20 ; déduction en note, non calculée",
+    "valeur_imprimee": "20.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-425"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-426",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "17",
+     "anciennete_annees": 29,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1723.405",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 2 (p.19), ligne 17, col. degré 16 (28 à 30 ans), dernier degré de l'art. 17 ب ; hypothèse SMIG",
+    "valeur_imprimee": "1723.405",
+    "ligne": 17,
+    "colonne": 16,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-426"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-427",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2019-05-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "521.240",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 2 (p.19, 2019-05-01), ligne 1, col. degré 1",
+    "valeur_imprimee": "521.240",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-427"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-428",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "17",
+     "anciennete_annees": 11,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1549.933",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 2 (p.19), ligne 17, col. degré 7 (10 à 12 ans) : 1 549.933, écart rond de 20 avec le degré 6, nettement imprimé",
+    "valeur_imprimee": "1549.933",
+    "ligne": 17,
+    "colonne": 7,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-428"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-429",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "5",
+     "anciennete_annees": 31,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 8,
+    "emplacement": "art. 17 ب (p.8) : 16 degrés par catégorie (1 an pour les degrés 1-2, 2 ans pour 3-16), contre 20 à l'en-tête (p.19)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-429"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-430",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "8",
+     "anciennete_annees": 4.5,
+     "date": "2019-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 19,
+    "emplacement": "titre du tableau n° 2 (p.19) : 2019-05-01 ; tableau n° 1 absent",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-430"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-431",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "code": "prime_presence",
+     "date": "2018-06-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "12.061",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 15,
+    "emplacement": "art. 56 (جديد) : cadres, 12,061 à partir du 1er mai 2018 (avant la grille)",
+    "valeur_imprimee": "12.061",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-431"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-432",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "code": "prime_scolaire_secondaire",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "20.000",
+    "unite": "TND/enfant",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 15,
+    "emplacement": "art. 58 ثالثا : 20 par enfant du secondaire, à la rentrée scolaire",
+    "valeur_imprimee": "20.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-432"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-433",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "code": "salaire_13e_mois",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 15,
+    "emplacement": "art. 57 (p.15) : un mois de salaire, formule",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-433"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-434",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "horaires",
+     "categorie": "1",
+     "anciennete_annees": 2.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.005",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 2 (p.21, 2019-05-01), ligne 1 (catégorie 1, « السعوي »), col. degré 3 (2 à 3 ans)",
+    "valeur_imprimee": "3.005",
+    "ligne": 1,
+    "colonne": 3,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-434"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-435",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "mensuels",
+     "categorie": "2",
+     "anciennete_annees": 10,
+     "date": "2018-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "514.431",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 20
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 20,
+    "emplacement": "tableau n° 1 (p.20, 2018-05-01), ligne 4 (catégorie 2, « الشهري »), col. degré 7 (9 à 12 ans)",
+    "valeur_imprimee": "514.431",
+    "ligne": 4,
+    "colonne": 7,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-435"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-436",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D94",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "mensuels",
+     "categorie": "20",
+     "anciennete_annees": 26,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1435.788",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 2 (p.21), ligne 22 (catégorie 20, س 7), col. degré 12 (24 à 27 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "1435.788",
+    "ligne": 22,
+    "colonne": 12,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-436"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-437",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "mensuels",
+     "categorie": "10",
+     "anciennete_annees": 0.5,
+     "date": "2019-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "786.298",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 2 (p.21, 2019-05-01), ligne 12 (catégorie 10, م 1), col. degré 1",
+    "valeur_imprimee": "786.298",
+    "ligne": 12,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-437"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-438",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D94",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "mensuels",
+     "categorie": "5",
+     "anciennete_annees": 27,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 21,
+    "emplacement": "en-tête (p.21) : durées 1, 2, 3 jusqu'au degré 12, soit 27 ans ; rien au-delà (art. 13)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-438"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-439",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D94",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "horaires",
+     "categorie": "2",
+     "anciennete_annees": 1.5,
+     "date": "2018-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 20,
+    "emplacement": "titre du tableau n° 1 (p.20) : 2018-05-01 (avenant n° 15)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-439"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-440",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "code": "prime_transport",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "64.996",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 10
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 10,
+    "emplacement": "art. 26 أ (جديد) : 64,996 à partir du 1er mai 2019 ; réduction par jour d'absence en note",
+    "valeur_imprimee": "64.996",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-440"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-441",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "code": "prime_panier",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.433",
+    "unite": "TND/jour",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 11
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 11,
+    "emplacement": "art. 26 ج (جديد) : « 433 مي » par jour",
+    "valeur_imprimee": "0.433",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-441"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-442",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "grands",
+     "categorie": "8",
+     "anciennete_annees": 0.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "301.770",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 9 (p.31, grands), ligne 8, col. 1 « الانتداب » (recrutement), servie la première année (art. 53)",
+    "valeur_imprimee": "301.770",
+    "ligne": 8,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-442"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-443",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "cafes_categorie_1",
+     "categorie": "1",
+     "anciennete_annees": 40,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "477.332",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 7 (p.31, cafés de 1re catégorie), ligne 1, col. 13 (degré 12, « حتى التقاعد ») ; population déclarée",
+    "valeur_imprimee": "477.332",
+    "ligne": 1,
+    "colonne": 13,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-443"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-444",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "moyens_petits",
+     "categorie": "4",
+     "anciennete_annees": 6,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "388.045",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 8 (p.31), ligne 4, col. 3 (degré 2, 5 à 7 ans)",
+    "valeur_imprimee": "388.045",
+    "ligne": 4,
+    "colonne": 3,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-444"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-445",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "grands",
+     "categorie": "2",
+     "anciennete_annees": 2,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 14,
+    "emplacement": "art. 53 (جديد) (p.14) : seule la première année est hors échelle ; l'en-tête (p.31) place le recrutement jusqu'à 3 ans",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-445"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-446",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "moyens_petits",
+     "categorie": "1",
+     "anciennete_annees": 5.5,
+     "date": "2010-06-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "titres des tableaux n° 7 à 9 (p.31) : 2010-07-01 ; tableaux n° 1 à 6 absents",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-446"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-447",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "code": "prime_transport_cat4_6_petits",
+     "date": "2008-10-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "13.200",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : catégories 4 à 6, 13,200 à partir du 1er septembre 2008 pour les petits établissements",
+    "valeur_imprimee": "13.200",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-447"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-448",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "code": "prime_transport_cat4_6_petits",
+     "date": "2008-08-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : pour les petits établissements, premier montant à partir du 1er septembre 2008",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-448"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-449",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D95",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "code": "prime_transport_cat7_8_moyens_grands",
+     "date": "2008-08-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "10.700",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 14,
+    "emplacement": "art. 50 (جديد) : catégories 7 et 8, 10,700 à partir du 1er juillet 2008 pour les moyens et grands établissements",
+    "valeur_imprimee": "10.700",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-449"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-450",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "code": "prime_caisse_grands",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "7.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 14
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 14,
+    "emplacement": "art. 52 (جديد) : « سبعة دنانير شهريا » (grands établissements), en lettres seulement",
+    "valeur_imprimee": "7.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-450"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-451",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "manutention",
+     "categorie": "1",
+     "anciennete_annees": 55,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "394.990",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 7 (p.25), ligne 1, col. degré 20 (53 à 56 ans) : 394.990, au-dessus de la ligne 2, nettement imprimé",
+    "valeur_imprimee": "394.990",
+    "ligne": 1,
+    "colonne": 20,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-451"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-452",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "manutention",
+     "categorie": "2",
+     "anciennete_annees": 52,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "383.085",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 7 (p.25), ligne 2, col. degré 19 (50 à 53 ans) : sous la ligne 1, nettement imprimé",
+    "valeur_imprimee": "383.085",
+    "ligne": 2,
+    "colonne": 19,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-452"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-453",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "exploitation_administration",
+     "categorie": "24",
+     "anciennete_annees": 0.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "557.784",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 26
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 26,
+    "emplacement": "tableau n° 8 (p.26), ligne 24 (échelle 24), col. degré 1 ; hypothèse SMIG",
+    "valeur_imprimee": "557.784",
+    "ligne": 24,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-453"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-454",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "titularises_2005",
+     "categorie": "10",
+     "anciennete_annees": 2,
+     "date": "2010-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "668.535",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 27
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 27,
+    "emplacement": "tableau n° 9 (p.27, titularisés 2005), ligne 1 (échelle 10), col. degré 2 (1 à 3 ans)",
+    "valeur_imprimee": "668.535",
+    "ligne": 1,
+    "colonne": 2,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-454"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-455",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "manutention",
+     "categorie": "2",
+     "anciennete_annees": 27,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 7 (p.25), ligne 2, col. degré 11 (26 à 29 ans) : 368.706 ou 368.705, non tranché",
+    "ligne": 2,
+    "colonne": 11,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-455"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-456",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "exploitation_administration",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 26,
+    "emplacement": "tableau n° 8 (p.26), ligne 1, col. degré 1 : 276.909 ou 275.909, non tranché",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-456"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-457",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "titularises_2005",
+     "categorie": "15",
+     "anciennete_annees": 56,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 27,
+    "emplacement": "en-tête du tableau n° 9 (p.27) : ancienneté 56 au degré 20 ; rien au-delà (art. 12)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-457"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-458",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "manutention",
+     "categorie": "3",
+     "anciennete_annees": 4,
+     "date": "2010-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 22,
+    "emplacement": "art. 75 (جديد) (p.22) : tableaux n° 7 à 9 à partir du 1er mai 2010 ; n° 1 à 6 absents",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-458"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-459",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_logement_titularises_2005",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "52.736",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 22,
+    "emplacement": "art. 75 (جديد) (p.22) : « منحة السكن : مقدارها 52,736 في الشهر », agents titularisés en 2005 (tableau n° 9)",
+    "valeur_imprimee": "52.736",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-459"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-460",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_logement_art43_titularises_2005",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 22,
+    "emplacement": "art. 75 (جديد) (p.22) : montant propre aux agents du tableau n° 9 ; le montant de l'art. 43 (32,736) ne leur est pas servi",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-460"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-461",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_risque_titularises_2005_conducteurs_chefs",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "71.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 22
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 22,
+    "emplacement": "art. 75 (جديد) (p.22) : « منحة الخطر : مقدارها 71,500 د في الشهر بالنسبة لسائق الأوناش وكبران العمال والناظر »",
+    "valeur_imprimee": "71.500",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-461"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-462",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_risque_art47_titularises_2005_conducteurs_chefs",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 22,
+    "emplacement": "art. 75 (جديد) (p.22) : montant propre aux agents du tableau n° 9 ; le montant de l'art. 47 (51,500) ne leur est pas servi",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-462"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-463",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_logement",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "32.736",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 15,
+    "emplacement": "art. 43 (p.15) : 32,736 par mois, agents de manutention hors tableau n° 9",
+    "valeur_imprimee": "32.736",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-463"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-464",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_productivite_exploitation",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "7.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 18,
+    "emplacement": "art. 60 (p.18) : « 7 دنانير ونصف », en chiffres et en lettres",
+    "valeur_imprimee": "7.500",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-464"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-465",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "code": "prime_transport_manutention",
+     "date": "2008-06-01",
+     "groupe": "encadrement"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "12.500",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 16,
+    "emplacement": "art. 48 (جديد) : 12,500 pour l'encadrement à partir du 1er mai 2008 (avant la grille)",
+    "valeur_imprimee": "12.500",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-465"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-466",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "grands",
+     "categorie": "3",
+     "degre": "الانتداب",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "423.227",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 9 (p.31), ligne 3, col. 1 « الانتداب »",
+    "valeur_imprimee": "423.227",
+    "ligne": 3,
+    "colonne": 1,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-466"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-467",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CAFES_RESTAURANTS_BARS",
+     "population": "cafes_categorie_1",
+     "categorie": "5",
+     "degre": "12",
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "388.635",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+      "page": 31
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+    "page": 31,
+    "emplacement": "tableau n° 7 (p.31), ligne 5, col. 13 (degré imprimé 12)",
+    "valeur_imprimee": "388.635",
+    "ligne": 5,
+    "colonne": 13,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-467"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-468",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "titularises_2005",
+     "categorie": "19",
+     "degre": 20,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1076.610",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+      "page": 27
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 27,
+    "emplacement": "tableau n° 9 (p.27), ligne 10 (échelle 19), col. degré 20",
+    "valeur_imprimee": "1076.610",
+    "ligne": 10,
+    "colonne": 20,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-468"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-469",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D96",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+     "population": "manutention",
+     "categorie": "16",
+     "degre": 7,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 7 (p.25), ligne 16, col. degré 7 : 779.656 ou 779.655, non tranché",
+    "ligne": 16,
+    "colonne": 7,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-469"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-470",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "JARDINS_ENFANTS_CRECHES",
+     "population": "creches",
+     "categorie": "4",
+     "degre": 16,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "467.429",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "رياض الأطفال.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "رياض الأطفال.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 3 (p.21), ligne 4, col. degré 16",
+    "valeur_imprimee": "467.429",
+    "ligne": 4,
+    "colonne": 16,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-470"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-471",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+     "population": "horaires",
+     "categorie": "2",
+     "degre": 12,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "3.209",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+      "page": 21
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+    "page": 21,
+    "emplacement": "tableau n° 2 (p.21), ligne 3 (catégorie 2, « السعوي »), col. degré 12",
+    "valeur_imprimee": "3.209",
+    "ligne": 3,
+    "colonne": 12,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-471"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague7/verification/cas.html (27/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-472",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D93",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "LOCATION_VOITURES",
+     "categorie": "17",
+     "degre": 18,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1761.853",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "كراء السيارات.pdf",
+      "page": 19
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "كراء السيارات.pdf",
+    "page": 19,
+    "emplacement": "tableau n° 2 (p.19), ligne 17, col. degré 18 (32 à 34 ans à l'en-tête) : servi par le degré parce qu'imprimé à l'en-tête ; l'art. 17 ب (p.8) ne prévoit que 16 degrés",
+    "valeur_imprimee": "1761.853",
+    "ligne": 17,
+    "colonne": 18,
+    "rendu": "claude-docs/vague7/verification/cas.html, cas TB-472"
+   },
+   "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; à vérifier par DS5 sur claude-docs/vague7/verification/cas.html ; ligne depuis le haut, colonne depuis la droite."
   }
  ]
 }

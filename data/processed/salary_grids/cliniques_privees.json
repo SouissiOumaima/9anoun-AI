@@ -1,0 +1,1131 @@
+{
+ "_meta": {
+  "secteur_code": "CLINIQUES_PRIVEES",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للمصحات الخاصة",
+  "convention_fr": "Convention collective sectorielle des cliniques privées",
+  "source_file": "data/raw/pdf/مصحات الخاصة.pdf",
+  "pages_sources": [
+   2,
+   6,
+   7,
+   9,
+   12,
+   13,
+   14,
+   15,
+   16
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "300 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes différentes, dans l'ordre inverse ; ports n° 8 et 9 à 300 et 400 dpi), comparées par script : 0 écart ni doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes lus sur l'image. Vérification humaine (DS5) : « J'ai vérifié les 97 points de claude-docs/vague7/verification/page.html, tous conformes : 5 montants de primes écrits en toutes lettres, les 11 cellules non tranchées, les 13 cellules tranchées au zoom, les lignes croisées des ports, et un échantillon d'une ligne sur trois de chaque tableau. J'ai vérifié sur les images les 64 cas de référence TB-408 à TB-471 de claude-docs/vague7/verification/cas.html, tous conformes. Les autres cellules reposent sur la double lecture et, pour les matériaux, sur le contrôle de hausse. »",
+  "decision_ref": "D92",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée sur la grille : TND/mois en hypothèse affichée (montants de 457 à 1 917).",
+  "note_degres": "En-tête (p.16) : 15 degrés, durée de séjour 1 (degrés 1 à 5), 2 (6 à 10), 3 (11 à 15) ; pas de ligne d'ancienneté ; libellés « 0-1 » … « 27-30 » ; bornes exactes refusées (D6) ; à partir de 30 ans, refus (art. 13 (جديد), pp.6-7).",
+  "note_categories": "Cliniques hors dialyse (tableau n° 3) et centres de dialyse (tableau n° 4) : lignes exécution 1 à 4 (E1-E4), maîtrise 1 à 4 (M1-M4), cadres 1 et 2 (C1-C2) ; population obligatoire.",
+  "note_dates": "Tableaux n° 3 et 4 seuls (p.16), en vigueur à partir du 2019-05-01 ; le dernier avenant listé (n° 8, p.2) a effet au 2016-08-01 et les tableaux n° 1 et 2 ne sont pas dans la source : salaire refusé avant le 2019-05-01 ; les primes datées sont servies à leurs propres dates (2016, 2017)."
+ },
+ "populations": {
+  "cliniques": {
+   "libelle_fr": "Agents des cliniques (hors dialyse)",
+   "libelle_ar": "أعوان المصحات (باستثناء مراكز تصفية الدم)",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 16,
+   "note": "Tableau n° 3 ; population obligatoire."
+  },
+  "centres_dialyse": {
+   "libelle_fr": "Agents des centres de dialyse",
+   "libelle_ar": "أعوان مراكز تصفية الدم",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 16,
+   "note": "Tableau n° 4 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "cliniques": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-4",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "4-5",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3
+   }
+  ],
+  "centres_dialyse": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-1",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "1-2",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "2-3",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "3-4",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "4-5",
+    "duree_imprimee": 1
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "5-7",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "7-9",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "9-11",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "11-13",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "13-15",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "15-18",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "18-21",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "21-24",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "24-27",
+    "duree_imprimee": 3
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "27-30",
+    "duree_imprimee": 3
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "cliniques": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 7,
+   "source_article": "13 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des cliniques privées s'arrête au degré 15 (27 à 30 ans) ; l'en-tête (page 16) imprime les durées de séjour 1 (degrés 1 à 5), 2 (6 à 10) puis 3 ans (11 à 15), soit 30 ans, et l'article 13 (جديد) (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المصحات الخاصة عند الدرجة 15 (من 27 إلى 30 سنة)؛ ويذكر رأس الجدول (الصفحة 16) مدد البقاء سنة (من الدرجة 1 إلى 5) وسنتين (من 6 إلى 10) ثم 3 سنوات (من 11 إلى 15)، أي 30 سنة، ولا ينص الفصل 13 (جديد) (الصفحتان 6 و7) على شيء بعد الدرجة 15. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  },
+  "centres_dialyse": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 7,
+   "source_article": "13 (جديد)",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention des cliniques privées s'arrête au degré 15 (27 à 30 ans) ; l'en-tête (page 16) imprime les durées de séjour 1 (degrés 1 à 5), 2 (6 à 10) puis 3 ans (11 à 15), soit 30 ans, et l'article 13 (جديد) (pages 6-7) ne prévoit rien au-delà du degré 15. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية المصحات الخاصة عند الدرجة 15 (من 27 إلى 30 سنة)؛ ويذكر رأس الجدول (الصفحة 16) مدد البقاء سنة (من الدرجة 1 إلى 5) وسنتين (من 6 إلى 10) ثم 3 سنوات (من 11 إلى 15)، أي 30 سنة، ولا ينص الفصل 13 (جديد) (الصفحتان 6 و7) على شيء بعد الدرجة 15. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  }
+ },
+ "categories": {
+  "cliniques": [
+   "E1",
+   "E2",
+   "E3",
+   "E4",
+   "M1",
+   "M2",
+   "M3",
+   "M4",
+   "C1",
+   "C2"
+  ],
+  "centres_dialyse": [
+   "E1",
+   "E2",
+   "E3",
+   "E4",
+   "M1",
+   "M2",
+   "M3",
+   "M4",
+   "C1",
+   "C2"
+  ]
+ },
+ "libelles_categories": {
+  "cliniques": {
+   "E1": {
+    "ligne": 1,
+    "libelle_fr": "Exécution 1",
+    "libelle_ar": "تنفيذ 1",
+    "libelle_ar_redige": true
+   },
+   "E2": {
+    "ligne": 2,
+    "libelle_fr": "Exécution 2",
+    "libelle_ar": "تنفيذ 2",
+    "libelle_ar_redige": true
+   },
+   "E3": {
+    "ligne": 3,
+    "libelle_fr": "Exécution 3",
+    "libelle_ar": "تنفيذ 3",
+    "libelle_ar_redige": true
+   },
+   "E4": {
+    "ligne": 4,
+    "libelle_fr": "Exécution 4",
+    "libelle_ar": "تنفيذ 4",
+    "libelle_ar_redige": true
+   },
+   "M1": {
+    "ligne": 5,
+    "libelle_fr": "Maîtrise 1",
+    "libelle_ar": "تسيير 1",
+    "libelle_ar_redige": true
+   },
+   "M2": {
+    "ligne": 6,
+    "libelle_fr": "Maîtrise 2",
+    "libelle_ar": "تسيير 2",
+    "libelle_ar_redige": true
+   },
+   "M3": {
+    "ligne": 7,
+    "libelle_fr": "Maîtrise 3",
+    "libelle_ar": "تسيير 3",
+    "libelle_ar_redige": true
+   },
+   "M4": {
+    "ligne": 8,
+    "libelle_fr": "Maîtrise 4",
+    "libelle_ar": "تسيير 4",
+    "libelle_ar_redige": true
+   },
+   "C1": {
+    "ligne": 9,
+    "libelle_fr": "Cadres 1",
+    "libelle_ar": "إطارات 1",
+    "libelle_ar_redige": true
+   },
+   "C2": {
+    "ligne": 10,
+    "libelle_fr": "Cadres 2",
+    "libelle_ar": "إطارات 2",
+    "libelle_ar_redige": true
+   }
+  },
+  "centres_dialyse": {
+   "E1": {
+    "ligne": 1,
+    "libelle_fr": "Exécution 1",
+    "libelle_ar": "تنفيذ 1",
+    "libelle_ar_redige": true
+   },
+   "E2": {
+    "ligne": 2,
+    "libelle_fr": "Exécution 2",
+    "libelle_ar": "تنفيذ 2",
+    "libelle_ar_redige": true
+   },
+   "E3": {
+    "ligne": 3,
+    "libelle_fr": "Exécution 3",
+    "libelle_ar": "تنفيذ 3",
+    "libelle_ar_redige": true
+   },
+   "E4": {
+    "ligne": 4,
+    "libelle_fr": "Exécution 4",
+    "libelle_ar": "تنفيذ 4",
+    "libelle_ar_redige": true
+   },
+   "M1": {
+    "ligne": 5,
+    "libelle_fr": "Maîtrise 1",
+    "libelle_ar": "تسيير 1",
+    "libelle_ar_redige": true
+   },
+   "M2": {
+    "ligne": 6,
+    "libelle_fr": "Maîtrise 2",
+    "libelle_ar": "تسيير 2",
+    "libelle_ar_redige": true
+   },
+   "M3": {
+    "ligne": 7,
+    "libelle_fr": "Maîtrise 3",
+    "libelle_ar": "تسيير 3",
+    "libelle_ar_redige": true
+   },
+   "M4": {
+    "ligne": 8,
+    "libelle_fr": "Maîtrise 4",
+    "libelle_ar": "تسيير 4",
+    "libelle_ar_redige": true
+   },
+   "C1": {
+    "ligne": 9,
+    "libelle_fr": "Cadres 1",
+    "libelle_ar": "إطارات 1",
+    "libelle_ar_redige": true
+   },
+   "C2": {
+    "ligne": 10,
+    "libelle_fr": "Cadres 2",
+    "libelle_ar": "إطارات 2",
+    "libelle_ar_redige": true
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "cliniques": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 16) : TND/mois en hypothèse (montants de 457 à 1 917).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Avenant n° 4 (page 2) : les hausses de 2011 s'appliquent aussi aux agents payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Promotion automatique après dix ans dans la catégorie (article 13 (جديد), page 7) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 16): الدينار في الشهر على سبيل الافتراض (مبالغ من 457 à 1 917).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "الملحق التعديلي عدد 4 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا تُحتسب الترقية الآلية بعد عشر سنوات في الصنف (الفصل 13 (جديد)، الصفحة 7).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "centres_dialyse": {
+   "fr": [
+    "Unité non imprimée sur la grille (page 16) : TND/mois en hypothèse (montants de 457 à 1 917).",
+    "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+    "Avenant n° 4 (page 2) : les hausses de 2011 s'appliquent aussi aux agents payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+    "Promotion automatique après dix ans dans la catégorie (article 13 (جديد), page 7) : non calculée.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول (الصفحة 16): الدينار في الشهر على سبيل الافتراض (مبالغ من 457 à 1 917).",
+    "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+    "الملحق التعديلي عدد 4 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+    "لا تُحتسب الترقية الآلية بعد عشر سنوات في الصنف (الفصل 13 (جديد)، الصفحة 7).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_travail_nuit",
+   "label_ar": "منحة العمل الليلي",
+   "label_fr": "Prime de travail de nuit",
+   "source_article": "25 (جديد)",
+   "source_pdf_page": 9,
+   "unite": "TND/nuit",
+   "montant": 3.666,
+   "effective_date": null,
+   "note": "Imprimé « عن كل ليلة عمل » (art. 25 (جديد), p.9).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "45 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2016-08-01",
+     "execution": 52.645,
+     "maitrise": 57.945,
+     "cadres": 65.365
+    },
+    {
+     "effective_date": "2017-08-01",
+     "execution": 55.804,
+     "maitrise": 61.421,
+     "cadres": 69.287
+    }
+   ],
+   "libelles_groupes": {
+    "execution": {
+     "fr": "Agents d'exécution",
+     "ar": "أعوان التنفيذ"
+    },
+    "maitrise": {
+     "fr": "Agents de maîtrise",
+     "ar": "أعوان التسيير"
+    },
+    "cadres": {
+     "fr": "Cadres",
+     "ar": "الإطارات"
+    }
+   },
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; les montants de 2016 et 2017 sont servis même si les grilles de ces années ne sont pas dans la source (art. 45 (جديد), p.13)."
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "45 مكرر",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2016-08-01",
+     "montant": 3.180
+    },
+    {
+     "effective_date": "2017-05-01",
+     "montant": 3.370
+    }
+   ],
+   "note": "S'ajoute à la prime demi-journalière du décret du 8 janvier 1948, intégrée à la grille (art. 45 مكرر, p.13)."
+  },
+  {
+   "code": "prime_fonction_directeur",
+   "label_ar": "المنحة الوظيفية (مدير)",
+   "label_fr": "Prime de fonction : directeur",
+   "source_article": "46",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 50.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la fonction de directeur (art. 46, p.13)"
+  },
+  {
+   "code": "prime_fonction_surveillant",
+   "label_ar": "المنحة الوظيفية (ناظر)",
+   "label_fr": "Prime de fonction : surveillant",
+   "source_article": "46",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent chargé de la fonction de surveillant (art. 46, p.13)"
+  },
+  {
+   "code": "prime_specialite_dialyse_infirmier",
+   "label_ar": "منحة الاختصاص (تصفية الدم، ممرض)",
+   "label_fr": "Prime de spécialité (dialyse) : infirmier",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 15.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "infirmier d'un centre de dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_dialyse_technicien_superieur_sante",
+   "label_ar": "منحة الاختصاص (تصفية الدم، فني سامي للصحة)",
+   "label_fr": "Prime de spécialité (dialyse) : technicien supérieur de la santé",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "technicien supérieur de la santé d'un centre de dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_infirmier_auxiliaire",
+   "label_ar": "منحة الاختصاص (ممرض مساعد)",
+   "label_fr": "Prime de spécialité : infirmier auxiliaire",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "infirmier auxiliaire d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_infirmier",
+   "label_ar": "منحة الاختصاص (ممرض)",
+   "label_fr": "Prime de spécialité : infirmier",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 20.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "infirmier d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_technicien_superieur_sante",
+   "label_ar": "منحة الاختصاص (فني سامي للصحة)",
+   "label_fr": "Prime de spécialité : technicien supérieur de la santé",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 30.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "technicien supérieur de la santé d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_technicien_superieur_chef",
+   "label_ar": "منحة الاختصاص (فني سامي رئيس)",
+   "label_fr": "Prime de spécialité : technicien supérieur chef",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "technicien supérieur chef d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_infirmier_chef",
+   "label_ar": "منحة الاختصاص (ممرض رئيس)",
+   "label_fr": "Prime de spécialité : infirmier chef",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "infirmier chef d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_chef_service_maintenance",
+   "label_ar": "منحة الاختصاص (رئيس قسم الصيانة)",
+   "label_fr": "Prime de spécialité : chef du service de maintenance",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chef du service de maintenance d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_specialite_chef_cuisine",
+   "label_ar": "منحة الاختصاص (رئيس مطبخ)",
+   "label_fr": "Prime de spécialité : chef de cuisine",
+   "source_article": "47 (جديد)",
+   "source_pdf_page": 13,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Article 47 (جديد) (page 14) : pour les agents qui touchent des primes non conventionnelles, la hausse de la prime de spécialité est retranchée de ces primes (deux exemples chiffrés) ; cette déduction n'est pas calculée : le montant conventionnel est servi.",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "الفصل 47 (جديد) (الصفحة 14): بالنسبة إلى الأعوان الذين يتقاضون منحا غير منصوص عليها بالاتفاقية، تُطرح الزيادة في منحة الاختصاص من تلك المنح (مثالان مرقمان)؛ لا يُحتسب هذا الطرح: يُرجَع المبلغ المنصوص عليه بالاتفاقية.",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "chef de cuisine d'une clinique hors dialyse (art. 47 (جديد), p.13)"
+  },
+  {
+   "code": "prime_risque_contagion",
+   "label_ar": "منحة خطر العدوى",
+   "label_fr": "Prime de risque de contagion",
+   "source_article": "47 مكرر (جديد)",
+   "source_pdf_page": 14,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2016-08-01",
+     "montant": 15.900
+    },
+    {
+     "effective_date": "2017-05-01",
+     "montant": 16.854
+    }
+   ]
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_production": {
+   "source_pdf_page": 12,
+   "source_article": "44 (جديد)",
+   "message_fr": "Prime de production (article 44 (جديد), page 12) : pourcentage selon la note, de 50 % à 100 %, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاج (الفصل 44 (جديد)، الصفحة 12): نسبة حسب العدد المهني، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 7,
+   "source_article": "17 (جديد)",
+   "message_fr": "Indemnité de fin de service (article 17 (جديد), page 7) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "مكافأة نهاية الخدمة (الفصل 17 (جديد)، الصفحة 7): صيغة حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "CLINIQUES_HORS_DIALYSE_2019-05-01",
+   "numero_imprime": 3,
+   "population": "cliniques",
+   "effective_date": "2019-05-01",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "valeurs": {
+    "E1": [
+     503.150,
+     513.212,
+     523.475,
+     533.945,
+     544.624,
+     555.517,
+     566.628,
+     577.960,
+     589.519,
+     601.310,
+     613.335,
+     625.602,
+     638.114,
+     650.877,
+     663.894
+    ],
+    "E2": [
+     536.692,
+     547.427,
+     558.374,
+     569.541,
+     580.933,
+     592.552,
+     604.403,
+     616.490,
+     628.820,
+     641.398,
+     654.224,
+     667.310,
+     680.656,
+     694.269,
+     708.154
+    ],
+    "E3": [
+     581.068,
+     592.687,
+     604.540,
+     616.633,
+     628.965,
+     641.546,
+     654.377,
+     667.462,
+     680.811,
+     694.427,
+     708.318,
+     722.482,
+     736.933,
+     751.672,
+     766.707
+    ],
+    "E4": [
+     705.581,
+     719.692,
+     734.086,
+     748.769,
+     763.744,
+     779.020,
+     794.600,
+     810.490,
+     826.701,
+     843.234,
+     860.100,
+     877.301,
+     894.847,
+     912.745,
+     931.000
+    ],
+    "M1": [
+     830.095,
+     846.698,
+     863.631,
+     880.905,
+     898.522,
+     916.493,
+     934.823,
+     953.519,
+     972.590,
+     992.041,
+     1011.882,
+     1032.121,
+     1052.761,
+     1073.817,
+     1095.294
+    ],
+    "M2": [
+     913.105,
+     931.367,
+     949.995,
+     968.996,
+     988.375,
+     1008.142,
+     1028.305,
+     1048.871,
+     1069.849,
+     1091.245,
+     1113.072,
+     1135.333,
+     1158.038,
+     1181.200,
+     1204.823
+    ],
+    "M3": [
+     1037.618,
+     1058.371,
+     1079.539,
+     1101.130,
+     1123.151,
+     1145.615,
+     1168.528,
+     1191.898,
+     1215.735,
+     1240.052,
+     1264.851,
+     1290.149,
+     1315.953,
+     1342.271,
+     1369.116
+    ],
+    "M4": [
+     1141.381,
+     1164.208,
+     1187.492,
+     1211.243,
+     1235.467,
+     1260.177,
+     1285.380,
+     1311.087,
+     1337.308,
+     1364.056,
+     1391.336,
+     1419.164,
+     1447.548,
+     1476.497,
+     1506.028
+    ],
+    "C1": [
+     1245.144,
+     1270.046,
+     1295.446,
+     1321.356,
+     1347.782,
+     1374.738,
+     1402.232,
+     1430.277,
+     1458.882,
+     1488.061,
+     1517.821,
+     1548.178,
+     1579.144,
+     1610.723,
+     1642.939
+    ],
+    "C2": [
+     1452.667,
+     1481.721,
+     1511.355,
+     1541.583,
+     1572.413,
+     1603.862,
+     1635.938,
+     1668.658,
+     1702.030,
+     1736.071,
+     1770.792,
+     1806.209,
+     1842.334,
+     1879.180,
+     1916.763
+    ]
+   }
+  },
+  {
+   "table_id": "CLINIQUES_DIALYSE_2019-05-01",
+   "numero_imprime": 4,
+   "population": "centres_dialyse",
+   "effective_date": "2019-05-01",
+   "source_pdf_page": 16,
+   "unite": "TND/mois",
+   "valeurs": {
+    "E1": [
+     457.215,
+     466.358,
+     475.686,
+     485.200,
+     494.903,
+     504.801,
+     514.897,
+     525.195,
+     535.699,
+     546.413,
+     557.341,
+     568.488,
+     579.858,
+     591.455,
+     603.283
+    ],
+    "E2": [
+     487.694,
+     497.448,
+     507.397,
+     517.545,
+     527.897,
+     538.454,
+     549.223,
+     560.207,
+     571.413,
+     582.840,
+     594.497,
+     606.386,
+     618.514,
+     630.885,
+     643.502
+    ],
+    "E3": [
+     528.019,
+     538.578,
+     549.350,
+     560.337,
+     571.545,
+     582.976,
+     594.634,
+     606.526,
+     618.657,
+     631.030,
+     643.651,
+     656.523,
+     669.655,
+     683.047,
+     696.709
+    ],
+    "E4": [
+     641.166,
+     653.988,
+     667.068,
+     680.410,
+     694.018,
+     707.899,
+     722.056,
+     736.496,
+     751.227,
+     766.252,
+     781.576,
+     797.208,
+     813.152,
+     829.415,
+     846.003
+    ],
+    "M1": [
+     754.312,
+     769.398,
+     784.786,
+     800.482,
+     816.492,
+     832.822,
+     849.478,
+     866.467,
+     883.798,
+     901.473,
+     919.501,
+     937.893,
+     956.650,
+     975.782,
+     995.298
+    ],
+    "M2": [
+     829.743,
+     846.339,
+     863.265,
+     880.530,
+     898.141,
+     916.104,
+     934.425,
+     953.114,
+     972.177,
+     991.619,
+     1011.452,
+     1031.681,
+     1052.315,
+     1073.361,
+     1094.828
+    ],
+    "M3": [
+     942.889,
+     961.747,
+     980.982,
+     1000.600,
+     1020.613,
+     1041.025,
+     1061.847,
+     1083.084,
+     1104.744,
+     1126.840,
+     1149.376,
+     1172.365,
+     1195.812,
+     1219.728,
+     1244.123
+    ],
+    "M4": [
+     1037.178,
+     1057.921,
+     1079.080,
+     1100.661,
+     1122.675,
+     1145.128,
+     1168.031,
+     1191.391,
+     1215.219,
+     1239.524,
+     1264.314,
+     1289.601,
+     1315.393,
+     1341.700,
+     1368.535
+    ],
+    "C1": [
+     1131.468,
+     1154.096,
+     1177.178,
+     1200.722,
+     1224.737,
+     1249.231,
+     1274.216,
+     1299.699,
+     1325.694,
+     1352.209,
+     1379.252,
+     1406.837,
+     1434.974,
+     1463.672,
+     1492.948
+    ],
+    "C2": [
+     1320.045,
+     1346.446,
+     1373.374,
+     1400.844,
+     1428.860,
+     1457.437,
+     1486.586,
+     1516.316,
+     1546.642,
+     1577.576,
+     1609.127,
+     1641.311,
+     1674.137,
+     1707.618,
+     1741.771
+    ]
+   }
+  }
+ ]
+}

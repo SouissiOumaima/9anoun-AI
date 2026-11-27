@@ -1134,5 +1134,327 @@
     ],
     "refus": null,
     "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-30-cafes-grands-colonne-recrutement",
+    "status": "ok",
+    "result": {
+      "montant": "423.227",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "population": "grands",
+        "categorie": "3",
+        "degre": 1,
+        "degre_imprime": "الانتداب",
+        "degre_declare": true,
+        "anciennete_imprimee": "الانتداب",
+        "libelle_degre": "0-3",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 31) : « الانتداب ».",
+          "L'article 53 (جديد) (page 14) et l'en-tête de la grille se contredisent pour une ancienneté de plus de 1 an jusqu'à 3 ans inclus, intervalle qui touche ce degré : par l'ancienneté, il est refusé ; le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 31): «الانتداب».",
+          "يتعارض الفصل 53 (جديد) (الصفحة 14) مع رأس الجدول بالنسبة إلى أقدمية تفوق 1 سنة إلى 3 سنة، وهي فترة تمسّ هذه الدرجة: تُرفض بحساب الأقدمية؛ والمبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "CAFES_GRANDS_2010-07-01",
+        "effective_date": "2010-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-31-cafes-categorie-1-degre-12",
+    "status": "ok",
+    "result": {
+      "montant": "388.635",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "CAFES_RESTAURANTS_BARS",
+        "population": "cafes_categorie_1",
+        "categorie": "5",
+        "degre": 13,
+        "degre_imprime": "12",
+        "degre_declare": true,
+        "anciennete_imprimee": "حتى التقاعد",
+        "libelle_degre": "25+",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 31) : TND/mois en hypothèse (montants de 291 à 493).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "La convention ne définit pas les « cafés de première catégorie » (« المقاهي صنف 1 », tableau n° 7, page 31) ; l'article 2 (جديد) (page 5) ne définit que les petits (8 travailleurs permanents au plus), moyens (9 à 14) et grands (plus de 14) établissements : la population est celle déclarée par l'appelant.",
+          "Colonne du recrutement (« الانتداب ») servie de 0 à 1 an (désignation imprimée « الانتداب » pour le degré déclaré) ; de 1 à 3 ans, refus (en-tête contre article 53 (جديد), page 14).",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 31) : « حتى التقاعد »."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 31): الدينار في الشهر على سبيل الافتراض (مبالغ من 291 à 493).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تعرّف الاتفاقية «المقاهي صنف 1» (جدول الأجور عدد 7، الصفحة 31)؛ ولا يعرّف الفصل 2 (جديد) (الصفحة 5) إلا المؤسسات الصغرى (8 عمال قارين على الأكثر) والمتوسطة (من 9 إلى 14) والكبرى (أكثر من 14): الفئة هي التي يصرح بها الطالب.",
+          "يُرجَع عمود الانتداب من 0 إلى سنة («الانتداب» للدرجة المصرح بها)؛ ومن سنة إلى 3 سنوات، رفض (رأس الجدول مقابل الفصل 53 (جديد)، الصفحة 14).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 31): «حتى التقاعد»."
+        ],
+        "table_id": "CAFES_CAFES_CATEGORIE_1_2010-07-01",
+        "effective_date": "2010-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/المقاهي و المطاعم و الحانات و المؤسسات المشابهة لها.pdf",
+        "page": 31,
+        "article": null,
+        "data_file": "data/processed/salary_grids/cafes_restaurants_bars.json",
+        "decision_ref": "D95"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-32-ports-titularises-19-degre-20",
+    "status": "ok",
+    "result": {
+      "montant": "1076.610",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PORTS_CHARGEMENT_DECHARGEMENT",
+        "population": "titularises_2005",
+        "categorie": "19",
+        "degre": 20,
+        "degre_imprime": "20",
+        "degre_declare": true,
+        "anciennete_imprimee": "56",
+        "libelle_degre": "53-56",
+        "regle_au_dela_non_appliquee": "article 12, page 7",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 27) : TND/mois en hypothèse (montants de 276 à 1 077).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Tableau n° 9 (page 27) : agents de manutention titularisés au premier trimestre 2005, échelles 10 à 19 ; leurs primes de logement et de risque sont celles de l'article 75 (جديد) (page 22), pas celles des articles 43 et 47.",
+          "Mesures transitoires (dispositions transitoires des pages 17 et 20 : reclassement des agents déjà payés au-dessus de la grille en 2006, promotion exceptionnelle de 2006) : non calculées.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 27) : « 56 ».",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 56 ans ; au-delà, la convention ne fixe pas le montant (article 12, page 7). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 27): الدينار في الشهر على سبيل الافتراض (مبالغ من 276 à 1 077).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "جدول الأجور عدد 9 (الصفحة 27): أعوان الشحن والتفريغ المرسمون خلال الثلاثية الأولى من سنة 2005، السلالم من 10 إلى 19؛ منحتا السكن والخطر الخاصتان بهم هما المنصوص عليهما بالفصل 75 (جديد) (الصفحة 22) لا بالفصلين 43 و47.",
+          "لا تُحتسب الأحكام الانتقالية (الصفحتان 17 و20: إعادة ترتيب الأعوان الذين كانوا يتقاضون أجورا أرفع من الجدول سنة 2006، والترقية الاستثنائية لسنة 2006).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 27): «56».",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 56 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 12، الصفحة 7). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "PORTS_TITULARISES_2005_2010-05-01",
+        "effective_date": "2010-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الشحن والتفريغ بالموانئ البحرية التجارية التونسية.pdf",
+        "page": 27,
+        "article": null,
+        "data_file": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "decision_ref": "D96"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-33-ports-manutention-cellule-non-tranchee",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents de manutention, catégorie 16, degré 7 (tableau n° 7, en vigueur à partir du 2010-05-01, page 25) : cellule non tranchée au zoom à 400 dpi : 779.656 ou 779.655 : dernier chiffre non séparé au zoom (lectures « 779.656? ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر أعوان الشحن والتفريغ، الصنف 16، الدرجة 7 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2010-05-01، الصفحة 25): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-34-jardins-creches-4-degre-16",
+    "status": "ok",
+    "result": {
+      "montant": "467.429",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "JARDINS_ENFANTS_CRECHES",
+        "population": "creches",
+        "categorie": "4",
+        "degre": 16,
+        "degre_imprime": "16",
+        "degre_declare": true,
+        "anciennete_imprimee": "36",
+        "libelle_degre": "33-36",
+        "regle_au_dela_non_appliquee": "article 15 ب, page 7",
+        "hypotheses": [
+          "Unité imprimée pour le tableau n° 1 seulement (« العمال الخالصون بالشهر ») ; TND/mois en hypothèse pour les tableaux n° 2 à 4 (pages 20-21).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Lignes des tableaux numérotées par position depuis le haut (catégories de l'annexe correspondante, pages 18-19).",
+          "Avenant n° 3 (page 2) : les hausses de 2011 s'appliquent aussi aux agents déjà payés au-dessus des tableaux ; cette règle n'est pas calculée.",
+          "Avancement accéléré de six mois pour une note d'au moins 17 sur 20 (article 15 ب, page 7) et promotions (article 15 ج, pages 7-8) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 21) : « 36 ».",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 36 ans ; au-delà, la convention ne fixe pas le montant (article 15 ب, page 7). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة مطبوعة بالجدول عدد 1 فقط («العمال الخالصون بالشهر»)؛ الدينار في الشهر على سبيل الافتراض للجداول من 2 إلى 4 (الصفحتان 20 و21).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "أسطر الجداول مرقمة حسب ترتيبها من الأعلى (أصناف الملحق المطابق، الصفحتان 18 و19).",
+          "الملحق التعديلي عدد 3 (الصفحة 2): تنطبق زيادات 2011 أيضا على الأعوان الذين يتقاضون أجورا أرفع من الجداول؛ لا تُحتسب هذه القاعدة.",
+          "لا يُحتسب التدرج المعجل بستة أشهر للعدد المساوي أو الأعلى من 17 من 20 (الفصل 15 ب، الصفحة 7) ولا الترقيات (الفصل 15 ج، الصفحتان 7 و8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 21): «36».",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 36 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 15 ب، الصفحة 7). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "JARDINS_CRECHES_2011-07-01",
+        "effective_date": "2011-07-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 35,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/رياض الأطفال.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/jardins_enfants_creches.json",
+        "decision_ref": "D91"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-35-materiaux-horaires-2-degre-12",
+    "status": "ok",
+    "result": {
+      "montant": "3.209",
+      "unite": "TND/heure",
+      "detail": {
+        "secteur": "COMMERCE_MATERIAUX_BOIS_ACIER",
+        "population": "horaires",
+        "categorie": "2",
+        "degre": 12,
+        "degre_imprime": "12",
+        "degre_declare": true,
+        "libelle_degre": "24-27",
+        "regle_au_dela_non_appliquee": "article 13, page 8",
+        "hypotheses": [
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Reclassement de l'article 54 (page 18 : un à trois degrés selon l'ancienneté à l'entrée en vigueur) : non calculé.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 27 ans ; au-delà, la convention ne fixe pas le montant (article 13, page 8). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب إعادة الترتيب المنصوص عليها بالفصل 54 (الصفحة 18: من درجة إلى ثلاث درجات حسب الأقدمية).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 27 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 13، الصفحة 8). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "MATERIAUX_COMMERCE_HORAIRES_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/تجارة مواد البناء والخشب والمواد الفولاذية.pdf",
+        "page": 21,
+        "article": null,
+        "data_file": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
+        "decision_ref": "D94"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-36-location-17-degre-18",
+    "status": "ok",
+    "result": {
+      "montant": "1761.853",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "LOCATION_VOITURES",
+        "population": "agents",
+        "categorie": "17",
+        "degre": 18,
+        "degre_imprime": "18",
+        "degre_declare": true,
+        "libelle_degre": "32-34",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 19) : TND/mois en hypothèse (montants de 521 à 1 800).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Degrés 17 à 20 (30 à 38 ans) : l'art. 17 ب ne prévoit que 16 degrés ; les degrés 17 à 20 sont servis parce qu'ils sont imprimés à l'en-tête (demande par le degré, D75) ; par l'ancienneté, de 30 ans exclus à 38 ans inclus, refus (article 17 ب, page 8).",
+          "Passage dans la catégorie suivante au dernier degré (article 17 ب, page 8) : non calculé.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "L'article 17 ب (page 8) et l'en-tête de la grille se contredisent pour une ancienneté de plus de 30 ans jusqu'à 38 ans inclus, intervalle qui touche ce degré : par l'ancienneté, il est refusé ; le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 19): الدينار في الشهر على سبيل الافتراض (مبالغ من 521 à 1 800).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "الدرجات من 17 إلى 20 (من 30 إلى 38 سنة): لا ينص الفصل 17 ب إلا على 16 درجة؛ تُرجَع الدرجات من 17 إلى 20 لأنها مطبوعة برأس الجدول (الطلب حسب الدرجة، D75)؛ أما حسب الأقدمية فيقع الرفض من أكثر من 30 سنة إلى 38 سنة (الفصل 17 ب، الصفحة 8).",
+          "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 17 ب، الصفحة 8).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "يتعارض الفصل 17 ب (الصفحة 8) مع رأس الجدول بالنسبة إلى أقدمية تفوق 30 سنة إلى 38 سنة، وهي فترة تمسّ هذه الدرجة: تُرفض بحساب الأقدمية؛ والمبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "LOCATION_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/كراء السيارات.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/location_voitures.json",
+        "decision_ref": "D93"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]
