@@ -121,7 +121,9 @@ pas le résultat incomplet).
 unreadable_reason}` ; le `code` de prime DS5 est une interprétation confirmée par l'utilisateur.
 
 Conversion fixe de `work_hours_regime` : 208 h/mois → `48` ; 173,33 h/mois → `40` ; valeur hebdomadaire 40 ou 48
-reprise telle quelle ; toute autre valeur → `null` avec `valeur_incoherente`.
+reprise telle quelle ; toute autre valeur → `null` avec `valeur_incoherente`. L'unité imprimée est respectée
+(« 48 h/semaine » → `48`, « 208 h/mois » → `48`, aussi en arabe : « في الأسبوع », « في الشهر ») ; une valeur qui ne va
+pas avec son unité (« 208 h/semaine », « 48 h/mois ») → `null` avec `valeur_incoherente`.
 
 Formats : montant = chaîne à 3 décimales (`"424.100"`, à lire en `Decimal`) ; date = `AAAA-MM-JJ` ; entier = chiffres.
 Le modèle Pydantic refuse toute valeur qui ne respecte pas son `value_type`.

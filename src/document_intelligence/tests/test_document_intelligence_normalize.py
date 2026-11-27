@@ -93,6 +93,20 @@ def test_category(raw: str, expected: str | None) -> None:
         ("40 h", "40"),
         ("195 h", None),
         ("à temps partiel", None),
+        # unité imprimée (bulletin DS4, contrat v2 : « 208 h/mois → 48 ») : respectée, jamais devinée
+        ("48 h/semaine", "48"),
+        ("40 heures par semaine", "40"),
+        ("48h/sem", "48"),
+        ("48 h hebdomadaires", "48"),
+        ("208 h/mois", "48"),
+        ("173,33 h / mois", "40"),
+        ("208 heures par mois", "48"),
+        ("48 ساعة في الأسبوع", "48"),
+        ("208 ساعة في الشهر", "48"),
+        ("42 h/semaine", None),
+        ("208 h/semaine", None),
+        ("48 h/mois", None),
+        ("40 h/semaine, 173,33 h/mois", None),
     ],
 )
 def test_hours_regime(raw: str, expected: str | None) -> None:
