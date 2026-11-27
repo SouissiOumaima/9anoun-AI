@@ -4103,11 +4103,21 @@ libres pour eux. D100 à D105 ne sont utilisés sur aucune branche distante (vé
 D41 (appliquée, PR #44) et D42 (en cours, voir D105).
 
 **Décision** : l'OCR de `src/document_intelligence/reading/ocr.py` utilise PaddleOCR 3.7 (PP-OCRv5) sur CPU, avec la
-reconnaissance `arabic_PP-OCRv5_mobile_rec` (arabe, lettres latines, chiffres) et `latin_PP-OCRv5_mobile_rec`
+reconnaissance `arabic_PP-OCRv5_mobile_rec` (arabe ; son dictionnaire contient aussi les lettres latines et les
+chiffres, mais il lit mal les chiffres dans les lignes arabes : voir la limite connue) et `latin_PP-OCRv5_mobile_rec`
 (accents français). Les noms des modèles sont donnés explicitement : quand le détecteur est nommé, PaddleOCR ignore
 `lang` et prendrait PP-OCRv6, qui ne lit pas l'arabe. oneDNN est désactivé (`enable_mkldnn=False`) : avec oneDNN,
 l'inférence plante sous Windows (`ConvertPirAttribute2RuntimeAttribute`). C'est aussi le modèle de l'expérience
 Transfer Learning / Fine-Tuning (`experiments/ocr_transfer_finetune/`).
+
+**Limite connue** : dans les lignes arabes, `arabic_PP-OCRv5_mobile_rec` perd presque tous les chiffres latins. Sur
+un lot réel de 50 lignes arabes (graine 7, annoté à partir des images seules ; chiffres agrégés, hors du dépôt),
+il n'a lu que **3 chiffres latins sur 162** : CER 10,82 %, 4,32 % sans les chiffres, 1,85 % sans chiffres ni
+ponctuation. Les lettres sont donc presque toujours justes ; l'erreur vient surtout des chiffres perdus. C'est
+cohérent avec le défaut vu sur les données fictives (chiffres perdus dans les lignes arabes,
+`experiments/ocr_transfer_finetune/ANALYSE.md`). C'est **critique pour les montants des fiches scannées**.
+Protection : la vérification DS3 (D32) écarte une valeur dont un chiffre a été perdu (elle ne figure plus dans la
+ligne : champ à `null`), et côté DS1, le seuil 0,90 et la confirmation en voyant la citation.
 
 **Alternatives envisagées** :
 - PP-OCRv6 (modèle par défaut de PaddleOCR 3.7) → rejeté : pas de reconnaissance arabe.
@@ -4115,8 +4125,9 @@ Transfer Learning / Fine-Tuning (`experiments/ocr_transfer_finetune/`).
 - Autres moteurs d'OCR → non mesurés dans ce travail ; écartés pour garder un seul modèle entre la production et
   l'expérience (ce qu'on apprend en Fine-Tuning sert directement `ocr.py`).
 
-**Raison** : un seul modèle lit l'arabe, le français et les chiffres (dictionnaire de 747 caractères), il est assez
-petit pour le CPU, et ses poids d'entraînement sont publics, ce qui permet de l'adapter. Sur le jeu de test fictif
+**Raison** : un seul modèle couvre l'arabe, les lettres latines et les chiffres dans son dictionnaire (747
+caractères ; les chiffres restent mal lus dans les lignes arabes, voir la limite connue), il est assez petit pour
+le CPU, et ses poids d'entraînement sont publics, ce qui permet de l'adapter. Sur le jeu de test fictif
 (400 lignes), son CER passe de 13,68 % (pré-entraîné) à 3,24 % (Transfer Learning) et 1,20 % (Fine-Tuning)
 (`experiments/ocr_transfer_finetune/results.md`).
 
@@ -4180,9 +4191,15 @@ l'expérience reproductible.
 
 **Numéro** : D103 (voir D100 pour la numérotation).
 
-**Décision** : par défaut, chaque zone est lue d'abord avec le modèle arabe (qui connaît aussi les lettres latines
-et les chiffres). Si le texte lu est surtout latin (`detect_language`), la zone est relue avec le modèle latin, et
-on garde la lecture dont la confiance moyenne est la plus haute. `lang="ar"` ou `lang="fr"` restent possibles.
+**Décision** : par défaut, chaque zone est lue d'abord avec le modèle arabe (son dictionnaire contient aussi les
+lettres latines et les chiffres, mais il perd souvent les chiffres dans les lignes arabes : voir la limite connue).
+Si le texte lu est surtout latin (`detect_language`), la zone est relue avec le modèle latin, et on garde la lecture
+dont la confiance moyenne est la plus haute. `lang="ar"` ou `lang="fr"` restent possibles.
+
+**Limite connue** : une zone surtout arabe n'est jamais relue avec le modèle latin, donc ses chiffres restent ceux du
+modèle arabe, qui en perd presque tous (3 chiffres latins lus sur 162 sur un lot réel de 50 lignes arabes ; CER
+10,82 %, 4,32 % sans les chiffres : voir D100). Critique pour les montants des fiches scannées ; même protection
+que dans D100 (vérification DS3, puis seuil 0,90 et confirmation côté DS1).
 
 **Alternatives envisagées** :
 - Modèle arabe seul → rejeté : moins bon sur les accents français (« Échelon » lu « Echelon »).
@@ -4214,8 +4231,12 @@ de texte ni de nom de fichier, et qui refusent un dossier de sortie situé dans 
   ligne) qui n'existe pas encore.
 
 **Raison** : la confidentialité passe avant tout ; les données fictives permettent une expérience reproductible et
-partageable. Limite assumée : le CER mesuré (1,20 %) vaut pour ces données fictives, proches entre train et test ;
-le CER réel reste à mesurer sur des lignes réelles annotées, hors du dépôt.
+partageable. Limite assumée : le CER mesuré (1,20 %) vaut pour ces données fictives, proches entre train et test.
+Mesures réelles actuelles (chiffres agrégés, annotation hors du dépôt) : CER de production **12,62 %** (WER
+35,74 %, 20 % de lignes exactes) sur 100 lignes arabes réelles, 2 annotatrices, annotées à partir des images
+seules ; à conditions égales (mêmes morceaux que le détecteur, 50 lignes), pré-entraîné 14,64 % → fine-tuné
+**5,81 %**, avec 18 % de lignes exactes dans les deux cas. La production garde le modèle pré-entraîné ; le
+Fine-Tuning est à confirmer sur plus de lignes.
 
 **Statut** : ✅ appliquée (PR #40, fusionnée) ; limites détaillées dans `experiments/ocr_transfer_finetune/ANALYSE.md`.
 

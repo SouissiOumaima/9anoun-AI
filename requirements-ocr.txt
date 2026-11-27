@@ -1,4 +1,5 @@
-# DS3 partie A (OCR) — dépendances de l'OCR PaddleOCR et de l'expérience Transfer Learning / Fine-Tuning.
+# DS3 partie A (OCR) — dépendances de l'OCR PaddleOCR et de l'expérience Transfer Learning / Fine-Tuning,
+# ainsi que les outils de test et de couverture (pytest, pytest-cov, coverage).
 # Séparé de requirements.txt (dépendances lourdes, CPU). Versions figées (==), testées sous Windows / Python 3.13.
 # Installation (depuis la racine, dans le .venv) :
 #   python -m venv --system-site-packages .venv
@@ -12,8 +13,9 @@ opencv-python==5.0.0.93
 pillow==12.3.0
 matplotlib==3.11.2
 mypy==2.4.1
-# outils de test (couverture) : python -m pytest --cov=src/document_intelligence/reading --cov=scripts
-# Laissés ici : pytest n'est épinglé que dans les requirements de DS2 (src/legal_retrieval) et de DS5
-# (src/track_b_accounting), qui ne sont pas à DS3 ; à déplacer à côté de pytest si un fichier commun est créé.
+# outils de test et de couverture : python -m pytest --cov=src/document_intelligence/reading --cov=scripts
+# Ici car aucun fichier commun n'épingle pytest (seulement les requirements de DS2 et de DS5, même version 9.1.1) ;
+# à déplacer dans un fichier commun s'il est créé.
+pytest==9.1.1
 pytest-cov==7.1.0
 coverage==7.17.2
