@@ -4471,3 +4471,180 @@ et TB-469.
 - Le test des démos v0 (211 premières requêtes et demo-10) passe sans modification.
 
 **Numérotation** : D90 est à DS2 ; la vague 7 prend D91 à D96 ; la vague 8 prendra D97 et suivants.
+
+---
+
+### D102 — OCR DS3 (partie A) : modèle PaddleOCR PP-OCRv5 arabe
+
+**Numéro** : D102 à D107 = décisions de la partie A de DS3 (OCR). Proposées d'abord sous les numéros D75 à D80,
+pris depuis par d'autres décisions sur `origin/main`, puis sous D100 à D105. D90 est à DS2, D91 à D96 à la vague 7 de
+DS5, et D97 à D101 sont pris par la vague 8 de DS5 : à la demande d'Oumaima, D102 à D107 sont réservés à DS3 pour ce
+bloc (renumérotation du 2026-11-28 ; `origin/main` s'arrête à D96, et aucune branche distante n'utilise D102 à D107).
+Le branchement de l'OCR dans le service live a ses propres numéros, dans la plage réservée à DS3 : D41 (appliquée,
+PR #44) et D42 (en cours, voir D107).
+
+**Décision** : l'OCR de `src/document_intelligence/reading/ocr.py` utilise PaddleOCR 3.7 (PP-OCRv5) sur CPU, avec la
+reconnaissance `arabic_PP-OCRv5_mobile_rec` (arabe ; son dictionnaire contient aussi les lettres latines et les
+chiffres, mais il lit mal les chiffres dans les lignes arabes : voir la limite connue) et `latin_PP-OCRv5_mobile_rec`
+(accents français). Les noms des modèles sont donnés explicitement : quand le détecteur est nommé, PaddleOCR ignore
+`lang` et prendrait PP-OCRv6, qui ne lit pas l'arabe. oneDNN est désactivé (`enable_mkldnn=False`) : avec oneDNN,
+l'inférence plante sous Windows (`ConvertPirAttribute2RuntimeAttribute`). C'est aussi le modèle de l'expérience
+Transfer Learning / Fine-Tuning (`experiments/ocr_transfer_finetune/`).
+
+**Limite connue** : dans les lignes arabes, `arabic_PP-OCRv5_mobile_rec` perd presque tous les chiffres latins. Sur
+un lot réel de 50 lignes arabes (graine 7, annoté à partir des images seules ; chiffres agrégés, hors du dépôt),
+il n'a lu que **3 chiffres latins sur 162** : CER 10,82 %, 4,32 % sans les chiffres, 1,85 % sans chiffres ni
+ponctuation. Les lettres sont donc presque toujours justes ; l'erreur vient surtout des chiffres perdus. C'est
+cohérent avec le défaut vu sur les données fictives (chiffres perdus dans les lignes arabes,
+`experiments/ocr_transfer_finetune/ANALYSE.md`). C'est **critique pour les montants des fiches scannées**.
+Protection : la vérification DS3 (D32) écarte une valeur dont un chiffre a été perdu (elle ne figure plus dans la
+ligne : champ à `null`), et côté DS1, le seuil 0,90 et la confirmation en voyant la citation.
+
+**Alternatives envisagées** :
+- PP-OCRv6 (modèle par défaut de PaddleOCR 3.7) → rejeté : pas de reconnaissance arabe.
+- Modèle latin seul → rejeté : ne lit pas l'arabe, alors que les fiches de paie et conventions sont bilingues.
+- Autres moteurs d'OCR → non mesurés dans ce travail ; écartés pour garder un seul modèle entre la production et
+  l'expérience (ce qu'on apprend en Fine-Tuning sert directement `ocr.py`).
+
+**Raison** : un seul modèle couvre l'arabe, les lettres latines et les chiffres dans son dictionnaire (747
+caractères ; les chiffres restent mal lus dans les lignes arabes, voir la limite connue), il est assez petit pour
+le CPU, et ses poids d'entraînement sont publics, ce qui permet de l'adapter. Sur le jeu de test fictif
+(400 lignes), son CER passe de 13,68 % (pré-entraîné) à 3,24 % (Transfer Learning) et 1,20 % (Fine-Tuning)
+(`experiments/ocr_transfer_finetune/results.md`).
+
+**Statut** : ✅ appliquée à la fusion de la PR #40 ; prouvée par `test_document_intelligence_ocr.py`.
+
+---
+
+### D103 — OCR DS3 : détecteur `PP-OCRv5_mobile_det` au lieu de `PP-OCRv5_server_det`
+
+**Numéro** : D103 (voir D102 pour la numérotation).
+
+**Décision** : la détection de texte utilise `PP-OCRv5_mobile_det` (constante `DET_MODEL` de `ocr.py`), sans
+réglage de taille d'entrée.
+
+**Alternatives envisagées** :
+- `PP-OCRv5_server_det` (choix initial) → rejeté : plantage natif (access violation, sans exception Python) sur une
+  page A4 entière à 300 DPI (2480 x 3508 px), reproduit 2 fois sur 2 sur une page fictive dense ; par défaut, la
+  détection ne réduit pas l'image (`limit_type=min`, `limit_side_len=64`).
+- `server_det` limité à 2 000 px → rejeté : ne plante pas, mais 213 à 294 s par page contre 30 à 40 s, pour les
+  mêmes 19 nombres sur 48 retrouvés sur la page fictive.
+- Découper la page en bandes horizontales, ou rendre à 200 DPI → non nécessaire : plus de code pour un problème déjà
+  réglé par le détecteur mobile.
+
+**Raison** : la solution la plus simple qui ne plante plus, la plus rapide, et de même qualité sur la page fictive.
+Sur un vrai PDF de 5 pages (mesure agrégée avec `scripts/evaluer_donnees_reelles.py --profile`) : 146 s au total,
+environ 27 s d'OCR par page, aucun plantage.
+
+**Statut** : ✅ appliquée à la fusion de la PR #40 ; prouvée par `test_paddle_full_a4_page_at_300_dpi_does_not_crash`
+(page A4 fictive en sous-processus) et `test_default_detector_is_mobile`.
+
+---
+
+### D104 — Expérience OCR : BatchNorm gelée pendant le Fine-Tuning
+
+**Numéro** : D104 (voir D102 pour la numérotation).
+
+**Décision** : dans l'expérience `experiments/ocr_transfer_finetune/`, le Fine-Tuning (variante `bn_frozen`, par
+défaut) entraîne tout le chemin CTC (backbone, encodeur, tête) **sauf** les 151 couches BatchNorm : leurs paramètres
+(échelle, biais) et leurs statistiques restent gelés. L'entraînement tourne sous un superviseur qui le relance (3
+fois au plus) depuis le dernier point de sauvegarde, écrit à chaque époque.
+
+**Alternatives envisagées** :
+- Fine-Tuning tout dégelé → rejeté : Paddle 3.3.1 sous Windows plante au hasard dans `batch_norm` (erreur MKL
+  « vsAdd », access violation) dès que le backbone reçoit des gradients ; 4 plantages d'affilée, abandon.
+- Limiter Intel MKL à un seul thread → rejeté : environ 11 fois plus lent.
+- Fine-Tuning partiel (dernier étage du backbone + encodeur + tête, `--ft-variant partial`) → gardé comme plan B,
+  pas nécessaire.
+
+**Raison** : avec la BatchNorm gelée, 1 seul plantage en 4 époques (contre 4 d'affilée), rattrapé par la reprise
+automatique ; l'entraînement va au bout et donne un CER test de 1,20 % (Transfer Learning : 3,24 %). Geler la
+BatchNorm est aussi une pratique courante quand les données et les lots sont petits. La correction réduit le
+plantage sans le supprimer : c'est l'ensemble « BatchNorm gelée + points de sauvegarde + superviseur » qui rend
+l'expérience reproductible.
+
+**Statut** : ✅ appliquée dans l'expérience (PR #40, fusionnée) ; détails et historique dans
+`experiments/ocr_transfer_finetune/ANALYSE.md`.
+
+---
+
+### D105 — OCR DS3 : choix de la langue `lang="auto"`
+
+**Numéro** : D105 (voir D102 pour la numérotation).
+
+**Décision** : par défaut, chaque zone est lue d'abord avec le modèle arabe (son dictionnaire contient aussi les
+lettres latines et les chiffres, mais il perd souvent les chiffres dans les lignes arabes : voir la limite connue).
+Si le texte lu est surtout latin (`detect_language`), la zone est relue avec le modèle latin, et on garde la lecture
+dont la confiance moyenne est la plus haute. `lang="ar"` ou `lang="fr"` restent possibles.
+
+**Limite connue** : une zone surtout arabe n'est jamais relue avec le modèle latin, donc ses chiffres restent ceux du
+modèle arabe, qui en perd presque tous (3 chiffres latins lus sur 162 sur un lot réel de 50 lignes arabes ; CER
+10,82 %, 4,32 % sans les chiffres : voir D102). Critique pour les montants des fiches scannées ; même protection
+que dans D102 (vérification DS3, puis seuil 0,90 et confirmation côté DS1).
+
+**Alternatives envisagées** :
+- Modèle arabe seul → rejeté : moins bon sur les accents français (« Échelon » lu « Echelon »).
+- Modèle latin seul → rejeté : ne lit pas l'arabe.
+- Toujours lire avec les deux modèles → rejeté : double le temps de toutes les zones, y compris arabes.
+
+**Raison** : les documents sont bilingues et la langue d'une zone n'est pas connue à l'avance. La double lecture ne
+coûte que sur les zones surtout latines ; sur le vrai PDF profilé (5 zones arabes), aucune zone n'a été lue deux
+fois.
+
+**Statut** : ✅ appliquée à la fusion de la PR #40 ; prouvée par
+`test_auto_mode_rereads_latin_text_with_french_model`.
+
+---
+
+### D106 — Expérience OCR : données fictives, données réelles jamais dans le dépôt
+
+**Numéro** : D106 (voir D102 pour la numérotation).
+
+**Décision** : l'expérience Transfer Learning / Fine-Tuning s'entraîne et se mesure uniquement sur des lignes
+**fictives** générées (`vocab.py`, `data_gen.py` : vocabulaire inventé de fiches de paie et de conventions, 4
+polices, bruit de scan, graine fixe). Les PDF réels restent hors du dépôt ; ils ne sont lus que par des scripts
+lancés par leur détentrice (`scripts/evaluer_donnees_reelles.py`), qui n'affichent que des chiffres agrégés, jamais
+de texte ni de nom de fichier, et qui refusent un dossier de sortie situé dans le dépôt.
+
+**Alternatives envisagées** :
+- Entraîner sur les PDF réels dans le dépôt → rejeté : données confidentielles.
+- Anonymiser des documents réels → rejeté pour l'instant : demande une annotation manuelle (texte exact de chaque
+  ligne) qui n'existe pas encore.
+
+**Raison** : la confidentialité passe avant tout ; les données fictives permettent une expérience reproductible et
+partageable. Limite assumée : le CER mesuré (1,20 %) vaut pour ces données fictives, proches entre train et test.
+Mesures réelles actuelles (chiffres agrégés, annotation hors du dépôt) : CER de production **12,62 %** (WER
+35,74 %, 20 % de lignes exactes) sur 100 lignes arabes réelles, 2 annotatrices, annotées à partir des images
+seules ; à conditions égales (mêmes morceaux que le détecteur, 50 lignes), pré-entraîné 14,64 % → fine-tuné
+**5,81 %**, avec 18 % de lignes exactes dans les deux cas. La production garde le modèle pré-entraîné ; le
+Fine-Tuning est à confirmer sur plus de lignes.
+
+**Statut** : ✅ appliquée (PR #40, fusionnée) ; limites détaillées dans `experiments/ocr_transfer_finetune/ANALYSE.md`.
+
+---
+
+### D107 — OCR DS3 : seulement sur les zones en attente
+
+**Numéro** : D107 (voir D102 pour la numérotation).
+
+**Décision** : `ocr_pending_zones` ne lit que les `PendingZone` laissées par le lecteur natif (`pdf_natif.py`, D35) :
+images, scans, texte natif illisible. Le texte natif lisible n'est jamais repassé à l'OCR. Une zone où l'OCR ne lit
+rien, ou sur laquelle il échoue, reste dans `pending_zones` avec un avertissement (« rien n'est deviné ») ; chaque
+ligne OCR porte sa confiance réelle (minimum de ses morceaux), sans seuil (D39), et un `line_id` qui continue la
+numérotation de la page sans doublon.
+
+**Alternatives envisagées** :
+- OCR de toutes les pages → rejeté : plus lent, et remplacerait un texte natif exact (confiance 1,0) par une lecture
+  incertaine.
+- OCR de la page entière dès qu'une zone est en attente → rejeté : relit inutilement le texte natif et crée des
+  doublons de lignes.
+- Remplir une zone illisible par une valeur probable → rejeté : contraire à « Citation ou Silence » (D32).
+
+**Raison** : le texte natif reste la source la plus sûre ; l'OCR ne sert qu'à ce que le lecteur natif ne sait pas
+lire. Un PDF entièrement natif ne coûte aucun temps d'OCR.
+
+**Statut** : ✅ appliquée à la fusion de la PR #40 ; prouvée par `test_document_intelligence_ocr.py` (zones lues
+retirées, zone vide gardée avec un avertissement, numérotation sans doublon, document sans zone rendu tel quel).
+Branchement dans le service live (`docs/PROPOSITION_INTEGRATION_OCR.md`) : **D41 appliquée** (PR #44 : OCR dans le
+pipeline pour les zones en attente et les images) ; **D42 en cours** : backend en arrière-plan fusionné (PR #46),
+D42 côté cache en PR (échec non définitif, un seul OCR à la fois), branchement dans `pipeline.py` par Hadil.
