@@ -4089,7 +4089,7 @@ art. 47 مكرر à 54 p.14, grille et notes p.18.
   `src/shared/tests/test_sectors_table.py` (`EN_ATTENTE_DS2`).
 - Le test des démos v0 (211 premières requêtes et demo-10) passe sans modification.
 
-**Numérotation** : la vague 7 prendra D90 et suivants.
+**Numérotation** : la vague 7 prendra D91 et suivants.
 
 ### D90 — Ce qu'une note de bas de page désigne par un numéro
 
