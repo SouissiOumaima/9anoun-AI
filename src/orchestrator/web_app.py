@@ -8,6 +8,8 @@ production authentication service.
 from __future__ import annotations
 
 import json
+import logging
+import traceback
 from decimal import Decimal, InvalidOperation
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -27,6 +29,9 @@ from .models import ActiveContext, CardType, RequestEnvelope, UserIdentity
 from .response_formatter import UserResponse, UserResponseCode, format_flow_result
 from .state_machine import Planner, StateMachine, StructuredTrackBPlanner
 from .tool_contracts import ToolContractError
+from .case_integration import CaseIntegrationWorkflow, CaseWorkflowError
+
+_LOG = logging.getLogger(__name__)
 
 HOST, PORT = "127.0.0.1", 8765
 _HTML_PATH = Path(__file__).with_name("web_ui") / "index.html"
@@ -38,6 +43,8 @@ _WEB_AUDIT = AuditTrail()
 _WEB_APPROVALS = ApprovalWorkflow(_WEB_AUDIT)
 _DOCUMENT_REVIEWS: dict[str, dict[str, Any]] = {}
 _DOCUMENT_REVIEWS_LOCK = Lock()
+_CASE_WORKFLOW = CaseIntegrationWorkflow(audit=_WEB_AUDIT)
+_E2E_SCENARIO = Path(__file__).resolve().parents[2] / 'data/mock_cards/orchestrator_case_e2e_demo.json'
 _REVIEW_MIN_CONFIDENCE = 0.90  # Local UI review threshold for payroll-bound facts.
 _APPROVAL_ACTIONS = {
     "generate_payroll_report": {
@@ -49,6 +56,48 @@ _APPROVAL_ACTIONS = {
 
 def _demo_cards() -> list[Mapping[str, Any]]:
     return json.loads(_CARDS_PATH.read_text(encoding="utf-8"))
+
+
+def case_integration_action(payload: Mapping[str, Any], *, complete: bool = False) -> dict[str, Any]:
+    """Local fictitious-session entry point; callers cannot supply facts or service responses."""
+    language = payload.get('language', 'fr')
+    if not isinstance(language, str) or language not in {'fr', 'ar'}:
+        return {'status': 'blocked', 'code': 'INVALID_LANGUAGE'}
+    try:
+        scenario = json.loads(_E2E_SCENARIO.read_text(encoding='utf-8'))
+        card = scenario['card']
+        actor = UserIdentity('org-demo', 'local-web-user', 'lawyer', frozenset({card['card_id']}))
+        document = card['data']['documents'][0]
+        context = ActiveContext('org-demo', card['card_id'], CardType.CASE, {
+            'document_id': document['document_id'], 'document_file_name': document['file_name'],
+            'document_mime_type': document['mime_type'], 'document_storage_ref': document['storage_ref'],
+        })
+        repository = MockCardRepository.from_payload([card])
+        if complete:
+            return _CASE_WORKFLOW.complete(
+                actor=actor, context=context, repository=repository,
+                review_id=payload.get('review_id'), confirmed_fact_ids=payload.get('confirmed_fact_ids'),
+                confirm_document_link=payload.get('confirm_document_link'),
+            )
+        return _CASE_WORKFLOW.prepare(
+            actor=actor, context=context, repository=repository, language=language,
+            subject_id=scenario['subject_id'], evidence_id=scenario['evidence_id'],
+            legal_request=scenario['legal_request'],
+        )
+    except CaseWorkflowError as error:
+        return {'status': 'retry_later' if error.retryable else 'blocked', 'code': error.code,
+                'retryable': error.retryable,
+                'message_fr': error.message_fr or 'Le scénario ne peut pas continuer. Aucun fait ni source ne sera inventé.',
+                'message_ar': error.message_ar or 'لا يمكن متابعة السيناريو. لن يتم اختلاق أي واقعة أو مصدر.'}
+    except Exception as error:
+        # Preserve stack locations but never log exception text or document content.
+        locations = [(Path(frame.filename).name, frame.name, frame.lineno)
+                     for frame in traceback.extract_tb(error.__traceback__)]
+        _LOG.error('Case integration failed (%s); details redacted; stack locations=%s',
+                   type(error).__name__, locations)
+        return {'status': 'blocked', 'code': 'INTEGRATION_ERROR',
+                'message_fr': 'Incident technique. Aucun résultat juridique n’est validé.',
+                'message_ar': 'حدث خطأ تقني. لا توجد نتيجة قانونية معتمدة.'}
 
 
 def _demo_actor() -> UserIdentity:
@@ -499,6 +548,17 @@ def _chat_answer(data: Any, language: str = "fr") -> dict[str, Any] | None:
         return {"kind": "document", "text": data["text"]}
     if isinstance(data.get("result"), Mapping):
         result = data["result"]
+        if "analysis_status" in result and "legal_conclusion" in result:
+            return {
+                "kind": "case_preparatory", "case_id": result.get("case_id"),
+                "analysis_status": result.get("analysis_status"),
+                "case_summary": result.get("case_summary", {}),
+                "timeline": result.get("timeline", []),
+                "uncertain_information": result.get("uncertain_information", []),
+                "legal_conclusion": None,
+                "message_fr": "Analyse préparatoire uniquement. Aucune conclusion juridique validée. La revue humaine reste nécessaire.",
+                "message_ar": "تحليل تحضيري فقط. لا توجد خلاصة قانونية معتمدة. تبقى المراجعة البشرية ضرورية.",
+            }
         fields = result.get("fields")
         if isinstance(fields, Mapping):
             return {
@@ -647,7 +707,7 @@ class AppHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802 - stdlib handler contract
         is_approval_decision = self.path.startswith("/api/approvals/") and self.path.count("/") == 3
-        if self.path not in {"/api/chat", "/api/calculate", "/api/prepare", "/api/approvals", "/api/document-reviews/confirm", "/api/document-reviews/calculate"} and not is_approval_decision:
+        if self.path not in {"/api/chat", "/api/calculate", "/api/prepare", "/api/approvals", "/api/document-reviews/confirm", "/api/document-reviews/calculate", "/api/case-integration/prepare", "/api/case-integration/complete"} and not is_approval_decision:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -657,6 +717,8 @@ class AppHandler(BaseHTTPRequestHandler):
                 raise ValueError("payload must be an object")
             if self.path == "/api/chat":
                 response = chat(payload)
+            elif self.path.startswith('/api/case-integration/'):
+                response = case_integration_action(payload, complete=self.path.endswith('/complete'))
             elif self.path == "/api/prepare":
                 response = prepare_from_card(payload)
             elif self.path == "/api/calculate":

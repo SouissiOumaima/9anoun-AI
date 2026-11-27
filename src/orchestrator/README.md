@@ -99,7 +99,9 @@ ne constitue une réponse juridique ou comptable réelle.
 
 `hybrid_dispatcher.py` envoie maintenant toute route
 `track_b_accounting.compute` vers le vrai `TrackBAdapter` et le handler DS5.
-DS2 et DS4 restent sur les mocks jusqu'à livraison de leurs adaptateurs. DS3
+DS2 utilise son adaptateur réel (avec repli mock si le corpus local est absent).
+DS4 utilise désormais son handler v1 pour les dossiers structurés, avec
+compatibilité v0 dans l'adaptateur. DS3
 v2 utilise le mock par défaut, mais peut appeler le service réel livré par DS3
 en configurant explicitement le backend avec `DS3_HANDLER_MODE=live`. Dans ce
 mode, `DocumentIntelligenceAdapter` appelle
@@ -194,10 +196,31 @@ messages explicites pour `HORS_SCOPE`, `SOURCE_MANQUANTE` et `PARAM_INVALIDE`.
 | `tests/` | Tests automatiques du rôle (`python -m pytest -q src/orchestrator/tests`). |
 | `evaluation/` | Golden sets et métriques propres à ce rôle (voir `evaluation/README.md`). |
 
-Aucun code n'est encore présent : l'organisation interne de ce dossier est
-laissée à son owner.
+## Intégration DS4 v1
+
+Le planner transmet les données de la Case Card autorisée au handler DS4 v1.
+L'adaptateur officiel accepte v0 et v1 ; seule la réponse v1 préparatoire peut
+réussir sans citation finale, avec une conclusion juridique obligatoirement nulle.
+La démo affiche cette limite et la nécessité d'une revue humaine en FR/AR.
+Le parcours ne déclenche pas automatiquement les services DS2 et DS3.
+Voir `docs/DS1_DS4_V1_INTEGRATION_2026_11_20.md` pour le périmètre et la validation.
+
+Un parcours distinct « Scénario complet DS2 + DS3 → DS4 » exécute désormais
+DS3 live sur une fiche fictive de la Case Card E2E, attend la confirmation
+explicite des faits et de leur liaison documentaire, puis appelle DS2 live et
+DS4 v1. Les réponses mock ne permettent pas de poursuivre. Les faits non
+sélectionnés ne sont pas transmis à DS4. Les pages et dates juridiques
+manquantes restent signalées, sans conclusion automatique.
+Voir `docs/DS1_DS2_DS3_DS4_SCENARIO_2026_11_20.md` pour le scénario, les résultats
+réels, les commandes et les demandes à DS2/DS4.
 
 ## Conventions communes (voir le README racine)
+
+La préparation à la migration D21 des 56 secteurs, les contrôles de réception
+et les demandes à DS2 sont décrits dans
+`docs/DS1_SECTORS_MIGRATION_READINESS_2026_11_21.md`.
+Le détecteur DS2 traite les correspondances multiples avant tout appel et
+construit une clarification FR/AR à partir du vocabulaire. D30 reste séparée.
 
 - Données de test dans `data/mock_cards/`, avec le préfixe `orchestrator_`.
 - Messages échangés avec les autres rôles : JSON Schema versionnés (`src/shared/schemas/`).

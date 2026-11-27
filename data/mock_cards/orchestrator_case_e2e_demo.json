@@ -1,0 +1,53 @@
+{
+  "scenario_status": "fictif_a_valider_par_DS4",
+  "note": "Secteur gardiennage choisi uniquement pour ce scénario de test, non déduit du PDF. Aucune validation juridique humaine.",
+  "subject_id": "party-e2e-employee",
+  "evidence_id": "evidence-e2e-payslip",
+  "legal_request": {
+    "query": "الأجر الأساسي منحة النقل",
+    "reference_date": "2026-03-31",
+    "sector": "gardiennage_securite_transport_fonds",
+    "top_k": 3
+  },
+  "card": {
+    "organization_id": "org-demo",
+    "card_id": "case-e2e-payroll-001",
+    "card_type": "case",
+    "data": {
+      "title": "Dossier fictif E2E — vérification de paie",
+      "jurisdiction": "TN",
+      "parties": [
+        {"party_id": "party-e2e-employee", "name": "Ahmed Ben Salah", "role": "employee", "party_type": "physical_person"},
+        {"party_id": "party-e2e-employer", "name": "Société Atlas Services SARL (fictive)", "role": "employer", "party_type": "legal_entity"}
+      ],
+      "documents": [{
+        "document_id": "doc-case-e2e-payslip-01",
+        "file_name": "paie_fictive_01_fr.pdf",
+        "mime_type": "application/pdf",
+        "label": "Fiche fictive de mars 2026",
+        "storage_ref": "tradrly://cards/case-e2e-payroll-001/documents/doc-case-e2e-payslip-01"
+      }],
+      "events": [{
+        "event_id": "event-e2e-payroll-period", "date": "2026-03-01", "date_precision": "exact",
+        "description": "Période mars 2026 imprimée sur le bulletin fictif ; début de période au 1er mars.",
+        "evidence_ids": ["evidence-e2e-payslip"], "confidence": 1.0
+      }],
+      "claims": [{
+        "claim_id": "claim-e2e-payroll-review", "party_id": "party-e2e-employee",
+        "text": "Demande fictive de vérification des éléments de paie ; aucune irrégularité n'est présumée.",
+        "claim_type": "payroll_review", "event_ids": ["event-e2e-payroll-period"],
+        "evidence_ids": ["evidence-e2e-payslip"], "confidence": 0.5
+      }],
+      "evidence": [{
+        "evidence_id": "evidence-e2e-payslip", "document_id": "doc-case-e2e-payslip-01",
+        "type": "payslip", "description": "Bulletin fictif, association au salarié à confirmer explicitement.",
+        "citation": {"citation_id": "scenario-period-p1-l3", "page": 1, "excerpt": "Société Atlas Services SARL (fictive)  Période : Mars 2026"},
+        "confidence": 1.0,
+        "supports": [
+          {"fact_type": "event", "fact_id": "event-e2e-payroll-period"},
+          {"fact_type": "claim", "fact_id": "claim-e2e-payroll-review"}
+        ]
+      }]
+    }
+  }
+}

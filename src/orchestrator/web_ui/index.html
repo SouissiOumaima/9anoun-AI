@@ -27,22 +27,83 @@
     .review-required { color: #9a6700; } .review-unavailable { color: #9f2d24; }
     .ds5-form { margin-top: 14px; padding-top: 12px; border-top: 1px solid #b8d8d2; }
   </style>
+  <style>
+    :root { color-scheme: light; font-family: 'Segoe UI', system-ui, sans-serif; color: #233a39; background: #f3f5f1; }
+    * { box-sizing: border-box; }
+    body { padding: 0 24px 48px; line-height: 1.6; }
+    main { max-width: 1120px; }
+    header { padding: 30px 0 34px; margin-bottom: 0; }
+    .brand-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid #d6dfd8; }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 750; letter-spacing: -.8px; color: #163f36; }
+    .brand-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: #194c40; color: #e4edb9; font-family: Georgia, serif; font-size: 27px; }
+    .badge { font-size: 12px; font-weight: 600; border: 1px solid #cbd8ca; border-radius: 99px; padding: 5px 12px; color: #52694f; background: #eaf0e4; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 2px; color: #6c7d65; font-size: 11px; font-weight: 700; margin: 30px 0 8px; }
+    h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.15; letter-spacing: -1.4px; color: #173f35; }
+    h2 { font-size: 20px; letter-spacing: -.4px; margin: 0 0 6px; }
+    h3 { font-size: 18px; } h4 { font-size: 16px; }
+    .note { font-size: 14px; color: #6b7b77; margin: 8px 0 24px; max-width: 760px; }
+    header .note { margin-bottom: 0; font-size: 15px; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 1fr) 264px; gap: 22px; align-items: start; }
+    .workspace > *, .grid > *, label { min-width: 0; }
+    .card { border: 1px solid #dfe5dd; border-radius: 18px; padding: 30px; box-shadow: 0 4px 16px #183e2a04; }
+    .section-heading { display: flex; align-items: center; gap: 12px; }
+    .step { border-radius: 9px; background: #edf2e9; color: #638153; padding: 3px 9px; font-size: 12px; font-weight: 700; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+    #chatForm > .grid > label:first-child { grid-column: 1 / -1; }
+    label { font-size: 12px; font-weight: 650; color: #455b53; gap: 8px; }
+    input, select, textarea { width: 100%; min-width: 0; max-width: 100%; border: 1px solid #d4ded5; background: #fcfdfb; border-radius: 9px; padding: 12px 13px; color: #27423a; font-size: 14px; transition: border-color .15s, box-shadow .15s; }
+    select { text-overflow: ellipsis; height: 47px; padding-right: 24px; }
+    textarea { min-height: 120px; line-height: 1.6; }
+    input::placeholder, textarea::placeholder { color: #97a29b; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #688773; box-shadow: 0 0 0 3px #6f98721a; }
+    select:disabled { background: #f1f3ef; color: #97a29b; }
+    button { background: #204e40; font-size: 13px; border-radius: 9px; padding: 13px 20px; margin-top: 24px; transition: background .15s, transform .15s; }
+    button:hover { background: #143d31; transform: translateY(-1px); }
+    button:focus-visible { outline: 3px solid #a2b988; outline-offset: 3px; }
+    button:disabled { opacity: .6; cursor: wait; transform: none; }
+    .form-footer { margin-top: 16px; font-size: 11px; color: #88958a; }
+    .guide { padding: 24px; background: #e9eee3; border: 1px solid #dce4d3; border-radius: 16px; }
+    .guide h2 { font-family: Georgia, serif; font-size: 23px; font-weight: 400; color: #385138; }
+    .guide ol { padding-left: 20px; margin: 22px 0; }
+    .guide li { padding: 0 0 18px 4px; font-size: 13px; color: #64735f; }
+    .guide strong { display: block; color: #3c5137; font-size: 13px; margin-bottom: 3px; }
+    .guide-foot { font-size: 11px; color: #76836c; border-top: 1px solid #d0dbc7; padding-top: 16px; }
+    #chatResult:not(:empty) { margin-top: 26px; overflow-wrap: anywhere; }
+    .result-card { background: #f4f8f1; border: 1px solid #d8e3d0; border-left: 3px solid #7b9869; padding: 20px; border-radius: 12px; }
+    .error { background: #fff6f2; border-color: #ecdcd0; border-left-color: #c58461; }
+    .review { background: #fff; border-color: #dce5d6; padding: 20px; border-radius: 12px; }
+    .review-row { padding: 14px 0; } .review-row label { gap: 5px; }
+    input[type=checkbox] { width: 16px; height: 16px; accent-color: #426a45; vertical-align: middle; margin-right: 7px; }
+    .citation { color: #7a8878; font-size: 12px; line-height: 1.7; }
+    .ds5-form { padding-top: 20px; margin-top: 24px; }
+    #history { margin-top: 24px; }
+    #history h2 { font-size: 16px; } #history .note { font-size: 12px; margin-bottom: 16px; }
+    .history-row { padding: 14px 0; font-size: 12px; overflow-wrap: anywhere; }
+    code { background: #eaf0e5; color: #53694c; font-size: 11px; }
+    #historyEvents { font-size: 13px; color: #7c8979; }
+    @media (max-width: 900px) { .workspace { grid-template-columns: minmax(0, 1fr); } .guide { display: none; } }
+    @media (max-width: 540px) { body { padding: 0 14px 28px; } .card { padding: 22px 18px; } .grid { grid-template-columns: minmax(0, 1fr); } .badge { font-size: 10px; } h1 { letter-spacing: -.8px; } button { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>9anoun · Assistant DS1</h1>
-    <p class="note">Interface locale de démonstration. Écrivez votre question : DS1 valide le contexte, choisit le spécialiste et trace la demande. Les identités et les cartes sont fictives.</p>
+    <div class="brand-row"><div class="brand"><span class="brand-icon" aria-hidden="true">§</span>9anoun<span style="font-size:12px;font-weight:400;letter-spacing:0;color:#7b897c">Espace de travail</span></div><span class="badge">Démonstration locale</span></div>
+    <p class="eyebrow">Votre assistant juridique</p>
+    <h1>Du document à la décision.</h1>
+    <p class="note">Analysez vos pièces, vérifiez les informations et préparez vos calculs dans un même espace.</p>
   </header>
+  <div class="workspace">
   <section class="card" id="chat">
-    <h2>Poser une question</h2>
-    <p class="note">DS1 détecte l’intention, choisit le spécialiste, demande une précision si nécessaire et gère les validations humaines par conversation.</p>
+    <div class="section-heading"><span class="step">01</span><h2>Comment puis-je vous aider ?</h2></div>
+    <p class="note">Posez une question ou sélectionnez un document pour commencer son analyse.</p>
     <form id="chatForm" novalidate>
     <div class="grid">
       <label>Votre question
         <textarea id="chat_message" name="message" rows="3" required placeholder="Ex. Calcule le SMIG mensuel 48h au 2024-01-01"></textarea>
       </label>
-      <label>Contexte facultatif
+      <label>Carte du dossier · facultatif
         <select id="chat_card_id" name="card_id"><option value="">Sans carte — recherche juridique générale</option></select>
       </label>
       <label>Document de la carte
@@ -52,9 +113,18 @@
         <select id="chat_language" name="language"><option value="fr">Français</option><option value="ar">العربية</option></select>
       </label>
     </div>
-    <button id="sendChat" type="submit">Envoyer à DS1</button>
+    <button id="sendChat" type="submit">Envoyer la demande →</button>
+    <p class="form-footer">Données de démonstration · Vérifiez les informations avant de les confirmer.</p>
     </form>
     <section id="chatResult" aria-live="polite"></section>
+  </section>
+  <aside class="guide"><p class="eyebrow" style="margin-top:0">Le parcours</p><h2>Chaque étape,<br>en toute clarté.</h2><ol><li><strong>Choisissez votre contexte</strong>Une carte donne accès aux pièces du dossier.</li><li><strong>Analysez une pièce</strong>Commencez par une fiche de paie PDF.</li><li><strong>Vérifiez les sources</strong>Consultez les citations et confirmez les champs.</li><li><strong>Lancez votre calcul</strong>Complétez les paramètres nécessaires.</li></ol><div class="guide-foot">Les identités et dossiers présentés sont fictifs. Les formats non pris en charge donnent lieu à un refus explicite.</div></aside>
+  </div>
+  <section class="card" style="margin-top:24px" id="caseIntegration">
+    <div class="section-heading"><span class="step">02</span><h2>Scénario complet DS2 + DS3 → DS4</h2></div>
+    <p class="note">Dossier fictif : Ahmed Ben Salah · paie de mars 2026. Le secteur gardiennage est une hypothèse de test à valider, non extrait du PDF. Référence au 31 mars 2026. Aucune conclusion juridique définitive.</p>
+    <button type="button" id="startCaseIntegration">1. Extraire la fiche avec DS3 live</button>
+    <div id="caseIntegrationResult" aria-live="polite"></div>
   </section>
   <section id="history" class="card" aria-live="polite">
     <h2>Historique d’audit local</h2>
@@ -64,8 +134,63 @@
 </main>
 <script>
   const $ = id => document.getElementById(id);
+  const confidencePercent = value => Number.isFinite(value) ? (Math.floor(value * 1000) / 10).toFixed(1) : '—';
+  const caseErrorHtml = data => `<p>${escapeHtml(data.message_fr || 'Scénario interrompu.')}</p><p lang="ar" dir="rtl">${escapeHtml(data.message_ar || '')}</p><p><code>${escapeHtml(data.code || 'ERROR')}</code></p>`;
+
+  $('startCaseIntegration').addEventListener('click', async () => {
+    const button = $('startCaseIntegration');
+    button.disabled = true;
+    $('caseIntegrationResult').textContent = 'Extraction DS3 live en cours. Aucune confirmation ni analyse DS4 automatique…';
+    try {
+      const response = await fetch('/api/case-integration/prepare', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({language:$('chat_language').value})});
+      const data = await response.json();
+      if (data.status !== 'pending_confirmation') {
+        $('caseIntegrationResult').innerHTML = caseErrorHtml(data) + (data.status === 'retry_later' && data.retryable === true ? '<button type="button" data-case-retry>Réessayer l’analyse DS3</button>' : '');
+        return;
+      }
+      let html = `<section class="review"><h3>2. Vérifiez les faits extraits</h3><p>DS3 : live · ${escapeHtml(data.timings_ms.ds3)} ms. Les valeurs ne sont pas modifiables.</p>`;
+      html += data.facts.map(f => `<div class="review-row"><label><span><input type="checkbox" data-case-fact="${escapeHtml(f.fact_id)}" ${f.selectable ? '' : 'disabled'}>${escapeHtml(f.field_name)} : ${escapeHtml(f.value)} · confiance ${escapeHtml(confidencePercent(f.confidence))}%</span></label><p class="citation">Page ${escapeHtml(f.citation?.page ?? '?')} · ${escapeHtml(f.citation?.exact_excerpt || 'Citation indisponible')}</p></div>`).join('');
+      html += `<label style="margin-top:20px"><span><input type="checkbox" id="caseDocumentLink">Je confirme que cette fiche correspond à ${escapeHtml(data.subject_name)} et à la pièce du dossier fictif indiquée.</span></label><p class="note">Recherche DS2 prévue : ${escapeHtml(data.legal_request.query)} · secteur : ${escapeHtml(data.legal_request.sector)} · date : ${escapeHtml(data.legal_request.reference_date)}. Les sources récupérées restent à vérifier juridiquement.</p><button type="button" id="completeCaseIntegration" data-review-id="${escapeHtml(data.review_id)}">3. Confirmer et lancer DS2 live → DS4</button><div id="caseCompletionStatus" aria-live="polite"></div></section>`;
+      $('caseIntegrationResult').innerHTML = html;
+    } catch (_) {
+      $('caseIntegrationResult').textContent = 'Le service ne répond pas. Aucune confirmation enregistrée.';
+    } finally { button.disabled = false; }
+  });
+  $('caseIntegrationResult').addEventListener('click', async event => {
+    if (event.target.closest('[data-case-retry]')) { $('startCaseIntegration').click(); return; }
+    const button = event.target.closest('#completeCaseIntegration');
+    if (!button) return;
+    const selected = [...$('caseIntegrationResult').querySelectorAll('[data-case-fact]:checked')].map(e=>e.dataset.caseFact);
+    if (!selected.length || !$('caseDocumentLink').checked) {
+      $('caseCompletionStatus').textContent = 'Sélectionnez les valeurs vérifiées et confirmez le lien document/personne/pièce.';
+      return;
+    }
+    button.disabled = true;
+    $('caseCompletionStatus').textContent = 'Recherche DS2 live et analyse DS4 en cours…';
+    try {
+      const response = await fetch('/api/case-integration/complete', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({review_id:button.dataset.reviewId, confirmed_fact_ids:selected, confirm_document_link:$('caseDocumentLink').checked})});
+      const data = await response.json();
+      if (data.status !== 'completed') {
+        $('caseCompletionStatus').innerHTML = caseErrorHtml(data);
+        button.disabled = false;
+        return;
+      }
+      let html = `<h3>Parcours technique terminé</h3><p>DS3 live → confirmation explicite → DS2 live → DS4 v1.</p><p>${escapeHtml(data.confirmed_facts.length)} faits confirmés · ${escapeHtml(data.legal_sources.length)} références récupérées · état DS4 : ${escapeHtml(data.analysis.analysis_status)}.</p><p><strong>Conclusion juridique : non validée.</strong> Revue humaine des sources et de leur applicabilité obligatoire.</p><p lang="ar" dir="rtl">التحليل تحضيري فقط. يجب مراجعة المصادر ومدى انطباقها من قبل مختص قانوني.</p><h4>Références DS2 à vérifier</h4><ul>`;
+      html += data.legal_sources.map(s=>`<li>${escapeHtml(s.reference)} · page ${escapeHtml(s.citation?.page ?? 'manquante')} · effet ${escapeHtml(s.effective_from ?? 'inconnu')} · ${escapeHtml(s.validity_status ?? 'inconnu')}</li>`).join('') + '</ul>';
+      html += `<p class="citation">Citations documentaires : ${escapeHtml(data.document_citations.length)} · citations de recherche : ${escapeHtml(data.retrieval_citations.length)} · citations finales DS4 : ${escapeHtml(data.final_citations.length)}.</p>`;
+      if (data.review_required.length) html += '<h4>Validations restantes</h4><ul>' + data.review_required.map(w=>`<li>${escapeHtml(w)}</li>`).join('') + '</ul>';
+      html += renderUncertainInformation(data.analysis.uncertain_information);
+      $('caseCompletionStatus').innerHTML = html;
+      refreshHistory();
+      $('caseIntegrationResult').querySelectorAll('input').forEach(e=>e.disabled=true);
+    } catch (_) { $('caseCompletionStatus').textContent = 'Le parcours a rencontré un incident. Aucun résultat juridique validé.'; button.disabled=false; }
+  });
   let cards = [];
   const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function renderUncertainInformation(items) {
+    if (!Array.isArray(items) || !items.length) return '';
+    return '<h4>Informations à vérifier</h4><ul>' + items.map(item => `<li>${escapeHtml(item.reference_id)} : ${escapeHtml(item.reason)}</li>`).join('') + '</ul>';
+  }
   async function loadCards() {
     const response = await fetch('/api/cards');
     cards = (await response.json()).cards || [];
@@ -120,10 +245,17 @@
     if (answer?.text) html += `<p>${escapeHtml(answer.text)}</p>`;
     if (answer?.kind === 'legal_research' && answer.mode) html += `<p>Source DS2 : <code>${escapeHtml(answer.mode)}</code></p>`;
     if (answer?.notices?.length) html += `<p><strong>Information juridique :</strong></p><ul>${answer.notices.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+    if (answer?.kind === 'case_preparatory') {
+      html += `<h3>Analyse préparatoire du dossier</h3><p>${escapeHtml(answer.message_fr)}</p><p lang="ar" dir="rtl">${escapeHtml(answer.message_ar)}</p><p>État de l’analyse : <code>${escapeHtml(answer.analysis_status)}</code></p>`;
+      const summary = answer.case_summary || {};
+      html += `<p>${escapeHtml(summary.number_of_parties ?? 0)} parties · ${escapeHtml(summary.number_of_events ?? 0)} événements · ${escapeHtml(summary.number_of_claims ?? 0)} demandes · ${escapeHtml(summary.number_of_evidence ?? 0)} pièces</p>`;
+      if (answer.timeline?.length) html += '<h4>Chronologie déclarée</h4><ul>' + answer.timeline.map(item => `<li>${escapeHtml(item.date ?? 'Date inconnue')} — ${escapeHtml(item.description ?? item.event_id ?? '')}</li>`).join('') + '</ul>';
+      html += renderUncertainInformation(answer.uncertain_information);
+    }
     if (answer?.kind === 'case') html += `<p>Faits : ${escapeHtml(answer.facts.join('; ') || '—')}</p><p>Risques : ${escapeHtml(answer.risks.join('; ') || '—')}</p>`;
     if (answer?.kind === 'document') {
       if (answer.document_type) html += `<p>Type détecté : <code>${escapeHtml(answer.document_type)}</code></p>`;
-      if (answer.fields) html += '<h3>Champs extraits</h3><ul>' + Object.entries(answer.fields).map(([name, field]) => `<li><strong>${escapeHtml(name)}</strong> : ${escapeHtml(field.value ?? 'Illisible / non extrait')} <span class="citation">(${escapeHtml(Math.round((field.confidence || 0) * 100))}%)</span></li>`).join('') + '</ul>';
+      if (answer.fields) html += '<h3>Champs extraits</h3><ul>' + Object.entries(answer.fields).map(([name, field]) => `<li><strong>${escapeHtml(name)}</strong> : ${escapeHtml(field.value ?? 'Illisible / non extrait')} <span class="citation">(${escapeHtml(confidencePercent(field.confidence))}%)</span></li>`).join('') + '</ul>';
       if (answer.warnings?.length) html += '<p><strong>Avertissements :</strong></p><ul>' + answer.warnings.map(item => `<li>${escapeHtml(item)}</li>`).join('') + '</ul>';
     }
     const review = data.document_review;
@@ -136,7 +268,7 @@
         const disabled = field.state !== 'verified' ? ' disabled' : '';
         const className = unavailable ? 'review-unavailable' : field.state === 'review_required' ? 'review-required' : '';
         const state = unavailable ? `Non utilisable : ${field.reason || 'valeur ou citation manquante'}` : field.state === 'review_required' ? `Visible, non sélectionnable : ${field.reason || 'confiance sous le seuil'}` : 'Vérifié';
-        return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(Math.round((field.confidence || 0) * 100))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
+        return `<div class="review-row ${className}"><label><span><input type="checkbox" data-review-field="${escapeHtml(field.name)}"${checked}${disabled}> <strong>${escapeHtml(field.name)}</strong> : ${escapeHtml(field.value ?? '—')}</span><span class="citation"> · ${escapeHtml(confidencePercent(field.confidence))}% · p. ${escapeHtml(field.page ?? '?')} · ${escapeHtml(state)}</span></label>${field.excerpt ? `<div class="citation">« ${escapeHtml(field.excerpt)} »</div>` : ''}</div>`;
       }).join('');
       html += `<button class="small-button" data-document-review-id="${escapeHtml(review.review_id)}">Confirmer les champs sélectionnés</button><div id="reviewStatus" class="note"></div></section>`;
     }
