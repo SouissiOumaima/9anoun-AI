@@ -76,6 +76,18 @@ dernier degré n'est appliquée, et le `detail` le dit en hypothèses. Elle reç
 imprimée, les 3 montants imprimés à plus de 3 décimales (deux en millimes, avec leur équivalent en dinars).
 La v0 est inchangée et l'orchestrateur reste en v0. Détail : `docs/CONTRACT_TRACK_B.md`, §9.
 
+## Rapport de conformité d'une fiche de paie (D108, D109)
+
+Opération `rapport_conformite` du contrat v1 : à partir des champs d'une fiche confirmés par DS3, un rapport ligne
+par ligne (salaire de base, primes imprimées, primes absentes de la fiche, SMIG), chaque ligne avec son statut
+(conforme, écart, non vérifiable, absente de la fiche), sa citation et, s'il le faut, le document qui permettrait de
+conclure. Les montants viennent du moteur ; le rapport ajoute seulement la différence « imprimé − convention ».
+Rendu FR et AR à partir de modèles fixes. Code : `rapport/` ; détail : `docs/CONTRACT_TRACK_B.md`, §10.
+
+```bash
+python -m src.track_b_accounting.demo_rapport      # 9 démos : 8 rapports, 1 refus
+```
+
 ## Reste à faire
 
 - **mypy strict** sur `calc/` et `contract/` : les contrôles actuels utilisent les réglages par défaut de mypy et

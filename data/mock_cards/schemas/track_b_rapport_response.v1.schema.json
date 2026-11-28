@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_b_rapport_response.v1.schema.json",
+  "title": "Réponse Track B — rapport de conformité d'une fiche de paie (contrat v1)",
+  "description": "v1 — proposition Track B, à valider avec l'équipe (D108, D109). status 'ok' = rapport produit, même si aucune ligne n'est vérifiée (rapport.aucune_ligne_verifiee) ; 'refus' = secteur inconnu ou sans table, ou requête non conforme ; 'erreur' = incident technique. « Citation ou Silence » ligne par ligne : une ligne qui porte un montant de convention porte au moins une citation. citations = union des citations des lignes (vide si aucune ligne n'en a). Le schéma commun v0 n'est pas appliqué à cette réponse.",
+  "type": "object",
+  "required": ["contract_version", "request_id", "status", "rapport", "texte_fr", "texte_ar", "citations", "refus", "computed_by"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "track_b.v1"},
+    "request_id": {"type": ["string", "null"]},
+    "status": {"enum": ["ok", "refus", "erreur"]},
+    "rapport": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/rapport"}]},
+    "texte_fr": {"type": ["string", "null"], "minLength": 1},
+    "texte_ar": {"type": ["string", "null"], "minLength": 1},
+    "citations": {"type": "array", "items": {"$ref": "#/$defs/citation"}},
+    "refus": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["code", "message_fr", "message_ar"],
+          "additionalProperties": false,
+          "properties": {
+            "code": {"enum": ["SOURCE_MANQUANTE", "HORS_SCOPE", "PARAM_INVALIDE"]},
+            "message_fr": {"type": "string", "minLength": 1},
+            "message_ar": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "erreur": {
+      "type": "object",
+      "required": ["type", "message_fr", "message_ar"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"type": "string"},
+        "message_fr": {"type": "string", "minLength": 1},
+        "message_ar": {"type": "string", "minLength": 1}
+      }
+    },
+    "computed_by": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "ok"}}},
+      "then": {"properties": {"rapport": {"type": "object"}, "texte_fr": {"type": "string"}, "texte_ar": {"type": "string"}, "refus": {"type": "null"}}, "not": {"required": ["erreur"]}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "refus"}}},
+      "then": {"properties": {"rapport": {"type": "null"}, "texte_fr": {"type": "null"}, "texte_ar": {"type": "null"}, "citations": {"maxItems": 0}, "refus": {"type": "object"}}, "not": {"required": ["erreur"]}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "erreur"}}},
+      "then": {"required": ["erreur"], "properties": {"rapport": {"type": "null"}, "texte_fr": {"type": "null"}, "texte_ar": {"type": "null"}, "citations": {"maxItems": 0}, "refus": {"type": "null"}}}
+    }
+  ],
+  "$defs": {
+    "montant": {"type": "string", "pattern": "^-?[0-9]+\\.[0-9]{3,}$"},
+    "citation": {
+      "type": "object",
+      "required": ["source_file", "page", "article", "data_file", "decision_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": {"type": "string", "minLength": 1},
+        "page": {"type": ["integer", "null"], "minimum": 1},
+        "article": {"type": ["string", "null"]},
+        "data_file": {"type": "string", "pattern": "^data/processed/"},
+        "decision_ref": {"type": "string", "pattern": "^D[0-9]+$"}
+      }
+    },
+    "textes": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "ligne": {
+      "type": "object",
+      "required": ["rubrique", "code", "libelle_fr", "libelle_ar", "statut", "montant_convention", "unite", "montant_imprime", "difference", "citations", "hypotheses_fr", "hypotheses_ar", "motif", "observation", "documents"],
+      "additionalProperties": false,
+      "properties": {
+        "rubrique": {"enum": ["salaire_base", "prime", "prime_absente", "smig"]},
+        "code": {"type": ["string", "null"]},
+        "libelle_fr": {"type": "string", "minLength": 1},
+        "libelle_ar": {"type": "string", "minLength": 1},
+        "statut": {"enum": ["conforme", "ecart", "non_verifiable", "absente_de_la_fiche"]},
+        "montant_convention": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/montant"}]},
+        "unite": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^(TND|millimes)/"}]},
+        "montant_imprime": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[0-9]+\\.[0-9]{3}$"}]},
+        "difference": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^-?[0-9]+\\.[0-9]{3}$"}]},
+        "citations": {"type": "array", "items": {"$ref": "#/$defs/citation"}},
+        "hypotheses_fr": {"$ref": "#/$defs/textes"},
+        "hypotheses_ar": {"$ref": "#/$defs/textes"},
+        "motif": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "required": ["code", "message_fr", "message_ar"],
+              "additionalProperties": false,
+              "properties": {
+                "code": {"enum": ["SOURCE_MANQUANTE", "HORS_SCOPE", "PARAM_INVALIDE", "CHAMP_ABSENT", "CONDITION_NON_VERIFIABLE", "GROUPE_NON_LU", "TRANSPORT_NON_LU", "UNITE_DIFFERENTE", "REGIME_DIFFERENT"]},
+                "message_fr": {"type": "string", "minLength": 1},
+                "message_ar": {"type": "string", "minLength": 1}
+              }
+            }
+          ]
+        },
+        "observation": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "required": ["degre_imprime", "degre_deduit", "message_fr", "message_ar"],
+              "additionalProperties": false,
+              "properties": {
+                "degre_imprime": {"type": "string"},
+                "degre_deduit": {"type": "string"},
+                "message_fr": {"type": "string", "minLength": 1},
+                "message_ar": {"type": "string", "minLength": 1}
+              }
+            }
+          ]
+        },
+        "documents": {"type": "array", "items": {"$ref": "#/$defs/document_code"}}
+      },
+      "allOf": [
+        {"if": {"properties": {"montant_convention": {"type": "string"}}}, "then": {"properties": {"citations": {"minItems": 1}, "unite": {"type": "string"}}}},
+        {"if": {"properties": {"statut": {"enum": ["conforme", "ecart"]}}}, "then": {"properties": {"montant_convention": {"type": "string"}, "montant_imprime": {"type": "string"}, "difference": {"type": "string"}, "motif": {"type": "null"}}}},
+        {"if": {"properties": {"statut": {"const": "non_verifiable"}}}, "then": {"properties": {"motif": {"type": "object"}}}},
+        {"if": {"properties": {"statut": {"const": "absente_de_la_fiche"}}}, "then": {"properties": {"rubrique": {"const": "prime_absente"}, "montant_convention": {"type": "string"}, "montant_imprime": {"type": "null"}, "motif": {"type": "null"}}}}
+      ]
+    },
+    "document_code": {"enum": ["fiche_de_paie", "fiche_de_paie_lisible", "contrat_de_travail", "attestation_classification", "attestation_employeur_prime"]},
+    "rapport": {
+      "type": "object",
+      "required": ["secteur", "convention_ar", "fiche", "origines", "lignes", "champs_manquants", "documents_fournis", "documents_manquants", "bilan", "aucune_ligne_verifiee"],
+      "additionalProperties": false,
+      "properties": {
+        "secteur": {"type": "string"},
+        "convention_ar": {"type": ["string", "null"]},
+        "fiche": {"type": "object", "additionalProperties": {"type": ["string", "number", "null"]}},
+        "origines": {"type": "object", "additionalProperties": {"enum": ["fiche", "carte", "utilisateur"]}},
+        "lignes": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/ligne"}},
+        "champs_manquants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["champ", "etat", "raison"],
+            "additionalProperties": false,
+            "properties": {
+              "champ": {"type": "string"},
+              "etat": {"enum": ["absent", "illisible"]},
+              "raison": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "documents_fournis": {"type": "array", "items": {"$ref": "#/$defs/document_code"}},
+        "documents_manquants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["document", "libelle_fr", "libelle_ar", "raisons_fr", "raisons_ar"],
+            "additionalProperties": false,
+            "properties": {
+              "document": {"$ref": "#/$defs/document_code"},
+              "libelle_fr": {"type": "string", "minLength": 1},
+              "libelle_ar": {"type": "string", "minLength": 1},
+              "raisons_fr": {"$ref": "#/$defs/textes"},
+              "raisons_ar": {"$ref": "#/$defs/textes"}
+            }
+          }
+        },
+        "bilan": {
+          "type": "object",
+          "required": ["conforme", "ecart", "non_verifiable", "absente_de_la_fiche"],
+          "additionalProperties": false,
+          "properties": {
+            "conforme": {"type": "integer", "minimum": 0},
+            "ecart": {"type": "integer", "minimum": 0},
+            "non_verifiable": {"type": "integer", "minimum": 0},
+            "absente_de_la_fiche": {"type": "integer", "minimum": 0}
+          }
+        },
+        "aucune_ligne_verifiee": {"type": "boolean"}
+      }
+    }
+  }
+}

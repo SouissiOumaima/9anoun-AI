@@ -8,6 +8,9 @@
 >
 > **Contrat v1 (D75, D76)** : à côté de la v0, inchangée ; demande du salaire par degré déclaré et montants
 > imprimés à plus de 3 décimales. Voir le §9.
+>
+> **Rapport de conformité d'une fiche de paie (D108, D109)** : opération `rapport_conformite` du contrat v1, avec ses
+> propres schémas. Voir le §10.
 
 ## 1. Résumé
 
@@ -1037,3 +1040,93 @@ et la citation `النسيج.pdf`, page 32, `D71`.
 - Besoins n° 4 à 7 de la liste des évolutions : l'écart cumulé de l'imprimerie après 31 ans, la hausse fixe au
   dernier degré du verre, les degrés sans borne du textile par l'ancienneté et la réduction par jour d'absence.
   Ils restent comme en v0.
+
+## 10. Rapport de conformité d'une fiche de paie (`rapport_conformite`, D108, D109)
+
+> **Statut : v1 — proposition Track B, à valider avec l'équipe.** Opération du contrat `track_b.v1` seulement, avec
+> ses propres schémas. Les schémas v0 et v1 des §3 et §9, les démos v0 et v1 et leurs réponses sont inchangés.
+
+### 10.1 Ce que fait l'opération
+
+Elle reçoit les champs d'une fiche de paie, tels que DS3 les donne après confirmation, et rend un **rapport** :
+une ligne pour le salaire de base, une par prime imprimée, une par prime absente de la fiche, puis une pour le
+SMIG. Chaque montant de convention vient du moteur (`salaire_base`, `prime` v1, `smig`), avec sa citation. Le
+rapport ajoute seulement la différence « imprimé − convention », arrondie au millime (D6), et un statut. Aucun
+modèle de langage, aucun texte généré : le rendu FR et AR suit des modèles fixes.
+
+- Schéma de requête : `data/mock_cards/schemas/track_b_rapport_request.v1.schema.json`.
+- Schéma de réponse : `data/mock_cards/schemas/track_b_rapport_response.v1.schema.json`.
+- Code : `src/track_b_accounting/rapport/` (assemblage, documents, rendu) ; aiguillage dans `contract/handler.py`.
+
+### 10.2 Requête
+
+```json
+{"contract_version": "track_b.v1", "request_id": "fiche-01", "operation": "rapport_conformite", "lang": "fr",
+ "params": {"secteur": "METALLURGIE_BATIMENT", "population": "admin_tech", "categorie": "3",
+            "anciennete_annees": 6.49589, "date": "2026-03-01", "regime_heures": 48, "mode_paie": "mensuel",
+            "salaire_base_imprime": "424.100",
+            "primes_imprimees": [{"code": "prime_transport", "montant": "56.000"},
+                                 {"code": "prime_presence", "montant": "36.000"}],
+            "documents_fournis": ["fiche_de_paie"]}}
+```
+
+| Champ de `params` | Type | Rôle |
+|---|---|---|
+| `secteur` | chaîne, **seul champ obligatoire** | Code du secteur (§3.1). Inconnu ou sans table : refus du rapport entier (`SOURCE_MANQUANTE`). |
+| `population`, `categorie`, `sous_categorie` | chaîne (ou entier pour `categorie`) ou `null` | Comme pour `salaire_base`. |
+| `anciennete_annees`, `degre` | nombre ; entier ou texte ; ou `null` | L'un ou l'autre. Les deux : l'ancienneté va au moteur, le degré imprimé est affiché en observation. |
+| `date` | `AAAA-MM-JJ` ou `null` | Période de la fiche (premier jour). |
+| `regime_heures` | entier ou `null` | Régime hebdomadaire lu sur la fiche. |
+| `mode_paie` | `mensuel` \| `horaire` \| `null` | Unité du salaire imprimé (`TND/mois` ou `TND/heure`). |
+| `salaire_base_imprime` | chaîne `^[0-9]+\.[0-9]{3}$` ou `null` | Jamais un nombre JSON. |
+| `primes_imprimees` | liste de `{code, montant, groupe?, transport_assure?, variante?}` | Codes de prime du §3.1. `condition_remplie` n'existe pas : une fiche ne prouve pas une condition. |
+| `documents_fournis` | liste fermée | `fiche_de_paie`, `fiche_de_paie_lisible`, `contrat_de_travail`, `attestation_classification`, `attestation_employeur_prime`. |
+| `champs_illisibles` | objet `champ → raison` | Raison donnée par DS3 (ex. `"« 195 h » incohérent"`), recopiée dans le rapport. |
+| `origines` | objet `champ → fiche \| carte \| utilisateur` | Affichée dans le rendu (« population déclarée par l'utilisateur »). |
+
+Un champ absent ou `null` est un champ non lu.
+
+### 10.3 Réponse
+
+| Champ | Contenu |
+|---|---|
+| `status` | `ok` (rapport produit, même si rien n'est vérifié), `refus` (secteur inconnu ou sans table, requête non conforme), `erreur`. |
+| `rapport.lignes[]` | `rubrique` (`salaire_base`, `prime`, `prime_absente`, `smig`), `code`, `libelle_fr`, `libelle_ar`, `statut`, `montant_convention`, `unite`, `montant_imprime`, `difference`, `citations`, `hypotheses_fr`, `hypotheses_ar`, `motif`, `observation`, `documents`. |
+| `rapport.bilan` | Nombre de lignes par statut. |
+| `rapport.aucune_ligne_verifiee` | `true` si aucune ligne n'est `conforme` ou `ecart` ; le rendu le dit en tête. |
+| `rapport.champs_manquants`, `rapport.documents_manquants` | Champs absents ou illisibles ; documents qui permettraient de conclure, avec leurs raisons FR et AR (D109). |
+| `texte_fr`, `texte_ar` | Rendu lisible, modèles fixes. |
+| `citations` | Union des citations des lignes, sans doublon (peut être vide). |
+
+**Statuts** : `conforme` (imprimé ≥ convention), `ecart` (imprimé < convention), `non_verifiable` (toujours avec un
+`motif`), `absente_de_la_fiche`.
+
+**Motifs** : ceux du moteur, avec ses messages FR et AR recopiés (`SOURCE_MANQUANTE`, `PARAM_INVALIDE`,
+`HORS_SCOPE`), et ceux du rapport : `CHAMP_ABSENT`, `CONDITION_NON_VERIFIABLE`, `GROUPE_NON_LU`, `TRANSPORT_NON_LU`,
+`UNITE_DIFFERENTE`, `REGIME_DIFFERENT`. Règles détaillées : D108.
+
+**Schéma commun** : non appliqué à cette réponse, car un rapport où rien n'est vérifié est `ok` sans citation.
+« Citation ou Silence » est tenue ligne par ligne : une ligne qui porte un montant de convention porte au moins une
+citation (contrôlé par le schéma de réponse).
+
+### 10.4 Exemple : fiche 01
+
+Lignes du rapport de la requête du §10.2 (rendu complet : `python -m src.track_b_accounting.demo_rapport`, démo 1) :
+
+| Ligne | Convention | Imprimé | Différence | Statut | Motif |
+|---|---|---|---|---|---|
+| Salaire de base (cat. 3, degré 4, p.34, D4) | 641.013 | 424.100 | -216.913 | non vérifiable | `REGIME_DIFFERENT` : grille à 42 h, fiche à 48 h |
+| Prime de transport (p.16, art. 50 (جديد)) | — | 56.000 | — | non vérifiable | `GROUPE_NON_LU` : 92.800 ou 100.533 selon le groupe |
+| Prime de présence (p.16, art. 51 (جديد) و) | 7.856 | 36.000 | 28.144 | conforme | — |
+| Prime de logement (p.16, art. 51 (جديد) هـ) | 26.293 | — | — | absente de la fiche | — |
+| SMIG 48 h mensuel (décret 769/2022, p.2, D2) | 459.264 | 424.100 | -35.164 | écart | — |
+
+### 10.5 Démos, tests et évaluation
+
+- 9 requêtes : `data/mock_cards/track_b_rapport_demo.v1.json` (conforme, écart de salaire, prime absente, condition
+  non vérifiable, SMIG non vérifiable, refus du moteur, aucune ligne vérifiée, secteur inconnu, degré observé).
+- Réponses de référence : `src/track_b_accounting/tests/references/track_b_rapport_demo.v1.json`.
+- `python -m src.track_b_accounting.demo_rapport` : « Bilan rapports : 8 ok, 1 refus, 0 erreur(s). »
+- Tests : `src/track_b_accounting/tests/test_rapport_conformite.py`.
+- Jeu de référence à part : `src/track_b_accounting/evaluation/golden_sets/track_b_livrable.v0.json` (12 cas,
+  `verification_humaine: true`, vérifiés par DS5, D108), évalué par `run_eval.py` dans un bloc `livrable`.

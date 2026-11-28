@@ -15,8 +15,11 @@ Tranche hors périmètre (D110) : golden_sets/track_b_hors_perimetre.v0.json, é
 principal ne changent pas). Métrique taux_refus_hors_perimetre = refus corrects (même code, motif attendu présent dans
 message_fr) / cas hors périmètre ; seuil 85 % (cahier des charges §8.4) ; comparée à la baseline comme les autres.
 
+Jeu du livrable (rapport de conformité, D108) : golden_sets/track_b_livrable.v0.json, évalué à part (bloc « livrable »
+du rapport) ; ses métriques sont comparées à celles du bloc « livrable » de la baseline, quand il existe.
+
 Code de sortie :
-    1 s'il y a au moins un faux montant ou une exception inattendue (jeu principal ou hors périmètre) ;
+    1 s'il y a au moins un faux montant ou une exception inattendue (jeu principal, hors périmètre ou livrable) ;
     2 sinon, si au moins deux métriques baissent par rapport à la baseline (règle de régression) ;
     3 sinon, si taux_refus_hors_perimetre est sous le seuil de 85 % ;
     0 sinon.
@@ -48,6 +51,9 @@ SCHEMA_TB = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v0
 SCHEMA_TB_V1 = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v1.schema.json"
 SCHEMA_COMMUN = REPO_ROOT / "src" / "shared" / "schemas" / "common.v0.schema.json"
 DECISIONS = REPO_ROOT / "docs" / "DECISIONS.md"
+# Livrable : rapport de conformité d'une fiche de paie (opération rapport_conformite du contrat v1, D108, D109).
+GOLDEN_LIVRABLE = EVAL_DIR / "golden_sets" / "track_b_livrable.v0.json"
+SCHEMA_RAPPORT = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_rapport_response.v1.schema.json"
 
 # Verdicts d'un cas. Les deux premiers sont critiques (« Citation ou Silence »).
 CORRECT = "correct"
@@ -59,6 +65,12 @@ MESSAGE_INCORRECT = "message_refus_incorrect"  # bon code, mais message FR ou AR
 ERREUR = "statut_erreur"  # réponse status = erreur
 EXCEPTION = "exception_inattendue"  # le handler a levé une exception
 CRITIQUES = (FAUX_MONTANT, MONTANT_AU_LIEU_DE_REFUS)
+# Verdicts propres au livrable. Un faux montant y est une ligne dont le montant de convention, l'unité ou la
+# différence diffère de l'attendu (y compris un montant donné là où l'attendu n'en a pas).
+LIGNES_DIFFERENTES = "lignes_differentes"  # lignes manquantes, en trop ou dans un autre ordre
+STATUT_LIGNE_INCORRECT = "statut_ligne_incorrect"  # bon montant, mais statut ou motif différent
+DOCUMENTS_INCORRECTS = "documents_incorrects"  # documents manquants ou drapeau aucune_ligne_verifiee différents
+CHAMPS_MONTANT = ("montant_convention", "unite", "difference")
 
 RESULTS_DIR = EVAL_DIR / "results"
 BASELINE = RESULTS_DIR / "baseline.json"
@@ -82,6 +94,17 @@ SENS_METRIQUES = {
 }
 SEUIL_BAISSES = 2  # nombre de métriques en baisse qui bloque le changement
 SEUIL_HORS_PERIMETRE = 0.85  # taux de refus corrects exigé sur la tranche hors périmètre (cahier des charges §8.4)
+SENS_LIVRABLE = {
+    "cas_corrects": 1,
+    "lignes_correctes": 1,
+    "refus_corrects": 1,
+    "citations_valides": 1,
+    "conformite_schema_rapport": 1,
+    "faux_montants": -1,
+    "statuts_incorrects": -1,
+    "statut_erreur": -1,
+    "exceptions_inattendues": -1,
+}
 STABLE, AMELIORATION, BAISSE, NON_COMPARABLE = "stable", "amélioration", "baisse", "non comparable"
 CODE_CRITIQUE, CODE_REGRESSION, CODE_SEUIL_HORS_PERIMETRE = 1, 2, 3
 
@@ -196,6 +219,138 @@ def evaluer_cas(c: dict, refs: set[str], v_tb, v_commun, v_tb_v1=None) -> dict:
     return out
 
 
+def _ligne_comparee(ligne: dict) -> dict:
+    """Projection d'une ligne de rapport sur les champs du jeu du livrable."""
+    return {
+        "rubrique": ligne["rubrique"],
+        "code": ligne["code"],
+        "statut": ligne["statut"],
+        "montant_convention": ligne["montant_convention"],
+        "unite": ligne["unite"],
+        "difference": ligne["difference"],
+        "motif": ligne["motif"]["code"] if ligne["motif"] else None,
+        "citations": [{"pdf": Path(c["source_file"]).name, "page": c["page"]} for c in ligne["citations"]],
+    }
+
+
+def evaluer_cas_livrable(c: dict, refs: set[str], v_rapport) -> dict:
+    """Un cas du jeu du livrable : requête rapport_conformite en track_b.v1, lignes comparées une à une."""
+    out: dict = {
+        "id": c["id"],
+        "categorie": c["categorie"],
+        "certitude": c["certitude"],
+        "decision": c["decision"],
+        "verification_humaine": c["verification_humaine"],
+        "attendu": c["attendu"],
+        "lignes": 0,
+        "lignes_correctes": 0,
+        "faux_montants": 0,
+        "statuts_incorrects": 0,
+        "problemes_citations": [],
+        "citations_ok": None,
+    }
+    requete = {"contract_version": "track_b.v1", "request_id": c["id"], **c["requete"]}
+    try:
+        rep = json.loads(json.dumps(handle(requete), ensure_ascii=False))
+    except Exception as exc:  # noqa: BLE001
+        out.update(
+            verdict=EXCEPTION,
+            obtenu={"exception": type(exc).__name__, "message": str(exc)[:300]},
+            conforme_schema=None,
+        )
+        return out
+    att = c["attendu"]
+    out["conforme_schema"] = v_rapport.is_valid(rep)
+    out["obtenu"] = {"status": rep["status"]}
+    if rep["status"] == "erreur":
+        out.update(verdict=ERREUR, obtenu={"status": "erreur", "erreur": rep["erreur"]["type"]})
+        return out
+    if att["status"] == "refus":
+        if rep["status"] == "ok":
+            out["verdict"] = MONTANT_AU_LIEU_DE_REFUS
+        else:
+            out["obtenu"]["code"] = rep["refus"]["code"]
+            out["verdict"] = CORRECT if rep["refus"]["code"] == att["code"] else CODE_INCORRECT
+        return out
+    if rep["status"] == "refus":
+        out.update(verdict=SILENCE_EXCESSIF, obtenu={"status": "refus", "code": rep["refus"]["code"]})
+        return out
+    r = rep["rapport"]
+    obtenues = [_ligne_comparee(x) for x in r["lignes"]]
+    documents = [d["document"] for d in r["documents_manquants"]]
+    out["obtenu"].update(
+        lignes=obtenues, documents_manquants=documents, aucune_ligne_verifiee=r["aucune_ligne_verifiee"]
+    )
+    attendues = att["lignes"]
+    structure = [(x["rubrique"], x["code"]) for x in attendues] != [(x["rubrique"], x["code"]) for x in obtenues]
+    out["lignes"] = len(attendues)
+    for a, o in zip(attendues, obtenues):
+        if any(a[k] != o[k] for k in CHAMPS_MONTANT):
+            out["faux_montants"] += 1
+        elif (a["statut"], a["motif"]) != (o["statut"], o["motif"]):
+            out["statuts_incorrects"] += 1
+        else:
+            out["lignes_correctes"] += 1
+        if a["citations"] != o["citations"]:
+            out["problemes_citations"].append(f"{a['rubrique']} {a['code']} : citations {o['citations']}")
+    for x in r["lignes"]:
+        for cit in x["citations"]:
+            if not (REPO_ROOT / cit["source_file"]).is_file() or not (REPO_ROOT / cit["data_file"]).is_file():
+                out["problemes_citations"].append(f"fichier cité introuvable : {cit['source_file']}")
+            if cit["decision_ref"] not in refs:
+                out["problemes_citations"].append(f"decision_ref {cit['decision_ref']} absente de docs/DECISIONS.md")
+    out["citations_ok"] = not out["problemes_citations"]
+    if out["faux_montants"]:
+        out["verdict"] = FAUX_MONTANT
+    elif structure:
+        out["verdict"] = LIGNES_DIFFERENTES
+    elif out["statuts_incorrects"]:
+        out["verdict"] = STATUT_LIGNE_INCORRECT
+    elif documents != att["documents_manquants"] or r["aucune_ligne_verifiee"] != att["aucune_ligne_verifiee"]:
+        out["verdict"] = DOCUMENTS_INCORRECTS
+    else:
+        out["verdict"] = CORRECT
+    return out
+
+
+def metriques_livrable(res: list[dict]) -> dict:
+    refus_att = [r for r in res if r["attendu"]["status"] == "refus"]
+    avec_cit = [r for r in res if r["citations_ok"] is not None]
+    evalues = [r for r in res if r["conforme_schema"] is not None]
+    return {
+        "cas": len(res),
+        "cas_corrects": _taux(sum(r["verdict"] == CORRECT for r in res), len(res)),
+        "lignes_correctes": _taux(sum(r["lignes_correctes"] for r in res), sum(r["lignes"] for r in res)),
+        "faux_montants": sum(r["faux_montants"] for r in res)
+        + sum(r["verdict"] == MONTANT_AU_LIEU_DE_REFUS for r in res),
+        "statuts_incorrects": sum(r["statuts_incorrects"] for r in res),
+        "refus_corrects": _taux(sum(r["verdict"] == CORRECT for r in refus_att), len(refus_att)),
+        "citations_valides": _taux(sum(bool(r["citations_ok"]) for r in avec_cit), len(avec_cit)),
+        "conformite_schema_rapport": _taux(sum(bool(r["conforme_schema"]) for r in evalues), len(evalues)),
+        "statut_erreur": sum(r["verdict"] == ERREUR for r in res),
+        "exceptions_inattendues": sum(r["verdict"] == EXCEPTION for r in res),
+    }
+
+
+def bloc_livrable(golden: dict, res: list[dict]) -> dict:
+    return {
+        "golden_set": {
+            "fichier": GOLDEN_LIVRABLE.relative_to(REPO_ROOT).as_posix(),
+            "version": golden["version"],
+            "sha256": _sha256(GOLDEN_LIVRABLE),
+            "cas": len(res),
+            "cas_verifies_par_ds5": sum(bool(r["verification_humaine"]) for r in res),
+        },
+        "metriques": metriques_livrable(res),
+        "echecs": [
+            r["id"]
+            for r in res
+            if r["verdict"] != CORRECT or r["citations_ok"] is False or r["conforme_schema"] is False
+        ],
+        "cas": res,
+    }
+
+
 def _taux(n: int, d: int) -> dict:
     return {"n": n, "sur": d, "taux": None if d == 0 else round(n / d, 4)}
 
@@ -241,7 +396,12 @@ def taux_refus_hors_perimetre(res_hp: list[dict]) -> dict:
 
 
 def rapport(
-    golden: dict, res: list[dict], date: str, golden_hp: dict | None = None, res_hp: list[dict] | None = None
+    golden: dict,
+    res: list[dict],
+    date: str,
+    golden_hp: dict | None = None,
+    res_hp: list[dict] | None = None,
+    livrable: dict | None = None,
 ) -> dict:
     lecture = [r for r in res if r["certitude"] in ("L", "C")]
     verifies = [r for r in res if r["verification_humaine"]]
@@ -263,7 +423,7 @@ def rapport(
                 "cas_detail": res_hp,
             }
         }
-    return {
+    rap = {
         "evaluation": "track_b",
         "date": date,
         "golden_set": {
@@ -287,6 +447,9 @@ def rapport(
         "cas": res,
         **extra,
     }
+    if livrable is not None:
+        rap["livrable"] = livrable
+    return rap
 
 
 def _seuil_atteint(t: dict) -> bool:
@@ -393,7 +556,40 @@ def markdown(rap: dict) -> str:
             f"| {r['id']} | {r['categorie']} | {r['certitude']}{' ' + r['decision'] if r['decision'] else ''} "
             f"| {'oui' if r['verification_humaine'] else 'non'} | {att} | {obt} | {v} |"
         )
+    if "livrable" in rap:
+        lignes += markdown_livrable(rap["livrable"])
     return "\n".join(lignes) + "\n"
+
+
+def markdown_livrable(liv: dict) -> list[str]:
+    g, m = liv["golden_set"], liv["metriques"]
+    lignes = [
+        "",
+        f"## Livrable : rapport de conformité ({g['cas']} cas, D108, D109)",
+        "",
+        f"Jeu de référence : `{g['fichier']}` ({g['version']}, sha256 `{g['sha256'][:12]}…`). "
+        f"Cas vérifiés par DS5 : **{g['cas_verifies_par_ds5']} / {g['cas']}**.",
+        "",
+        f"**Faux montants (lignes) : {m['faux_montants']}**",
+        "",
+        "| Métrique | Nombre | Taux |",
+        "|---|---|---|",
+        _ligne_taux("Cas corrects", m["cas_corrects"]),
+        _ligne_taux("Lignes correctes (montant, différence, statut, motif)", m["lignes_correctes"]),
+        _ligne_taux("Refus corrects", m["refus_corrects"]),
+        _ligne_taux("Citations valides", m["citations_valides"]),
+        _ligne_taux("Conformité schéma du rapport", m["conformite_schema_rapport"]),
+        f"| Statuts incorrects | {m['statuts_incorrects']} | |",
+        f"| Statut erreur / exceptions | {m['statut_erreur']} / {m['exceptions_inattendues']} | |",
+        "",
+        "| Cas | Vérifié | Attendu | Verdict |",
+        "|---|---|---|---|",
+    ]
+    for r in liv["cas"]:
+        a = r["attendu"]
+        att = a["code"] if a["status"] == "refus" else f"{len(a['lignes'])} lignes"
+        lignes.append(f"| {r['id']} | {'oui' if r['verification_humaine'] else 'non'} | {att} | {r['verdict']} |")
+    return lignes
 
 
 def _valeur(m: object) -> float | int | None:
@@ -403,10 +599,11 @@ def _valeur(m: object) -> float | int | None:
     return m if isinstance(m, (int, float)) and not isinstance(m, bool) else None
 
 
-def comparer(baseline: dict, actuel: dict) -> list[dict]:
-    """Écart, métrique par métrique, entre les métriques « ensemble » de la baseline et celles de la relance."""
+def comparer(baseline: dict, actuel: dict, sens_metriques: dict[str, int] | None = None) -> list[dict]:
+    """Écart, métrique par métrique, entre les métriques « ensemble » de la baseline et celles de la relance
+    (ou celles du livrable, avec sens_metriques=SENS_LIVRABLE)."""
     ecarts = []
-    for nom, sens in SENS_METRIQUES.items():
+    for nom, sens in (SENS_METRIQUES if sens_metriques is None else sens_metriques).items():
         b, a = _valeur(baseline.get(nom)), _valeur(actuel.get(nom))
         if b is None or a is None:
             statut, ecart = NON_COMPARABLE, None
@@ -421,10 +618,13 @@ def baisses(ecarts: list[dict]) -> list[str]:
     return [e["metrique"] for e in ecarts if e["statut"] == BAISSE]
 
 
-def code_sortie(m: dict, ecarts: list[dict] | None, m_hp: dict | None = None) -> int:
-    """1 : faux montant ou exception (m, ou m_hp pour la tranche hors périmètre) ; 2 : au moins SEUIL_BAISSES
-    métriques en baisse ; 3 : taux_refus_hors_perimetre sous SEUIL_HORS_PERIMETRE ; 0 sinon."""
+def code_sortie(m: dict, ecarts: list[dict] | None, m_hp: dict | None = None, m_livrable: dict | None = None) -> int:
+    """1 : faux montant ou exception (m, m_hp pour la tranche hors périmètre, m_livrable pour le livrable) ;
+    2 : au moins SEUIL_BAISSES métriques en baisse ; 3 : taux_refus_hors_perimetre sous SEUIL_HORS_PERIMETRE ;
+    0 sinon."""
     if any(x is not None and (x["faux_montants_total"] or x["exceptions_inattendues"]) for x in (m, m_hp)):
+        return CODE_CRITIQUE
+    if m_livrable is not None and (m_livrable["faux_montants"] or m_livrable["exceptions_inattendues"]):
         return CODE_CRITIQUE
     if ecarts is not None and len(baisses(ecarts)) >= SEUIL_BAISSES:
         return CODE_REGRESSION
@@ -464,7 +664,10 @@ def main(argv=None) -> int:
     res = [evaluer_cas(c, refs, v_tb, v_commun, v_tb_v1) for c in golden["cases"]]
     golden_hp = json.loads(GOLDEN_HORS_PERIMETRE.read_text(encoding="utf-8"))
     res_hp = [dict(evaluer_cas(c, refs, v_tb, v_commun, v_tb_v1), theme=c["theme"]) for c in golden_hp["cases"]]
-    rap = rapport(golden, res, args.date, golden_hp, res_hp)
+    golden_l = json.loads(GOLDEN_LIVRABLE.read_text(encoding="utf-8"))
+    v_rapport = _validateur(SCHEMA_RAPPORT)
+    livrable = bloc_livrable(golden_l, [evaluer_cas_livrable(c, refs, v_rapport) for c in golden_l["cases"]])
+    rap = rapport(golden, res, args.date, golden_hp, res_hp, livrable)
     nom = "baseline" if args.baseline else f"eval_{args.date}"
     sortie = RESULTS_DIR
     sortie.mkdir(exist_ok=True)
@@ -485,11 +688,21 @@ def main(argv=None) -> int:
         f"(seuil {100 * SEUIL_HORS_PERIMETRE:.0f} % : {'atteint' if hp['seuil_atteint'] else 'NON ATTEINT'}), "
         f"faux montants : {hp['metriques']['faux_montants_total']}, échecs : {hp['echecs'] or 'aucun'}"
     )
+    ml = livrable["metriques"]
+    print(
+        f"Livrable : {ml['cas']} cas, {ml['cas_corrects']['n']} corrects, faux montants : {ml['faux_montants']}, "
+        f"exceptions : {ml['exceptions_inattendues']}, échecs : {livrable['echecs'] or 'aucun'}"
+    )
     ecarts = None
+    ecarts_l: list[dict] = []
     if not args.baseline:
         if BASELINE.is_file():
-            base = json.loads(BASELINE.read_text(encoding="utf-8"))["metriques"]["ensemble"]
+            base_complete = json.loads(BASELINE.read_text(encoding="utf-8"))
+            base = base_complete["metriques"]["ensemble"]
             ecarts = comparer(base, m)
+            base_l = base_complete.get("livrable", {}).get("metriques")
+            if base_l is not None:
+                ecarts_l = comparer(base_l, ml, SENS_LIVRABLE)
             (sortie / f"{nom}_comparaison.json").write_text(
                 json.dumps(
                     {
@@ -498,6 +711,8 @@ def main(argv=None) -> int:
                         "cas": m["cas"],
                         "ecarts": ecarts,
                         "baisses": baisses(ecarts),
+                        "ecarts_livrable": ecarts_l,
+                        "baisses_livrable": baisses(ecarts_l),
                         "seuil_baisses": SEUIL_BAISSES,
                     },
                     ensure_ascii=False,
@@ -509,9 +724,14 @@ def main(argv=None) -> int:
                 newline="\n",
             )
             print(texte_comparaison(ecarts, base.get("cas"), m["cas"]))
+            if base_l is not None:
+                print("Livrable : " + texte_comparaison(ecarts_l, base_l.get("cas"), ml["cas"]))
         else:
             print(f"Aucune baseline ({BASELINE.name}) : comparaison impossible.")
-    return code_sortie(m, ecarts, hp["metriques"])
+    code = code_sortie(m, ecarts, hp["metriques"], ml)
+    if code == 0 and len(baisses(ecarts or [])) + len(baisses(ecarts_l)) >= SEUIL_BAISSES:
+        code = CODE_REGRESSION
+    return code
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ evaluation/
   README.md                                ce fichier
   golden_sets/track_b_golden.v0.json       472 cas, valeurs attendues lues dans les PDF
   golden_sets/track_b_hors_perimetre.v0.json  48 cas hors périmètre (refus attendus, D110)
+  golden_sets/track_b_livrable.v0.json     12 cas du rapport de conformité (D108, D109), évalués à part
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
   results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
   results/eval_<date>.json, .md            rapports des relances (ignorés par git)
@@ -108,8 +109,8 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   (`message_fr_contient`) / cas hors périmètre ; affichée, comparée à la baseline, **seuil 85 %**
   (cahier des charges §8.4).
 - Code de sortie :
-  - **1** s'il y a au moins un faux montant ou une exception (jeu principal ou
-    tranche hors périmètre) ;
+  - **1** s'il y a au moins un faux montant ou une exception (jeu principal,
+    tranche hors périmètre ou livrable) ;
   - **2** sinon, si **au moins deux métriques baissent** par rapport à la
     baseline (règle de régression : le changement est bloqué) ;
   - **3** sinon, si `taux_refus_hors_perimetre` est sous 85 % ;
@@ -120,6 +121,26 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
 - Le banc lui-même est testé : `../tests/test_run_eval.py` (verdicts,
   métriques, comparaison, codes de sortie, et relance complète identique à la
   baseline versionnée).
+
+## Jeu du livrable : rapport de conformité (D108, D109)
+
+`golden_sets/track_b_livrable.v0.json` : 12 cas de l'opération `rapport_conformite` (contrat v1), tous à
+`verification_humaine: true` (vérifiés par DS5 sur les images des PDF, D108). Ils sont évalués à part, dans le bloc
+`livrable` du rapport ; les métriques de l'ensemble ne changent pas.
+
+- **Attendu** : pour chaque ligne du rapport, dans l'ordre, `rubrique`, `code`, `statut`, `montant_convention`,
+  `unite`, `difference`, code du `motif` et citations (PDF, page) ; puis la liste des documents manquants et le
+  drapeau `aucune_ligne_verifiee`. Un refus attendu donne son code.
+- **Montants attendus** : relus sur le PDF (couche texte, ou image rendue à 110 dpi), ou repris d'un cas déjà
+  vérifié par DS5 (TB-05, TB-17). `justification.montants` dit où chacun a été lu.
+- **Verdicts** : `correct`, `faux_montant` (montant de convention, unité ou différence différents, ou montant donné
+  là où l'attendu n'en a pas), `lignes_differentes`, `statut_ligne_incorrect`, `documents_incorrects`, puis ceux du
+  jeu principal (`montant_au_lieu_de_refus`, `silence_excessif`, `code_refus_incorrect`, `statut_erreur`,
+  `exception_inattendue`).
+- **Métriques** : cas corrects, lignes correctes, faux montants (lignes), statuts incorrects, refus corrects,
+  citations valides, conformité au schéma de réponse du rapport, erreurs et exceptions. Elles sont comparées au bloc
+  `livrable` de la baseline ; un faux montant du livrable donne aussi le code de sortie 1, et les baisses du livrable
+  comptent avec celles de l'ensemble pour la règle des deux baisses.
 
 ## Limites
 
