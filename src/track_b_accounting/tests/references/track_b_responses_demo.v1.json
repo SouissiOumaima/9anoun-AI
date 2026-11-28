@@ -1456,5 +1456,179 @@
     ],
     "refus": null,
     "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-37-electricite-execution-48h-e11-degre-15",
+    "status": "ok",
+    "result": {
+      "montant": "1320.776",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "ELECTRICITE_ELECTRONIQUE",
+        "population": "execution_48h",
+        "categorie": "E11",
+        "degre": 15,
+        "degre_imprime": "15",
+        "degre_declare": true,
+        "libelle_degre": "28-30",
+        "regle_au_dela_non_appliquee": "article 18 أ, page 9",
+        "hypotheses": [
+          "Unité non imprimée sur la grille : TND/mois en hypothèse ; chaque tableau imprime sa base mensuelle (« قاعدة 173,33 ساعة في الشهر » pour 40 heures, « قاعدة 208 ساعة » pour 48 heures, pages 26 à 37).",
+          "Régime choisi par la population : article 28 (جديد) (page 11), 40 heures par semaine dans l'industrie, 48 heures dans le commerce et les services. Les gardiens (56 et 64 heures) et les chauffeurs (temps de présence) n'ont pas de tableau pour leur régime : ils ne sont pas couverts par ces tables.",
+          "Les indices (« الرقم القياسي ») imprimés au-dessus de chaque salaire ne sont pas transcrits : ils ont servi seulement à contrôler la lecture.",
+          "Passage dans la catégorie suivante au dernier degré (article 18 أ, page 9) : non calculé.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 30 ans ; au-delà, la convention ne fixe pas le montant (article 18 أ, page 9). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول: الدينار في الشهر على سبيل الافتراض؛ يذكر كل جدول قاعدته الشهرية («قاعدة 173,33 ساعة في الشهر» لنظام 40 ساعة و«قاعدة 208 ساعة» لنظام 48 ساعة، الصفحات من 26 إلى 37).",
+          "يُختار النظام حسب الفئة: الفصل 28 (جديد) (الصفحة 11)، 40 ساعة في الأسبوع في الصناعة و48 ساعة في التجارة والخدمات. لا يوجد جدول لنظام الحراس (56 و64 ساعة) ولا للسواق (وقت الحضور): لا تشملهم هذه الجداول.",
+          "لا تُنقل الأرقام القياسية المطبوعة فوق كل أجر: استُعملت فقط لمراقبة القراءة.",
+          "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 18 أ، الصفحة 9).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 30 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 18 أ، الصفحة 9). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "ELEC_EXECUTION_48H_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الكهرباء و الالكترونيك.pdf",
+        "page": 36,
+        "article": null,
+        "data_file": "data/processed/salary_grids/electricite_electronique.json",
+        "decision_ref": "D97"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-38-electricite-degre-7-trait-blanc",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie M2, degré 7 (tableau n° 8, en vigueur à partir du 2023-01-01, page 33) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1080.?56', '1080.?56'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+      "message_ar": "أجر أعوان التسيير والإطارات (نظام 48 ساعة)، الصنف M2، الدرجة 7 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2023-01-01، الصفحة 33): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-39-presse-mensuels-83-degre-28",
+    "status": "ok",
+    "result": {
+      "montant": "2126.557",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "PRESSE_ECRITE",
+        "population": "mensuels",
+        "categorie": "83",
+        "degre": 28,
+        "degre_imprime": "28",
+        "degre_declare": true,
+        "libelle_degre": "27-28",
+        "regle_au_dela_non_appliquee": "article 11 (جديد), page 9",
+        "hypotheses": [
+          "Réduction de six mois de la durée au mérite et passage à l'échelle supérieure après quatre ans (article 11 (جديد), page 9) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 28 ans ; au-delà, la convention ne fixe pas le montant (article 11 (جديد), page 9). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "لا يُحتسب تقليص المدة بستة أشهر حسب الجدارة ولا الانتقال إلى السلم الأعلى بعد أربع سنوات (الفصل 11 (جديد)، الصفحة 9).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 28 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 11 (جديد)، الصفحة 9). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "PRESSE_MENSUELS_2024-01-01",
+        "effective_date": "2024-01-01",
+        "date_calcul": "2024-06-01",
+        "regime_hebdomadaire_heures": 40,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/مؤسسات الصحافة المكتوبة.pdf",
+        "page": 35,
+        "article": null,
+        "data_file": "data/processed/salary_grids/presse_ecrite.json",
+        "decision_ref": "D98"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-40-lait-administratifs-x-b-degre-14",
+    "status": "ok",
+    "result": {
+      "montant": "1793.245",
+      "unite": "TND/mois",
+      "detail": {
+        "secteur": "INDUSTRIE_LAITIERE",
+        "population": "services_administratifs",
+        "categorie": "X_b",
+        "degre": 14,
+        "degre_imprime": "14",
+        "degre_declare": true,
+        "anciennete_imprimee": "23",
+        "libelle_degre": "22-23",
+        "regle_au_dela_non_appliquee": "article 13 ب, page 8",
+        "hypotheses": [
+          "Unité non imprimée sur la grille (page 25) : TND/mois en hypothèse (montants de tableau n° 6).",
+          "Montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas.",
+          "Promotion automatique à la sous-catégorie supérieure après un an au degré 14 (article 13 ب, page 8) et reclassement de l'article 51 (page 17) : non calculés.",
+          "Degré déclaré par l'utilisateur, non vérifié : aucune ancienneté n'a été contrôlée.",
+          "Ancienneté imprimée pour ce degré dans la grille (page 25) : « 23 ».",
+          "Dernier degré : par l'ancienneté, la grille n'est servie que jusqu'à moins de 23 ans ; au-delà, la convention ne fixe pas le montant (article 13 ب, page 8). Cette règle n'est pas appliquée : le montant servi est celui imprimé pour le degré déclaré."
+        ],
+        "hypotheses_ar": [
+          "الوحدة غير مطبوعة بالجدول (الصفحة 25): الدينار في الشهر على سبيل الافتراض (مبالغ من tableau n° 6).",
+          "مبالغ الاتفاقية السارية في تاريخ نفاذ الجدول المعتمد؛ قد يكون الأجر الأدنى المضمون الساري في التاريخ المطلوب أعلى منها، وهو ما لا يقارنه Track B.",
+          "لا تُحتسب الترقية الآلية إلى الصنف الفرعي الأعلى بعد سنة في الدرجة 14 (الفصل 13 ب، الصفحة 8) ولا إعادة الترتيب المنصوص عليها بالفصل 51 (الصفحة 17).",
+          "الدرجة مصرَّح بها من المستخدم ولم يُتحقَّق منها: لم تُراقَب أي أقدمية.",
+          "الأقدمية المطبوعة لهذه الدرجة في الجدول (الصفحة 25): «23».",
+          "آخر درجة: بحساب الأقدمية لا يُعتمد الجدول إلا لأقدمية تقل عن 23 سنة، وبعدها لا تضبط الاتفاقية المبلغ (الفصل 13 ب، الصفحة 8). لا تُطبَّق هذه القاعدة: المبلغ المُرجَع هو المطبوع للدرجة المصرَّح بها."
+        ],
+        "table_id": "LAIT_SERVICES_ADMINISTRATIFS_2019-05-01",
+        "effective_date": "2019-05-01",
+        "date_calcul": "2020-06-01",
+        "regime_hebdomadaire_heures": 48,
+        "regles": "D75"
+      }
+    },
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/صناعة الحليب و مشتقاته.pdf",
+        "page": 25,
+        "article": null,
+        "data_file": "data/processed/salary_grids/industrie_laitiere.json",
+        "decision_ref": "D99"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.calc.salaire_base"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-41-explosifs-cellule-nette-non-servie",
+    "status": "refus",
+    "result": null,
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Salaire des explosifs et artifices, tableau n° 1 (en vigueur à partir du 1er mai 2018, page 43), ligne 3, degré 5 : cellule nette, transcrite pour la trace, non servie : la colonne des catégories est hors du cadre du scan (page 43), la ligne ne peut être rattachée à aucune catégorie (réponse Q4 de l'ARRÊT 1). Aucun montant n'est renvoyé.",
+      "message_ar": "أجر قطاع المفرقعات، جدول الأجور عدد 1 (يقع العمل به بداية من 1 ماي 2018، الصفحة 43)، السطر 3، الدرجة 5: عمود الأصناف خارج إطار المسح الضوئي؛ لا يمكن ربط السطر بأي صنف. لا يُرجَع أي مبلغ."
+    },
+    "computed_by": "track_b_accounting.calc.salaire_base"
   }
 ]

@@ -2516,5 +2516,264 @@
     "operation": "prime",
     "params": {"secteur": "PORTS_CHARGEMENT_DECHARGEMENT", "code": "prime_transport_manutention", "date": "2008-06-01", "groupe": "encadrement"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-358-salaire-electricite-execution-40h-e6",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_40h", "categorie": "E6", "anciennete_annees": 13, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-359-salaire-electricite-cadres-48h-c5",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "maitrise_cadres_48h", "categorie": "C5", "anciennete_annees": 29, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-360-salaire-electricite-execution-48h-date-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_48h", "categorie": "E1", "anciennete_annees": 0.5, "date": "2021-12-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-361-refus-electricite-degre-7-trait-blanc",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_40h", "categorie": "E6", "anciennete_annees": 13, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-362-refus-electricite-cellule-signalee-construction",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_40h", "categorie": "E4", "anciennete_annees": 3, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-363-refus-electricite-30-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "maitrise_cadres_40h", "categorie": "M1", "anciennete_annees": 30, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-364-refus-electricite-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_48h", "categorie": "E2", "anciennete_annees": 5, "date": "2021-11-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-365-prime-transport-electricite-cadres-48h",
+    "operation": "prime",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "code": "prime_transport", "date": "2024-06-01", "groupe": "cadres_48h"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-366-prime-panier-electricite-en-lettres",
+    "operation": "prime",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "code": "prime_panier", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-367-salaire-presse-horaires-11",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "horaires", "categorie": "11", "anciennete_annees": 0.5, "date": "2022-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-368-salaire-presse-mensuels-52",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "mensuels", "categorie": "52", "anciennete_annees": 15.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-369-salaire-presse-mensuels-83-degre-28",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "mensuels", "categorie": "83", "anciennete_annees": 27.5, "date": "2023-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-370-salaire-presse-horaires-42",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "horaires", "categorie": "42", "anciennete_annees": 10.5, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-371-refus-presse-28-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "mensuels", "categorie": "31", "anciennete_annees": 28, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-372-refus-presse-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "horaires", "categorie": "21", "anciennete_annees": 3.5, "date": "2022-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-373-prime-presence-presse-2023",
+    "operation": "prime",
+    "params": {"secteur": "PRESSE_ECRITE", "code": "prime_presence", "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-374-refus-presse-scolaire-deux-versions",
+    "operation": "prime",
+    "params": {"secteur": "PRESSE_ECRITE", "code": "prime_scolaire", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-375-prime-presse-carte-professionnelle",
+    "operation": "prime",
+    "params": {"secteur": "PRESSE_ECRITE", "code": "prime_presse", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-376-prime-cout-particulier-presse-cadres-2022",
+    "operation": "prime",
+    "params": {"secteur": "PRESSE_ECRITE", "code": "prime_cout_particulier", "date": "2022-06-01", "groupe": "cadres"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-377-salaire-lait-maitrise-iii-b",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "maitrise_techniciens", "categorie": "III_b", "anciennete_annees": 5, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-378-salaire-lait-ouvriers-horaire",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "ouvriers", "categorie": "I_a", "anciennete_annees": 0.5, "date": "2019-05-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-379-salaire-lait-administratifs-x-b-dernier-jour",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "services_administratifs", "categorie": "X_b", "anciennete_annees": 22.5, "date": "2021-11-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-380-refus-lait-apres-avenant-16",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "ouvriers", "categorie": "VI_c", "anciennete_annees": 9, "date": "2022-01-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-381-refus-lait-23-ans",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "maitrise_techniciens", "categorie": "I_a", "anciennete_annees": 23, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-382-refus-lait-avant-tableau",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "services_administratifs", "categorie": "I_a", "anciennete_annees": 1, "date": "2019-04-30"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-383-prime-presence-lait-2024",
+    "operation": "prime",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "code": "prime_presence", "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-384-prime-caisse-lait-lettres-et-chiffres",
+    "operation": "prime",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "code": "prime_caisse", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-385-prime-transport-lait-cadres-2023",
+    "operation": "prime",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "code": "prime_transport", "date": "2023-06-01", "groupe": "cadres"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-386-refus-explosifs-salaire-tableau-2",
+    "operation": "salaire_base",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "population": "tableau_2_2019", "categorie": "5", "anciennete_annees": 3, "date": "2022-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-387-refus-explosifs-salaire-tableau-1",
+    "operation": "salaire_base",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "population": "tableau_1_2018", "categorie": "1", "anciennete_annees": 0.5, "date": "2018-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-388-prime-transport-explosifs-2019",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_transport", "date": "2024-06-01", "transport_assure": false},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-389-prime-transport-explosifs-bus-societe",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_transport", "date": "2024-06-01", "transport_assure": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-390-prime-risques-speciaux-explosifs",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_risques_speciaux", "date": "2013-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-391-refus-explosifs-risques-speciaux-avant-2013",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_risques_speciaux", "date": "2013-04-30"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-392-prime-presence-explosifs-2018",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_presence", "date": "2018-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-393-prime-employe-modele-maitrise-explosifs",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_employe_modele_maitrise", "date": "2024-06-01", "condition_remplie": true},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v0",
+    "request_id": "demo-394-refus-explosifs-productivite",
+    "operation": "prime",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "code": "prime_productivite", "date": "2024-06-01"},
+    "lang": "fr"
   }
 ]

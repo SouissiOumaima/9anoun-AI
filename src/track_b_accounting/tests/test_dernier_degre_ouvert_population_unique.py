@@ -71,6 +71,10 @@ SECTEURS = {
     "COMMERCE_MATERIAUX_BOIS_ACIER": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
     "CAFES_RESTAURANTS_BARS": "data/processed/salary_grids/cafes_restaurants_bars.json",
     "PORTS_CHARGEMENT_DECHARGEMENT": "data/processed/salary_grids/ports_chargement_dechargement.json",
+    "ELECTRICITE_ELECTRONIQUE": "data/processed/salary_grids/electricite_electronique.json",
+    "PRESSE_ECRITE": "data/processed/salary_grids/presse_ecrite.json",
+    "INDUSTRIE_LAITIERE": "data/processed/salary_grids/industrie_laitiere.json",
+    "EXPLOSIFS_ARTIFICES": "data/processed/salary_grids/explosifs_artifices.json",
 }
 ASSURANCE_FILE = "data/processed/salary_grids/assurance.json"
 

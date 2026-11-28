@@ -317,6 +317,9 @@ def test_bilan_demo_v1():
         "demo-v1-34-jardins-creches-4-degre-16": ("467.429", "TND/mois"),
         "demo-v1-35-materiaux-horaires-2-degre-12": ("3.209", "TND/heure"),
         "demo-v1-36-location-17-degre-18": ("1761.853", "TND/mois"),
+        "demo-v1-37-electricite-execution-48h-e11-degre-15": ("1320.776", "TND/mois"),
+        "demo-v1-39-presse-mensuels-83-degre-28": ("2126.557", "TND/mois"),
+        "demo-v1-40-lait-administratifs-x-b-degre-14": ("1793.245", "TND/mois"),
     }
     codes = {k: r["refus"]["code"] for k, r in reps.items() if r["status"] == "refus"}
     assert codes == {
@@ -327,6 +330,8 @@ def test_bilan_demo_v1():
         "demo-v1-12-refus-confiserie-cellule-illisible": "SOURCE_MANQUANTE",
         "demo-v1-25-refus-peintures-degre-absent": "PARAM_INVALIDE",
         "demo-v1-33-ports-manutention-cellule-non-tranchee": "SOURCE_MANQUANTE",
+        "demo-v1-38-electricite-degre-7-trait-blanc": "SOURCE_MANQUANTE",
+        "demo-v1-41-explosifs-cellule-nette-non-servie": "SOURCE_MANQUANTE",
     }
 
 
@@ -345,9 +350,9 @@ def test_demo_affiche_la_serie_v1_apres_la_serie_v0():
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 36
-    assert texte.index("Bilan : 202 ok, 155 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/36")
-    assert texte.rstrip().endswith("Bilan v1 : 29 ok, 7 refus, 0 erreur(s).")
+    assert texte.count("=== Contrat v1, démo ") == len(DEMO_V1) == 41
+    assert texte.index("Bilan : 225 ok, 169 refus, 0 erreur(s).") < texte.index("=== Contrat v1, démo 1/41")
+    assert texte.rstrip().endswith("Bilan v1 : 32 ok, 9 refus, 0 erreur(s).")
 
 
 # --- demande par degré : chaque cellule imprimée ----------------------------------------------------------------------
@@ -677,8 +682,8 @@ def test_chemin_par_l_anciennete_affiche_toujours_ces_hypotheses():
 
 
 def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
-    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (89 phrases,
-    45 fichiers), avec leur traduction arabe au même rang."""
+    """chemin_anciennete_seulement désigne exactement les hypothèses de grille « L'ancienneté reçue… » (98 phrases,
+    48 fichiers), avec leur traduction arabe au même rang."""
     fichiers = phrases = 0
     for chemin in loaders.GRILLES.values():
         g = lire_json(chemin)
@@ -690,7 +695,7 @@ def test_indicateur_sur_les_seules_phrases_d_anciennete_recue():
             phrases += len(rangs)
             vu = vu or bool(rangs)
         fichiers += vu
-    assert (fichiers, phrases) == (45, 89)
+    assert (fichiers, phrases) == (48, 98)
 
 
 @pytest.mark.parametrize("rangs", [[], [5], [0, 0], ["1"], [True], "1"])

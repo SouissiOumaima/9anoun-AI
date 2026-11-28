@@ -250,5 +250,40 @@
     "operation": "salaire_base",
     "params": {"secteur": "LOCATION_VOITURES", "categorie": "17", "degre": 18, "date": "2024-06-01"},
     "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-37-electricite-execution-48h-e11-degre-15",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "execution_48h", "categorie": "E11", "degre": 15, "date": "2024-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-38-electricite-degre-7-trait-blanc",
+    "operation": "salaire_base",
+    "params": {"secteur": "ELECTRICITE_ELECTRONIQUE", "population": "maitrise_cadres_48h", "categorie": "M2", "degre": 7, "date": "2023-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-39-presse-mensuels-83-degre-28",
+    "operation": "salaire_base",
+    "params": {"secteur": "PRESSE_ECRITE", "population": "mensuels", "categorie": "83", "degre": 28, "date": "2024-06-01"},
+    "lang": "ar"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-40-lait-administratifs-x-b-degre-14",
+    "operation": "salaire_base",
+    "params": {"secteur": "INDUSTRIE_LAITIERE", "population": "services_administratifs", "categorie": "X_b", "degre": 14, "date": "2020-06-01"},
+    "lang": "fr"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-v1-41-explosifs-cellule-nette-non-servie",
+    "operation": "salaire_base",
+    "params": {"secteur": "EXPLOSIFS_ARTIFICES", "population": "tableau_1_2018", "categorie": "3", "degre": 5, "date": "2018-06-01"},
+    "lang": "fr"
   }
 ]

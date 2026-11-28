@@ -172,7 +172,7 @@ def test_valide_jusqu_au_invalide_refuse_par_le_validateur(modif):
 
 
 # Autres grilles dont une table porte valide_jusqu_au (liste mécanique) : pharmacies, avenant n° 16 sans grille (D85).
-AUTRES_FINS_DE_TABLE = {"PERSONNEL_PHARMACIES"}
+AUTRES_FINS_DE_TABLE = {"PERSONNEL_PHARMACIES", "INDUSTRIE_LAITIERE"}
 
 
 def test_aucune_autre_grille_ne_porte_valide_jusqu_au():

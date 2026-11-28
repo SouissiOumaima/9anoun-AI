@@ -9,7 +9,7 @@ citations (PDF, page, article, entrée de `docs/DECISIONS.md`) ; sans source vé
 src/track_b_accounting/
   calc/                 calculs : salaire_base, prime, smig (aucune donnée saisie ici)
   contract/             interface JSON track_b.v0 et track_b.v1 (D75) : handler (handle) et ligne de commande (cli)
-  demo.py               démo du contrat : 357 échanges v0 puis 36 échanges v1, orchestrateur → Track B → Track A (fictifs)
+  demo.py               démo du contrat : 394 échanges v0 puis 41 échanges v1, orchestrateur → Track B → Track A (fictifs)
   evaluation/           jeu de référence (308 cas lus dans les PDF, dont 18 en v1), banc de mesure et baseline
   tests/                tests unitaires et de bout en bout du module
   tools/                outils de contrôle des PDF et de l'OCR

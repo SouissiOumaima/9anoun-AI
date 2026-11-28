@@ -84,10 +84,14 @@ def test_registre_actuel_identique():
         "COMMERCE_MATERIAUX_BOIS_ACIER": "data/processed/salary_grids/commerce_materiaux_bois_acier.json",
         "CAFES_RESTAURANTS_BARS": "data/processed/salary_grids/cafes_restaurants_bars.json",
         "PORTS_CHARGEMENT_DECHARGEMENT": "data/processed/salary_grids/ports_chargement_dechargement.json",
+        "ELECTRICITE_ELECTRONIQUE": "data/processed/salary_grids/electricite_electronique.json",
+        "PRESSE_ECRITE": "data/processed/salary_grids/presse_ecrite.json",
+        "INDUSTRIE_LAITIERE": "data/processed/salary_grids/industrie_laitiere.json",
+        "EXPLOSIFS_ARTIFICES": "data/processed/salary_grids/explosifs_artifices.json",
     }
     assert (
         list(loaders.GRILLES) == loaders.secteurs_disponibles()
-    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72, D78 à D83, D84 à D89, D91 à D96
+    )  # ordre D4, puis D9, D23, D29, D38, D46, D47, D49 à D54, D55 à D60, D61 à D66, D67 à D72, D78 à D83, D84 à D89, D91 à D96, D97 à D100
     assert loaders.decouvrir_grilles() == loaders.GRILLES
 
 
@@ -122,7 +126,8 @@ def test_fichier_ignore_refuse_comme_secteur_inconnu():
         "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, "
         "PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, "
         "CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, "
-        "JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT)."
+        "JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, "
+        "ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES)."
     )
 
 
