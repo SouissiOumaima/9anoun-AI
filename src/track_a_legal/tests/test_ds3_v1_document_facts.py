@@ -72,9 +72,9 @@ def test_live_conversion_preserves_three_monetary_facts(live_response):
     }
 
     assert values == {
-        "base_salary": "424.100",
-        "gross_salary": "516.100",
-        "cnss_employee": "47.378",
+        "base_salary": "641.013",
+        "gross_salary": "733.013",
+        "cnss_employee": "67.291",
     }
 
     assert all(fact["citation"] for fact in facts)

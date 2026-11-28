@@ -25,7 +25,7 @@
         "file_name": "paie_fictive_01_fr.pdf"
       },
       "attendu": {
-        "issue": "ok",
+        "issue": "partiel",
         "document_type": "fiche_de_paie",
         "fields": {
           "employee_name": "Ahmed Ben Salah",
@@ -38,10 +38,10 @@
           "job_qualification": "Agent administratif",
           "employment_status": "permanent",
           "pay_mode": "mensuel",
-          "work_hours_regime": "48",
-          "base_salary": "424.100",
-          "gross_salary": "516.100",
-          "cnss_employee": "47.378"
+          "work_hours_regime": null,
+          "base_salary": "641.013",
+          "gross_salary": "733.013",
+          "cnss_employee": "67.291"
         },
         "pay_lines": [
           {
@@ -52,7 +52,10 @@
             "label": "Prime de présence",
             "amount": "36.000"
           }
-        ]
+        ],
+        "unreadable": {
+          "work_hours_regime": "valeur_incoherente"
+        }
       },
       "texte_imprime": {
         "employee_name": "Ahmed Ben Salah",
@@ -65,17 +68,17 @@
         "job_qualification": "Agent administratif",
         "employment_status": "Permanent",
         "pay_mode": "Mensuel",
-        "work_hours_regime": "208 h",
-        "base_salary": "424,100",
-        "gross_salary": "516,100",
-        "cnss_employee": "47,378"
+        "work_hours_regime": "42 h/semaine",
+        "base_salary": "641,013",
+        "gross_salary": "733,013",
+        "cnss_employee": "67,291"
       },
       "justification": {
         "document": "paie_fictive_01_fr.pdf",
         "page": 1,
         "emplacement": "en-tête (deux colonnes) et tableau des rubriques"
       },
-      "note": "Cas de base : fiche complète en français, PDF natif, libellés et montants en deux colonnes."
+      "note": "Cas de base : fiche en français, PDF natif, libellés et montants en deux colonnes. Alignée sur la grille METALLURGIE_BATIMENT / admin_tech, catégorie 3 (base 641,013). Régime imprimé 42 h/semaine : work_hours_regime attendu à null (ni 40 ni 48), donc aucun parcours SMIG."
     },
     {
       "id": "DS3-02",
