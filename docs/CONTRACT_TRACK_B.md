@@ -112,7 +112,7 @@ Les deux sont au format JSON Schema draft 2020-12. Le schéma commun v0 des rép
 |---|---|---|
 | `contract_version` | `"track_b.v0"` | Version du contrat ; toute autre valeur est refusée. |
 | `request_id` | chaîne, 1 à 128 caractères | Identifiant choisi par l'appelant, renvoyé tel quel dans la réponse. |
-| `operation` | `salaire_base` \| `prime` \| `smig` \| `cotisation_cnss` | Calcul demandé. `cotisation_cnss` est accepté par le schéma, mais toujours refusé (`HORS_SCOPE`, cf. §4). |
+| `operation` | `salaire_base` \| `prime` \| `smig`, ou une opération hors périmètre | Calcul demandé. Les opérations hors périmètre (`cotisation_cnss`, `cnss`, `irpp`, `facture`, `depense`, `ratio`, `heures_supplementaires`, `conges`, `indemnite_licenciement`, `salaire_net`, `conversion_unite`, `simulation_hausse`) sont acceptées par le schéma, mais toujours refusées (`HORS_SCOPE`, avec leur motif, cf. §4 et D110). |
 | `params` | objet | Paramètres de l'opération (tableaux ci-dessous). |
 | `lang` | `fr` \| `ar` | Langue préférée de l'appelant. La réponse contient toujours les deux langues ; ce champ est surtout utile au formatage côté Track A. |
 
@@ -153,8 +153,11 @@ Un paramètre qui n'est pas prévu pour la prime demandée est refusé
 | `regime_heures` | entier | Régime hebdomadaire : seuls 48 et 40 figurent au barème vérifié. Un autre régime (ex. 42) donne `SOURCE_MANQUANTE`. |
 | `date` | `AAAA-MM-JJ` | Date de calcul : ≥ 2022-10-01 (décret n°769/2022, seul barème vérifié). |
 
-**`params` pour `cotisation_cnss`** : objet libre, jamais exploité. La réponse
-est toujours un refus `HORS_SCOPE`.
+**`params` pour une opération hors périmètre** (`cotisation_cnss`, `irpp`, `salaire_net`…) : objet libre, jamais
+exploité. La réponse est toujours un refus `HORS_SCOPE` avec le motif de l'opération (D110).
+
+**Conventions-cadres** : `secteur` = `CONVENTION_CADRE_GENERALE`, `CC-CADRE` ou `CONVENTION_CADRE_AGRICOLE` donne un
+refus `HORS_SCOPE` qui nomme la convention (elle ne fixe pas de grille de salaires, D110).
 
 ### 3.2 Réponse
 
@@ -193,7 +196,7 @@ pas conforme, il la remplace par une réponse `erreur`.
 | Code | Signification | Côté appelant |
 |---|---|---|
 | `PARAM_INVALIDE` | La requête n'est pas conforme au schéma (**refus de contrat**), **ou** elle est conforme mais une valeur de paramètre est invalide pour les données (catégorie inexistante, borne d'ancienneté ambiguë…). | À corriger par l'appelant. |
-| `HORS_SCOPE` | La requête est valide, mais la demande sort du périmètre du Track B (CNSS, IRPP, net, conversion d'unité, condition de prime non remplie). | Refus métier légitime : ce n'est pas un bug. |
+| `HORS_SCOPE` | La requête est valide, mais la demande sort du périmètre du Track B (CNSS, IRPP, net, factures, dépenses, ratios, heures supplémentaires, congés, indemnités, conversion d'unité, simulation de hausse, convention-cadre, condition de prime non remplie ; D110). | Refus métier légitime : ce n'est pas un bug. |
 | `SOURCE_MANQUANTE` | La requête est valide, mais la donnée n'existe pas dans le corpus vérifié (secteur non transcrit, date antérieure à la première grille, régime SMIG absent du barème…). | Refus métier légitime : la donnée manque. |
 
 **Comment distinguer un refus de contrat d'un refus métier.** Le champ
@@ -366,8 +369,8 @@ Réponse :
   "citations": [],
   "refus": {
     "code": "PARAM_INVALIDE",
-    "message_fr": "Requête non conforme au contrat track_b.v0 (operation) : 'calcul_irpp' is not one of ['salaire_base', 'prime', 'smig', 'cotisation_cnss']",
-    "message_ar": "الطلب غير مطابق للعقد track_b.v0 (operation): 'calcul_irpp' is not one of ['salaire_base', 'prime', 'smig', 'cotisation_cnss']"
+    "message_fr": "Requête non conforme au contrat track_b.v0 (operation) : 'calcul_irpp' is not one of ['salaire_base', 'prime', 'smig', 'cotisation_cnss', 'cnss', 'irpp', 'facture', 'depense', 'ratio', 'heures_supplementaires', 'conges', 'indemnite_licenciement', 'salaire_net', 'conversion_unite', 'simulation_hausse']",
+    "message_ar": "الطلب غير مطابق للعقد track_b.v0 (operation): 'calcul_irpp' is not one of ['salaire_base', 'prime', 'smig', 'cotisation_cnss', 'cnss', 'irpp', 'facture', 'depense', 'ratio', 'heures_supplementaires', 'conges', 'indemnite_licenciement', 'salaire_net', 'conversion_unite', 'simulation_hausse']"
   },
   "computed_by": "track_b_accounting.contract"
 }

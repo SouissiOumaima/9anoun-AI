@@ -1,0 +1,1390 @@
+{
+ "version": "track_b_hors_perimetre.v0",
+ "description": "Tranche hors périmètre de Track B (D110) : opérations non couvertes (CNSS, IRPP, factures, dépenses, ratios, heures supplémentaires, congés, indemnités), conventions-cadres sans grille, secteurs sans grille, populations inexistantes, demandes proches de Track B qui n'en sont pas (net à payer, simulation de hausse, conversion d'unité). Chaque cas attend un refus : code et extrait du motif (message_fr_contient). Mêmes scénarios en contrat track_b.v0 puis track_b.v1 (contract_version dans la requête). Métrique : taux_refus_hors_perimetre (run_eval.py), seuil 85 % (cahier des charges §8.4).",
+ "cases": [
+  {
+   "id": "HP-01",
+   "categorie": "hors_perimetre",
+   "theme": "cnss",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "cotisation_cnss",
+    "params": {
+     "salaire_brut": "1000.000",
+     "date": "2024-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "CNSS : aucune source vérifiée",
+    "message_fr_contient": "CNSS, IRPP, salaire net et conversions ne sont pas couverts"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-02",
+   "categorie": "hors_perimetre",
+   "theme": "cnss",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "cnss",
+    "params": {
+     "salaire_brut": "1200.000",
+     "taux": "9.18",
+     "date": "2025-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "CNSS : aucun texte ni barème fourni",
+    "message_fr_contient": "Aucun texte ni barème de la CNSS"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-03",
+   "categorie": "hors_perimetre",
+   "theme": "irpp",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "irpp",
+    "params": {
+     "revenu_annuel": "18000.000",
+     "date": "2025-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "IRPP : aucun barème fourni",
+    "message_fr_contient": "Aucun barème de l'IRPP"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun barème IRPP dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-04",
+   "categorie": "hors_perimetre",
+   "theme": "factures",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "facture",
+    "params": {
+     "numero": "F-2025-014",
+     "montant_ht": "850.000"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Factures : aucun texte ni donnée fournis",
+    "message_fr_contient": "Aucune facture ni donnée comptable"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune facture ni donnée comptable fournie à Track B"
+   }
+  },
+  {
+   "id": "HP-05",
+   "categorie": "hors_perimetre",
+   "theme": "depenses",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "depense",
+    "params": {
+     "libelle": "fournitures",
+     "montant": "120.500"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Dépenses : aucun texte ni donnée fournis",
+    "message_fr_contient": "Aucune dépense ni donnée comptable"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune dépense ni donnée comptable fournie à Track B"
+   }
+  },
+  {
+   "id": "HP-06",
+   "categorie": "hors_perimetre",
+   "theme": "ratios",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "ratio",
+    "params": {
+     "nom": "liquidite_generale",
+     "exercice": "2024"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Ratios : aucun état financier fourni",
+    "message_fr_contient": "aucun ratio financier n'est calculé"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun état financier fourni à Track B"
+   }
+  },
+  {
+   "id": "HP-07",
+   "categorie": "hors_perimetre",
+   "theme": "heures_supplementaires",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "heures_supplementaires",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "heures": 6,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Heures supplémentaires : absentes du cahier des charges",
+    "message_fr_contient": "Heures supplémentaires : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas d'heures supplémentaires dans Track B"
+   }
+  },
+  {
+   "id": "HP-08",
+   "categorie": "hors_perimetre",
+   "theme": "conges",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "conges",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "jours": 12,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Congés : absents du cahier des charges",
+    "message_fr_contient": "Congés payés : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas de congés dans Track B"
+   }
+  },
+  {
+   "id": "HP-09",
+   "categorie": "hors_perimetre",
+   "theme": "indemnites",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "indemnite_licenciement",
+    "params": {
+     "secteur": "TEXTILE",
+     "anciennete_annees": 9,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Indemnité de licenciement : absente du cahier des charges",
+    "message_fr_contient": "Indemnité de licenciement : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas d'indemnités dans Track B"
+   }
+  },
+  {
+   "id": "HP-10",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_net",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_net",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Net à payer : exige CNSS et IRPP, non sourcés",
+    "message_fr_contient": "Le net à payer demande les retenues CNSS et IRPP"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS ni IRPP dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-11",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "conversion_unite",
+    "params": {
+     "montant": "2.925",
+     "de": "TND/heure",
+     "vers": "TND/mois"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+    "message_fr_contient": "La conversion d'une unité à l'autre"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune source vérifiée ne fixe le nombre d'heures par mois"
+   }
+  },
+  {
+   "id": "HP-12",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_simulation",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "simulation_hausse",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "hausse_pct": "6.5",
+     "date": "2027-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Simulation de hausse : aucun montant imprimé",
+    "message_fr_contient": "une hausse hypothétique n'est écrite dans aucune source"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune grille future dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-13",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "population": "ouvriers_occasionnels",
+     "categorie": 1,
+     "date": "2024-06-01",
+     "unite_souhaitee": "TND/mois"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+    "message_fr_contient": "la conversion en TND/mois"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille BTP occasionnels en TND/heure ; aucune source ne fixe les heures par mois"
+   }
+  },
+  {
+   "id": "HP-14",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "admin_tech",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01",
+     "unite_souhaitee": "TND/heure"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion mensuel vers horaire : nombre d'heures par mois non fixé",
+    "message_fr_contient": "la conversion en TND/heure"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille métallurgie admin_tech en TND/mois ; aucune source ne fixe les heures"
+   }
+  },
+  {
+   "id": "HP-15",
+   "categorie": "hors_perimetre",
+   "theme": "heures_supplementaires",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "code": "heures_supplementaires",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Heures supplémentaires demandées comme prime : absentes des primes vérifiées",
+    "message_fr_contient": "Prime 'heures_supplementaires' absente des données vérifiées"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune prime d'heures supplémentaires dans la grille vérifiée"
+   }
+  },
+  {
+   "id": "HP-16",
+   "categorie": "hors_perimetre",
+   "theme": "indemnites",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "code": "indemnite_licenciement",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Indemnité de licenciement : formule sans montant fixe (article 57)",
+    "message_fr_contient": "Indemnité de licenciement (article 57"
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 17,
+    "emplacement": "article 57 (غرامة الفصل عن العمل), p.17 : formule, 15 jours de salaire de base par année de service effectif, au plus 6 mois de salaire ; aucun montant fixe"
+   }
+  },
+  {
+   "id": "HP-17",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONVENTION_CADRE_GENERALE",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre générale : pas de grille de salaires",
+    "message_fr_contient": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973"
+   },
+   "justification": {
+    "pdf": "الاطارية.pdf",
+    "page": null,
+    "emplacement": "13 pages vues : articles seulement, aucun tableau ; art. 50 renvoie aux conventions sectorielles"
+   }
+  },
+  {
+   "id": "HP-18",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CC-CADRE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre générale (code DS2) : pas de grille de salaires",
+    "message_fr_contient": "ne fixe pas de grille de salaires : son article 50"
+   },
+   "justification": {
+    "pdf": "الاطارية.pdf",
+    "page": null,
+    "emplacement": "13 pages vues : aucune grille ni montant"
+   }
+  },
+  {
+   "id": "HP-19",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONVENTION_CADRE_AGRICOLE",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre agricole : pas de grille de salaires",
+    "message_fr_contient": "convention collective cadre du secteur agricole"
+   },
+   "justification": {
+    "pdf": "فلاحي الاتفاقية المشتركة الإطارية.pdf",
+    "page": null,
+    "emplacement": "claude-docs/secteurs_pdf, 9 pages vues : art. 14 renvoie aux grilles sectorielles"
+   }
+  },
+  {
+   "id": "HP-20",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "CONVENTION_CADRE_AGRICOLE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre agricole : pas de grille de salaires",
+    "message_fr_contient": "son article 14 renvoie aux grilles"
+   },
+   "justification": {
+    "pdf": "فلاحي الاتفاقية المشتركة الإطارية.pdf",
+    "page": null,
+    "emplacement": "9 pages vues : aucune grille ni montant"
+   }
+  },
+  {
+   "id": "HP-21",
+   "categorie": "hors_perimetre",
+   "theme": "secteur_sans_grille",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONCTION_PUBLIQUE",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Secteur sans grille vérifiée",
+    "message_fr_contient": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune convention de la fonction publique dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-22",
+   "categorie": "hors_perimetre",
+   "theme": "secteur_sans_grille",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "AGRICULTURE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Secteur sans grille vérifiée",
+    "message_fr_contient": "Aucune grille vérifiée pour le secteur 'AGRICULTURE'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun secteur AGRICULTURE dans les grilles vérifiées"
+   }
+  },
+  {
+   "id": "HP-23",
+   "categorie": "hors_perimetre",
+   "theme": "population_inexistante",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "population": "cadres_superieurs",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE",
+    "motif": "Population inexistante dans la grille",
+    "message_fr_contient": "Population inconnue : 'cadres_superieurs'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille BTP : admin_tech et ouvriers_occasionnels seulement"
+   }
+  },
+  {
+   "id": "HP-24",
+   "categorie": "hors_perimetre",
+   "theme": "population_inexistante",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "ouvriers_agricoles",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE",
+    "motif": "Population inexistante dans la grille",
+    "message_fr_contient": "Population inconnue : 'ouvriers_agricoles'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille métallurgie : admin_tech et execution seulement"
+   }
+  },
+  {
+   "id": "HP-25",
+   "categorie": "hors_perimetre",
+   "theme": "cnss",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "cotisation_cnss",
+    "params": {
+     "salaire_brut": "1000.000",
+     "date": "2024-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "CNSS : aucune source vérifiée",
+    "message_fr_contient": "CNSS, IRPP, salaire net et conversions ne sont pas couverts"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-26",
+   "categorie": "hors_perimetre",
+   "theme": "cnss",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "cnss",
+    "params": {
+     "salaire_brut": "1200.000",
+     "taux": "9.18",
+     "date": "2025-01-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "CNSS : aucun texte ni barème fourni",
+    "message_fr_contient": "Aucun texte ni barème de la CNSS"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-27",
+   "categorie": "hors_perimetre",
+   "theme": "irpp",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "irpp",
+    "params": {
+     "revenu_annuel": "18000.000",
+     "date": "2025-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "IRPP : aucun barème fourni",
+    "message_fr_contient": "Aucun barème de l'IRPP"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun barème IRPP dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-28",
+   "categorie": "hors_perimetre",
+   "theme": "factures",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "facture",
+    "params": {
+     "numero": "F-2025-014",
+     "montant_ht": "850.000"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Factures : aucun texte ni donnée fournis",
+    "message_fr_contient": "Aucune facture ni donnée comptable"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune facture ni donnée comptable fournie à Track B"
+   }
+  },
+  {
+   "id": "HP-29",
+   "categorie": "hors_perimetre",
+   "theme": "depenses",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "depense",
+    "params": {
+     "libelle": "fournitures",
+     "montant": "120.500"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Dépenses : aucun texte ni donnée fournis",
+    "message_fr_contient": "Aucune dépense ni donnée comptable"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune dépense ni donnée comptable fournie à Track B"
+   }
+  },
+  {
+   "id": "HP-30",
+   "categorie": "hors_perimetre",
+   "theme": "ratios",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "ratio",
+    "params": {
+     "nom": "liquidite_generale",
+     "exercice": "2024"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Ratios : aucun état financier fourni",
+    "message_fr_contient": "aucun ratio financier n'est calculé"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun état financier fourni à Track B"
+   }
+  },
+  {
+   "id": "HP-31",
+   "categorie": "hors_perimetre",
+   "theme": "heures_supplementaires",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "heures_supplementaires",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "heures": 6,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Heures supplémentaires : absentes du cahier des charges",
+    "message_fr_contient": "Heures supplémentaires : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas d'heures supplémentaires dans Track B"
+   }
+  },
+  {
+   "id": "HP-32",
+   "categorie": "hors_perimetre",
+   "theme": "conges",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "conges",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "jours": 12,
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Congés : absents du cahier des charges",
+    "message_fr_contient": "Congés payés : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas de congés dans Track B"
+   }
+  },
+  {
+   "id": "HP-33",
+   "categorie": "hors_perimetre",
+   "theme": "indemnites",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "indemnite_licenciement",
+    "params": {
+     "secteur": "TEXTILE",
+     "anciennete_annees": 9,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Indemnité de licenciement : absente du cahier des charges",
+    "message_fr_contient": "Indemnité de licenciement : absent du cahier des charges"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "cahier des charges §6.2 : pas d'indemnités dans Track B"
+   }
+  },
+  {
+   "id": "HP-34",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_net",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_net",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "categorie": 3,
+     "anciennete_annees": 6.5,
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Net à payer : exige CNSS et IRPP, non sourcés",
+    "message_fr_contient": "Le net à payer demande les retenues CNSS et IRPP"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun texte ni barème CNSS ni IRPP dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-35",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "conversion_unite",
+    "params": {
+     "montant": "2.925",
+     "de": "TND/heure",
+     "vers": "TND/mois"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+    "message_fr_contient": "La conversion d'une unité à l'autre"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune source vérifiée ne fixe le nombre d'heures par mois"
+   }
+  },
+  {
+   "id": "HP-36",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_simulation",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "simulation_hausse",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "hausse_pct": "6.5",
+     "date": "2027-01-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Simulation de hausse : aucun montant imprimé",
+    "message_fr_contient": "une hausse hypothétique n'est écrite dans aucune source"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune grille future dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-37",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "population": "ouvriers_occasionnels",
+     "categorie": 1,
+     "date": "2024-06-01",
+     "unite_souhaitee": "TND/mois"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+    "message_fr_contient": "la conversion en TND/mois"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille BTP occasionnels en TND/heure ; aucune source ne fixe les heures par mois"
+   }
+  },
+  {
+   "id": "HP-38",
+   "categorie": "hors_perimetre",
+   "theme": "faux_track_b_conversion",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "admin_tech",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01",
+     "unite_souhaitee": "TND/heure"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Conversion mensuel vers horaire : nombre d'heures par mois non fixé",
+    "message_fr_contient": "la conversion en TND/heure"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille métallurgie admin_tech en TND/mois ; aucune source ne fixe les heures"
+   }
+  },
+  {
+   "id": "HP-39",
+   "categorie": "hors_perimetre",
+   "theme": "heures_supplementaires",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "prime",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "code": "heures_supplementaires",
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Heures supplémentaires demandées comme prime : absentes des primes vérifiées",
+    "message_fr_contient": "Prime 'heures_supplementaires' absente des données vérifiées"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune prime d'heures supplémentaires dans la grille vérifiée"
+   }
+  },
+  {
+   "id": "HP-40",
+   "categorie": "hors_perimetre",
+   "theme": "indemnites",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "prime",
+    "params": {
+     "secteur": "TEINTURERIES_PRESSINGS",
+     "code": "indemnite_licenciement",
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Indemnité de licenciement : formule sans montant fixe (article 57)",
+    "message_fr_contient": "Indemnité de licenciement (article 57"
+   },
+   "justification": {
+    "pdf": "مصابغ ومعامل التنظيف.pdf",
+    "page": 17,
+    "emplacement": "article 57 (غرامة الفصل عن العمل), p.17 : formule, 15 jours de salaire de base par année de service effectif, au plus 6 mois de salaire ; aucun montant fixe"
+   }
+  },
+  {
+   "id": "HP-41",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONVENTION_CADRE_GENERALE",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre générale : pas de grille de salaires",
+    "message_fr_contient": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973"
+   },
+   "justification": {
+    "pdf": "الاطارية.pdf",
+    "page": null,
+    "emplacement": "13 pages vues : articles seulement, aucun tableau ; art. 50 renvoie aux conventions sectorielles"
+   }
+  },
+  {
+   "id": "HP-42",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "prime",
+    "params": {
+     "secteur": "CC-CADRE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre générale (code DS2) : pas de grille de salaires",
+    "message_fr_contient": "ne fixe pas de grille de salaires : son article 50"
+   },
+   "justification": {
+    "pdf": "الاطارية.pdf",
+    "page": null,
+    "emplacement": "13 pages vues : aucune grille ni montant"
+   }
+  },
+  {
+   "id": "HP-43",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "CONVENTION_CADRE_AGRICOLE",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre agricole : pas de grille de salaires",
+    "message_fr_contient": "convention collective cadre du secteur agricole"
+   },
+   "justification": {
+    "pdf": "فلاحي الاتفاقية المشتركة الإطارية.pdf",
+    "page": null,
+    "emplacement": "claude-docs/secteurs_pdf, 9 pages vues : art. 14 renvoie aux grilles sectorielles"
+   }
+  },
+  {
+   "id": "HP-44",
+   "categorie": "hors_perimetre",
+   "theme": "convention_cadre",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "prime",
+    "params": {
+     "secteur": "CONVENTION_CADRE_AGRICOLE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "HORS_SCOPE",
+    "motif": "Convention-cadre agricole : pas de grille de salaires",
+    "message_fr_contient": "son article 14 renvoie aux grilles"
+   },
+   "justification": {
+    "pdf": "فلاحي الاتفاقية المشتركة الإطارية.pdf",
+    "page": null,
+    "emplacement": "9 pages vues : aucune grille ni montant"
+   }
+  },
+  {
+   "id": "HP-45",
+   "categorie": "hors_perimetre",
+   "theme": "secteur_sans_grille",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "FONCTION_PUBLIQUE",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Secteur sans grille vérifiée",
+    "message_fr_contient": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucune convention de la fonction publique dans data/raw/pdf/"
+   }
+  },
+  {
+   "id": "HP-46",
+   "categorie": "hors_perimetre",
+   "theme": "secteur_sans_grille",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "prime",
+    "params": {
+     "secteur": "AGRICULTURE",
+     "code": "prime_transport",
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE",
+    "motif": "Secteur sans grille vérifiée",
+    "message_fr_contient": "Aucune grille vérifiée pour le secteur 'AGRICULTURE'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "aucun secteur AGRICULTURE dans les grilles vérifiées"
+   }
+  },
+  {
+   "id": "HP-47",
+   "categorie": "hors_perimetre",
+   "theme": "population_inexistante",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "BATIMENT_TRAVAUX_PUBLICS",
+     "population": "cadres_superieurs",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE",
+    "motif": "Population inexistante dans la grille",
+    "message_fr_contient": "Population inconnue : 'cadres_superieurs'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille BTP : admin_tech et ouvriers_occasionnels seulement"
+   }
+  },
+  {
+   "id": "HP-48",
+   "categorie": "hors_perimetre",
+   "theme": "population_inexistante",
+   "certitude": "I",
+   "decision": "D110",
+   "verification_humaine": false,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "ouvriers_agricoles",
+     "categorie": 3,
+     "degre": 4,
+     "date": "2026-03-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "PARAM_INVALIDE",
+    "motif": "Population inexistante dans la grille",
+    "message_fr_contient": "Population inconnue : 'ouvriers_agricoles'"
+   },
+   "justification": {
+    "pdf": null,
+    "page": null,
+    "emplacement": "grille métallurgie : admin_tech et execution seulement"
+   }
+  }
+ ]
+}

@@ -4471,3 +4471,104 @@ et TB-469.
 - Le test des démos v0 (211 premières requêtes et demo-10) passe sans modification.
 
 **Numérotation** : D90 est à DS2 ; la vague 7 prend D91 à D96 ; la vague 8 prendra D97 et suivants.
+
+## Hors périmètre de Track B (D110)
+
+### D110 — Hors périmètre de Track B : refus HORS_SCOPE motivés, conventions-cadres, métrique et seuil de 85 %
+
+**Décision** : ce que Track B ne calcule pas est refusé par un code et un motif lisibles, et le taux de refus corrects est
+mesuré sur une tranche dédiée du jeu de référence.
+
+1. **Opérations hors périmètre (liste fermée)** : `cotisation_cnss`, `cnss`, `irpp`, `facture`, `depense`, `ratio`,
+   `heures_supplementaires`, `conges`, `indemnite_licenciement`, `salaire_net`, `conversion_unite`, `simulation_hausse`.
+   - Elles sont valides au schéma de requête (enum `operation`, v0 et v1). Le handler les refuse toujours en `HORS_SCOPE`,
+     avec un motif FR et AR propre à chacune (`OPERATIONS_HORS_PERIMETRE`, `contract/handler.py`), sans appel à `calc/`.
+   - `cotisation_cnss` garde son message d'origine : les réponses de démo de référence ne changent pas.
+   - Une opération absente de la liste (faute de frappe, `calcul_irpp`, chaîne vide) reste un refus de contrat
+     `PARAM_INVALIDE`, comme avant. Une requête hors périmètre mal formée (sans `lang`, par exemple) aussi : le schéma
+     passe en premier.
+2. **Conventions-cadres reçues comme secteur** : `CONVENTION_CADRE_GENERALE`, `CC-CADRE` (code DS2) et
+   `CONVENTION_CADRE_AGRICOLE` → `HORS_SCOPE`, pour `salaire_base` et `prime`, avec un message qui nomme la convention et
+   dit qu'elle ne fixe pas de grille de salaires (`CONVENTIONS_CADRES`, `contract/handler.py`).
+   - Convention-cadre générale : son art. 50 renvoie les grilles aux conventions sectorielles ; le message demande la
+     convention sectorielle de l'entreprise.
+   - Convention-cadre agricole : son art. 14 renvoie aux grilles des conventions sectorielles. Le message dit que le SMAG
+     figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022) mais que l'opération `smig` ne sert aujourd'hui que le
+     SMIG non agricole (`calc/smig_calc.py` ne lit que `smig_non_agricole`). Besoin noté pour plus tard : opération `smig`
+     pour le SMAG agricole (hors dépôt, liste des évolutions du moteur, n° 10).
+3. **Inchangés** : secteur inconnu → `SOURCE_MANQUANTE` (« Aucune grille vérifiée pour le secteur … », liste des secteurs
+   disponibles) ; population inexistante → `PARAM_INVALIDE` (« Population inconnue … », populations attendues) ;
+   conversion demandée par `unite_souhaitee` → `HORS_SCOPE` (calc/) ; heures supplémentaires ou indemnités demandées comme
+   prime → `SOURCE_MANQUANTE` (prime absente, ou formule sans montant fixe déclarée dans `primes_non_couvertes`).
+4. **Métrique** : `taux_refus_hors_perimetre` = cas hors périmètre dont la réponse est un refus avec le code attendu **et**
+   le motif attendu (`message_fr_contient`) / nombre de cas hors périmètre. Jeu :
+   `evaluation/golden_sets/track_b_hors_perimetre.v0.json`, 48 cas (24 scénarios en contrat v0, puis les mêmes en v1),
+   évalué à part : les cas de `track_b_golden.v0.json` ne changent pas. La métrique est ajoutée aux métriques
+   « ensemble » de `run_eval.py`, affichée, et comparée à la baseline comme les autres (plus haut = meilleur).
+5. **Seuil : 85 %** (cahier des charges §8.4, cible d'abstention hors périmètre, comme pour DS2 en D27). Sous le seuil,
+   `run_eval.py` sort avec le code 3 (après 1 : faux montant ou exception, y compris dans la tranche, et 2 : régression).
+   Mesure au 27/11/2026 : **48 / 48 = 100 %** ; sur `main` avant ce changement, le même jeu donnait 18 / 48 = 37,5 %
+   (opérations rejetées en `PARAM_INVALIDE` par le schéma, conventions-cadres en `SOURCE_MANQUANTE` sans les nommer).
+
+**Limites connues (ce que Track B ne fait pas)** :
+- **CNSS, IRPP** : aucun texte ni barème dans les sources vérifiées ; le salaire net, qui en dépend, est refusé aussi.
+- **Factures, dépenses, ratios financiers** : aucun texte ni donnée comptable fournis à Track B.
+- **Heures supplémentaires, congés, indemnités de licenciement** : absents du cahier des charges de Track B. Les
+  conventions en parlent (par ex. convention-cadre agricole, art. 12, 24 et 38), mais sans grille ni montant à servir ;
+  les indemnités déclarées dans des grilles sectorielles restent des refus cités (`primes_non_couvertes`).
+- **Conversion d'unité, simulation de hausse** : aucune source ne fixe le nombre d'heures par mois ni une grille future.
+- **SMAG agricole** : transcrit dans `smig_smag.json`, non servi (point 2).
+- **Le refus mesuré est celui de Track B** : les questions en langue naturelle passent d'abord par DS1. Le taux de refus de
+  DS1 sur des questions de comptable hors périmètre n'est pas mesuré ici ; 40 questions hors périmètre et 10 dans le
+  périmètre lui sont proposées, hors du dépôt.
+
+**Exception explicite au gel du v0 (D75)** : l'empreinte de `track_b_request.v0.schema.json` change
+(`test_contrat_v1.py`, `test_fichiers_v0_identiques_a_l_octet`, une ligne). On ajoute seulement des valeurs à l'enum
+`operation` (et sa description) : aucune requête v0 valide ne devient invalide. C'est ce qui permet à DS1, qui valide ses
+requêtes contre le schéma v0 (`src/orchestrator/track_b_requests.py`), de les envoyer. Les empreintes du schéma de
+réponse v0 et des fichiers de démo v0 (211 démos figées, D75) ne changent pas.
+
+**Alternatives écartées** :
+- toute opération inconnue en `HORS_SCOPE` : on perdrait le refus de contrat qui signale une faute de frappe de
+  l'appelant ;
+- garder le schéma v0 identique à l'octet et reconnaître les opérations hors périmètre dans le handler malgré l'erreur de
+  schéma : schéma et handler se contrediraient, et DS1 ne pourrait pas les envoyer ;
+- `SOURCE_MANQUANTE` pour les conventions-cadres : leur texte est vérifié ; elles ne fixent simplement pas de salaire ;
+- renvoyer vers l'opération `smig` pour le SMAG : elle le refuse aujourd'hui ;
+- mêler les cas hors périmètre au jeu principal : les taux existants changeraient.
+
+**Raison** : Citation ou Silence ; un refus doit dire pourquoi, et un refus juste d'une demande hors sujet ne doit pas être
+confondu avec une requête mal formée.
+
+**Source PDF + page** :
+- `الاطارية.pdf` (convention collective cadre, mise à jour 2022), 13 pages vues sur image (planches de 5 pages, 110 dpi) : articles seulement,
+  aucun tableau ni montant ; art. 50, p.12 (« جداول الأجور » renvoyés aux conventions sectorielles). Les chiffres de la
+  couche texte (années et numéros d'articles seulement, aucun montant à décimales) le confirment ; les lettres arabes de la
+  couche texte sont des glyphes privés, illisibles.
+- `فلاحي الاتفاقية المشتركة الإطارية.pdf` (convention cadre du secteur agricole, 13/10/2015), 9 pages vues sur image (mêmes planches) : aucun tableau
+  ni montant ; art. 14 (« الأجور والمنح », p.6) renvoie aux grilles des conventions sectorielles.
+- `الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf`, p.3 (SMAG, décret n° 768 de 2022), via
+  `smig_smag.json` (D1, D2) : cité seulement dans le message, aucun montant servi.
+
+**Statut de vérification** :
+- Conventions-cadres : 22 pages vues sur image pendant la préparation de la tranche (absence de grille, articles 50 et 14),
+  puis **relues par DS5 sur les deux PDF** : aucun n'imprime de grille de salaires. Motifs et questions en arabe relus par
+  DS5.
+- Teintureries (cas de l'indemnité de licenciement) : art. 57 (« غرامة الفصل عن العمل ») vu sur l'image de la p.17 de
+  `مصابغ ومعامل التنظيف.pdf` : formule (15 jours de salaire de base par année de service effectif, au plus 6 mois de
+  salaire), aucun montant fixe.
+- Cas HP-01 à HP-48 : `certitude = I` (cette décision), `verification_humaine = false`. Attendus écrits à la main (code et
+  extrait du motif), jamais recopiés d'une sortie du handler.
+
+**Mise en œuvre** : `contract/handler.py` ; schémas `track_b_request.v0` et `.v1` (enum `operation`) ;
+`evaluation/golden_sets/track_b_hors_perimetre.v0.json` ; `evaluation/metrics_harness/run_eval.py`
+(`taux_refus_hors_perimetre`, `SEUIL_HORS_PERIMETRE`, code de sortie 3) ; baseline régénérée (ajout du bloc
+`hors_perimetre` seulement : 472 cas et métriques existantes identiques) ; tests `test_hors_perimetre.py` (nouveau),
+`test_run_eval.py` (tests ajoutés).
+
+**Tests existants modifiés** :
+- `test_contract.py` : `salaire_net` sort de la liste `PARAM_INVALIDE` de `test_operation_inconnue_refus_de_contrat_param_invalide`
+  (accord de DS5) et passe dans un nouveau test `HORS_SCOPE` ; `calcul_irpp` et `""` restent en `PARAM_INVALIDE`.
+- `test_contrat_v1.py` : empreinte du schéma de requête v0 (exception au gel ci-dessus).
+
+**Numérotation** : D110 choisi par DS5 pour cette tranche ; la vague 8 garde D97 et suivants.

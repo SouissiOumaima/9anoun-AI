@@ -66,7 +66,18 @@ def test_cnss_mal_formee_refusee_par_le_contrat_avant_le_perimetre():
     assert rep["refus"]["code"] == "PARAM_INVALIDE" and "non conforme" in rep["refus"]["message_fr"]
 
 
-@pytest.mark.parametrize("operation", ["calcul_irpp", "salaire_net", ""])
+def test_salaire_net_valide_au_schema_puis_refus_metier_hors_scope():
+    """D110 : salaire_net est dans la liste fermée des opérations hors périmètre (avant : PARAM_INVALIDE)."""
+    req = dict(copy.deepcopy(REQ_OK), operation="salaire_net")
+    assert REQ_V.is_valid(req)
+    rep = valide(handle(req))
+    assert rep["status"] == "refus" and rep["refus"]["code"] == "HORS_SCOPE"
+    assert rep["refus"]["message_fr"].startswith("Opération 'salaire_net' hors du périmètre Track B v0")
+    assert rep["refus"]["message_ar"] and rep["result"] is None and rep["citations"] == []
+    assert rep["computed_by"] == "track_b_accounting.contract"
+
+
+@pytest.mark.parametrize("operation", ["calcul_irpp", ""])
 def test_operation_inconnue_refus_de_contrat_param_invalide(operation):
     req = dict(copy.deepcopy(REQ_OK), operation=operation)
     assert not REQ_V.is_valid(req)

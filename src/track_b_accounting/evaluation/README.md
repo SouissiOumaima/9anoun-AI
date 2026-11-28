@@ -8,6 +8,7 @@ part : DS5 évalue son propre module.
 evaluation/
   README.md                                ce fichier
   golden_sets/track_b_golden.v0.json       472 cas, valeurs attendues lues dans les PDF
+  golden_sets/track_b_hors_perimetre.v0.json  48 cas hors périmètre (refus attendus, D110)
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
   results/baseline.json, baseline.md       rapport de référence (seuls résultats versionnés)
   results/eval_<date>.json, .md            rapports des relances (ignorés par git)
@@ -99,10 +100,19 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   l'écart et le statut (`stable`, `amélioration`, `baisse`, `non comparable`),
   et écrit le même détail dans `results/eval_<date>_comparaison.json`. Une
   métrique en taux est comparée sur son taux, un compteur sur son nombre.
+- **Tranche hors périmètre (D110)** : `golden_sets/track_b_hors_perimetre.v0.json` (CNSS, IRPP,
+  factures, dépenses, ratios, heures supplémentaires, congés, indemnités, conventions-cadres, secteurs
+  sans grille, populations inexistantes, net à payer, simulation de hausse, conversion d'unité ; mêmes
+  scénarios en v0 et en v1) est évaluée à part : les cas du jeu principal ne changent pas. Métrique
+  `taux_refus_hors_perimetre` = refus avec le code attendu **et** le motif attendu
+  (`message_fr_contient`) / cas hors périmètre ; affichée, comparée à la baseline, **seuil 85 %**
+  (cahier des charges §8.4).
 - Code de sortie :
-  - **1** s'il y a au moins un faux montant ou une exception ;
+  - **1** s'il y a au moins un faux montant ou une exception (jeu principal ou
+    tranche hors périmètre) ;
   - **2** sinon, si **au moins deux métriques baissent** par rapport à la
     baseline (règle de régression : le changement est bloqué) ;
+  - **3** sinon, si `taux_refus_hors_perimetre` est sous 85 % ;
   - **0** sinon.
 - `--baseline` réécrit le rapport de référence (`results/baseline.*`) sans
   comparer, à faire seulement quand le golden set ou le module change

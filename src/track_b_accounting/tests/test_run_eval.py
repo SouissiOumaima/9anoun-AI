@@ -250,3 +250,53 @@ def test_mode_baseline_ecrit_sans_comparer(resultats: Path) -> None:
     assert RE.main(["--date", "2026-01-01", "--baseline"]) == 0
     assert (resultats / "baseline.json").is_file() and (resultats / "baseline.md").is_file()
     assert not list(resultats.glob("*_comparaison.json"))
+
+
+# --- Tranche hors périmètre (D110) ------------------------------------------------------------------------------
+
+
+def test_verdict_motif_hors_perimetre_exige_dans_message_fr() -> None:
+    attendu = {"status": "refus", "code": "HORS_SCOPE", "message_fr_contient": "Aucun barème de l'IRPP"}
+    assert RE._verdict(attendu, _refus("HORS_SCOPE", fr="Opération 'irpp' … Aucun barème de l'IRPP …")) == "correct"
+    assert RE._verdict(attendu, _refus("HORS_SCOPE", fr="autre motif")) == "message_refus_incorrect"
+    assert RE._verdict(attendu, _refus("PARAM_INVALIDE")) == "code_refus_incorrect"
+    assert RE._verdict(attendu, _ok()) == "montant_au_lieu_de_refus"
+
+
+def test_taux_refus_hors_perimetre_et_seuil() -> None:
+    res = [_res("correct", "refus", None)] * 17 + [_res("code_refus_incorrect", "refus", None)] * 3
+    t = RE.taux_refus_hors_perimetre(res)
+    assert t == {"n": 17, "sur": 20, "taux": 0.85} and RE._seuil_atteint(t)
+    assert not RE._seuil_atteint(RE.taux_refus_hors_perimetre(res[1:] + res[-1:]))
+    assert not RE._seuil_atteint(RE.taux_refus_hors_perimetre([]))
+    assert RE.SEUIL_HORS_PERIMETRE == 0.85 and RE.SENS_METRIQUES["taux_refus_hors_perimetre"] == 1
+
+
+def test_code_sortie_seuil_hors_perimetre_et_faux_montant_de_la_tranche() -> None:
+    sous_seuil = _ensemble(taux_refus_hors_perimetre={"n": 16, "sur": 20, "taux": 0.8})
+    assert RE.code_sortie(sous_seuil, None) == RE.CODE_SEUIL_HORS_PERIMETRE == 3
+    assert RE.code_sortie(_ensemble(), None, _ensemble(faux_montants_total=1)) == RE.CODE_CRITIQUE
+    ecarts = RE.comparer(_ensemble(), _ensemble(citations_valides={"n": 9, "sur": 10, "taux": 0.9}, statut_erreur=1))
+    assert RE.code_sortie(sous_seuil, ecarts) == RE.CODE_REGRESSION  # la régression passe avant le seuil
+
+
+def test_jeu_hors_perimetre_bien_forme() -> None:
+    golden = json.loads(RE.GOLDEN_HORS_PERIMETRE.read_text(encoding="utf-8"))
+    cas = golden["cases"]
+    assert golden["version"] == "track_b_hors_perimetre.v0" and len(cas) >= 40
+    assert len({c["id"] for c in cas}) == len(cas)
+    versions = [c["requete"].get("contract_version", "track_b.v0") for c in cas]
+    assert versions.count("track_b.v0") == versions.count("track_b.v1") == len(cas) // 2
+    for c in cas:
+        a = c["attendu"]
+        assert c["categorie"] == "hors_perimetre" and c["decision"] == "D110" and c["theme"]
+        assert a["status"] == "refus" and a["code"] in ("HORS_SCOPE", "SOURCE_MANQUANTE", "PARAM_INVALIDE")
+        assert a["motif"] and a["message_fr_contient"]
+
+
+def test_relance_mesure_la_tranche_hors_perimetre(resultats: Path) -> None:
+    base = json.loads(RE.BASELINE.read_text(encoding="utf-8"))
+    hp = base["hors_perimetre"]
+    assert hp["seuil"] == 0.85 and hp["seuil_atteint"] and hp["metriques"]["faux_montants_total"] == 0
+    assert hp["taux_refus_hors_perimetre"] == base["metriques"]["ensemble"]["taux_refus_hors_perimetre"]
+    assert hp["cas"] == len(hp["cas_detail"]) >= 40

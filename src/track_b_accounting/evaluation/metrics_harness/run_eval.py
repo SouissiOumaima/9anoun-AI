@@ -11,9 +11,14 @@ Sortie déterministe : même commit + même --date ⇒ fichiers identiques à l'
 Sans --baseline, les métriques de l'ensemble sont comparées automatiquement à results/baseline.json :
 écart par métrique affiché et écrit dans results/eval_<date>_comparaison.json.
 
+Tranche hors périmètre (D110) : golden_sets/track_b_hors_perimetre.v0.json, évaluée à part (les cas du jeu
+principal ne changent pas). Métrique taux_refus_hors_perimetre = refus corrects (même code, motif attendu présent dans
+message_fr) / cas hors périmètre ; seuil 85 % (cahier des charges §8.4) ; comparée à la baseline comme les autres.
+
 Code de sortie :
-    1 s'il y a au moins un faux montant ou une exception inattendue ;
+    1 s'il y a au moins un faux montant ou une exception inattendue (jeu principal ou hors périmètre) ;
     2 sinon, si au moins deux métriques baissent par rapport à la baseline (règle de régression) ;
+    3 sinon, si taux_refus_hors_perimetre est sous le seuil de 85 % ;
     0 sinon.
 """
 
@@ -37,6 +42,7 @@ from jsonschema import Draft202012Validator  # noqa: E402
 from track_b_accounting.contract import handle  # noqa: E402
 
 GOLDEN = EVAL_DIR / "golden_sets" / "track_b_golden.v0.json"
+GOLDEN_HORS_PERIMETRE = EVAL_DIR / "golden_sets" / "track_b_hors_perimetre.v0.json"
 SCHEMA_TB = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v0.schema.json"
 # Cas dont la requête porte contract_version = track_b.v1 (D75) : réponse validée avec le schéma v1.
 SCHEMA_TB_V1 = REPO_ROOT / "data" / "mock_cards" / "schemas" / "track_b_response.v1.schema.json"
@@ -72,10 +78,12 @@ SENS_METRIQUES = {
     "messages_refus_incorrects": -1,
     "statut_erreur": -1,
     "exceptions_inattendues": -1,
+    "taux_refus_hors_perimetre": 1,
 }
 SEUIL_BAISSES = 2  # nombre de métriques en baisse qui bloque le changement
+SEUIL_HORS_PERIMETRE = 0.85  # taux de refus corrects exigé sur la tranche hors périmètre (cahier des charges §8.4)
 STABLE, AMELIORATION, BAISSE, NON_COMPARABLE = "stable", "amélioration", "baisse", "non comparable"
-CODE_CRITIQUE, CODE_REGRESSION = 1, 2
+CODE_CRITIQUE, CODE_REGRESSION, CODE_SEUIL_HORS_PERIMETRE = 1, 2, 3
 
 
 def _sha256(p: Path) -> str:
@@ -105,6 +113,9 @@ def _verdict(attendu: dict, rep: dict) -> str:
         return CODE_INCORRECT
     # Messages comparés seulement quand le cas les fixe (message_fr, message_ar).
     if any(k in attendu and rep["refus"][k] != attendu[k] for k in ("message_fr", "message_ar")):
+        return MESSAGE_INCORRECT
+    # Tranche hors périmètre (D110) : le motif attendu doit figurer dans le message FR.
+    if "message_fr_contient" in attendu and attendu["message_fr_contient"] not in rep["refus"]["message_fr"]:
         return MESSAGE_INCORRECT
     return CORRECT
 
@@ -224,9 +235,34 @@ def _echec(r: dict) -> bool:
     )
 
 
-def rapport(golden: dict, res: list[dict], date: str) -> dict:
+def taux_refus_hors_perimetre(res_hp: list[dict]) -> dict:
+    """Refus corrects (code et motif attendus) sur les cas hors périmètre."""
+    return _taux(sum(r["verdict"] == CORRECT for r in res_hp), len(res_hp))
+
+
+def rapport(
+    golden: dict, res: list[dict], date: str, golden_hp: dict | None = None, res_hp: list[dict] | None = None
+) -> dict:
     lecture = [r for r in res if r["certitude"] in ("L", "C")]
     verifies = [r for r in res if r["verification_humaine"]]
+    ensemble = metriques(res)
+    extra: dict = {}
+    if golden_hp is not None and res_hp is not None:
+        ensemble["taux_refus_hors_perimetre"] = taux_refus_hors_perimetre(res_hp)
+        extra = {
+            "hors_perimetre": {
+                "fichier": GOLDEN_HORS_PERIMETRE.relative_to(REPO_ROOT).as_posix(),
+                "version": golden_hp["version"],
+                "sha256": _sha256(GOLDEN_HORS_PERIMETRE),
+                "cas": len(res_hp),
+                "seuil": SEUIL_HORS_PERIMETRE,
+                "taux_refus_hors_perimetre": ensemble["taux_refus_hors_perimetre"],
+                "seuil_atteint": _seuil_atteint(ensemble["taux_refus_hors_perimetre"]),
+                "metriques": metriques(res_hp),
+                "echecs": [r["id"] for r in res_hp if _echec(r)],
+                "cas_detail": res_hp,
+            }
+        }
     return {
         "evaluation": "track_b",
         "date": date,
@@ -238,7 +274,7 @@ def rapport(golden: dict, res: list[dict], date: str) -> dict:
             "cas_verifies_par_ds5": len(verifies),
         },
         "metriques": {
-            "ensemble": metriques(res),
+            "ensemble": ensemble,
             "cas_verifies": metriques(verifies),
             "par_certitude": {k: metriques([r for r in res if r["certitude"] == k]) for k in ("L", "C", "I")},
             "par_categorie": {
@@ -249,7 +285,12 @@ def rapport(golden: dict, res: list[dict], date: str) -> dict:
         "erreurs_de_lecture": [r["id"] for r in lecture if _echec(r)],
         "desaccords_interpretation": [r["id"] for r in res if r["certitude"] == "I" and _echec(r)],
         "cas": res,
+        **extra,
     }
+
+
+def _seuil_atteint(t: dict) -> bool:
+    return t["taux"] is not None and t["taux"] >= SEUIL_HORS_PERIMETRE
 
 
 def _ligne_taux(nom: str, t: dict) -> str:
@@ -288,6 +329,31 @@ def markdown(rap: dict) -> str:
             f"| Statut erreur / exceptions | {mm['statut_erreur']} / {mm['exceptions_inattendues']} | |",
             "",
         ]
+    hp = rap.get("hors_perimetre")
+    if hp is not None:
+        t = hp["taux_refus_hors_perimetre"]
+        lignes += [
+            f"## Hors périmètre ({hp['cas']} cas, D110)",
+            "",
+            f"Jeu : `{hp['fichier']}` ({hp['version']}, sha256 `{hp['sha256'][:12]}…`).",
+            "",
+            "| Métrique | Nombre | Taux |",
+            "|---|---|---|",
+            _ligne_taux("Taux de refus hors périmètre (code et motif attendus)", t),
+            _ligne_taux("Montant au lieu d'un refus", hp["metriques"]["montants_au_lieu_de_refus"]),
+            _ligne_taux("Conformité schéma Track B", hp["metriques"]["conformite_schema_track_b"]),
+            "",
+            f"Seuil : {100 * hp['seuil']:.0f} % ; **{'atteint' if hp['seuil_atteint'] else 'non atteint'}**. "
+            f"Échecs : {', '.join(hp['echecs']) or 'aucun'}.",
+            "",
+            "| Cas | Thème | Attendu | Obtenu | Verdict |",
+            "|---|---|---|---|---|",
+        ]
+        for r in hp["cas_detail"]:
+            o = r["obtenu"]
+            obt = o.get("code") or o.get("status") or o.get("exception")
+            lignes.append(f"| {r['id']} | {r['theme']} | {r['attendu']['code']} | {obt} | {r['verdict']} |")
+        lignes.append("")
     lignes += [
         "## Par certitude",
         "",
@@ -355,12 +421,16 @@ def baisses(ecarts: list[dict]) -> list[str]:
     return [e["metrique"] for e in ecarts if e["statut"] == BAISSE]
 
 
-def code_sortie(m: dict, ecarts: list[dict] | None) -> int:
-    """1 : faux montant ou exception ; 2 : au moins SEUIL_BAISSES métriques en baisse ; 0 sinon."""
-    if m["faux_montants_total"] or m["exceptions_inattendues"]:
+def code_sortie(m: dict, ecarts: list[dict] | None, m_hp: dict | None = None) -> int:
+    """1 : faux montant ou exception (m, ou m_hp pour la tranche hors périmètre) ; 2 : au moins SEUIL_BAISSES
+    métriques en baisse ; 3 : taux_refus_hors_perimetre sous SEUIL_HORS_PERIMETRE ; 0 sinon."""
+    if any(x is not None and (x["faux_montants_total"] or x["exceptions_inattendues"]) for x in (m, m_hp)):
         return CODE_CRITIQUE
     if ecarts is not None and len(baisses(ecarts)) >= SEUIL_BAISSES:
         return CODE_REGRESSION
+    t = m.get("taux_refus_hors_perimetre")
+    if isinstance(t, dict) and not _seuil_atteint(t):
+        return CODE_SEUIL_HORS_PERIMETRE
     return 0
 
 
@@ -392,7 +462,9 @@ def main(argv=None) -> int:
     refs = set(re.findall(r"^### (D[0-9]+)\b", DECISIONS.read_text(encoding="utf-8"), flags=re.M))
     v_tb, v_commun, v_tb_v1 = _validateur(SCHEMA_TB), _validateur(SCHEMA_COMMUN), _validateur(SCHEMA_TB_V1)
     res = [evaluer_cas(c, refs, v_tb, v_commun, v_tb_v1) for c in golden["cases"]]
-    rap = rapport(golden, res, args.date)
+    golden_hp = json.loads(GOLDEN_HORS_PERIMETRE.read_text(encoding="utf-8"))
+    res_hp = [dict(evaluer_cas(c, refs, v_tb, v_commun, v_tb_v1), theme=c["theme"]) for c in golden_hp["cases"]]
+    rap = rapport(golden, res, args.date, golden_hp, res_hp)
     nom = "baseline" if args.baseline else f"eval_{args.date}"
     sortie = RESULTS_DIR
     sortie.mkdir(exist_ok=True)
@@ -405,6 +477,13 @@ def main(argv=None) -> int:
         f"{m['cas']} cas, faux montants : {m['faux_montants_total']}, exceptions : {m['exceptions_inattendues']}, "
         f"erreurs de lecture : {rap['erreurs_de_lecture'] or 'aucune'}, "
         f"désaccords d'interprétation : {rap['desaccords_interpretation'] or 'aucun'} -> results/{nom}.json, .md"
+    )
+    hp = rap["hors_perimetre"]
+    t = hp["taux_refus_hors_perimetre"]
+    print(
+        f"Hors périmètre : {t['n']} / {t['sur']} refus corrects, taux_refus_hors_perimetre = {100 * t['taux']:.1f} % "
+        f"(seuil {100 * SEUIL_HORS_PERIMETRE:.0f} % : {'atteint' if hp['seuil_atteint'] else 'NON ATTEINT'}), "
+        f"faux montants : {hp['metriques']['faux_montants_total']}, échecs : {hp['echecs'] or 'aucun'}"
     )
     ecarts = None
     if not args.baseline:
@@ -432,7 +511,7 @@ def main(argv=None) -> int:
             print(texte_comparaison(ecarts, base.get("cas"), m["cas"]))
         else:
             print(f"Aucune baseline ({BASELINE.name}) : comparaison impossible.")
-    return code_sortie(m, ecarts)
+    return code_sortie(m, ecarts, hp["metriques"])
 
 
 if __name__ == "__main__":
