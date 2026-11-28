@@ -62,7 +62,9 @@ def _live(request: dict[str, Any], store: CorpusStore) -> list[dict[str, Any]]:
     else:
         assert source_id is not None and article is not None
         versions = store.find_by_number(source_id, article)  # several texts: all parts
-    return [_to_result(a, store) for group_versions in versions for a in group_versions]
+    # D74: a non-citable document (pointeur) is never returned, so never cited
+    return [_to_result(a, store) for group_versions in versions for a in group_versions
+            if a.get("citable", True)]
 
 
 def _mock(request: dict[str, Any]) -> list[dict[str, Any]]:

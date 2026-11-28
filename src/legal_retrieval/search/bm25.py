@@ -120,6 +120,15 @@ def _sector_ok(article_sector: str | None, wanted: str | None) -> bool:
     return wanted is None or article_sector in (None, wanted)
 
 
+def _citable(store: CorpusStore, group: str) -> bool:
+    """D74: a group with a non-citable document (pointeur) never reaches the results.
+
+    Every result carries a citation (schema v0), so leaving it out is the only way
+    not to cite it. A corpus older than D74 has no `citable` field -> citable.
+    """
+    return all(a.get("citable", True) for a in store.groups[group])
+
+
 def named_sources(question: str) -> list[str]:
     """Sources named in the question ("الاتفاقية الإطارية" -> CC-CADRE), registry keywords."""
     text = normalize_arabic(question)
@@ -138,7 +147,7 @@ def _exact_groups(store: CorpusStore, question: str, sector: str | None) -> list
         for group in sorted(store.groups):
             article = store.groups[group][0]
             if pattern.search(group) and _sector_ok(article.get("sector"), sector) \
-                    and group not in found:
+                    and _citable(store, group) and group not in found:
                 found.append(group)
     named = named_sources(question)
     in_named = [g for g in found if store.groups[g][0]["source_id"] in named]
@@ -153,7 +162,9 @@ def ranked_groups(request: dict[str, Any], store: CorpusStore) -> list[tuple[str
     question, sector = request["query"], request.get("sector")
     ranked = [(g, 1.0) for g in _exact_groups(store, question, sector)]
     index = index_for(store)
-    allowed = {g for g, s in zip(index.groups, index.sectors, strict=True) if _sector_ok(s, sector)}
+    # sector AND citable (D74): BM25, dense and abstention all read this set
+    allowed = {g for g, s in zip(index.groups, index.sectors, strict=True)
+               if _sector_ok(s, sector) and _citable(store, g)}
     query_terms = terms(without_refs(question))
     if not ranked:  # no article number asked: Citation ou Silence on weak AND partial matches
         raw, coverage = index.best_match(query_terms, allowed)
@@ -184,7 +195,8 @@ def top_signals(request: dict[str, Any], store: CorpusStore) -> dict[str, Any]:
     """
     question, sector = request["query"], request.get("sector")
     index = index_for(store)
-    allowed = {g for g, s in zip(index.groups, index.sectors, strict=True) if _sector_ok(s, sector)}
+    allowed = {g for g, s in zip(index.groups, index.sectors, strict=True)
+               if _sector_ok(s, sector) and _citable(store, g)}
     raw, coverage = index.best_match(terms(without_refs(question)), allowed)
     dense = dense_scores(without_refs(question), store, allowed)
     return {"raw": raw, "coverage": coverage,
