@@ -25,3 +25,19 @@ laissée à ses co-owners.
 - Messages échangés avec les autres rôles : JSON Schema versionnés (`src/shared/schemas/`).
 - Dépendances : section **DS3** du `requirements.txt` racine.
 - Règle « Citation ou Silence » : toute réponse factuelle est sourcée, sinon refus explicite.
+
+## Performance des analyses PDF live
+
+Les extractions Gemini réussies sont conservées en mémoire du processus pendant
+5 minutes, avec un maximum de 32 entrées. Une analyse identique évite un nouvel
+appel réseau ; les appels identiques simultanés partagent le même travail.
+Le cache est isolé par organisation, utilisateur, rôle, carte, document et
+référence de stockage, et dépend du texte complet envoyé, du modèle et de la clé
+configurée. Les erreurs ne sont jamais conservées. La lecture du PDF et les
+vérifications des citations sont exécutées à chaque demande ; les confirmations
+utilisateur et résultats DS5 ne sont pas mis en cache.
+
+Définir `DS3_EXTRACTION_CACHE=0` pour forcer les appels Gemini pendant une
+évaluation. Le premier appel reste dépendant de la latence du service distant.
+Les journaux INFO de la pipeline indiquent les durées de lecture et d'extraction
+sans enregistrer le contenu des documents.
