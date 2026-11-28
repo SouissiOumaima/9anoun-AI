@@ -1,0 +1,1591 @@
+[
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-01-fiche01-prime-absente-smig-ecart",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) و",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) هـ",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "convention_ar": "الاتفاقية المشتركة القطاعية للبناء المعدني",
+      "fiche": {
+        "population": "admin_tech",
+        "categorie": "3",
+        "sous_categorie": null,
+        "anciennete_annees": 6.49589,
+        "degre": null,
+        "date": "2026-03-01",
+        "regime_heures": 48,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "non_verifiable",
+          "montant_convention": "641.013",
+          "unite": "TND/mois",
+          "montant_imprime": "424.100",
+          "difference": "-216.913",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 34,
+              "article": null,
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "REGIME_DIFFERENT",
+            "message_fr": "La grille est établie pour 42 h, la fiche indique 48 h ; aucune conversion n'est faite (D6).",
+            "message_ar": "جدول الأجور معدّ لنظام 42 ساعة، وكشف الأجر يذكر 48 ساعة؛ لا يتم أي تحويل (D6)."
+          },
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "56.000",
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "50 (جديد)",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "GROUPE_NON_LU",
+            "message_fr": "Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).",
+            "message_ar": "المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise)."
+          },
+          "observation": null,
+          "documents": [
+            "attestation_classification"
+          ]
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence",
+          "libelle_fr": "Prime de présence",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "7.856",
+          "unite": "TND/mois",
+          "montant_imprime": "36.000",
+          "difference": "28.144",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) و",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime_absente",
+          "code": "prime_logement",
+          "libelle_fr": "Prime de logement",
+          "libelle_ar": "منحة السكن",
+          "statut": "absente_de_la_fiche",
+          "montant_convention": "26.293",
+          "unite": "TND/mois",
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) هـ",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (48 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (48 ساعة)",
+          "statut": "ecart",
+          "montant_convention": "459.264",
+          "unite": "TND/mois",
+          "montant_imprime": "424.100",
+          "difference": "-35.164",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+              "page": 2,
+              "article": "décret gouvernemental n°769 du 2022-10-19",
+              "data_file": "data/processed/smig_smag/smig_smag.json",
+              "decision_ref": "D2"
+            }
+          ],
+          "hypotheses_fr": [
+            "Comparaison faite avec le salaire de base imprimé seul, sans les primes."
+          ],
+          "hypotheses_ar": [
+            "المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie"
+      ],
+      "documents_manquants": [
+        {
+          "document": "attestation_classification",
+          "libelle_fr": "attestation de classification professionnelle (population, catégorie, groupe)",
+          "libelle_ar": "شهادة في التصنيف المهني (الفئة، الصنف، المجموعة)",
+          "raisons_fr": [
+            "Prime de transport : groupe non lu sur la fiche"
+          ],
+          "raisons_ar": [
+            "منحة النقل: المجموعة غير مذكورة في كشف الأجر"
+          ]
+        }
+      ],
+      "bilan": {
+        "conforme": 1,
+        "ecart": 1,
+        "non_verifiable": 2,
+        "absente_de_la_fiche": 1
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : METALLURGIE_BATIMENT\nPopulation : admin_tech\nCatégorie : 3\nAncienneté (années) : 6.49589\nPériode : 2026-03-01\nRégime horaire (h/semaine) : 48\nMode de paie : mensuel\n\n1. Salaire de base : non vérifiable\n   Montant de la convention : 641,013 TND/mois\n   Montant imprimé : 424,100\n   Différence (imprimé − convention) : -216,913\n   Raison : La grille est établie pour 42 h, la fiche indique 48 h ; aucune conversion n'est faite (D6).\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 34 ; décision D4\n2. Prime de transport : non vérifiable\n   Montant imprimé : 56,000\n   Raison : Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 50 (جديد) ; décision D4\n3. Prime de présence : conforme\n   Montant de la convention : 7,856 TND/mois\n   Montant imprimé : 36,000\n   Différence (imprimé − convention) : 28,144\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) و ; décision D4\n4. Prime de logement : absente de la fiche\n   Montant de la convention : 26,293 TND/mois\n   Signalée seulement : la fiche ne permet pas de dire si cette prime est due.\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) هـ ; décision D4\n5. SMIG (48 h, mensuel) : écart\n   Montant de la convention : 459,264 TND/mois\n   Montant imprimé : 424,100\n   Différence (imprimé − convention) : -35,164\n   Hypothèse : Comparaison faite avec le salaire de base imprimé seul, sans les primes.\n   Source : الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf, page 2, décret gouvernemental n°769 du 2022-10-19 ; décision D2\n\nDocuments qui permettraient de conclure :\n- attestation de classification professionnelle (population, catégorie, groupe) — Prime de transport : groupe non lu sur la fiche.\n\nBilan : 1 conforme(s), 1 écart(s), 2 non vérifiable(s), 1 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: METALLURGIE_BATIMENT\nالفئة: admin_tech\nالصنف: 3\nالأقدمية (سنوات): 6.49589\nالفترة: 2026-03-01\nنظام العمل (ساعة في الأسبوع): 48\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: غير قابل للتحقق\n   مبلغ الاتفاقية: 641.013 TND/mois\n   المبلغ المطبوع: 424.100\n   الفارق (المطبوع − الاتفاقية): -216.913\n   السبب: جدول الأجور معدّ لنظام 42 ساعة، وكشف الأجر يذكر 48 ساعة؛ لا يتم أي تحويل (D6).\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 34؛ القرار D4\n2. منحة النقل: غير قابل للتحقق\n   المبلغ المطبوع: 56.000\n   السبب: المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise).\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 50 (جديد)؛ القرار D4\n3. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 7.856 TND/mois\n   المبلغ المطبوع: 36.000\n   الفارق (المطبوع − الاتفاقية): 28.144\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) و؛ القرار D4\n4. منحة السكن: غير مذكورة في كشف الأجر\n   مبلغ الاتفاقية: 26.293 TND/mois\n   للإشارة فقط: لا يسمح كشف الأجر بالقول إن هذه المنحة مستحقة.\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) هـ؛ القرار D4\n5. الأجر الأدنى المضمون (48 ساعة): فارق\n   مبلغ الاتفاقية: 459.264 TND/mois\n   المبلغ المطبوع: 424.100\n   الفارق (المطبوع − الاتفاقية): -35.164\n   فرضية: المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح.\n   المصدر: الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf، الصفحة 2، décret gouvernemental n°769 du 2022-10-19؛ القرار D2\n\nالوثائق التي تسمح بالحسم:\n- شهادة في التصنيف المهني (الفئة، الصنف، المجموعة) — منحة النقل: المجموعة غير مذكورة في كشف الأجر.\n\nالحصيلة: مطابق: 1، فارق: 1، غير قابل للتحقق: 2، غير مذكورة في كشف الأجر: 1.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-02-fiche02-pieges-refus-du-moteur",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) و",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) هـ",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "convention_ar": "الاتفاقية المشتركة القطاعية للبناء المعدني",
+      "fiche": {
+        "population": "execution",
+        "categorie": "2B",
+        "sous_categorie": null,
+        "anciennete_annees": null,
+        "degre": 7,
+        "date": "2024-02-01",
+        "regime_heures": null,
+        "mode_paie": "mensuel"
+      },
+      "origines": {
+        "secteur": "carte",
+        "population": "utilisateur"
+      },
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "1275.000",
+          "difference": null,
+          "citations": [],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "PARAM_INVALIDE",
+            "message_fr": "Catégorie inconnue : '2B' pour execution (attendu : 1, 2, 3, 4, 5, 6, 7).",
+            "message_ar": "صنف غير معروف: '2B' لفئة execution."
+          },
+          "observation": null,
+          "documents": [
+            "attestation_classification",
+            "contrat_de_travail"
+          ]
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "56.000",
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "50 (جديد)",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "GROUPE_NON_LU",
+            "message_fr": "Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).",
+            "message_ar": "المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise)."
+          },
+          "observation": null,
+          "documents": [
+            "attestation_classification"
+          ]
+        },
+        {
+          "rubrique": "prime_absente",
+          "code": "prime_presence",
+          "libelle_fr": "Prime de présence",
+          "libelle_ar": "منحة الحضور",
+          "statut": "absente_de_la_fiche",
+          "montant_convention": "7.856",
+          "unite": "TND/mois",
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) و",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime_absente",
+          "code": "prime_logement",
+          "libelle_fr": "Prime de logement",
+          "libelle_ar": "منحة السكن",
+          "statut": "absente_de_la_fiche",
+          "montant_convention": "26.293",
+          "unite": "TND/mois",
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) هـ",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG",
+          "libelle_ar": "الأجر الأدنى المضمون",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "1275.000",
+          "difference": null,
+          "citations": [],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "CHAMP_ABSENT",
+            "message_fr": "Champ nécessaire non lu : champ « régime horaire » illisible (« 195 h », aucune conversion fixe).",
+            "message_ar": "معطى ضروري غير مقروء: المعطى «نظام العمل الأسبوعي» غير مقروء (« 195 h », aucune conversion fixe)."
+          },
+          "observation": null,
+          "documents": [
+            "contrat_de_travail"
+          ]
+        }
+      ],
+      "champs_manquants": [
+        {
+          "champ": "anciennete_annees",
+          "etat": "illisible",
+          "raison": "date d'entrée « 01/09/19 », année sur deux chiffres"
+        },
+        {
+          "champ": "regime_heures",
+          "etat": "illisible",
+          "raison": "« 195 h », aucune conversion fixe"
+        }
+      ],
+      "documents_fournis": [
+        "fiche_de_paie"
+      ],
+      "documents_manquants": [
+        {
+          "document": "contrat_de_travail",
+          "libelle_fr": "contrat de travail (date d'entrée, régime horaire, mode de paie)",
+          "libelle_ar": "عقد الشغل (تاريخ الانتداب، نظام العمل الأسبوعي، طريقة التأجير)",
+          "raisons_fr": [
+            "champ « ancienneté » illisible (date d'entrée « 01/09/19 », année sur deux chiffres)",
+            "champ « régime horaire » illisible (« 195 h », aucune conversion fixe)",
+            "Salaire de base : valeur refusée par le moteur"
+          ],
+          "raisons_ar": [
+            "المعطى «الأقدمية» غير مقروء (date d'entrée « 01/09/19 », année sur deux chiffres)",
+            "المعطى «نظام العمل الأسبوعي» غير مقروء (« 195 h », aucune conversion fixe)",
+            "الأجر الأساسي: قيمة رفضها المحرك"
+          ]
+        },
+        {
+          "document": "attestation_classification",
+          "libelle_fr": "attestation de classification professionnelle (population, catégorie, groupe)",
+          "libelle_ar": "شهادة في التصنيف المهني (الفئة، الصنف، المجموعة)",
+          "raisons_fr": [
+            "Salaire de base : valeur refusée par le moteur",
+            "Prime de transport : groupe non lu sur la fiche"
+          ],
+          "raisons_ar": [
+            "الأجر الأساسي: قيمة رفضها المحرك",
+            "منحة النقل: المجموعة غير مذكورة في كشف الأجر"
+          ]
+        }
+      ],
+      "bilan": {
+        "conforme": 0,
+        "ecart": 0,
+        "non_verifiable": 3,
+        "absente_de_la_fiche": 2
+      },
+      "aucune_ligne_verifiee": true
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : METALLURGIE_BATIMENT (pris dans la carte du dossier)\nPopulation : execution (déclarée par l'utilisateur)\nCatégorie : 2B\nDegré : 7\nPériode : 2024-02-01\nMode de paie : mensuel\n\nAucune ligne n'a pu être vérifiée : ce rapport indique seulement ce qui manque pour conclure.\n\n1. Salaire de base : non vérifiable\n   Montant imprimé : 1275,000\n   Refus du moteur (PARAM_INVALIDE) : Catégorie inconnue : '2B' pour execution (attendu : 1, 2, 3, 4, 5, 6, 7).\n2. Prime de transport : non vérifiable\n   Montant imprimé : 56,000\n   Raison : Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 50 (جديد) ; décision D4\n3. Prime de présence : absente de la fiche\n   Montant de la convention : 7,856 TND/mois\n   Signalée seulement : la fiche ne permet pas de dire si cette prime est due.\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) و ; décision D4\n4. Prime de logement : absente de la fiche\n   Montant de la convention : 26,293 TND/mois\n   Signalée seulement : la fiche ne permet pas de dire si cette prime est due.\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) هـ ; décision D4\n5. SMIG : non vérifiable\n   Montant imprimé : 1275,000\n   Raison : Champ nécessaire non lu : champ « régime horaire » illisible (« 195 h », aucune conversion fixe).\n\nDocuments qui permettraient de conclure :\n- contrat de travail (date d'entrée, régime horaire, mode de paie) — champ « ancienneté » illisible (date d'entrée « 01/09/19 », année sur deux chiffres) ; champ « régime horaire » illisible (« 195 h », aucune conversion fixe) ; Salaire de base : valeur refusée par le moteur.\n- attestation de classification professionnelle (population, catégorie, groupe) — Salaire de base : valeur refusée par le moteur ; Prime de transport : groupe non lu sur la fiche.\n\nBilan : 0 conforme(s), 0 écart(s), 3 non vérifiable(s), 2 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: METALLURGIE_BATIMENT (مأخوذ من بطاقة الملف)\nالفئة: execution (مصرح به من المستعمل)\nالصنف: 2B\nالدرجة: 7\nالفترة: 2024-02-01\nطريقة التأجير: شهري\n\nلم يتسنّ التحقق من أي سطر: يبيّن هذا التقرير فقط ما ينقص للحسم.\n\n1. الأجر الأساسي: غير قابل للتحقق\n   المبلغ المطبوع: 1275.000\n   رفض المحرك (PARAM_INVALIDE): صنف غير معروف: '2B' لفئة execution.\n2. منحة النقل: غير قابل للتحقق\n   المبلغ المطبوع: 56.000\n   السبب: المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise).\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 50 (جديد)؛ القرار D4\n3. منحة الحضور: غير مذكورة في كشف الأجر\n   مبلغ الاتفاقية: 7.856 TND/mois\n   للإشارة فقط: لا يسمح كشف الأجر بالقول إن هذه المنحة مستحقة.\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) و؛ القرار D4\n4. منحة السكن: غير مذكورة في كشف الأجر\n   مبلغ الاتفاقية: 26.293 TND/mois\n   للإشارة فقط: لا يسمح كشف الأجر بالقول إن هذه المنحة مستحقة.\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) هـ؛ القرار D4\n5. الأجر الأدنى المضمون: غير قابل للتحقق\n   المبلغ المطبوع: 1275.000\n   السبب: معطى ضروري غير مقروء: المعطى «نظام العمل الأسبوعي» غير مقروء (« 195 h », aucune conversion fixe).\n\nالوثائق التي تسمح بالحسم:\n- عقد الشغل (تاريخ الانتداب، نظام العمل الأسبوعي، طريقة التأجير) — المعطى «الأقدمية» غير مقروء (date d'entrée « 01/09/19 », année sur deux chiffres)؛ المعطى «نظام العمل الأسبوعي» غير مقروء (« 195 h », aucune conversion fixe)؛ الأجر الأساسي: قيمة رفضها المحرك.\n- شهادة في التصنيف المهني (الفئة، الصنف، المجموعة) — الأجر الأساسي: قيمة رفضها المحرك؛ منحة النقل: المجموعة غير مذكورة في كشف الأجر.\n\nالحصيلة: مطابق: 0، فارق: 0، غير قابل للتحقق: 3، غير مذكورة في كشف الأجر: 2.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-03-conforme",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "45 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "46 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "AGENCES_VOYAGES",
+      "convention_ar": "الاتفاقية المشتركة القطاعية لوكالات الأسفار",
+      "fiche": {
+        "population": null,
+        "categorie": "5",
+        "sous_categorie": null,
+        "anciennete_annees": 7.5,
+        "degre": null,
+        "date": "2024-06-01",
+        "regime_heures": 48,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "conforme",
+          "montant_convention": "802.891",
+          "unite": "TND/mois",
+          "montant_imprime": "810.000",
+          "difference": "7.109",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 19,
+              "article": null,
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.",
+            "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés."
+          ],
+          "hypotheses_ar": [
+            "الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.",
+            "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16)."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "conforme",
+          "montant_convention": "79.970",
+          "unite": "TND/mois",
+          "montant_imprime": "79.970",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 15,
+              "article": "45 (جديد)",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "Groupe choisi par l'appelant ; la grille (p.18-19) range les catégories 1 à 8 sous « exécution » et « gestion », et les catégories 9 et 10 sous « cadres »."
+          ],
+          "hypotheses_ar": [
+            "يختار الطالب المجموعة؛ ويرتب الجدول (الصفحتان 18 و19) الأصناف من 1 إلى 8 تحت «التنفيذ» و«التسيير» والصنفين 9 و10 تحت «الإطارات»."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence_mensuelle",
+          "libelle_fr": "Prime de présence (part mensuelle fixe)",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "3.607",
+          "unite": "TND/mois",
+          "montant_imprime": "3.607",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 15,
+              "article": "46 (جديد)",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (48 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (48 ساعة)",
+          "statut": "conforme",
+          "montant_convention": "459.264",
+          "unite": "TND/mois",
+          "montant_imprime": "810.000",
+          "difference": "350.736",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+              "page": 2,
+              "article": "décret gouvernemental n°769 du 2022-10-19",
+              "data_file": "data/processed/smig_smag/smig_smag.json",
+              "decision_ref": "D2"
+            }
+          ],
+          "hypotheses_fr": [
+            "Comparaison faite avec le salaire de base imprimé seul, sans les primes."
+          ],
+          "hypotheses_ar": [
+            "المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie",
+        "attestation_classification"
+      ],
+      "documents_manquants": [],
+      "bilan": {
+        "conforme": 4,
+        "ecart": 0,
+        "non_verifiable": 0,
+        "absente_de_la_fiche": 0
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : AGENCES_VOYAGES\nCatégorie : 5\nAncienneté (années) : 7.5\nPériode : 2024-06-01\nRégime horaire (h/semaine) : 48\nMode de paie : mensuel\n\n1. Salaire de base : conforme\n   Montant de la convention : 802,891 TND/mois\n   Montant imprimé : 810,000\n   Différence (imprimé − convention) : 7,109\n   Hypothèse : Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.\n   Hypothèse : L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés.\n   Source : وكالات الاسفار.pdf, page 19 ; décision D50\n2. Prime de transport : conforme\n   Montant de la convention : 79,970 TND/mois\n   Montant imprimé : 79,970\n   Différence (imprimé − convention) : 0,000\n   Hypothèse : Groupe choisi par l'appelant ; la grille (p.18-19) range les catégories 1 à 8 sous « exécution » et « gestion », et les catégories 9 et 10 sous « cadres ».\n   Source : وكالات الاسفار.pdf, page 15, article 45 (جديد) ; décision D50\n3. Prime de présence (part mensuelle fixe) : conforme\n   Montant de la convention : 3,607 TND/mois\n   Montant imprimé : 3,607\n   Différence (imprimé − convention) : 0,000\n   Source : وكالات الاسفار.pdf, page 15, article 46 (جديد) ; décision D50\n4. SMIG (48 h, mensuel) : conforme\n   Montant de la convention : 459,264 TND/mois\n   Montant imprimé : 810,000\n   Différence (imprimé − convention) : 350,736\n   Hypothèse : Comparaison faite avec le salaire de base imprimé seul, sans les primes.\n   Source : الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf, page 2, décret gouvernemental n°769 du 2022-10-19 ; décision D2\n\nAucun document manquant.\n\nBilan : 4 conforme(s), 0 écart(s), 0 non vérifiable(s), 0 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: AGENCES_VOYAGES\nالصنف: 5\nالأقدمية (سنوات): 7.5\nالفترة: 2024-06-01\nنظام العمل (ساعة في الأسبوع): 48\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: مطابق\n   مبلغ الاتفاقية: 802.891 TND/mois\n   المبلغ المطبوع: 810.000\n   الفارق (المطبوع − الاتفاقية): 7.109\n   فرضية: الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.\n   فرضية: الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16).\n   المصدر: وكالات الاسفار.pdf، الصفحة 19؛ القرار D50\n2. منحة النقل: مطابق\n   مبلغ الاتفاقية: 79.970 TND/mois\n   المبلغ المطبوع: 79.970\n   الفارق (المطبوع − الاتفاقية): 0.000\n   فرضية: يختار الطالب المجموعة؛ ويرتب الجدول (الصفحتان 18 و19) الأصناف من 1 إلى 8 تحت «التنفيذ» و«التسيير» والصنفين 9 و10 تحت «الإطارات».\n   المصدر: وكالات الاسفار.pdf، الصفحة 15، الفصل 45 (جديد)؛ القرار D50\n3. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 3.607 TND/mois\n   المبلغ المطبوع: 3.607\n   الفارق (المطبوع − الاتفاقية): 0.000\n   المصدر: وكالات الاسفار.pdf، الصفحة 15، الفصل 46 (جديد)؛ القرار D50\n4. الأجر الأدنى المضمون (48 ساعة): مطابق\n   مبلغ الاتفاقية: 459.264 TND/mois\n   المبلغ المطبوع: 810.000\n   الفارق (المطبوع − الاتفاقية): 350.736\n   فرضية: المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح.\n   المصدر: الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf، الصفحة 2، décret gouvernemental n°769 du 2022-10-19؛ القرار D2\n\nلا توجد وثيقة ناقصة.\n\nالحصيلة: مطابق: 4، فارق: 0، غير قابل للتحقق: 0، غير مذكورة في كشف الأجر: 0.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-04-ecart-de-salaire",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "45 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "46 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "AGENCES_VOYAGES",
+      "convention_ar": "الاتفاقية المشتركة القطاعية لوكالات الأسفار",
+      "fiche": {
+        "population": null,
+        "categorie": "5",
+        "sous_categorie": null,
+        "anciennete_annees": 7.5,
+        "degre": null,
+        "date": "2024-06-01",
+        "regime_heures": 48,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "ecart",
+          "montant_convention": "802.891",
+          "unite": "TND/mois",
+          "montant_imprime": "780.000",
+          "difference": "-22.891",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 19,
+              "article": null,
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.",
+            "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés."
+          ],
+          "hypotheses_ar": [
+            "الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.",
+            "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16)."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "conforme",
+          "montant_convention": "79.970",
+          "unite": "TND/mois",
+          "montant_imprime": "79.970",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 15,
+              "article": "45 (جديد)",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "Groupe choisi par l'appelant ; la grille (p.18-19) range les catégories 1 à 8 sous « exécution » et « gestion », et les catégories 9 et 10 sous « cadres »."
+          ],
+          "hypotheses_ar": [
+            "يختار الطالب المجموعة؛ ويرتب الجدول (الصفحتان 18 و19) الأصناف من 1 إلى 8 تحت «التنفيذ» و«التسيير» والصنفين 9 و10 تحت «الإطارات»."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence_mensuelle",
+          "libelle_fr": "Prime de présence (part mensuelle fixe)",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "3.607",
+          "unite": "TND/mois",
+          "montant_imprime": "3.607",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 15,
+              "article": "46 (جديد)",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (48 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (48 ساعة)",
+          "statut": "conforme",
+          "montant_convention": "459.264",
+          "unite": "TND/mois",
+          "montant_imprime": "780.000",
+          "difference": "320.736",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+              "page": 2,
+              "article": "décret gouvernemental n°769 du 2022-10-19",
+              "data_file": "data/processed/smig_smag/smig_smag.json",
+              "decision_ref": "D2"
+            }
+          ],
+          "hypotheses_fr": [
+            "Comparaison faite avec le salaire de base imprimé seul, sans les primes."
+          ],
+          "hypotheses_ar": [
+            "المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie",
+        "attestation_classification"
+      ],
+      "documents_manquants": [],
+      "bilan": {
+        "conforme": 3,
+        "ecart": 1,
+        "non_verifiable": 0,
+        "absente_de_la_fiche": 0
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : AGENCES_VOYAGES\nCatégorie : 5\nAncienneté (années) : 7.5\nPériode : 2024-06-01\nRégime horaire (h/semaine) : 48\nMode de paie : mensuel\n\n1. Salaire de base : écart\n   Montant de la convention : 802,891 TND/mois\n   Montant imprimé : 780,000\n   Différence (imprimé − convention) : -22,891\n   Hypothèse : Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.\n   Hypothèse : L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés.\n   Source : وكالات الاسفار.pdf, page 19 ; décision D50\n2. Prime de transport : conforme\n   Montant de la convention : 79,970 TND/mois\n   Montant imprimé : 79,970\n   Différence (imprimé − convention) : 0,000\n   Hypothèse : Groupe choisi par l'appelant ; la grille (p.18-19) range les catégories 1 à 8 sous « exécution » et « gestion », et les catégories 9 et 10 sous « cadres ».\n   Source : وكالات الاسفار.pdf, page 15, article 45 (جديد) ; décision D50\n3. Prime de présence (part mensuelle fixe) : conforme\n   Montant de la convention : 3,607 TND/mois\n   Montant imprimé : 3,607\n   Différence (imprimé − convention) : 0,000\n   Source : وكالات الاسفار.pdf, page 15, article 46 (جديد) ; décision D50\n4. SMIG (48 h, mensuel) : conforme\n   Montant de la convention : 459,264 TND/mois\n   Montant imprimé : 780,000\n   Différence (imprimé − convention) : 320,736\n   Hypothèse : Comparaison faite avec le salaire de base imprimé seul, sans les primes.\n   Source : الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf, page 2, décret gouvernemental n°769 du 2022-10-19 ; décision D2\n\nAucun document manquant.\n\nBilan : 3 conforme(s), 1 écart(s), 0 non vérifiable(s), 0 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: AGENCES_VOYAGES\nالصنف: 5\nالأقدمية (سنوات): 7.5\nالفترة: 2024-06-01\nنظام العمل (ساعة في الأسبوع): 48\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: فارق\n   مبلغ الاتفاقية: 802.891 TND/mois\n   المبلغ المطبوع: 780.000\n   الفارق (المطبوع − الاتفاقية): -22.891\n   فرضية: الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.\n   فرضية: الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16).\n   المصدر: وكالات الاسفار.pdf، الصفحة 19؛ القرار D50\n2. منحة النقل: مطابق\n   مبلغ الاتفاقية: 79.970 TND/mois\n   المبلغ المطبوع: 79.970\n   الفارق (المطبوع − الاتفاقية): 0.000\n   فرضية: يختار الطالب المجموعة؛ ويرتب الجدول (الصفحتان 18 و19) الأصناف من 1 إلى 8 تحت «التنفيذ» و«التسيير» والصنفين 9 و10 تحت «الإطارات».\n   المصدر: وكالات الاسفار.pdf، الصفحة 15، الفصل 45 (جديد)؛ القرار D50\n3. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 3.607 TND/mois\n   المبلغ المطبوع: 3.607\n   الفارق (المطبوع − الاتفاقية): 0.000\n   المصدر: وكالات الاسفار.pdf، الصفحة 15، الفصل 46 (جديد)؛ القرار D50\n4. الأجر الأدنى المضمون (48 ساعة): مطابق\n   مبلغ الاتفاقية: 459.264 TND/mois\n   المبلغ المطبوع: 780.000\n   الفارق (المطبوع − الاتفاقية): 320.736\n   فرضية: المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح.\n   المصدر: الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf، الصفحة 2، décret gouvernemental n°769 du 2022-10-19؛ القرار D2\n\nلا توجد وثيقة ناقصة.\n\nالحصيلة: مطابق: 3، فارق: 1، غير قابل للتحقق: 0، غير مذكورة في كشف الأجر: 0.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-05-condition-non-verifiable",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 15,
+        "article": "46 (جديد)",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+        "page": 16,
+        "article": "48-1",
+        "data_file": "data/processed/salary_grids/agences_voyages.json",
+        "decision_ref": "D50"
+      },
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "AGENCES_VOYAGES",
+      "convention_ar": "الاتفاقية المشتركة القطاعية لوكالات الأسفار",
+      "fiche": {
+        "population": null,
+        "categorie": "5",
+        "sous_categorie": null,
+        "anciennete_annees": 7.5,
+        "degre": null,
+        "date": "2024-06-01",
+        "regime_heures": 48,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "conforme",
+          "montant_convention": "802.891",
+          "unite": "TND/mois",
+          "montant_imprime": "810.000",
+          "difference": "7.109",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 19,
+              "article": null,
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.",
+            "L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés."
+          ],
+          "hypotheses_ar": [
+            "الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.",
+            "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16)."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence_mensuelle",
+          "libelle_fr": "Prime de présence (part mensuelle fixe)",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "3.607",
+          "unite": "TND/mois",
+          "montant_imprime": "3.607",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 15,
+              "article": "46 (جديد)",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_risque",
+          "libelle_fr": "Prime de risque",
+          "libelle_ar": "منحة الخطر",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "15.000",
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/وكالات الاسفار.pdf",
+              "page": 16,
+              "article": "48-1",
+              "data_file": "data/processed/salary_grids/agences_voyages.json",
+              "decision_ref": "D50"
+            }
+          ],
+          "hypotheses_fr": [
+            "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+          ],
+          "hypotheses_ar": [
+            "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+          ],
+          "motif": {
+            "code": "CONDITION_NON_VERIFIABLE",
+            "message_fr": "Prime soumise à une condition que la fiche ne permet pas de vérifier : « agent de maintenance ou de nettoyage du dépôt (art. 48-1, p.16) ».",
+            "message_ar": "منحة مشروطة لا يسمح كشف الأجر بالتحقق من شرطها: «agent de maintenance ou de nettoyage du dépôt (art. 48-1, p.16)»."
+          },
+          "observation": null,
+          "documents": [
+            "attestation_employeur_prime"
+          ]
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (48 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (48 ساعة)",
+          "statut": "conforme",
+          "montant_convention": "459.264",
+          "unite": "TND/mois",
+          "montant_imprime": "810.000",
+          "difference": "350.736",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+              "page": 2,
+              "article": "décret gouvernemental n°769 du 2022-10-19",
+              "data_file": "data/processed/smig_smag/smig_smag.json",
+              "decision_ref": "D2"
+            }
+          ],
+          "hypotheses_fr": [
+            "Comparaison faite avec le salaire de base imprimé seul, sans les primes."
+          ],
+          "hypotheses_ar": [
+            "المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie"
+      ],
+      "documents_manquants": [
+        {
+          "document": "attestation_employeur_prime",
+          "libelle_fr": "attestation de l'employeur sur la condition d'octroi de la prime",
+          "libelle_ar": "شهادة من المؤجر في شرط إسناد المنحة",
+          "raisons_fr": [
+            "Prime de risque : condition d'octroi non vérifiable sur la fiche"
+          ],
+          "raisons_ar": [
+            "منحة الخطر: شرط الإسناد غير قابل للتحقق من كشف الأجر"
+          ]
+        }
+      ],
+      "bilan": {
+        "conforme": 3,
+        "ecart": 0,
+        "non_verifiable": 1,
+        "absente_de_la_fiche": 0
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : AGENCES_VOYAGES\nCatégorie : 5\nAncienneté (années) : 7.5\nPériode : 2024-06-01\nRégime horaire (h/semaine) : 48\nMode de paie : mensuel\n\n1. Salaire de base : conforme\n   Montant de la convention : 802,891 TND/mois\n   Montant imprimé : 810,000\n   Différence (imprimé − convention) : 7,109\n   Hypothèse : Degré 13 : la durée de séjour n'est pas imprimée (« - », p.18-19) ; il est servi au-delà de 28 ans. L'article 13 (جديد) (p.8) fait passer l'agent, au terme du degré 13, à la catégorie supérieure au même degré : ce changement de catégorie n'est pas calculé.\n   Hypothèse : L'ancienneté reçue est l'ancienneté de progression déjà établie : les promotions automatiques après 15, 20, 25 et 30 ans (article 13 (جديد), p.8) et le reclassement (article 50, p.16) ne sont pas calculés.\n   Source : وكالات الاسفار.pdf, page 19 ; décision D50\n2. Prime de présence (part mensuelle fixe) : conforme\n   Montant de la convention : 3,607 TND/mois\n   Montant imprimé : 3,607\n   Différence (imprimé − convention) : 0,000\n   Source : وكالات الاسفار.pdf, page 15, article 46 (جديد) ; décision D50\n3. Prime de risque : non vérifiable\n   Montant imprimé : 15,000\n   Raison : Prime soumise à une condition que la fiche ne permet pas de vérifier : « agent de maintenance ou de nettoyage du dépôt (art. 48-1, p.16) ».\n   Hypothèse : La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).\n   Source : وكالات الاسفار.pdf, page 16, article 48-1 ; décision D50\n4. SMIG (48 h, mensuel) : conforme\n   Montant de la convention : 459,264 TND/mois\n   Montant imprimé : 810,000\n   Différence (imprimé − convention) : 350,736\n   Hypothèse : Comparaison faite avec le salaire de base imprimé seul, sans les primes.\n   Source : الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf, page 2, décret gouvernemental n°769 du 2022-10-19 ; décision D2\n\nDocuments qui permettraient de conclure :\n- attestation de l'employeur sur la condition d'octroi de la prime — Prime de risque : condition d'octroi non vérifiable sur la fiche.\n\nBilan : 3 conforme(s), 0 écart(s), 1 non vérifiable(s), 0 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: AGENCES_VOYAGES\nالصنف: 5\nالأقدمية (سنوات): 7.5\nالفترة: 2024-06-01\nنظام العمل (ساعة في الأسبوع): 48\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: مطابق\n   مبلغ الاتفاقية: 802.891 TND/mois\n   المبلغ المطبوع: 810.000\n   الفارق (المطبوع − الاتفاقية): 7.109\n   فرضية: الدرجة 13: لا يذكر الجدول مدة البقاء بها («-»، الصفحتان 18 و19)؛ تُعتمد بعد 28 سنة. وينص الفصل 13 (جديد) (الصفحة 8) على تحول العامل عند الانتهاء من سلم التدرج إلى الصنف المهني الأعلى وبنفس الدرجة: لا يُحتسب هذا التحول.\n   فرضية: الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات الآلية بعد 15 و20 و25 و30 سنة (الفصل 13 (جديد)، الصفحة 8) ولا إعادة الترتيب (الفصل 50، الصفحة 16).\n   المصدر: وكالات الاسفار.pdf، الصفحة 19؛ القرار D50\n2. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 3.607 TND/mois\n   المبلغ المطبوع: 3.607\n   الفارق (المطبوع − الاتفاقية): 0.000\n   المصدر: وكالات الاسفار.pdf، الصفحة 15، الفصل 46 (جديد)؛ القرار D50\n3. منحة الخطر: غير قابل للتحقق\n   المبلغ المطبوع: 15.000\n   السبب: منحة مشروطة لا يسمح كشف الأجر بالتحقق من شرطها: «agent de maintenance ou de nettoyage du dépôt (art. 48-1, p.16)».\n   فرضية: لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).\n   المصدر: وكالات الاسفار.pdf، الصفحة 16، الفصل 48-1؛ القرار D50\n4. الأجر الأدنى المضمون (48 ساعة): مطابق\n   مبلغ الاتفاقية: 459.264 TND/mois\n   المبلغ المطبوع: 810.000\n   الفارق (المطبوع − الاتفاقية): 350.736\n   فرضية: المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح.\n   المصدر: الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf، الصفحة 2، décret gouvernemental n°769 du 2022-10-19؛ القرار D2\n\nالوثائق التي تسمح بالحسم:\n- شهادة من المؤجر في شرط إسناد المنحة — منحة الخطر: شرط الإسناد غير قابل للتحقق من كشف الأجر.\n\nالحصيلة: مطابق: 3، فارق: 0، غير قابل للتحقق: 1، غير مذكورة في كشف الأجر: 0.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-06-smig-non-verifiable",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+        "page": 19,
+        "article": null,
+        "data_file": "data/processed/salary_grids/gestion_dechets.json",
+        "decision_ref": "D64"
+      },
+      {
+        "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+        "page": 12,
+        "article": "38 (جديد)",
+        "data_file": "data/processed/salary_grids/gestion_dechets.json",
+        "decision_ref": "D64"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "GESTION_DECHETS",
+      "convention_ar": "الإتفاقية المشتركة القطاعية للتصرف في النفايات الصلبة والسائلة",
+      "fiche": {
+        "population": null,
+        "categorie": "4",
+        "sous_categorie": null,
+        "anciennete_annees": 3.5,
+        "degre": null,
+        "date": "2024-06-01",
+        "regime_heures": 42,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "conforme",
+          "montant_convention": "841.551",
+          "unite": "TND/mois",
+          "montant_imprime": "850.000",
+          "difference": "8.449",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+              "page": 19,
+              "article": null,
+              "data_file": "data/processed/salary_grids/gestion_dechets.json",
+              "decision_ref": "D64"
+            }
+          ],
+          "hypotheses_fr": [
+            "Unité : les tableaux n'impriment pas l'unité ; les montants (de 628,015 à 2 027,015) sont lus comme des salaires mensuels (TND/mois).",
+            "Degré 11 servi de 24 à 26 ans ; au-delà, refus (article 12 (جديد), page 6, contraire à l'en-tête « +24 »).",
+            "Ligne 8, degré 3 : montant imprimé supérieur aux degrés 2 et 4 sur les quatre tableaux, servi tel qu'imprimé (lu net au zoom à 400 dpi).",
+            "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+          ],
+          "hypotheses_ar": [
+            "الوحدة: لا تذكر الجداول الوحدة؛ تُعتبر المبالغ (من 628,015 إلى 2 027,015) أجورا شهرية (دينار/شهر).",
+            "تُعتمد الدرجة 11 من 24 إلى 26 سنة؛ وبعد ذلك يقع الرفض (الفصل 12 (جديد)، الصفحة 6، المخالف لرأس الجدول «+24»).",
+            "السطر 8، الدرجة 3: المبلغ المطبوع يفوق مبلغي الدرجتين 2 و4 في الجداول الأربعة، ويُرجَع كما هو مطبوع.",
+            "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence",
+          "libelle_fr": "Prime de présence",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "20.210",
+          "unite": "TND/mois",
+          "montant_imprime": "20.210",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+              "page": 12,
+              "article": "38 (جديد)",
+              "data_file": "data/processed/salary_grids/gestion_dechets.json",
+              "decision_ref": "D64"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "conforme",
+          "montant_convention": "62.158",
+          "unite": "TND/mois",
+          "montant_imprime": "62.158",
+          "difference": "0.000",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/التصرف في النفايات الصلبة.pdf",
+              "page": 12,
+              "article": "38 (جديد)",
+              "data_file": "data/processed/salary_grids/gestion_dechets.json",
+              "decision_ref": "D64"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (42 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (42 ساعة)",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "850.000",
+          "difference": null,
+          "citations": [],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "SOURCE_MANQUANTE",
+            "message_fr": "Régime de 42 h absent du barème SMIG (mensuel : [40, 48] h). Aucune interpolation entre régimes n'est écrite dans la source.",
+            "message_ar": "نظام 42 ساعة غير موجود في جدول الأجر الأدنى (mensuel: [40, 48]). لا ينص المصدر على أي احتساب بين الأنظمة."
+          },
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie",
+        "contrat_de_travail"
+      ],
+      "documents_manquants": [],
+      "bilan": {
+        "conforme": 3,
+        "ecart": 0,
+        "non_verifiable": 1,
+        "absente_de_la_fiche": 0
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : GESTION_DECHETS\nCatégorie : 4\nAncienneté (années) : 3.5\nPériode : 2024-06-01\nRégime horaire (h/semaine) : 42\nMode de paie : mensuel\n\n1. Salaire de base : conforme\n   Montant de la convention : 841,551 TND/mois\n   Montant imprimé : 850,000\n   Différence (imprimé − convention) : 8,449\n   Hypothèse : Unité : les tableaux n'impriment pas l'unité ; les montants (de 628,015 à 2 027,015) sont lus comme des salaires mensuels (TND/mois).\n   Hypothèse : Degré 11 servi de 24 à 26 ans ; au-delà, refus (article 12 (جديد), page 6, contraire à l'en-tête « +24 »).\n   Hypothèse : Ligne 8, degré 3 : montant imprimé supérieur aux degrés 2 et 4 sur les quatre tableaux, servi tel qu'imprimé (lu net au zoom à 400 dpi).\n   Hypothèse : L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés.\n   Source : التصرف في النفايات الصلبة.pdf, page 19 ; décision D64\n2. Prime de présence : conforme\n   Montant de la convention : 20,210 TND/mois\n   Montant imprimé : 20,210\n   Différence (imprimé − convention) : 0,000\n   Source : التصرف في النفايات الصلبة.pdf, page 12, article 38 (جديد) ; décision D64\n3. Prime de transport : conforme\n   Montant de la convention : 62,158 TND/mois\n   Montant imprimé : 62,158\n   Différence (imprimé − convention) : 0,000\n   Source : التصرف في النفايات الصلبة.pdf, page 12, article 38 (جديد) ; décision D64\n4. SMIG (42 h, mensuel) : non vérifiable\n   Montant imprimé : 850,000\n   Refus du moteur (SOURCE_MANQUANTE) : Régime de 42 h absent du barème SMIG (mensuel : [40, 48] h). Aucune interpolation entre régimes n'est écrite dans la source.\n\nAucun document manquant.\n\nBilan : 3 conforme(s), 0 écart(s), 1 non vérifiable(s), 0 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: GESTION_DECHETS\nالصنف: 4\nالأقدمية (سنوات): 3.5\nالفترة: 2024-06-01\nنظام العمل (ساعة في الأسبوع): 42\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: مطابق\n   مبلغ الاتفاقية: 841.551 TND/mois\n   المبلغ المطبوع: 850.000\n   الفارق (المطبوع − الاتفاقية): 8.449\n   فرضية: الوحدة: لا تذكر الجداول الوحدة؛ تُعتبر المبالغ (من 628,015 إلى 2 027,015) أجورا شهرية (دينار/شهر).\n   فرضية: تُعتمد الدرجة 11 من 24 إلى 26 سنة؛ وبعد ذلك يقع الرفض (الفصل 12 (جديد)، الصفحة 6، المخالف لرأس الجدول «+24»).\n   فرضية: السطر 8، الدرجة 3: المبلغ المطبوع يفوق مبلغي الدرجتين 2 و4 في الجداول الأربعة، ويُرجَع كما هو مطبوع.\n   فرضية: الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية.\n   المصدر: التصرف في النفايات الصلبة.pdf، الصفحة 19؛ القرار D64\n2. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 20.210 TND/mois\n   المبلغ المطبوع: 20.210\n   الفارق (المطبوع − الاتفاقية): 0.000\n   المصدر: التصرف في النفايات الصلبة.pdf، الصفحة 12، الفصل 38 (جديد)؛ القرار D64\n3. منحة النقل: مطابق\n   مبلغ الاتفاقية: 62.158 TND/mois\n   المبلغ المطبوع: 62.158\n   الفارق (المطبوع − الاتفاقية): 0.000\n   المصدر: التصرف في النفايات الصلبة.pdf، الصفحة 12، الفصل 38 (جديد)؛ القرار D64\n4. الأجر الأدنى المضمون (42 ساعة): غير قابل للتحقق\n   المبلغ المطبوع: 850.000\n   رفض المحرك (SOURCE_MANQUANTE): نظام 42 ساعة غير موجود في جدول الأجر الأدنى (mensuel: [40, 48]). لا ينص المصدر على أي احتساب بين الأنظمة.\n\nلا توجد وثيقة ناقصة.\n\nالحصيلة: مطابق: 3، فارق: 0، غير قابل للتحقق: 1، غير مذكورة في كشف الأجر: 0.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-07-aucune-ligne-verifiee",
+    "status": "ok",
+    "citations": [],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "AGENCES_VOYAGES",
+      "convention_ar": "الاتفاقية المشتركة القطاعية لوكالات الأسفار",
+      "fiche": {
+        "population": null,
+        "categorie": null,
+        "sous_categorie": null,
+        "anciennete_annees": null,
+        "degre": null,
+        "date": null,
+        "regime_heures": null,
+        "mode_paie": null
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "CHAMP_ABSENT",
+            "message_fr": "Champ nécessaire non lu : champ « période » illisible (période effacée) ; champ « catégorie » absent de la fiche.",
+            "message_ar": "معطى ضروري غير مقروء: المعطى «الفترة» غير مقروء (période effacée)؛ المعطى «الصنف» غير موجود في كشف الأجر."
+          },
+          "observation": null,
+          "documents": [
+            "fiche_de_paie_lisible",
+            "attestation_classification"
+          ]
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG",
+          "libelle_ar": "الأجر الأدنى المضمون",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "CHAMP_ABSENT",
+            "message_fr": "Champ nécessaire non lu : champ « période » illisible (période effacée) ; champ « régime horaire » absent de la fiche ; champ « mode de paie » absent de la fiche ; champ « salaire de base imprimé » illisible (montant taché).",
+            "message_ar": "معطى ضروري غير مقروء: المعطى «الفترة» غير مقروء (période effacée)؛ المعطى «نظام العمل الأسبوعي» غير موجود في كشف الأجر؛ المعطى «طريقة التأجير» غير موجود في كشف الأجر؛ المعطى «الأجر الأساسي المطبوع» غير مقروء (montant taché)."
+          },
+          "observation": null,
+          "documents": [
+            "fiche_de_paie_lisible",
+            "contrat_de_travail"
+          ]
+        }
+      ],
+      "champs_manquants": [
+        {
+          "champ": "categorie",
+          "etat": "absent",
+          "raison": null
+        },
+        {
+          "champ": "anciennete_annees",
+          "etat": "absent",
+          "raison": null
+        },
+        {
+          "champ": "date",
+          "etat": "illisible",
+          "raison": "période effacée"
+        },
+        {
+          "champ": "regime_heures",
+          "etat": "absent",
+          "raison": null
+        },
+        {
+          "champ": "mode_paie",
+          "etat": "absent",
+          "raison": null
+        },
+        {
+          "champ": "salaire_base_imprime",
+          "etat": "illisible",
+          "raison": "montant taché"
+        }
+      ],
+      "documents_fournis": [
+        "fiche_de_paie"
+      ],
+      "documents_manquants": [
+        {
+          "document": "attestation_classification",
+          "libelle_fr": "attestation de classification professionnelle (population, catégorie, groupe)",
+          "libelle_ar": "شهادة في التصنيف المهني (الفئة، الصنف، المجموعة)",
+          "raisons_fr": [
+            "champ « catégorie » absent de la fiche"
+          ],
+          "raisons_ar": [
+            "المعطى «الصنف» غير موجود في كشف الأجر"
+          ]
+        },
+        {
+          "document": "contrat_de_travail",
+          "libelle_fr": "contrat de travail (date d'entrée, régime horaire, mode de paie)",
+          "libelle_ar": "عقد الشغل (تاريخ الانتداب، نظام العمل الأسبوعي، طريقة التأجير)",
+          "raisons_fr": [
+            "champ « ancienneté » absent de la fiche",
+            "champ « régime horaire » absent de la fiche",
+            "champ « mode de paie » absent de la fiche"
+          ],
+          "raisons_ar": [
+            "المعطى «الأقدمية» غير موجود في كشف الأجر",
+            "المعطى «نظام العمل الأسبوعي» غير موجود في كشف الأجر",
+            "المعطى «طريقة التأجير» غير موجود في كشف الأجر"
+          ]
+        },
+        {
+          "document": "fiche_de_paie_lisible",
+          "libelle_fr": "copie lisible de la fiche de paie",
+          "libelle_ar": "نسخة مقروءة من كشف الأجر",
+          "raisons_fr": [
+            "champ « période » illisible (période effacée)",
+            "champ « salaire de base imprimé » illisible (montant taché)"
+          ],
+          "raisons_ar": [
+            "المعطى «الفترة» غير مقروء (période effacée)",
+            "المعطى «الأجر الأساسي المطبوع» غير مقروء (montant taché)"
+          ]
+        }
+      ],
+      "bilan": {
+        "conforme": 0,
+        "ecart": 0,
+        "non_verifiable": 2,
+        "absente_de_la_fiche": 0
+      },
+      "aucune_ligne_verifiee": true
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : AGENCES_VOYAGES\n\nAucune ligne n'a pu être vérifiée : ce rapport indique seulement ce qui manque pour conclure.\n\n1. Salaire de base : non vérifiable\n   Raison : Champ nécessaire non lu : champ « période » illisible (période effacée) ; champ « catégorie » absent de la fiche.\n2. SMIG : non vérifiable\n   Raison : Champ nécessaire non lu : champ « période » illisible (période effacée) ; champ « régime horaire » absent de la fiche ; champ « mode de paie » absent de la fiche ; champ « salaire de base imprimé » illisible (montant taché).\n\nDocuments qui permettraient de conclure :\n- attestation de classification professionnelle (population, catégorie, groupe) — champ « catégorie » absent de la fiche.\n- contrat de travail (date d'entrée, régime horaire, mode de paie) — champ « ancienneté » absent de la fiche ; champ « régime horaire » absent de la fiche ; champ « mode de paie » absent de la fiche.\n- copie lisible de la fiche de paie — champ « période » illisible (période effacée) ; champ « salaire de base imprimé » illisible (montant taché).\n\nBilan : 0 conforme(s), 0 écart(s), 2 non vérifiable(s), 0 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: AGENCES_VOYAGES\n\nلم يتسنّ التحقق من أي سطر: يبيّن هذا التقرير فقط ما ينقص للحسم.\n\n1. الأجر الأساسي: غير قابل للتحقق\n   السبب: معطى ضروري غير مقروء: المعطى «الفترة» غير مقروء (période effacée)؛ المعطى «الصنف» غير موجود في كشف الأجر.\n2. الأجر الأدنى المضمون: غير قابل للتحقق\n   السبب: معطى ضروري غير مقروء: المعطى «الفترة» غير مقروء (période effacée)؛ المعطى «نظام العمل الأسبوعي» غير موجود في كشف الأجر؛ المعطى «طريقة التأجير» غير موجود في كشف الأجر؛ المعطى «الأجر الأساسي المطبوع» غير مقروء (montant taché).\n\nالوثائق التي تسمح بالحسم:\n- شهادة في التصنيف المهني (الفئة، الصنف، المجموعة) — المعطى «الصنف» غير موجود في كشف الأجر.\n- عقد الشغل (تاريخ الانتداب، نظام العمل الأسبوعي، طريقة التأجير) — المعطى «الأقدمية» غير موجود في كشف الأجر؛ المعطى «نظام العمل الأسبوعي» غير موجود في كشف الأجر؛ المعطى «طريقة التأجير» غير موجود في كشف الأجر.\n- نسخة مقروءة من كشف الأجر — المعطى «الفترة» غير مقروء (période effacée)؛ المعطى «الأجر الأساسي المطبوع» غير مقروء (montant taché).\n\nالحصيلة: مطابق: 0، فارق: 0، غير قابل للتحقق: 2، غير مذكورة في كشف الأجر: 0.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-08-secteur-inconnu",
+    "status": "refus",
+    "citations": [],
+    "refus": {
+      "code": "SOURCE_MANQUANTE",
+      "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+      "message_ar": "لا يوجد جدول أجور مُتحقَّق منه للقطاع 'SECTEUR_FICTIF_NON_SUPPORTE' (المتوفر: METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT)."
+    },
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": null,
+    "texte_fr": null,
+    "texte_ar": null
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-09-fiche01-degre-imprime-observe",
+    "status": "ok",
+    "citations": [
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34,
+        "article": null,
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "50 (جديد)",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) و",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16,
+        "article": "51 (جديد) هـ",
+        "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+        "decision_ref": "D4"
+      },
+      {
+        "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2,
+        "article": "décret gouvernemental n°769 du 2022-10-19",
+        "data_file": "data/processed/smig_smag/smig_smag.json",
+        "decision_ref": "D2"
+      }
+    ],
+    "refus": null,
+    "computed_by": "track_b_accounting.rapport",
+    "rapport": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "convention_ar": "الاتفاقية المشتركة القطاعية للبناء المعدني",
+      "fiche": {
+        "population": "admin_tech",
+        "categorie": "3",
+        "sous_categorie": null,
+        "anciennete_annees": 6.49589,
+        "degre": 2,
+        "date": "2026-03-01",
+        "regime_heures": 48,
+        "mode_paie": "mensuel"
+      },
+      "origines": {},
+      "lignes": [
+        {
+          "rubrique": "salaire_base",
+          "code": null,
+          "libelle_fr": "Salaire de base",
+          "libelle_ar": "الأجر الأساسي",
+          "statut": "non_verifiable",
+          "montant_convention": "641.013",
+          "unite": "TND/mois",
+          "montant_imprime": "424.100",
+          "difference": "-216.913",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 34,
+              "article": null,
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "REGIME_DIFFERENT",
+            "message_fr": "La grille est établie pour 42 h, la fiche indique 48 h ; aucune conversion n'est faite (D6).",
+            "message_ar": "جدول الأجور معدّ لنظام 42 ساعة، وكشف الأجر يذكر 48 ساعة؛ لا يتم أي تحويل (D6)."
+          },
+          "observation": {
+            "degre_imprime": "2",
+            "degre_deduit": "4",
+            "message_fr": "Degré imprimé sur la fiche : 2 ; degré déduit de l'ancienneté : 4. L'échelon de la fiche peut ne pas correspondre au degré de la grille.",
+            "message_ar": "الدرجة المطبوعة في كشف الأجر: 2؛ الدرجة المستنتجة من الأقدمية: 4. قد لا تتطابق درجة كشف الأجر مع درجة جدول الأجور."
+          },
+          "documents": []
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_transport",
+          "libelle_fr": "Prime de transport",
+          "libelle_ar": "منحة النقل",
+          "statut": "non_verifiable",
+          "montant_convention": null,
+          "unite": null,
+          "montant_imprime": "56.000",
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "50 (جديد)",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": {
+            "code": "GROUPE_NON_LU",
+            "message_fr": "Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).",
+            "message_ar": "المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise)."
+          },
+          "observation": null,
+          "documents": [
+            "attestation_classification"
+          ]
+        },
+        {
+          "rubrique": "prime",
+          "code": "prime_presence",
+          "libelle_fr": "Prime de présence",
+          "libelle_ar": "منحة الحضور",
+          "statut": "conforme",
+          "montant_convention": "7.856",
+          "unite": "TND/mois",
+          "montant_imprime": "36.000",
+          "difference": "28.144",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) و",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "prime_absente",
+          "code": "prime_logement",
+          "libelle_fr": "Prime de logement",
+          "libelle_ar": "منحة السكن",
+          "statut": "absente_de_la_fiche",
+          "montant_convention": "26.293",
+          "unite": "TND/mois",
+          "montant_imprime": null,
+          "difference": null,
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+              "page": 16,
+              "article": "51 (جديد) هـ",
+              "data_file": "data/processed/salary_grids/metallurgie_batiment.json",
+              "decision_ref": "D4"
+            }
+          ],
+          "hypotheses_fr": [],
+          "hypotheses_ar": [],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        },
+        {
+          "rubrique": "smig",
+          "code": null,
+          "libelle_fr": "SMIG (48 h, mensuel)",
+          "libelle_ar": "الأجر الأدنى المضمون (48 ساعة)",
+          "statut": "ecart",
+          "montant_convention": "459.264",
+          "unite": "TND/mois",
+          "montant_imprime": "424.100",
+          "difference": "-35.164",
+          "citations": [
+            {
+              "source_file": "data/raw/pdf/الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+              "page": 2,
+              "article": "décret gouvernemental n°769 du 2022-10-19",
+              "data_file": "data/processed/smig_smag/smig_smag.json",
+              "decision_ref": "D2"
+            }
+          ],
+          "hypotheses_fr": [
+            "Comparaison faite avec le salaire de base imprimé seul, sans les primes."
+          ],
+          "hypotheses_ar": [
+            "المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح."
+          ],
+          "motif": null,
+          "observation": null,
+          "documents": []
+        }
+      ],
+      "champs_manquants": [],
+      "documents_fournis": [
+        "fiche_de_paie"
+      ],
+      "documents_manquants": [
+        {
+          "document": "attestation_classification",
+          "libelle_fr": "attestation de classification professionnelle (population, catégorie, groupe)",
+          "libelle_ar": "شهادة في التصنيف المهني (الفئة، الصنف، المجموعة)",
+          "raisons_fr": [
+            "Prime de transport : groupe non lu sur la fiche"
+          ],
+          "raisons_ar": [
+            "منحة النقل: المجموعة غير مذكورة في كشف الأجر"
+          ]
+        }
+      ],
+      "bilan": {
+        "conforme": 1,
+        "ecart": 1,
+        "non_verifiable": 2,
+        "absente_de_la_fiche": 1
+      },
+      "aucune_ligne_verifiee": false
+    },
+    "texte_fr": "RAPPORT DE CONFORMITÉ D'UNE FICHE DE PAIE\n\nSecteur : METALLURGIE_BATIMENT\nPopulation : admin_tech\nCatégorie : 3\nAncienneté (années) : 6.49589\nDegré : 2\nPériode : 2026-03-01\nRégime horaire (h/semaine) : 48\nMode de paie : mensuel\n\n1. Salaire de base : non vérifiable\n   Montant de la convention : 641,013 TND/mois\n   Montant imprimé : 424,100\n   Différence (imprimé − convention) : -216,913\n   Raison : La grille est établie pour 42 h, la fiche indique 48 h ; aucune conversion n'est faite (D6).\n   Observation : Degré imprimé sur la fiche : 2 ; degré déduit de l'ancienneté : 4. L'échelon de la fiche peut ne pas correspondre au degré de la grille.\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 34 ; décision D4\n2. Prime de transport : non vérifiable\n   Montant imprimé : 56,000\n   Raison : Le groupe n'est pas indiqué sur la fiche ; montants de la convention selon le groupe : 100,533 TND/mois (cadres), 92,800 TND/mois (execution_et_maitrise).\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 50 (جديد) ; décision D4\n3. Prime de présence : conforme\n   Montant de la convention : 7,856 TND/mois\n   Montant imprimé : 36,000\n   Différence (imprimé − convention) : 28,144\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) و ; décision D4\n4. Prime de logement : absente de la fiche\n   Montant de la convention : 26,293 TND/mois\n   Signalée seulement : la fiche ne permet pas de dire si cette prime est due.\n   Source : الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf, page 16, article 51 (جديد) هـ ; décision D4\n5. SMIG (48 h, mensuel) : écart\n   Montant de la convention : 459,264 TND/mois\n   Montant imprimé : 424,100\n   Différence (imprimé − convention) : -35,164\n   Hypothèse : Comparaison faite avec le salaire de base imprimé seul, sans les primes.\n   Source : الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf, page 2, décret gouvernemental n°769 du 2022-10-19 ; décision D2\n\nDocuments qui permettraient de conclure :\n- attestation de classification professionnelle (population, catégorie, groupe) — Prime de transport : groupe non lu sur la fiche.\n\nBilan : 1 conforme(s), 1 écart(s), 2 non vérifiable(s), 1 absente(s) de la fiche.\nCe rapport compare la fiche aux montants de la convention, avec leurs sources ; il ne dit pas qu'une somme est due.\n",
+    "texte_ar": "تقرير مطابقة كشف الأجر\n\nالقطاع: METALLURGIE_BATIMENT\nالفئة: admin_tech\nالصنف: 3\nالأقدمية (سنوات): 6.49589\nالدرجة: 2\nالفترة: 2026-03-01\nنظام العمل (ساعة في الأسبوع): 48\nطريقة التأجير: شهري\n\n1. الأجر الأساسي: غير قابل للتحقق\n   مبلغ الاتفاقية: 641.013 TND/mois\n   المبلغ المطبوع: 424.100\n   الفارق (المطبوع − الاتفاقية): -216.913\n   السبب: جدول الأجور معدّ لنظام 42 ساعة، وكشف الأجر يذكر 48 ساعة؛ لا يتم أي تحويل (D6).\n   ملاحظة: الدرجة المطبوعة في كشف الأجر: 2؛ الدرجة المستنتجة من الأقدمية: 4. قد لا تتطابق درجة كشف الأجر مع درجة جدول الأجور.\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 34؛ القرار D4\n2. منحة النقل: غير قابل للتحقق\n   المبلغ المطبوع: 56.000\n   السبب: المجموعة غير مذكورة في كشف الأجر؛ مبالغ الاتفاقية حسب المجموعة: 100.533 TND/mois (cadres)، 92.800 TND/mois (execution_et_maitrise).\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 50 (جديد)؛ القرار D4\n3. منحة الحضور: مطابق\n   مبلغ الاتفاقية: 7.856 TND/mois\n   المبلغ المطبوع: 36.000\n   الفارق (المطبوع − الاتفاقية): 28.144\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) و؛ القرار D4\n4. منحة السكن: غير مذكورة في كشف الأجر\n   مبلغ الاتفاقية: 26.293 TND/mois\n   للإشارة فقط: لا يسمح كشف الأجر بالقول إن هذه المنحة مستحقة.\n   المصدر: الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf، الصفحة 16، الفصل 51 (جديد) هـ؛ القرار D4\n5. الأجر الأدنى المضمون (48 ساعة): فارق\n   مبلغ الاتفاقية: 459.264 TND/mois\n   المبلغ المطبوع: 424.100\n   الفارق (المطبوع − الاتفاقية): -35.164\n   فرضية: المقارنة مع الأجر الأساسي المطبوع وحده، دون المنح.\n   المصدر: الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf، الصفحة 2، décret gouvernemental n°769 du 2022-10-19؛ القرار D2\n\nالوثائق التي تسمح بالحسم:\n- شهادة في التصنيف المهني (الفئة، الصنف، المجموعة) — منحة النقل: المجموعة غير مذكورة في كشف الأجر.\n\nالحصيلة: مطابق: 1، فارق: 1، غير قابل للتحقق: 2، غير مذكورة في كشف الأجر: 1.\nيقارن هذا التقرير كشف الأجر بمبالغ الاتفاقية مع مصادرها؛ ولا يعني أن مبلغا ما مستحق.\n"
+  }
+]

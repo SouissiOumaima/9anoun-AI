@@ -1,0 +1,1238 @@
+{
+ "version": "track_b_livrable.v0",
+ "description": "Cas de référence du rapport de conformité (opération rapport_conformite, contrat v1, D108, D109). Montants de convention relus sur les PDF de data/raw/pdf/ (couche texte, ou image rendue à 110 dpi) ou repris d'un cas déjà vérifié par DS5 ; statuts, différences et documents suivent les règles de D108 et D109. verification_humaine = true : les 12 cas ont été vérifiés par DS5 sur les images découpées des PDF (D108).",
+ "cases": [
+  {
+   "id": "TBL-01",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "admin_tech",
+     "categorie": "3",
+     "anciennete_annees": 6.49589,
+     "date": "2026-03-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "424.100",
+     "primes_imprimees": [
+      {
+       "code": "prime_transport",
+       "montant": "56.000"
+      },
+      {
+       "code": "prime_presence",
+       "montant": "36.000"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": "641.013",
+      "unite": "TND/mois",
+      "difference": "-216.913",
+      "motif": "REGIME_DIFFERENT",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "GROUPE_NON_LU",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence",
+      "statut": "conforme",
+      "montant_convention": "7.856",
+      "unite": "TND/mois",
+      "difference": "28.144",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_logement",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "26.293",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "ecart",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "-35.164",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": [
+     "attestation_classification"
+    ]
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.16, art. 50 (جديد), منحة النقل 2024 : « 92.800 » et « 100.533 » (couche texte ; 100.533 vérifié par DS5 en TB-13)",
+     "p.16, art. 51 (جديد) هـ, منحة السكن, montant 2024 « 26.293 » (couche texte)",
+     "p.16, art. 51 (جديد) و, منحة الحضور, montant 2024 « 7.856 » (couche texte)",
+     "p.34, جدول الأجور عدد 5 (2024, نظام عمل 42 ساعة), ligne « 3 », colonne 4 « 8/6 » (image)"
+    ],
+    "note": "Fiche 01 : salaire non vérifiable (grille à 42 h, fiche à 48 h), groupe de transport non lu, présence conforme, logement absente, SMIG en écart."
+   }
+  },
+  {
+   "id": "TBL-02",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "execution",
+     "categorie": "2B",
+     "anciennete_annees": null,
+     "degre": 7,
+     "date": "2024-02-01",
+     "regime_heures": null,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "1275.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_transport",
+       "montant": "56.000"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ],
+     "champs_illisibles": {
+      "anciennete_annees": "date d'entrée « 01/09/19 », année sur deux chiffres",
+      "regime_heures": "« 195 h », aucune conversion fixe"
+     },
+     "origines": {
+      "secteur": "carte",
+      "population": "utilisateur"
+     }
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": true,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "PARAM_INVALIDE",
+      "citations": []
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "GROUPE_NON_LU",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_presence",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "7.856",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_logement",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "26.293",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "CHAMP_ABSENT",
+      "citations": []
+     }
+    ],
+    "documents_manquants": [
+     "contrat_de_travail",
+     "attestation_classification"
+    ]
+   },
+   "justification": {
+    "montants": [
+     "p.16, art. 50 (جديد), منحة النقل 2024 : « 92.800 » et « 100.533 » (couche texte ; 100.533 vérifié par DS5 en TB-13)",
+     "p.16, art. 51 (جديد) هـ, منحة السكن, montant 2024 « 26.293 » (couche texte)",
+     "p.16, art. 51 (جديد) و, منحة الحضور, montant 2024 « 7.856 » (couche texte)"
+    ],
+    "note": "Fiche 02 (pièges) : refus PARAM_INVALIDE du moteur repris (catégorie 2B), régime et ancienneté illisibles ; secteur de la carte company-demo-001, population déclarée."
+   }
+  },
+  {
+   "id": "TBL-03",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "5",
+     "anciennete_annees": 7.5,
+     "date": "2024-06-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "810.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_transport",
+       "montant": "79.970",
+       "groupe": "execution_gestion"
+      },
+      {
+       "code": "prime_presence_mensuelle",
+       "montant": "3.607"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie",
+      "attestation_classification"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "802.891",
+      "unite": "TND/mois",
+      "difference": "7.109",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 19
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "conforme",
+      "montant_convention": "79.970",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence_mensuelle",
+      "statut": "conforme",
+      "montant_convention": "3.607",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "350.736",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": []
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.15, art. 45 (جديد), منحة النقل, exécution et gestion 2023 « 79.970 » (couche texte)",
+     "p.15, art. 46 (جديد), part mensuelle 2023 « 3.607 » (couche texte)",
+     "p.19, جدول الأجور عدد 2 (2023-05-01, نظام عمل 48 ساعة), ligne « 5 », colonne 5 (image)"
+    ],
+    "note": "Toutes les lignes conformes."
+   }
+  },
+  {
+   "id": "TBL-04",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "5",
+     "anciennete_annees": 7.5,
+     "date": "2024-06-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "780.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_transport",
+       "montant": "79.970",
+       "groupe": "execution_gestion"
+      },
+      {
+       "code": "prime_presence_mensuelle",
+       "montant": "3.607"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie",
+      "attestation_classification"
+     ]
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "ecart",
+      "montant_convention": "802.891",
+      "unite": "TND/mois",
+      "difference": "-22.891",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 19
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "conforme",
+      "montant_convention": "79.970",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence_mensuelle",
+      "statut": "conforme",
+      "montant_convention": "3.607",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "320.736",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": []
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.15, art. 45 (جديد), منحة النقل, exécution et gestion 2023 « 79.970 » (couche texte)",
+     "p.15, art. 46 (جديد), part mensuelle 2023 « 3.607 » (couche texte)",
+     "p.19, جدول الأجور عدد 2 (2023-05-01, نظام عمل 48 ساعة), ligne « 5 », colonne 5 (image)"
+    ],
+    "note": "Écart de salaire : 780,000 imprimé pour 802,891."
+   }
+  },
+  {
+   "id": "TBL-05",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "5",
+     "anciennete_annees": 7.5,
+     "date": "2024-06-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "810.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_presence_mensuelle",
+       "montant": "3.607"
+      },
+      {
+       "code": "prime_risque",
+       "montant": "15.000"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "802.891",
+      "unite": "TND/mois",
+      "difference": "7.109",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 19
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence_mensuelle",
+      "statut": "conforme",
+      "montant_convention": "3.607",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_risque",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "CONDITION_NON_VERIFIABLE",
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "350.736",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": [
+     "attestation_employeur_prime"
+    ]
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.15, art. 46 (جديد), part mensuelle 2023 « 3.607 » (couche texte)",
+     "p.19, جدول الأجور عدد 2 (2023-05-01, نظام عمل 48 ساعة), ligne « 5 », colonne 5 (image)"
+    ],
+    "note": "Prime de risque à condition non vérifiable (art. 48-1)."
+   }
+  },
+  {
+   "id": "TBL-06",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "GESTION_DECHETS",
+     "categorie": "4",
+     "anciennete_annees": 3.5,
+     "date": "2024-06-01",
+     "regime_heures": 42,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "850.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_presence",
+       "montant": "20.210"
+      },
+      {
+       "code": "prime_transport",
+       "montant": "62.158"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie",
+      "contrat_de_travail"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "841.551",
+      "unite": "TND/mois",
+      "difference": "8.449",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "التصرف في النفايات الصلبة.pdf",
+        "page": 19
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence",
+      "statut": "conforme",
+      "montant_convention": "20.210",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "التصرف في النفايات الصلبة.pdf",
+        "page": 12
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "conforme",
+      "montant_convention": "62.158",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "التصرف في النفايات الصلبة.pdf",
+        "page": 12
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "SOURCE_MANQUANTE",
+      "citations": []
+     }
+    ],
+    "documents_manquants": []
+   },
+   "justification": {
+    "montants": [
+     "p.12, art. 38 (جديد), منحة الحضور 2023 « 20.210 » (couche texte)",
+     "p.12, art. 38 (جديد), منحة النقل 2023 « 62.158 » (couche texte)",
+     "p.19, جدول الأجور عدد 4 (2024), ligne « 4 », colonne 2 « 4-2 » (image ; aucun régime imprimé)"
+    ],
+    "note": "SMIG non vérifiable : régime de 42 h absent du barème (refus SOURCE_MANQUANTE repris)."
+   }
+  },
+  {
+   "id": "TBL-07",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": null,
+     "date": null,
+     "salaire_base_imprime": null,
+     "documents_fournis": [
+      "fiche_de_paie"
+     ],
+     "champs_illisibles": {
+      "date": "période effacée",
+      "salaire_base_imprime": "montant taché"
+     }
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": true,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "CHAMP_ABSENT",
+      "citations": []
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "CHAMP_ABSENT",
+      "citations": []
+     }
+    ],
+    "documents_manquants": [
+     "attestation_classification",
+     "contrat_de_travail",
+     "fiche_de_paie_lisible"
+    ]
+   },
+   "justification": {
+    "montants": [],
+    "note": "Aucune ligne vérifiée : période et salaire illisibles, catégorie absente."
+   }
+  },
+  {
+   "id": "TBL-08",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "SECTEUR_FICTIF_NON_SUPPORTE",
+     "categorie": "3",
+     "date": "2026-03-01",
+     "salaire_base_imprime": "424.100"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "montants": [],
+    "note": "Secteur inconnu : rapport refusé en entier (SOURCE_MANQUANTE)."
+   }
+  },
+  {
+   "id": "TBL-09",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "admin_tech",
+     "categorie": "3",
+     "anciennete_annees": 6.49589,
+     "degre": 2,
+     "date": "2026-03-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "424.100",
+     "primes_imprimees": [
+      {
+       "code": "prime_transport",
+       "montant": "56.000"
+      },
+      {
+       "code": "prime_presence",
+       "montant": "36.000"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": "641.013",
+      "unite": "TND/mois",
+      "difference": "-216.913",
+      "motif": "REGIME_DIFFERENT",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "GROUPE_NON_LU",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_presence",
+      "statut": "conforme",
+      "montant_convention": "7.856",
+      "unite": "TND/mois",
+      "difference": "28.144",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_logement",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "26.293",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "ecart",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "-35.164",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": [
+     "attestation_classification"
+    ]
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.16, art. 50 (جديد), منحة النقل 2024 : « 92.800 » et « 100.533 » (couche texte ; 100.533 vérifié par DS5 en TB-13)",
+     "p.16, art. 51 (جديد) هـ, منحة السكن, montant 2024 « 26.293 » (couche texte)",
+     "p.16, art. 51 (جديد) و, منحة الحضور, montant 2024 « 7.856 » (couche texte)",
+     "p.34, جدول الأجور عدد 5 (2024, نظام عمل 42 ساعة), ligne « 3 », colonne 4 « 8/6 » (image)"
+    ],
+    "note": "Degré imprimé 2 et ancienneté 6,49589 : ancienneté au moteur, degré 4 déduit, observation seulement (jamais un écart)."
+   }
+  },
+  {
+   "id": "TBL-10",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "execution",
+     "categorie": "7",
+     "anciennete_annees": 0.5,
+     "date": "2024-06-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "900.000",
+     "documents_fournis": [
+      "fiche_de_paie",
+      "contrat_de_travail"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": "4.449",
+      "unite": "TND/heure",
+      "difference": null,
+      "motif": "UNITE_DIFFERENTE",
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 35
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_presence",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "7.856",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_logement",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "26.293",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "440.736",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": []
+   },
+   "justification": {
+    "montants": [
+     "cas TB-05, vérifié par DS5 (p.35, exécution, catégorie 7, degré 1)",
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.16, art. 51 (جديد) هـ, منحة السكن, montant 2024 « 26.293 » (couche texte)",
+     "p.16, art. 51 (جديد) و, منحة الحضور, montant 2024 « 7.856 » (couche texte)"
+    ],
+    "note": "Grille horaire (TND/heure), salaire imprimé mensuel : UNITE_DIFFERENTE, montant de la grille affiché."
+   }
+  },
+  {
+   "id": "TBL-11",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "METALLURGIE_BATIMENT",
+     "population": "admin_tech",
+     "categorie": "3",
+     "anciennete_annees": 6.49589,
+     "date": "2026-03-01",
+     "regime_heures": 42,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "700.000",
+     "primes_imprimees": [
+      {
+       "code": "prime_panier_qefa",
+       "montant": "12.320"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ]
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "641.013",
+      "unite": "TND/mois",
+      "difference": "58.987",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 34
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_panier_qefa",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "TRANSPORT_NON_LU",
+      "citations": []
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_presence",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "7.856",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_logement",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "26.293",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf",
+        "page": 16
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "SOURCE_MANQUANTE",
+      "citations": []
+     }
+    ],
+    "documents_manquants": [
+     "attestation_employeur_prime"
+    ]
+   },
+   "justification": {
+    "montants": [
+     "p.16, art. 51 (جديد) هـ, منحة السكن, montant 2024 « 26.293 » (couche texte)",
+     "p.16, art. 51 (جديد) و, منحة الحضور, montant 2024 « 7.856 » (couche texte)",
+     "p.34, جدول الأجور عدد 5 (2024, نظام عمل 42 ساعة), ligne « 3 », colonne 4 « 8/6 » (image)"
+    ],
+    "note": "Prime de panier imprimée sans indication du transport assuré : TRANSPORT_NON_LU ; régime égal à celui de la grille (42 h), salaire conforme ; SMIG 42 h refusé."
+   }
+  },
+  {
+   "id": "TBL-12",
+   "categorie": "rapport",
+   "certitude": "I",
+   "decision": "D108",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "rapport_conformite",
+    "params": {
+     "secteur": "AGENCES_VOYAGES",
+     "categorie": "5",
+     "anciennete_annees": 7.5,
+     "date": "2024-06-01",
+     "regime_heures": 48,
+     "mode_paie": "mensuel",
+     "salaire_base_imprime": "802.891",
+     "primes_imprimees": [
+      {
+       "code": "prime_fictive",
+       "montant": "10.000"
+      },
+      {
+       "code": "prime_transport",
+       "montant": "79.970",
+       "groupe": "execution_gestion"
+      }
+     ],
+     "documents_fournis": [
+      "fiche_de_paie"
+     ]
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "aucune_ligne_verifiee": false,
+    "lignes": [
+     {
+      "rubrique": "salaire_base",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "802.891",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 19
+       }
+      ]
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_fictive",
+      "statut": "non_verifiable",
+      "montant_convention": null,
+      "unite": null,
+      "difference": null,
+      "motif": "SOURCE_MANQUANTE",
+      "citations": []
+     },
+     {
+      "rubrique": "prime",
+      "code": "prime_transport",
+      "statut": "conforme",
+      "montant_convention": "79.970",
+      "unite": "TND/mois",
+      "difference": "0.000",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "prime_absente",
+      "code": "prime_presence_mensuelle",
+      "statut": "absente_de_la_fiche",
+      "montant_convention": "3.607",
+      "unite": "TND/mois",
+      "difference": null,
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "وكالات الاسفار.pdf",
+        "page": 15
+       }
+      ]
+     },
+     {
+      "rubrique": "smig",
+      "code": null,
+      "statut": "conforme",
+      "montant_convention": "459.264",
+      "unite": "TND/mois",
+      "difference": "343.627",
+      "motif": null,
+      "citations": [
+       {
+        "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf",
+        "page": 2
+       }
+      ]
+     }
+    ],
+    "documents_manquants": []
+   },
+   "justification": {
+    "montants": [
+     "cas TB-17, vérifié par DS5 (décret 769/2022, p.2, mensuel 48 h)",
+     "p.15, art. 45 (جديد), منحة النقل, exécution et gestion 2023 « 79.970 » (couche texte)",
+     "p.15, art. 46 (جديد), part mensuelle 2023 « 3.607 » (couche texte)",
+     "p.19, جدول الأجور عدد 2 (2023-05-01, نظام عمل 48 ساعة), ligne « 5 », colonne 5 (image)"
+    ],
+    "note": "Prime inconnue de la convention : refus SOURCE_MANQUANTE repris ; transport exécution et gestion 79,970 conforme ; salaire égal à la grille (différence 0,000)."
+   }
+  }
+ ]
+}

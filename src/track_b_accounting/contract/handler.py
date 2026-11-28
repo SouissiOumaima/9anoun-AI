@@ -5,6 +5,10 @@ conversion Result/Refus en réponse. Toute exception inattendue → status "erre
 
 Versions : une requête dont contract_version vaut exactement "track_b.v1" est traitée en v1 (schémas v1, demande
 par degré, primes servies exactes) et reçoit une réponse v1 ; toute autre requête suit le chemin v0, inchangé.
+
+Rapport de conformité (D108, D109) : une requête v1 dont l'opération est "rapport_conformite" est aiguillée vers
+handle_rapport, avec ses propres schémas (track_b_rapport_request.v1, track_b_rapport_response.v1). Les schémas
+v0 et v1 existants et le chemin des autres opérations sont inchangés.
 """
 
 from __future__ import annotations
@@ -14,11 +18,12 @@ from collections.abc import Callable
 from decimal import Decimal
 from functools import lru_cache
 from pathlib import Path
+from typing import cast
 
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import best_match
 
-from .. import calc
+from .. import calc, rapport
 from ..calc import Refus, Result
 
 CONTRACT_VERSION = "track_b.v0"
@@ -117,6 +122,9 @@ CONVENTIONS_CADRES: dict[str, tuple[str, str]] = {
     ),
 }
 COMPUTED_BY_CONTRACT = "track_b_accounting.contract"
+# Opération du contrat v1 seulement, avec ses propres schémas (D108).
+OPERATION_RAPPORT = "rapport_conformite"
+COMPUTED_BY_RAPPORT = "track_b_accounting.rapport"
 
 
 class _RefusContrat(Refus):
@@ -235,8 +243,62 @@ def _traiter(request) -> dict:
     return reponse_ok(rid, r, f"track_b_accounting.calc.{op}")
 
 
+def _refus_schema(request: dict, nom: str, version: str) -> None:
+    erreur = best_match(validator(nom, version).iter_errors(request))
+    if erreur is not None:
+        chemin = "/".join(str(p) for p in erreur.absolute_path) or "(racine)"
+        raise _RefusContrat(
+            Refus.PARAM_INVALIDE,
+            f"Requête non conforme au contrat {version} ({chemin}) : {erreur.message}",
+            f"الطلب غير مطابق للعقد {version} ({chemin}): {erreur.message}",
+        )
+
+
+def est_rapport(request: object) -> bool:
+    """Requête v1 de l'opération rapport_conformite (une requête v0 de cette opération reste refusée par le schéma v0)."""
+    return (
+        _version(request) == CONTRACT_VERSION_V1
+        and isinstance(request, dict)
+        and request.get("operation") == OPERATION_RAPPORT
+    )
+
+
+def _enveloppe_rapport(rep: dict) -> dict:
+    """Réponse refus ou erreur du contrat, mise à la forme du schéma de réponse du rapport."""
+    rep = {k: v for k, v in rep.items() if k != "result"}
+    rep.update(contract_version=CONTRACT_VERSION_V1, rapport=None, texte_fr=None, texte_ar=None)
+    return rep
+
+
+def handle_rapport(request: dict) -> dict:
+    """Rapport de conformité (D108). Refus seulement pour une requête non conforme ou un secteur inconnu/sans table."""
+    rid = _request_id(request)
+    try:
+        _refus_schema(request, "rapport_request", CONTRACT_VERSION_V1)
+        r = rapport.rapport_conformite(request["params"])
+        rep = _base(rid, "ok", COMPUTED_BY_RAPPORT)
+        del rep["result"]
+        rep.update(
+            contract_version=CONTRACT_VERSION_V1,
+            rapport=r,
+            texte_fr=rapport.texte_fr(r),
+            texte_ar=rapport.texte_ar(r),
+            citations=rapport.citations(r),
+        )
+    except Refus as e:
+        qui = COMPUTED_BY_CONTRACT if isinstance(e, _RefusContrat) else COMPUTED_BY_RAPPORT
+        rep = _enveloppe_rapport(reponse_refus(rid, e, qui))
+    except Exception as exc:  # noqa: BLE001 — contrat : jamais d'exception vers l'appelant
+        rep = _enveloppe_rapport(reponse_erreur(rid, exc))
+    if not validator("rapport_response", CONTRACT_VERSION_V1).is_valid(rep):
+        rep = _enveloppe_rapport(reponse_erreur(rid, ValueError("réponse non conforme au schéma du rapport v1")))
+    return rep
+
+
 def handle(request: object) -> dict:
     """Point d'entrée unique. Renvoie toujours une réponse conforme au schéma de réponse de la version traitée."""
+    if est_rapport(request):
+        return handle_rapport(cast(dict, request))
     rid = _request_id(request)
     version = _version(request)
     op = request.get("operation") if isinstance(request, dict) else None

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "track_b_rapport_request.v1.schema.json",
+  "title": "Requête Track B — rapport de conformité d'une fiche de paie (contrat v1)",
+  "description": "v1 — proposition Track B, à valider avec l'équipe (D108, D109). Opération rapport_conformite du contrat track_b.v1, avec son propre schéma : les schémas track_b_request.v0/v1 sont inchangés. Entrée = les champs d'une fiche de paie confirmés par DS3, puis par l'utilisateur. Un champ absent ou null = non lu. Seul secteur est obligatoire. Les règles métier sont vérifiées par calc/ ; un refus du moteur devient une ligne non vérifiable du rapport.",
+  "type": "object",
+  "required": ["contract_version", "request_id", "operation", "params", "lang"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {"const": "track_b.v1"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "operation": {"const": "rapport_conformite"},
+    "lang": {"enum": ["fr", "ar"]},
+    "params": {
+      "type": "object",
+      "required": ["secteur"],
+      "additionalProperties": false,
+      "properties": {
+        "secteur": {"type": "string", "minLength": 1},
+        "population": {"type": ["string", "null"], "minLength": 1},
+        "categorie": {"type": ["string", "integer", "null"], "minLength": 1},
+        "sous_categorie": {"type": ["string", "null"], "minLength": 1},
+        "anciennete_annees": {
+          "type": ["number", "null"],
+          "description": "Si degre est aussi donné, l'ancienneté va au moteur et le degré imprimé est seulement affiché en observation (D108)."
+        },
+        "degre": {"type": ["integer", "string", "null"], "minLength": 1},
+        "date": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/date"}], "description": "Période de la fiche (premier jour), AAAA-MM-JJ."},
+        "regime_heures": {"type": ["integer", "null"], "description": "Régime hebdomadaire lu sur la fiche (ex. 48)."},
+        "mode_paie": {"enum": ["mensuel", "horaire", null], "description": "Unité du salaire de base imprimé : TND/mois ou TND/heure."},
+        "salaire_base_imprime": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/montant"}]},
+        "primes_imprimees": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code", "montant"],
+            "additionalProperties": false,
+            "properties": {
+              "code": {"type": "string", "minLength": 1},
+              "montant": {"$ref": "#/$defs/montant"},
+              "groupe": {"type": "string", "minLength": 1},
+              "transport_assure": {"type": "boolean"},
+              "variante": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "documents_fournis": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["fiche_de_paie", "fiche_de_paie_lisible", "contrat_de_travail", "attestation_classification", "attestation_employeur_prime"]}
+        },
+        "champs_illisibles": {
+          "type": "object",
+          "description": "Champ illisible → raison donnée par DS3, recopiée dans le rapport.",
+          "propertyNames": {"enum": ["population", "categorie", "sous_categorie", "anciennete_annees", "degre", "date", "regime_heures", "mode_paie", "salaire_base_imprime"]},
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "origines": {
+          "type": "object",
+          "description": "Origine d'un champ quand il n'est pas lu sur la fiche : carte du dossier ou déclaration de l'utilisateur. Affichée dans le rendu.",
+          "propertyNames": {"enum": ["secteur", "population", "categorie", "sous_categorie", "anciennete_annees", "degre", "date", "regime_heures", "mode_paie"]},
+          "additionalProperties": {"enum": ["fiche", "carte", "utilisateur"]}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "montant": {"type": "string", "pattern": "^[0-9]+\\.[0-9]{3}$", "description": "Montant imprimé, en dinars, à 3 décimales, en chaîne."}
+  }
+}

@@ -15212,6 +15212,1752 @@
   },
   "version": "track_b_hors_perimetre.v0"
  },
+ "livrable": {
+  "cas": [
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-216.913",
+       "montant_convention": "641.013",
+       "motif": "REGIME_DIFFERENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "28.144",
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-35.164",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-01",
+    "lignes": 5,
+    "lignes_correctes": 5,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-216.913",
+       "montant_convention": "641.013",
+       "motif": "REGIME_DIFFERENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "28.144",
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-35.164",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": true,
+     "documents_manquants": [
+      "contrat_de_travail",
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "PARAM_INVALIDE",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-02",
+    "lignes": 5,
+    "lignes_correctes": 5,
+    "obtenu": {
+     "aucune_ligne_verifiee": true,
+     "documents_manquants": [
+      "contrat_de_travail",
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "PARAM_INVALIDE",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "7.109",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "350.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-03",
+    "lignes": 4,
+    "lignes_correctes": 4,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "7.109",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "350.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-22.891",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "320.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-04",
+    "lignes": 4,
+    "lignes_correctes": 4,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-22.891",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "320.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_employeur_prime"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "7.109",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_risque",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CONDITION_NON_VERIFIABLE",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "350.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-05",
+    "lignes": 4,
+    "lignes_correctes": 4,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_employeur_prime"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "7.109",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": "0.000",
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_risque",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CONDITION_NON_VERIFIABLE",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "350.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "8.449",
+       "montant_convention": "841.551",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 12,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "0.000",
+       "montant_convention": "20.210",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 12,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "62.158",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-06",
+    "lignes": 4,
+    "lignes_correctes": 4,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "8.449",
+       "montant_convention": "841.551",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 12,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "0.000",
+       "montant_convention": "20.210",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 12,
+         "pdf": "التصرف في النفايات الصلبة.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "62.158",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": true,
+     "documents_manquants": [
+      "attestation_classification",
+      "contrat_de_travail",
+      "fiche_de_paie_lisible"
+     ],
+     "lignes": [
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-07",
+    "lignes": 2,
+    "lignes_correctes": 2,
+    "obtenu": {
+     "aucune_ligne_verifiee": true,
+     "documents_manquants": [
+      "attestation_classification",
+      "contrat_de_travail",
+      "fiche_de_paie_lisible"
+     ],
+     "lignes": [
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "CHAMP_ABSENT",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "status": "refus"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-08",
+    "lignes": 0,
+    "lignes_correctes": 0,
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-216.913",
+       "montant_convention": "641.013",
+       "motif": "REGIME_DIFFERENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "28.144",
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-35.164",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-09",
+    "lignes": 5,
+    "lignes_correctes": 5,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_classification"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-216.913",
+       "montant_convention": "641.013",
+       "motif": "REGIME_DIFFERENT",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "GROUPE_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": "28.144",
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "-35.164",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "ecart",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 35,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": null,
+       "montant_convention": "4.449",
+       "motif": "UNITE_DIFFERENTE",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/heure"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "440.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-10",
+    "lignes": 4,
+    "lignes_correctes": 4,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 35,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": null,
+       "montant_convention": "4.449",
+       "motif": "UNITE_DIFFERENTE",
+       "rubrique": "salaire_base",
+       "statut": "non_verifiable",
+       "unite": "TND/heure"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "440.736",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_employeur_prime"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "58.987",
+       "montant_convention": "641.013",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": "prime_panier_qefa",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "TRANSPORT_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-11",
+    "lignes": 5,
+    "lignes_correctes": 5,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [
+      "attestation_employeur_prime"
+     ],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 34,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "58.987",
+       "montant_convention": "641.013",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": "prime_panier_qefa",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "TRANSPORT_NON_LU",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_presence",
+       "difference": null,
+       "montant_convention": "7.856",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 16,
+         "pdf": "الاتفاقية المشتركة القطاعية  للبناء المعدني.pdf"
+        }
+       ],
+       "code": "prime_logement",
+       "difference": null,
+       "montant_convention": "26.293",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": null,
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "smig",
+       "statut": "non_verifiable",
+       "unite": null
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   },
+   {
+    "attendu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "0.000",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": "prime_fictive",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": null,
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "343.627",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "categorie": "rapport",
+    "certitude": "I",
+    "citations_ok": true,
+    "conforme_schema": true,
+    "decision": "D108",
+    "faux_montants": 0,
+    "id": "TBL-12",
+    "lignes": 5,
+    "lignes_correctes": 5,
+    "obtenu": {
+     "aucune_ligne_verifiee": false,
+     "documents_manquants": [],
+     "lignes": [
+      {
+       "citations": [
+        {
+         "page": 19,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "0.000",
+       "montant_convention": "802.891",
+       "motif": null,
+       "rubrique": "salaire_base",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [],
+       "code": "prime_fictive",
+       "difference": null,
+       "montant_convention": null,
+       "motif": "SOURCE_MANQUANTE",
+       "rubrique": "prime",
+       "statut": "non_verifiable",
+       "unite": null
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_transport",
+       "difference": "0.000",
+       "montant_convention": "79.970",
+       "motif": null,
+       "rubrique": "prime",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 15,
+         "pdf": "وكالات الاسفار.pdf"
+        }
+       ],
+       "code": "prime_presence_mensuelle",
+       "difference": null,
+       "montant_convention": "3.607",
+       "motif": null,
+       "rubrique": "prime_absente",
+       "statut": "absente_de_la_fiche",
+       "unite": "TND/mois"
+      },
+      {
+       "citations": [
+        {
+         "page": 2,
+         "pdf": "الأجر الأدنى المضمون لمختلف المهن في القطاعات غير الفلاحية.pdf"
+        }
+       ],
+       "code": null,
+       "difference": "343.627",
+       "montant_convention": "459.264",
+       "motif": null,
+       "rubrique": "smig",
+       "statut": "conforme",
+       "unite": "TND/mois"
+      }
+     ],
+     "status": "ok"
+    },
+    "problemes_citations": [],
+    "statuts_incorrects": 0,
+    "verdict": "correct",
+    "verification_humaine": true
+   }
+  ],
+  "echecs": [],
+  "golden_set": {
+   "cas": 12,
+   "cas_verifies_par_ds5": 12,
+   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_livrable.v0.json",
+   "sha256": "7539c560f3ad7a516f9cc92b7546868cf75e93b3e2d8c692f36997c8e1acf916",
+   "version": "track_b_livrable.v0"
+  },
+  "metriques": {
+   "cas": 12,
+   "cas_corrects": {
+    "n": 12,
+    "sur": 12,
+    "taux": 1.0
+   },
+   "citations_valides": {
+    "n": 11,
+    "sur": 11,
+    "taux": 1.0
+   },
+   "conformite_schema_rapport": {
+    "n": 12,
+    "sur": 12,
+    "taux": 1.0
+   },
+   "exceptions_inattendues": 0,
+   "faux_montants": 0,
+   "lignes_correctes": {
+    "n": 47,
+    "sur": 47,
+    "taux": 1.0
+   },
+   "refus_corrects": {
+    "n": 1,
+    "sur": 1,
+    "taux": 1.0
+   },
+   "statut_erreur": 0,
+   "statuts_incorrects": 0
+  }
+ },
  "metriques": {
   "cas_verifies": {
    "cas": 461,

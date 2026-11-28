@@ -1,0 +1,177 @@
+[
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-01-fiche01-prime-absente-smig-ecart",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "population": "admin_tech",
+      "categorie": "3",
+      "anciennete_annees": 6.49589,
+      "date": "2026-03-01",
+      "regime_heures": 48,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "424.100",
+      "primes_imprimees": [
+        {"code": "prime_transport", "montant": "56.000"},
+        {"code": "prime_presence", "montant": "36.000"}
+      ],
+      "documents_fournis": ["fiche_de_paie"]
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-02-fiche02-pieges-refus-du-moteur",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "population": "execution",
+      "categorie": "2B",
+      "anciennete_annees": null,
+      "degre": 7,
+      "date": "2024-02-01",
+      "regime_heures": null,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "1275.000",
+      "primes_imprimees": [
+        {"code": "prime_transport", "montant": "56.000"}
+      ],
+      "documents_fournis": ["fiche_de_paie"],
+      "champs_illisibles": {
+        "anciennete_annees": "date d'entrée « 01/09/19 », année sur deux chiffres",
+        "regime_heures": "« 195 h », aucune conversion fixe"
+      },
+      "origines": {"secteur": "carte", "population": "utilisateur"}
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-03-conforme",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "AGENCES_VOYAGES",
+      "categorie": "5",
+      "anciennete_annees": 7.5,
+      "date": "2024-06-01",
+      "regime_heures": 48,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "810.000",
+      "primes_imprimees": [
+        {"code": "prime_transport", "montant": "79.970", "groupe": "execution_gestion"},
+        {"code": "prime_presence_mensuelle", "montant": "3.607"}
+      ],
+      "documents_fournis": ["fiche_de_paie", "attestation_classification"]
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-04-ecart-de-salaire",
+    "operation": "rapport_conformite",
+    "lang": "ar",
+    "params": {
+      "secteur": "AGENCES_VOYAGES",
+      "categorie": "5",
+      "anciennete_annees": 7.5,
+      "date": "2024-06-01",
+      "regime_heures": 48,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "780.000",
+      "primes_imprimees": [
+        {"code": "prime_transport", "montant": "79.970", "groupe": "execution_gestion"},
+        {"code": "prime_presence_mensuelle", "montant": "3.607"}
+      ],
+      "documents_fournis": ["fiche_de_paie", "attestation_classification"]
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-05-condition-non-verifiable",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "AGENCES_VOYAGES",
+      "categorie": "5",
+      "anciennete_annees": 7.5,
+      "date": "2024-06-01",
+      "regime_heures": 48,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "810.000",
+      "primes_imprimees": [
+        {"code": "prime_presence_mensuelle", "montant": "3.607"},
+        {"code": "prime_risque", "montant": "15.000"}
+      ],
+      "documents_fournis": ["fiche_de_paie"]
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-06-smig-non-verifiable",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "GESTION_DECHETS",
+      "categorie": "4",
+      "anciennete_annees": 3.5,
+      "date": "2024-06-01",
+      "regime_heures": 42,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "850.000",
+      "primes_imprimees": [
+        {"code": "prime_presence", "montant": "20.210"},
+        {"code": "prime_transport", "montant": "62.158"}
+      ],
+      "documents_fournis": ["fiche_de_paie", "contrat_de_travail"]
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-07-aucune-ligne-verifiee",
+    "operation": "rapport_conformite",
+    "lang": "ar",
+    "params": {
+      "secteur": "AGENCES_VOYAGES",
+      "categorie": null,
+      "date": null,
+      "salaire_base_imprime": null,
+      "documents_fournis": ["fiche_de_paie"],
+      "champs_illisibles": {"date": "période effacée", "salaire_base_imprime": "montant taché"}
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-08-secteur-inconnu",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "SECTEUR_FICTIF_NON_SUPPORTE",
+      "categorie": "3",
+      "date": "2026-03-01",
+      "salaire_base_imprime": "424.100"
+    }
+  },
+  {
+    "contract_version": "track_b.v1",
+    "request_id": "demo-rapport-09-fiche01-degre-imprime-observe",
+    "operation": "rapport_conformite",
+    "lang": "fr",
+    "params": {
+      "secteur": "METALLURGIE_BATIMENT",
+      "population": "admin_tech",
+      "categorie": "3",
+      "anciennete_annees": 6.49589,
+      "degre": 2,
+      "date": "2026-03-01",
+      "regime_heures": 48,
+      "mode_paie": "mensuel",
+      "salaire_base_imprime": "424.100",
+      "primes_imprimees": [
+        {"code": "prime_transport", "montant": "56.000"},
+        {"code": "prime_presence", "montant": "36.000"}
+      ],
+      "documents_fournis": ["fiche_de_paie"]
+    }
+  }
+]

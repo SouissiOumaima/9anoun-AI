@@ -4472,6 +4472,98 @@ et TB-469.
 
 **Numérotation** : D90 est à DS2 ; la vague 7 prend D91 à D96 ; la vague 8 prendra D97 et suivants.
 
+## Livrable — rapport de conformité d'une fiche de paie (D108, D109)
+
+### D108 — Opération `rapport_conformite` du contrat v1 : règles du rapport
+
+**Décision** (DS5, 27/11/2026, réponses à l'ARRÊT 3 du livrable) : le contrat `track_b.v1` reçoit une opération
+`rapport_conformite`. Elle prend les champs d'une fiche de paie confirmés par DS3, puis par l'utilisateur, et rend un
+rapport structuré, ligne par ligne, avec un rendu lisible en français et en arabe. Le rapport n'appelle que le moteur
+actuel (`salaire_base`, `prime_v1`, `smig`) : aucun montant de convention n'est calculé hors de `calc/`, aucun modèle
+de langage n'est utilisé, aucun texte n'est généré.
+
+1. **Schémas à part.** `track_b_rapport_request.v1.schema.json` et `track_b_rapport_response.v1.schema.json`. Les
+   schémas v0 et v1 existants, `calc/`, `demo.py` et les démos v0 et v1 sont inchangés. Une requête v0 de cette
+   opération reste un refus de contrat v0.
+2. **Lignes.** Salaire de base, chaque prime imprimée, les primes absentes de la fiche, puis le SMIG.
+3. **Statuts.** `conforme` si imprimé ≥ convention ; `ecart` si imprimé < convention (la grille est un minimum) ;
+   `non_verifiable`, toujours avec un motif ; `absente_de_la_fiche`. La différence vaut « imprimé − convention »,
+   en Decimal, arrondie au millime (`arrondi_millime`, D6). C'est la seule opération faite hors du moteur.
+4. **Refus du moteur.** `SOURCE_MANQUANTE`, `PARAM_INVALIDE` ou `HORS_SCOPE` deviennent une ligne `non_verifiable`
+   qui reprend le code et les messages FR et AR du moteur. Le rapport entier n'est refusé que pour un secteur inconnu
+   ou sans table transcrite (même refus que le moteur), ou pour une requête non conforme au schéma.
+5. **Régime différent** (réponse a). Si la grille porte un régime (ex. métallurgie, 42 h, imprimé sur la p.34) et que
+   la fiche en indique un autre, le salaire est `non_verifiable` (`REGIME_DIFFERENT`). Les deux montants et la
+   différence sont affichés, avec la raison : « la grille est établie pour 42 h, la fiche indique 48 h ; aucune
+   conversion n'est faite (D6) ». Régime de la fiche non lu : comparaison faite, et hypothèse affichée.
+6. **Unité.** Une grille horaire face à un salaire imprimé mensuel, ou une prime en `TND/jour`, `TND/heure`…,
+   donne `UNITE_DIFFERENTE`, avec le montant de la convention mais sans différence. Aucune conversion.
+7. **SMIG** (réponse b). Il est comparé au seul salaire de base imprimé, avec l'hypothèse affichée. Un régime autre
+   que 40 h ou 48 h donne le refus `SOURCE_MANQUANTE` du moteur, repris.
+8. **Ancienneté et degré donnés ensemble** (réponse c). L'ancienneté va au moteur. Le degré imprimé est affiché à
+   côté du degré déduit, en observation, avec la mention « l'échelon de la fiche peut ne pas correspondre au degré de
+   la grille ». Ce n'est jamais un écart : le statut de la ligne ne change pas.
+9. **Primes imprimées.** Groupe nécessaire mais non lu : `GROUPE_NON_LU`, avec les montants de chaque groupe servis
+   par le moteur, sans en choisir un. Transport assuré non lu : `TRANSPORT_NON_LU`. Prime à condition :
+   `CONDITION_NON_VERIFIABLE`, condition citée, sans montant : le moteur n'est appelé avec `condition_remplie=True`
+   que pour lire la condition et sa citation. `condition_remplie` n'existe pas dans le schéma : une fiche ne prouve
+   pas une condition.
+10. **Primes absentes.** Seules les primes de la grille en `TND/mois`, sans condition, sans groupe et sans transport
+    assuré, servies par le moteur à la date, sont signalées « absente de la fiche », sans conclure qu'elles sont dues.
+11. **Aucune ligne vérifiée** (réponse d). Le statut reste `ok`, `aucune_ligne_verifiee` vaut `true` et une phrase en
+    tête du rendu FR et AR le dit. Chaque ligne garde le message du moteur et sa citation quand elle en a une. Le
+    schéma commun v0 (ok ⇒ au moins une citation) ne s'applique donc pas à cette réponse ; « Citation ou Silence » y
+    est tenue ligne par ligne : une ligne qui porte un montant porte une citation.
+12. **Origine des champs** (réponse e). `origines` dit qu'un champ vient de la carte du dossier ou d'une déclaration
+    de l'utilisateur ; le rendu l'affiche (« population déclarée par l'utilisateur »). Fiche 02 de la démo : secteur
+    `METALLURGIE_BATIMENT` pris dans la carte `company-demo-001`, population `execution` déclarée pour la démo.
+
+**Alternatives écartées** :
+- Ajouter l'opération aux schémas v1 existants : elle aurait changé `test_schemas_v1_bien_formes_et_ecarts_avec_v0`,
+  et la réponse d'un rapport n'a pas la forme `{montant, unite, detail}`.
+- Comparer le salaire malgré des régimes différents (variante A de l'ARRÊT 3) : le statut reposerait sur une
+  équivalence entre régimes qu'aucune source n'écrit.
+- Choisir le groupe d'une prime d'après la catégorie : une régularité sert à signaler, jamais à remplir.
+
+**Source PDF + page** : celles des réponses du moteur, recopiées ligne par ligne ; régime de la métallurgie : en-tête
+« نظام عمل 42 ساعة في الأسبوع » du tableau n° 5, p.34.
+
+**Statut de vérification** : choix de DS5 (ARRÊT 3 du 27/11/2026). Jeu de référence à part :
+`track_b_livrable.v0.json`, 12 cas. **VÉRIFIÉS** par DS5 le 28/11/2026 : les 12 cas, contrôlés sur les images
+découpées et encadrées des PDF (cellule ou prime, page, ligne, colonne) et sur le statut attendu de chaque ligne, sont
+tous conformes ; `verification_humaine: true` pour les 12. Les montants contrôlés : 641,013 (p.34) et 4,449 (p.35),
+7,856, 26,293, 92,800 et 100,533 (p.16) de la métallurgie ; 802,891 (p.19), 79,970 et 3,607 (p.15) des agences de
+voyages ; 841,551 (p.19), 20,210 et 62,158 (p.12) de la gestion des déchets ; SMIG 459,264 (décret 769/2022, p.2).
+
+### D109 — Liste des documents qui permettraient de conclure
+
+**Décision** (DS5, 27/11/2026) : une table fixe (`rapport/documents.py`) relie chaque cause de non-vérification à un
+document. Libellés FR et AR écrits une fois pour toutes.
+
+| Cause | Document |
+|---|---|
+| période ou salaire de base absent ou illisible | copie lisible de la fiche de paie |
+| ancienneté, régime horaire ou mode de paie absent ou illisible | contrat de travail |
+| catégorie absente ou illisible ; population, sous-catégorie ou degré illisible | attestation de classification professionnelle |
+| groupe d'une prime non lu | attestation de classification professionnelle |
+| condition d'octroi d'une prime, transport assuré non lu | attestation de l'employeur sur la condition d'octroi |
+| refus `PARAM_INVALIDE` du salaire (une valeur envoyée n'existe pas dans la grille) | attestation de classification, contrat de travail |
+
+- **Absence ou illisibilité.** La période, la catégorie, l'ancienneté, le régime, le mode de paie et le salaire
+  imprimé sont signalés dès qu'ils manquent. La population, la sous-catégorie et le degré peuvent manquer
+  normalement : ils ne le sont que s'ils sont déclarés illisibles. La raison donnée par DS3 est recopiée.
+- **Sans document.** Un refus `SOURCE_MANQUANTE` ou `HORS_SCOPE`, un régime ou une unité différents ne donnent aucun
+  document : aucune pièce de l'employé ne comble une donnée absente du corpus ou une conversion non écrite.
+- **Documents fournis.** Un document déjà fourni (`documents_fournis`) est retiré de la liste. Chaque entrée de la
+  liste donne ses raisons, en français et en arabe.
+
+**Alternatives écartées** : une liste ouverte de documents, ou un document déduit du message de refus : ni l'une ni
+l'autre ne serait déterministe ni testable.
+
+**Statut de vérification** : choix de DS5 ; table contrôlée par `test_rapport_conformite.py`.
+
+**Numérotation** : D108 et D109 suivent les numéros D91 à D107, réservés à d'autres travaux.
+
 ## Hors périmètre de Track B (D110)
 
 ### D110 — Hors périmètre de Track B : refus HORS_SCOPE motivés, conventions-cadres, métrique et seuil de 85 %

@@ -587,3 +587,34 @@ L = lu dans le PDF, C = calculé à la main, I = interprétation (Dn). Un échec
 | TB-470 | ok | I D75 | oui | 467.429 TND/mois | 467.429 TND/mois | correct |
 | TB-471 | ok | I D75 | oui | 3.209 TND/heure | 3.209 TND/heure | correct |
 | TB-472 | ok | I D93 | non | 1761.853 TND/mois | 1761.853 TND/mois | correct |
+
+## Livrable : rapport de conformité (12 cas, D108, D109)
+
+Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_livrable.v0.json` (track_b_livrable.v0, sha256 `7539c560f3ad…`). Cas vérifiés par DS5 : **12 / 12**.
+
+**Faux montants (lignes) : 0**
+
+| Métrique | Nombre | Taux |
+|---|---|---|
+| Cas corrects | 12 / 12 | 100.0 % |
+| Lignes correctes (montant, différence, statut, motif) | 47 / 47 | 100.0 % |
+| Refus corrects | 1 / 1 | 100.0 % |
+| Citations valides | 11 / 11 | 100.0 % |
+| Conformité schéma du rapport | 12 / 12 | 100.0 % |
+| Statuts incorrects | 0 | |
+| Statut erreur / exceptions | 0 / 0 | |
+
+| Cas | Vérifié | Attendu | Verdict |
+|---|---|---|---|
+| TBL-01 | oui | 5 lignes | correct |
+| TBL-02 | oui | 5 lignes | correct |
+| TBL-03 | oui | 4 lignes | correct |
+| TBL-04 | oui | 4 lignes | correct |
+| TBL-05 | oui | 4 lignes | correct |
+| TBL-06 | oui | 4 lignes | correct |
+| TBL-07 | oui | 2 lignes | correct |
+| TBL-08 | oui | SOURCE_MANQUANTE | correct |
+| TBL-09 | oui | 5 lignes | correct |
+| TBL-10 | oui | 4 lignes | correct |
+| TBL-11 | oui | 5 lignes | correct |
+| TBL-12 | oui | 5 lignes | correct |
