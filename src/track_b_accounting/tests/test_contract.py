@@ -130,9 +130,9 @@ def test_chaque_requete_demo_donne_une_reponse_valide(req):
         assert rep["refus"]["message_fr"] and rep["refus"]["message_ar"]
 
 
-def test_bilan_demo_202_ok_155_refus():
+def test_bilan_demo_225_ok_169_refus():
     statuts = {req["request_id"]: handle(req)["status"] for req in DEMO}
-    assert list(statuts.values()).count("ok") == 202 and list(statuts.values()).count("refus") == 155
+    assert list(statuts.values()).count("ok") == 225 and list(statuts.values()).count("refus") == 169
     codes = {r["request_id"]: handle(r)["refus"]["code"] for r in DEMO if statuts[r["request_id"]] == "refus"}
     assert codes == {
         "demo-07-refus-cnss": "HORS_SCOPE",
@@ -290,6 +290,20 @@ def test_bilan_demo_202_ok_155_refus():
         "demo-350-refus-ports-avant-tableau": "SOURCE_MANQUANTE",
         "demo-352-refus-ports-logement-art-43-tableau-9": "SOURCE_MANQUANTE",
         "demo-354-refus-ports-risque-art-47-tableau-9": "SOURCE_MANQUANTE",
+        "demo-361-refus-electricite-degre-7-trait-blanc": "SOURCE_MANQUANTE",
+        "demo-362-refus-electricite-cellule-signalee-construction": "SOURCE_MANQUANTE",
+        "demo-363-refus-electricite-30-ans": "SOURCE_MANQUANTE",
+        "demo-364-refus-electricite-avant-tableau": "SOURCE_MANQUANTE",
+        "demo-371-refus-presse-28-ans": "SOURCE_MANQUANTE",
+        "demo-372-refus-presse-avant-tableau": "SOURCE_MANQUANTE",
+        "demo-374-refus-presse-scolaire-deux-versions": "SOURCE_MANQUANTE",
+        "demo-380-refus-lait-apres-avenant-16": "SOURCE_MANQUANTE",
+        "demo-381-refus-lait-23-ans": "SOURCE_MANQUANTE",
+        "demo-382-refus-lait-avant-tableau": "SOURCE_MANQUANTE",
+        "demo-386-refus-explosifs-salaire-tableau-2": "SOURCE_MANQUANTE",
+        "demo-387-refus-explosifs-salaire-tableau-1": "SOURCE_MANQUANTE",
+        "demo-391-refus-explosifs-risques-speciaux-avant-2013": "SOURCE_MANQUANTE",
+        "demo-394-refus-explosifs-productivite": "SOURCE_MANQUANTE",
     }
     # demo-13 (BTP, catégorie 19, 28 ans) : refus de la case « 950 dinars » de l'article 13 (D10).
     rep13 = handle(next(r for r in DEMO if r["request_id"] == "demo-13-refus-btp-anciennete-27-ans"))
@@ -308,7 +322,8 @@ def test_demo_10_secteur_fictif():
         "IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, "
         "PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, "
         "CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, "
-        "JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT)."
+        "JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, "
+        "ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES)."
     )
 
 
@@ -429,7 +444,7 @@ def test_cli_fichier_liste():
     out = io.StringIO()
     assert cli_main([str(DEMO_FILE)], stdout=out) == 0
     reps = json.loads(out.getvalue())
-    assert len(reps) == len(DEMO) == 357 and all(REP_V.is_valid(r) for r in reps)
+    assert len(reps) == len(DEMO) == 394 and all(REP_V.is_valid(r) for r in reps)
     assert "لا يوجد" in out.getvalue() and "\\u06" not in out.getvalue()  # ensure_ascii=False
 
 
@@ -469,10 +484,10 @@ def test_mock_track_a_erreur(monkeypatch):
         assert MockTrackA().formuler(req, rep) == rep["erreur"][f"message_{lang}"]
 
 
-def test_demo_affiche_357_echanges():
+def test_demo_affiche_394_echanges():
     from track_b_accounting.demo import main
 
     out = io.StringIO()
     assert main(out=out) == 0
     texte = out.getvalue()
-    assert texte.count("=== Échange ") == 357 and "Bilan : 202 ok, 155 refus, 0 erreur(s)." in texte
+    assert texte.count("=== Échange ") == 394 and "Bilan : 225 ok, 169 refus, 0 erreur(s)." in texte

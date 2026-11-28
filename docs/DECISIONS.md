@@ -4472,6 +4472,194 @@ et TB-469.
 
 **Numérotation** : D90 est à DS2 ; la vague 7 prend D91 à D96 ; la vague 8 prendra D97 et suivants.
 
+## Vague 8, groupe A — électricité et électronique, presse écrite, industrie laitière, explosifs et artifices (D97 à D100)
+
+**Vague 8, règles communes (réponses aux ARRÊT 1 et 2 de la vague 8)** : règles communes des vagues 6 et 7 reprises (unité
+non imprimée en hypothèse ; au-delà du dernier degré sans règle, refus avec l'article et la page ; promotions et
+reclassements non calculés ; un code par montant ; primes en formule, en pourcentage, en nature ou sans montant fixé : non
+couvertes, texte cité ; primes datées servies à leurs propres dates, même avant ou après la grille ; une régularité observée
+sert à signaler une cellule, jamais à la remplir ; cellule illisible : `SOURCE_MANQUANTE`). Construction en deux groupes :
+groupe A ici (D97 à D100), salines en D101 (groupe B).
+
+**Cellules non tranchées et signalées** : cellule à `null`, déclarée dans `cellules_source_manquante` (D48) avec la raison et
+les lectures. Une cellule lue de la même façon deux fois mais contredite par les contrôles est traitée de même, la valeur
+lue gardée dans le champ descriptif `valeur_lue` (réponse 1 à l'ARRÊT 2).
+
+**Dates antérieures au tableau imprimé** : salaire refusé avant la date d'effet du premier tableau imprimé, avec le message
+générique du moteur ; l'avenant et le numéro du tableau sont cités dans `_meta.note_dates` et dans la décision du secteur.
+
+### D97 — Électricité et électronique : quatre populations par régime, 32 cellules en source manquante
+
+**Décision** (DS5, vague 8) : `data/processed/salary_grids/electricite_electronique.json`, secteur `ELECTRICITE_ELECTRONIQUE`.
+1. 12 tableaux (pp.26-37) = 3 dates (2021-12-01, 2023-01-01, 2024-01-01) × 2 groupes × 2 régimes. **Quatre populations**
+   (réponse Q1 de l'ARRÊT 1) : `execution_40h`, `maitrise_cadres_40h`, `execution_48h`, `maitrise_cadres_48h`,
+   obligatoires ; art. 28 (جديد) (p.11) cité en hypothèse : 40 heures dans l'industrie, 48 heures dans le commerce et les
+   services. **Gardiens (56 et 64 heures) et chauffeurs** : aucun tableau pour leur régime ; l'hypothèse dit qu'ils ne
+   sont pas couverts par ces tables. Catégories `E1` à `E11` (تنفيذ), `M1` à `M6` (تسيير), `C1` à `C5` (إطار). Unité non
+   imprimée : TND/mois en hypothèse (base mensuelle imprimée : 173,33 heures ou 208 heures).
+2. **Indices non transcrits** (« الرقم القياسي ») : lus en lecture 1 seulement, pour le contrôle du pas d'indice (1,80 à
+   40 heures, 2,16 à 48 heures), qui signale sans jamais remplir.
+3. 15 degrés de 2 ans (« 0-2 » … « 28-30 ») ; **refus à partir de 30 ans** (art. 18 أ, p.9 : passage dans la catégorie
+   suivante, non calculé). Avenant n° 10 (p.3, effet 2021-12-01) : refus avant le 2021-12-01. Lignes identiques imprimées
+   au tableau n° 2 (تسيير 1-4 = تنفيذ 8-11 ; إطار 1-2 = تسيير 5-6), conservées.
+4. **32 cellules à `null`** (`cellules_source_manquante`) :
+   - **21 cellules du degré 7** (réponse 2 à l'ARRÊT 2) : un trait blanc vertical du scan efface en partie un chiffre
+     (tableaux n° 1, 2, 3, 5, 6, 7, 8 et 11), dont la cellule signalée n° 3, ligne 3 (637.545, pas d'indice contraire).
+     Refus gardé ; une autre copie du PDF est demandée. Liste dans `claude-docs/vague8/evolutions_vague8.md`, « données à
+     reprendre si une meilleure copie arrive ».
+   - 9 autres cellules non tranchées : n° 3 (E4 degré 3, E7 degré 12, E8 degrés 1 et 15), n° 9 (E2 degré 11), n° 10
+     (M2 degré 10), n° 11 (E6 degré 8, E8 degré 1), n° 12 (C2 degré 11).
+   - **2 cellules signalées à la construction** par le contrôle de hausse permanent (`test_controle_hausse.py`) :
+     tableau n° 1, E4 degré 2 (lue 567.553 deux fois ; hausse 2021 → 2023 de 38.227 contre 38.127 sur la ligne ; pas
+     d'indice 2.808 contre 2.711) et E11 degré 9 (lue 941.536 deux fois ; hausse de 60.846 contre 60.746). Au zoom à
+     400 dpi, le chiffre des dixièmes (5 ou 6) n'est pas séparé sûrement : réponse 1 à l'ARRÊT 2 appliquée
+     (`SOURCE_MANQUANTE`, valeur lue gardée). À confirmer par DS5 (ARRÊT 4).
+5. Primes (31 montants) : fonction (4 codes, condition), transport (4 groupes × 3 dates ; montants intitulés « بعنوان سنة
+   2022 » sous « بداية من غرة ديسمبر 2021 » : la date d'effet imprimée est suivie), transport de nuit (5,300, condition),
+   présence (4 groupes × 3 dates), panier (« بثلاثمائة مليم » par jour, en toutes lettres seulement, condition), Aïd
+   el-Adha (70 par an). Non couvertes : productivité (commission), fin de service, retraite, fin d'année, maniement de
+   fonds, commissions.
+
+**Alternatives écartées** : servir la table du régime de l'activité aux gardiens et chauffeurs ; compléter une cellule du
+degré 7 par le pas d'indice ; transcrire les indices comme données.
+
+**Raison** : Citation ou Silence ; le régime est imprimé sur chaque tableau ; une régularité sert à signaler, jamais à
+remplir.
+
+**Source PDF + page** : `الكهرباء و الالكترونيك.pdf`, avenant n° 10 p.3, art. 13 pp.8-9, art. 18 p.9, art. 22 p.10, art. 28
+p.11, art. 49 p.16, art. 50 à 53 p.17, art. 53 à 56 مكرر p.18, grilles pp.26-37.
+
+**Mise en œuvre** : `electricite_electronique.json` ; `tests/test_vague8a.py` (les quatre secteurs) ; démos 358 à 366, démos
+v1 37 et 38 ; cas TB-473 à TB-481, TB-510 et TB-511.
+
+**Statut de vérification** :
+- 1980 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes découpées
+  autrement, dans l'ordre inverse), comparées par script : 2 écarts et 28 cellules douteuses vues au zoom à 400 dpi : 1 tranchée, 29 non tranchées (dont 2 tranchées au zoom puis contredites par les contrôles) ; 1 cellule signalée (point 4) ; contrôles de croissance le long des degrés et entre catégories, de hausse d'une date à la suivante et du pas d'indice : aucune cellule signalée au second passage de l'ARRÊT 2 ; contrôle de hausse permanent : 2 cellules signalées à la construction (point 4) ; montants des primes relus sur
+  l'image à 200 dpi.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 347 points de claude-docs/vague8/verification/page.html, tous conformes : 8 points de primes (en toutes lettres, refusées ou citées en note), les 82 cellules non tranchées, les 7 cellules signalées, les 12 cellules tranchées au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et sur les contrôles (hausse, pas d'indice, pas de la ligne). J'ai vérifié sur les images les 42 cas de référence TB-473 à TB-514 de claude-docs/vague8/verification/cas_A.html, tous conformes. »
+- Cas TB-473 à TB-481, TB-510 et TB-511 : vérifiés par DS5 sur les images (claude-docs/vague8/verification/cas_A.html), `verification_humaine` à `true`.
+
+### D98 — Presse écrite : horaires et mensuels, 23 échelles, prime scolaire refusée
+
+**Décision** (DS5, vague 8) : `data/processed/salary_grids/presse_ecrite.json`, secteur `PRESSE_ECRITE`.
+1. Tableaux n° 1 et 2 (2022-05-01, pp.30-31), n° 3 et 4 (2023-01-01, pp.32-33), n° 5 et 6 (2024-01-01, pp.34-35) :
+   populations `horaires` (« الساعوي », TND/heure) et `mensuels` (« الشهري », TND/mois), unité imprimée, obligatoires ;
+   catégories = échelles imprimées `11`, `12`, `21` … `83` (23 lignes ; le premier chiffre est la catégorie) ; 40 heures.
+2. 28 degrés d'un an ; **refus à partir de 28 ans** (art. 11 (جديد), p.9). Réduction au mérite et passage d'échelle non
+   calculés. Avenant n° 16 (p.4, effet 2022-05-01), grilles antérieures absentes : refus avant le 2022-05-01.
+3. Primes (35 montants imprimés, 26 servis) :
+   - **présence** (art. 17 مكرر (جديد), p.11) : 28,501 / 30,425 / 32,478 aux trois dates ; **la base « 20.999 » sans date
+     n'est pas servie, elle est citée en note** (réponse Q2 de l'ARRÊT 1) ;
+   - **prime scolaire refusée** (art. 48 مكرر (جديد), p.16, réponse Q3) : l'article est imprimé deux fois sur la même page
+     avec des montants différents, et le message cite les deux versions : note 43 (34,199 / 57,599 / 68,399 / 122,399) et
+     note 45 (31,666 / 53,333 / 63,333 / 113,333) ;
+   - naissance (« مائة دينار (100 د) », condition), transport (3 groupes × 3 dates), prime de presse (100,440, journalistes
+     titulaires de la carte, non révisée par l'avenant n° 16 : sans date de fin, hypothèse affichée), déplacement (3 dates),
+     coût particulier (3 groupes × 3 dates).
+   - Non couvertes : prime de sortie, majoration de nuit (20 %), 13e mois, production, frais de mission (renvoi au barème de
+     l'administration), retraite, décès.
+
+**Alternatives écartées** : servir « 20.999 » avant le 2022-05-01 ; choisir une des deux versions de la prime scolaire.
+
+**Raison** : aucune date d'effet pour « 20.999 » ; aucune date ne départage les deux versions de l'art. 48 مكرر.
+
+**Source PDF + page** : `مؤسسات الصحافة المكتوبة.pdf`, avenant n° 16 p.4, art. 11 p.9, art. 15 et 16 p.10, art. 17 مكرر et
+22 p.11, art. 45 et 46 p.15, art. 47 à 48-3 p.16, art. 48-4 p.17, art. 55 p.18, grilles pp.30-35.
+
+**Mise en œuvre** : `presse_ecrite.json` ; démos 367 à 376, démo v1 39 ; cas TB-482 à TB-491 et TB-512.
+
+**Statut de vérification** :
+- 3864 cellules lues en double lecture indépendante sur image (première lecture à 250 dpi, seconde à 280 dpi sur des bandes découpées
+  autrement, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; contrôles de croissance le long des degrés et entre échelles et de hausse d'une date à la suivante : aucune cellule signalée ; rapport mensuel / horaire 173,3 ; montants des primes relus sur
+  l'image à 200 dpi.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 347 points de claude-docs/vague8/verification/page.html, tous conformes : 8 points de primes (en toutes lettres, refusées ou citées en note), les 82 cellules non tranchées, les 7 cellules signalées, les 12 cellules tranchées au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et sur les contrôles (hausse, pas d'indice, pas de la ligne). J'ai vérifié sur les images les 42 cas de référence TB-473 à TB-514 de claude-docs/vague8/verification/cas_A.html, tous conformes. »
+- Cas TB-482 à TB-491 et TB-512 : vérifiés par DS5 sur les images (claude-docs/vague8/verification/cas_A.html), `verification_humaine` à `true`.
+
+### D99 — Industrie laitière : trois tableaux de 2019, valables jusqu'au 2021-11-30, puis refus (avenant 16)
+
+**Décision** (DS5, vague 8) : `data/processed/salary_grids/industrie_laitiere.json`, secteur `INDUSTRIE_LAITIERE`.
+1. Tableaux n° 4 (maîtrise, techniciens et techniciens supérieurs, 19 lignes, p.23), n° 5 (ouvriers, 18 lignes, 48 heures
+   imprimé, p.24) et n° 6 (services généraux et administratifs, 28 lignes, p.25), au 2019-05-01 : populations
+   `maitrise_techniciens`, `ouvriers`, `services_administratifs`, obligatoires ; catégories `I_a` … (a = أ, b = ب, c = ج).
+   Unité non imprimée : TND/mois en hypothèse (n° 4 et 6), TND/heure (n° 5).
+2. **Dates** : avenant n° 15 (p.3, effet 2018-05-01), tableaux n° 1 à 3 absents : refus avant le 2019-05-01. **Avenant n° 16**
+   (p.3, effet 2021-12-01) : salaires révisés sans grille dans la source : `valide_jusqu_au` 2021-11-30 sur les trois tables,
+   puis refus avec l'avenant cité (D47). Primes datées de 2021 à 2024 servies à leurs dates.
+3. 14 degrés : durées 2 (degrés 1 à 9) puis 1 (10 à 14), ancienneté effective imprimée 2 … 23 ; **refus à partir de
+   23 ans** (art. 13 ب, p.8 : promotion automatique, non calculée).
+4. **Contrôle de croissance permanent** (une seule date) dans `tests/test_vague8a.py` ; le lait rejoint
+   `GRILLES_UNE_SEULE_TABLE`.
+5. Primes (24 montants) : transport (2 groupes × 3 dates), déplacement (3, 4, 9, nuitée 19 ; condition), panier (1,133),
+   poussière, chaleur, froid, risque (17,666 chacune, condition), scolaire (30, 60, 76,666, 126,666 par enfant), caisse
+   (« بثلاثين دينارا (30 دينار) », condition), présence (3 dates), conducteur de tracteur (12, condition). Non couvertes :
+   fin d'année et 13e mois, production, avantage en nature, décès, ancienneté de 1975.
+
+**Hypothèse SMIG (règle « grille ancienne » des vagues 6 et 7)** : montant imprimé servi ; chaque réponse de salaire affiche « montants de la convention en vigueur à la date d'effet de la table utilisée ; le SMIG en vigueur à la date demandée peut être supérieur, ce que Track B ne compare pas ».
+
+**Alternatives écartées** : servir les tableaux de 2019 après le 2021-11-30.
+
+**Raison** : l'avenant n° 16 révise les salaires ; sa grille n'est pas dans la source.
+
+**Source PDF + page** : `صناعة الحليب و مشتقاته.pdf`, avenants n° 15 et 16 p.3, art. 13 p.8, art. 23 p.10, art. 48 et 50 أ
+p.15, art. 50 ب à 50-10 p.16, art. 50-11, 50-12 et 51 p.17, grilles pp.23-25.
+
+**Mise en œuvre** : `industrie_laitiere.json` ; démos 377 à 385, démo v1 40 ; cas TB-492 à TB-500 et TB-513.
+
+**Statut de vérification** :
+- 910 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde à 280 dpi sur des bandes découpées
+  autrement, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; une seule date : contrôle de croissance le long des degrés et entre catégories, aucune cellule signalée ; montants des primes relus sur
+  l'image à 200 dpi.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 347 points de claude-docs/vague8/verification/page.html, tous conformes : 8 points de primes (en toutes lettres, refusées ou citées en note), les 82 cellules non tranchées, les 7 cellules signalées, les 12 cellules tranchées au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et sur les contrôles (hausse, pas d'indice, pas de la ligne). J'ai vérifié sur les images les 42 cas de référence TB-473 à TB-514 de claude-docs/vague8/verification/cas_A.html, tous conformes. »
+- Cas TB-492 à TB-500 et TB-513 : vérifiés par DS5 sur les images (claude-docs/vague8/verification/cas_A.html), `verification_humaine` à `true`.
+
+### D100 — Explosifs et artifices : tableaux transcrits pour la trace, salaire refusé en entier, primes servies
+
+**Décision** (DS5, vague 8) : `data/processed/salary_grids/explosifs_artifices.json`, secteur `EXPLOSIFS_ARTIFICES`.
+1. Tableaux n° 1 (« 1 ماي 2018 », p.43, 17 lignes × 14 degrés) et n° 2 (« 1 ماي 2019 », p.44, 23 lignes × 18 degrés), coupés
+   par le bord droit du scan : **colonne des catégories hors du cadre**, degré 1 du n° 1 et degrés 1 à 3 du n° 2 coupés.
+   Titres suivis contre l'avenant n° 15 (p.3, effet imprimé 2016-08-01), comme D80.
+2. **Salaire refusé en entier** (réponse Q4 de l'ARRÊT 1) : populations `tableau_1_2018` et `tableau_2_2019`, lignes par
+   position ; règle « refus » avec seuil 0 (D68), message citant la page et la raison ; toutes les cellules à `null`
+   (`cellules_source_manquante`) : **566 cellules nettes transcrites pour la trace** (champ descriptif `valeur_imprimee`),
+   86 cellules coupées, non reconstruites. Aucun service par « ligne n° k », ni par l'ancienneté ni par le degré (v1).
+   `_meta.salaire_base_servi` : false.
+3. **Primes servies** (17 montants, art. 50 مكرر (جديد), p.15) : poussière et odeur (0,500 par jour, sauf administratifs),
+   panier (3 par jour), risques spéciaux (150 par mois depuis le 2013-05-01), particularité (200), présence et transport
+   (2018 et 2019 ; transport non versé aux agents qui utilisent le bus de la société : `montant_reduit_si_transport_assure`
+   0), études (60, 80, 100 par enfant), fabrication de mèche (0,500 par jour), employé modèle (350 et 500 par an,
+   condition), Aïd el-Adha (420) et Aïd el-Fitr (200). Non couvertes : productivité, 13e et 14e mois, décès, savon (en
+   nature), licenciement.
+4. Les explosifs rejoignent `GRILLES_UNE_SEULE_TABLE` (aucune population n'a deux tables) ; le test de la vague contrôle
+   la croissance des cellules nettes sur `valeur_imprimee`.
+
+**Alternatives écartées** : servir par « ligne n° k » avec une hypothèse ; reconstruire les colonnes coupées.
+
+**Raison** : sans libellé, une ligne ne désigne aucune catégorie : servir un montant serait une affirmation sans source.
+
+**Source PDF + page** : `مفرقعات.pdf`, avenants pp.2-3, art. 14 p.8, art. 18 p.9, art. 24 p.10, art. 46 et 49 p.14,
+art. 50 et 50 مكرر (جديد) p.15, grilles pp.43-44.
+
+**Mise en œuvre** : `explosifs_artifices.json` ; démos 386 à 394, démo v1 41 ; cas TB-501 à TB-509 et TB-514.
+
+**Statut de vérification** :
+- 566 cellules lues en double lecture indépendante sur image (première lecture à 250 dpi, seconde à 280 dpi sur des bandes découpées
+  autrement, dans l'ordre inverse), comparées par script : 0 écart, 0 doute ; 86 cellules coupées par le bord du scan ; contrôle de croissance le long des degrés sur les cellules nettes, aucune cellule signalée ; contrôle de hausse impossible (structures différentes) ; montants des primes relus sur
+  l'image à 200 dpi.
+- **Vérification humaine (DS5)** : « J'ai vérifié les 347 points de claude-docs/vague8/verification/page.html, tous conformes : 8 points de primes (en toutes lettres, refusées ou citées en note), les 82 cellules non tranchées, les 7 cellules signalées, les 12 cellules tranchées au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et sur les contrôles (hausse, pas d'indice, pas de la ligne). J'ai vérifié sur les images les 42 cas de référence TB-473 à TB-514 de claude-docs/vague8/verification/cas_A.html, tous conformes. »
+- Cas TB-501 à TB-509 et TB-514 : vérifiés par DS5 sur les images (claude-docs/vague8/verification/cas_A.html), `verification_humaine` à `true`.
+
+**Tests existants modifiés (vague 8, groupe A)** : listes et comptes mécaniques seulement.
+- `test_controle_hausse.py` : `GRILLES_UNE_SEULE_TABLE` reçoit le lait et les explosifs ;
+- `test_gardiennage.py` : `AUTRES_FINS_DE_TABLE` reçoit le lait (`valide_jusqu_au`) ;
+- `test_contrat_v1.py` : 98 phrases « L'ancienneté reçue… » dans 48 fichiers ; bilan des démos v1 ;
+- `test_contract.py`, `src/shared/tests/test_common_schema.py` : bilan et nombre des démos ;
+- listes de secteurs : `test_calc_btp.py`, `test_contract.py`, `test_populations_ambigues.py`, `test_registre_secteurs.py`,
+  `test_dernier_degre_ouvert_population_unique.py` (registre), `src/shared/tests/test_sectors_table.py` (`EN_ATTENTE_DS2`).
+- Références de réponses régénérées : `track_b_responses_demo.json` et `track_b_rapport_demo.v1.json` (D108), où seule la
+  liste des secteurs disponibles change parmi les réponses existantes.
+
+**Numérotation** : la vague 8 prend D97 à D100 (groupe A) et D101 (salines, groupe B).
+
 ## Livrable — rapport de conformité d'une fiche de paie (D108, D109)
 
 ### D108 — Opération `rapport_conformite` du contrat v1 : règles du rapport

@@ -498,6 +498,10 @@ def test_b1_secteur_charge():
         "COMMERCE_MATERIAUX_BOIS_ACIER",
         "CAFES_RESTAURANTS_BARS",
         "PORTS_CHARGEMENT_DECHARGEMENT",
+        "ELECTRICITE_ELECTRONIQUE",
+        "PRESSE_ECRITE",
+        "INDUSTRIE_LAITIERE",
+        "EXPLOSIFS_ARTIFICES",
     }
 
 

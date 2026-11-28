@@ -1118,7 +1118,7 @@
    "id": "TB-35",
    "obtenu": {
     "code": "SOURCE_MANQUANTE",
-    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+    "message_fr": "Aucune grille vérifiée pour le secteur 'SECTEUR_FICTIF_NON_SUPPORTE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES).",
     "status": "refus"
    },
    "problemes_citations": [],
@@ -13975,6 +13975,1252 @@
    "problemes_citations": [],
    "verdict": "correct",
    "verification_humaine": false
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 34,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "757.453",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-473",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 34,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "757.453",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 33,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "2490.728",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-474",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 33,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "2490.728",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 28,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "573.410",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-475",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 28,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "573.410",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-476",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E6, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['666.?46', '666.?46'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-477",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E4, degré 2 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule lue 567.553 de la même façon aux deux lectures, mais contredite par les contrôles (hausse 2021 → 2023 de 38.227 contre 38.127 sur les 14 autres degrés de la ligne ; pas d'indice (126.43 − 124.87) × 1,80 = 2.808 contre 2.711 lu) ; chiffre ambigu au zoom à 400 dpi ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-478",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 30 ans : la grille de la convention de l'électricité et de l'électronique s'arrête au degré 15 (28 à 30 ans) ; l'en-tête des tableaux (pages 26 à 37) imprime la durée 2 sous chacun des 15 degrés ; au dernier degré, l'article 18 أ (page 9) fait passer l'agent dans la catégorie suivante, au degré qui correspond à son salaire : ce passage n'est pas calculé. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-479",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille ELECTRICITE_ELECTRONIQUE/execution_48h en vigueur au 2021-11-30 (première date d'effet disponible : 2021-12-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 17,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "88.778",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-480",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 17,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "88.778",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "0.300",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-481",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 18,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "0.300",
+    "status": "ok",
+    "unite": "TND/jour"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 30,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "5.440",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-482",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 30,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "5.440",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 35,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "1587.771",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-483",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 35,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "1587.771",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 33,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "2003.322",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-484",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 33,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "2003.322",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 34,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "8.758",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-485",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 34,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "8.758",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-486",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 28 ans : la grille de la convention des entreprises de presse écrite s'arrête au degré 28 (27 à 28 ans) ; l'en-tête des tableaux (pages 30 à 35) imprime la durée 1 sous chacun des 28 degrés, et l'article 11 (جديد) (page 9) ne prévoit rien au-delà. Aucun montant n'est renvoyé (ancienneté couverte : moins de 28 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-487",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille PRESSE_ECRITE/horaires en vigueur au 2022-04-30 (première date d'effet disponible : 2022-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 11,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "30.425",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-488",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 11,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "30.425",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-489",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime scolaire (article 48 مكرر (جديد), page 16) : article imprimé deux fois sur la même page avec des montants différents : version de la note 43 (avenants 6 à 10) 34.199, 57.599, 68.399 et 122.399 ; version de la note 45 (avenants 3, 8, 9 et 10) 31.666, 53.333, 63.333 et 113.333 ; aucune date ne les départage (réponse Q3 de l'ARRÊT 1). Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "100.440",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D98",
+   "id": "TB-490",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 16,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "100.440",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 18,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "46.907",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-491",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 18,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "46.907",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 23,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1096.179",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-492",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 23,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1096.179",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 24,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "2.792",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-493",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 24,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "2.792",
+    "status": "ok",
+    "unite": "TND/heure"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1793.245",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-494",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 25,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1793.245",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-495",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille vérifiée après le 2021-11-30 : l'avenant n° 16 (page 3, effet au 1er décembre 2021) a révisé les salaires et sa grille n'est pas dans la source ; le tableau n° 5 (page 24, en vigueur à partir du 1er mai 2019) ne vaut que jusqu'au 2021-11-30. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-496",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 23 ans : la grille de la convention de l'industrie du lait et de ses dérivés s'arrête au degré 14 (22 à 23 ans) ; l'en-tête des tableaux (pages 23 à 25) imprime les durées 2 (degrés 1 à 9) puis 1 (degrés 10 à 14) et l'ancienneté effective 23 au degré 14 ; l'article 13 ب (page 8) prévoit ensuite une promotion automatique à la sous-catégorie supérieure, non calculée. Aucun montant n'est renvoyé (ancienneté couverte : moins de 23 ans).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-497",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Aucune grille INDUSTRIE_LAITIERE/services_administratifs en vigueur au 2019-04-30 (première date d'effet disponible : 2019-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "17.025",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D99",
+   "id": "TB-498",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 16,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "17.025",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 16,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "30.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-499",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 16,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "30.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "84.516",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-500",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 15,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "84.516",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D100",
+   "id": "TB-501",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 3 ans : le salaire des explosifs et artifices n'est pas servi. Le tableau de salaires n° 2 (page 44, en vigueur à partir du 1er mai 2019) est coupé par le bord droit du scan : la colonne des catégories est hors du cadre, aucune ligne ne peut être rattachée à une catégorie, et les premiers degrés sont coupés ; l'article 14 (page 8) ne fixe ni nombre de degrés ni règle au dernier degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D100",
+   "id": "TB-502",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Ancienneté de 0.5 ans : le salaire des explosifs et artifices n'est pas servi. Le tableau de salaires n° 1 (page 43, en vigueur à partir du 1er mai 2018) est coupé par le bord droit du scan : la colonne des catégories est hors du cadre, aucune ligne ne peut être rattachée à une catégorie, et les premiers degrés sont coupés ; l'article 14 (page 8) ne fixe ni nombre de degrés ni règle au dernier degré. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "62.446",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D100",
+   "id": "TB-503",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D100",
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "62.446",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "0.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D100",
+   "id": "TB-504",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D100",
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "0.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "150.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-505",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D100",
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "150.000",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-506",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "prime_risques_speciaux : aucun montant en vigueur au 2013-04-30 (première date d'effet : 2013-05-01).",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "37.095",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-507",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D100",
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "37.095",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "500.000",
+    "status": "ok",
+    "unite": "TND/an"
+   },
+   "categorie": "ok",
+   "certitude": "L",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-508",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D100",
+      "page": 15,
+      "pdf": "مفرقعات.pdf"
+     }
+    ],
+    "montant": "500.000",
+    "status": "ok",
+    "unite": "TND/an"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "L",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": null,
+   "id": "TB-509",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Prime de productivité (article 49, page 14) : de la moitié à deux mois de salaire, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 36,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "1320.776",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-510",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D97",
+      "page": 36,
+      "pdf": "الكهرباء و الالكترونيك.pdf"
+     }
+    ],
+    "montant": "1320.776",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D97",
+   "id": "TB-511",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie M2, degré 7 (tableau n° 8, en vigueur à partir du 2023-01-01, page 33) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1080.?56', '1080.?56'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 35,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "2126.557",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-512",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D98",
+      "page": 35,
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf"
+     }
+    ],
+    "montant": "2126.557",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "citations": [
+     {
+      "page": 25,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1793.245",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "categorie": "ok",
+   "certitude": "I",
+   "citations_ok": true,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D75",
+   "id": "TB-513",
+   "obtenu": {
+    "citations": [
+     {
+      "decision_ref": "D99",
+      "page": 25,
+      "pdf": "صناعة الحليب و مشتقاته.pdf"
+     }
+    ],
+    "montant": "1793.245",
+    "status": "ok",
+    "unite": "TND/mois"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
+  },
+  {
+   "attendu": {
+    "code": "SOURCE_MANQUANTE",
+    "status": "refus"
+   },
+   "categorie": "refus",
+   "certitude": "I",
+   "citations_ok": null,
+   "conforme_schema_commun": true,
+   "conforme_schema_track_b": true,
+   "decision": "D100",
+   "id": "TB-514",
+   "obtenu": {
+    "code": "SOURCE_MANQUANTE",
+    "message_fr": "Salaire des explosifs et artifices, tableau n° 1 (en vigueur à partir du 1er mai 2018, page 43), ligne 3, degré 5 : cellule nette, transcrite pour la trace, non servie : la colonne des catégories est hors du cadre du scan (page 43), la ligne ne peut être rattachée à aucune catégorie (réponse Q4 de l'ARRÊT 1). Aucun montant n'est renvoyé.",
+    "status": "refus"
+   },
+   "problemes_citations": [],
+   "verdict": "correct",
+   "verification_humaine": true
   }
  ],
  "date": "2026-11-28",
@@ -13982,10 +15228,10 @@
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
  "golden_set": {
-  "cas": 472,
-  "cas_verifies_par_ds5": 461,
+  "cas": 514,
+  "cas_verifies_par_ds5": 503,
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
-  "sha256": "75e9750d13cb74293fc7fa67fbef488043bd980ccc044775731956fc2d26954a",
+  "sha256": "602a786f862de77b63792f8be38d06ba0a5dfea5b4e4e25e3cf60d83b59e9a1c",
   "version": "track_b_golden.v0"
  },
  "hors_perimetre": {
@@ -14487,7 +15733,7 @@
     "id": "HP-21",
     "obtenu": {
      "code": "SOURCE_MANQUANTE",
-     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES).",
      "status": "refus"
     },
     "problemes_citations": [],
@@ -14511,7 +15757,7 @@
     "id": "HP-22",
     "obtenu": {
      "code": "SOURCE_MANQUANTE",
-     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES).",
      "status": "refus"
     },
     "problemes_citations": [],
@@ -15063,7 +16309,7 @@
     "id": "HP-45",
     "obtenu": {
      "code": "SOURCE_MANQUANTE",
-     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES).",
      "status": "refus"
     },
     "problemes_citations": [],
@@ -15087,7 +16333,7 @@
     "id": "HP-46",
     "obtenu": {
      "code": "SOURCE_MANQUANTE",
-     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT, ELECTRICITE_ELECTRONIQUE, PRESSE_ECRITE, INDUSTRIE_LAITIERE, EXPLOSIFS_ARTIFICES).",
      "status": "refus"
     },
     "problemes_citations": [],
@@ -16960,113 +18206,113 @@
  },
  "metriques": {
   "cas_verifies": {
-   "cas": 461,
+   "cas": 503,
    "citations_valides": {
-    "n": 282,
-    "sur": 282,
+    "n": 308,
+    "sur": 308,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 179,
+    "sur": 195,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 461,
-    "sur": 461,
+    "n": 503,
+    "sur": 503,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 461,
-    "sur": 461,
+    "n": 503,
+    "sur": 503,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 282,
-    "sur": 282,
+    "n": 308,
+    "sur": 308,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 282,
+    "sur": 308,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 179,
+    "sur": 195,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 179,
+    "sur": 195,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 179,
-    "sur": 179,
+    "n": 195,
+    "sur": 195,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 282,
+    "sur": 308,
     "taux": 0.0
    },
    "statut_erreur": 0
   },
   "ensemble": {
-   "cas": 472,
+   "cas": 514,
    "citations_valides": {
-    "n": 283,
-    "sur": 283,
+    "n": 309,
+    "sur": 309,
     "taux": 1.0
    },
    "codes_refus_incorrects": {
     "n": 0,
-    "sur": 189,
+    "sur": 205,
     "taux": 0.0
    },
    "conformite_schema_commun": {
-    "n": 472,
-    "sur": 472,
+    "n": 514,
+    "sur": 514,
     "taux": 1.0
    },
    "conformite_schema_track_b": {
-    "n": 472,
-    "sur": 472,
+    "n": 514,
+    "sur": 514,
     "taux": 1.0
    },
    "exactitude_montants": {
-    "n": 283,
-    "sur": 283,
+    "n": 309,
+    "sur": 309,
     "taux": 1.0
    },
    "exceptions_inattendues": 0,
    "faux_montants": {
     "n": 0,
-    "sur": 283,
+    "sur": 309,
     "taux": 0.0
    },
    "faux_montants_total": 0,
    "messages_refus_incorrects": {
     "n": 0,
-    "sur": 189,
+    "sur": 205,
     "taux": 0.0
    },
    "montants_au_lieu_de_refus": {
     "n": 0,
-    "sur": 189,
+    "sur": 205,
     "taux": 0.0
    },
    "refus_corrects": {
-    "n": 189,
-    "sur": 189,
+    "n": 205,
+    "sur": 205,
     "taux": 1.0
    },
    "silence_excessif": {
     "n": 0,
-    "sur": 283,
+    "sur": 309,
     "taux": 0.0
    },
    "statut_erreur": 0,
@@ -17134,10 +18380,10 @@
     "statut_erreur": 0
    },
    "ok": {
-    "cas": 276,
+    "cas": 302,
     "citations_valides": {
-     "n": 276,
-     "sur": 276,
+     "n": 302,
+     "sur": 302,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
@@ -17146,24 +18392,24 @@
      "taux": null
     },
     "conformite_schema_commun": {
-     "n": 276,
-     "sur": 276,
+     "n": 302,
+     "sur": 302,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 276,
-     "sur": 276,
+     "n": 302,
+     "sur": 302,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 276,
-     "sur": 276,
+     "n": 302,
+     "sur": 302,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 276,
+     "sur": 302,
      "taux": 0.0
     },
     "faux_montants_total": 0,
@@ -17184,7 +18430,7 @@
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 276,
+     "sur": 302,
      "taux": 0.0
     },
     "statut_erreur": 0
@@ -17246,7 +18492,7 @@
     "statut_erreur": 0
    },
    "refus": {
-    "cas": 183,
+    "cas": 199,
     "citations_valides": {
      "n": 0,
      "sur": 0,
@@ -17254,17 +18500,17 @@
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 183,
+     "sur": 199,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 183,
-     "sur": 183,
+     "n": 199,
+     "sur": 199,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 183,
-     "sur": 183,
+     "n": 199,
+     "sur": 199,
      "taux": 1.0
     },
     "exactitude_montants": {
@@ -17281,17 +18527,17 @@
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 183,
+     "sur": 199,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 183,
+     "sur": 199,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 183,
-     "sur": 183,
+     "n": 199,
+     "sur": 199,
      "taux": 1.0
     },
     "silence_excessif": {
@@ -17360,113 +18606,113 @@
     "statut_erreur": 0
    },
    "I": {
-    "cas": 236,
+    "cas": 266,
     "citations_valides": {
-     "n": 114,
-     "sur": 114,
+     "n": 130,
+     "sur": 130,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 122,
+     "sur": 136,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 236,
-     "sur": 236,
+     "n": 266,
+     "sur": 266,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 236,
-     "sur": 236,
+     "n": 266,
+     "sur": 266,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 114,
-     "sur": 114,
+     "n": 130,
+     "sur": 130,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 114,
+     "sur": 130,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 122,
+     "sur": 136,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 122,
+     "sur": 136,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 122,
-     "sur": 122,
+     "n": 136,
+     "sur": 136,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 114,
+     "sur": 130,
      "taux": 0.0
     },
     "statut_erreur": 0
    },
    "L": {
-    "cas": 228,
+    "cas": 240,
     "citations_valides": {
-     "n": 161,
-     "sur": 161,
+     "n": 171,
+     "sur": 171,
      "taux": 1.0
     },
     "codes_refus_incorrects": {
      "n": 0,
-     "sur": 67,
+     "sur": 69,
      "taux": 0.0
     },
     "conformite_schema_commun": {
-     "n": 228,
-     "sur": 228,
+     "n": 240,
+     "sur": 240,
      "taux": 1.0
     },
     "conformite_schema_track_b": {
-     "n": 228,
-     "sur": 228,
+     "n": 240,
+     "sur": 240,
      "taux": 1.0
     },
     "exactitude_montants": {
-     "n": 161,
-     "sur": 161,
+     "n": 171,
+     "sur": 171,
      "taux": 1.0
     },
     "exceptions_inattendues": 0,
     "faux_montants": {
      "n": 0,
-     "sur": 161,
+     "sur": 171,
      "taux": 0.0
     },
     "faux_montants_total": 0,
     "messages_refus_incorrects": {
      "n": 0,
-     "sur": 67,
+     "sur": 69,
      "taux": 0.0
     },
     "montants_au_lieu_de_refus": {
      "n": 0,
-     "sur": 67,
+     "sur": 69,
      "taux": 0.0
     },
     "refus_corrects": {
-     "n": 67,
-     "sur": 67,
+     "n": 69,
+     "sur": 69,
      "taux": 1.0
     },
     "silence_excessif": {
      "n": 0,
-     "sur": 161,
+     "sur": 171,
      "taux": 0.0
     },
     "statut_erreur": 0

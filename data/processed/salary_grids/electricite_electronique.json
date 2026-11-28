@@ -1,0 +1,3804 @@
+{
+ "_meta": {
+  "secteur_code": "ELECTRICITE_ELECTRONIQUE",
+  "convention_ar": "الاتفاقية المشتركة القطاعية للكهرباء والإلكترونيك",
+  "convention_fr": "Convention collective sectorielle de l'électricité et de l'électronique",
+  "source_file": "data/raw/pdf/الكهرباء و الالكترونيك.pdf",
+  "pages_sources": [
+   3,
+   8,
+   9,
+   10,
+   11,
+   16,
+   17,
+   18,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37
+  ],
+  "tables_transcrites": true,
+  "statut_verification": "1980 cellules lues en double lecture indépendante sur image (première lecture à 200 dpi, seconde lecture à 280 dpi sur des bandes découpées autrement, dans l'ordre inverse), comparées par script : 2 écarts et 28 cellules douteuses vues au zoom à 400 dpi : 1 tranchée, 29 non tranchées (dont 2 tranchées au zoom puis contredites par les contrôles) ; 1 cellule lue de la même façon deux fois, contredite par le pas d'indice, signalée ; 2 cellules du tableau n° 1 lues de la même façon deux fois, signalées à la construction par le contrôle de hausse permanent ; ces 32 cellules sont déclarées SOURCE_MANQUANTE (cellules_source_manquante) ; contrôles de croissance le long des degrés et entre catégories (exécution, maîtrise et cadres à part), de hausse d'une date à la suivante (positive, 6,75 % au plus) et du pas d'indice (1,80 à 40 heures, 2,16 à 48 heures, indices lus en lecture 1) : aucune cellule signalée au second passage ; montants des primes relus sur l'image à 200 dpi. Vérification humaine (DS5) : « J'ai vérifié les 347 points de claude-docs/vague8/verification/page.html, tous conformes : 8 points de primes (en toutes lettres, refusées ou citées en note), les 82 cellules non tranchées, les 7 cellules signalées, les 12 cellules tranchées au zoom, et un échantillon d'une ligne sur trois de chaque tableau. Les autres cellules reposent sur la double lecture et sur les contrôles (hausse, pas d'indice, pas de la ligne). J'ai vérifié sur les images les 42 cas de référence TB-473 à TB-514 de claude-docs/vague8/verification/cas_A.html, tous conformes. »",
+  "decision_ref": "D97",
+  "currency": "TND",
+  "note_unite": "Unité non imprimée : TND/mois en hypothèse affichée ; base mensuelle imprimée en tête de chaque tableau (173,33 heures à 40 heures, 208 heures à 48 heures).",
+  "note_degres": "En-tête (pp.26-37) : 15 degrés, durée 2 sous chacun ; libellés « 0-2 » … « 28-30 » ; bornes exactes refusées (D6) ; à partir de 30 ans, refus (art. 18 أ, p.9).",
+  "note_categories": "Quatre populations (groupe × régime, art. 28 (جديد), p.11) : exécution (E1 à E11 = تنفيذ 1 à 11) et maîtrise-cadres (M1 à M6 = تسيير 1 à 6, C1 à C5 = إطار 1 à 5), à 40 et à 48 heures ; population obligatoire. Lignes identiques imprimées au tableau n° 2 (2021 : تسيير 1-4 = تنفيذ 8-11 ; إطار 1-2 = تسيير 5-6), conservées. Indices non transcrits.",
+  "note_dates": "Tableaux n° 1 à 4 (2021-12-01, pp.26-29), n° 5 à 8 (2023-01-01, pp.30-33), n° 9 à 12 (2024-01-01, pp.34-37) ; avenant n° 10 (p.3, effet 2021-12-01), dernier avenant listé : salaire refusé avant le 2021-12-01.",
+  "note_cellules": "32 cellules à null (cellules_source_manquante) : 21 cellules du degré 7 abîmées par un trait blanc vertical du scan (pages 26 à 33 et 36), dont une signalée, 9 autres cellules non tranchées et 2 cellules du tableau n° 1 signalées à la construction (E4 degré 2, E11 degré 9). Données à reprendre si une meilleure copie du PDF arrive.",
+  "remarque_pdf": "Note sous chaque tableau (pages 26 à 37) : les salaires de la grille incluent l'indemnité complémentaire provisoire (décret n° 437 du 7 avril 1981, relevée par le décret n° 501 du 16 mars 1982) : mention reproduite, sans calcul.",
+  "remarque_pdf_ar": "ملاحظة تحت كل جدول (الصفحات من 26 إلى 37): تتضمن الأجور المضبوطة بهذا الجدول المنحة التكميلية المؤقتة المحدثة بالأمر عدد 437 لسنة 1981 المؤرخ في 7 أفريل 1981 والمرفع فيها بالأمر عدد 501 لسنة 1982 المؤرخ في 16 مارس 1982."
+ },
+ "populations": {
+  "execution_40h": {
+   "libelle_fr": "Exécution, 40 heures",
+   "libelle_ar": "التنفيذ، نظام 40 ساعة في الأسبوع",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 26,
+   "note": "Tableaux n° 1, 5 et 9 ; population obligatoire."
+  },
+  "maitrise_cadres_40h": {
+   "libelle_fr": "Maîtrise et cadres, 40 heures",
+   "libelle_ar": "التسيير والإطارات، نظام 40 ساعة في الأسبوع",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 27,
+   "note": "Tableaux n° 2, 6 et 10 ; population obligatoire."
+  },
+  "execution_48h": {
+   "libelle_fr": "Exécution, 48 heures",
+   "libelle_ar": "التنفيذ، نظام 48 ساعة في الأسبوع",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 28,
+   "note": "Tableaux n° 3, 7 et 11 ; population obligatoire."
+  },
+  "maitrise_cadres_48h": {
+   "libelle_fr": "Maîtrise et cadres, 48 heures",
+   "libelle_ar": "التسيير والإطارات، نظام 48 ساعة في الأسبوع",
+   "libelle_ar_redige": false,
+   "source_pdf_page": 29,
+   "note": "Tableaux n° 4, 8 et 12 ; population obligatoire."
+  }
+ },
+ "degres": {
+  "execution_40h": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-30",
+    "duree_imprimee": 2
+   }
+  ],
+  "maitrise_cadres_40h": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-30",
+    "duree_imprimee": 2
+   }
+  ],
+  "execution_48h": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-30",
+    "duree_imprimee": 2
+   }
+  ],
+  "maitrise_cadres_48h": [
+   {
+    "degre": 1,
+    "anciennete_label": "0-2",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 2,
+    "anciennete_label": "2-4",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 3,
+    "anciennete_label": "4-6",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 4,
+    "anciennete_label": "6-8",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 5,
+    "anciennete_label": "8-10",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 6,
+    "anciennete_label": "10-12",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 7,
+    "anciennete_label": "12-14",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 8,
+    "anciennete_label": "14-16",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 9,
+    "anciennete_label": "16-18",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 10,
+    "anciennete_label": "18-20",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 11,
+    "anciennete_label": "20-22",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 12,
+    "anciennete_label": "22-24",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 13,
+    "anciennete_label": "24-26",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 14,
+    "anciennete_label": "26-28",
+    "duree_imprimee": 2
+   },
+   {
+    "degre": 15,
+    "anciennete_label": "28-30",
+    "duree_imprimee": 2
+   }
+  ]
+ },
+ "au_dela_dernier_degre": {
+  "execution_40h": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 9,
+   "source_article": "18 أ",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'électricité et de l'électronique s'arrête au degré 15 (28 à 30 ans) ; l'en-tête des tableaux (pages 26 à 37) imprime la durée 2 sous chacun des 15 degrés ; au dernier degré, l'article 18 أ (page 9) fait passer l'agent dans la catégorie suivante, au degré qui correspond à son salaire : ce passage n'est pas calculé. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الكهرباء والإلكترونيك عند الدرجة 15 (من 28 إلى 30 سنة)؛ ويذكر رأس الجداول (الصفحات من 26 إلى 37) المدة 2 تحت كل درجة من الدرجات الخمس عشرة؛ وعند آخر درجة ينقل الفصل 18 أ (الصفحة 9) العون إلى الصنف الموالي في الدرجة المطابقة لأجره، ولا يُحتسب هذا الانتقال. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  },
+  "maitrise_cadres_40h": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 9,
+   "source_article": "18 أ",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'électricité et de l'électronique s'arrête au degré 15 (28 à 30 ans) ; l'en-tête des tableaux (pages 26 à 37) imprime la durée 2 sous chacun des 15 degrés ; au dernier degré, l'article 18 أ (page 9) fait passer l'agent dans la catégorie suivante, au degré qui correspond à son salaire : ce passage n'est pas calculé. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الكهرباء والإلكترونيك عند الدرجة 15 (من 28 إلى 30 سنة)؛ ويذكر رأس الجداول (الصفحات من 26 إلى 37) المدة 2 تحت كل درجة من الدرجات الخمس عشرة؛ وعند آخر درجة ينقل الفصل 18 أ (الصفحة 9) العون إلى الصنف الموالي في الدرجة المطابقة لأجره، ولا يُحتسب هذا الانتقال. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  },
+  "execution_48h": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 9,
+   "source_article": "18 أ",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'électricité et de l'électronique s'arrête au degré 15 (28 à 30 ans) ; l'en-tête des tableaux (pages 26 à 37) imprime la durée 2 sous chacun des 15 degrés ; au dernier degré, l'article 18 أ (page 9) fait passer l'agent dans la catégorie suivante, au degré qui correspond à son salaire : ce passage n'est pas calculé. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الكهرباء والإلكترونيك عند الدرجة 15 (من 28 إلى 30 سنة)؛ ويذكر رأس الجداول (الصفحات من 26 إلى 37) المدة 2 تحت كل درجة من الدرجات الخمس عشرة؛ وعند آخر درجة ينقل الفصل 18 أ (الصفحة 9) العون إلى الصنف الموالي في الدرجة المطابقة لأجره، ولا يُحتسب هذا الانتقال. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  },
+  "maitrise_cadres_48h": {
+   "regle": "refus",
+   "anciennete_max_couverte_annees": 30,
+   "source_pdf_page": 9,
+   "source_article": "18 أ",
+   "message_fr": "Ancienneté de {a} ans : la grille de la convention de l'électricité et de l'électronique s'arrête au degré 15 (28 à 30 ans) ; l'en-tête des tableaux (pages 26 à 37) imprime la durée 2 sous chacun des 15 degrés ; au dernier degré, l'article 18 أ (page 9) fait passer l'agent dans la catégorie suivante, au degré qui correspond à son salaire : ce passage n'est pas calculé. Aucun montant n'est renvoyé (ancienneté couverte : moins de 30 ans).",
+   "message_ar": "أقدمية {a} سنة: ينتهي جدول أجور اتفاقية الكهرباء والإلكترونيك عند الدرجة 15 (من 28 إلى 30 سنة)؛ ويذكر رأس الجداول (الصفحات من 26 إلى 37) المدة 2 تحت كل درجة من الدرجات الخمس عشرة؛ وعند آخر درجة ينقل الفصل 18 أ (الصفحة 9) العون إلى الصنف الموالي في الدرجة المطابقة لأجره، ولا يُحتسب هذا الانتقال. لا يُرجَع أي مبلغ (الأقدمية المغطاة: أقل من 30 سنة)."
+  }
+ },
+ "categories": {
+  "execution_40h": [
+   "E1",
+   "E2",
+   "E3",
+   "E4",
+   "E5",
+   "E6",
+   "E7",
+   "E8",
+   "E9",
+   "E10",
+   "E11"
+  ],
+  "maitrise_cadres_40h": [
+   "M1",
+   "M2",
+   "M3",
+   "M4",
+   "M5",
+   "M6",
+   "C1",
+   "C2",
+   "C3",
+   "C4",
+   "C5"
+  ],
+  "execution_48h": [
+   "E1",
+   "E2",
+   "E3",
+   "E4",
+   "E5",
+   "E6",
+   "E7",
+   "E8",
+   "E9",
+   "E10",
+   "E11"
+  ],
+  "maitrise_cadres_48h": [
+   "M1",
+   "M2",
+   "M3",
+   "M4",
+   "M5",
+   "M6",
+   "C1",
+   "C2",
+   "C3",
+   "C4",
+   "C5"
+  ]
+ },
+ "libelles_categories": {
+  "execution_40h": {
+   "E1": {
+    "ligne": 1,
+    "libelle_fr": "Exécution 1",
+    "libelle_ar": "تنفيذ 1",
+    "libelle_ar_redige": false
+   },
+   "E2": {
+    "ligne": 2,
+    "libelle_fr": "Exécution 2",
+    "libelle_ar": "تنفيذ 2",
+    "libelle_ar_redige": false
+   },
+   "E3": {
+    "ligne": 3,
+    "libelle_fr": "Exécution 3",
+    "libelle_ar": "تنفيذ 3",
+    "libelle_ar_redige": false
+   },
+   "E4": {
+    "ligne": 4,
+    "libelle_fr": "Exécution 4",
+    "libelle_ar": "تنفيذ 4",
+    "libelle_ar_redige": false
+   },
+   "E5": {
+    "ligne": 5,
+    "libelle_fr": "Exécution 5",
+    "libelle_ar": "تنفيذ 5",
+    "libelle_ar_redige": false
+   },
+   "E6": {
+    "ligne": 6,
+    "libelle_fr": "Exécution 6",
+    "libelle_ar": "تنفيذ 6",
+    "libelle_ar_redige": false
+   },
+   "E7": {
+    "ligne": 7,
+    "libelle_fr": "Exécution 7",
+    "libelle_ar": "تنفيذ 7",
+    "libelle_ar_redige": false
+   },
+   "E8": {
+    "ligne": 8,
+    "libelle_fr": "Exécution 8",
+    "libelle_ar": "تنفيذ 8",
+    "libelle_ar_redige": false
+   },
+   "E9": {
+    "ligne": 9,
+    "libelle_fr": "Exécution 9",
+    "libelle_ar": "تنفيذ 9",
+    "libelle_ar_redige": false
+   },
+   "E10": {
+    "ligne": 10,
+    "libelle_fr": "Exécution 10",
+    "libelle_ar": "تنفيذ 10",
+    "libelle_ar_redige": false
+   },
+   "E11": {
+    "ligne": 11,
+    "libelle_fr": "Exécution 11",
+    "libelle_ar": "تنفيذ 11",
+    "libelle_ar_redige": false
+   }
+  },
+  "maitrise_cadres_40h": {
+   "M1": {
+    "ligne": 1,
+    "libelle_fr": "Maîtrise 1",
+    "libelle_ar": "تسيير 1",
+    "libelle_ar_redige": false
+   },
+   "M2": {
+    "ligne": 2,
+    "libelle_fr": "Maîtrise 2",
+    "libelle_ar": "تسيير 2",
+    "libelle_ar_redige": false
+   },
+   "M3": {
+    "ligne": 3,
+    "libelle_fr": "Maîtrise 3",
+    "libelle_ar": "تسيير 3",
+    "libelle_ar_redige": false
+   },
+   "M4": {
+    "ligne": 4,
+    "libelle_fr": "Maîtrise 4",
+    "libelle_ar": "تسيير 4",
+    "libelle_ar_redige": false
+   },
+   "M5": {
+    "ligne": 5,
+    "libelle_fr": "Maîtrise 5",
+    "libelle_ar": "تسيير 5",
+    "libelle_ar_redige": false
+   },
+   "M6": {
+    "ligne": 6,
+    "libelle_fr": "Maîtrise 6",
+    "libelle_ar": "تسيير 6",
+    "libelle_ar_redige": false
+   },
+   "C1": {
+    "ligne": 7,
+    "libelle_fr": "Cadres 1",
+    "libelle_ar": "إطار 1",
+    "libelle_ar_redige": false
+   },
+   "C2": {
+    "ligne": 8,
+    "libelle_fr": "Cadres 2",
+    "libelle_ar": "إطار 2",
+    "libelle_ar_redige": false
+   },
+   "C3": {
+    "ligne": 9,
+    "libelle_fr": "Cadres 3",
+    "libelle_ar": "إطار 3",
+    "libelle_ar_redige": false
+   },
+   "C4": {
+    "ligne": 10,
+    "libelle_fr": "Cadres 4",
+    "libelle_ar": "إطار 4",
+    "libelle_ar_redige": false
+   },
+   "C5": {
+    "ligne": 11,
+    "libelle_fr": "Cadres 5",
+    "libelle_ar": "إطار 5",
+    "libelle_ar_redige": false
+   }
+  },
+  "execution_48h": {
+   "E1": {
+    "ligne": 1,
+    "libelle_fr": "Exécution 1",
+    "libelle_ar": "تنفيذ 1",
+    "libelle_ar_redige": false
+   },
+   "E2": {
+    "ligne": 2,
+    "libelle_fr": "Exécution 2",
+    "libelle_ar": "تنفيذ 2",
+    "libelle_ar_redige": false
+   },
+   "E3": {
+    "ligne": 3,
+    "libelle_fr": "Exécution 3",
+    "libelle_ar": "تنفيذ 3",
+    "libelle_ar_redige": false
+   },
+   "E4": {
+    "ligne": 4,
+    "libelle_fr": "Exécution 4",
+    "libelle_ar": "تنفيذ 4",
+    "libelle_ar_redige": false
+   },
+   "E5": {
+    "ligne": 5,
+    "libelle_fr": "Exécution 5",
+    "libelle_ar": "تنفيذ 5",
+    "libelle_ar_redige": false
+   },
+   "E6": {
+    "ligne": 6,
+    "libelle_fr": "Exécution 6",
+    "libelle_ar": "تنفيذ 6",
+    "libelle_ar_redige": false
+   },
+   "E7": {
+    "ligne": 7,
+    "libelle_fr": "Exécution 7",
+    "libelle_ar": "تنفيذ 7",
+    "libelle_ar_redige": false
+   },
+   "E8": {
+    "ligne": 8,
+    "libelle_fr": "Exécution 8",
+    "libelle_ar": "تنفيذ 8",
+    "libelle_ar_redige": false
+   },
+   "E9": {
+    "ligne": 9,
+    "libelle_fr": "Exécution 9",
+    "libelle_ar": "تنفيذ 9",
+    "libelle_ar_redige": false
+   },
+   "E10": {
+    "ligne": 10,
+    "libelle_fr": "Exécution 10",
+    "libelle_ar": "تنفيذ 10",
+    "libelle_ar_redige": false
+   },
+   "E11": {
+    "ligne": 11,
+    "libelle_fr": "Exécution 11",
+    "libelle_ar": "تنفيذ 11",
+    "libelle_ar_redige": false
+   }
+  },
+  "maitrise_cadres_48h": {
+   "M1": {
+    "ligne": 1,
+    "libelle_fr": "Maîtrise 1",
+    "libelle_ar": "تسيير 1",
+    "libelle_ar_redige": false
+   },
+   "M2": {
+    "ligne": 2,
+    "libelle_fr": "Maîtrise 2",
+    "libelle_ar": "تسيير 2",
+    "libelle_ar_redige": false
+   },
+   "M3": {
+    "ligne": 3,
+    "libelle_fr": "Maîtrise 3",
+    "libelle_ar": "تسيير 3",
+    "libelle_ar_redige": false
+   },
+   "M4": {
+    "ligne": 4,
+    "libelle_fr": "Maîtrise 4",
+    "libelle_ar": "تسيير 4",
+    "libelle_ar_redige": false
+   },
+   "M5": {
+    "ligne": 5,
+    "libelle_fr": "Maîtrise 5",
+    "libelle_ar": "تسيير 5",
+    "libelle_ar_redige": false
+   },
+   "M6": {
+    "ligne": 6,
+    "libelle_fr": "Maîtrise 6",
+    "libelle_ar": "تسيير 6",
+    "libelle_ar_redige": false
+   },
+   "C1": {
+    "ligne": 7,
+    "libelle_fr": "Cadres 1",
+    "libelle_ar": "إطار 1",
+    "libelle_ar_redige": false
+   },
+   "C2": {
+    "ligne": 8,
+    "libelle_fr": "Cadres 2",
+    "libelle_ar": "إطار 2",
+    "libelle_ar_redige": false
+   },
+   "C3": {
+    "ligne": 9,
+    "libelle_fr": "Cadres 3",
+    "libelle_ar": "إطار 3",
+    "libelle_ar_redige": false
+   },
+   "C4": {
+    "ligne": 10,
+    "libelle_fr": "Cadres 4",
+    "libelle_ar": "إطار 4",
+    "libelle_ar_redige": false
+   },
+   "C5": {
+    "ligne": 11,
+    "libelle_fr": "Cadres 5",
+    "libelle_ar": "إطار 5",
+    "libelle_ar_redige": false
+   }
+  }
+ },
+ "hypotheses_grille": {
+  "execution_40h": {
+   "fr": [
+    "Unité non imprimée sur la grille : TND/mois en hypothèse ; chaque tableau imprime sa base mensuelle (« قاعدة 173,33 ساعة في الشهر » pour 40 heures, « قاعدة 208 ساعة » pour 48 heures, pages 26 à 37).",
+    "Régime choisi par la population : article 28 (جديد) (page 11), 40 heures par semaine dans l'industrie, 48 heures dans le commerce et les services. Les gardiens (56 et 64 heures) et les chauffeurs (temps de présence) n'ont pas de tableau pour leur régime : ils ne sont pas couverts par ces tables.",
+    "Les indices (« الرقم القياسي ») imprimés au-dessus de chaque salaire ne sont pas transcrits : ils ont servi seulement à contrôler la lecture.",
+    "Passage dans la catégorie suivante au dernier degré (article 18 أ, page 9) : non calculé.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول: الدينار في الشهر على سبيل الافتراض؛ يذكر كل جدول قاعدته الشهرية («قاعدة 173,33 ساعة في الشهر» لنظام 40 ساعة و«قاعدة 208 ساعة» لنظام 48 ساعة، الصفحات من 26 إلى 37).",
+    "يُختار النظام حسب الفئة: الفصل 28 (جديد) (الصفحة 11)، 40 ساعة في الأسبوع في الصناعة و48 ساعة في التجارة والخدمات. لا يوجد جدول لنظام الحراس (56 و64 ساعة) ولا للسواق (وقت الحضور): لا تشملهم هذه الجداول.",
+    "لا تُنقل الأرقام القياسية المطبوعة فوق كل أجر: استُعملت فقط لمراقبة القراءة.",
+    "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 18 أ، الصفحة 9).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "maitrise_cadres_40h": {
+   "fr": [
+    "Unité non imprimée sur la grille : TND/mois en hypothèse ; chaque tableau imprime sa base mensuelle (« قاعدة 173,33 ساعة في الشهر » pour 40 heures, « قاعدة 208 ساعة » pour 48 heures, pages 26 à 37).",
+    "Régime choisi par la population : article 28 (جديد) (page 11), 40 heures par semaine dans l'industrie, 48 heures dans le commerce et les services. Les gardiens (56 et 64 heures) et les chauffeurs (temps de présence) n'ont pas de tableau pour leur régime : ils ne sont pas couverts par ces tables.",
+    "Les indices (« الرقم القياسي ») imprimés au-dessus de chaque salaire ne sont pas transcrits : ils ont servi seulement à contrôler la lecture.",
+    "Passage dans la catégorie suivante au dernier degré (article 18 أ, page 9) : non calculé.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول: الدينار في الشهر على سبيل الافتراض؛ يذكر كل جدول قاعدته الشهرية («قاعدة 173,33 ساعة في الشهر» لنظام 40 ساعة و«قاعدة 208 ساعة» لنظام 48 ساعة، الصفحات من 26 إلى 37).",
+    "يُختار النظام حسب الفئة: الفصل 28 (جديد) (الصفحة 11)، 40 ساعة في الأسبوع في الصناعة و48 ساعة في التجارة والخدمات. لا يوجد جدول لنظام الحراس (56 و64 ساعة) ولا للسواق (وقت الحضور): لا تشملهم هذه الجداول.",
+    "لا تُنقل الأرقام القياسية المطبوعة فوق كل أجر: استُعملت فقط لمراقبة القراءة.",
+    "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 18 أ، الصفحة 9).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "execution_48h": {
+   "fr": [
+    "Unité non imprimée sur la grille : TND/mois en hypothèse ; chaque tableau imprime sa base mensuelle (« قاعدة 173,33 ساعة في الشهر » pour 40 heures, « قاعدة 208 ساعة » pour 48 heures, pages 26 à 37).",
+    "Régime choisi par la population : article 28 (جديد) (page 11), 40 heures par semaine dans l'industrie, 48 heures dans le commerce et les services. Les gardiens (56 et 64 heures) et les chauffeurs (temps de présence) n'ont pas de tableau pour leur régime : ils ne sont pas couverts par ces tables.",
+    "Les indices (« الرقم القياسي ») imprimés au-dessus de chaque salaire ne sont pas transcrits : ils ont servi seulement à contrôler la lecture.",
+    "Passage dans la catégorie suivante au dernier degré (article 18 أ, page 9) : non calculé.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول: الدينار في الشهر على سبيل الافتراض؛ يذكر كل جدول قاعدته الشهرية («قاعدة 173,33 ساعة في الشهر» لنظام 40 ساعة و«قاعدة 208 ساعة» لنظام 48 ساعة، الصفحات من 26 إلى 37).",
+    "يُختار النظام حسب الفئة: الفصل 28 (جديد) (الصفحة 11)، 40 ساعة في الأسبوع في الصناعة و48 ساعة في التجارة والخدمات. لا يوجد جدول لنظام الحراس (56 و64 ساعة) ولا للسواق (وقت الحضور): لا تشملهم هذه الجداول.",
+    "لا تُنقل الأرقام القياسية المطبوعة فوق كل أجر: استُعملت فقط لمراقبة القراءة.",
+    "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 18 أ، الصفحة 9).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  },
+  "maitrise_cadres_48h": {
+   "fr": [
+    "Unité non imprimée sur la grille : TND/mois en hypothèse ; chaque tableau imprime sa base mensuelle (« قاعدة 173,33 ساعة في الشهر » pour 40 heures, « قاعدة 208 ساعة » pour 48 heures, pages 26 à 37).",
+    "Régime choisi par la population : article 28 (جديد) (page 11), 40 heures par semaine dans l'industrie, 48 heures dans le commerce et les services. Les gardiens (56 et 64 heures) et les chauffeurs (temps de présence) n'ont pas de tableau pour leur régime : ils ne sont pas couverts par ces tables.",
+    "Les indices (« الرقم القياسي ») imprimés au-dessus de chaque salaire ne sont pas transcrits : ils ont servi seulement à contrôler la lecture.",
+    "Passage dans la catégorie suivante au dernier degré (article 18 أ, page 9) : non calculé.",
+    "L'ancienneté reçue est l'ancienneté de progression déjà établie : promotions, reclassements et degrés supplémentaires prévus par la convention ne sont pas calculés."
+   ],
+   "ar": [
+    "الوحدة غير مطبوعة بالجدول: الدينار في الشهر على سبيل الافتراض؛ يذكر كل جدول قاعدته الشهرية («قاعدة 173,33 ساعة في الشهر» لنظام 40 ساعة و«قاعدة 208 ساعة» لنظام 48 ساعة، الصفحات من 26 إلى 37).",
+    "يُختار النظام حسب الفئة: الفصل 28 (جديد) (الصفحة 11)، 40 ساعة في الأسبوع في الصناعة و48 ساعة في التجارة والخدمات. لا يوجد جدول لنظام الحراس (56 و64 ساعة) ولا للسواق (وقت الحضور): لا تشملهم هذه الجداول.",
+    "لا تُنقل الأرقام القياسية المطبوعة فوق كل أجر: استُعملت فقط لمراقبة القراءة.",
+    "لا يُحتسب الانتقال إلى الصنف الموالي عند آخر درجة (الفصل 18 أ، الصفحة 9).",
+    "الأقدمية المعتمدة هي أقدمية التدرج كما ضُبطت مسبقا: لا تُحتسب الترقيات ولا إعادة الترتيب ولا الدرجات الإضافية المنصوص عليها بالاتفاقية."
+   ],
+   "chemin_anciennete_seulement": [
+    4
+   ]
+  }
+ },
+ "primes": [
+  {
+   "code": "prime_fonction_directeur_general_adjoint",
+   "label_ar": "منحة الوظيفة (مدير عام مساعد)",
+   "label_fr": "Prime de fonction : directeur général adjoint",
+   "source_article": "52",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 50.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de directeur général adjoint (art. 52, p.17)"
+  },
+  {
+   "code": "prime_fonction_secretaire_general_directeur",
+   "label_ar": "منحة الوظيفة (كاتب عام أو مدير)",
+   "label_fr": "Prime de fonction : secrétaire général ou directeur",
+   "source_article": "52",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 40.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de secrétaire général ou directeur (art. 52, p.17)"
+  },
+  {
+   "code": "prime_fonction_sous_directeur",
+   "label_ar": "منحة الوظيفة (كاهية مدير)",
+   "label_fr": "Prime de fonction : sous-directeur",
+   "source_article": "52",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 35.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de sous-directeur (art. 52, p.17)"
+  },
+  {
+   "code": "prime_fonction_chef_service",
+   "label_ar": "منحة الوظيفة (رئيس مصلحة)",
+   "label_fr": "Prime de fonction : chef de service",
+   "source_article": "52",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montant": 25.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "cadre chargé de la fonction de chef de service (art. 52, p.17)"
+  },
+  {
+   "code": "prime_transport",
+   "label_ar": "منحة النقل",
+   "label_fr": "Prime de transport",
+   "source_article": "53 (جديد)",
+   "source_pdf_page": 17,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "execution_maitrise_40h": 66.505,
+     "cadres_40h": 73.074,
+     "execution_maitrise_48h": 69.763,
+     "cadres_48h": 77.906
+    },
+    {
+     "effective_date": "2023-01-01",
+     "execution_maitrise_40h": 70.994,
+     "cadres_40h": 78.006,
+     "execution_maitrise_48h": 74.472,
+     "cadres_48h": 83.164
+    },
+    {
+     "effective_date": "2024-01-01",
+     "execution_maitrise_40h": 75.786,
+     "cadres_40h": 83.272,
+     "execution_maitrise_48h": 79.499,
+     "cadres_48h": 88.778
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise_40h": {
+     "fr": "Exécution et maîtrise, 40 heures",
+     "ar": "التنفيذ والتسيير، نظام 40 ساعة"
+    },
+    "cadres_40h": {
+     "fr": "Cadres, 40 heures",
+     "ar": "الإطارات، نظام 40 ساعة"
+    },
+    "execution_maitrise_48h": {
+     "fr": "Exécution et maîtrise, 48 heures",
+     "ar": "التنفيذ والتسيير، نظام 48 ساعة"
+    },
+    "cadres_48h": {
+     "fr": "Cadres, 48 heures",
+     "ar": "الإطارات، نظام 48 ساعة"
+    }
+   },
+   "note": "Les montants incluent la prime de transport du décret n° 503 du 16 mars 1982, révisé par le décret n° 691 du 19 juillet 1986 (note imprimée) ; montants intitulés « بعنوان سنة 2022 » (2023, 2024) sous « بداية من غرة ديسمبر 2021 » : la date d'effet imprimée est suivie (art. 53 (جديد), pp.17-18)."
+  },
+  {
+   "code": "prime_transport_nuit",
+   "label_ar": "منحة النقل الليلي",
+   "label_fr": "Prime de transport de nuit",
+   "source_article": "53 (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montant": 5.300,
+   "effective_date": null,
+   "note": "S'ajoute à la prime de transport, régimes de 40 et 48 heures (art. 53 (جديد), p.18).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "agent d'exécution ou de maîtrise qui travaille entre 21 heures et 6 heures (art. 53 (جديد), p.18)"
+  },
+  {
+   "code": "prime_presence",
+   "label_ar": "منحة الحضور",
+   "label_fr": "Prime de présence",
+   "source_article": "54 (جديد)",
+   "source_pdf_page": 18,
+   "unite": "TND/mois",
+   "montants": [
+    {
+     "effective_date": "2021-12-01",
+     "execution_maitrise_40h": 12.324,
+     "cadres_40h": 13.680,
+     "execution_maitrise_48h": 13.974,
+     "cadres_48h": 15.602
+    },
+    {
+     "effective_date": "2023-01-01",
+     "execution_maitrise_40h": 13.155,
+     "cadres_40h": 14.603,
+     "execution_maitrise_48h": 14.917,
+     "cadres_48h": 16.655
+    },
+    {
+     "effective_date": "2024-01-01",
+     "execution_maitrise_40h": 14.043,
+     "cadres_40h": 15.589,
+     "execution_maitrise_48h": 15.924,
+     "cadres_48h": 17.779
+    }
+   ],
+   "libelles_groupes": {
+    "execution_maitrise_40h": {
+     "fr": "Exécution et maîtrise, 40 heures",
+     "ar": "التنفيذ والتسيير، نظام 40 ساعة"
+    },
+    "cadres_40h": {
+     "fr": "Cadres, 40 heures",
+     "ar": "الإطارات، نظام 40 ساعة"
+    },
+    "execution_maitrise_48h": {
+     "fr": "Exécution et maîtrise, 48 heures",
+     "ar": "التنفيذ والتسيير، نظام 48 ساعة"
+    },
+    "cadres_48h": {
+     "fr": "Cadres, 48 heures",
+     "ar": "الإطارات، نظام 48 ساعة"
+    }
+   },
+   "note": "Inclut la demi-prime journalière du décret du 8 janvier 1948 (note imprimée, art. 54 (جديد), p.18)."
+  },
+  {
+   "code": "prime_panier",
+   "label_ar": "منحة القفة",
+   "label_fr": "Prime de panier",
+   "source_article": "56",
+   "source_pdf_page": 18,
+   "unite": "TND/jour",
+   "montant": 0.300,
+   "effective_date": null,
+   "note": "Montant imprimé en lettres seulement : « بثلاثمائة مليم » (art. 56, p.18).",
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4).",
+     "Condition d'octroi déclarée par l'appelant (condition_remplie) : elle n'est pas vérifiée ici."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4).",
+     "شرط الإسناد يصرّح به الطالب (condition_remplie): لا يقع التثبت منه هنا."
+    ]
+   },
+   "condition": "travail de 7 heures et plus, avec une pause de moins d'une heure (art. 56, p.18)"
+  },
+  {
+   "code": "aide_aid_el_adha",
+   "label_ar": "منحة عيد الإضحى",
+   "label_fr": "Aide de l'Aïd el-Adha",
+   "source_article": "56 مكرر",
+   "source_pdf_page": 18,
+   "unite": "TND/an",
+   "montant": 70.000,
+   "effective_date": null,
+   "hypotheses": {
+    "fr": [
+     "La source n'imprime pas de date d'effet pour ce montant : il est servi tel qu'imprimé, quelle que soit la date demandée (comme la prime de panier du BTP, D4)."
+    ],
+    "ar": [
+     "لا يذكر المصدر تاريخ نفاذ لهذا المبلغ: يُرجَع كما هو مطبوع مهما كان التاريخ المطلوب (على غرار منحة القفة في قطاع البناء، D4)."
+    ]
+   }
+  }
+ ],
+ "primes_non_couvertes": {
+  "prime_productivite": {
+   "source_pdf_page": 8,
+   "source_article": "13",
+   "message_fr": "Prime de productivité (article 13, page 8) : montant fixé par une commission, sans montant imprimé. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإنتاجية (الفصل 13، الصفحة 8): مبلغ تضبطه لجنة، دون مبلغ مطبوع. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant non fixé"
+  },
+  "indemnite_fin_service": {
+   "source_pdf_page": 10,
+   "source_article": "22",
+   "message_fr": "Indemnité de fin de service (article 22, page 10) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة نهاية الخدمة (الفصل 22، الصفحة 10): صيغة حسب الأقدمية، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_retraite": {
+   "source_pdf_page": 16,
+   "source_article": "49",
+   "message_fr": "Prime de départ à la retraite (article 49, page 16) : formule, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة الإحالة على التقاعد (الفصل 49، الصفحة 16): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_fin_annee": {
+   "source_pdf_page": 17,
+   "source_article": "50",
+   "message_fr": "Prime de fin d'année (article 50, page 17) : formule (au moins la moitié du salaire), sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة آخر السنة (الفصل 50، الصفحة 17): صيغة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "formule"
+  },
+  "prime_maniement_fonds": {
+   "source_pdf_page": 17,
+   "source_article": "51",
+   "message_fr": "Prime de maniement de fonds (article 51, page 17) : montant fixé par l'employeur, non imprimé. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "منحة التصرف في الأموال (الفصل 51، الصفحة 17): مبلغ يضبطه المؤجر، غير مطبوع. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "montant non fixé"
+  },
+  "commissions": {
+   "source_pdf_page": 18,
+   "source_article": "55",
+   "message_fr": "Commissions (article 55, page 18) : pourcentage des ventes, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+   "message_ar": "العمولات (الفصل 55، الصفحة 18): نسبة، دون مبلغ قار. هذه المنحة غير معروضة؛ لا يُرجَع أي مبلغ.",
+   "motif": "pourcentage"
+  }
+ },
+ "grilles": [
+  {
+   "table_id": "ELEC_EXECUTION_40H_2021-12-01",
+   "numero_imprime": 1,
+   "population": "execution_40h",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 26,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "E1": [
+     476.988,
+     478.921,
+     480.853,
+     482.784,
+     484.716,
+     486.647,
+     488.579,
+     490.510,
+     492.442,
+     494.373,
+     496.305,
+     498.237,
+     500.168,
+     502.100,
+     504.466
+    ],
+    "E2": [
+     497.264,
+     499.468,
+     501.400,
+     503.331,
+     505.263,
+     507.194,
+     509.126,
+     511.057,
+     512.989,
+     514.920,
+     516.852,
+     518.783,
+     520.715,
+     522.646,
+     524.741
+    ],
+    "E3": [
+     518.524,
+     521.004,
+     522.936,
+     524.868,
+     526.799,
+     528.731,
+     530.662,
+     532.594,
+     534.525,
+     536.457,
+     538.388,
+     540.320,
+     542.251,
+     544.183,
+     545.985
+    ],
+    "E4": [
+     564.842,
+     null,
+     570.228,
+     572.804,
+     575.379,
+     577.955,
+     580.530,
+     583.105,
+     585.681,
+     588.256,
+     590.831,
+     593.407,
+     595.982,
+     598.558,
+     601.468
+    ],
+    "E5": [
+     607.431,
+     610.790,
+     613.366,
+     615.941,
+     618.516,
+     621.092,
+     623.667,
+     626.242,
+     628.818,
+     631.393,
+     633.969,
+     636.544,
+     639.119,
+     641.695,
+     644.074
+    ],
+    "E6": [
+     649.964,
+     653.869,
+     656.445,
+     659.020,
+     661.596,
+     664.171,
+     null,
+     669.322,
+     671.897,
+     674.472,
+     677.048,
+     679.623,
+     682.199,
+     684.774,
+     686.592
+    ],
+    "E7": [
+     692.503,
+     696.952,
+     699.527,
+     702.103,
+     704.678,
+     707.253,
+     null,
+     712.404,
+     714.979,
+     717.555,
+     720.130,
+     722.706,
+     725.281,
+     727.856,
+     729.131
+    ],
+    "E8": [
+     772.216,
+     776.224,
+     781.375,
+     786.525,
+     791.676,
+     796.827,
+     null,
+     807.128,
+     812.279,
+     817.430,
+     822.580,
+     827.731,
+     832.882,
+     838.033,
+     845.468
+    ],
+    "E9": [
+     814.811,
+     819.364,
+     824.514,
+     829.665,
+     834.816,
+     839.967,
+     null,
+     850.268,
+     855.419,
+     860.570,
+     865.720,
+     870.871,
+     876.022,
+     881.173,
+     888.080
+    ],
+    "E10": [
+     857.348,
+     862.445,
+     867.596,
+     872.747,
+     877.897,
+     883.048,
+     null,
+     893.350,
+     898.500,
+     903.651,
+     908.802,
+     913.953,
+     919.103,
+     924.254,
+     930.617
+    ],
+    "E11": [
+     899.936,
+     905.581,
+     910.732,
+     915.883,
+     921.033,
+     926.184,
+     931.335,
+     936.486,
+     null,
+     946.787,
+     951.938,
+     957.089,
+     962.239,
+     967.390,
+     973.205
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E4",
+     "degre": 2,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "lue 567.553 de la même façon aux deux lectures, mais contredite par les contrôles (hausse 2021 → 2023 de 38.227 contre 38.127 sur les 14 autres degrés de la ligne ; pas d'indice (126.43 − 124.87) × 1,80 = 2.808 contre 2.711 lu) ; chiffre ambigu au zoom à 400 dpi",
+     "valeur_lue": 567.553,
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E4, degré 2 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule lue 567.553 de la même façon aux deux lectures, mais contredite par les contrôles (hausse 2021 → 2023 de 38.227 contre 38.127 sur les 14 autres degrés de la ligne ; pas d'indice (126.43 − 124.87) × 1,80 = 2.808 contre 2.711 lu) ; chiffre ambigu au zoom à 400 dpi ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E4، الدرجة 2 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم ملتبس في الطباعة تناقضه المراقبة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E6",
+     "degre": 7,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['666.?46', '666.?46'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E6, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['666.?46', '666.?46'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E6، الدرجة 7 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E7",
+     "degre": 7,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['709.?29', '709.?29'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E7, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['709.?29', '709.?29'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E7، الدرجة 7 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E8",
+     "degre": 7,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['801.?78', '801.?78'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E8, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['801.?78', '801.?78'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E8، الدرجة 7 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E9",
+     "degre": 7,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['845.?17', '845.?17'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E9, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['845.?17', '845.?17'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E9، الدرجة 7 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E10",
+     "degre": 7,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['888.?99', '888.?99'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E10, degré 7 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['888.?99', '888.?99'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E10، الدرجة 7 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E11",
+     "degre": 9,
+     "source_pdf_page": 26,
+     "source_article": "جدول الأجور",
+     "raison": "lue 941.536 de la même façon aux deux lectures, mais contredite par les contrôles (hausse 2021 → 2023 de 60.846 contre 60.746 sur les 13 autres degrés de la ligne ; pas de la ligne 5.050 puis 5.251 autour de la cellule, 5.151 ailleurs) ; chiffre ambigu au zoom à 400 dpi",
+     "valeur_lue": 941.536,
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E11, degré 9 (tableau n° 1, en vigueur à partir du 2021-12-01, page 26) : cellule lue 941.536 de la même façon aux deux lectures, mais contredite par les contrôles (hausse 2021 → 2023 de 60.846 contre 60.746 sur les 13 autres degrés de la ligne ; pas de la ligne 5.050 puis 5.251 autour de la cellule, 5.151 ailleurs) ; chiffre ambigu au zoom à 400 dpi ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E11، الدرجة 9 (جدول الأجور عدد 1 الذي يقع العمل به بداية من 2021-12-01، الصفحة 26): رقم ملتبس في الطباعة تناقضه المراقبة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_40H_2021-12-01",
+   "numero_imprime": 2,
+   "population": "maitrise_cadres_40h",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 27,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "M1": [
+     772.216,
+     776.224,
+     781.375,
+     786.525,
+     791.676,
+     796.827,
+     801.977,
+     807.128,
+     812.279,
+     817.430,
+     822.580,
+     827.731,
+     832.882,
+     838.033,
+     845.468
+    ],
+    "M2": [
+     814.811,
+     819.364,
+     824.514,
+     829.665,
+     834.816,
+     839.967,
+     845.117,
+     850.268,
+     855.419,
+     860.570,
+     865.720,
+     870.871,
+     876.022,
+     881.173,
+     888.080
+    ],
+    "M3": [
+     857.348,
+     862.445,
+     867.596,
+     872.747,
+     877.897,
+     883.048,
+     null,
+     893.350,
+     898.500,
+     903.651,
+     908.802,
+     913.953,
+     919.103,
+     924.254,
+     930.617
+    ],
+    "M4": [
+     899.936,
+     905.581,
+     910.732,
+     915.883,
+     921.033,
+     926.184,
+     931.335,
+     936.486,
+     941.636,
+     946.787,
+     951.938,
+     957.089,
+     962.239,
+     967.390,
+     973.205
+    ],
+    "M5": [
+     1035.209,
+     1042.068,
+     1048.507,
+     1054.945,
+     1061.383,
+     1067.822,
+     1074.260,
+     1080.699,
+     1087.137,
+     1093.576,
+     1100.014,
+     1106.452,
+     1112.891,
+     1119.329,
+     1126.792
+    ],
+    "M6": [
+     1127.824,
+     1135.355,
+     1143.081,
+     1150.807,
+     1158.533,
+     1166.259,
+     1173.985,
+     1181.712,
+     1189.438,
+     1197.164,
+     1204.890,
+     1212.616,
+     1220.342,
+     1228.068,
+     1237.720
+    ],
+    "C1": [
+     1035.209,
+     1042.068,
+     1048.507,
+     1054.945,
+     1061.383,
+     1067.822,
+     1074.260,
+     1080.699,
+     1087.137,
+     1093.576,
+     1100.014,
+     1106.452,
+     1112.891,
+     1119.329,
+     1126.792
+    ],
+    "C2": [
+     1127.824,
+     1135.355,
+     1143.081,
+     1150.807,
+     1158.533,
+     1166.259,
+     1173.985,
+     1181.712,
+     1189.438,
+     1197.164,
+     1204.890,
+     1212.616,
+     1220.342,
+     1228.068,
+     1237.720
+    ],
+    "C3": [
+     1348.516,
+     1358.353,
+     1367.367,
+     1376.381,
+     1385.394,
+     1394.408,
+     1403.422,
+     1412.436,
+     1421.450,
+     1430.463,
+     1439.477,
+     1448.491,
+     1457.505,
+     1466.519,
+     1476.725
+    ],
+    "C4": [
+     1569.208,
+     1581.352,
+     1591.653,
+     1601.954,
+     1612.256,
+     1622.557,
+     1632.859,
+     1643.160,
+     1653.462,
+     1663.763,
+     1674.065,
+     1684.366,
+     1694.668,
+     1704.969,
+     1715.731
+    ],
+    "C5": [
+     1789.906,
+     1804.353,
+     1815.942,
+     1827.531,
+     1839.120,
+     1850.710,
+     null,
+     1873.888,
+     1885.477,
+     1897.066,
+     1908.655,
+     1920.244,
+     1931.834,
+     1943.423,
+     1954.757
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "M3",
+     "degre": 7,
+     "source_pdf_page": 27,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['8?8.199', '8?8.199'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (40 heures), catégorie M3, degré 7 (tableau n° 2, en vigueur à partir du 2021-12-01, page 27) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['8?8.199', '8?8.199'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 40 ساعة)، الصنف M3، الدرجة 7 (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-12-01، الصفحة 27): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "C5",
+     "degre": 7,
+     "source_pdf_page": 27,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['18?2.299', '18?2.299'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (40 heures), catégorie C5, degré 7 (tableau n° 2, en vigueur à partir du 2021-12-01, page 27) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['18?2.299', '18?2.299'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 40 ساعة)، الصنف C5، الدرجة 7 (جدول الأجور عدد 2 الذي يقع العمل به بداية من 2021-12-01، الصفحة 27): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_EXECUTION_48H_2021-12-01",
+   "numero_imprime": 3,
+   "population": "execution_48h",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 28,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "E1": [
+     573.410,
+     575.730,
+     578.048,
+     580.366,
+     582.684,
+     585.002,
+     587.220,
+     589.638,
+     591.955,
+     594.273,
+     596.591,
+     598.909,
+     601.227,
+     603.545,
+     606.384
+    ],
+    "E2": [
+     597.787,
+     600.431,
+     602.749,
+     605.067,
+     607.385,
+     609.703,
+     null,
+     614.339,
+     616.656,
+     618.974,
+     621.292,
+     623.610,
+     625.928,
+     628.246,
+     630.760
+    ],
+    "E3": [
+     623.378,
+     626.355,
+     628.673,
+     630.991,
+     633.309,
+     635.627,
+     null,
+     640.262,
+     642.580,
+     644.898,
+     647.216,
+     649.534,
+     651.852,
+     654.170,
+     656.332
+    ],
+    "E4": [
+     679.058,
+     682.432,
+     null,
+     688.613,
+     691.704,
+     694.794,
+     697.885,
+     700.975,
+     704.066,
+     707.156,
+     710.247,
+     713.337,
+     716.428,
+     719.518,
+     723.010
+    ],
+    "E5": [
+     730.258,
+     734.289,
+     737.379,
+     740.470,
+     743.560,
+     746.651,
+     749.741,
+     752.832,
+     755.922,
+     759.013,
+     762.103,
+     765.194,
+     768.284,
+     771.375,
+     774.230
+    ],
+    "E6": [
+     781.402,
+     786.088,
+     789.178,
+     792.269,
+     795.359,
+     798.450,
+     801.540,
+     804.631,
+     807.721,
+     810.812,
+     813.902,
+     816.993,
+     820.083,
+     823.174,
+     825.356
+    ],
+    "E7": [
+     832.492,
+     837.831,
+     840.921,
+     844.012,
+     847.102,
+     850.193,
+     853.283,
+     856.374,
+     859.464,
+     862.555,
+     865.645,
+     null,
+     871.826,
+     874.917,
+     876.446
+    ],
+    "E8": [
+     null,
+     933.128,
+     939.309,
+     945.490,
+     951.671,
+     957.852,
+     null,
+     970.214,
+     976.395,
+     982.576,
+     988.757,
+     994.938,
+     1001.119,
+     1007.300,
+     null
+    ],
+    "E9": [
+     979.524,
+     984.987,
+     991.168,
+     997.349,
+     1003.530,
+     1009.711,
+     1015.892,
+     1022.073,
+     1028.254,
+     1034.435,
+     1040.616,
+     1046.797,
+     1052.979,
+     1059.160,
+     1067.449
+    ],
+    "E10": [
+     1030.672,
+     1036.789,
+     1042.970,
+     1049.151,
+     1055.332,
+     1061.513,
+     1067.694,
+     1073.875,
+     1080.056,
+     1086.237,
+     1092.418,
+     1098.599,
+     1104.780,
+     1110.961,
+     1118.595
+    ],
+    "E11": [
+     1081.870,
+     1088.644,
+     1094.825,
+     1101.006,
+     1107.187,
+     1113.368,
+     1119.549,
+     1125.730,
+     1131.911,
+     1138.092,
+     1144.273,
+     1150.454,
+     1156.635,
+     1162.816,
+     1169.795
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E2",
+     "degre": 7,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['612.?21', '612.021'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E2, degré 7 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['612.?21', '612.021'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E2، الدرجة 7 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E3",
+     "degre": 7,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "lue 637.545 de la même façon aux deux lectures, mais contredite par les contrôles (637.545 lu deux fois, colonne du trait blanc ; pas d'indice (degrés 6→7 et 7→8) contraire) ; chiffre ambigu au zoom à 400 dpi",
+     "valeur_lue": 637.545,
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E3, degré 7 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule lue 637.545 de la même façon aux deux lectures, mais contredite par les contrôles (637.545 lu deux fois, colonne du trait blanc ; pas d'indice (degrés 6→7 et 7→8) contraire) ; chiffre ambigu au zoom à 400 dpi ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E3، الدرجة 7 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم ملتبس في الطباعة تناقضه المراقبة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E4",
+     "degre": 3,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : premier chiffre abîmé, dessiné comme un 5 au zoom (lectures : ? et 6) (lectures « ['?85.523', '685.523'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E4, degré 3 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : premier chiffre abîmé, dessiné comme un 5 au zoom (lectures : ? et 6) (lectures « ['?85.523', '685.523'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E4، الدرجة 3 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E7",
+     "degre": 12,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : premier chiffre abîmé, dessiné comme un 3 au zoom (lectures : ? et 8) (lectures « ['?68.736', '868.736'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E7, degré 12 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : premier chiffre abîmé, dessiné comme un 3 au zoom (lectures : ? et 8) (lectures « ['?68.736', '868.736'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E7، الدرجة 12 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E8",
+     "degre": 1,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : zoom 925.318 ; pas d'indice (degré 1→2) et hausse 2023 contraires (lectures « ['925.318', '928.318'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E8, degré 1 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : zoom 925.318 ; pas d'indice (degré 1→2) et hausse 2023 contraires (lectures « ['925.318', '928.318'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E8، الدرجة 1 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E8",
+     "degre": 7,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['964.?33', '964.033'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E8, degré 7 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['964.?33', '964.033'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E8، الدرجة 7 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E8",
+     "degre": 15,
+     "source_pdf_page": 28,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['1016.22?', '1016.222'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E8, degré 15 (tableau n° 3, en vigueur à partir du 2021-12-01, page 28) : cellule non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['1016.22?', '1016.222'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E8، الدرجة 15 (جدول الأجور عدد 3 الذي يقع العمل به بداية من 2021-12-01، الصفحة 28): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_48H_2021-12-01",
+   "numero_imprime": 4,
+   "population": "maitrise_cadres_48h",
+   "effective_date": "2021-12-01",
+   "source_pdf_page": 29,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "M1": [
+     926.672,
+     931.482,
+     937.663,
+     943.844,
+     950.025,
+     956.206,
+     962.387,
+     968.568,
+     974.749,
+     980.930,
+     987.111,
+     993.292,
+     999.473,
+     1005.654,
+     1014.577
+    ],
+    "M2": [
+     977.788,
+     983.251,
+     989.432,
+     995.613,
+     1001.794,
+     1007.975,
+     1014.156,
+     1020.337,
+     1026.518,
+     1032.699,
+     1038.880,
+     1045.061,
+     1051.242,
+     1057.423,
+     1065.712
+    ],
+    "M3": [
+     1028.844,
+     1034.961,
+     1041.142,
+     1047.323,
+     1053.504,
+     1059.685,
+     1065.866,
+     1072.047,
+     1078.228,
+     1084.409,
+     1090.590,
+     1096.771,
+     1102.952,
+     1109.133,
+     1116.769
+    ],
+    "M4": [
+     1079.953,
+     1086.726,
+     1092.907,
+     1099.088,
+     1105.269,
+     1111.451,
+     1117.632,
+     1123.813,
+     1129.994,
+     1136.175,
+     1142.356,
+     1148.537,
+     1154.718,
+     1160.899,
+     1167.877
+    ],
+    "M5": [
+     1242.270,
+     1250.501,
+     1258.228,
+     1265.954,
+     1273.680,
+     1281.407,
+     1289.133,
+     1296.859,
+     1304.585,
+     1312.312,
+     1320.038,
+     1327.764,
+     1335.490,
+     1343.217,
+     1352.172
+    ],
+    "M6": [
+     1353.409,
+     1362.447,
+     1371.718,
+     1380.990,
+     1390.261,
+     1399.533,
+     1408.804,
+     1418.076,
+     1427.347,
+     1436.619,
+     1445.890,
+     1455.162,
+     1464.433,
+     1473.705,
+     1485.287
+    ],
+    "C1": [
+     1242.270,
+     1250.501,
+     1258.228,
+     1265.954,
+     1273.680,
+     1281.407,
+     1289.133,
+     1296.859,
+     1304.585,
+     1312.312,
+     1320.038,
+     1327.764,
+     1335.490,
+     1343.217,
+     1352.172
+    ],
+    "C2": [
+     1353.409,
+     1362.446,
+     1371.718,
+     1380.989,
+     1390.261,
+     1399.532,
+     1408.804,
+     1418.075,
+     1427.347,
+     1436.618,
+     1445.890,
+     1455.161,
+     1464.433,
+     1473.704,
+     1485.286
+    ],
+    "C3": [
+     1618.245,
+     1630.049,
+     1640.866,
+     1651.683,
+     1662.500,
+     1673.316,
+     1684.133,
+     1694.950,
+     1705.767,
+     1716.583,
+     1727.400,
+     1738.217,
+     1749.034,
+     1759.851,
+     1772.099
+    ],
+    "C4": [
+     1883.078,
+     1897.651,
+     1910.013,
+     1922.375,
+     1934.737,
+     1947.099,
+     1959.461,
+     1971.823,
+     1984.185,
+     1996.547,
+     2008.909,
+     2021.271,
+     2033.633,
+     2045.995,
+     2058.909
+    ],
+    "C5": [
+     2147.919,
+     2165.256,
+     2179.163,
+     2193.070,
+     2206.978,
+     2220.885,
+     2234.792,
+     2248.699,
+     2262.607,
+     2276.514,
+     2290.421,
+     2304.328,
+     2318.236,
+     2332.143,
+     2345.744
+    ]
+   }
+  },
+  {
+   "table_id": "ELEC_EXECUTION_40H_2023-01-01",
+   "numero_imprime": 5,
+   "population": "execution_40h",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 30,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "E1": [
+     509.185,
+     511.118,
+     513.050,
+     514.981,
+     516.913,
+     518.844,
+     520.776,
+     522.707,
+     524.639,
+     526.570,
+     528.502,
+     530.434,
+     532.365,
+     534.297,
+     536.663
+    ],
+    "E2": [
+     530.829,
+     533.033,
+     534.965,
+     536.896,
+     538.828,
+     540.759,
+     542.691,
+     544.622,
+     546.554,
+     548.485,
+     550.417,
+     552.348,
+     554.280,
+     556.211,
+     558.306
+    ],
+    "E3": [
+     553.525,
+     556.005,
+     557.937,
+     559.869,
+     561.800,
+     563.732,
+     565.663,
+     567.595,
+     569.526,
+     571.458,
+     573.389,
+     575.321,
+     577.252,
+     579.184,
+     580.986
+    ],
+    "E4": [
+     602.969,
+     605.780,
+     608.355,
+     610.931,
+     613.506,
+     616.082,
+     618.657,
+     621.232,
+     623.808,
+     626.383,
+     628.958,
+     631.534,
+     634.109,
+     636.685,
+     639.595
+    ],
+    "E5": [
+     648.432,
+     651.791,
+     654.367,
+     656.942,
+     659.517,
+     662.093,
+     664.668,
+     667.243,
+     669.819,
+     672.394,
+     674.970,
+     677.545,
+     680.120,
+     682.696,
+     685.075
+    ],
+    "E6": [
+     693.837,
+     697.742,
+     700.318,
+     702.893,
+     705.468,
+     708.044,
+     710.619,
+     713.194,
+     715.770,
+     718.345,
+     720.921,
+     723.496,
+     726.071,
+     728.647,
+     730.465
+    ],
+    "E7": [
+     739.247,
+     743.696,
+     746.271,
+     748.847,
+     751.422,
+     753.997,
+     756.573,
+     759.148,
+     761.723,
+     764.299,
+     766.874,
+     769.450,
+     772.025,
+     774.600,
+     775.875
+    ],
+    "E8": [
+     824.341,
+     828.348,
+     833.499,
+     838.650,
+     843.801,
+     848.951,
+     854.102,
+     859.253,
+     864.404,
+     869.554,
+     874.705,
+     879.856,
+     885.007,
+     890.157,
+     897.593
+    ],
+    "E9": [
+     869.811,
+     874.363,
+     879.514,
+     884.665,
+     889.816,
+     894.966,
+     900.117,
+     905.268,
+     910.419,
+     915.569,
+     920.720,
+     925.871,
+     931.022,
+     936.172,
+     943.080
+    ],
+    "E10": [
+     915.219,
+     920.316,
+     925.467,
+     930.618,
+     935.768,
+     940.919,
+     null,
+     951.221,
+     956.371,
+     961.522,
+     966.673,
+     971.824,
+     976.974,
+     982.125,
+     988.488
+    ],
+    "E11": [
+     960.682,
+     966.327,
+     971.478,
+     976.629,
+     981.779,
+     986.930,
+     null,
+     997.232,
+     1002.382,
+     1007.533,
+     1012.684,
+     1017.835,
+     1022.985,
+     1028.136,
+     1033.951
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E10",
+     "degre": 7,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['946.?70', '946.070'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E10, degré 7 (tableau n° 5, en vigueur à partir du 2023-01-01, page 30) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['946.?70', '946.070'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E10، الدرجة 7 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 30): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E11",
+     "degre": 7,
+     "source_pdf_page": 30,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['992.?81', '992.081'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E11, degré 7 (tableau n° 5, en vigueur à partir du 2023-01-01, page 30) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['992.?81', '992.081'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E11، الدرجة 7 (جدول الأجور عدد 5 الذي يقع العمل به بداية من 2023-01-01، الصفحة 30): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_40H_2023-01-01",
+   "numero_imprime": 6,
+   "population": "maitrise_cadres_40h",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 31,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "M1": [
+     824.341,
+     828.348,
+     833.499,
+     838.650,
+     843.801,
+     848.951,
+     854.102,
+     859.253,
+     864.404,
+     869.554,
+     874.705,
+     879.856,
+     885.007,
+     890.157,
+     897.593
+    ],
+    "M2": [
+     869.811,
+     874.363,
+     879.514,
+     884.665,
+     889.816,
+     894.966,
+     900.117,
+     905.268,
+     910.419,
+     915.569,
+     920.720,
+     925.871,
+     931.022,
+     936.172,
+     943.080
+    ],
+    "M3": [
+     915.219,
+     920.316,
+     925.467,
+     930.618,
+     935.768,
+     940.919,
+     null,
+     951.221,
+     956.371,
+     961.522,
+     966.673,
+     971.824,
+     976.974,
+     982.125,
+     988.488
+    ],
+    "M4": [
+     960.682,
+     966.327,
+     971.478,
+     976.629,
+     981.779,
+     986.930,
+     null,
+     997.232,
+     1002.382,
+     1007.533,
+     1012.684,
+     1017.835,
+     1022.985,
+     1028.136,
+     1033.951
+    ],
+    "M5": [
+     1105.086,
+     1111.945,
+     1118.384,
+     1124.822,
+     1131.260,
+     1137.699,
+     1144.137,
+     1150.576,
+     1157.014,
+     1163.453,
+     1169.891,
+     1176.329,
+     1182.768,
+     1189.206,
+     1196.669
+    ],
+    "M6": [
+     1203.952,
+     1211.483,
+     1219.209,
+     1226.935,
+     1234.661,
+     1242.387,
+     1250.114,
+     1257.840,
+     1265.566,
+     1273.292,
+     1281.018,
+     1288.744,
+     1296.470,
+     1304.196,
+     1313.848
+    ],
+    "C1": [
+     1105.086,
+     1111.945,
+     1118.384,
+     1124.822,
+     1131.260,
+     1137.699,
+     1144.137,
+     1150.576,
+     1157.014,
+     1163.453,
+     1169.891,
+     1176.329,
+     1182.768,
+     1189.206,
+     1196.669
+    ],
+    "C2": [
+     1203.952,
+     1211.483,
+     1219.209,
+     1226.935,
+     1234.661,
+     1242.387,
+     1250.114,
+     1257.840,
+     1265.566,
+     1273.292,
+     1281.018,
+     1288.744,
+     1296.470,
+     1304.196,
+     1313.848
+    ],
+    "C3": [
+     1439.541,
+     1449.378,
+     1458.392,
+     1467.406,
+     1476.419,
+     1485.433,
+     1494.447,
+     1503.461,
+     1512.475,
+     1521.488,
+     1530.502,
+     1539.516,
+     1548.530,
+     1557.544,
+     1567.750
+    ],
+    "C4": [
+     1675.130,
+     1687.274,
+     1697.575,
+     1707.876,
+     1718.178,
+     1728.479,
+     1738.781,
+     1749.082,
+     1759.384,
+     1769.685,
+     1779.987,
+     1790.288,
+     1800.590,
+     1810.891,
+     1821.653
+    ],
+    "C5": [
+     1910.724,
+     1925.171,
+     1936.760,
+     1948.349,
+     1959.938,
+     1971.528,
+     1983.117,
+     1994.706,
+     2006.295,
+     2017.884,
+     2029.473,
+     2041.062,
+     2052.652,
+     2064.241,
+     2075.575
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "M3",
+     "degre": 7,
+     "source_pdf_page": 31,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['946.?70', '946.070'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (40 heures), catégorie M3, degré 7 (tableau n° 6, en vigueur à partir du 2023-01-01, page 31) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['946.?70', '946.070'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 40 ساعة)، الصنف M3، الدرجة 7 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 31): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "M4",
+     "degre": 7,
+     "source_pdf_page": 31,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['992.?81', '992.081'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (40 heures), catégorie M4, degré 7 (tableau n° 6, en vigueur à partir du 2023-01-01, page 31) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['992.?81', '992.081'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 40 ساعة)، الصنف M4، الدرجة 7 (جدول الأجور عدد 6 الذي يقع العمل به بداية من 2023-01-01، الصفحة 31): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_EXECUTION_48H_2023-01-01",
+   "numero_imprime": 7,
+   "population": "execution_48h",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 32,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "E1": [
+     612.115,
+     614.436,
+     616.753,
+     619.071,
+     621.389,
+     623.707,
+     null,
+     628.343,
+     630.661,
+     632.979,
+     635.296,
+     637.614,
+     639.932,
+     642.250,
+     645.089
+    ],
+    "E2": [
+     638.137,
+     640.781,
+     643.099,
+     645.417,
+     647.735,
+     650.053,
+     652.371,
+     654.689,
+     657.006,
+     659.324,
+     661.642,
+     663.960,
+     666.278,
+     668.596,
+     671.110
+    ],
+    "E3": [
+     665.456,
+     668.433,
+     670.751,
+     673.069,
+     675.387,
+     677.705,
+     null,
+     682.340,
+     684.658,
+     686.976,
+     689.294,
+     691.612,
+     693.930,
+     696.248,
+     698.410
+    ],
+    "E4": [
+     724.895,
+     728.269,
+     731.359,
+     734.450,
+     737.540,
+     740.631,
+     743.721,
+     746.812,
+     749.902,
+     752.993,
+     756.083,
+     759.174,
+     762.264,
+     765.355,
+     768.847
+    ],
+    "E5": [
+     779.550,
+     783.581,
+     786.671,
+     789.762,
+     792.852,
+     795.943,
+     null,
+     802.124,
+     805.214,
+     808.305,
+     811.395,
+     814.486,
+     817.576,
+     820.667,
+     823.522
+    ],
+    "E6": [
+     834.147,
+     838.833,
+     841.923,
+     845.014,
+     848.104,
+     851.195,
+     854.285,
+     857.376,
+     860.466,
+     863.557,
+     866.647,
+     869.738,
+     872.828,
+     875.919,
+     878.101
+    ],
+    "E7": [
+     888.685,
+     894.024,
+     897.114,
+     900.205,
+     903.295,
+     906.386,
+     909.476,
+     912.567,
+     915.657,
+     918.748,
+     921.838,
+     924.929,
+     928.019,
+     931.110,
+     932.639
+    ],
+    "E8": [
+     990.980,
+     995.789,
+     1001.970,
+     1008.151,
+     1014.332,
+     1020.513,
+     1026.694,
+     1032.875,
+     1039.056,
+     1045.237,
+     1051.418,
+     1057.599,
+     1063.780,
+     1069.961,
+     1078.884
+    ],
+    "E9": [
+     1045.642,
+     1051.105,
+     1057.286,
+     1063.467,
+     1069.648,
+     1075.829,
+     1082.010,
+     1088.191,
+     1094.372,
+     1100.553,
+     1106.734,
+     1112.915,
+     1119.097,
+     1125.278,
+     1133.567
+    ],
+    "E10": [
+     1100.242,
+     1106.359,
+     1112.540,
+     1118.721,
+     1124.902,
+     1131.083,
+     1137.264,
+     1143.445,
+     1149.626,
+     1155.807,
+     1161.988,
+     1168.169,
+     1174.350,
+     1180.531,
+     1188.165
+    ],
+    "E11": [
+     1154.896,
+     1161.670,
+     1167.851,
+     1174.032,
+     1180.213,
+     1186.394,
+     1192.575,
+     1198.756,
+     1204.937,
+     1211.118,
+     1217.299,
+     1223.480,
+     1229.661,
+     1235.842,
+     1242.821
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E1",
+     "degre": 7,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['626.?25', '626.025'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E1, degré 7 (tableau n° 7, en vigueur à partir du 2023-01-01, page 32) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['626.?25', '626.025'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E1، الدرجة 7 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2023-01-01، الصفحة 32): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E3",
+     "degre": 7,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['680.?23', '680.023'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E3, degré 7 (tableau n° 7, en vigueur à partir du 2023-01-01, page 32) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['680.?23', '680.023'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E3، الدرجة 7 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2023-01-01، الصفحة 32): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E5",
+     "degre": 7,
+     "source_pdf_page": 32,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['799.?33', '799.033'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E5, degré 7 (tableau n° 7, en vigueur à partir du 2023-01-01, page 32) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['799.?33', '799.033'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E5، الدرجة 7 (جدول الأجور عدد 7 الذي يقع العمل به بداية من 2023-01-01، الصفحة 32): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_48H_2023-01-01",
+   "numero_imprime": 8,
+   "population": "maitrise_cadres_48h",
+   "effective_date": "2023-01-01",
+   "source_pdf_page": 33,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "M1": [
+     989.222,
+     994.032,
+     1000.213,
+     1006.394,
+     1012.575,
+     1018.756,
+     1024.937,
+     1031.118,
+     1037.299,
+     1043.480,
+     1049.661,
+     1055.842,
+     1062.023,
+     1068.204,
+     1077.127
+    ],
+    "M2": [
+     1043.788,
+     1049.251,
+     1055.432,
+     1061.613,
+     1067.794,
+     1073.975,
+     null,
+     1086.337,
+     1092.518,
+     1098.699,
+     1104.880,
+     1111.061,
+     1117.242,
+     1123.423,
+     1131.712
+    ],
+    "M3": [
+     1098.291,
+     1104.408,
+     1110.589,
+     1116.770,
+     1122.951,
+     1129.132,
+     1135.313,
+     1141.494,
+     1147.675,
+     1153.856,
+     1160.037,
+     1166.218,
+     1172.399,
+     1178.580,
+     1186.216
+    ],
+    "M4": [
+     1152.849,
+     1159.623,
+     1165.804,
+     1171.985,
+     1178.166,
+     1184.347,
+     1190.528,
+     1196.709,
+     1202.890,
+     1209.071,
+     1215.252,
+     1221.433,
+     1227.614,
+     1233.795,
+     1240.773
+    ],
+    "M5": [
+     1326.124,
+     1334.355,
+     1342.081,
+     1349.807,
+     1357.534,
+     1365.260,
+     1372.986,
+     1380.712,
+     1388.439,
+     1396.165,
+     1403.891,
+     1411.617,
+     1419.344,
+     1427.070,
+     1436.025
+    ],
+    "M6": [
+     1444.764,
+     1453.802,
+     1463.073,
+     1472.345,
+     1481.616,
+     1490.888,
+     null,
+     1509.431,
+     1518.702,
+     1527.974,
+     1537.245,
+     1546.517,
+     1555.788,
+     1565.060,
+     1576.642
+    ],
+    "C1": [
+     1326.124,
+     1334.355,
+     1342.081,
+     1349.807,
+     1357.534,
+     1365.260,
+     1372.986,
+     1380.712,
+     1388.439,
+     1396.165,
+     1403.891,
+     1411.617,
+     1419.344,
+     1427.070,
+     1436.025
+    ],
+    "C2": [
+     1444.764,
+     1453.801,
+     1463.073,
+     1472.344,
+     1481.616,
+     1490.887,
+     null,
+     1509.430,
+     1518.702,
+     1527.973,
+     1537.245,
+     1546.516,
+     1555.788,
+     1565.059,
+     1576.641
+    ],
+    "C3": [
+     1727.476,
+     1739.280,
+     1750.097,
+     1760.914,
+     1771.731,
+     1782.547,
+     1793.364,
+     1804.181,
+     1814.998,
+     1825.814,
+     1836.631,
+     1847.448,
+     1858.265,
+     1869.082,
+     1881.330
+    ],
+    "C4": [
+     2010.186,
+     2024.758,
+     2037.120,
+     2049.482,
+     2061.844,
+     2074.207,
+     2086.569,
+     2098.931,
+     2111.293,
+     2123.655,
+     2136.017,
+     2148.379,
+     2160.741,
+     2173.103,
+     2186.017
+    ],
+    "C5": [
+     2292.903,
+     2310.240,
+     2324.147,
+     2338.055,
+     2351.962,
+     2365.869,
+     2379.776,
+     2393.684,
+     2407.591,
+     2421.498,
+     2435.406,
+     2449.313,
+     2463.220,
+     2477.127,
+     2490.728
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "M2",
+     "degre": 7,
+     "source_pdf_page": 33,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1080.?56', '1080.?56'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie M2, degré 7 (tableau n° 8, en vigueur à partir du 2023-01-01, page 33) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1080.?56', '1080.?56'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 48 ساعة)، الصنف M2، الدرجة 7 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2023-01-01، الصفحة 33): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "M6",
+     "degre": 7,
+     "source_pdf_page": 33,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1500.?59', '1500.?59'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie M6, degré 7 (tableau n° 8, en vigueur à partir du 2023-01-01, page 33) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1500.?59', '1500.?59'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 48 ساعة)، الصنف M6، الدرجة 7 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2023-01-01، الصفحة 33): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "C2",
+     "degre": 7,
+     "source_pdf_page": 33,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1500.?59', '1500.?59'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie C2, degré 7 (tableau n° 8, en vigueur à partir du 2023-01-01, page 33) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['1500.?59', '1500.?59'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 48 ساعة)، الصنف C2، الدرجة 7 (جدول الأجور عدد 8 الذي يقع العمل به بداية من 2023-01-01، الصفحة 33): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_EXECUTION_40H_2024-01-01",
+   "numero_imprime": 9,
+   "population": "execution_40h",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 34,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "E1": [
+     543.555,
+     545.488,
+     547.419,
+     549.351,
+     551.283,
+     553.214,
+     555.146,
+     557.077,
+     559.009,
+     560.940,
+     562.872,
+     564.803,
+     566.735,
+     568.666,
+     571.032
+    ],
+    "E2": [
+     566.660,
+     568.864,
+     570.796,
+     572.727,
+     574.659,
+     576.590,
+     578.522,
+     580.453,
+     582.385,
+     584.316,
+     null,
+     588.179,
+     590.111,
+     592.042,
+     594.137
+    ],
+    "E3": [
+     590.888,
+     593.368,
+     595.300,
+     597.232,
+     599.163,
+     601.095,
+     603.026,
+     604.958,
+     606.889,
+     608.821,
+     610.752,
+     612.684,
+     614.615,
+     616.547,
+     618.349
+    ],
+    "E4": [
+     643.669,
+     646.480,
+     649.055,
+     651.631,
+     654.206,
+     656.782,
+     659.357,
+     661.932,
+     664.508,
+     667.083,
+     669.658,
+     672.234,
+     674.809,
+     677.385,
+     680.295
+    ],
+    "E5": [
+     692.202,
+     695.561,
+     698.137,
+     700.712,
+     703.287,
+     705.863,
+     708.438,
+     711.013,
+     713.589,
+     716.164,
+     718.740,
+     721.315,
+     723.890,
+     726.466,
+     728.845
+    ],
+    "E6": [
+     740.671,
+     744.576,
+     747.152,
+     749.727,
+     752.302,
+     754.878,
+     757.453,
+     760.028,
+     762.604,
+     765.179,
+     767.755,
+     770.330,
+     772.905,
+     775.481,
+     777.299
+    ],
+    "E7": [
+     789.146,
+     793.595,
+     796.170,
+     798.746,
+     801.321,
+     803.896,
+     806.472,
+     809.047,
+     811.622,
+     814.198,
+     816.773,
+     819.349,
+     821.924,
+     824.499,
+     825.774
+    ],
+    "E8": [
+     879.984,
+     883.991,
+     889.142,
+     894.293,
+     899.444,
+     904.594,
+     909.745,
+     914.896,
+     920.047,
+     925.197,
+     930.348,
+     935.499,
+     940.650,
+     945.800,
+     953.236
+    ],
+    "E9": [
+     928.523,
+     933.076,
+     938.226,
+     943.377,
+     948.528,
+     953.679,
+     958.829,
+     963.980,
+     969.131,
+     974.282,
+     979.432,
+     984.583,
+     989.734,
+     994.885,
+     1001.792
+    ],
+    "E10": [
+     976.996,
+     982.093,
+     987.244,
+     992.395,
+     997.545,
+     1002.696,
+     1007.847,
+     1012.998,
+     1018.148,
+     1023.299,
+     1028.450,
+     1033.601,
+     1038.751,
+     1043.902,
+     1050.265
+    ],
+    "E11": [
+     1025.528,
+     1031.173,
+     1036.324,
+     1041.475,
+     1046.625,
+     1051.776,
+     1056.927,
+     1062.078,
+     1067.228,
+     1072.379,
+     1077.530,
+     1082.681,
+     1087.831,
+     1092.982,
+     1098.797
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E2",
+     "degre": 11,
+     "source_pdf_page": 34,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['58?.248', '586.248'] »)",
+     "message_fr": "Salaire des agents d'exécution (40 heures), catégorie E2, degré 11 (tableau n° 9, en vigueur à partir du 2024-01-01, page 34) : cellule non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['58?.248', '586.248'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 40 ساعة)، الصنف E2، الدرجة 11 (جدول الأجور عدد 9 الذي يقع العمل به بداية من 2024-01-01، الصفحة 34): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_40H_2024-01-01",
+   "numero_imprime": 10,
+   "population": "maitrise_cadres_40h",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 35,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 40,
+   "valeurs": {
+    "M1": [
+     879.984,
+     883.991,
+     889.142,
+     894.293,
+     899.444,
+     904.594,
+     909.745,
+     914.896,
+     920.047,
+     925.197,
+     930.348,
+     935.499,
+     940.650,
+     945.800,
+     953.236
+    ],
+    "M2": [
+     928.523,
+     933.076,
+     938.226,
+     943.377,
+     948.528,
+     953.679,
+     958.829,
+     963.980,
+     969.131,
+     null,
+     979.432,
+     984.583,
+     989.734,
+     994.885,
+     1001.792
+    ],
+    "M3": [
+     976.996,
+     982.093,
+     987.244,
+     992.395,
+     997.545,
+     1002.696,
+     1007.847,
+     1012.998,
+     1018.148,
+     1023.299,
+     1028.450,
+     1033.601,
+     1038.751,
+     1043.902,
+     1050.265
+    ],
+    "M4": [
+     1025.528,
+     1031.173,
+     1036.324,
+     1041.475,
+     1046.625,
+     1051.776,
+     1056.927,
+     1062.078,
+     1067.228,
+     1072.379,
+     1077.530,
+     1082.681,
+     1087.831,
+     1092.982,
+     1098.797
+    ],
+    "M5": [
+     1179.679,
+     1186.538,
+     1192.977,
+     1199.415,
+     1205.853,
+     1212.292,
+     1218.730,
+     1225.169,
+     1231.607,
+     1238.046,
+     1244.484,
+     1250.922,
+     1257.361,
+     1263.799,
+     1271.262
+    ],
+    "M6": [
+     1285.219,
+     1292.750,
+     1300.476,
+     1308.202,
+     1315.928,
+     1323.654,
+     1331.381,
+     1339.107,
+     1346.833,
+     1354.559,
+     1362.285,
+     1370.011,
+     1377.737,
+     1385.463,
+     1395.115
+    ],
+    "C1": [
+     1179.679,
+     1186.538,
+     1192.977,
+     1199.415,
+     1205.853,
+     1212.292,
+     1218.730,
+     1225.169,
+     1231.607,
+     1238.046,
+     1244.484,
+     1250.922,
+     1257.361,
+     1263.799,
+     1271.262
+    ],
+    "C2": [
+     1285.219,
+     1292.750,
+     1300.476,
+     1308.202,
+     1315.928,
+     1323.654,
+     1331.381,
+     1339.107,
+     1346.833,
+     1354.559,
+     1362.285,
+     1370.011,
+     1377.737,
+     1385.463,
+     1395.115
+    ],
+    "C3": [
+     1536.710,
+     1546.547,
+     1555.561,
+     1564.575,
+     1573.588,
+     1582.602,
+     1591.616,
+     1600.630,
+     1609.644,
+     1618.657,
+     1627.671,
+     1636.685,
+     1645.699,
+     1654.713,
+     1664.919
+    ],
+    "C4": [
+     1788.201,
+     1800.345,
+     1810.646,
+     1820.947,
+     1831.249,
+     1841.550,
+     1851.852,
+     1862.153,
+     1872.455,
+     1882.756,
+     1893.058,
+     1903.359,
+     1913.661,
+     1923.962,
+     1934.724
+    ],
+    "C5": [
+     2039.698,
+     2054.145,
+     2065.734,
+     2077.323,
+     2088.912,
+     2100.502,
+     2112.091,
+     2123.680,
+     2135.269,
+     2146.858,
+     2158.447,
+     2170.036,
+     2181.626,
+     2193.215,
+     2204.549
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "M2",
+     "degre": 10,
+     "source_pdf_page": 35,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : zoom 974.782 ; pas d'indice (degrés 9→10 et 10→11) contraire (lectures « ['974.782', '974.282'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (40 heures), catégorie M2, degré 10 (tableau n° 10, en vigueur à partir du 2024-01-01, page 35) : cellule non tranchée au zoom à 400 dpi : zoom 974.782 ; pas d'indice (degrés 9→10 et 10→11) contraire (lectures « ['974.782', '974.282'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 40 ساعة)، الصنف M2، الدرجة 10 (جدول الأجور عدد 10 الذي يقع العمل به بداية من 2024-01-01، الصفحة 35): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_EXECUTION_48H_2024-01-01",
+   "numero_imprime": 11,
+   "population": "execution_48h",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 36,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "E1": [
+     653.433,
+     655.753,
+     658.071,
+     660.389,
+     662.707,
+     665.025,
+     667.343,
+     669.661,
+     671.978,
+     674.296,
+     676.614,
+     678.932,
+     681.250,
+     683.568,
+     686.407
+    ],
+    "E2": [
+     681.212,
+     683.856,
+     686.174,
+     688.492,
+     690.810,
+     693.128,
+     695.446,
+     697.764,
+     700.081,
+     702.399,
+     704.717,
+     707.035,
+     709.353,
+     711.671,
+     714.185
+    ],
+    "E3": [
+     710.374,
+     713.351,
+     715.669,
+     717.987,
+     720.305,
+     722.623,
+     724.941,
+     727.258,
+     729.576,
+     731.894,
+     734.212,
+     736.530,
+     738.848,
+     741.166,
+     743.328
+    ],
+    "E4": [
+     773.825,
+     777.199,
+     780.289,
+     783.380,
+     786.470,
+     789.561,
+     792.651,
+     795.742,
+     798.832,
+     801.923,
+     805.013,
+     808.104,
+     811.194,
+     814.285,
+     817.777
+    ],
+    "E5": [
+     832.170,
+     836.201,
+     839.291,
+     842.382,
+     845.472,
+     848.563,
+     851.653,
+     854.744,
+     857.834,
+     860.925,
+     864.015,
+     867.106,
+     870.196,
+     873.287,
+     876.142
+    ],
+    "E6": [
+     890.452,
+     895.138,
+     898.228,
+     901.319,
+     904.409,
+     907.500,
+     null,
+     null,
+     916.771,
+     919.862,
+     922.952,
+     926.043,
+     929.133,
+     932.224,
+     934.406
+    ],
+    "E7": [
+     948.671,
+     954.010,
+     957.101,
+     960.191,
+     963.282,
+     966.372,
+     969.463,
+     972.553,
+     975.644,
+     978.734,
+     981.825,
+     984.915,
+     988.006,
+     991.096,
+     992.626
+    ],
+    "E8": [
+     null,
+     1062.680,
+     1068.861,
+     1075.042,
+     1081.223,
+     1087.404,
+     1093.585,
+     1099.766,
+     1105.947,
+     1112.128,
+     1118.309,
+     1124.490,
+     1130.671,
+     1136.852,
+     1145.775
+    ],
+    "E9": [
+     1116.222,
+     1121.685,
+     1127.866,
+     1134.047,
+     1140.228,
+     1146.409,
+     1152.590,
+     1158.771,
+     1164.952,
+     1171.133,
+     1177.314,
+     1183.495,
+     1189.677,
+     1195.858,
+     1204.147
+    ],
+    "E10": [
+     1174.508,
+     1180.625,
+     1186.806,
+     1192.987,
+     1199.168,
+     1205.349,
+     1211.530,
+     1217.711,
+     1223.892,
+     1230.073,
+     1236.254,
+     1242.435,
+     1248.616,
+     1254.797,
+     1262.432
+    ],
+    "E11": [
+     1232.851,
+     1239.625,
+     1245.806,
+     1251.987,
+     1258.168,
+     1264.349,
+     1270.530,
+     1276.711,
+     1282.892,
+     1289.073,
+     1295.254,
+     1301.435,
+     1307.616,
+     1313.797,
+     1320.776
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "E6",
+     "degre": 7,
+     "source_pdf_page": 36,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['910.5?0', '910.590'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E6, degré 7 (tableau n° 11, en vigueur à partir du 2024-01-01, page 36) : cellule non tranchée au zoom à 400 dpi : trait blanc vertical du scan sur la colonne du degré 7 : le premier chiffre après le point est en partie effacé (lectures « ['910.5?0', '910.590'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E6، الدرجة 7 (جدول الأجور عدد 11 الذي يقع العمل به بداية من 2024-01-01، الصفحة 36): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E6",
+     "degre": 8,
+     "source_pdf_page": 36,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['913.6?1', '913.681'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E6, degré 8 (tableau n° 11, en vigueur à partir du 2024-01-01, page 36) : cellule non tranchée au zoom à 400 dpi : chiffre abîmé au zoom, non séparé (lectures « ['913.6?1', '913.681'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E6، الدرجة 8 (جدول الأجور عدد 11 الذي يقع العمل به بداية من 2024-01-01، الصفحة 36): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    },
+    {
+     "categorie": "E8",
+     "degre": 1,
+     "source_pdf_page": 36,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : zoom : 1057.871 ou 1057.371, chiffre non séparé (lectures « ['1057.371', '1057.?71'] »)",
+     "message_fr": "Salaire des agents d'exécution (48 heures), catégorie E8, degré 1 (tableau n° 11, en vigueur à partir du 2024-01-01, page 36) : cellule non tranchée au zoom à 400 dpi : zoom : 1057.871 ou 1057.371, chiffre non séparé (lectures « ['1057.371', '1057.?71'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التنفيذ (نظام 48 ساعة)، الصنف E8، الدرجة 1 (جدول الأجور عدد 11 الذي يقع العمل به بداية من 2024-01-01، الصفحة 36): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  },
+  {
+   "table_id": "ELEC_MAITRISE_CADRES_48H_2024-01-01",
+   "numero_imprime": 12,
+   "population": "maitrise_cadres_48h",
+   "effective_date": "2024-01-01",
+   "source_pdf_page": 37,
+   "unite": "TND/mois",
+   "regime_hebdomadaire_heures": 48,
+   "valeurs": {
+    "M1": [
+     1055.995,
+     1060.805,
+     1066.986,
+     1073.167,
+     1079.348,
+     1085.529,
+     1091.710,
+     1097.891,
+     1104.072,
+     1110.253,
+     1116.434,
+     1122.615,
+     1128.796,
+     1134.977,
+     1143.899
+    ],
+    "M2": [
+     1114.244,
+     1119.707,
+     1125.888,
+     1132.069,
+     1138.250,
+     1144.431,
+     1150.612,
+     1156.793,
+     1162.974,
+     1169.155,
+     1175.336,
+     1181.517,
+     1187.698,
+     1193.879,
+     1202.168
+    ],
+    "M3": [
+     1172.426,
+     1178.542,
+     1184.723,
+     1190.904,
+     1197.085,
+     1203.266,
+     1209.447,
+     1215.628,
+     1221.809,
+     1227.990,
+     1234.171,
+     1240.352,
+     1246.533,
+     1252.714,
+     1260.350
+    ],
+    "M4": [
+     1230.667,
+     1237.440,
+     1243.621,
+     1249.802,
+     1255.983,
+     1262.165,
+     1268.346,
+     1274.527,
+     1280.708,
+     1286.889,
+     1293.070,
+     1299.251,
+     1305.432,
+     1311.613,
+     1318.591
+    ],
+    "M5": [
+     1415.637,
+     1423.868,
+     1431.594,
+     1439.320,
+     1447.047,
+     1454.773,
+     1462.499,
+     1470.225,
+     1477.952,
+     1485.678,
+     1493.404,
+     1501.130,
+     1508.857,
+     1516.583,
+     1525.538
+    ],
+    "M6": [
+     1542.285,
+     1551.323,
+     1560.595,
+     1569.866,
+     1579.138,
+     1588.409,
+     1597.681,
+     1606.952,
+     1616.224,
+     1625.495,
+     1634.767,
+     1644.038,
+     1653.310,
+     1662.581,
+     1674.163
+    ],
+    "C1": [
+     1415.637,
+     1423.868,
+     1431.594,
+     1439.320,
+     1447.047,
+     1454.773,
+     1462.499,
+     1470.225,
+     1477.952,
+     1485.678,
+     1493.404,
+     1501.130,
+     1508.857,
+     1516.583,
+     1525.538
+    ],
+    "C2": [
+     1542.285,
+     1551.323,
+     1560.594,
+     1569.866,
+     1579.137,
+     1588.409,
+     1597.680,
+     1606.952,
+     1616.223,
+     1625.495,
+     null,
+     1644.038,
+     1653.309,
+     1662.581,
+     1674.163
+    ],
+    "C3": [
+     1844.081,
+     1855.885,
+     1866.702,
+     1877.519,
+     1888.336,
+     1899.152,
+     1909.969,
+     1920.786,
+     1931.603,
+     1942.419,
+     1953.236,
+     1964.053,
+     1974.870,
+     1985.687,
+     1997.935
+    ],
+    "C4": [
+     2145.873,
+     2160.446,
+     2172.808,
+     2185.170,
+     2197.532,
+     2209.894,
+     2222.256,
+     2234.618,
+     2246.980,
+     2259.342,
+     2271.704,
+     2284.066,
+     2296.428,
+     2308.790,
+     2321.704
+    ],
+    "C5": [
+     2447.674,
+     2465.011,
+     2478.918,
+     2492.826,
+     2506.733,
+     2520.640,
+     2534.547,
+     2548.455,
+     2562.362,
+     2576.269,
+     2590.177,
+     2604.084,
+     2617.991,
+     2631.898,
+     2645.499
+    ]
+   },
+   "cellules_source_manquante": [
+    {
+     "categorie": "C2",
+     "degre": 11,
+     "source_pdf_page": 37,
+     "source_article": "جدول الأجور",
+     "raison": "non tranchée au zoom à 400 dpi : zoom : dernier chiffre 5 ou 6, non séparé (lectures « ['1634.76?', '1634.766'] »)",
+     "message_fr": "Salaire des agents de maîtrise et cadres (48 heures), catégorie C2, degré 11 (tableau n° 12, en vigueur à partir du 2024-01-01, page 37) : cellule non tranchée au zoom à 400 dpi : zoom : dernier chiffre 5 ou 6, non séparé (lectures « ['1634.76?', '1634.766'] ») ; elle n'est pas lisible avec certitude dans la source. Aucun montant n'est renvoyé.",
+     "message_ar": "أجر أعوان التسيير والإطارات (نظام 48 ساعة)، الصنف C2، الدرجة 11 (جدول الأجور عدد 12 الذي يقع العمل به بداية من 2024-01-01، الصفحة 37): رقم غير واضح في الطباعة؛ الخانة غير مقروءة بيقين في المصدر. لا يُرجَع أي مبلغ."
+    }
+   ]
+  }
+ ]
+}

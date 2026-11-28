@@ -7,7 +7,7 @@ part : DS5 évalue son propre module.
 ```
 evaluation/
   README.md                                ce fichier
-  golden_sets/track_b_golden.v0.json       472 cas, valeurs attendues lues dans les PDF
+  golden_sets/track_b_golden.v0.json       514 cas, valeurs attendues lues dans les PDF
   golden_sets/track_b_hors_perimetre.v0.json  48 cas hors périmètre (refus attendus, D110)
   golden_sets/track_b_livrable.v0.json     12 cas du rapport de conformité (D108, D109), évalués à part
   metrics_harness/run_eval.py              script : appelle le handler, calcule les métriques
@@ -31,7 +31,7 @@ données ; cette évaluation vérifie le module contre la source.
   article et texte lu), pour vérifier le cas sur le document ;
 - `certitude` : **L** (lu directement), **C** (calculé à la main à partir de
   cellules lues), **I** (interprétation) ; `decision` donne l'entrée de
-  `docs/DECISIONS.md` (D6, D9, D10, D23, D29, D38, D46, D47, D49 à D72, D75, D78 à D89, D91 à D96) qui
+  `docs/DECISIONS.md` (D6, D9, D10, D23, D29, D38, D46, D47, D49 à D72, D75, D78 à D89, D91 à D100) qui
   fonde un cas I ou C ;
 - `verification_humaine` : `true` quand DS5 a vérifié le cas sur le PDF.
 
@@ -39,17 +39,17 @@ Convention des colonnes : le numéro de colonne est le degré ; le degré 1 est
 la colonne la plus à droite (en-tête « 2/0 » en métallurgie, « 0-2 » au BTP, « 1 » / « 2 » dans les grilles
 des associations pour personnes handicapées).
 
-**Répartition (472 cas, dont 461 vérifiés par DS5 sur le PDF : `verification_humaine = true` ; 36 cas en contrat v1).**
+**Répartition (514 cas, dont 503 vérifiés par DS5 sur le PDF : `verification_humaine = true` ; 41 cas en contrat v1).**
 
 | Catégorie | Cas | Contenu |
 |---|---|---|
-| `ok` | 276 | Salaires de base (une ou plusieurs populations et dates par secteur), primes à montant fixe, SMIG |
+| `ok` | 302 | Salaires de base (une ou plusieurs populations et dates par secteur), primes à montant fixe, SMIG |
 | `art13` | 6 | Article 13 au-delà du dernier degré : métallurgie (calculés à la main) et BTP (table de correspondance p.8) |
-| `refus` | 183 | Bornes exactes, ancienneté hors grille, catégories ou populations inconnues ou non couvertes, primes non couvertes, CNSS, conversion d'unité, secteur non transcrit |
+| `refus` | 199 | Bornes exactes, ancienneté hors grille, catégories ou populations inconnues ou non couvertes, primes non couvertes, CNSS, conversion d'unité, secteur non transcrit |
 | `piege` | 7 | Date antérieure à la première grille ou au décret SMIG, sous-catégorie manquante, ancienneté pour un occasionnel, alias non admis (messages FR et AR attendus) |
 
-Par certitude : 228 cas **L**, 8 cas **C**, 236 cas **I**. Par opération :
-328 `salaire_base`, 140 `prime`, 3 `smig`, 1 `cotisation_cnss` (refus).
+Par certitude : 240 cas **L**, 8 cas **C**, 266 cas **I**. Par opération :
+354 `salaire_base`, 156 `prime`, 3 `smig`, 1 `cotisation_cnss` (refus).
 
 Secteurs couverts (nombre de cas) : métallurgie et bâtiment 22, BTP 20,
 enseignement privé 18, associations pour personnes handicapées 16, assurance
@@ -60,7 +60,8 @@ stations-service 7, boissons alcoolisées 7, bois et ameublement 7, habillement 
 fonderie 9, verre 7, boulangeries 7, textile 7, produits d'entretien 7, automobiles 8, matériaux de construction 8,
 peintures 11, chaussure 9, cuirs 8, clercs d'avocats 8, pharmacies 7, conserveries 8, grossistes en médicaments 8,
 cinéma 8, transport routier 9, jardins d'enfants 11, cliniques 8, location de voitures 9, commerce des matériaux 9,
-cafés 11, ports 17, agences de voyages 5, hôtels 5 ; cas v1 du contrat (D75 à D77) répartis dans leurs secteurs ;
+cafés 11, ports 17, électricité et électronique 11, presse écrite 11, industrie laitière 10,
+explosifs et artifices 10, agences de voyages 5, hôtels 5 ; cas v1 du contrat (D75 à D77) répartis dans leurs secteurs ;
 SMIG 4 ; secteur fictif non supporté 1.
 
 ## Métriques
@@ -152,7 +153,7 @@ python src/track_b_accounting/evaluation/metrics_harness/run_eval.py --date AAAA
   métriques à part.
 - **Les cas I traduisent nos décisions** (D6, D9, D10, D23), pas le texte seul :
   ils mesurent la conformité du module à ces décisions, pas leur justesse.
-- **472 cas sur plus de 33 000 cellules transcrites** : c'est un échantillon. La couverture
+- **514 cas sur plus de 40 000 cellules transcrites** : c'est un échantillon. La couverture
   exhaustive des grilles repose sur la double lecture et les contrôles
   automatiques (`../tests/test_grid_bm.py`, `../tests/test_grid_btp.py`,
   `../tests/test_grid_associations.py`), dont le contrôle de hausse entre

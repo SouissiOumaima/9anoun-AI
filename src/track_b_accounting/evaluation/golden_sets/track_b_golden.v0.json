@@ -15573,6 +15573,1498 @@
     "rendu": "claude-docs/vague7/verification/cas.html, cas TB-472"
    },
    "note": "Vague 7 : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; à vérifier par DS5 sur claude-docs/vague7/verification/cas.html ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-473",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_40h",
+     "categorie": "E6",
+     "anciennete_annees": 13,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "757.453",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 34
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 34,
+    "emplacement": "tableau n° 9 (p.34, exécution 40 h, 2024-01-01), ligne 6 (تنفيذ 6), col. degré 7 (12 à 14 ans)",
+    "valeur_imprimee": "757.453",
+    "ligne": 6,
+    "colonne": 7,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-473"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-474",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "maitrise_cadres_48h",
+     "categorie": "C5",
+     "anciennete_annees": 29,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2490.728",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 33
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 33,
+    "emplacement": "tableau n° 8 (p.33, maîtrise et cadres 48 h, 2023-01-01), ligne 11 (إطار 5), col. degré 15 (28 à 30 ans)",
+    "valeur_imprimee": "2490.728",
+    "ligne": 11,
+    "colonne": 15,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-474"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-475",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_48h",
+     "categorie": "E1",
+     "anciennete_annees": 0.5,
+     "date": "2021-12-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "573.410",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 28
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 28,
+    "emplacement": "tableau n° 3 (p.28, exécution 48 h, 2021-12-01), ligne 1 (تنفيذ 1), col. degré 1",
+    "valeur_imprimee": "573.410",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-475"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-476",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_40h",
+     "categorie": "E6",
+     "anciennete_annees": 13,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 26,
+    "emplacement": "tableau n° 1 (p.26), ligne 6, col. degré 7 : chiffre effacé par le trait blanc du scan (666.?46)",
+    "ligne": 6,
+    "colonne": 7,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-476"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-477",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_40h",
+     "categorie": "E4",
+     "anciennete_annees": 3,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 26,
+    "emplacement": "tableau n° 1 (p.26), ligne 4 (تنفيذ 4), col. degré 2 : lue 567.553 deux fois, contredite par la hausse et le pas d'indice",
+    "ligne": 4,
+    "colonne": 2,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-477"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-478",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "maitrise_cadres_40h",
+     "categorie": "M1",
+     "anciennete_annees": 30,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 9,
+    "emplacement": "art. 18 أ (p.9) : au dernier degré, passage dans la catégorie suivante (non calculé) ; 15 degrés de 2 ans",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-478"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-479",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_48h",
+     "categorie": "E2",
+     "anciennete_annees": 5,
+     "date": "2021-11-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 28,
+    "emplacement": "titre du tableau n° 3 (p.28) : en vigueur à partir du 1er décembre 2021 ; grilles antérieures absentes",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-479"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-480",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "code": "prime_transport",
+     "date": "2024-06-01",
+     "groupe": "cadres_48h"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "88.778",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 17
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 17,
+    "emplacement": "art. 53 (جديد) : cadres, régime de 48 heures, 88,778 « بعنوان سنة 2024 »",
+    "valeur_imprimee": "88.778",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-480"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-481",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "code": "prime_panier",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.300",
+    "unite": "TND/jour",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 18,
+    "emplacement": "art. 56 : « بثلاثمائة مليم » par jour, en toutes lettres seulement",
+    "valeur_imprimee": "0.300",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-481"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-482",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "horaires",
+     "categorie": "11",
+     "anciennete_annees": 0.5,
+     "date": "2022-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "5.440",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 30
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 30,
+    "emplacement": "tableau n° 1 (p.30, horaire, 2022-05-01), ligne 1 (échelle 11), col. degré 1",
+    "valeur_imprimee": "5.440",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-482"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-483",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "mensuels",
+     "categorie": "52",
+     "anciennete_annees": 15.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1587.771",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 35
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 35,
+    "emplacement": "tableau n° 6 (p.35, mensuel, 2024-01-01), ligne 13 (échelle 52), col. degré 16 (15 à 16 ans)",
+    "valeur_imprimee": "1587.771",
+    "ligne": 13,
+    "colonne": 16,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-483"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-484",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "mensuels",
+     "categorie": "83",
+     "anciennete_annees": 27.5,
+     "date": "2023-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2003.322",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 33
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 33,
+    "emplacement": "tableau n° 4 (p.33, mensuel, 2023-01-01), ligne 23 (échelle 83), col. degré 28 (27 à 28 ans)",
+    "valeur_imprimee": "2003.322",
+    "ligne": 23,
+    "colonne": 28,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-484"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-485",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "horaires",
+     "categorie": "42",
+     "anciennete_annees": 10.5,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "8.758",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 34
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 34,
+    "emplacement": "tableau n° 5 (p.34, horaire, 2024-01-01), ligne 10 (échelle 42), col. degré 11 (10 à 11 ans)",
+    "valeur_imprimee": "8.758",
+    "ligne": 10,
+    "colonne": 11,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-485"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-486",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "mensuels",
+     "categorie": "31",
+     "anciennete_annees": 28,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 9,
+    "emplacement": "art. 11 (جديد) (p.9) : rien au-delà du degré 28 ; en-tête (pp.30-35) : durée 1 sous chacun des 28 degrés",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-486"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-487",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "horaires",
+     "categorie": "21",
+     "anciennete_annees": 3.5,
+     "date": "2022-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 30,
+    "emplacement": "titre du tableau n° 1 (p.30) : 2022-05-01 (avenant n° 16) ; grilles antérieures absentes",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-487"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-488",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "code": "prime_presence",
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "30.425",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 11
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 11,
+    "emplacement": "art. 17 مكرر (جديد) : 30,425 à partir du 1er janvier 2023 ; base « 20.999 » sans date citée en note",
+    "valeur_imprimee": "30.425",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-488"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-489",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "code": "prime_scolaire",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 16,
+    "emplacement": "art. 48 مكرر (جديد) imprimé deux fois sur la même page avec des montants différents (notes 43 et 45)",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-489"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-490",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D98",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "code": "prime_presse",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "100.440",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 16,
+    "emplacement": "art. 47 مكرر (جديد) : 100,440 par mois, journalistes titulaires de la carte professionnelle ; non révisée par l'avenant n° 16",
+    "valeur_imprimee": "100.440",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-490"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-491",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "code": "prime_cout_particulier",
+     "date": "2022-06-01",
+     "groupe": "cadres"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "46.907",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 18
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 18,
+    "emplacement": "art. 55 (جديد) : « تكلفة خاصة », cadres, 46,907 à partir du 1er mai 2022",
+    "valeur_imprimee": "46.907",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-491"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-492",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "maitrise_techniciens",
+     "categorie": "III_b",
+     "anciennete_annees": 5,
+     "date": "2020-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1096.179",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 23
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 23,
+    "emplacement": "tableau n° 4 (p.23), ligne 8 (III ب), col. degré 3 (4 à 6 ans) ; hypothèse SMIG affichée",
+    "valeur_imprimee": "1096.179",
+    "ligne": 8,
+    "colonne": 3,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-492"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-493",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "ouvriers",
+     "categorie": "I_a",
+     "anciennete_annees": 0.5,
+     "date": "2019-05-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2.792",
+    "unite": "TND/heure",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 24
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 24,
+    "emplacement": "tableau n° 5 (p.24, ouvriers), ligne 1 (I أ), col. degré 1 ; TND/heure en hypothèse",
+    "valeur_imprimee": "2.792",
+    "ligne": 1,
+    "colonne": 1,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-493"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-494",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "services_administratifs",
+     "categorie": "X_b",
+     "anciennete_annees": 22.5,
+     "date": "2021-11-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1793.245",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 6 (p.25), ligne 28 (X ب), col. degré 14 (22 à 23 ans), dernier jour de validité",
+    "valeur_imprimee": "1793.245",
+    "ligne": 28,
+    "colonne": 14,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-494"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-495",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "ouvriers",
+     "categorie": "VI_c",
+     "anciennete_annees": 9,
+     "date": "2022-01-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 3,
+    "emplacement": "avenant n° 16 (p.3, effet 2021-12-01) : salaires révisés, grille absente de la source",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-495"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-496",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "maitrise_techniciens",
+     "categorie": "I_a",
+     "anciennete_annees": 23,
+     "date": "2020-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 8,
+    "emplacement": "art. 13 ب (p.8) : un an au degré 14 puis promotion automatique (non calculée) ; ancienneté 23 au degré 14",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-496"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-497",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "services_administratifs",
+     "categorie": "I_a",
+     "anciennete_annees": 1,
+     "date": "2019-04-30"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 25,
+    "emplacement": "titre du tableau n° 6 (p.25) : 2019-05-01 ; tableaux n° 1 à 3 absents",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-497"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-498",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D99",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "code": "prime_presence",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "17.025",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 16,
+    "emplacement": "art. 50-10 : 17,025 à partir du 1er janvier 2024 (servie après la fin de la grille)",
+    "valeur_imprimee": "17.025",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-498"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-499",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "code": "prime_caisse",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "30.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 16
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 16,
+    "emplacement": "art. 50-9 : « بثلاثين دينارا (30 دينار) »",
+    "valeur_imprimee": "30.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-499"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-500",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "code": "prime_transport",
+     "date": "2023-06-01",
+     "groupe": "cadres"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "84.516",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 15,
+    "emplacement": "art. 50 أ (جديد) : cadres, 84,516 à partir du 1er janvier 2023",
+    "valeur_imprimee": "84.516",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-500"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-501",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D100",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "population": "tableau_2_2019",
+     "categorie": "5",
+     "anciennete_annees": 3,
+     "date": "2022-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 44,
+    "emplacement": "tableau n° 2 (p.44) : colonne des catégories et degrés 1 à 3 hors du cadre du scan (bord droit)",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-501"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-502",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D100",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "population": "tableau_1_2018",
+     "categorie": "1",
+     "anciennete_annees": 0.5,
+     "date": "2018-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 43,
+    "emplacement": "tableau n° 1 (p.43) : colonne des catégories hors du cadre du scan, degré 1 coupé",
+    "ligne": "en-tête, titre du tableau ou texte d'article",
+    "colonne": "sans objet (refus sur l'en-tête, la date ou l'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-502"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-503",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D100",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_transport",
+     "date": "2024-06-01",
+     "transport_assure": false
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "62.446",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مفرقعات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : transport 62,446 à partir du 1er mai 2019",
+    "valeur_imprimee": "62.446",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-503"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-504",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D100",
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_transport",
+     "date": "2024-06-01",
+     "transport_assure": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "0.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مفرقعات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : non versée aux agents qui utilisent le bus de la société",
+    "valeur_imprimee": "0.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-504"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-505",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_risques_speciaux",
+     "date": "2013-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "150.000",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مفرقعات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : risques spéciaux 150,000 par mois depuis le 1er mai 2013",
+    "valeur_imprimee": "150.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-505"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-506",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_risques_speciaux",
+     "date": "2013-04-30"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : montant servi à partir du 1er mai 2013",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-506"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-507",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_presence",
+     "date": "2018-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "37.095",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مفرقعات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : présence 37,095 à partir du 1er mai 2018",
+    "valeur_imprimee": "37.095",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-507"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-508",
+   "categorie": "ok",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_employe_modele_maitrise",
+     "date": "2024-06-01",
+     "condition_remplie": true
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "500.000",
+    "unite": "TND/an",
+    "citations": [
+     {
+      "pdf": "مفرقعات.pdf",
+      "page": 15
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 15,
+    "emplacement": "art. 50 مكرر (جديد) : employé modèle, maîtrise, 500 par an (deux par entreprise)",
+    "valeur_imprimee": "500.000",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-508"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-509",
+   "categorie": "refus",
+   "certitude": "L",
+   "decision": null,
+   "verification_humaine": true,
+   "requete": {
+    "operation": "prime",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "code": "prime_productivite",
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 14,
+    "emplacement": "art. 49 (pp.14-15) : de la moitié à deux mois de salaire, formule",
+    "ligne": "ligne de texte du montant (bande encadrée)",
+    "colonne": "sans objet (texte d'article)",
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-509"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-510",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "execution_48h",
+     "categorie": "E11",
+     "degre": 15,
+     "date": "2024-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1320.776",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "الكهرباء و الالكترونيك.pdf",
+      "page": 36
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 36,
+    "emplacement": "tableau n° 11 (p.36), ligne 11 (تنفيذ 11), col. degré 15",
+    "valeur_imprimee": "1320.776",
+    "ligne": 11,
+    "colonne": 15,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-510"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-511",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D97",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "ELECTRICITE_ELECTRONIQUE",
+     "population": "maitrise_cadres_48h",
+     "categorie": "M2",
+     "degre": 7,
+     "date": "2023-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "الكهرباء و الالكترونيك.pdf",
+    "page": 33,
+    "emplacement": "tableau n° 8 (p.33), ligne 2 (تسيير 2), col. degré 7 : 1080.?56, trait blanc du scan",
+    "ligne": 2,
+    "colonne": 7,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-511"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-512",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "PRESSE_ECRITE",
+     "population": "mensuels",
+     "categorie": "83",
+     "degre": 28,
+     "date": "2024-06-01"
+    },
+    "lang": "ar"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "2126.557",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+      "page": 35
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "مؤسسات الصحافة المكتوبة.pdf",
+    "page": 35,
+    "emplacement": "tableau n° 6 (p.35), ligne 23 (échelle 83), col. degré 28",
+    "valeur_imprimee": "2126.557",
+    "ligne": 23,
+    "colonne": 28,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-512"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-513",
+   "categorie": "ok",
+   "certitude": "I",
+   "decision": "D75",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "INDUSTRIE_LAITIERE",
+     "population": "services_administratifs",
+     "categorie": "X_b",
+     "degre": 14,
+     "date": "2020-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "ok",
+    "montant": "1793.245",
+    "unite": "TND/mois",
+    "citations": [
+     {
+      "pdf": "صناعة الحليب و مشتقاته.pdf",
+      "page": 25
+     }
+    ]
+   },
+   "justification": {
+    "pdf": "صناعة الحليب و مشتقاته.pdf",
+    "page": 25,
+    "emplacement": "tableau n° 6 (p.25), ligne 28 (X ب), col. degré 14",
+    "valeur_imprimee": "1793.245",
+    "ligne": 28,
+    "colonne": 14,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-513"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
+  },
+  {
+   "id": "TB-514",
+   "categorie": "refus",
+   "certitude": "I",
+   "decision": "D100",
+   "verification_humaine": true,
+   "requete": {
+    "contract_version": "track_b.v1",
+    "operation": "salaire_base",
+    "params": {
+     "secteur": "EXPLOSIFS_ARTIFICES",
+     "population": "tableau_1_2018",
+     "categorie": "3",
+     "degre": 5,
+     "date": "2018-06-01"
+    },
+    "lang": "fr"
+   },
+   "attendu": {
+    "status": "refus",
+    "code": "SOURCE_MANQUANTE"
+   },
+   "justification": {
+    "pdf": "مفرقعات.pdf",
+    "page": 43,
+    "emplacement": "tableau n° 1 (p.43), ligne 3, col. degré 5 : cellule nette (670.802), transcrite, non servie",
+    "ligne": 3,
+    "colonne": 5,
+    "rendu": "claude-docs/vague8/verification/cas_A.html, cas TB-514"
+   },
+   "note": "Vague 8 (groupe A) : valeur attendue lue en double lecture indépendante sur image (lecture_retenue.json) ou sur la page de texte ; vérifié par DS5 sur claude-docs/vague8/verification/cas_A.html (28/11/2026) ; ligne depuis le haut, colonne depuis la droite."
   }
  ]
 }
