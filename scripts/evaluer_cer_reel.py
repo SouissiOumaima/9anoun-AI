@@ -4,10 +4,12 @@
 
     .venv\\Scripts\\python scripts/evaluer_cer_reel.py "<dossier hors dépôt>\\annotation.csv"
 
-Lit `annotation.csv` (colonne `texte_correct` remplie à la main ; vide = ligne sautée ; `#ILLISIBLE` = ligne
-illisible, comptée à part) et compare, sur les mêmes lignes :
-- `ocr_production` : la lecture faite pendant l'annotation par l'OCR du projet (détection + reconnaissance,
-  langue « auto »), colonne `lecture_ocr` ;
+Lit `annotation.csv` (colonne `texte_correct` remplie à la main en regardant seulement l'image ; vide = ligne
+sautée ; `#ILLISIBLE` = ligne illisible, comptée à part) et compare, sur les mêmes lignes :
+- `ocr_production` : la lecture faite pendant la préparation par l'OCR du projet (détection + reconnaissance,
+  langue « auto »), lue dans `lectures_ocr.json`, à côté du CSV, par id de ligne. Ce fichier est ouvert en UTF-8
+  par le script, sans passer par Excel. Un ancien CSV qui contient encore la colonne `lecture_ocr` reste accepté,
+  avec un avertissement : l'annotatrice a pu voir la lecture de l'OCR, et le CER risque d'être trop optimiste ;
 - `pre_entraine` : le modèle de reconnaissance pré-entraîné (`arabic_PP-OCRv5_mobile_rec`), sur l'image de la ligne ;
 - `fine_tune` : le même modèle après le Fine-Tuning de l'expérience (variante `bn_frozen`), sur l'image de la ligne.
 `pre_entraine` et `fine_tune` sont mesurés exactement de la même façon (reconnaissance seule) : leur écart est
@@ -26,6 +28,7 @@ import importlib
 import json
 import os
 import sys
+from collections import Counter
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -46,6 +49,11 @@ PPOCR_ROOT: Final = BUILD / "PaddleOCR"
 PRETRAINED: Final = BUILD / "weights" / "arabic_PP-OCRv5_mobile_rec_pretrained.pdparams"
 FT_FILE: Final = "finetune_bn_frozen_best.pdparams"
 ILLEGIBLE: Final = "#ILLISIBLE"
+LECTURES_NAME: Final = "lectures_ocr.json"
+LECTURES_FORMAT: Final = "ds3.lectures_ocr.v1"
+"""Lectures de l'OCR écrites par `annoter_lignes.py`, à part du CSV pour annoter sans les voir."""
+LEGACY_COLUMN: Final = "lecture_ocr"
+"""Colonne des anciens CSV (avant la séparation) : encore acceptée, avec un avertissement."""
 RESULTS_NAME: Final = "resultats_cer_reel.json"
 LANGS: Final = ("fr", "ar", "mixte", "inconnu")
 """Langue de la référence ; « inconnu » = ligne sans lettres (montants, dates seuls). Les portées par langue
@@ -72,24 +80,87 @@ def _inside(path: Path, parent: Path) -> bool:
     return True
 
 
+def read_lectures(path: Path) -> dict[str, str]:
+    """Lectures de l'OCR par id de ligne, depuis `lectures_ocr.json`.
+
+    Ouvert directement en UTF-8 (`utf-8-sig` accepte aussi un BOM éventuel), jamais via Excel. Les messages
+    d'erreur ne citent aucun texte.
+    """
+    if not path.is_file():
+        raise ValueError(f"{LECTURES_NAME} introuvable à côté du CSV (il est écrit par annoter_lignes.py).")
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):  # UnicodeDecodeError et JSONDecodeError sont des ValueError
+        raise ValueError(f"{LECTURES_NAME} illisible (JSON en UTF-8 attendu).") from None
+    lectures = data.get("lectures") if isinstance(data, dict) and data.get("format") == LECTURES_FORMAT else None
+    if not isinstance(lectures, dict) or not all(isinstance(k, str) and isinstance(v, str)
+                                                 for k, v in lectures.items()):
+        raise ValueError(f"{LECTURES_NAME} : format non reconnu (attendu : {LECTURES_FORMAT}).")
+    by_id = {normalize_id(k): v for k, v in lectures.items()}
+    if len(by_id) != len(lectures):
+        raise ValueError(f"{LECTURES_NAME} : {len(lectures) - len(by_id)} id en double.")
+    return by_id
+
+
+def normalize_id(value: str | None) -> str:
+    """Id de ligne comparable entre le CSV et `lectures_ocr.json`, sans dépendre des zéros de tête.
+
+    Excel enregistre « 0001 » comme le nombre 1 : un id fait seulement de chiffres est donc comparé comme un
+    nombre (« 0001 », « 001 » et « 1 » donnent « 1 »). Un autre id est seulement débarrassé de ses espaces.
+    """
+    text = (value or "").strip()
+    return str(int(text)) if text.isascii() and text.isdigit() else text
+
+
 def read_annotations(csv_path: Path) -> tuple[list[Row], dict[str, int]]:
-    """Lignes annotées (texte_correct rempli) et décompte des lignes sautées ou illisibles."""
+    """Lignes annotées (texte_correct rempli) et décompte des lignes sautées ou illisibles.
+
+    La lecture de l'OCR vient de `lectures_ocr.json` (par id de ligne). Un ancien CSV avec la colonne
+    `lecture_ocr` est encore lu, avec un avertissement (annotation peut-être influencée par cette lecture).
+    """
     with csv_path.open(encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle, delimiter=";")
-        missing = {"image", "lecture_ocr", "texte_correct"} - set(reader.fieldnames or [])
+        columns = set(reader.fieldnames or [])
+        legacy = LEGACY_COLUMN in columns
+        missing = {"image", "texte_correct"} - columns if legacy else {"id", "image", "texte_correct"} - columns
         if missing:
             raise ValueError(f"colonnes manquantes dans le CSV : {sorted(missing)}")
         raw = list(reader)
+    if legacy:
+        print(f"Avertissement : ancien CSV avec la colonne {LEGACY_COLUMN} (lecture de l'OCR visible pendant "
+              "l'annotation) : le CER risque d'être trop optimiste. Pour les prochaines annotations, préparez les "
+              f"lignes avec la nouvelle version d'annoter_lignes.py (lecture dans {LECTURES_NAME}).")
+        lectures: dict[str, str] = {}
+    else:
+        lectures = read_lectures(csv_path.parent / LECTURES_NAME)
+    if "id" in columns:
+        seen = Counter(normalize_id(record.get("id")) for record in raw)
+        duplicated = sum(1 for line_id, count in seen.items() if line_id and count > 1)
+        if duplicated:
+            raise ValueError(f"{duplicated} id en double dans le CSV : chaque ligne doit garder son id d'origine.")
     rows: list[Row] = []
-    illegible = skipped = 0
+    illegible = skipped = without_reading = without_image = 0
     for record in raw:
         reference = (record.get("texte_correct") or "").strip()
+        image = (record.get("image") or "").strip()
         if not reference:
             skipped += 1
         elif reference.upper() == ILLEGIBLE:
             illegible += 1
+        elif not image:
+            without_image += 1
+        elif legacy:
+            rows.append(Row(csv_path.parent / image, record.get(LEGACY_COLUMN) or "", reference))
+        elif (line_id := normalize_id(record.get("id"))) in lectures:
+            rows.append(Row(csv_path.parent / image, lectures[line_id], reference))
         else:
-            rows.append(Row(csv_path.parent / record["image"], record.get("lecture_ocr") or "", reference))
+            without_reading += 1
+    if without_image:
+        raise ValueError(f"{without_image} ligne(s) annotée(s) sans image (colonne image vide) : remettez le nom "
+                         "de l'image de chaque ligne, sans rien deviner.")
+    if without_reading:  # jamais deviner : une ligne sans lecture fausserait la comparaison
+        raise ValueError(f"{without_reading} ligne(s) annotée(s) sans lecture dans {LECTURES_NAME} "
+                         "(CSV et fichier de lectures de deux préparations différentes ?).")
     return rows, {"lignes_dans_le_csv": len(raw), "lignes_annotees": len(rows), "lignes_illisibles": illegible,
                   "lignes_non_annotees": skipped}
 
