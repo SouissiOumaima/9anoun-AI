@@ -2044,6 +2044,69 @@ puis déclenchement au téléversement (`prepare_document`) après accord de DS1
 
 ---
 
+### D42 — OCR en arrière-plan : `TIMEOUT` réessayable pendant la lecture, puis lecture du cache
+
+**Numéro** : D42, deuxième des numéros D41 à D45 réservés à DS3 (D40).
+
+**Décision** : quand un document demande l'OCR (zones en attente d'un PDF, ou image), `extraction/pipeline.py`
+passe par le backend en arrière-plan de `reading/ocr_cache.py` (Wiem, PR #46) : l'OCR tourne dans un **processus
+séparé**, son résultat est gardé en cache dans `DS3_CACHE_DIR/cards/<carte>/documents/<document>/`, avec un verrou
+(un seul OCR par fichier) et les mêmes contrôles d'accès que le stockage (D40). Le backend est **actif quand
+PaddleOCR est installé et que `DS3_CACHE_DIR` est défini** ; c'est le fonctionnement normal du serveur.
+- **Première question** sur un tel document : l'OCR est lancé en arrière-plan et la réponse est `erreur`
+  **`TIMEOUT`**, `retryable = true`, « Lecture du document en cours : réessayez dans quelques instants. » ;
+  Gemini n'est pas appelé.
+- **Chaque nouvel essai** tant que la lecture n'est pas terminée reçoit la même réponse `TIMEOUT` réessayable,
+  **sans relancer l'OCR** ; **jamais de résultat partiel**.
+- **Lecture terminée** : le document lu (natif + OCR) est servi depuis le cache, puis l'analyse continue
+  normalement (Gemini, vérification, citations). Un PDF entièrement natif ne passe jamais par le cache.
+- **Lecture en échec** (plantage, délai dépassé, verrou abandonné) : un PDF garde sa lecture native, avec
+  l'avertissement « OCR interrompu » (`SOURCE_MANQUANTE` si rien n'est lisible) ; une **image valide** reçoit
+  `refus` `SOURCE_MANQUANTE` (`UNREADABLE_DOCUMENT`), jamais `FILE_EMPTY_OR_CORRUPTED`. Une image corrompue est
+  refusée **avant** l'OCR (`FILE_EMPTY_OR_CORRUPTED`).
+- **Cache du serveur inutilisable** (dossier non accessible, disque plein) : incident du serveur, jamais
+  `FILE_EMPTY_OR_CORRUPTED` ; un PDF garde sa lecture native (avertissement « OCR interrompu »), une image reçoit
+  `erreur` `INTERNAL_ERROR`. Une image corrompue n'atteint jamais PaddleOCR, même dans le processus (option B).
+- **Carte ou document refusé par le cache** (pas un simple nom) : `refus` `ACCES_REFUSE` (`ACCESS_DENIED`),
+  `document_id` non renvoyé, comme pour le stockage (D40).
+- **Disponibilité (D41)** : `pipeline.ocr_available()` est la seule fonction utilisée par le service et par le
+  pipeline : backend ou moteur fourni, backend du serveur configuré, ou PaddleOCR installé avec
+  `DS3_OCR_INPROCESS=1`. PaddleOCR installé **sans** `DS3_CACHE_DIR` ni `DS3_OCR_INPROCESS` : pas d'OCR, une image
+  reçoit le refus D41.
+- **Option B (D41) gardée pour les démonstrations seulement** : `DS3_OCR_INPROCESS=1` ne sert que si
+  `DS3_CACHE_DIR` n'est pas défini ; le backend en arrière-plan est toujours prioritaire.
+
+Pas de changement de contrat : `TIMEOUT` existe déjà dans ds3.v2. Le déclenchement au téléversement
+(`prepare_document`) viendra plus tard, après accord de DS1 (Achref).
+
+**Alternatives envisagées** :
+- Attendre la fin de l'OCR dans la réponse → rejeté : environ 27 s par page sur CPU, au-delà de la cible de 20 s
+  (P95).
+- Renvoyer un résultat partiel (lignes natives seulement) pendant la lecture → rejeté : DS1 et DS5 travailleraient
+  sur un document incomplet, puis sur un autre ; « citation ou silence ».
+- Garder l'OCR dans le processus du service (option B) par défaut → rejeté : un plantage natif de Paddle
+  arrêterait le service (D41).
+
+**Limites connues** (à traiter dans `reading/ocr_cache.py`, relecture de la PR #46) : l'échec est définitif tant
+que le fichier ne change pas (un plantage passager bloque le document) ; un verrou abandonné, laissé par un
+service arrêté, est compté comme un échec au lieu d'être relancé ; pas encore de limite d'OCR en parallèle entre
+fichiers ; le cache contient le texte du document et doit être supprimé avec lui.
+
+**Raison** : le service répond toujours vite, ne tombe pas si Paddle plante, ne lance qu'un OCR par fichier et ne
+renvoie jamais un résultat incomplet ; DS1 n'a qu'un cas à gérer (`TIMEOUT` réessayable, bouton Réessayer).
+
+**Statut** : ✅ appliquée à la fusion de la PR qui la contient ; prouvée par
+`test_document_intelligence_ocr_d42.py` (scan lu depuis le cache et cité avec la confiance de l'OCR, PDF natif
+sans appel au backend, `TIMEOUT` à chaque essai puis réponse du cache, échec sur un scan et sur un PDF mixte,
+image valide en échec, image corrompue ou JPEG tronqué refusés avant l'OCR (décodage complet par Pillow), OCR non
+disponible, cache du serveur inutilisable (PDF et image), image corrompue jamais envoyée à l'OCR dans le
+processus, backend du serveur prioritaire sur l'OCR dans le processus, refus d'accès du cache, backend
+prioritaire sur un moteur, backend du serveur pris par défaut, PaddleOCR installé sans `DS3_CACHE_DIR` (refus D41
+au service et au pipeline), image lue par le service, formats refusés, et le vrai `OcrCache` de bout en bout avec
+un faux processus OCR : `TIMEOUT`, un seul OCR lancé, réponse `ok`, échec non relancé).
+
+---
+
 ### D46 — Grille salariale BANQUES (pages 2-3, 8-13, 19-23)
 
 **Numéro** : D46. D31 à D45 sont réservés à DS3 ; `origin/main` s'arrête à D39 (vérifié avec `git fetch origin` le
