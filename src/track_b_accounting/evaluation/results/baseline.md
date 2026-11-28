@@ -1,4 +1,4 @@
-# Évaluation Track B — 2026-11-27
+# Évaluation Track B — 2026-11-28
 
 Jeu de référence : `src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json` (track_b_golden.v0, 472 cas, sha256 `75e9750d13cb…`).
 Cas vérifiés sur les PDF par DS5 : **461 / 472**.
@@ -34,6 +34,69 @@ Cas vérifiés sur les PDF par DS5 : **461 / 472**.
 | Conformité schéma Track B | 461 / 461 | 100.0 % |
 | Conformité schéma commun | 461 / 461 | 100.0 % |
 | Statut erreur / exceptions | 0 / 0 | |
+
+## Hors périmètre (48 cas, D110)
+
+Jeu : `src/track_b_accounting/evaluation/golden_sets/track_b_hors_perimetre.v0.json` (track_b_hors_perimetre.v0, sha256 `8b125c37e18f…`).
+
+| Métrique | Nombre | Taux |
+|---|---|---|
+| Taux de refus hors périmètre (code et motif attendus) | 48 / 48 | 100.0 % |
+| Montant au lieu d'un refus | 0 / 48 | 0.0 % |
+| Conformité schéma Track B | 48 / 48 | 100.0 % |
+
+Seuil : 85 % ; **atteint**. Échecs : aucun.
+
+| Cas | Thème | Attendu | Obtenu | Verdict |
+|---|---|---|---|---|
+| HP-01 | cnss | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-02 | cnss | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-03 | irpp | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-04 | factures | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-05 | depenses | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-06 | ratios | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-07 | heures_supplementaires | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-08 | conges | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-09 | indemnites | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-10 | faux_track_b_net | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-11 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-12 | faux_track_b_simulation | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-13 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-14 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-15 | heures_supplementaires | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-16 | indemnites | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-17 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-18 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-19 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-20 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-21 | secteur_sans_grille | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-22 | secteur_sans_grille | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-23 | population_inexistante | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| HP-24 | population_inexistante | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| HP-25 | cnss | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-26 | cnss | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-27 | irpp | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-28 | factures | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-29 | depenses | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-30 | ratios | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-31 | heures_supplementaires | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-32 | conges | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-33 | indemnites | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-34 | faux_track_b_net | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-35 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-36 | faux_track_b_simulation | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-37 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-38 | faux_track_b_conversion | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-39 | heures_supplementaires | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-40 | indemnites | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-41 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-42 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-43 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-44 | convention_cadre | HORS_SCOPE | HORS_SCOPE | correct |
+| HP-45 | secteur_sans_grille | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-46 | secteur_sans_grille | SOURCE_MANQUANTE | SOURCE_MANQUANTE | correct |
+| HP-47 | population_inexistante | PARAM_INVALIDE | PARAM_INVALIDE | correct |
+| HP-48 | population_inexistante | PARAM_INVALIDE | PARAM_INVALIDE | correct |
 
 ## Par certitude
 

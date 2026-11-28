@@ -37,8 +37,85 @@ OPERATIONS_V1: dict[str, Callable[..., Result]] = {
     "prime": calc.prime_v1,
     "smig": calc.smig,
 }
-# Opérations valides au schéma de requête, mais toujours refusées (HORS_SCOPE) : aucune source vérifiée.
-OPERATIONS_HORS_PERIMETRE = frozenset({"cotisation_cnss"})
+# Opérations valides au schéma de requête, mais toujours refusées (HORS_SCOPE), avec leur motif FR et AR (D110).
+# Liste fermée, identique à l'enum « operation » des schémas v0 et v1 ; une opération absente de l'enum reste un
+# refus de contrat (PARAM_INVALIDE). Motif None : message historique de cotisation_cnss, inchangé.
+_MOTIF_CNSS = (
+    "Aucun texte ni barème de la CNSS n'est fourni dans les sources vérifiées : cotisation non calculée.",
+    "لا يوجد أي نص أو جدول للصندوق الوطني للضمان الاجتماعي في المصادر المُتحقَّق منها: لا تُحتسب المساهمة.",
+)
+_MOTIF_HORS_CDC = (
+    "{sujet} : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+    "{sujet_ar}: غير وارد في كراس الشروط الخاص بالمسار B، لا يقع أي احتساب.",
+)
+OPERATIONS_HORS_PERIMETRE: dict[str, tuple[str, str] | None] = {
+    "cotisation_cnss": None,
+    "cnss": _MOTIF_CNSS,
+    "irpp": (
+        "Aucun barème de l'IRPP n'est fourni dans les sources vérifiées : impôt non calculé.",
+        "لا يوجد أي جدول للضريبة على دخل الأشخاص الطبيعيين في المصادر المُتحقَّق منها: لا تُحتسب الضريبة.",
+    ),
+    "facture": (
+        "Aucune facture ni donnée comptable n'est fournie à Track B : il ne lit ni ne contrôle les factures.",
+        "لا تُقدَّم أي فاتورة أو معطيات محاسبية للمسار B: لا يقرأ الفواتير ولا يراقبها.",
+    ),
+    "depense": (
+        "Aucune dépense ni donnée comptable n'est fournie à Track B : il ne classe ni ne contrôle les dépenses.",
+        "لا تُقدَّم أي نفقة أو معطيات محاسبية للمسار B: لا يصنّف النفقات ولا يراقبها.",
+    ),
+    "ratio": (
+        "Aucun état financier n'est fourni à Track B : aucun ratio financier n'est calculé.",
+        "لا تُقدَّم أي قوائم مالية للمسار B: لا تُحتسب أي نسبة مالية.",
+    ),
+    "heures_supplementaires": (
+        _MOTIF_HORS_CDC[0].format(sujet="Heures supplémentaires"),
+        _MOTIF_HORS_CDC[1].format(sujet_ar="الساعات الإضافية"),
+    ),
+    "conges": (
+        _MOTIF_HORS_CDC[0].format(sujet="Congés payés"),
+        _MOTIF_HORS_CDC[1].format(sujet_ar="الرخص خالصة الأجر"),
+    ),
+    "indemnite_licenciement": (
+        _MOTIF_HORS_CDC[0].format(sujet="Indemnité de licenciement"),
+        _MOTIF_HORS_CDC[1].format(sujet_ar="غرامة الفصل عن العمل"),
+    ),
+    "salaire_net": (
+        "Le net à payer demande les retenues CNSS et IRPP, dont aucun texte ni barème n'est fourni : non calculé.",
+        "يتطلب الأجر الصافي اقتطاعات الضمان الاجتماعي والضريبة على الدخل، ولا يوجد لها أي نص أو جدول: لا يُحتسب.",
+    ),
+    "conversion_unite": (
+        "La conversion d'une unité à l'autre (horaire, journalière, mensuelle) n'est écrite dans aucune source "
+        "vérifiée (nombre d'heures par mois non fixé) : seul le montant imprimé, dans son unité, est servi.",
+        "التحويل من وحدة إلى أخرى (بالساعة، باليوم، بالشهر) غير منصوص عليه في أي مصدر مُتحقَّق منه: "
+        "يُقدَّم المبلغ المطبوع بوحدته فقط.",
+    ),
+    "simulation_hausse": (
+        "Track B ne sert que les montants imprimés dans les grilles en vigueur : une hausse hypothétique n'est "
+        "écrite dans aucune source.",
+        "لا يقدّم المسار B إلا المبالغ المطبوعة في الجداول السارية: الزيادة الافتراضية غير منصوص عليها في أي مصدر.",
+    ),
+}
+# Conventions-cadres reçues comme secteur : textes vérifiés sans grille de salaires (D110) → HORS_SCOPE qui les nomme.
+_CADRE_GENERALE = (
+    "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973, mise à jour 2022) ne fixe pas de grille de "
+    "salaires : son article 50 renvoie les grilles aux conventions sectorielles. Indiquez la convention sectorielle "
+    "de l'entreprise.",
+    "الاتفاقية المشتركة الإطارية (1973، محيّنة 2022) لا تضبط جدول أجور: يحيل فصلها 50 جداول الأجور إلى "
+    "الاتفاقيات المشتركة القطاعية. يُرجى تحديد الاتفاقية القطاعية للمؤسسة.",
+)
+CONVENTIONS_CADRES: dict[str, tuple[str, str]] = {
+    "CONVENTION_CADRE_GENERALE": _CADRE_GENERALE,
+    "CC-CADRE": _CADRE_GENERALE,
+    "CONVENTION_CADRE_AGRICOLE": (
+        "La convention collective cadre du secteur agricole (الاتفاقية المشتركة الإطارية في القطاع الفلاحي, 2015) "
+        "ne fixe pas de grille de salaires : son article 14 renvoie aux grilles des conventions sectorielles. "
+        "Le SMAG figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022), mais l'opération smig ne sert "
+        "aujourd'hui que le SMIG non agricole.",
+        "الاتفاقية المشتركة الإطارية في القطاع الفلاحي (2015) لا تضبط جدول أجور: يحيل فصلها 14 إلى جداول الأجور "
+        "في الاتفاقيات المشتركة القطاعية. الأجر الأدنى الفلاحي المضمون وارد في مرجع الأجر الأدنى (الأمر عدد 768 "
+        "لسنة 2022)، لكن العملية smig لا تقدّم حاليا إلا الأجر الأدنى في القطاعات غير الفلاحية.",
+    ),
+}
 COMPUTED_BY_CONTRACT = "track_b_accounting.contract"
 
 
@@ -139,13 +216,19 @@ def _traiter(request) -> dict:
     # 2. Refus métier : requête valide, opération connue du contrat mais hors périmètre Track B.
     op = request["operation"]
     if op in OPERATIONS_HORS_PERIMETRE:
+        motif = OPERATIONS_HORS_PERIMETRE[op] or (
+            "CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
+            "الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه.",
+        )
         raise _RefusContrat(
             Refus.HORS_SCOPE,
             f"Opération {op!r} hors du périmètre Track B {version.split('.')[1]} (disponibles : {', '.join(OPERATIONS)}). "
-            "CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
-            f"العملية {op!r} خارج نطاق المسار B (المتوفر: {', '.join(OPERATIONS)}). "
-            "الضمان الاجتماعي والضريبة على الدخل والأجر الصافي غير مشمولة بمصدر مُتحقَّق منه.",
+            + motif[0],
+            f"العملية {op!r} خارج نطاق المسار B (المتوفر: {', '.join(OPERATIONS)}). " + motif[1],
         )
+    secteur = request["params"].get("secteur")
+    if isinstance(secteur, str) and secteur in CONVENTIONS_CADRES:
+        raise _RefusContrat(Refus.HORS_SCOPE, *CONVENTIONS_CADRES[secteur])
 
     # 3. Calcul (refus éventuels émis par calc/).
     r = (OPERATIONS_V1 if version == CONTRACT_VERSION_V1 else OPERATIONS)[op](**request["params"])

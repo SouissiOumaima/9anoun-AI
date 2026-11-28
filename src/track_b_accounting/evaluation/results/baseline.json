@@ -13977,7 +13977,7 @@
    "verification_humaine": false
   }
  ],
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "desaccords_interpretation": [],
  "erreurs_de_lecture": [],
  "evaluation": "track_b",
@@ -13987,6 +13987,1230 @@
   "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_golden.v0.json",
   "sha256": "75e9750d13cb74293fc7fa67fbef488043bd980ccc044775731956fc2d26954a",
   "version": "track_b_golden.v0"
+ },
+ "hors_perimetre": {
+  "cas": 48,
+  "cas_detail": [
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "CNSS, IRPP, salaire net et conversions ne sont pas couverts",
+     "motif": "CNSS : aucune source vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-01",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'cotisation_cnss' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "cnss",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucun texte ni barème de la CNSS",
+     "motif": "CNSS : aucun texte ni barème fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-02",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'cnss' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Aucun texte ni barème de la CNSS n'est fourni dans les sources vérifiées : cotisation non calculée.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "cnss",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucun barème de l'IRPP",
+     "motif": "IRPP : aucun barème fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-03",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'irpp' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Aucun barème de l'IRPP n'est fourni dans les sources vérifiées : impôt non calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "irpp",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucune facture ni donnée comptable",
+     "motif": "Factures : aucun texte ni donnée fournis",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-04",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'facture' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Aucune facture ni donnée comptable n'est fournie à Track B : il ne lit ni ne contrôle les factures.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "factures",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucune dépense ni donnée comptable",
+     "motif": "Dépenses : aucun texte ni donnée fournis",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-05",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'depense' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Aucune dépense ni donnée comptable n'est fournie à Track B : il ne classe ni ne contrôle les dépenses.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "depenses",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "aucun ratio financier n'est calculé",
+     "motif": "Ratios : aucun état financier fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-06",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'ratio' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Aucun état financier n'est fourni à Track B : aucun ratio financier n'est calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "ratios",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Heures supplémentaires : absent du cahier des charges",
+     "motif": "Heures supplémentaires : absentes du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-07",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'heures_supplementaires' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Heures supplémentaires : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "heures_supplementaires",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Congés payés : absent du cahier des charges",
+     "motif": "Congés : absents du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-08",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'conges' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Congés payés : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "conges",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Indemnité de licenciement : absent du cahier des charges",
+     "motif": "Indemnité de licenciement : absente du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-09",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'indemnite_licenciement' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Indemnité de licenciement : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "indemnites",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Le net à payer demande les retenues CNSS et IRPP",
+     "motif": "Net à payer : exige CNSS et IRPP, non sourcés",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-10",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'salaire_net' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Le net à payer demande les retenues CNSS et IRPP, dont aucun texte ni barème n'est fourni : non calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_net",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "La conversion d'une unité à l'autre",
+     "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-11",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'conversion_unite' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). La conversion d'une unité à l'autre (horaire, journalière, mensuelle) n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé) : seul le montant imprimé, dans son unité, est servi.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "une hausse hypothétique n'est écrite dans aucune source",
+     "motif": "Simulation de hausse : aucun montant imprimé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-12",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'simulation_hausse' hors du périmètre Track B v0 (disponibles : salaire_base, prime, smig). Track B ne sert que les montants imprimés dans les grilles en vigueur : une hausse hypothétique n'est écrite dans aucune source.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_simulation",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "la conversion en TND/mois",
+     "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-13",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La grille donne un montant en TND/heure ; la conversion en TND/mois n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "la conversion en TND/heure",
+     "motif": "Conversion mensuel vers horaire : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-14",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La grille donne un montant en TND/mois ; la conversion en TND/heure n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Prime 'heures_supplementaires' absente des données vérifiées",
+     "motif": "Heures supplémentaires demandées comme prime : absentes des primes vérifiées",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-15",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Prime 'heures_supplementaires' absente des données vérifiées (METALLURGIE_BATIMENT : prime_transport, prime_presence, prime_logement, prime_panier_qefa, prime_deplacement_chantier, prime_travail_en_hauteur).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "heures_supplementaires",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Indemnité de licenciement (article 57",
+     "motif": "Indemnité de licenciement : formule sans montant fixe (article 57)",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-16",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Indemnité de licenciement (article 57, page 17) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "indemnites",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973",
+     "motif": "Convention-cadre générale : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-17",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973, mise à jour 2022) ne fixe pas de grille de salaires : son article 50 renvoie les grilles aux conventions sectorielles. Indiquez la convention sectorielle de l'entreprise.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "ne fixe pas de grille de salaires : son article 50",
+     "motif": "Convention-cadre générale (code DS2) : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-18",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973, mise à jour 2022) ne fixe pas de grille de salaires : son article 50 renvoie les grilles aux conventions sectorielles. Indiquez la convention sectorielle de l'entreprise.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "convention collective cadre du secteur agricole",
+     "motif": "Convention-cadre agricole : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-19",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre du secteur agricole (الاتفاقية المشتركة الإطارية في القطاع الفلاحي, 2015) ne fixe pas de grille de salaires : son article 14 renvoie aux grilles des conventions sectorielles. Le SMAG figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022), mais l'opération smig ne sert aujourd'hui que le SMIG non agricole.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "son article 14 renvoie aux grilles",
+     "motif": "Convention-cadre agricole : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-20",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre du secteur agricole (الاتفاقية المشتركة الإطارية في القطاع الفلاحي, 2015) ne fixe pas de grille de salaires : son article 14 renvoie aux grilles des conventions sectorielles. Le SMAG figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022), mais l'opération smig ne sert aujourd'hui que le SMIG non agricole.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE'",
+     "motif": "Secteur sans grille vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-21",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "secteur_sans_grille",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Aucune grille vérifiée pour le secteur 'AGRICULTURE'",
+     "motif": "Secteur sans grille vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-22",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "secteur_sans_grille",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr_contient": "Population inconnue : 'cadres_superieurs'",
+     "motif": "Population inexistante dans la grille",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-23",
+    "obtenu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr": "Population inconnue : 'cadres_superieurs' (attendu : admin_tech, ouvriers_occasionnels).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "population_inexistante",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr_contient": "Population inconnue : 'ouvriers_agricoles'",
+     "motif": "Population inexistante dans la grille",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-24",
+    "obtenu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr": "Population inconnue : 'ouvriers_agricoles' (attendu : admin_tech, execution).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "population_inexistante",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "CNSS, IRPP, salaire net et conversions ne sont pas couverts",
+     "motif": "CNSS : aucune source vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-25",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'cotisation_cnss' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). CNSS, IRPP, salaire net et conversions ne sont pas couverts par une source vérifiée.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "cnss",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucun texte ni barème de la CNSS",
+     "motif": "CNSS : aucun texte ni barème fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-26",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'cnss' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Aucun texte ni barème de la CNSS n'est fourni dans les sources vérifiées : cotisation non calculée.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "cnss",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucun barème de l'IRPP",
+     "motif": "IRPP : aucun barème fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-27",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'irpp' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Aucun barème de l'IRPP n'est fourni dans les sources vérifiées : impôt non calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "irpp",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucune facture ni donnée comptable",
+     "motif": "Factures : aucun texte ni donnée fournis",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-28",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'facture' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Aucune facture ni donnée comptable n'est fournie à Track B : il ne lit ni ne contrôle les factures.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "factures",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Aucune dépense ni donnée comptable",
+     "motif": "Dépenses : aucun texte ni donnée fournis",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-29",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'depense' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Aucune dépense ni donnée comptable n'est fournie à Track B : il ne classe ni ne contrôle les dépenses.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "depenses",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "aucun ratio financier n'est calculé",
+     "motif": "Ratios : aucun état financier fourni",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-30",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'ratio' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Aucun état financier n'est fourni à Track B : aucun ratio financier n'est calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "ratios",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Heures supplémentaires : absent du cahier des charges",
+     "motif": "Heures supplémentaires : absentes du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-31",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'heures_supplementaires' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Heures supplémentaires : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "heures_supplementaires",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Congés payés : absent du cahier des charges",
+     "motif": "Congés : absents du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-32",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'conges' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Congés payés : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "conges",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Indemnité de licenciement : absent du cahier des charges",
+     "motif": "Indemnité de licenciement : absente du cahier des charges",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-33",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'indemnite_licenciement' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Indemnité de licenciement : absent du cahier des charges de Track B, aucun calcul n'est fait.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "indemnites",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "Le net à payer demande les retenues CNSS et IRPP",
+     "motif": "Net à payer : exige CNSS et IRPP, non sourcés",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-34",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'salaire_net' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Le net à payer demande les retenues CNSS et IRPP, dont aucun texte ni barème n'est fourni : non calculé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_net",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "La conversion d'une unité à l'autre",
+     "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-35",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'conversion_unite' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). La conversion d'une unité à l'autre (horaire, journalière, mensuelle) n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé) : seul le montant imprimé, dans son unité, est servi.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "une hausse hypothétique n'est écrite dans aucune source",
+     "motif": "Simulation de hausse : aucun montant imprimé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-36",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "Opération 'simulation_hausse' hors du périmètre Track B v1 (disponibles : salaire_base, prime, smig). Track B ne sert que les montants imprimés dans les grilles en vigueur : une hausse hypothétique n'est écrite dans aucune source.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_simulation",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "la conversion en TND/mois",
+     "motif": "Conversion horaire vers mensuel : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-37",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La grille donne un montant en TND/heure ; la conversion en TND/mois n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "la conversion en TND/heure",
+     "motif": "Conversion mensuel vers horaire : nombre d'heures par mois non fixé",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-38",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La grille donne un montant en TND/mois ; la conversion en TND/heure n'est écrite dans aucune source vérifiée (nombre d'heures par mois non fixé).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "faux_track_b_conversion",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Prime 'heures_supplementaires' absente des données vérifiées",
+     "motif": "Heures supplémentaires demandées comme prime : absentes des primes vérifiées",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-39",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Prime 'heures_supplementaires' absente des données vérifiées (METALLURGIE_BATIMENT : prime_transport, prime_presence, prime_logement, prime_panier_qefa, prime_deplacement_chantier, prime_travail_en_hauteur).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "heures_supplementaires",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Indemnité de licenciement (article 57",
+     "motif": "Indemnité de licenciement : formule sans montant fixe (article 57)",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-40",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Indemnité de licenciement (article 57, page 17) : formule selon l'ancienneté, sans montant fixe. Prime non exposée ; aucun montant n'est renvoyé.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "indemnites",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973",
+     "motif": "Convention-cadre générale : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-41",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973, mise à jour 2022) ne fixe pas de grille de salaires : son article 50 renvoie les grilles aux conventions sectorielles. Indiquez la convention sectorielle de l'entreprise.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "ne fixe pas de grille de salaires : son article 50",
+     "motif": "Convention-cadre générale (code DS2) : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-42",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre (الاتفاقية المشتركة الإطارية, 1973, mise à jour 2022) ne fixe pas de grille de salaires : son article 50 renvoie les grilles aux conventions sectorielles. Indiquez la convention sectorielle de l'entreprise.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "convention collective cadre du secteur agricole",
+     "motif": "Convention-cadre agricole : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-43",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre du secteur agricole (الاتفاقية المشتركة الإطارية في القطاع الفلاحي, 2015) ne fixe pas de grille de salaires : son article 14 renvoie aux grilles des conventions sectorielles. Le SMAG figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022), mais l'opération smig ne sert aujourd'hui que le SMIG non agricole.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "HORS_SCOPE",
+     "message_fr_contient": "son article 14 renvoie aux grilles",
+     "motif": "Convention-cadre agricole : pas de grille de salaires",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-44",
+    "obtenu": {
+     "code": "HORS_SCOPE",
+     "message_fr": "La convention collective cadre du secteur agricole (الاتفاقية المشتركة الإطارية في القطاع الفلاحي, 2015) ne fixe pas de grille de salaires : son article 14 renvoie aux grilles des conventions sectorielles. Le SMAG figure dans le référentiel SMIG/SMAG (décret n° 768 de 2022), mais l'opération smig ne sert aujourd'hui que le SMIG non agricole.",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "convention_cadre",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE'",
+     "motif": "Secteur sans grille vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-45",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'FONCTION_PUBLIQUE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "secteur_sans_grille",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr_contient": "Aucune grille vérifiée pour le secteur 'AGRICULTURE'",
+     "motif": "Secteur sans grille vérifiée",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-46",
+    "obtenu": {
+     "code": "SOURCE_MANQUANTE",
+     "message_fr": "Aucune grille vérifiée pour le secteur 'AGRICULTURE' (disponibles : METALLURGIE_BATIMENT, BATIMENT_TRAVAUX_PUBLICS, ASSOCIATIONS_PERSONNES_HANDICAPEES, ASSURANCE, ENSEIGNEMENT_PRIVE, BANQUES, GARDIENNAGE_SECURITE_TRANSPORT_FONDS, TORREFACTION_CAFE, AGENCES_VOYAGES, HOTELS_TOURISTIQUES, CONFISERIE_BISCUITERIE_CHOCOLATERIE, PATES_ALIMENTAIRES_COUSCOUS, COSMETIQUES_PARFUMS, SAVONNERIE_RAFFINAGE_GRIGNONS, COMMERCE_DISTRIBUTION_PETROLE, PLASTURGIE, MINOTERIES, TEINTURERIES_PRESSINGS, BOISSONS_GAZEUSES, MECANIQUE_STATIONS_SERVICE, BOISSONS_ALCOOLISEES, BOIS_AMEUBLEMENT_LIEGE, GESTION_DECHETS, HABILLEMENT, COMMERCE_GROS_DETAIL, IMPRIMERIE_EDITION_CARTONNAGE, VERRE_MIROIRS, CONCESSIONNAIRES_MATERIEL_AGRICOLE, BOULANGERIES, TEXTILE, FONDERIE_METALLURGIE_MECANIQUE, PRODUITS_ENTRETIEN_INSECTICIDES, CONSTRUCTEURS_CONCESSIONNAIRES_AUTOMOBILES, MATERIAUX_CONSTRUCTION, PEINTURES, CHAUSSURE, CUIRS_TANNERIE, CLERCS_AVOCATS, PERSONNEL_PHARMACIES, CONSERVERIES_CONDITIONNEMENT_HUILES, GROSSISTES_REPARTITEURS_MEDICAMENTS, SALLES_CINEMA, TRANSPORT_ROUTIER_MARCHANDISES, JARDINS_ENFANTS_CRECHES, CLINIQUES_PRIVEES, LOCATION_VOITURES, COMMERCE_MATERIAUX_BOIS_ACIER, CAFES_RESTAURANTS_BARS, PORTS_CHARGEMENT_DECHARGEMENT).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "secteur_sans_grille",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr_contient": "Population inconnue : 'cadres_superieurs'",
+     "motif": "Population inexistante dans la grille",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-47",
+    "obtenu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr": "Population inconnue : 'cadres_superieurs' (attendu : admin_tech, ouvriers_occasionnels).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "population_inexistante",
+    "verdict": "correct",
+    "verification_humaine": false
+   },
+   {
+    "attendu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr_contient": "Population inconnue : 'ouvriers_agricoles'",
+     "motif": "Population inexistante dans la grille",
+     "status": "refus"
+    },
+    "categorie": "hors_perimetre",
+    "certitude": "I",
+    "citations_ok": null,
+    "conforme_schema_commun": true,
+    "conforme_schema_track_b": true,
+    "decision": "D110",
+    "id": "HP-48",
+    "obtenu": {
+     "code": "PARAM_INVALIDE",
+     "message_fr": "Population inconnue : 'ouvriers_agricoles' (attendu : admin_tech, execution).",
+     "status": "refus"
+    },
+    "problemes_citations": [],
+    "theme": "population_inexistante",
+    "verdict": "correct",
+    "verification_humaine": false
+   }
+  ],
+  "echecs": [],
+  "fichier": "src/track_b_accounting/evaluation/golden_sets/track_b_hors_perimetre.v0.json",
+  "metriques": {
+   "cas": 48,
+   "citations_valides": {
+    "n": 0,
+    "sur": 0,
+    "taux": null
+   },
+   "codes_refus_incorrects": {
+    "n": 0,
+    "sur": 48,
+    "taux": 0.0
+   },
+   "conformite_schema_commun": {
+    "n": 48,
+    "sur": 48,
+    "taux": 1.0
+   },
+   "conformite_schema_track_b": {
+    "n": 48,
+    "sur": 48,
+    "taux": 1.0
+   },
+   "exactitude_montants": {
+    "n": 0,
+    "sur": 0,
+    "taux": null
+   },
+   "exceptions_inattendues": 0,
+   "faux_montants": {
+    "n": 0,
+    "sur": 0,
+    "taux": null
+   },
+   "faux_montants_total": 0,
+   "messages_refus_incorrects": {
+    "n": 0,
+    "sur": 48,
+    "taux": 0.0
+   },
+   "montants_au_lieu_de_refus": {
+    "n": 0,
+    "sur": 48,
+    "taux": 0.0
+   },
+   "refus_corrects": {
+    "n": 48,
+    "sur": 48,
+    "taux": 1.0
+   },
+   "silence_excessif": {
+    "n": 0,
+    "sur": 0,
+    "taux": null
+   },
+   "statut_erreur": 0
+  },
+  "seuil": 0.85,
+  "seuil_atteint": true,
+  "sha256": "8b125c37e18fb1b714815e753af4248939ed64a2f0396e69edd412b316543ab1",
+  "taux_refus_hors_perimetre": {
+   "n": 48,
+   "sur": 48,
+   "taux": 1.0
+  },
+  "version": "track_b_hors_perimetre.v0"
  },
  "metriques": {
   "cas_verifies": {
@@ -14099,7 +15323,12 @@
     "sur": 283,
     "taux": 0.0
    },
-   "statut_erreur": 0
+   "statut_erreur": 0,
+   "taux_refus_hors_perimetre": {
+    "n": 48,
+    "sur": 48,
+    "taux": 1.0
+   }
   },
   "par_categorie": {
    "art13": {

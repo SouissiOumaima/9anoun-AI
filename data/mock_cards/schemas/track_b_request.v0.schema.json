@@ -10,8 +10,8 @@
     "contract_version": {"const": "track_b.v0"},
     "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
     "operation": {
-      "enum": ["salaire_base", "prime", "smig", "cotisation_cnss"],
-      "description": "cotisation_cnss : opération valide au contrat mais hors périmètre Track B v0 → toujours un refus HORS_SCOPE (aucune source vérifiée). Une valeur absente de cette liste est une requête non conforme (PARAM_INVALIDE)."
+      "enum": ["salaire_base", "prime", "smig", "cotisation_cnss", "cnss", "irpp", "facture", "depense", "ratio", "heures_supplementaires", "conges", "indemnite_licenciement", "salaire_net", "conversion_unite", "simulation_hausse"],
+      "description": "Opérations hors périmètre (cotisation_cnss, cnss, irpp, facture, depense, ratio, heures_supplementaires, conges, indemnite_licenciement, salaire_net, conversion_unite, simulation_hausse) : valides au contrat mais hors périmètre Track B v0 → toujours un refus HORS_SCOPE avec son motif (D110). Une valeur absente de cette liste est une requête non conforme (PARAM_INVALIDE)."
     },
     "params": {"type": "object"},
     "lang": {"enum": ["fr", "ar"]}

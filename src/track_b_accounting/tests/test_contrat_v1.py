@@ -68,7 +68,7 @@ def _empreinte(chemin: str) -> str:
     [
         (
             "data/mock_cards/schemas/track_b_request.v0.schema.json",
-            "08a570398f2614d68b740aee927e5af42b9977627ed148b01ce9b6bef47fa9b8",
+            "28a0543a4d8edf4111e638117d0684bb2e659a6d845658e13afb07460d1dcc05",
         ),
         (
             "data/mock_cards/schemas/track_b_response.v0.schema.json",
