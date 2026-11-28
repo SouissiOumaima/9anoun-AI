@@ -136,24 +136,34 @@ def normalize_category(raw: str) -> str | None:
     return f"{m[1]}{letter}" if letter in {"A", "B", "C", "D", "E"} else None
 
 
+_WEEKLY: Final = re.compile(
+    r"(?:/|\bpar\b|\bla\b)?\s*(?:semaines?|sem\b\.?|hebdo(?:madaires?)?)|(?:/|في)?\s*ال?أسبوع|أسبوعيا")
+_MONTHLY: Final = re.compile(r"(?:/|\bpar\b|\ble\b)?\s*(?:mois|mensuel(?:le)?s?)|(?:/|في)?\s*ال?شهر|شهريا")
+
+
 def normalize_hours(raw: str) -> str | None:
     """Régime horaire imprimé -> heures par semaine ("40" ou "48").
 
     Mensuel : 208 h -> "48" ; 173,33 h -> "40". Hebdomadaire 40 ou 48 repris tel quel.
-    Toute autre valeur -> None (pas de conversion inventée).
+    L'unité imprimée est respectée : « 48 h/semaine » -> "48", « 208 h/mois » -> "48" ; une valeur qui ne va pas
+    avec son unité (« 208 h/semaine », « 48 h/mois ») -> None. Toute autre valeur -> None (pas de conversion inventée).
     """
     text = to_latin_digits(raw).lower()
-    text = re.sub(r"(heures?|ساعة|h(?:00)?|س)", " ", text).strip()
+    weekly, monthly = bool(_WEEKLY.search(text)), bool(_MONTHLY.search(text))
+    if weekly and monthly:
+        return None
+    text = _MONTHLY.sub(" ", _WEEKLY.sub(" ", text))
+    text = re.sub(r"(heures?|ساعات|ساعة|h(?:00)?|س)", " ", text).strip()
     text = _SPACES.sub("", text).replace(",", ".")
     try:
         value = float(text)
     except ValueError:
         return None
-    if abs(value - 208) < 0.01:
+    if not weekly and abs(value - 208) < 0.01:
         return "48"
-    if abs(value - 173.33) < 0.01 or abs(value - 173.3) < 0.01:
+    if not weekly and (abs(value - 173.33) < 0.01 or abs(value - 173.3) < 0.01):
         return "40"
-    if value in (40, 48):
+    if not monthly and value in (40, 48):
         return str(int(value))
     return None
 
